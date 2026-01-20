@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -65,7 +65,7 @@
       
         
         <a href="#python" class="md-skip">
-          Skip to content
+          跳转至
         </a>
       
     </div>
@@ -79,7 +79,7 @@
   
 
 <header class="md-header md-header--shadow" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="Python 修行指南" class="md-header__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
       
   
@@ -122,16 +122,16 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -142,7 +142,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            正在初始化搜索引擎
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -176,7 +176,7 @@
 
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Python 修行指南" class="md-nav__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
       
@@ -318,7 +318,7 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -327,7 +327,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -979,7 +979,7 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -988,7 +988,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -1439,14 +1439,16 @@
 </tbody>
 </table>
 <h2 id="python_3">Python 程序的执行过程</h2>
-<pre><code>源代码 (.py) → Python 解释器 → 字节码 (.pyc) → Python 虚拟机 (PVM) → 执行结果
-</code></pre>
-<p>!!! info "关于字节码"
-Python 会将源代码编译为字节码缓存在 <code>__pycache__</code> 目录中，加速后续执行。</p>
+<div class="highlight"><pre><span></span><code>源代码 (.py) → Python 解释器 → 字节码 (.pyc) → Python 虚拟机 (PVM) → 执行结果
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">关于字节码</p>
+</div>
+<p>Python 会将源代码编译为字节码缓存在 <code>__pycache__</code> 目录中，加速后续执行。</p>
 <h2 id="python_4">第一个 Python 程序</h2>
 <h3 id="hello-world">传统方式：Hello World</h3>
-<pre><code class="language-python">print(&quot;Hello, World!&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p><strong>运行方式：</strong></p>
 <p>=== "命令行"
 <code>bash
@@ -1456,57 +1458,57 @@ Python 会将源代码编译为字节码缓存在 <code>__pycache__</code> 目�
     &gt;&gt;&gt; print("Hello, World!")
     Hello, World!</code></p>
 <h3 id="_1">进阶示例：带输入的程序</h3>
-<pre><code class="language-python"># 获取用户输入
-name = input(&quot;请输入你的名字: &quot;)
+<div class="highlight"><pre><span></span><code><span class="c1"># 获取用户输入</span>
+<span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入你的名字: &quot;</span><span class="p">)</span>
 
-# 格式化输出
-print(f&quot;你好, {name}! 欢迎学习 Python!&quot;)
-</code></pre>
+<span class="c1"># 格式化输出</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;你好, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">! 欢迎学习 Python!&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="python_5">Python 程序的基本结构</h2>
 <p>一个完整的 Python 程序通常包含以下部分：</p>
-<pre><code class="language-python">#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
 
-&quot;&quot;&quot;
-模块文档字符串 (Docstring)
-描述这个模块的功能和用途
-&quot;&quot;&quot;
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">模块文档字符串 (Docstring)</span>
+<span class="sd">描述这个模块的功能和用途</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
-# 1. 导入模块
-import os
-import sys
-from datetime import datetime
+<span class="c1"># 1. 导入模块</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
-# 2. 常量定义
-VERSION = &quot;1.0.0&quot;
-AUTHOR = &quot;Your Name&quot;
+<span class="c1"># 2. 常量定义</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">&quot;1.0.0&quot;</span>
+<span class="n">AUTHOR</span> <span class="o">=</span> <span class="s2">&quot;Your Name&quot;</span>
 
-# 3. 函数定义
-def greet(name: str) -&gt; str:
-    &quot;&quot;&quot;返回问候语&quot;&quot;&quot;
-    return f&quot;Hello, {name}!&quot;
+<span class="c1"># 3. 函数定义</span>
+<span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;返回问候语&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span>
 
-# 4. 类定义
-class Greeter:
-    &quot;&quot;&quot;问候器类&quot;&quot;&quot;
-    def __init__(self, prefix: str = &quot;Hi&quot;):
-        self.prefix = prefix
+<span class="c1"># 4. 类定义</span>
+<span class="k">class</span> <span class="nc">Greeter</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;问候器类&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Hi&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="n">prefix</span>
 
-    def greet(self, name: str) -&gt; str:
-        return f&quot;{self.prefix}, {name}!&quot;
+    <span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span>
 
-# 5. 主程序入口
-def main():
-    &quot;&quot;&quot;主函数&quot;&quot;&quot;
-    print(greet(&quot;Python&quot;))
+<span class="c1"># 5. 主程序入口</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;主函数&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">greet</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">))</span>
 
-    greeter = Greeter(&quot;Welcome&quot;)
-    print(greeter.greet(&quot;Developer&quot;))
+    <span class="n">greeter</span> <span class="o">=</span> <span class="n">Greeter</span><span class="p">(</span><span class="s2">&quot;Welcome&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">greeter</span><span class="o">.</span><span class="n">greet</span><span class="p">(</span><span class="s2">&quot;Developer&quot;</span><span class="p">))</span>
 
-# 6. 模块入口检查
-if __name__ == &quot;__main__&quot;:
-    main()
-</code></pre>
+<span class="c1"># 6. 模块入口检查</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="_2">结构说明</h3>
 <table>
 <thead>
@@ -1556,10 +1558,10 @@ if __name__ == &quot;__main__&quot;:
 </table>
 <h2 id="__name__"><code>__name__</code> 的奥秘</h2>
 <p>这是 Python 最重要的惯用法之一：</p>
-<pre><code class="language-python">if __name__ == &quot;__main__&quot;:
-    # 只有直接运行此文件时才执行
-    main()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># 只有直接运行此文件时才执行</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="_3">工作原理</h3>
 <table>
 <thead>
@@ -1582,149 +1584,151 @@ if __name__ == &quot;__main__&quot;:
 <h3 id="_4">实际演示</h3>
 <p>创建两个文件来理解：</p>
 <p><strong>mymodule.py:</strong></p>
-<pre><code class="language-python">def say_hello():
-    print(&quot;Hello from mymodule!&quot;)
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">say_hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello from mymodule!&quot;</span><span class="p">)</span>
 
-print(f&quot;mymodule 的 __name__ = {__name__}&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mymodule 的 __name__ = </span><span class="si">{</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-if __name__ == &quot;__main__&quot;:
-    print(&quot;mymodule 被直接运行&quot;)
-    say_hello()
-</code></pre>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mymodule 被直接运行&quot;</span><span class="p">)</span>
+    <span class="n">say_hello</span><span class="p">()</span>
+</code></pre></div>
 <p><strong>main.py:</strong></p>
-<pre><code class="language-python">import mymodule
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">mymodule</span>
 
-print(f&quot;main 的 __name__ = {__name__}&quot;)
-mymodule.say_hello()
-</code></pre>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;main 的 __name__ = </span><span class="si">{</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">mymodule</span><span class="o">.</span><span class="n">say_hello</span><span class="p">()</span>
+</code></pre></div>
 <p><strong>运行结果：</strong></p>
-<pre><code class="language-bash"># 直接运行 mymodule.py
-$ python mymodule.py
-mymodule 的 __name__ = __main__
-mymodule 被直接运行
-Hello from mymodule!
+<div class="highlight"><pre><span></span><code><span class="c1"># 直接运行 mymodule.py</span>
+$<span class="w"> </span>python<span class="w"> </span>mymodule.py
+mymodule<span class="w"> </span>的<span class="w"> </span><span class="nv">__name__</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>__main__
+mymodule<span class="w"> </span>被直接运行
+Hello<span class="w"> </span>from<span class="w"> </span>mymodule!
 
-# 运行 main.py (导入 mymodule)
-$ python main.py
-mymodule 的 __name__ = mymodule
-main 的 __name__ = __main__
-Hello from mymodule!
-</code></pre>
+<span class="c1"># 运行 main.py (导入 mymodule)</span>
+$<span class="w"> </span>python<span class="w"> </span>main.py
+mymodule<span class="w"> </span>的<span class="w"> </span><span class="nv">__name__</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>mymodule
+main<span class="w"> </span>的<span class="w"> </span><span class="nv">__name__</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>__main__
+Hello<span class="w"> </span>from<span class="w"> </span>mymodule!
+</code></pre></div>
 <h2 id="_5">代码注释</h2>
 <h3 id="_6">单行注释</h3>
-<pre><code class="language-python"># 这是单行注释
-x = 10  # 行尾注释
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># 这是单行注释</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># 行尾注释</span>
+</code></pre></div>
 <h3 id="_7">多行注释</h3>
-<pre><code class="language-python">&quot;&quot;&quot;
-这是多行注释
-可以跨越多行
-常用于模块、类、函数的文档说明
-&quot;&quot;&quot;
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">这是多行注释</span>
+<span class="sd">可以跨越多行</span>
+<span class="sd">常用于模块、类、函数的文档说明</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
-'''
-单引号也可以
-但推荐使用双引号
-'''
-</code></pre>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">单引号也可以</span>
+<span class="sd">但推荐使用双引号</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</code></pre></div>
 <h3 id="docstring">文档字符串 (Docstring)</h3>
-<pre><code class="language-python">def calculate_area(radius: float) -&gt; float:
-    &quot;&quot;&quot;
-    计算圆的面积
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="n">radius</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    计算圆的面积</span>
 
-    Args:
-        radius: 圆的半径，必须为正数
+<span class="sd">    Args:</span>
+<span class="sd">        radius: 圆的半径，必须为正数</span>
 
-    Returns:
-        圆的面积
+<span class="sd">    Returns:</span>
+<span class="sd">        圆的面积</span>
 
-    Raises:
-        ValueError: 当半径为负数时
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: 当半径为负数时</span>
 
-    Examples:
-        &gt;&gt;&gt; calculate_area(1)
-        3.141592653589793
-        &gt;&gt;&gt; calculate_area(2)
-        12.566370614359172
-    &quot;&quot;&quot;
-    if radius &lt; 0:
-        raise ValueError(&quot;半径不能为负数&quot;)
-    import math
-    return math.pi * radius ** 2
-</code></pre>
-<p>!!! tip "Docstring 规范"
-推荐使用 Google 风格或 NumPy 风格的 Docstring，便于自动生成文档。</p>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; calculate_area(1)</span>
+<span class="sd">        3.141592653589793</span>
+<span class="sd">        &gt;&gt;&gt; calculate_area(2)</span>
+<span class="sd">        12.566370614359172</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">radius</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;半径不能为负数&quot;</span><span class="p">)</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Docstring 规范</p>
+</div>
+<p>推荐使用 Google 风格或 NumPy 风格的 Docstring，便于自动生成文档。</p>
 <h2 id="_8">代码块与缩进</h2>
 <p>Python 使用<strong>缩进</strong>来定义代码块，而不是花括号 <code>{}</code>。</p>
 <h3 id="_9">缩进规则</h3>
-<pre><code class="language-python"># ✅ 正确：统一使用 4 个空格
-if True:
-    print(&quot;缩进正确&quot;)
-    if True:
-        print(&quot;嵌套缩进&quot;)
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ 正确：统一使用 4 个空格</span>
+<span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;缩进正确&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;嵌套缩进&quot;</span><span class="p">)</span>
 
-# ❌ 错误：混用 Tab 和空格
-if True:
-    print(&quot;使用 Tab&quot;)  # 可能导致 IndentationError
-</code></pre>
+<span class="c1"># ❌ 错误：混用 Tab 和空格</span>
+<span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;使用 Tab&quot;</span><span class="p">)</span>  <span class="c1"># 可能导致 IndentationError</span>
+</code></pre></div>
 <p>!!! warning "缩进最佳实践" - <strong>始终使用 4 个空格</strong>进行缩进 - <strong>不要混用 Tab 和空格</strong> - 配置编辑器将 Tab 自动转换为空格</p>
 <h3 id="_10">常见缩进错误</h3>
-<pre><code class="language-python"># IndentationError: expected an indented block
-if True:
-print(&quot;错误&quot;)  # 缺少缩进
+<div class="highlight"><pre><span></span><code><span class="c1"># IndentationError: expected an indented block</span>
+<span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;错误&quot;</span><span class="p">)</span>  <span class="c1"># 缺少缩进</span>
 
-# IndentationError: unexpected indent
-x = 1
-    y = 2  # 意外的缩进
+<span class="c1"># IndentationError: unexpected indent</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># 意外的缩进</span>
 
-# TabError: inconsistent use of tabs and spaces
-if True:
-    x = 1    # 4 空格
-    y = 2    # 1 Tab (混用导致错误)
-</code></pre>
+<span class="c1"># TabError: inconsistent use of tabs and spaces</span>
+<span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>    <span class="c1"># 4 空格</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>    <span class="c1"># 1 Tab (混用导致错误)</span>
+</code></pre></div>
 <h2 id="_11">代码行与续行</h2>
 <h3 id="_12">物理行与逻辑行</h3>
-<pre><code class="language-python"># 一个物理行 = 一个逻辑行
-x = 1
+<div class="highlight"><pre><span></span><code><span class="c1"># 一个物理行 = 一个逻辑行</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 
-# 多个物理行 = 一个逻辑行 (显式续行)
-total = 1 + 2 + 3 + \
-        4 + 5 + 6
+<span class="c1"># 多个物理行 = 一个逻辑行 (显式续行)</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> \
+        <span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">6</span>
 
-# 括号内自动续行 (推荐)
-numbers = [
-    1, 2, 3,
-    4, 5, 6,
-]
+<span class="c1"># 括号内自动续行 (推荐)</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span>
+<span class="p">]</span>
 
-result = (
-    first_value
-    + second_value
-    - third_value
-)
-</code></pre>
+<span class="n">result</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">first_value</span>
+    <span class="o">+</span> <span class="n">second_value</span>
+    <span class="o">-</span> <span class="n">third_value</span>
+<span class="p">)</span>
+</code></pre></div>
 <h3 id="_13">多语句一行（不推荐）</h3>
-<pre><code class="language-python"># 技术上可行，但不推荐
-x = 1; y = 2; z = 3
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># 技术上可行，但不推荐</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">3</span>
+</code></pre></div>
 <h2 id="python_6">Python 交互式环境</h2>
 <h3 id="repl">标准 REPL</h3>
-<pre><code class="language-python">$ python
-Python 3.11.0 (main, Oct 24 2022, 18:26:48)
-&gt;&gt;&gt; 2 + 2
-4
-&gt;&gt;&gt; exit()  # 或 Ctrl+D (Unix) / Ctrl+Z (Windows)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="err">$</span> <span class="n">python</span>
+<span class="n">Python</span> <span class="mf">3.11.0</span> <span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">Oct</span> <span class="mi">24</span> <span class="mi">2022</span><span class="p">,</span> <span class="mi">18</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">48</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">exit</span><span class="p">()</span>  <span class="c1"># 或 Ctrl+D (Unix) / Ctrl+Z (Windows)</span>
+</code></pre></div>
 <h3 id="ipython">IPython (推荐)</h3>
-<pre><code class="language-python">$ ipython
-In [1]: 2 + 2
-Out[1]: 4
+<div class="highlight"><pre><span></span><code><span class="err">$</span> <span class="n">ipython</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="mi">4</span>
 
-In [2]: %timeit sum(range(1000))  # 魔术命令
-1.5 µs ± 10 ns per loop
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="o">%</span><span class="n">timeit</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>  <span class="c1"># 魔术命令</span>
+<span class="mf">1.5</span> <span class="n">µs</span> <span class="err">±</span> <span class="mi">10</span> <span class="n">ns</span> <span class="n">per</span> <span class="n">loop</span>
 
-In [3]: !ls  # 执行 Shell 命令
-</code></pre>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="err">!</span><span class="n">ls</span>  <span class="c1"># 执行 Shell 命令</span>
+</code></pre></div>
 <h3 id="jupyter-notebook">Jupyter Notebook</h3>
 <p>适合数据分析和机器学习的交互式环境，支持：</p>
 <ul>
@@ -1778,33 +1782,33 @@ In [3]: !ls  # 执行 Shell 命令
 </tbody>
 </table>
 <h3 id="_15">空格规范</h3>
-<pre><code class="language-python"># ✅ 正确
-x = 1
-y = x + 1
-my_list = [1, 2, 3]
-my_dict = {&quot;key&quot;: &quot;value&quot;}
-func(arg1, arg2)
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ 正确</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">}</span>
+<span class="n">func</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">)</span>
 
-# ❌ 错误
-x=1
-y = x+1
-my_list = [1,2,3]
-my_dict = {&quot;key&quot;:&quot;value&quot;}
-func( arg1, arg2 )
-</code></pre>
+<span class="c1"># ❌ 错误</span>
+<span class="n">x</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span>
+<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;value&quot;</span><span class="p">}</span>
+<span class="n">func</span><span class="p">(</span> <span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span> <span class="p">)</span>
+</code></pre></div>
 <h3 id="_16">导入规范</h3>
-<pre><code class="language-python"># ✅ 正确的导入顺序
-# 1. 标准库
-import os
-import sys
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ 正确的导入顺序</span>
+<span class="c1"># 1. 标准库</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 
-# 2. 第三方库
-import numpy as np
-import pandas as pd
+<span class="c1"># 2. 第三方库</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-# 3. 本地模块
-from mypackage import mymodule
-</code></pre>
+<span class="c1"># 3. 本地模块</span>
+<span class="kn">from</span> <span class="nn">mypackage</span> <span class="kn">import</span> <span class="n">mymodule</span>
+</code></pre></div>
 <h2 id="_17">本章小结</h2>
 <table>
 <thead>
@@ -1903,7 +1907,7 @@ from mypackage import mymodule
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>

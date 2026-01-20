@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -63,7 +63,7 @@
       
         
         <a href="#_1" class="md-skip">
-          Skip to content
+          跳转至
         </a>
       
     </div>
@@ -77,7 +77,7 @@
   
 
 <header class="md-header md-header--shadow" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="Python 修行指南" class="md-header__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
       
   
@@ -120,16 +120,16 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -140,7 +140,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            正在初始化搜索引擎
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -174,7 +174,7 @@
 
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Python 修行指南" class="md-nav__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
       
@@ -540,7 +540,7 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -549,7 +549,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -721,7 +721,7 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -730,7 +730,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -903,34 +903,34 @@
 <li><strong>对象</strong>: 你的宠物狗 "旺财"</li>
 </ul>
 <h2 id="2">2. 定义类与创建对象</h2>
-<pre><code class="language-python">class Dog:
-    # 类属性 (所有实例共享)
-    species = &quot;Canis familiaris&quot;
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
+    <span class="c1"># 类属性 (所有实例共享)</span>
+    <span class="n">species</span> <span class="o">=</span> <span class="s2">&quot;Canis familiaris&quot;</span>
 
-    # 初始化方法 (构造函数)
-    def __init__(self, name, age):
-        # 实例属性 (每个对象独有)
-        self.name = name
-        self.age = age
+    <span class="c1"># 初始化方法 (构造函数)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="c1"># 实例属性 (每个对象独有)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
 
-    # 实例方法
-    def bark(self):
-        return f&quot;{self.name} says Woof!&quot;
+    <span class="c1"># 实例方法</span>
+    <span class="k">def</span> <span class="nf">bark</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> says Woof!&quot;</span>
 
-    def description(self):
-        return f&quot;{self.name} is {self.age} years old.&quot;
+    <span class="k">def</span> <span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old.&quot;</span>
 
-# 创建对象 (实例化)
-dog1 = Dog(&quot;Buddy&quot;, 3)
-dog2 = Dog(&quot;Miles&quot;, 5)
+<span class="c1"># 创建对象 (实例化)</span>
+<span class="n">dog1</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s2">&quot;Buddy&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">dog2</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s2">&quot;Miles&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 
-# 访问属性
-print(dog1.name)    # Buddy
-print(dog1.species) # Canis familiaris
+<span class="c1"># 访问属性</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dog1</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>    <span class="c1"># Buddy</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dog1</span><span class="o">.</span><span class="n">species</span><span class="p">)</span> <span class="c1"># Canis familiaris</span>
 
-# 调用方法
-print(dog1.bark())  # Buddy says Woof!
-</code></pre>
+<span class="c1"># 调用方法</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dog1</span><span class="o">.</span><span class="n">bark</span><span class="p">())</span>  <span class="c1"># Buddy says Woof!</span>
+</code></pre></div>
 <h3 id="self"><code>self</code> 是什么？</h3>
 <p><code>self</code> 代表<strong>实例本身</strong>。在类的方法中，第一个参数必须是 <code>self</code> (习惯用法，可以用其他名字但绝不建议)。通过 <code>self.xxx</code>，我们可以访问该实例的属性和方法。</p>
 <h2 id="3-encapsulation">3. 封装 (Encapsulation)</h2>
@@ -940,62 +940,62 @@ print(dog1.bark())  # Buddy says Woof!
 <li><code>protected</code>: 单下划线 <code>_var</code>，暗示仅在内部或子类使用（非强制）。</li>
 <li><strong><code>private</code></strong>: 双下划线 <code>__var</code>，Python 会对其进行名称修饰 (Name Mangling)，使外部难以直接访问。</li>
 </ul>
-<pre><code class="language-python">class Account:
-    def __init__(self, owner, balance):
-        self.owner = owner       # Public
-        self.__balance = balance # Private (私有)
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Account</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">owner</span><span class="p">,</span> <span class="n">balance</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="n">owner</span>       <span class="c1"># Public</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__balance</span> <span class="o">=</span> <span class="n">balance</span> <span class="c1"># Private (私有)</span>
 
-    def deposit(self, amount):
-        if amount &gt; 0:
-            self.__balance += amount
+    <span class="k">def</span> <span class="nf">deposit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">amount</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__balance</span> <span class="o">+=</span> <span class="n">amount</span>
 
-    def get_balance(self):
-        return self.__balance
+    <span class="k">def</span> <span class="nf">get_balance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__balance</span>
 
-# 外部访问
-acc = Account(&quot;Alice&quot;, 1000)
-# print(acc.__balance)  # ❌ 报错: AttributeError
-print(acc.get_balance()) # ✅ 通过公开方法访问: 1000
-</code></pre>
+<span class="c1"># 外部访问</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">Account</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="c1"># print(acc.__balance)  # ❌ 报错: AttributeError</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">acc</span><span class="o">.</span><span class="n">get_balance</span><span class="p">())</span> <span class="c1"># ✅ 通过公开方法访问: 1000</span>
+</code></pre></div>
 <h2 id="4-inheritance">4. 继承 (Inheritance)</h2>
 <p>子类可以继承父类的属性和方法，实现代码复用。</p>
-<pre><code class="language-python"># 父类
-class Animal:
-    def speak(self):
-        pass
+<div class="highlight"><pre><span></span><code><span class="c1"># 父类</span>
+<span class="k">class</span> <span class="nc">Animal</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
 
-# 子类
-class Cat(Animal):
-    def speak(self):
-        return &quot;Meow&quot;
+<span class="c1"># 子类</span>
+<span class="k">class</span> <span class="nc">Cat</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Meow&quot;</span>
 
-class Dog(Animal):
-    def speak(self):
-        return &quot;Woof&quot;
+<span class="k">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Woof&quot;</span>
 
-cat = Cat()
-dog = Dog()
+<span class="n">cat</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">()</span>
+<span class="n">dog</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">()</span>
 
-print(cat.speak()) # Meow
-print(dog.speak()) # Woof
-</code></pre>
+<span class="nb">print</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">speak</span><span class="p">())</span> <span class="c1"># Meow</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dog</span><span class="o">.</span><span class="n">speak</span><span class="p">())</span> <span class="c1"># Woof</span>
+</code></pre></div>
 <h3 id="super"><code>super()</code> 函数</h3>
 <p>用于调用父类的方法，常用于扩充父类的 <code>__init__</code>。</p>
-<pre><code class="language-python">class Student(Person):
-    def __init__(self, name, student_id):
-        # 调用父类初始化
-        super().__init__(name)
-        self.student_id = student_id
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">student_id</span><span class="p">):</span>
+        <span class="c1"># 调用父类初始化</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">student_id</span> <span class="o">=</span> <span class="n">student_id</span>
+</code></pre></div>
 <h2 id="5-polymorphism">5. 多态 (Polymorphism)</h2>
 <p>在 Python 中，多态意味着我们不关心对象具体的类型，只关心它的<strong>行为</strong> (Duck Typing: 如果它走起来像鸭子，叫起来像鸭子，那它就是鸭子)。</p>
-<pre><code class="language-python">def make_noise(animal):
-    print(animal.speak())
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">make_noise</span><span class="p">(</span><span class="n">animal</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">animal</span><span class="o">.</span><span class="n">speak</span><span class="p">())</span>
 
-# 即使 Cat 和 Dog 是不同类，但都有 speak 方法
-make_noise(cat)  # Meow
-make_noise(dog)  # Woof
-</code></pre>
+<span class="c1"># 即使 Cat 和 Dog 是不同类，但都有 speak 方法</span>
+<span class="n">make_noise</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>  <span class="c1"># Meow</span>
+<span class="n">make_noise</span><span class="p">(</span><span class="n">dog</span><span class="p">)</span>  <span class="c1"># Woof</span>
+</code></pre></div>
 <h2 id="6-magic-methods">6. 魔术方法 (Magic Methods)</h2>
 <p>以双下划线开头和结尾的方法，用于实现特定的 Python 行为（运算符重载等）。</p>
 <table>
@@ -1028,22 +1028,22 @@ make_noise(dog)  # Woof
 </tr>
 </tbody>
 </table>
-<pre><code class="language-python">class Vector:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Vector</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
 
-    def __str__(self):
-        return f&quot;Vector({self.x}, {self.y})&quot;
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Vector(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">)&quot;</span>
 
-    def __add__(self, other):
-        return Vector(self.x + other.x, self.y + other.y)
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
 
-v1 = Vector(2, 4)
-v2 = Vector(1, 1)
-print(v1)       # Vector(2, 4)
-print(v1 + v2)  # Vector(3, 5) -&gt; 自动调用 __add__
-</code></pre>
+<span class="n">v1</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>       <span class="c1"># Vector(2, 4)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span><span class="p">)</span>  <span class="c1"># Vector(3, 5) -&gt; 自动调用 __add__</span>
+</code></pre></div>
 <h2 id="_3">本章小结</h2>
 <ul>
 <li><strong>类</strong>是创建<strong>对象</strong>的工厂。</li>
@@ -1117,7 +1117,7 @@ print(v1 + v2)  # Vector(3, 5) -&gt; 自动调用 __add__
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>

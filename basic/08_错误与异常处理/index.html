@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -65,7 +65,7 @@
       
         
         <a href="#_1" class="md-skip">
-          Skip to content
+          跳转至
         </a>
       
     </div>
@@ -79,7 +79,7 @@
   
 
 <header class="md-header md-header--shadow" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="Python 修行指南" class="md-header__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
       
   
@@ -122,16 +122,16 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -142,7 +142,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            正在初始化搜索引擎
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -176,7 +176,7 @@
 
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Python 修行指南" class="md-nav__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
       
@@ -514,7 +514,7 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -523,7 +523,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -728,7 +728,7 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -737,7 +737,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -907,81 +907,83 @@
 <h2 id="1">1. 错误类型</h2>
 <h3 id="syntax-errors">语法错误 (Syntax Errors)</h3>
 <p>代码不符合 Python 语法规则，程序<strong>根本无法启动</strong>。</p>
-<pre><code class="language-python"># SyntaxError: unterminated string literal
-print(&quot;Hello)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># SyntaxError: unterminated string literal</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello)</span>
+</code></pre></div>
 <h3 id="exceptions">异常 (Exceptions)</h3>
 <p>语法正确，但在<strong>运行时</strong>发生的错误。如果不处理，程序会中断。</p>
-<pre><code class="language-python"># ZeroDivisionError: division by zero
-10 / 0
+<div class="highlight"><pre><span></span><code><span class="c1"># ZeroDivisionError: division by zero</span>
+<span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
 
-# FileNotFoundError
-open(&quot;no_exist.txt&quot;)
-</code></pre>
+<span class="c1"># FileNotFoundError</span>
+<span class="nb">open</span><span class="p">(</span><span class="s2">&quot;no_exist.txt&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="2-try-except">2. 捕获异常 (<code>try-except</code>)</h2>
 <h3 id="_2">基本结构</h3>
-<pre><code class="language-python">try:
-    # 可能发生异常的代码
-    num = int(input(&quot;请输入数字: &quot;))
-    result = 100 / num
-    print(f&quot;结果是: {result}&quot;)
-except ValueError:
-    # 捕获输入非数字的情况
-    print(&quot;错误：请输入有效的数字！&quot;)
-except ZeroDivisionError:
-    # 捕获除以零的情况
-    print(&quot;错误：不能除以零！&quot;)
-except Exception as e:
-    # 捕获所有其他类型的异常 (兜底)
-    print(f&quot;发生未知错误: {e}&quot;)
-</code></pre>
-<p>!!! tip "最佳实践"
-尽量捕获<strong>具体</strong>的异常类型，而不是泛泛地捕获所有异常 (<code>Exception</code>)，这样方便调试和定位问题。</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># 可能发生异常的代码</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入数字: &quot;</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">num</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;结果是: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="c1"># 捕获输入非数字的情况</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;错误：请输入有效的数字！&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="c1"># 捕获除以零的情况</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;错误：不能除以零！&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="c1"># 捕获所有其他类型的异常 (兜底)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;发生未知错误: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">最佳实践</p>
+</div>
+<p>尽量捕获<strong>具体</strong>的异常类型，而不是泛泛地捕获所有异常 (<code>Exception</code>)，这样方便调试和定位问题。</p>
 <h2 id="3-try-except-else-finally">3. 完整的异常结构 (<code>try-except-else-finally</code>)</h2>
-<pre><code class="language-python">try:
-    f = open(&quot;data.txt&quot;, &quot;r&quot;)
-    content = f.read()
-except FileNotFoundError:
-    print(&quot;文件未找到&quot;)
-else:
-    # 只有 try 块没有异常时才执行
-    print(&quot;读取成功，内容长度:&quot;, len(content))
-finally:
-    #无论是否有异常，都会执行 (常用于资源清理)
-    print(&quot;关闭文件资源&quot;)
-    if 'f' in locals():
-        f.close()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;文件未找到&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># 只有 try 块没有异常时才执行</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;读取成功，内容长度:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">content</span><span class="p">))</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="c1">#无论是否有异常，都会执行 (常用于资源清理)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;关闭文件资源&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;f&#39;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
 <h2 id="4-raise">4. 抛出异常 (<code>raise</code>)</h2>
 <p>有时我们需要主动触发错误，通知调用者出现了问题。</p>
-<pre><code class="language-python">def check_age(age):
-    if age &lt; 0:
-        raise ValueError(&quot;年龄不能为负数&quot;)
-    if age &gt; 150:
-        raise ValueError(&quot;年龄超出合理范围&quot;)
-    print(f&quot;年龄 {age} 验证通过&quot;)
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">check_age</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;年龄不能为负数&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">age</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;年龄超出合理范围&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;年龄 </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2"> 验证通过&quot;</span><span class="p">)</span>
 
-try:
-    check_age(-5)
-except ValueError as e:
-    print(f&quot;验证失败: {e}&quot;)
-</code></pre>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">check_age</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;验证失败: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="5">5. 自定义异常</h2>
 <p>通过继承 <code>Exception</code> 类来定义业务相关的异常。</p>
-<pre><code class="language-python">class InsufficientFundsError(Exception):
-    &quot;&quot;&quot;余额不足异常&quot;&quot;&quot;
-    pass
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">InsufficientFundsError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;余额不足异常&quot;&quot;&quot;</span>
+    <span class="k">pass</span>
 
-def withdraw(amount, balance):
-    if amount &gt; balance:
-        raise InsufficientFundsError(f&quot;余额不足: 需 {amount}, 只有 {balance}&quot;)
-    return balance - amount
+<span class="k">def</span> <span class="nf">withdraw</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">balance</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">amount</span> <span class="o">&gt;</span> <span class="n">balance</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InsufficientFundsError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;余额不足: 需 </span><span class="si">{</span><span class="n">amount</span><span class="si">}</span><span class="s2">, 只有 </span><span class="si">{</span><span class="n">balance</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">balance</span> <span class="o">-</span> <span class="n">amount</span>
 
-try:
-    withdraw(100, 50)
-except InsufficientFundsError as e:
-    print(e)
-</code></pre>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">withdraw</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">InsufficientFundsError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="_3">常见内置异常清单</h2>
 <table>
 <thead>
@@ -1087,7 +1089,7 @@ except InsufficientFundsError as e:
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>

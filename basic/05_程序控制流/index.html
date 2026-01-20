@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -65,7 +65,7 @@
       
         
         <a href="#_1" class="md-skip">
-          Skip to content
+          跳转至
         </a>
       
     </div>
@@ -79,7 +79,7 @@
   
 
 <header class="md-header md-header--shadow" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="Python 修行指南" class="md-header__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
       
   
@@ -122,16 +122,16 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -142,7 +142,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            正在初始化搜索引擎
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -176,7 +176,7 @@
 
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Python 修行指南" class="md-nav__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
       
@@ -430,7 +430,7 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -439,7 +439,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -762,7 +762,7 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -771,7 +771,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -974,80 +974,80 @@
 <p>控制流决定了程序执行的路径。包括条件判断（分支）和循环。</p>
 <h2 id="1-if">1. 条件语句 (if)</h2>
 <h3 id="_2">基本结构</h3>
-<pre><code class="language-python">x = 10
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
 
-if x &gt; 0:
-    print(&quot;x 是正数&quot;)
-elif x &lt; 0:
-    print(&quot;x 是负数&quot;)
-else:
-    print(&quot;x 是零&quot;)
-</code></pre>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x 是正数&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x 是负数&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x 是零&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="if">嵌套 if</h3>
-<pre><code class="language-python">age = 20
-has_ticket = True
+<div class="highlight"><pre><span></span><code><span class="n">age</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">has_ticket</span> <span class="o">=</span> <span class="kc">True</span>
 
-if age &gt;= 18:
-    if has_ticket:
-        print(&quot;准许入内&quot;)
-    else:
-        print(&quot;请先买票&quot;)
-else:
-    print(&quot;未成年人禁止入内&quot;)
-</code></pre>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">has_ticket</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;准许入内&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;请先买票&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;未成年人禁止入内&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="_3">三元运算符 (条件表达式)</h3>
 <p>用于将简单的 <code>if-else</code> 简写为一行。</p>
-<pre><code class="language-python"># 语法: value_if_true if condition else value_if_false
-status = &quot;Adult&quot; if age &gt;= 18 else &quot;Minor&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># 语法: value_if_true if condition else value_if_false</span>
+<span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;Adult&quot;</span> <span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span> <span class="k">else</span> <span class="s2">&quot;Minor&quot;</span>
+</code></pre></div>
 <h2 id="2-match-case">2. 模式匹配 (match-case)</h2>
 <p>Python 3.10+ 引入的新特性，类似于其他语言的 Switch-Case，但更强大。</p>
-<pre><code class="language-python">status = 404
+<div class="highlight"><pre><span></span><code><span class="n">status</span> <span class="o">=</span> <span class="mi">404</span>
 
-match status:
-    case 200:
-        print(&quot;Success&quot;)
-    case 400 | 404: # 匹配多个值
-        print(&quot;Client Error&quot;)
-    case 500:
-        print(&quot;Server Error&quot;)
-    case _:         # 默认情况 (类似 default)
-        print(&quot;Unknown Status&quot;)
-</code></pre>
+<span class="k">match</span> <span class="n">status</span><span class="p">:</span>
+    <span class="k">case</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Success&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="mi">400</span> <span class="o">|</span> <span class="mi">404</span><span class="p">:</span> <span class="c1"># 匹配多个值</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Client Error&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="mi">500</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Server Error&quot;</span><span class="p">)</span>
+    <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>         <span class="c1"># 默认情况 (类似 default)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unknown Status&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="3-loops">3. 循环语句 (Loops)</h2>
 <h3 id="for">for 循环</h3>
 <p>用于遍历序列（列表、字符串、元组等）或迭代器。</p>
-<pre><code class="language-python"># 遍历列表
-names = [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;]
-for name in names:
-    print(f&quot;Hello, {name}&quot;)
+<div class="highlight"><pre><span></span><code><span class="c1"># 遍历列表</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# 遍历字符串
-for char in &quot;Python&quot;:
-    print(char)
-</code></pre>
+<span class="c1"># 遍历字符串</span>
+<span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="s2">&quot;Python&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+</code></pre></div>
 <h4 id="range"><code>range()</code> 函数</h4>
 <p>常用于生成数字序列。</p>
-<pre><code class="language-python"># range(stop) -&gt; 0 到 stop-1
-for i in range(5):
-    print(i)  # 0, 1, 2, 3, 4
+<div class="highlight"><pre><span></span><code><span class="c1"># range(stop) -&gt; 0 到 stop-1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>  <span class="c1"># 0, 1, 2, 3, 4</span>
 
-# range(start, stop)
-for i in range(1, 4):
-    print(i)  # 1, 2, 3
+<span class="c1"># range(start, stop)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>  <span class="c1"># 1, 2, 3</span>
 
-# range(start, stop, step)
-for i in range(0, 10, 2):
-    print(i)  # 0, 2, 4, 6, 8
-</code></pre>
+<span class="c1"># range(start, stop, step)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>  <span class="c1"># 0, 2, 4, 6, 8</span>
+</code></pre></div>
 <h3 id="while">while 循环</h3>
 <p>在条件为 <code>True</code> 时重复执行。</p>
-<pre><code class="language-python">count = 5
-while count &gt; 0:
-    print(count)
-    count -= 1  # 别忘了更新条件，否则死循环
-print(&quot;Blastoff!&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">count</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">while</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">-=</span> <span class="mi">1</span>  <span class="c1"># 别忘了更新条件，否则死循环</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Blastoff!&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="4">4. 循环控制</h2>
 <table>
 <thead>
@@ -1072,28 +1072,28 @@ print(&quot;Blastoff!&quot;)
 </tbody>
 </table>
 <h3 id="_4">示例</h3>
-<pre><code class="language-python">for i in range(10):
-    if i == 3:
-        continue  # 跳过 3
-    if i == 5:
-        break     # 到 5 停止
-    print(i)
-# 输出: 0, 1, 2, 4
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">continue</span>  <span class="c1"># 跳过 3</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">break</span>     <span class="c1"># 到 5 停止</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="c1"># 输出: 0, 1, 2, 4</span>
+</code></pre></div>
 <h2 id="5-else">5. 循环中的 else</h2>
 <p>Python 的循环支持 <code>else</code> 子句，这是一个独特但容易混淆的特性。
 <strong>当循环正常结束（没有任何 <code>break</code>）时，执行 <code>else</code> 块。</strong></p>
-<pre><code class="language-python"># 查找质数示例
-num = 11
+<div class="highlight"><pre><span></span><code><span class="c1"># 查找质数示例</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">11</span>
 
-for i in range(2, num):
-    if num % i == 0:
-        print(f&quot;{num} 不是质数&quot;)
-        break
-else:
-    # 只有循环完整走完没遇到 break 时才执行
-    print(f&quot;{num} 是质数&quot;)
-</code></pre>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2"> 不是质数&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># 只有循环完整走完没遇到 break 时才执行</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2"> 是质数&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="_5">本章小结</h2>
 <ul>
 <li><strong>if-elif-else</strong>: 处理逻辑分支。</li>
@@ -1159,7 +1159,7 @@ else:
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
