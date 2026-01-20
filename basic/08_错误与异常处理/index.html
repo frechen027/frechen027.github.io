@@ -63,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -469,6 +474,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 错误与异常处理
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -486,6 +511,169 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 错误类型
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 错误类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#syntax-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        语法错误 (Syntax Errors)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        异常 (Exceptions)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-try-except" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 捕获异常 (try-except)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 捕获异常 (try-except)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-try-except-else-finally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 完整的异常结构 (try-except-else-finally)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-raise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 抛出异常 (raise)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 自定义异常
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见内置异常清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        调试建议 (Debugging)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习题
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -544,6 +732,160 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 错误类型
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 错误类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#syntax-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        语法错误 (Syntax Errors)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        异常 (Exceptions)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-try-except" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 捕获异常 (try-except)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 捕获异常 (try-except)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-try-except-else-finally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 完整的异常结构 (try-except-else-finally)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-raise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 抛出异常 (raise)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 自定义异常
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见内置异常清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        调试建议 (Debugging)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习题
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -560,9 +902,142 @@
 
 
 
-  <h1>8 错误与异常处理</h1>
+<h1 id="_1">错误与异常处理</h1>
+<p>程序在运行过程中不可避免地会遇到错误。Python 提供了强大的异常处理机制，不仅能防止程序崩溃，还能通过捕获错误来进行补救。</p>
+<h2 id="1">1. 错误类型</h2>
+<h3 id="syntax-errors">语法错误 (Syntax Errors)</h3>
+<p>代码不符合 Python 语法规则，程序<strong>根本无法启动</strong>。</p>
+<pre><code class="language-python"># SyntaxError: unterminated string literal
+print(&quot;Hello)
+</code></pre>
+<h3 id="exceptions">异常 (Exceptions)</h3>
+<p>语法正确，但在<strong>运行时</strong>发生的错误。如果不处理，程序会中断。</p>
+<pre><code class="language-python"># ZeroDivisionError: division by zero
+10 / 0
 
+# FileNotFoundError
+open(&quot;no_exist.txt&quot;)
+</code></pre>
+<h2 id="2-try-except">2. 捕获异常 (<code>try-except</code>)</h2>
+<h3 id="_2">基本结构</h3>
+<pre><code class="language-python">try:
+    # 可能发生异常的代码
+    num = int(input(&quot;请输入数字: &quot;))
+    result = 100 / num
+    print(f&quot;结果是: {result}&quot;)
+except ValueError:
+    # 捕获输入非数字的情况
+    print(&quot;错误：请输入有效的数字！&quot;)
+except ZeroDivisionError:
+    # 捕获除以零的情况
+    print(&quot;错误：不能除以零！&quot;)
+except Exception as e:
+    # 捕获所有其他类型的异常 (兜底)
+    print(f&quot;发生未知错误: {e}&quot;)
+</code></pre>
+<p>!!! tip "最佳实践"
+尽量捕获<strong>具体</strong>的异常类型，而不是泛泛地捕获所有异常 (<code>Exception</code>)，这样方便调试和定位问题。</p>
+<h2 id="3-try-except-else-finally">3. 完整的异常结构 (<code>try-except-else-finally</code>)</h2>
+<pre><code class="language-python">try:
+    f = open(&quot;data.txt&quot;, &quot;r&quot;)
+    content = f.read()
+except FileNotFoundError:
+    print(&quot;文件未找到&quot;)
+else:
+    # 只有 try 块没有异常时才执行
+    print(&quot;读取成功，内容长度:&quot;, len(content))
+finally:
+    #无论是否有异常，都会执行 (常用于资源清理)
+    print(&quot;关闭文件资源&quot;)
+    if 'f' in locals():
+        f.close()
+</code></pre>
+<h2 id="4-raise">4. 抛出异常 (<code>raise</code>)</h2>
+<p>有时我们需要主动触发错误，通知调用者出现了问题。</p>
+<pre><code class="language-python">def check_age(age):
+    if age &lt; 0:
+        raise ValueError(&quot;年龄不能为负数&quot;)
+    if age &gt; 150:
+        raise ValueError(&quot;年龄超出合理范围&quot;)
+    print(f&quot;年龄 {age} 验证通过&quot;)
 
+try:
+    check_age(-5)
+except ValueError as e:
+    print(f&quot;验证失败: {e}&quot;)
+</code></pre>
+<h2 id="5">5. 自定义异常</h2>
+<p>通过继承 <code>Exception</code> 类来定义业务相关的异常。</p>
+<pre><code class="language-python">class InsufficientFundsError(Exception):
+    &quot;&quot;&quot;余额不足异常&quot;&quot;&quot;
+    pass
+
+def withdraw(amount, balance):
+    if amount &gt; balance:
+        raise InsufficientFundsError(f&quot;余额不足: 需 {amount}, 只有 {balance}&quot;)
+    return balance - amount
+
+try:
+    withdraw(100, 50)
+except InsufficientFundsError as e:
+    print(e)
+</code></pre>
+<h2 id="_3">常见内置异常清单</h2>
+<table>
+<thead>
+<tr>
+<th>异常名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IndexError</code></td>
+<td>列表索引超出范围</td>
+</tr>
+<tr>
+<td><code>KeyError</code></td>
+<td>字典中找不到键</td>
+</tr>
+<tr>
+<td><code>TypeError</code></td>
+<td>操作类型不匹配 (如 <code>str + int</code>)</td>
+</tr>
+<tr>
+<td><code>ValueError</code></td>
+<td>参数值不对</td>
+</tr>
+<tr>
+<td><code>AttributeError</code></td>
+<td>对象没有该属性或方法</td>
+</tr>
+<tr>
+<td><code>ImportError</code></td>
+<td>导入模块失败</td>
+</tr>
+</tbody>
+</table>
+<h2 id="debugging">调试建议 (Debugging)</h2>
+<ol>
+<li><strong>阅读 Traceback</strong>: 报错信息并不吓人，它会明确告诉你错误在<strong>哪一行</strong>以及<strong>是什么错误</strong>。</li>
+<li><strong>使用 print 调试</strong>: 在关键位置打印变量值。</li>
+<li><strong>IDE 断点调试</strong>: 在 VS Code 中直接打断点 (F9/F5) 逐行执行，是最最高效的方法。</li>
+</ol>
+<h2 id="_4">本章小结</h2>
+<ul>
+<li><strong>try</strong>: 放置可能出错的代码。</li>
+<li><strong>except</strong>: 捕获并处理特定错误。</li>
+<li><strong>else</strong>: 若无异常发生时执行。</li>
+<li><strong>finally</strong>: 无论如何都执行（清理善后）。</li>
+<li><strong>raise</strong>: 主动抛出异常。</li>
+</ul>
+<h2 id="_5">练习题</h2>
+<ol>
+<li><strong>安全除法</strong>：编写一个函数 <code>safe_div(a, b)</code>，返回 <code>a / b</code>。如果 <code>b</code> 为 0，不报错而是返回 <code>None</code>。</li>
+<li><strong>输入验证</strong>：循环提示用户输入数字，直到输入正确的数字为止。如果输入非数字，打印提示并继续循环。</li>
+</ol>
+<hr />
+<p><em>下一章：<a href="../09_%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">面向对象编程基础</a></em></p>
 
 
 
