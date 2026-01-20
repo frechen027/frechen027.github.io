@@ -926,22 +926,20 @@
 <p class="admonition-title">可变默认参数陷阱</p>
 </div>
 <p><strong>千万不要</strong>使用可变对象（如列表、字典）作为默认参数值！</p>
-<div class="highlight"><pre><span></span><code>```python
-# ❌ 错误做法
-def append_to(num, target=[]):
-    target.append(num)
-    return target
+<div class="highlight"><pre><span></span><code><span class="c1"># ❌ 错误做法</span>
+<span class="k">def</span> <span class="nf">append_to</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">target</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">target</span>
 
-print(append_to(1)) # [1]
-print(append_to(2)) # [1, 2] -&gt; 竟然记住了上次的状态！
+<span class="nb">print</span><span class="p">(</span><span class="n">append_to</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># [1]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">append_to</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># [1, 2] -&gt; 竟然记住了上次的状态！</span>
 
-# ✅ 正确做法
-def append_to(num, target=None):
-    if target is None:
-        target = []
-    target.append(num)
-    return target
-```
+<span class="c1"># ✅ 正确做法</span>
+<span class="k">def</span> <span class="nf">append_to</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">target</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">target</span>
 </code></pre></div>
 <h2 id="3-return">3. 返回值 (return)</h2>
 <ul>
