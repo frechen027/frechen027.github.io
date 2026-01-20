@@ -2,6 +2,36 @@ site_name: "Python 修行指南"
 
 nav:                       # 导航栏菜单结构，层级与目录结构对应
   - 前言: index.md
+  - Python 预备知识:
+    - 1 Python程序基本结构: basic/01_Python程序基本结构.md
+    - 2 基础语法与变量: basic/02_基础语法与变量.md
+    - 3 核心数据结构: basic/03_核心数据结构.md
+    - 4 运算符与表达式: basic/04_运算符与表达式.md
+    - 5 程序控制流: basic/05_程序控制流.md
+    - 6 函数: basic/06_函数.md
+    - 7 文件操作: basic/07_文件操作.md
+    - 8 错误与异常处理: basic/08_错误与异常处理.md
+    - 9 面向对象编程基础: basic/09_面向对象编程基础.md
+  - 算法基础:
+    - 1 算法概述: algo/01_算法概述.md
+    - 2 模拟与枚举: algo/02_模拟与枚举.md
+    - 3 递归: algo/03_递归.md
+    - 4 分治: algo/04_分治.md
+    - 5 二分查找: algo/05_二分查找.md
+    - 6 动态规划: algo/06_动态规划.md
+    - 7 背包问题: algo/07_背包问题.md
+    - 8 贪心算法: algo/08_贪心算法.md
+    - 9 搜索算法: algo/09_搜索算法.md
+    - 10 图论基础: algo/10_图论基础.md
+
+
+
 
 theme:
   name: material #主题
+  language: zh  #语言
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
