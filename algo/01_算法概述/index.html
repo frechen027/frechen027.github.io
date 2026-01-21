@@ -1106,7 +1106,7 @@
 <h2 id="_3">时间复杂度与空间复杂度</h2>
 <p>我们用 <strong>大 O 表示法 (Big O Notation)</strong> 来衡量算法的优劣。</p>
 <h3 id="1-time-complexity">1. 时间复杂度 (Time Complexity)</h3>
-<p>衡量算法运行时间随数据规模 ($n$) 增长的变化趋势。</p>
+<p>衡量算法运行时间随数据规模 (<span class="arithmatex">\(n\)</span>) 增长的变化趋势。</p>
 <table>
 <thead>
 <tr>
@@ -1118,43 +1118,43 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">$O(1)$</td>
+<td style="text-align: left;"><span class="arithmatex">\(O(1)\)</span></td>
 <td style="text-align: left;">常数阶</td>
 <td style="text-align: left;">访问数组元素 <code>arr[i]</code></td>
-<td style="text-align: left;">最快，与 $n$ 无关</td>
+<td style="text-align: left;">最快，与 <span class="arithmatex">\(n\)</span> 无关</td>
 </tr>
 <tr>
-<td style="text-align: left;">$O(\log n)$</td>
+<td style="text-align: left;"><span class="arithmatex">\(O(\log n)\)</span></td>
 <td style="text-align: left;">对数阶</td>
 <td style="text-align: left;">二分查找</td>
 <td style="text-align: left;">每次减半，非常快</td>
 </tr>
 <tr>
-<td style="text-align: left;">$O(n)$</td>
+<td style="text-align: left;"><span class="arithmatex">\(O(n)\)</span></td>
 <td style="text-align: left;">线性阶</td>
 <td style="text-align: left;">遍历数组</td>
-<td style="text-align: left;">随 $n$ 线性增长</td>
+<td style="text-align: left;">随 <span class="arithmatex">\(n\)</span> 线性增长</td>
 </tr>
 <tr>
-<td style="text-align: left;">$O(n \log n)$</td>
+<td style="text-align: left;"><span class="arithmatex">\(O(n \log n)\)</span></td>
 <td style="text-align: left;">线性对数阶</td>
 <td style="text-align: left;">快速排序、归并排序</td>
 <td style="text-align: left;">大多数高效排序的极限</td>
 </tr>
 <tr>
-<td style="text-align: left;">$O(n^2)$</td>
+<td style="text-align: left;"><span class="arithmatex">\(O(n^2)\)</span></td>
 <td style="text-align: left;">平方阶</td>
 <td style="text-align: left;">冒泡排序、双重循环</td>
-<td style="text-align: left;">$n=10^4$ 时通常超时</td>
+<td style="text-align: left;"><span class="arithmatex">\(n=10^4\)</span> 时通常超时</td>
 </tr>
 <tr>
-<td style="text-align: left;">$O(2^n)$</td>
+<td style="text-align: left;"><span class="arithmatex">\(O(2^n)\)</span></td>
 <td style="text-align: left;">指数阶</td>
 <td style="text-align: left;">递归求解斐波那契</td>
-<td style="text-align: left;">极慢，仅适用于极小 $n$</td>
+<td style="text-align: left;">极慢，仅适用于极小 <span class="arithmatex">\(n\)</span></td>
 </tr>
 <tr>
-<td style="text-align: left;">$O(n!)$</td>
+<td style="text-align: left;"><span class="arithmatex">\(O(n!)\)</span></td>
 <td style="text-align: left;">阶乘阶</td>
 <td style="text-align: left;">旅行商问题暴力解</td>
 <td style="text-align: left;">最慢</td>
@@ -1164,26 +1164,26 @@
 <h3 id="2-space-complexity">2. 空间复杂度 (Space Complexity)</h3>
 <p>衡量算法在运行过程中临时占用的存储空间大小。</p>
 <ul>
-<li>$O(1)$: 原地操作，不需要额外空间。</li>
-<li>$O(n)$: 需要开辟一个长度为 $n$ 的辅助数组。</li>
-<li>$O(\log n)$: 递归调用栈的深度（如归并排序）。</li>
+<li><span class="arithmatex">\(O(1)\)</span>: 原地操作，不需要额外空间。</li>
+<li><span class="arithmatex">\(O(n)\)</span>: 需要开辟一个长度为 <span class="arithmatex">\(n\)</span> 的辅助数组。</li>
+<li><span class="arithmatex">\(O(\log n)\)</span>: 递归调用栈的深度（如归并排序）。</li>
 </ul>
 <h2 id="_4">算法评估技巧</h2>
-<p>在一般的算法竞赛或工程面试中，计算机 1 秒钟大约能执行 $10^8$ (1 亿) 次基本运算。</p>
+<p>在一般的算法竞赛或工程面试中，计算机 1 秒钟大约能执行 <span class="arithmatex">\(10^8\)</span> (1 亿) 次基本运算。</p>
 <ul>
-<li>若 $N \le 10^6$，算法最好是 $O(n)$ 或 $O(n \log n)$。</li>
-<li>若 $N \le 10^4$，算法可以是 $O(n^2)$。</li>
-<li>若 $N \le 20$，算法可以是 $O(2^n)$。</li>
+<li>若 <span class="arithmatex">\(N \le 10^6\)</span>，算法最好是 <span class="arithmatex">\(O(n)\)</span> 或 <span class="arithmatex">\(O(n \log n)\)</span>。</li>
+<li>若 <span class="arithmatex">\(N \le 10^4\)</span>，算法可以是 <span class="arithmatex">\(O(n^2)\)</span>。</li>
+<li>若 <span class="arithmatex">\(N \le 20\)</span>，算法可以是 <span class="arithmatex">\(O(2^n)\)</span>。</li>
 </ul>
 <h2 id="_5">常用数据结构回顾</h2>
-<p>算法离不开数据结构，选择合适的数据结构往往能将时间复杂度从 $O(n^2)$ 降为 $O(n \log n)$。</p>
+<p>算法离不开数据结构，选择合适的数据结构往往能将时间复杂度从 <span class="arithmatex">\(O(n^2)\)</span> 降为 <span class="arithmatex">\(O(n \log n)\)</span>。</p>
 <ul>
-<li><strong>数组 (Array)</strong>: 随机访问 $O(1)$，插入删除 $O(n)$。</li>
-<li><strong>链表 (Linked List)</strong>: 插入删除 $O(1)$，随机访问 $O(n)$。</li>
+<li><strong>数组 (Array)</strong>: 随机访问 <span class="arithmatex">\(O(1)\)</span>，插入删除 <span class="arithmatex">\(O(n)\)</span>。</li>
+<li><strong>链表 (Linked List)</strong>: 插入删除 <span class="arithmatex">\(O(1)\)</span>，随机访问 <span class="arithmatex">\(O(n)\)</span>。</li>
 <li><strong>栈 (Stack)</strong>: 先进后出 (LIFO)，DFS 基础。</li>
 <li><strong>队列 (Queue)</strong>: 先进先出 (FIFO)，BFS 基础。</li>
-<li><strong>哈希表 (Hash Map)</strong>: 查找、插入、删除平均 $O(1)$。</li>
-<li><strong>堆 (Heap/Priority Queue)</strong>: 始终能快速($O(1)$)获得最大/最小值。</li>
+<li><strong>哈希表 (Hash Map)</strong>: 查找、插入、删除平均 <span class="arithmatex">\(O(1)\)</span>。</li>
+<li><strong>堆 (Heap/Priority Queue)</strong>: 始终能快速(<span class="arithmatex">\(O(1)\)</span>)获得最大/最小值。</li>
 </ul>
 <hr />
 <p><em>下一章：<a href="../02_%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%9E%9A%E4%B8%BE/">模拟与枚举</a></em></p>

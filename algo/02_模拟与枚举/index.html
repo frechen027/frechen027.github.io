@@ -1199,9 +1199,9 @@
 公鸡 5 文钱一只，母鸡 3 文钱一只，小鸡 1 文钱三只。用 100 文钱买 100 只鸡，问公鸡、母鸡、小鸡各多少只？</p>
 <p><strong>思路</strong>：</p>
 <ul>
-<li>公鸡 ($x$) 最多 20 只 ($5 \times 20 = 100$)。</li>
-<li>母鸡 ($y$) 最多 33 只 ($3 \times 33 = 99$)。</li>
-<li>小鸡 ($z$) 可以由 $100 - x - y$ 算出，不必循环遍历。</li>
+<li>公鸡 (<span class="arithmatex">\(x\)</span>) 最多 20 只 (<span class="arithmatex">\(5 \times 20 = 100\)</span>)。</li>
+<li>母鸡 (<span class="arithmatex">\(y\)</span>) 最多 33 只 (<span class="arithmatex">\(3 \times 33 = 99\)</span>)。</li>
+<li>小鸡 (<span class="arithmatex">\(z\)</span>) 可以由 <span class="arithmatex">\(100 - x - y\)</span> 算出，不必循环遍历。</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">buy_chicken</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>

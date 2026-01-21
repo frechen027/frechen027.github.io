@@ -1118,15 +1118,15 @@
 <p>背包问题是动态规划中最经典的模型。</p>
 <h2 id="01">0/1 背包问题</h2>
 <p><strong>问题描述</strong>：
-有一个背包，容量为 $W$。有 $N$ 种物品，每种物品只有<strong>一件</strong>。第 $i$ 件物品的重量是 $wt[i]$，价值是 $val[i]$。求解将哪些物品装入背包可使价值总和最大。</p>
+有一个背包，容量为 <span class="arithmatex">\(W\)</span>。有 <span class="arithmatex">\(N\)</span> 种物品，每种物品只有<strong>一件</strong>。第 <span class="arithmatex">\(i\)</span> 件物品的重量是 <span class="arithmatex">\(wt[i]\)</span>，价值是 <span class="arithmatex">\(val[i]\)</span>。求解将哪些物品装入背包可使价值总和最大。</p>
 <p><strong>特点</strong>：每种物品要么选 (1)，要么不选 (0)。</p>
 <h3 id="_1">状态定义</h3>
-<p><code>dp[i][w]</code> 表示：对于前 $i$ 个物品，在背包容量为 $w$ 时能拿到的最大价值。</p>
+<p><code>dp[i][w]</code> 表示：对于前 <span class="arithmatex">\(i\)</span> 个物品，在背包容量为 <span class="arithmatex">\(w\)</span> 时能拿到的最大价值。</p>
 <h3 id="_2">转移方程</h3>
-<p>对于第 $i$ 个物品：</p>
+<p>对于第 <span class="arithmatex">\(i\)</span> 个物品：</p>
 <ol>
-<li><strong>不装</strong>: <code>dp[i][w] = dp[i-1][w]</code> (继承前 $i-1$ 个的结果)</li>
-<li><strong>装</strong>: <code>dp[i][w] = dp[i-1][w - wt[i]] + val[i]</code> (前提是能装下，即 $w \ge wt[i]$)</li>
+<li><strong>不装</strong>: <code>dp[i][w] = dp[i-1][w]</code> (继承前 <span class="arithmatex">\(i-1\)</span> 个的结果)</li>
+<li><strong>装</strong>: <code>dp[i][w] = dp[i-1][w - wt[i]] + val[i]</code> (前提是能装下，即 <span class="arithmatex">\(w \ge wt[i]\)</span>)</li>
 </ol>
 <p>取两者的最大值。</p>
 <h3 id="_3">二维数组版本</h3>

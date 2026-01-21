@@ -1090,10 +1090,10 @@
 <li><strong>函数定义</strong>: 明确这个函数输入什么，返回什么。</li>
 </ol>
 <h2 id="1-factorial">示例 1：计算阶乘 (Factorial)</h2>
-<p>$n! = n \times (n-1) \times \dots \times 1$</p>
+<p><span class="arithmatex">\(n! = n \times (n-1) \times \dots \times 1\)</span></p>
 <ul>
-<li><strong>Base Case</strong>: 当 $n=1$ 时，返回 1。</li>
-<li><strong>递归关系</strong>: $n! = n \times (n-1)!$</li>
+<li><strong>Base Case</strong>: 当 <span class="arithmatex">\(n=1\)</span> 时，返回 1。</li>
+<li><strong>递归关系</strong>: <span class="arithmatex">\(n! = n \times (n-1)!\)</span></li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="c1"># 1. Base Case</span>
@@ -1107,7 +1107,7 @@
 </code></pre></div>
 <h2 id="2-fibonacci">示例 2：斐波那契数列 (Fibonacci)</h2>
 <p>数列：1, 1, 2, 3, 5, 8, 13...<br />
-公式：$F(n) = F(n-1) + F(n-2)$</p>
+公式：<span class="arithmatex">\(F(n) = F(n-1) + F(n-2)\)</span></p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="c1"># 1. Base Case</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
@@ -1121,14 +1121,14 @@
 <div class="admonition warning">
 <p class="admonition-title">递归的陷阱</p>
 </div>
-<p>上面的斐波那契写法效率极低 ($O(2^n)$)，因为它进行了大量的重复计算。例如计算 <code>fib(5)</code> 时，<code>fib(3)</code> 会被计算两次。后续章节的<strong>动态规划</strong>将解决这个问题。</p>
+<p>上面的斐波那契写法效率极低 (<span class="arithmatex">\(O(2^n)\)</span>)，因为它进行了大量的重复计算。例如计算 <code>fib(5)</code> 时，<code>fib(3)</code> 会被计算两次。后续章节的<strong>动态规划</strong>将解决这个问题。</p>
 <h2 id="3-hanoi-tower">示例 3：汉诺塔问题 (Hanoi Tower)</h2>
-<p>将 $n$ 个盘子从 A 移动到 C，中间借用 B。</p>
+<p>将 <span class="arithmatex">\(n\)</span> 个盘子从 A 移动到 C，中间借用 B。</p>
 <p><strong>思路</strong>：</p>
 <ol>
-<li>先把 $n-1$ 个盘子从 A 移到 B。</li>
-<li>把最大的盘子 ($n$) 从 A 移到 C。</li>
-<li>最后把 $n-1$ 个盘子从 B 移到 C。</li>
+<li>先把 <span class="arithmatex">\(n-1\)</span> 个盘子从 A 移到 B。</li>
+<li>把最大的盘子 (<span class="arithmatex">\(n\)</span>) 从 A 移到 C。</li>
+<li>最后把 <span class="arithmatex">\(n-1\)</span> 个盘子从 B 移到 C。</li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">hanoi</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">auxiliary</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1170,7 +1170,7 @@
 <tr>
 <td style="text-align: left;"><strong>空间消耗</strong></td>
 <td style="text-align: left;">较大 (调用栈)</td>
-<td style="text-align: left;">小 ($O(1)$)</td>
+<td style="text-align: left;">小 (<span class="arithmatex">\(O(1)\)</span>)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>适用场景</strong></td>
@@ -1180,7 +1180,7 @@
 </tbody>
 </table>
 <h2 id="_2">本章小结</h2>
-<p>递归的核心是<strong>相信你的函数</strong>：在实现 <code>factorial(n)</code> 时，假设 <code>factorial(n-1)</code> 已经能算出正确结果，你只需要做 $n \times \text{result}$ 即可。</p>
+<p>递归的核心是<strong>相信你的函数</strong>：在实现 <code>factorial(n)</code> 时，假设 <code>factorial(n-1)</code> 已经能算出正确结果，你只需要做 <span class="arithmatex">\(n \times \text{result}\)</span> 即可。</p>
 <hr />
 <p><em>下一章：<a href="../04_%E5%88%86%E6%B2%BB/">分治</a></em></p>
 
