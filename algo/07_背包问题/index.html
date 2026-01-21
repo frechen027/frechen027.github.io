@@ -63,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#knapsack-problem" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -747,6 +752,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 背包问题
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -764,6 +789,108 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0/1 背包问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0/1 背包问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        状态定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        转移方程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二维数组版本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一维数组优化 (空间压缩)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完全背包问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -878,6 +1005,99 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0/1 背包问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0/1 背包问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        状态定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        转移方程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二维数组版本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一维数组优化 (空间压缩)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完全背包问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -894,9 +1114,102 @@
 
 
 
-  <h1>7 背包问题</h1>
+<h1 id="knapsack-problem">背包问题 (Knapsack Problem)</h1>
+<p>背包问题是动态规划中最经典的模型。</p>
+<h2 id="01">0/1 背包问题</h2>
+<p><strong>问题描述</strong>：
+有一个背包，容量为 $W$。有 $N$ 种物品，每种物品只有<strong>一件</strong>。第 $i$ 件物品的重量是 $wt[i]$，价值是 $val[i]$。求解将哪些物品装入背包可使价值总和最大。</p>
+<p><strong>特点</strong>：每种物品要么选 (1)，要么不选 (0)。</p>
+<h3 id="_1">状态定义</h3>
+<p><code>dp[i][w]</code> 表示：对于前 $i$ 个物品，在背包容量为 $w$ 时能拿到的最大价值。</p>
+<h3 id="_2">转移方程</h3>
+<p>对于第 $i$ 个物品：</p>
+<ol>
+<li><strong>不装</strong>: <code>dp[i][w] = dp[i-1][w]</code> (继承前 $i-1$ 个的结果)</li>
+<li><strong>装</strong>: <code>dp[i][w] = dp[i-1][w - wt[i]] + val[i]</code> (前提是能装下，即 $w \ge wt[i]$)</li>
+</ol>
+<p>取两者的最大值。</p>
+<h3 id="_3">二维数组版本</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">knapsack_01</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">wt</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="c1"># dp[i][j] 大小为 (n+1) x (W+1)</span>
+    <span class="n">dp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">W</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
 
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">W</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">w</span> <span class="o">-</span> <span class="n">wt</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># 装不下，只能不选</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">w</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># 选 或 不选，取最大值</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
+                    <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">w</span><span class="p">],</span>
+                    <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">w</span> <span class="o">-</span> <span class="n">wt</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+</span> <span class="n">val</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="p">)</span>
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">W</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="_4">一维数组优化 (空间压缩)</h3>
+<p>因为 <code>dp[i]</code> 只依赖于 <code>dp[i-1]</code>，我们可以把状态压缩成一行。
+<strong>注意</strong>：为了防止使用本层计算过的新结果覆盖上一层的数据，内层循环需要<strong>倒序遍历</strong>。</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">knapsack_01_optimized</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">wt</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">dp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">W</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="c1"># 必须倒序遍历！</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">wt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">w</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">w</span> <span class="o">-</span> <span class="n">wt</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+</span> <span class="n">val</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">W</span><span class="p">]</span>
+
+<span class="c1"># 测试</span>
+<span class="n">W</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">wt</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">val</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">knapsack_01_optimized</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">wt</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="c1"># 6 (选物品 0 和 1)</span>
+</code></pre></div>
+<h2 id="_5">完全背包问题</h2>
+<p><strong>问题描述</strong>：
+与 0/1 背包类似，但每种物品有<strong>无限件</strong>可用。</p>
+<p><strong>解法</strong>：
+唯一的区别在于一维数组优化时的遍历顺序。</p>
+<ul>
+<li>0/1 背包：倒序遍历 (保证每个物品只拿一次)。</li>
+<li>完全背包：<strong>正序遍历</strong> (允许一个物品被多次放入)。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">knapsack_complete</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">wt</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">dp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">W</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="c1"># 正序遍历</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">wt</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">W</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">w</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">w</span> <span class="o">-</span> <span class="n">wt</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+</span> <span class="n">val</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">W</span><span class="p">]</span>
+</code></pre></div>
+<h2 id="_6">本章小结</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">问题类型</th>
+<th style="text-align: left;">特点</th>
+<th style="text-align: left;">遍历顺序 (一维数组)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>0/1 背包</strong></td>
+<td style="text-align: left;">每个物品限 1 个</td>
+<td style="text-align: left;">外层遍历物品，内层<strong>倒序</strong>遍历容量</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>完全背包</strong></td>
+<td style="text-align: left;">每个物品无限个</td>
+<td style="text-align: left;">外层遍历物品，内层<strong>正序</strong>遍历容量</td>
+</tr>
+</tbody>
+</table>
+<p>这是各类背包变体（如多重背包、分组背包）的基础。</p>
+<hr />
+<p><em>下一章：<a href="../08_%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a></em></p>
 
 
 

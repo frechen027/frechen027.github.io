@@ -63,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#greedy-algorithm" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -775,6 +780,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 贪心算法
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -792,6 +817,69 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        贪心 vs 动态规划
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        典型案例 1：找零钱问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-interval-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        典型案例 2：区间调度 (Interval Scheduling)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -878,6 +966,60 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        贪心 vs 动态规划
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        典型案例 1：找零钱问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-interval-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        典型案例 2：区间调度 (Interval Scheduling)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -894,9 +1036,77 @@
 
 
 
-  <h1>8 贪心算法</h1>
+<h1 id="greedy-algorithm">贪心算法 (Greedy Algorithm)</h1>
+<p>贪心算法是一种在每一步选择中都采取在当前状态下最好或最优（即最有利）的选择，从而希望导致结果是全局最好或最优的算法。</p>
+<p><strong>一句话总结：目光短浅，只看眼前。</strong></p>
+<h2 id="vs">贪心 vs 动态规划</h2>
+<ul>
+<li><strong>动态规划</strong>: 会考虑全局，记录所有子问题的解，并在最后通过选择来达到全局最优。</li>
+<li><strong>贪心</strong>: 不考虑整体，只做局部最优决策。一旦做出选择，就无法回退。</li>
+</ul>
+<p><strong>注意</strong>: 贪心算法并不总能得到全局最优解。只有当问题满足 <strong>"贪心选择性质"</strong> 时才有效。</p>
+<h2 id="1">典型案例 1：找零钱问题</h2>
+<p><strong>题目</strong>：假设你有面值为 25, 10, 5, 1 的硬币。需要找零 <code>amount</code>，求最少需要几枚硬币？</p>
+<p><strong>策略</strong>：为了让硬币数量最少，我们应该尽可能多地使用面值大的硬币。</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">change_coins</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
+    <span class="n">coins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 
+    <span class="k">for</span> <span class="n">coin</span> <span class="ow">in</span> <span class="n">coins</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">amount</span> <span class="o">&gt;=</span> <span class="n">coin</span><span class="p">:</span>
+            <span class="n">amount</span> <span class="o">-=</span> <span class="n">coin</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;使用一枚 </span><span class="si">{</span><span class="n">coin</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
+    <span class="k">return</span> <span class="n">count</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;总共: </span><span class="si">{</span><span class="n">change_coins</span><span class="p">(</span><span class="mi">41</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># 25, 10, 5, 1 -&gt; 4枚 (贪心成功)</span>
+</code></pre></div>
+<p><strong>贪心的局限性</strong>：
+如果硬币面值是 <code>[25, 20, 1]</code>，找 <code>40</code>。</p>
+<ul>
+<li>贪心策略：25 + 1 + ... + 1 (16 枚) -&gt; <strong>失败</strong></li>
+<li>最优策略：20 + 20 (2 枚)
+    在这种情况下，必须使用动态规划。</li>
+</ul>
+<h2 id="2-interval-scheduling">典型案例 2：区间调度 (Interval Scheduling)</h2>
+<p><strong>题目</strong>：给定一系列会议的开始和结束时间 <code>[[s1, e1], [s2, e2], ...]</code>，求一个人最多能参加多少个不重叠的会议？</p>
+<p><strong>策略</strong>：</p>
+<ol>
+<li>优先选持续时间短的？❌ (可能在中间阻断两个长会议)</li>
+<li>优先选开始时间早的？❌ (可能一个会议开一天)</li>
+<li><strong>优先选结束时间早的！✅</strong><ul>
+<li>结束得越早，留给后面的时间就越多，能容纳的会议就越多。</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">interval_scheduling</span><span class="p">(</span><span class="n">intervals</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">intervals</span><span class="p">:</span> <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="c1"># 按结束时间升序排序</span>
+    <span class="n">intervals</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">intervals</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">intervals</span><span class="p">)):</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># 如果当前会议开始时间 &gt;= 上个会议结束时间</span>
+        <span class="k">if</span> <span class="n">start_time</span> <span class="o">&gt;=</span> <span class="n">end_time</span><span class="p">:</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">end_time</span> <span class="o">=</span> <span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">count</span>
+
+<span class="n">tests</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">interval_scheduling</span><span class="p">(</span><span class="n">tests</span><span class="p">))</span> <span class="c1"># 2 ([1,3], [3,5])</span>
+</code></pre></div>
+<h2 id="_1">本章小结</h2>
+<p>贪心算法效率极高（通常是 $O(n \log n)$ 排序 + $O(n)$ 遍历），但证明其正确性往往很难。
+在做题时，如果发现局部最优能推导全局最优，或者可以直接举反例（如找零钱特例）来验证是否可用贪心。</p>
+<hr />
+<p><em>下一章：<a href="../09_%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/">搜索算法</a></em></p>
 
 
 

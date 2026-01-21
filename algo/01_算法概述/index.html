@@ -641,7 +641,68 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        算法基础理论
+        什么是算法？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        时间复杂度与空间复杂度
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="时间复杂度与空间复杂度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-time-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 时间复杂度 (Time Complexity)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-space-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 空间复杂度 (Space Complexity)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        算法评估技巧
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常用数据结构回顾
       
     </span>
   </a>
@@ -946,7 +1007,68 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        算法基础理论
+        什么是算法？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        时间复杂度与空间复杂度
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="时间复杂度与空间复杂度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-time-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 时间复杂度 (Time Complexity)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-space-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 空间复杂度 (Space Complexity)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        算法评估技巧
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常用数据结构回顾
       
     </span>
   </a>
@@ -970,17 +1092,101 @@
 
 
 
-<h1 id="_1">算法基础</h1>
-<h2 id="_2">算法基础理论</h2>
-<p>算法是指用于解决某个<strong>特定问题</strong>或执行某个任务的<strong>明确的一组步骤</strong>。这些步骤必须是清晰且可执行的，以便计算机或人类可以理解并执行它们。</p>
-<p><strong>算法定义：</strong>输入、输出、有穷性、确定性、可行性。</p>
+<h1 id="_1">算法概述</h1>
+<h2 id="_2">什么是算法？</h2>
+<p>算法 (Algorithm) 是解决特定问题的一系列定义明确的指令。就像菜谱教你如何做菜一样，算法教计算机如何处理数据、执行计算或完成自动化推理任务。</p>
+<p><strong>算法的五大特性：</strong></p>
+<ol>
+<li><strong>有穷性 (Finiteness)</strong>: 算法必须在有限步骤内结束。</li>
+<li><strong>确定性 (Definiteness)</strong>: 每一步都有确切的含义，无二义性。</li>
+<li><strong>输入 (Input)</strong>: 有 0 个或多个输入。</li>
+<li><strong>输出 (Output)</strong>: 至少有一个输出。</li>
+<li><strong>可行性 (Effectiveness)</strong>: 每一步都是可执行的。</li>
+</ol>
+<h2 id="_3">时间复杂度与空间复杂度</h2>
+<p>我们用 <strong>大 O 表示法 (Big O Notation)</strong> 来衡量算法的优劣。</p>
+<h3 id="1-time-complexity">1. 时间复杂度 (Time Complexity)</h3>
+<p>衡量算法运行时间随数据规模 ($n$) 增长的变化趋势。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">复杂度</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">举例</th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">$O(1)$</td>
+<td style="text-align: left;">常数阶</td>
+<td style="text-align: left;">访问数组元素 <code>arr[i]</code></td>
+<td style="text-align: left;">最快，与 $n$ 无关</td>
+</tr>
+<tr>
+<td style="text-align: left;">$O(\log n)$</td>
+<td style="text-align: left;">对数阶</td>
+<td style="text-align: left;">二分查找</td>
+<td style="text-align: left;">每次减半，非常快</td>
+</tr>
+<tr>
+<td style="text-align: left;">$O(n)$</td>
+<td style="text-align: left;">线性阶</td>
+<td style="text-align: left;">遍历数组</td>
+<td style="text-align: left;">随 $n$ 线性增长</td>
+</tr>
+<tr>
+<td style="text-align: left;">$O(n \log n)$</td>
+<td style="text-align: left;">线性对数阶</td>
+<td style="text-align: left;">快速排序、归并排序</td>
+<td style="text-align: left;">大多数高效排序的极限</td>
+</tr>
+<tr>
+<td style="text-align: left;">$O(n^2)$</td>
+<td style="text-align: left;">平方阶</td>
+<td style="text-align: left;">冒泡排序、双重循环</td>
+<td style="text-align: left;">$n=10^4$ 时通常超时</td>
+</tr>
+<tr>
+<td style="text-align: left;">$O(2^n)$</td>
+<td style="text-align: left;">指数阶</td>
+<td style="text-align: left;">递归求解斐波那契</td>
+<td style="text-align: left;">极慢，仅适用于极小 $n$</td>
+</tr>
+<tr>
+<td style="text-align: left;">$O(n!)$</td>
+<td style="text-align: left;">阶乘阶</td>
+<td style="text-align: left;">旅行商问题暴力解</td>
+<td style="text-align: left;">最慢</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-space-complexity">2. 空间复杂度 (Space Complexity)</h3>
+<p>衡量算法在运行过程中临时占用的存储空间大小。</p>
 <ul>
-<li>输入：算法必须有零个或多个输入，这些输入是算法执行所需的初始数据。</li>
-<li>输出：算法必须至少有一个输出，输出是算法运行后得到的结果。</li>
-<li>有穷性：算法必须具有有限步骤，否则它将无法完成。</li>
-<li>确定性：算法的每一步操作都必须明确，给定相同的输入，算法每一步执行结果唯一，不会出现多种可能。</li>
-<li>可行性：算法中每个步骤都必须是可执行的，既可以通过有限次基本操作在有限时间内完成，不能是抽象的。无法实现的步骤。</li>
+<li>$O(1)$: 原地操作，不需要额外空间。</li>
+<li>$O(n)$: 需要开辟一个长度为 $n$ 的辅助数组。</li>
+<li>$O(\log n)$: 递归调用栈的深度（如归并排序）。</li>
 </ul>
+<h2 id="_4">算法评估技巧</h2>
+<p>在一般的算法竞赛或工程面试中，计算机 1 秒钟大约能执行 $10^8$ (1 亿) 次基本运算。</p>
+<ul>
+<li>若 $N \le 10^6$，算法最好是 $O(n)$ 或 $O(n \log n)$。</li>
+<li>若 $N \le 10^4$，算法可以是 $O(n^2)$。</li>
+<li>若 $N \le 20$，算法可以是 $O(2^n)$。</li>
+</ul>
+<h2 id="_5">常用数据结构回顾</h2>
+<p>算法离不开数据结构，选择合适的数据结构往往能将时间复杂度从 $O(n^2)$ 降为 $O(n \log n)$。</p>
+<ul>
+<li><strong>数组 (Array)</strong>: 随机访问 $O(1)$，插入删除 $O(n)$。</li>
+<li><strong>链表 (Linked List)</strong>: 插入删除 $O(1)$，随机访问 $O(n)$。</li>
+<li><strong>栈 (Stack)</strong>: 先进后出 (LIFO)，DFS 基础。</li>
+<li><strong>队列 (Queue)</strong>: 先进先出 (FIFO)，BFS 基础。</li>
+<li><strong>哈希表 (Hash Map)</strong>: 查找、插入、删除平均 $O(1)$。</li>
+<li><strong>堆 (Heap/Priority Queue)</strong>: 始终能快速($O(1)$)获得最大/最小值。</li>
+</ul>
+<hr />
+<p><em>下一章：<a href="../02_%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%9E%9A%E4%B8%BE/">模拟与枚举</a></em></p>
 
 
 
