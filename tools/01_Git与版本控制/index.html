@@ -1746,11 +1746,10 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 <li><strong>暂存区 (Staging Area/Index)</strong>: 临时存储即将提交的修改 (类似于购物车的“待结算”状态)。</li>
 <li><strong>本地仓库 (Local Repository)</strong>: 只有 <code>commit</code> 之后，修改才算真正进入了版本库（安全了）。</li>
 </ol>
-<div class="highlight"><pre><span></span><code>graph LR
+<pre class="mermaid"><code>graph LR
     A[工作区] -- git add --&gt; B[暂存区]
     B -- git commit --&gt; C[本地仓库]
-    C -- git push --&gt; D[远程仓库]
-</code></pre></div>
+    C -- git push --&gt; D[远程仓库]</code></pre>
 <h2 id="3">3. 基础工作流</h2>
 <h3 id="_2">初始化仓库</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 在当前目录创建一个 Git 仓库</span>
