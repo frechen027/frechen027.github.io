@@ -23,6 +23,16 @@ nav:                       # 导航栏菜单结构，层级与目录结构对应
     - 8 贪心算法: algo/08_贪心算法.md
     - 9 搜索算法: algo/09_搜索算法.md
     - 10 图论基础: algo/10_图论基础.md
+  - 实用工具:
+    - 1 Git与版本控制: tools/01_Git与版本控制.md
+    - 2 Markdown: tools/02_Markdown.md
+    - 3 Vibe Coding: tools/03_Vibe_Coding.md
+    - 4 LeetCode: tools/04_LeetCode.md
+    - 5 n8n: tools/05_n8n.md
+    - 6 coze: tools/06_coze.md
+    - 7 画图工具: tools/07_画图工具.md
+    - 8 笔记工具: tools/08_笔记工具.md
+    
 
 
 
