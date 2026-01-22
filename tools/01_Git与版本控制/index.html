@@ -63,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#git" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -913,6 +918,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Git与版本控制
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -930,6 +955,297 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#git_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么需要 Git？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 安装与配置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 安装与配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装 Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        全局配置 (首次使用必做)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 核心概念
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 基础工作流
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 基础工作流">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        初始化仓库
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        日常操作三板斧
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查看状态与历史
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-branching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 分支管理 (Branching)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 分支管理 (Branching)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常用分支命令
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        合并流程示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 远程仓库 (Remote)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 远程仓库 (Remote)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        克隆远程仓库
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关联远程仓库
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        拉取远程代码
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-gitignore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. .gitignore 文件
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 常见问题与回滚
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 常见问题与回滚">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        撤销工作区的修改
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        撤销暂存区的修改
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        回退版本
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-githubgitlab-pull-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. GitHub/GitLab 工作流 (Pull Request)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1100,6 +1416,288 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#git_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么需要 Git？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 安装与配置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 安装与配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装 Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        全局配置 (首次使用必做)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 核心概念
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 基础工作流
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 基础工作流">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        初始化仓库
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        日常操作三板斧
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查看状态与历史
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-branching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 分支管理 (Branching)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 分支管理 (Branching)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常用分支命令
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        合并流程示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 远程仓库 (Remote)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 远程仓库 (Remote)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        克隆远程仓库
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关联远程仓库
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        拉取远程代码
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-gitignore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. .gitignore 文件
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 常见问题与回滚
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 常见问题与回滚">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        撤销工作区的修改
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        撤销暂存区的修改
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        回退版本
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-githubgitlab-pull-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. GitHub/GitLab 工作流 (Pull Request)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1116,9 +1714,205 @@
 
 
 
-  <h1>1 Git与版本控制</h1>
+<h1 id="git">Git 与版本控制</h1>
+<p>Git 是目前世界上最先进的分布式版本控制系统（Distributed Version Control System，DVCS）。无论你是个人开发者还是团队成员，Git 都是必备技能。</p>
+<h2 id="git_1">为什么需要 Git？</h2>
+<p>试想以下场景：</p>
+<ul>
+<li><strong>后悔药</strong>：代码写炸了，想回到昨天的状态？</li>
+<li><strong>多版本管理</strong>：老板要一个"正式版"，又要一个"春节特别版"？</li>
+<li><strong>协同工作</strong>：多个人同时修改一个文件，怎么合并？</li>
+</ul>
+<p>Git 就是为了解决这些问题而生的。</p>
+<h2 id="1">1. 安装与配置</h2>
+<h3 id="git_2">安装 Git</h3>
+<ul>
+<li><strong>Windows</strong>: 下载 <a href="https://git-scm.com/download/win">Git for Windows</a> 并安装。</li>
+<li><strong>Mac</strong>: 使用 Homebrew (<code>brew install git</code>) 或下载安装包。</li>
+<li><strong>Linux</strong>: <code>sudo apt install git</code> (Ubuntu/Debian)。</li>
+</ul>
+<h3 id="_1">全局配置 (首次使用必做)</h3>
+<p>安装后，告诉 Git 你是谁：</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;你的名字&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;你的邮箱@example.com&quot;</span>
+</code></pre></div>
+<p>查看配置信息：</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--list
+</code></pre></div>
+<h2 id="2">2. 核心概念</h2>
+<p>理解 Git 的三个区至关重要：</p>
+<ol>
+<li><strong>工作区 (Working Directory)</strong>: 你电脑里能看到的目录，平时写代码的地方。</li>
+<li><strong>暂存区 (Staging Area/Index)</strong>: 临时存储即将提交的修改 (类似于购物车的“待结算”状态)。</li>
+<li><strong>本地仓库 (Local Repository)</strong>: 只有 <code>commit</code> 之后，修改才算真正进入了版本库（安全了）。</li>
+</ol>
+<div class="highlight"><pre><span></span><code>graph LR
+    A[工作区] -- git add --&gt; B[暂存区]
+    B -- git commit --&gt; C[本地仓库]
+    C -- git push --&gt; D[远程仓库]
+</code></pre></div>
+<h2 id="3">3. 基础工作流</h2>
+<h3 id="_2">初始化仓库</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 在当前目录创建一个 Git 仓库</span>
+git<span class="w"> </span>init
+</code></pre></div>
+<p>这会生成一个隐藏的 <code>.git</code> 文件夹，不要删除它。</p>
+<h3 id="_3">日常操作三板斧</h3>
+<ol>
+<li>
+<p><strong>添加 (Add)</strong>: 将文件修改添加到暂存区。</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>filename.py<span class="w">   </span><span class="c1"># 添加指定文件</span>
+git<span class="w"> </span>add<span class="w"> </span>.<span class="w">             </span><span class="c1"># 添加当前目录所有文件 (最常用)</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>提交 (Commit)</strong>: 将暂存区的内容提交到本地仓库。</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;完成登录功能&quot;</span><span class="w">  </span><span class="c1"># -m 后面是提交说明，必须写清楚</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>推送 (Push)</strong>: 将本地仓库推送到远程仓库 (如 GitHub, GitLab)。
+    <div class="highlight"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div></p>
+</li>
+</ol>
+<h3 id="_4">查看状态与历史</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 查看当前状态 (有哪些文件修改了？哪些在暂存区？)</span>
+git<span class="w"> </span>status
 
+<span class="c1"># 查看提交历史</span>
+git<span class="w"> </span>log
+git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w">  </span><span class="c1"># 简洁模式</span>
+</code></pre></div>
+<h2 id="4-branching">4. 分支管理 (Branching)</h2>
+<p>分支是 Git 的杀手锏。开发新功能时，通常新建一个分支，不影响主分支 (main/master)。</p>
+<h3 id="_5">常用分支命令</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">命令</th>
+<th style="text-align: left;">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>git branch</code></td>
+<td style="text-align: left;">列出所有本地分支</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>git branch -a</code></td>
+<td style="text-align: left;">列出所有分支 (含远程)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>git branch feature-A</code></td>
+<td style="text-align: left;">创建名为 feature-A 的分支</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>git checkout feature-A</code></td>
+<td style="text-align: left;">切换到 feature-A 分支</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>git checkout -b feature-A</code></td>
+<td style="text-align: left;"><strong>[常用]</strong> 创建并切换到 feature-A</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>git merge feature-A</code></td>
+<td style="text-align: left;">将 feature-A 合并到当前分支</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>git branch -d feature-A</code></td>
+<td style="text-align: left;">删除分支</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">合并流程示例</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. 在 main 分支上创建并切换到新分支 dev</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>dev
 
+<span class="c1"># 2. 在 dev 分支上写代码、提交</span>
+touch<span class="w"> </span>new_feature.py
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;开发新功能&quot;</span>
+
+<span class="c1"># 3. 切换回 main 分支</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+
+<span class="c1"># 4. 将 dev 分支合并到 main</span>
+git<span class="w"> </span>merge<span class="w"> </span>dev
+
+<span class="c1"># 5. 删除 dev 分支 (可选)</span>
+git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>dev
+</code></pre></div>
+<h2 id="5-remote">5. 远程仓库 (Remote)</h2>
+<h3 id="_7">克隆远程仓库</h3>
+<p>如果你是加入一个已有的项目：</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/username/repo.git
+</code></pre></div>
+<h3 id="_8">关联远程仓库</h3>
+<p>如果你是本地新建的项目，想推送到 GitHub：</p>
+<ol>
+<li>在 GitHub 上新建一个空仓库。</li>
+<li>
+<p>在本地运行：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 添加远程仓库别名为 origin</span>
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/username/repo.git
+
+<span class="c1"># 将本地 main 分支推送到 origin (初次推送加 -u)</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+</li>
+</ol>
+<h3 id="_9">拉取远程代码</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 拉取并合并 (pull = fetch + merge)</span>
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+<h2 id="6-gitignore">6. <code>.gitignore</code> 文件</h2>
+<p>有些文件不应该提交到仓库中（如密码、虚拟环境、编译产生的临时文件）。
+在项目根目录创建一个名为 <code>.gitignore</code> 的文件，写入要忽略的规则：</p>
+<div class="highlight"><pre><span></span><code># 忽略 Python 编译文件
+__pycache__/
+*.pyc
+
+# 忽略虚拟环境
+venv/
+.env
+
+# 忽略 IDE 配置
+.vscode/
+.idea/
+</code></pre></div>
+<h2 id="7">7. 常见问题与回滚</h2>
+<h3 id="_10">撤销工作区的修改</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 丢弃文件在工作区的修改 (慎用！无法找回)</span>
+git<span class="w"> </span>checkout<span class="w"> </span>--<span class="w"> </span>filename.py
+<span class="c1"># 或 (新版 Git)</span>
+git<span class="w"> </span>restore<span class="w"> </span>filename.py
+</code></pre></div>
+<h3 id="_11">撤销暂存区的修改</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 将文件从暂存区撤回工作区 (unstage)</span>
+git<span class="w"> </span>reset<span class="w"> </span>HEAD<span class="w"> </span>filename.py
+<span class="c1"># 或 (新版 Git)</span>
+git<span class="w"> </span>restore<span class="w"> </span>--staged<span class="w"> </span>filename.py
+</code></pre></div>
+<h3 id="_12">回退版本</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 回退到上一个版本 (保留工作区修改)</span>
+git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>HEAD^
+
+<span class="c1"># 彻底回退到指定 commit (危险操作，修改全丢)</span>
+git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>&lt;commit_id&gt;
+</code></pre></div>
+<h2 id="8-githubgitlab-pull-request">8. GitHub/GitLab 工作流 (Pull Request)</h2>
+<p>团队开发的标准流程：</p>
+<ol>
+<li><strong>Fork</strong> 项目到自己仓库 (若是开源项目) 或 <strong>Clone</strong> 项目。</li>
+<li>新建分支 <code>feature-xxx</code> 开发。</li>
+<li>开发完成，<code>Push</code> 到远程。</li>
+<li>在网页端发起 <strong>Pull Request (PR)</strong> 或 <strong>Merge Request (MR)</strong>。</li>
+<li>团队成员 <strong>Code Review</strong>。</li>
+<li>代码没问题，管理员点击 <strong>Merge</strong> 合并进主分支。</li>
+</ol>
+<hr />
+<p><em>下一章：<a href="../02_Markdown/">Markdown 写作指南</a></em></p>
 
 
 
