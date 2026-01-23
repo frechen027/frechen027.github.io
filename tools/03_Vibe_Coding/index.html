@@ -63,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#vibe-coding" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -969,6 +974,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Vibe Coding
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -986,6 +1011,86 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概述
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opencode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenCode
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenCode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装步骤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        特点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent Skills
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1128,6 +1233,77 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概述
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opencode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenCode
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenCode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装步骤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        特点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent Skills
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1144,9 +1320,50 @@
 
 
 
-  <h1>3 Vibe Coding</h1>
-
-
+<h1 id="vibe-coding">Vibe Coding</h1>
+<h2 id="_1">概述</h2>
+<p>当前市面上存在许许多多的 AI 编程工具，相较于 25 年初还是仅仅局限于利用网页聊天，过去一年，AI 编程工具的崛起堪称迅速。</p>
+<p>我本人目前使用过的有：</p>
+<ul>
+<li>Copilot</li>
+<li>Cline</li>
+<li>Lingma</li>
+<li>CodeBuddy</li>
+<li>Codex</li>
+</ul>
+<p>我这里以近期比较火热的 OpenCode 举例，详细说明使用这些工具的流程以及一些实用技能。</p>
+<h2 id="opencode">OpenCode</h2>
+<h3 id="_2">安装步骤</h3>
+<ol>
+<li>安装 <code>node.js</code></li>
+<li>命令行执行 <code>npm i -g opencode-ai</code></li>
+<li>输入 <code>opencode</code> 启动</li>
+</ol>
+<h3 id="_3">特点</h3>
+<p>可以开启多个<code>session</code>，并行执行多个任务。</p>
+<p><code>/init</code> 会通读整个项目，创建或者更新 <code>AGENTS.md</code> 文件，从而作为系统提示词的一部分，帮助 AI 快速了解项目。</p>
+<p><code>/compact</code> 命令会对之前的对话进行压缩提炼，从而形成一个简洁的摘要。</p>
+<p>可以为其配置 Agent Skills 和 MCP 为其扩展更多功能。</p>
+<p>也可以自定义命令，定制智能体，智能体可以定义为主智能体，也可以是子智能体，子智能体只能在后台被主智能体进行调度。</p>
+<h3 id="agent-skills">Agent Skills</h3>
+<p>概述：带目录的说明书，即一种渐进式披露提示词的机制，大幅降低了提示词的长度和复杂度。</p>
+<p>Skills 将提示词分为三层：</p>
+<ul>
+<li>元数据：<strong>必定加载</strong>，对应书籍的目录</li>
+<li>指令：对应书籍的正文</li>
+<li>资源：对应书籍的附录</li>
+</ul>
+<p>就是一个个文件夹，必须包含 <code>SKILL.md</code> 文件，包含元数据和指令。一开始加载，只会读取元数据，确认使用这个 <code>skill</code> 后才会加载指令。</p>
+<p>想要使用别人编写好的技能，只需要将别人的文件夹拖拽进去即可。</p>
+<p>除了必须的 <code>SKILL.md</code> 文件，技能下也可以包含资源曾，包括 <code>scripts</code> 目录下的可执行脚本，<code>references</code> 目录下的补充文档，<code>assets</code> 目录下的图片或者模板文件等资源。</p>
+<p>对比 MCP：</p>
+<ul>
+<li>Agent Skills 侧重于提示词，相当于带目录的说明书，这也导致其 token 消耗少，核心主体是 Markdown 文件。</li>
+<li>MCP 侧重于工具的调用，相当于一个标准化工具箱，由于需要将所有可用工具的描述放入提示词上下文中，其 token 消耗高，核心主体编写的 MCP Server 软件包。</li>
+</ul>
+<hr />
+<p><em>学习完 Vibe Coding，你就可以借助于这些 AI 工具，构建自己想要的软件了。</em></p>
+<p><em>下一章：<a href="../04_LeetCode/">LeetCode</a></em></p>
 
 
 
