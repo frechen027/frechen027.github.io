@@ -176,6 +176,9 @@ git clone https://github.com/username/repo.git
     git push -u origin main
     ```
 
+    !!! tip "为什么加 -u 参数？"
+    `-u` 是 `--set-upstream` 的缩写。它的作用是将本地分支与远程分支**绑定**（建立追踪关系）。绑定后，以后只需要运行简短的 `git push` 或 `git pull`，Git 就会自动知道要往 `origin` 的 `main` 分支同步。
+
 ### 配置 SSH 密钥 (免密登录)
 
 使用 HTTPS 协议每次推送都需要输入账号密码（或 Token），推荐使用 SSH 协议。
@@ -205,12 +208,29 @@ git clone https://github.com/username/repo.git
     # 看到 "Hi username! You've successfully authenticated..." 即成功
     ```
 
-### 拉取远程代码
+### 拉取远程代码 (Pull vs Fetch)
 
-```bash
-# 拉取并合并 (pull = fetch + merge)
-git pull origin main
-```
+1.  **直接拉取 (Pull)**:
+    `git pull` 相当于 **下载代码** + **自动合并**。
+
+    ```bash
+    # 拉取并自动合并 (最常用)
+    git pull origin main
+    ```
+
+2.  **仅获取更新 (Fetch)**:
+    如果你只想把远程代码下载下来，但不合并到你的分支（想看看别人改了什么），使用 `git fetch`。
+
+    ```bash
+    # 下载远程更新，但不改变当前工作区
+    git fetch origin main
+
+    # 之后可以查看 diff，确认没问题再手动 merge
+    git diff main origin/main
+    git merge origin/main
+    ```
+
+    !!! info "Fetch vs Pull" - `git fetch`: **安全**，只是下载更新到本地仓库，不会弄乱你正在写代码的工作区。 - `git pull`: **快捷**，但如果远程代码和你本地有冲突，会直接触发合并流程，可能产生冲突文件。
 
 ## 6. `.gitignore` 文件
 
@@ -232,6 +252,31 @@ venv/
 ```
 
 ## 7. 常见问题与回滚
+
+### 临时保存工作现场 (Stash)
+
+场景：代码写了一半需要切换分支去修紧急 Bug，但不想提交依然 Broken 的代码。
+
+```bash
+# 1. 保存当前进度到堆栈 (工作区瞬间变干净)
+git stash
+# 或者带个备注
+git stash save "暂存未完成的登录功能"
+
+# 2. 此时可以安全切换分支了
+git checkout main
+
+# ... (修完 Bug 后切回来) ...
+
+# 3. 恢复最近一次保存的现场 (恢复并从堆栈删除)
+git stash pop
+```
+
+**其他常用命令：**
+
+-   `git stash list`: 查看所有暂存记录
+-   `git stash apply`: 恢复但不删除记录
+-   `git stash clear`: 清空所有记录
 
 ### 撤销工作区的修改
 
@@ -260,10 +305,14 @@ git restore --staged filename.py
 ```bash
 # 回退到上一个版本 (保留工作区修改)
 git reset --soft HEAD^
+# 或者 (HEAD^ 和 HEAD~ 是一样的，都是指上一个版本)
+git reset --soft HEAD~
 
 # 彻底回退到指定 commit (危险操作，修改全丢)
 git reset --hard <commit_id>
 ```
+
+!!! question "HEAD^ 与 HEAD~ 的区别" - `git reset --soft HEAD^` 和 `git reset --soft HEAD~` **功能完全一样**，都是回退到上一个版本。 - `HEAD^` (Caret) 主要用于合并节点，选择第几个父提交。 - `HEAD~` (Tilde) 主要用于线性回退，`HEAD~2` 代表回退两步。 - 在 Windows 命令行 (CMD/PowerShell) 中，`^` 是转义字符，所以**推荐使用 `HEAD~`**，否则你需要写成 `HEAD^^` 或 `"HEAD^"`。
 
 ## 8. GitHub/GitLab 工作流 (Pull Request)
 

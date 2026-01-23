@@ -254,3 +254,5 @@ $$
 ---
 
 _学习完 Markdown，你就可以优雅地编写文档和博客了。_
+
+_下一章：[Vibe Coding](03_Vibe_Coding.md)_
