@@ -1565,15 +1565,51 @@
 <li><strong>重点:</strong> 类型提示 (Type Hints)、虚拟环境 (uv/poetry)、包管理、Git 工作流。</li>
 <li><strong>内容:</strong> 列表推导式、生成器、异常处理、文件操作 (pathlib)。</li>
 <li><strong>实战:</strong> 编写一个 CLI 工具 (使用 Typer 或 Click)。</li>
+<li><strong>验收产物 (未完成):</strong><ol>
+<li>《Python工程规范手册》（包含环境配置、代码规范、Git流程）</li>
+<li>CLI工具代码仓库（使用Typer/Click，支持类型验证和命令行参数解析）</li>
+<li>单元测试覆盖率达到85%+，通过CI/CD流水线验证</li>
+</ol>
+</li>
+<li><strong>验收标准 (未完成):</strong><ul>
+<li>代码通过mypy严格模式检查，无类型错误</li>
+<li>项目可通过<code>uv sync</code>一键复现开发环境</li>
+<li>CI/CD流水线包含代码检查、测试、构建三阶段</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>周 2: 面向对象与函数式编程</strong><ul>
 <li><strong>重点:</strong> 类与对象、继承、多态、魔术方法 (<code>__call__</code>, <code>__init__</code>, <code>__enter__</code>)。</li>
 <li><strong>高级:</strong> 装饰器 (Decorators) 原理、闭包、迭代器模式。</li>
+<li><strong>验收产物 (未完成):</strong><ol>
+<li>《Python高级特性实战笔记》（包含装饰器工厂、描述符、元类示例）</li>
+<li>数据转换管道项目（使用函数式编程处理多源数据）</li>
+<li>自定义装饰器库（支持参数验证、性能监控、缓存等功能）</li>
+</ol>
+</li>
+<li><strong>验收标准 (未完成):</strong><ul>
+<li>掌握<code>__call__</code>、<code>__enter__</code>等魔术方法的实际应用场景</li>
+<li>能够实现带参数的装饰器并正确处理函数签名</li>
+<li>理解闭包在回调函数和配置管理中的应用</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>周 3: 并发编程与元编程</strong><ul>
 <li><strong>重点:</strong> <code>asyncio</code> 深度理解 (AI 服务高并发核心)、多线程 vs 多进程 (GIL 锁)、元类 (Metaclasses)。</li>
+<li><strong>验收产物 (未完成):</strong><ol>
+<li>《并发编程实战指南》（包含asyncio高级模式、线程池最佳实践）</li>
+<li>高并发Web服务Demo（支持1000+并发连接，响应时间&lt;100ms）</li>
+<li>元类应用案例（自动生成数据验证类、ORM模型类）</li>
+</ol>
+</li>
+<li><strong>验收标准 (未完成):</strong><ul>
+<li>能够解释GIL对Python多线程的影响及解决方案</li>
+<li>掌握asyncio.create_task、asyncio.gather等高级用法</li>
+<li>理解元类在框架开发中的实际价值</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1584,18 +1620,54 @@
 <li><strong>框架:</strong> <strong>FastAPI</strong> (目前 AI 领域标配)。</li>
 <li><strong>内容:</strong> Pydantic 数据验证、Dependency Injection (依赖注入)、OpenAPI 文档自动生成。</li>
 <li><strong>实战:</strong> 开发一个只有 API 的后端服务 (ToDo List 或 博客 API)。</li>
+<li><strong>验收产物 (未完成):</strong><ol>
+<li>《FastAPI生产开发指南》（包含项目结构、配置管理、测试策略）</li>
+<li>RESTful API服务（支持用户认证、资源管理、文件上传）</li>
+<li>OpenAPI自动化文档（包含交互式测试界面）</li>
+</ol>
+</li>
+<li><strong>验收标准 (未完成):</strong><ul>
+<li>API服务通过OWASP Top 10安全测试</li>
+<li>支持Swagger UI和ReDoc双文档系统</li>
+<li>依赖注入实现业务逻辑解耦</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>周 5: 数据库与持久化</strong><ul>
 <li><strong>SQL:</strong> PostgreSQL (生产环境首选)、SQLAlchemy 2.0 (现代 ORM)。</li>
 <li><strong>NoSQL:</strong> Redis (缓存与消息队列)、Vector DB (向量数据库基础，如 ChromaDB/Qdrant)。</li>
 <li><strong>实战:</strong> 将数据库集成到 FastAPI，实现 CRUD 和简单的缓存。</li>
+<li><strong>验收产物 (未完成):</strong><ol>
+<li>《现代数据存储方案白皮书》（包含关系型、NoSQL、向量数据库对比）</li>
+<li>多数据库集成项目（PostgreSQL主存储 + Redis缓存 + Chroma向量搜索）</li>
+<li>数据库性能优化报告（包含索引优化、查询调优、连接池配置）</li>
+</ol>
+</li>
+<li><strong>验收标准 (未完成):</strong><ul>
+<li>掌握SQLAlchemy 2.0异步会话管理</li>
+<li>实现基本的向量相似度搜索功能</li>
+<li>Redis缓存命中率达到90%+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>周 6: 容器化与基础部署</strong><ul>
 <li><strong>工具:</strong> Docker, Docker Compose。</li>
 <li><strong>内容:</strong> 编写优化的 <code>Dockerfile</code> (多阶段构建)、<code>docker-compose.yaml</code> 编排服务。</li>
 <li><strong>实战:</strong> 将 Web 服务 + DB + Redis 一键启动。</li>
+<li><strong>验收产物 (未完成):</strong><ol>
+<li>《容器化部署最佳实践》（包含Dockerfile模板、Compose配置、安全清单）</li>
+<li>微服务部署套件（包含Web服务、数据库、缓存、监控组件）</li>
+<li>CI/CD流水线配置（GitHub Actions/GitLab CI自动化构建部署）</li>
+</ol>
+</li>
+<li><strong>验收标准 (未完成):</strong><ul>
+<li>Docker镜像大小&lt;500MB，无安全高危漏洞</li>
+<li>服务可通过<code>docker-compose up</code>一键启动</li>
+<li>实现蓝绿部署或金丝雀发布的基本流程</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1606,17 +1678,53 @@
 <li><strong>库:</strong> NumPy (矩阵运算基础), Pandas (数据处理)。</li>
 <li><strong>内容:</strong> DataFrame 操作、数据清洗、分组聚合、时间序列处理。</li>
 <li><strong>实战:</strong> 分析 Kaggle 上的 Titanic 或 房价预测数据集。</li>
+<li><strong>验收产物 (未完成):</strong><ol>
+<li>《数据工程实战手册》（包含ETL流程、数据质量规范、性能优化）</li>
+<li>数据清洗管道项目（支持脏数据识别、缺失值处理、异常值检测）</li>
+<li>数据质量报告系统（自动生成数据质量指标和问题清单）</li>
+</ol>
+</li>
+<li><strong>验收标准 (未完成):</strong><ul>
+<li>掌握Pandas高级操作：分组聚合、窗口函数、时间序列处理</li>
+<li>数据清洗流程支持增量更新和容错恢复</li>
+<li>数据质量监控覆盖完整性、准确性、一致性三个维度</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>周 8: 经典机器学习 (Scikit-Learn)</strong><ul>
 <li><strong>内容:</strong> 监督学习 (回归、分类)、无监督学习 (聚类、降维)、特征工程。</li>
 <li><strong>实战:</strong> 训练一个简单的预测模型并评估 (Precision/Recall)。</li>
+<li><strong>验收产物 (未完成):</strong><ol>
+<li>《机器学习工业化应用指南》（包含特征工程、模型选择、评估体系）</li>
+<li>端到端机器学习项目（从数据准备到模型部署全流程）</li>
+<li>模型可解释性报告（包含特征重要性、个体预测解释）</li>
+</ol>
+</li>
+<li><strong>验收标准 (未完成):</strong><ul>
+<li>掌握常用监督学习算法的适用场景和调参技巧</li>
+<li>特征工程流程可复现、可监控、可迭代</li>
+<li>模型评估覆盖离线指标和线上业务指标</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>周 9-10: 深度学习基础 (PyTorch)</strong><ul>
 <li><strong>框架:</strong> Python 深度学习事实标准 <strong>PyTorch</strong>。</li>
 <li><strong>内容:</strong> Tensor 操作、Autograd (自动求导)、神经网络构建 (<code>nn.Module</code>)、DataLoader。</li>
 <li><strong>实战:</strong> 使用 CNN 做 MNIST 手写数字识别。</li>
+<li><strong>验收产物 (未完成):</strong><ol>
+<li>《PyTorch生产开发手册》（包含编译优化、分布式训练、性能调优）</li>
+<li>深度学习项目（CNN图像分类、RNN时间序列预测等）</li>
+<li>模型性能优化报告（包含编译前后对比、多GPU扩展效率）</li>
+</ol>
+</li>
+<li><strong>验收标准 (未完成):</strong><ul>
+<li>掌握PyTorch张量操作和自动求导原理</li>
+<li>能够使用torch.compile对模型进行编译优化</li>
+<li>理解分布式训练的基本概念和配置方法</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1627,21 +1735,69 @@
 <li><strong>原理:</strong> Attention 机制直观理解。</li>
 <li><strong>工具:</strong> <code>transformers</code> 库、<code>datasets</code> 库。</li>
 <li><strong>实战:</strong> 调用开源模型进行文本与情感分析。</li>
+<li><strong>验收产物 (未完成):</strong><ol>
+<li>《大模型应用开发指南》（包含模型选择、微调策略、部署优化）</li>
+<li>Transformer项目（文本分类、命名实体识别等NLP任务）</li>
+<li>模型量化实验报告（包含精度损失、推理加速效果对比）</li>
+</ol>
+</li>
+<li><strong>验收标准 (未完成):</strong><ul>
+<li>掌握Transformer架构的核心组件和工作原理</li>
+<li>能够使用HuggingFace工具链完成模型训练和推理</li>
+<li>理解模型量化的基本方法和效果评估</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>周 12: Prompt Engineering 与 LangChain</strong><ul>
 <li><strong>内容:</strong> 提示词工程、LangChain/LangGraph 框架、Chains, Agents, Memories。</li>
 <li><strong>实战:</strong> 构建一个简单的 PDF 聊天助手。</li>
+<li><strong>验收产物 (未完成):</strong><ol>
+<li>《Prompt工程与智能体开发手册》（包含Prompt设计模式、LangChain最佳实践）</li>
+<li>RAG系统项目（支持文档问答、知识检索、多轮对话）</li>
+<li>Prompt版本管理工具（Git集成、变更追踪、性能分析）</li>
+</ol>
+</li>
+<li><strong>验收标准 (未完成):</strong><ul>
+<li>掌握常用Prompt设计模式和优化技巧</li>
+<li>能够构建基本的RAG系统并评估其效果</li>
+<li>理解LangChain在复杂AI应用中的价值</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>周 13: RAG (检索增强生成)</strong><ul>
 <li><strong>技术:</strong> 向量嵌入 (Embeddings)、向量数据库 (Pinecone/Milvus)、RAG 流程。</li>
 <li><strong>实战:</strong> 搭建本地知识库问答系统。</li>
+<li><strong>验收产物 (未完成):</strong><ol>
+<li>《RAG系统优化白皮书》（包含检索算法、缓存策略、效果评估）</li>
+<li>高性能RAG系统（响应时间&lt;2s，准确率&gt;85%）</li>
+<li>检索质量分析工具（包含召回率、准确率、相关性评分）</li>
+</ol>
+</li>
+<li><strong>验收标准 (未完成):</strong><ul>
+<li>RAG系统支持多源数据检索和结果融合</li>
+<li>实现查询意图识别和检索策略动态调整</li>
+<li>掌握检索质量评估的常用指标和方法</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>周 14-15: 模型微调 (Fine-tuning)</strong><ul>
 <li><strong>技术:</strong> LoRA, QLoRA, PEFT (高效参数微调)。</li>
 <li><strong>实战:</strong> 在 Colab 上微调一个 Llama 3 或 Mistral 模型以适应特定风格。</li>
+<li><strong>验收产物 (未完成):</strong><ol>
+<li>《大模型微调实战指南》（包含PEFT方法、训练策略、效果评估）</li>
+<li>微调项目（在特定领域数据上微调开源大模型）</li>
+<li>微调效果评估报告（包含任务性能、泛化能力、效率指标）</li>
+</ol>
+</li>
+<li><strong>验收标准 (未完成):</strong><ul>
+<li>掌握LoRA等高效微调方法的原理和实现</li>
+<li>能够设计完整的微调实验并评估模型效果</li>
+<li>理解微调过程中常见问题和解决方案</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1651,16 +1807,52 @@
 <li><strong>周 16: MLOps 基础与实验追踪</strong><ul>
 <li><strong>工具:</strong> MLflow 或 Weights &amp; Biases (W&amp;B)。</li>
 <li><strong>内容:</strong> 模型版本管理、参数记录、Artifacts 管理。</li>
+<li><strong>验收产物 (未完成):</strong><ol>
+<li>《MLOps实施路线图》（包含工具选型、架构设计、流程规范）</li>
+<li>MLOps平台Demo（集成MLflow、Git、Docker、Kubernetes）</li>
+<li>实验管理报告（包含实验对比、结果分析、决策建议）</li>
+</ol>
+</li>
+<li><strong>验收标准 (未完成):</strong><ul>
+<li>掌握MLflow核心组件的使用和配置</li>
+<li>能够搭建基本的实验跟踪和模型管理流程</li>
+<li>理解MLOps在企业AI落地中的关键作用</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>周 17: 模型服务化 (Model Serving)</strong><ul>
 <li><strong>工具:</strong> TorchServe, Triton Inference Server, 或简单的 FastAPI 封装。</li>
 <li><strong>挑战:</strong> 批处理 (Batching)、低延迟优化、GPU 资源调度。</li>
+<li><strong>验收产物 (未完成):</strong><ol>
+<li>《AI模型服务化架构指南》（包含服务设计、性能优化、监控体系）</li>
+<li>生产级模型服务（支持批量/实时推理、多模型部署）</li>
+<li>服务性能测试报告（包含压力测试、稳定性测试、资源利用率）</li>
+</ol>
+</li>
+<li><strong>验收标准 (未完成):</strong><ul>
+<li>掌握TorchServe或Triton的基本配置和使用</li>
+<li>能够实现模型服务的动态批处理和性能优化</li>
+<li>理解模型服务在生产环境中的运维要点</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>周 18: 分布式与编排 (AI Infra)</strong><ul>
 <li><strong>核心:</strong> <strong>Ray</strong> 框架 (分布式计算标准)。</li>
 <li><strong>内容:</strong> Ray Train, Ray Serve。了解 Kubernetes 对 AI 的支持 (KubeFlow 概念即可)。</li>
+<li><strong>验收产物 (未完成):</strong><ol>
+<li>《分布式AI系统架构白皮书》（包含Ray集群、K8s编排、多云管理）</li>
+<li>分布式训练项目（支持数据并行、模型并行、混合并行）</li>
+<li>资源调度优化报告（包含GPU利用率、成本效益、性能表现）</li>
+</ol>
+</li>
+<li><strong>验收标准 (未完成):</strong><ul>
+<li>掌握Ray核心概念和基本编程模型</li>
+<li>能够配置和管理基本的Ray集群</li>
+<li>理解分布式AI系统的常见架构模式和挑战</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1673,6 +1865,19 @@
 <li><strong>AI:</strong> 使用 RAG 技术检索私有数据，或微调开源 LLM。</li>
 <li><strong>部署:</strong> Docker 容器化，使用 Ray Serve 或 K8s 部署，接入 Prometheus 监控。</li>
 <li><strong>Frontend:</strong> 使用 Streamlit 或 Gradio 快速搭建演示界面。</li>
+<li><strong>验收产物 (未完成):</strong><ol>
+<li>《企业级AI系统架构设计方案》（包含技术选型、模块设计、接口规范）</li>
+<li>完整项目代码仓库（包含所有组件和部署配置）</li>
+<li>项目总结报告（包含技术难点、解决方案、效果评估、改进建议）</li>
+</ol>
+</li>
+<li><strong>验收标准 (未完成):</strong><ul>
+<li>系统支持完整的业务流程和数据流转</li>
+<li>实现端到端的自动化测试和部署流水线</li>
+<li>提供详细的项目文档和运维指南</li>
+<li>系统性能满足生产环境基本要求（可用性&gt;99.5%，响应时间&lt;3s）</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
