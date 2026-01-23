@@ -1178,10 +1178,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#pull-vs-fetch" class="md-nav__link">
     <span class="md-ellipsis">
       
-        拉取远程代码
+        拉取远程代码 (Pull vs Fetch)
       
     </span>
   </a>
@@ -1217,7 +1217,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#stash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        临时保存工作现场 (Stash)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         撤销工作区的修改
@@ -1228,7 +1239,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         撤销暂存区的修改
@@ -1239,7 +1250,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         回退版本
@@ -1682,10 +1693,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#pull-vs-fetch" class="md-nav__link">
     <span class="md-ellipsis">
       
-        拉取远程代码
+        拉取远程代码 (Pull vs Fetch)
       
     </span>
   </a>
@@ -1721,7 +1732,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#stash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        临时保存工作现场 (Stash)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         撤销工作区的修改
@@ -1732,7 +1754,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         撤销暂存区的修改
@@ -1743,7 +1765,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         回退版本
@@ -1984,10 +2006,28 @@ cat<span class="w"> </span>~/.ssh/id_rsa.pub
 </code></pre></div></p>
 </li>
 </ol>
-<h3 id="_10">拉取远程代码</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 拉取并合并 (pull = fetch + merge)</span>
+<h3 id="pull-vs-fetch">拉取远程代码 (Pull vs Fetch)</h3>
+<ol>
+<li>
+<p><strong>直接拉取 (Pull)</strong>:
+    <code>git pull</code> 相当于 <strong>下载代码</strong> + <strong>自动合并</strong>。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 拉取并自动合并 (最常用)</span>
 git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
 </code></pre></div>
+</li>
+<li>
+<p><strong>仅获取更新 (Fetch)</strong>:
+    如果你只想把远程代码下载下来，但不合并到你的分支（想看看别人改了什么），使用 <code>git fetch</code>。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 下载远程更新，但不改变当前工作区</span>
+git<span class="w"> </span>fetch<span class="w"> </span>origin<span class="w"> </span>main
+
+<span class="c1"># 之后可以查看 diff，确认没问题再手动 merge</span>
+git<span class="w"> </span>diff<span class="w"> </span>main<span class="w"> </span>origin/main
+git<span class="w"> </span>merge<span class="w"> </span>origin/main
+</code></pre></div>
+<p>!!! info "Fetch vs Pull" - <code>git fetch</code>: <strong>安全</strong>，只是下载更新到本地仓库，不会弄乱你正在写代码的工作区。 - <code>git pull</code>: <strong>快捷</strong>，但如果远程代码和你本地有冲突，会直接触发合并流程，可能产生冲突文件。</p>
+</li>
+</ol>
 <h2 id="6-gitignore">6. <code>.gitignore</code> 文件</h2>
 <p>有些文件不应该提交到仓库中（如密码、虚拟环境、编译产生的临时文件）。
 在项目根目录创建一个名为 <code>.gitignore</code> 的文件，写入要忽略的规则：</p>
@@ -2004,13 +2044,34 @@ venv/
 .idea/
 </code></pre></div>
 <h2 id="7">7. 常见问题与回滚</h2>
-<h3 id="_11">撤销工作区的修改</h3>
+<h3 id="stash">临时保存工作现场 (Stash)</h3>
+<p>场景：代码写了一半需要切换分支去修紧急 Bug，但不想提交依然 Broken 的代码。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. 保存当前进度到堆栈 (工作区瞬间变干净)</span>
+git<span class="w"> </span>stash
+<span class="c1"># 或者带个备注</span>
+git<span class="w"> </span>stash<span class="w"> </span>save<span class="w"> </span><span class="s2">&quot;暂存未完成的登录功能&quot;</span>
+
+<span class="c1"># 2. 此时可以安全切换分支了</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+
+<span class="c1"># ... (修完 Bug 后切回来) ...</span>
+
+<span class="c1"># 3. 恢复最近一次保存的现场 (恢复并从堆栈删除)</span>
+git<span class="w"> </span>stash<span class="w"> </span>pop
+</code></pre></div>
+<p><strong>其他常用命令：</strong></p>
+<ul>
+<li><code>git stash list</code>: 查看所有暂存记录</li>
+<li><code>git stash apply</code>: 恢复但不删除记录</li>
+<li><code>git stash clear</code>: 清空所有记录</li>
+</ul>
+<h3 id="_10">撤销工作区的修改</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 丢弃文件在工作区的修改 (慎用！无法找回)</span>
 git<span class="w"> </span>checkout<span class="w"> </span>--<span class="w"> </span>filename.py
 <span class="c1"># 或 (新版 Git)</span>
 git<span class="w"> </span>restore<span class="w"> </span>filename.py
 </code></pre></div>
-<h3 id="_12">撤销暂存区的修改</h3>
+<h3 id="_11">撤销暂存区的修改</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 将文件从暂存区撤回工作区 (unstage)</span>
 git<span class="w"> </span>reset<span class="w"> </span>HEAD<span class="w"> </span>filename.py
 
@@ -2020,13 +2081,16 @@ git<span class="w"> </span>reset<span class="w"> </span>HEAD
 <span class="c1"># 或 (新版 Git)</span>
 git<span class="w"> </span>restore<span class="w"> </span>--staged<span class="w"> </span>filename.py
 </code></pre></div>
-<h3 id="_13">回退版本</h3>
+<h3 id="_12">回退版本</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 回退到上一个版本 (保留工作区修改)</span>
 git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>HEAD^
+<span class="c1"># 或者 (HEAD^ 和 HEAD~ 是一样的，都是指上一个版本)</span>
+git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>HEAD~
 
 <span class="c1"># 彻底回退到指定 commit (危险操作，修改全丢)</span>
 git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>&lt;commit_id&gt;
 </code></pre></div>
+<p>!!! question "HEAD^ 与 HEAD~ 的区别" - <code>git reset --soft HEAD^</code> 和 <code>git reset --soft HEAD~</code> <strong>功能完全一样</strong>，都是回退到上一个版本。 - <code>HEAD^</code> (Caret) 主要用于合并节点，选择第几个父提交。 - <code>HEAD~</code> (Tilde) 主要用于线性回退，<code>HEAD~2</code> 代表回退两步。 - 在 Windows 命令行 (CMD/PowerShell) 中，<code>^</code> 是转义字符，所以<strong>推荐使用 <code>HEAD~</code></strong>，否则你需要写成 <code>HEAD^^</code> 或 <code>"HEAD^"</code>。</p>
 <h2 id="8-githubgitlab-pull-request">8. GitHub/GitLab 工作流 (Pull Request)</h2>
 <p>团队开发的标准流程：</p>
 <ol>
