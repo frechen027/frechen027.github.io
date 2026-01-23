@@ -30,9 +30,7 @@ nav:                       # 导航栏菜单结构，层级与目录结构对应
     - 4 LeetCode: tools/04_LeetCode.md
     - 5 n8n: tools/05_n8n.md
     - 6 coze: tools/06_coze.md
-    - 7 画图工具: tools/07_画图工具.md
-    - 8 笔记工具: tools/08_笔记工具.md
-    
+
 
 
 
@@ -44,7 +42,13 @@ theme:
 markdown_extensions:
   - admonition
   - pymdownx.highlight
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.arithmatex:
       generic: true
 
