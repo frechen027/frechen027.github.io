@@ -2034,19 +2034,21 @@
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>运行方式：</strong></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">命令行</label><label for="__tabbed_1_2">交互式</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">命令行</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>hello.py
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">)</span>
-<span class="n">Hello</span><span class="p">,</span> <span class="n">World</span><span class="err">!</span>
-</code></pre></div>
+<div class="tabbed-block"></div>
 </div>
 </div>
+<p><code>bash
+    python hello.py</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">交互式</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
 </div>
+</div>
+<p><code>python
+    &gt;&gt;&gt; print("Hello, World!")
+    Hello, World!</code></p>
 <h3 id="_1">进阶示例：带输入的程序</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 获取用户输入</span>
 <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入你的名字: &quot;</span><span class="p">)</span>
@@ -2202,6 +2204,35 @@ mymodule<span class="w"> </span>的<span class="w"> </span><span class="nv">__na
 main<span class="w"> </span>的<span class="w"> </span><span class="nv">__name__</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>__main__
 Hello<span class="w"> </span>from<span class="w"> </span>mymodule!
 </code></pre></div>
+<p>为了防止 import 时执行不必要的代码（比如打印日志、启动服务器或运行耗时计算），我们通常把这些代码放在 if <strong>name</strong> == "<strong>main</strong>": 块中。</p>
+<p>Python 的导入逻辑（Import Logic）是什么样的？</p>
+<p>当你执行 import some_module 时，Python 内部大致遵循以下流程：</p>
+<ul>
+<li>
+<p>搜索（Search）：</p>
+<ul>
+<li>在 sys.path（包含当前目录、标准库目录、第三方库目录）中寻找名为 some_module 的文件（如 .py 文件）或包。检查缓存（Check Cache）：</li>
+</ul>
+</li>
+<li>
+<p>Python 会检查这个模块是否已经被导入过（查看 sys.modules）。如果已经导入过，就直接使用之前的模块对象，而不会重新执行代码。</p>
+<ul>
+<li>你可以试着在 main.py 里写两次 import mymodule，你会发现 mymodule 里的 print 只会打印一次。</li>
+</ul>
+</li>
+<li>
+<p>编译与执行（Compile &amp; Execute）：</p>
+<ul>
+<li>如果没被导入过，Python 会创建一个新的模块对象。然后从头到尾执行该模块文件中的代码，填充这个模块对象（比如定义所有的函数、类、变量）。任何在这个过程中的顶层代码（比如不在函数里的 print、input 或者全局变量计算）都会被立即运行。</li>
+</ul>
+</li>
+<li>
+<p>注册（Register）：</p>
+<ul>
+<li>将在这个过程中创建的模块对象保存到 sys.modules 中，供后续使用。</li>
+</ul>
+</li>
+</ul>
 <h2 id="_5">代码注释</h2>
 <h3 id="_6">单行注释</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 这是单行注释</span>
@@ -2265,8 +2296,8 @@ Hello<span class="w"> </span>from<span class="w"> </span>mymodule!
 <p class="admonition-title">缩进最佳实践</p>
 </div>
 <ul>
-<li><strong>始终使用 4 个空格</strong>进行缩进 </li>
-<li><strong>不要混用 Tab 和空格</strong> </li>
+<li><strong>始终使用 4 个空格</strong>进行缩进</li>
+<li><strong>不要混用 Tab 和空格</strong></li>
 <li>配置编辑器将 Tab 自动转换为空格</li>
 </ul>
 <h3 id="_10">常见缩进错误</h3>
@@ -2454,7 +2485,7 @@ Hello<span class="w"> </span>from<span class="w"> </span>mymodule!
 </li>
 </ol>
 <hr />
-<p><em>下一章：<a href="../02_%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/">基础语法与变量</a></em></p>
+<p>*下一章：<a href="02*基础语法与变量.md">基础语法与变量</a>_</p>
 
 
 
