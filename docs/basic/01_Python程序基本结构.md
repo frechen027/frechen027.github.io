@@ -174,6 +174,24 @@ main 的 __name__ = __main__
 Hello from mymodule!
 ```
 
+为了防止 import 时执行不必要的代码（比如打印日志、启动服务器或运行耗时计算），我们通常把这些代码放在 if **name** == "**main**": 块中。
+
+Python 的导入逻辑（Import Logic）是什么样的？
+
+当你执行 import some_module 时，Python 内部大致遵循以下流程：
+
+- 搜索（Search）：
+    - 在 sys.path（包含当前目录、标准库目录、第三方库目录）中寻找名为 some_module 的文件（如 .py 文件）或包。检查缓存（Check Cache）：
+
+- Python 会检查这个模块是否已经被导入过（查看 sys.modules）。如果已经导入过，就直接使用之前的模块对象，而不会重新执行代码。
+    - 你可以试着在 main.py 里写两次 import mymodule，你会发现 mymodule 里的 print 只会打印一次。
+
+- 编译与执行（Compile & Execute）：
+    - 如果没被导入过，Python 会创建一个新的模块对象。然后从头到尾执行该模块文件中的代码，填充这个模块对象（比如定义所有的函数、类、变量）。任何在这个过程中的顶层代码（比如不在函数里的 print、input 或者全局变量计算）都会被立即运行。
+
+- 注册（Register）：
+    - 将在这个过程中创建的模块对象保存到 sys.modules 中，供后续使用。
+
 ## 代码注释
 
 ### 单行注释
@@ -247,9 +265,10 @@ if True:
 	print("使用 Tab")  # 可能导致 IndentationError
 ```
 
-!!! warning "缩进最佳实践" 
-- **始终使用 4 个空格**进行缩进 
-- **不要混用 Tab 和空格** 
+!!! warning "缩进最佳实践"
+
+- **始终使用 4 个空格**进行缩进
+- **不要混用 Tab 和空格**
 - 配置编辑器将 Tab 自动转换为空格
 
 ### 常见缩进错误
@@ -330,10 +349,10 @@ In [3]: !ls  # 执行 Shell 命令
 
 适合数据分析和机器学习的交互式环境，支持：
 
--   代码单元格执行
--   Markdown 文档
--   可视化输出
--   实时交互
+- 代码单元格执行
+- Markdown 文档
+- 可视化输出
+- 实时交互
 
 ## 编码规范 (PEP 8)
 

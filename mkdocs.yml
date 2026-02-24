@@ -28,10 +28,10 @@ nav:                       # 导航栏菜单结构，层级与目录结构对应
     - 2 Markdown: tools/02_Markdown.md
     - 3 Vibe Coding: tools/03_Vibe_Coding.md
     - 4 LeetCode: tools/04_LeetCode.md
-    - 5 n8n: tools/05_n8n.md
-    - 6 coze: tools/06_coze.md
+    - 5 coze: tools/05_coze.md
+    - 6 n8n: tools/06_n8n.md
     - 7 PPT: tools/07_PPT.md
-    
+
 
 
 
