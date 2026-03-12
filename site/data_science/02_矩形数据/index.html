@@ -1,0 +1,3657 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../01_%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
+      
+      
+        <link rel="next" href="../03_SQL/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>2 矩形数据 - Python 修行指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rectangular-data" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Python 修行指南" class="md-header__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python 修行指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2 矩形数据
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Python 修行指南" class="md-nav__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Python 修行指南
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    前言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 预备知识
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 预备知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/01_Python%E7%A8%8B%E5%BA%8F%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Python程序基本结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/02_%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 基础语法与变量
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/03_%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 核心数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/04_%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 运算符与表达式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/05_%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 程序控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/06_%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 函数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/07_%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 文件操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/08_%E9%94%99%E8%AF%AF%E4%B8%8E%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 错误与异常处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/09_%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 面向对象编程基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 进阶修炼
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 进阶修炼
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/01_%E6%8E%A8%E5%AF%BC%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/02_%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 迭代器与生成器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/03_%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/04_%E8%A3%85%E9%A5%B0%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 装饰器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/05_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/06_%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%8C%85/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 模块与包
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/07_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 进阶输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/08_%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 命名空间与作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/09_%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 类型注解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/10_%E6%A0%87%E5%87%86%E5%BA%93%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 标准库概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/11_%E5%BC%82%E6%AD%A5IO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 异步IO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/01_%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 算法概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/02_%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%9E%9A%E4%B8%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 模拟与枚举
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/03_%E9%80%92%E5%BD%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 递归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/04_%E5%88%86%E6%B2%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 分治
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/05_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 二分查找
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/06_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 动态规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/07_%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 背包问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/08_%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 贪心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/09_%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 搜索算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/10_%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 图论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据科学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据科学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 生命周期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 矩形数据
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 矩形数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-pandas-dataframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 使用 pandas 处理 Dataframe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dataframe-subsetting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Dataframe 子集 (Subsetting)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Dataframe 子集 (Subsetting)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-data-scope-and-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 数据范围与问题 (Data Scope and Question)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-dataframe-dataframes-and-indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Dataframe 与 索引 (Dataframes and Indices)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-slicing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 切片 (Slicing)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-filtering-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 过滤行 (Filtering Rows)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-luna-example-how-recently-has-luna-become-a-popular-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 案例：Luna 这个名字是什么时候变流行的？ (Example: How Recently has Luna Become a Popular Name?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-aggregating" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 聚合行 (Aggregating)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 聚合行 (Aggregating)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-basic-group-aggregate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 基础分组聚合 (Basic Group-Aggregate)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 基础分组聚合 (Basic Group-Aggregate)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-value_counts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1 案例：使用 .value_counts()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-grouping-on-multiple-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 多列分组 (Grouping on Multiple Columns)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 自定义聚合函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-pivoting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 透视表 (Pivoting)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-dataframe-joining" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 连接 Dataframe (Joining)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 连接 Dataframe (Joining)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-inner-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 内连接 (Inner Joins)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-left-right-and-outer-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 左连接、右连接和外连接 (Left, Right, and Outer Joins)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-example-popularity-of-nyt-name-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 案例：纽约时报名字类别的流行度 (Example: Popularity of NYT Name Categories)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-transforming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 数据变换 (Transforming)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 数据变换 (Transforming)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-apply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 使用 Apply
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-l-popularity-of-l-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 案例："L" 开头名字的流行度 (Popularity of “L” Names)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-apply-the-price-of-apply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Apply 的代价 (The Price of Apply)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-dataframe-how-are-dataframes-different" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Dataframe 与其他数据表示形式的区别 (How Are Dataframes Different?)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Dataframe 与其他数据表示形式的区别 (How Are Dataframes Different?)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-dataframe-dataframes-and-spreadsheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Dataframe 与 电子表格 (Dataframes and Spreadsheets)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-dataframe-dataframes-and-matrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Dataframe 与 矩阵 (Dataframes and Matrices)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-dataframe-dataframes-and-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Dataframe 与 关系 (Dataframes and Relations)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 SQL与关系数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 文件处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据清洗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 数据分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实用工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/01_Git%E4%B8%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Git与版本控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/02_Markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/03_Vibe_Coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Vibe Coding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/04_LeetCode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 LeetCode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/05_coze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 coze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/06_n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/07_PPT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 PPT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-pandas-dataframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 使用 pandas 处理 Dataframe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dataframe-subsetting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Dataframe 子集 (Subsetting)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Dataframe 子集 (Subsetting)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-data-scope-and-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 数据范围与问题 (Data Scope and Question)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-dataframe-dataframes-and-indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Dataframe 与 索引 (Dataframes and Indices)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-slicing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 切片 (Slicing)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-filtering-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 过滤行 (Filtering Rows)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-luna-example-how-recently-has-luna-become-a-popular-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 案例：Luna 这个名字是什么时候变流行的？ (Example: How Recently has Luna Become a Popular Name?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-aggregating" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 聚合行 (Aggregating)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 聚合行 (Aggregating)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-basic-group-aggregate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 基础分组聚合 (Basic Group-Aggregate)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 基础分组聚合 (Basic Group-Aggregate)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-value_counts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1 案例：使用 .value_counts()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-grouping-on-multiple-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 多列分组 (Grouping on Multiple Columns)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 自定义聚合函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-pivoting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 透视表 (Pivoting)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-dataframe-joining" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 连接 Dataframe (Joining)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 连接 Dataframe (Joining)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-inner-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 内连接 (Inner Joins)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-left-right-and-outer-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 左连接、右连接和外连接 (Left, Right, and Outer Joins)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-example-popularity-of-nyt-name-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 案例：纽约时报名字类别的流行度 (Example: Popularity of NYT Name Categories)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-transforming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 数据变换 (Transforming)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 数据变换 (Transforming)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-apply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 使用 Apply
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-l-popularity-of-l-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 案例："L" 开头名字的流行度 (Popularity of “L” Names)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-apply-the-price-of-apply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Apply 的代价 (The Price of Apply)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-dataframe-how-are-dataframes-different" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Dataframe 与其他数据表示形式的区别 (How Are Dataframes Different?)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Dataframe 与其他数据表示形式的区别 (How Are Dataframes Different?)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-dataframe-dataframes-and-spreadsheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Dataframe 与 电子表格 (Dataframes and Spreadsheets)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-dataframe-dataframes-and-matrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Dataframe 与 矩阵 (Dataframes and Matrices)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-dataframe-dataframes-and-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Dataframe 与 关系 (Dataframes and Relations)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="rectangular-data">矩形数据 (Rectangular Data)</h1>
+<p>数据科学家经常处理存储在表格中的数据。本章将介绍 <strong>Dataframe</strong>，这是表示数据表最广泛使用的方法之一。我们还将介绍 <strong>pandas</strong>，这是Python中用于处理 Dataframe 的标准库。</p>
+<h2 id="1-pandas-dataframe">1. 使用 pandas 处理 Dataframe</h2>
+<p>以下是一个包含流行犬种信息的 Dataframe 示例：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">breed (索引)</th>
+<th style="text-align: left;">grooming</th>
+<th style="text-align: left;">food_cost</th>
+<th style="text-align: left;">kids</th>
+<th style="text-align: left;">size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Labrador Retriever</strong></td>
+<td style="text-align: left;">weekly</td>
+<td style="text-align: left;">466.0</td>
+<td style="text-align: left;">high</td>
+<td style="text-align: left;">medium</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>German Shepherd</strong></td>
+<td style="text-align: left;">weekly</td>
+<td style="text-align: left;">466.0</td>
+<td style="text-align: left;">medium</td>
+<td style="text-align: left;">large</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Beagle</strong></td>
+<td style="text-align: left;">daily</td>
+<td style="text-align: left;">324.0</td>
+<td style="text-align: left;">high</td>
+<td style="text-align: left;">small</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Golden Retriever</strong></td>
+<td style="text-align: left;">weekly</td>
+<td style="text-align: left;">466.0</td>
+<td style="text-align: left;">high</td>
+<td style="text-align: left;">medium</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Yorkshire Terrier</strong></td>
+<td style="text-align: left;">daily</td>
+<td style="text-align: left;">324.0</td>
+<td style="text-align: left;">low</td>
+<td style="text-align: left;">small</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Bulldog</strong></td>
+<td style="text-align: left;">weekly</td>
+<td style="text-align: left;">466.0</td>
+<td style="text-align: left;">medium</td>
+<td style="text-align: left;">medium</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Boxer</strong></td>
+<td style="text-align: left;">weekly</td>
+<td style="text-align: left;">466.0</td>
+<td style="text-align: left;">high</td>
+<td style="text-align: left;">medium</td>
+</tr>
+</tbody>
+</table>
+<p>在 Dataframe 中，<strong>每一行</strong>代表一条记录——在这个例子中，是一个特定的犬种。<strong>每一列</strong>代表记录的一个特征——例如，<code>grooming</code> 列表示每种犬种需要梳理毛发的频率。</p>
+<p>Dataframe 的行和列都有<strong>标签 (Labels)</strong>。例如，这个 Dataframe 有一个名为 <code>grooming</code> 的列和一个名为 <code>Labrador Retriever</code> 的行。Dataframe 的列和行是有序的——我们可以称 <code>Labrador Retriever</code> 行为 Dataframe 的第一行。</p>
+<p><strong>在同一列中，数据具有相同的类型</strong>。例如，<code>food_cost</code>（食物成本）包含数字，而 <code>size</code>（体型）包含类别。但在同一行中，数据类型可以不同。正因为这些特性，Dataframe 支持各种有用的操作。</p>
+<div class="admonition note">
+<p class="admonition-title">术语说明：特征 vs 变量 / 数据类型</p>
+<p>数据科学家经常与不同背景的人合作，他们可能使用不同的术语：</p>
+<ul>
+<li><strong>特征 vs 变量</strong>：计算机科学家通常称 Dataframe 的列为<strong>特征 (features)</strong>，而统计学家通常称之为<strong>变量 (variables)</strong>。</li>
+<li><strong>数据类型 (Data types)</strong>：人们有时用同一个词指代稍微不同的概念。<ul>
+<li><strong>编程视角</strong>：指计算机内部如何存储数据（例如，<code>size</code> 列在 Python 中是字符串 <code>string</code> 类型）。</li>
+<li><strong>统计视角</strong>：指数据的统计属性（例如，<code>size</code> 列的类型是<strong>有序分类数据 (ordered categorical data)</strong>，即 ordinal data）。我们在探索性数据分析 (EDA) 部分会更详细地讨论这种区别。</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>在本章中，我们将介绍使用 pandas 进行常见的 Dataframe 操作。数据科学家在 Python 中处理 Dataframe 时主要使用 pandas 库。</p>
+<ol>
+<li>首先，我们将解释 pandas 提供的核心对象：<strong>DataFrame</strong> 和 <strong>Series</strong> 类。</li>
+<li>然后，我们将展示如何使用 pandas 执行常见的数据操作任务，如切片 (slicing)、过滤 (filtering)、排序 (sorting)、分组 (grouping) 和 连接 (joining)。</li>
+</ol>
+<hr />
+<h2 id="2-dataframe-subsetting">2. Dataframe 子集 (Subsetting)</h2>
+<p>本节介绍获取 Dataframe 子集的操作。当数据科学家第一次读取 Dataframe 时，他们通常希望提取出计划使用的特定数据子集。例如，数据科学可能会从拥有数百个列的 Dataframe 中切分出 10 个相关特征。或者，他们可能会过滤 Dataframe 以删除数据不完整的行。在本章的其余部分，我们将使用婴儿名字的 Dataframe 演示 Dataframe 操作。</p>
+<h3 id="21-data-scope-and-question">2.1 数据范围与问题 (Data Scope and Question)</h3>
+<p>有一篇2021年的《纽约时报》文章谈到了哈里王子和梅根·马克尔为他们的新生女儿取了一个独特的选择：莉莉贝特 (Lilibet)。文章采访了婴儿名字专家 Pamela Redmond，她谈到了人们给孩子取名的一些有趣趋势。例如，她说以字母 L 开头的名字近年来变得非常流行，而以字母 J 开头的名字在 1970 年代和 1980 年代最为流行。这些说法能数据中反映出来吗？我们可以使用 pandas 来找出答案。</p>
+<p>首先，导入 pandas 库，通常简写为 <code>pd</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</code></pre></div>
+<p>我们有一个名为 <code>babynames.csv</code> 的 CSV 文件，其中包含婴儿名字的数据。我们使用 <code>pd.read_csv</code> 函数将文件读取为 <code>pandas.DataFrame</code> 对象：</p>
+<div class="highlight"><pre><span></span><code><span class="n">baby</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;babynames.csv&#39;</span><span class="p">)</span>
+<span class="n">baby</span>
+</code></pre></div>
+<p><em>(显示部分数据)</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Sex</th>
+<th style="text-align: left;">Count</th>
+<th style="text-align: left;">Year</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">Liam</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: left;">19659</td>
+<td style="text-align: left;">2020</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Noah</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: left;">18252</td>
+<td style="text-align: left;">2020</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Oliver</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: left;">14147</td>
+<td style="text-align: left;">2020</td>
+</tr>
+<tr>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+</tr>
+<tr>
+<td style="text-align: left;">2020719</td>
+<td style="text-align: left;">Verona</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">1880</td>
+</tr>
+<tr>
+<td style="text-align: left;">2020720</td>
+<td style="text-align: left;">Vertie</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">1880</td>
+</tr>
+<tr>
+<td style="text-align: left;">2020721</td>
+<td style="text-align: left;">Wilma</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">1880</td>
+</tr>
+</tbody>
+</table>
+<p><code>2020722 rows × 4 columns</code></p>
+<p><code>baby</code> 表中的数据来自美国社会保障局 (SSA)，该机构出于出生证明的目的记录婴儿的姓名和出生性别。SSA 在其网站上提供了婴儿名字数据。我们已经将此数据加载到 <code>baby</code> 表中。</p>
+<p>SSA 网站有一个页面更详细地描述了这些数据。我们不会在本章深入探讨数据的局限性，但我们会指出网站上这些相关信息：</p>
+<blockquote>
+<p>所有名字都来自 1879 年以后发生在美国的出生社会保障卡申请。请注意，许多 1937 年以前出生的人从未申请过社会保障卡，因此他们的名字不包含在我们的数据中。对于其他申请过的人，我们的记录可能没有显示出生地，此时他们的名字也不包含在我们的数据中。</p>
+<p>所有数据均来自截至 2021 年 3 月社会保障卡申请记录的 100%样本。</p>
+</blockquote>
+<p>同样需要指出的是，在撰写本文时，SSA 数据集仅提供男性 (M) 和女性 (F) 的二元选项。我们希望未来像这样的国家数据集能提供更具包容性的选项。</p>
+<h3 id="22-dataframe-dataframes-and-indices">2.2 Dataframe 与 索引 (Dataframes and Indices)</h3>
+<p>让我们更详细地检查 <code>baby</code> Dataframe。Dataframe 有行和列。每一行和每一列都有一个标签。</p>
+<p>默认情况下，pandas 将行标签分配为从 0 开始递增的数字。在这种情况下，行标签为 0 且列标签为 <code>Name</code> 的位置的数据是 'Liam'。</p>
+<p>Dataframe 也可以使用字符串作为行标签。比如之前的狗的数据：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">breed (索引)</th>
+<th style="text-align: left;">grooming</th>
+<th style="text-align: left;">food_cost</th>
+<th style="text-align: left;">kids</th>
+<th style="text-align: left;">size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Labrador Retriever</strong></td>
+<td style="text-align: left;">weekly</td>
+<td style="text-align: left;">466.0</td>
+<td style="text-align: left;">high</td>
+<td style="text-align: left;">medium</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>German Shepherd</strong></td>
+<td style="text-align: left;">weekly</td>
+<td style="text-align: left;">466.0</td>
+<td style="text-align: left;">medium</td>
+<td style="text-align: left;">large</td>
+</tr>
+<tr>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+</tr>
+</tbody>
+</table>
+<p>行标签有一个特殊的名称。我们称之为 Dataframe 的 <strong>索引 (Index)</strong>，pandas 将行标签存储在一个特殊的 <code>pd.Index</code> 对象中。我们不会讨论 <code>pd.Index</code> 对象，因为直接操作索引本身并不常见。现在，重要的是要记住，即使索引看起来像一列数据，但索引实际上代表<strong>行标签</strong>，而不是数据。例如，狗品种的 Dataframe 有四列数据，而不是五列，因为索引不算作数据列。</p>
+<h3 id="23-slicing">2.3 切片 (Slicing)</h3>
+<p>切片是从另一个 Dataframe 中提取行或列的子集并创建一个新 Dataframe 的操作。这就好比切西红柿——切片既可以是垂直的也可以是水平的。要在 pandas 中对 Dataframe 进行切片，我们使用 <code>.loc</code> 和 <code>.iloc</code> 属性。让我们从 <code>.loc</code> 开始。</p>
+<p><code>.loc</code> 允许我们使用<strong>标签</strong>来选择行和列。例如，要获取标签为 1 的行和标签为 <code>Name</code> 的列的数据：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#        第一个参数是行标签</span>
+<span class="c1">#        ↓</span>
+<span class="n">baby</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Name&#39;</span><span class="p">]</span>
+<span class="c1">#            ↑</span>
+<span class="c1">#            第二个参数是列标签</span>
+<span class="c1"># 输出: &#39;Noah&#39;</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>请注意，<code>.loc</code> 需要方括号 <code>[]</code>；运行 <code>baby.loc(1, 'Name')</code> 会导致错误。</p>
+</div>
+<p>要切分出多行或多列，我们可以使用 Python 切片语法代替单个值：</p>
+<div class="highlight"><pre><span></span><code><span class="n">baby</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Name&#39;</span><span class="p">:</span><span class="s1">&#39;Count&#39;</span><span class="p">]</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Sex</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Liam</td>
+<td>M</td>
+<td>19659</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Noah</td>
+<td>M</td>
+<td>18252</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Oliver</td>
+<td>M</td>
+<td>14147</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Elijah</td>
+<td>M</td>
+<td>13034</td>
+</tr>
+</tbody>
+</table>
+<p>要获取一整列数据，我们可以传递一个空切片 <code>:</code> 作为第一个参数：</p>
+<div class="highlight"><pre><span></span><code><span class="n">baby</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Count&#39;</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>0          19659
+1          18252
+2          14147
+           ...  
+2020719        5
+2020720        5
+2020721        5
+Name: Count, Length: 2020722, dtype: int64
+</code></pre></div>
+<p>注意，输出看起来不像 Dataframe，实际上也不是。从 Dataframe 中选出单行或单列会产生一个 <code>pd.Series</code> 对象：</p>
+<div class="highlight"><pre><span></span><code><span class="n">counts</span> <span class="o">=</span> <span class="n">baby</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Count&#39;</span><span class="p">]</span>
+<span class="n">counts</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="c1"># 输出: &#39;Series&#39;</span>
+</code></pre></div>
+<p><code>pd.Series</code> 对象和 <code>pd.DataFrame</code> 对象有什么区别？本质上，<code>pd.DataFrame</code> 是二维的——它有行和列，代表数据表。<code>pd.Series</code> 是一维的——它代表数据列表。<code>pd.Series</code> 和 <code>pd.DataFrame</code> 对象有许多共同的方法，但它们确实代表两个不同的东西。混淆这两者会导致错误和困惑。</p>
+<p>要选择 Dataframe 的特定列，请将列表传递给 <code>.loc</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 这是一个只包含 Name 和 Year 列的 Dataframe</span>
+<span class="n">baby</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">]]</span>
+</code></pre></div>
+<p>选择列非常常见，因此有一个简写方式：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># baby.loc[:, &#39;Name&#39;] 的简写</span>
+<span class="n">baby</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span>
+
+<span class="c1"># baby.loc[:, [&#39;Name&#39;, &#39;Count&#39;]] 的简写</span>
+<span class="n">baby</span><span class="p">[[</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Count&#39;</span><span class="p">]]</span>
+</code></pre></div>
+<p>使用 <code>.iloc</code> 进行切片类似于 <code>.loc</code>，不同之处在于 <code>.iloc</code> 使用行和列的<strong>位置 (integer position)</strong> 而不是标签。当 Dataframe 索引为字符串时，区分 <code>.iloc</code> 和 <code>.loc</code> 最容易。让我们看看狗品种的数据：</p>
+<div class="highlight"><pre><span></span><code><span class="n">dogs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dogs.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;breed&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>要按位置获取前三行和前两列，使用 <code>.iloc</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">dogs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div>
+<p>同样的操作如果用 <code>.loc</code>，则需要使用 Dataframe 的标签：</p>
+<div class="highlight"><pre><span></span><code><span class="n">dogs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Labrador Retriever&#39;</span><span class="p">:</span><span class="s1">&#39;Beagle&#39;</span><span class="p">,</span> <span class="s1">&#39;grooming&#39;</span><span class="p">:</span><span class="s1">&#39;food_cost&#39;</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="24-filtering-rows">2.4 过滤行 (Filtering Rows)</h3>
+<p>到目前为止，我们已经展示了如何使用 <code>.loc</code> 和 <code>.iloc</code> 使用标签和位置来切分 Dataframe。</p>
+<p>然而，数据科学家经常想要<strong>过滤</strong>行——他们想要根据某些条件获取行的子集。例如，我们想找出 2020 年最流行的婴儿名字。为此，我们可以过滤行，只保留 <code>Year</code> 为 2020 的行。</p>
+<p>为了过滤，我们首先要检查 <code>Year</code> 列中的每个值是否等于 2020。这可以通过切分出该列并进行布尔比较来实现（这类似于我们在 numpy 数组中所做的）：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 获取 Year 数据的 Series</span>
+<span class="n">baby</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span>
+
+<span class="c1"># 与 2020 比较</span>
+<span class="n">baby</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2020</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>0           True
+1           True
+2           True
+           ...  
+2020719    False
+2020720    False
+2020721    False
+Name: Year, Length: 2020722, dtype: bool
+</code></pre></div>
+<p>注意，对 Series 进行布尔比较会得到一个布尔值的 Series。这几乎等同于写一个循环，但布尔比较更容易编写，执行速度也快得多。</p>
+<p>现在，我们告诉 pandas 只保留比较结果为 <code>True</code> 的行：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 将布尔 Series 传递给 .loc 只保留 Series 中为 True 的行</span>
+<span class="n">baby</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">baby</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2020</span><span class="p">,</span> <span class="p">:]</span>
+</code></pre></div>
+<p>过滤也有简写形式。这会计算出与上述代码片段相同的表，而不使用 <code>.loc</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">baby</span><span class="p">[</span><span class="n">baby</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2020</span><span class="p">]</span>
+</code></pre></div>
+<p>最后，为了找出 2020 年最常见的名字，我们将 Dataframe 按 <code>Count</code> 降序排序：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 将长表达式用括号括起来，可以方便地换行，提高可读性</span>
+<span class="p">(</span><span class="n">baby</span><span class="p">[</span><span class="n">baby</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2020</span><span class="p">]</span>
+ <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="c1"># 取前 7 行</span>
+<span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Sex</th>
+<th>Count</th>
+<th>Year</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Liam</td>
+<td>M</td>
+<td>19659</td>
+<td>2020</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Noah</td>
+<td>M</td>
+<td>18252</td>
+<td>2020</td>
+</tr>
+<tr>
+<td>13911</td>
+<td>Emma</td>
+<td>F</td>
+<td>15581</td>
+<td>2020</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Oliver</td>
+<td>M</td>
+<td>14147</td>
+<td>2020</td>
+</tr>
+<tr>
+<td>13912</td>
+<td>Ava</td>
+<td>F</td>
+<td>13084</td>
+<td>2020</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Elijah</td>
+<td>M</td>
+<td>13034</td>
+<td>2020</td>
+</tr>
+<tr>
+<td>13913</td>
+<td>Charlotte</td>
+<td>F</td>
+<td>13003</td>
+<td>2020</td>
+</tr>
+</tbody>
+</table>
+<p>我们看到 Liam、Noah 和 Emma 是 2020 年最受欢迎的婴儿名字。</p>
+<h3 id="25-luna-example-how-recently-has-luna-become-a-popular-name">2.5 案例：Luna 这个名字是什么时候变流行的？ (Example: How Recently has Luna Become a Popular Name?)</h3>
+<p>《纽约时报》的文章提到，Luna 这个名字在 2000 年之前几乎不存在，但后来逐渐成为非常受女孩欢迎的名字。Luna 到底是什么时候开始流行的？我们可以使用切片和过滤来检查这一点。在处理数据操作任务时，我们建议将问题分解为更小的步骤。例如：</p>
+<ol>
+<li><strong>过滤</strong>：只保留 <code>Name</code> 列为 'Luna' 的行。</li>
+<li><strong>过滤</strong>：只保留 <code>Sex</code> 列为 'F' 的行。</li>
+<li><strong>切片</strong>：只保留 <code>Count</code> 和 <code>Year</code> 列。</li>
+</ol>
+<p>现在将每个步骤转换为代码：</p>
+<div class="highlight"><pre><span></span><code><span class="n">luna</span> <span class="o">=</span> <span class="n">baby</span><span class="p">[</span><span class="n">baby</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Luna&#39;</span><span class="p">]</span> <span class="c1"># [1]</span>
+<span class="n">luna</span> <span class="o">=</span> <span class="n">luna</span><span class="p">[</span><span class="n">luna</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;F&#39;</span><span class="p">]</span>     <span class="c1"># [2]</span>
+<span class="n">luna</span> <span class="o">=</span> <span class="n">luna</span><span class="p">[[</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">]]</span>      <span class="c1"># [3]</span>
+<span class="n">luna</span>
+</code></pre></div>
+<p><em>(结果显示大量数据)</em></p>
+<p>在本书中，我们使用一个名为 <code>plotly</code> 的库进行绘图。您可以参考第 11 章了解更多绘图知识。现在，我们使用 <code>px.line()</code> 制作一个简单的折线图：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">luna</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+</code></pre></div>
+<p>正如文章所说，Luna 直到 2000 年左右才开始流行。换句话说，如果有人告诉你由于她的名字叫 Luna，你甚至不需要关于她的任何其他信息就可以很好地猜出她的年龄！</p>
+<p>纯粹为了好玩，这是名字 Siri 的同样图表：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 使用 .query 类似于使用 .loc 加上布尔序列</span>
+<span class="c1"># query() 在过滤方面有更多限制，但作为简写很方便</span>
+<span class="n">siri</span> <span class="o">=</span> <span class="p">(</span><span class="n">baby</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Name == &quot;Siri&quot;&#39;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Sex == &quot;F&quot;&#39;</span><span class="p">))</span>
+<span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">siri</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+</code></pre></div>
+<p>为什么 2010 年后流行度会突然下降？嗯，Siri 恰好是苹果语音助手的名字，于 2011 年推出。让我们画一条 2011 年的线来看看……</p>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">siri</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Count&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_vline</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="mi">2011</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">line_dash</span><span class="o">=</span><span class="s2">&quot;dashdot&quot;</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>看起来父母们不希望他们的孩子在别人对着手机喊“嘿 Siri”时感到困惑。</p>
+<p>在本节中，我们介绍了 pandas 中的 Dataframe。我们涵盖了数据科学家对 Dataframe 进行子集化的常见方法——使用标签切片和使用布尔条件过滤。</p>
+<hr />
+<h2 id="3-aggregating">3. 聚合行 (Aggregating)</h2>
+<p>本节介绍 Dataframe 的行聚合操作。数据科学家通过聚合行来生成数据摘要。例如，可以将包含每日销售额的数据集聚合为月度销售额。本节介绍了分组 (grouping) 和透视 (pivoting)，这是聚合数据的两种常见操作。</p>
+<h3 id="31-basic-group-aggregate">3.1 基础分组聚合 (Basic Group-Aggregate)</h3>
+<p>假设我们要计算数据中记录的所有出生婴儿总数。这只是 <code>Count</code> 列的总和：</p>
+<div class="highlight"><pre><span></span><code><span class="n">baby</span><span class="p">[</span><span class="s1">&#39;Count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="c1"># 输出: 352554503</span>
+</code></pre></div>
+<p>如果我们想回答一个更有趣的问题：美国的出生人数是否随时间呈上升趋势？这就需要按年份对 <code>Count</code> 列求和。换句话说，我们将数据按 <code>Year</code> 分组，然后对每组内的 <code>Count</code> 值求和。这在 pandas 中称为<strong>分组后聚合</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">baby</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)[</span><span class="s1">&#39;Count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Year
+1880     194419
+1881     185772
+...   
+2019    3437438
+2020    3287724
+Name: Count, Length: 141, dtype: int64
+</code></pre></div>
+<p>结果是一个 <code>pd.Series</code>，其索引包含唯一的年份值。现在我们可以绘制随时间变化的计数图：</p>
+<div class="highlight"><pre><span></span><code><span class="n">counts_by_year</span> <span class="o">=</span> <span class="n">baby</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)[</span><span class="s1">&#39;Count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">counts_by_year</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>pandas 分组的基本配方</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">baby</span>                <span class="c1"># 1. Dataframe</span>
+ <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>    <span class="c1"># 2. 分组列</span>
+ <span class="p">[</span><span class="s1">&#39;Count&#39;</span><span class="p">]</span>           <span class="c1"># 3. 聚合列</span>
+ <span class="o">.</span><span class="n">sum</span><span class="p">()</span>              <span class="c1"># 4. 聚合方式</span>
+<span class="p">)</span>
+</code></pre></div>
+<h4 id="311-value_counts">3.1.1 案例：使用 .value_counts()</h4>
+<p>一个常见的任务是计算列中每个唯一项出现的次数。例如，统计某个班级中每个名字出现的次数。
+虽然我们可以使用 <code>groupby</code> + <code>size()</code> 来实现，但 pandas 提供了一个简写方法 <code>.value_counts()</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 计算名字出现的频率</span>
+<span class="n">classroom</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</code></pre></div>
+<p>默认情况下，<code>.value_counts()</code> 会按数量从高到低排序，非常方便查看最常见和最少见的值。</p>
+<h3 id="32-grouping-on-multiple-columns">3.2 多列分组 (Grouping on Multiple Columns)</h3>
+<p>我们可以将多个列作为列表传递给 <code>.groupby</code>，以便同时按多个列分组。例如，按年份和性别分组，查看随时间推移出生的男婴和女婴数量：</p>
+<div class="highlight"><pre><span></span><code><span class="n">counts_by_year_and_sex</span> <span class="o">=</span> <span class="p">(</span><span class="n">baby</span>
+ <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;Sex&#39;</span><span class="p">])</span> <span class="c1"># 传入列名列表</span>
+ <span class="p">[</span><span class="s1">&#39;Count&#39;</span><span class="p">]</span>
+ <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>结果是一个具有<strong>多级索引 (multilevel index)</strong> 的 Series。多级索引处理起来有点棘手，通常我们可以使用 <code>.reset_index()</code> 将其变回普通的 Dataframe：</p>
+<div class="highlight"><pre><span></span><code><span class="n">counts_by_year_and_sex</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Year</th>
+<th>Sex</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1880</td>
+<td>F</td>
+<td>83929</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1880</td>
+<td>M</td>
+<td>110490</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>281</td>
+<td>2020</td>
+<td>M</td>
+<td>1706423</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33">3.3 自定义聚合函数</h3>
+<p>除了 <code>.sum()</code>，pandas 还提供其他聚合函数，如 <code>.mean()</code>、<code>.size()</code>、<code>.max()</code> 等。</p>
+<p>如果内置函数不满足需求，我们可以使用 <code>.agg(fn)</code> 定义自定义聚合。
+例如，计算每个组的最大值和最小值之差（极差）：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">data_range</span><span class="p">(</span><span class="n">counts</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">counts</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">counts</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+
+<span class="p">(</span><span class="n">baby</span>
+ <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+ <span class="p">[</span><span class="s1">&#39;Count&#39;</span><span class="p">]</span>
+ <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">data_range</span><span class="p">)</span> <span class="c1"># 使用自定义函数聚合</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>或者计算每年唯一名字的数量：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">count_unique</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+<span class="n">unique_names_by_year</span> <span class="o">=</span> <span class="p">(</span><span class="n">baby</span>
+ <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+ <span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span>
+ <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">count_unique</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="34-pivoting">3.4 透视表 (Pivoting)</h3>
+<p>透视表 (Pivoting) 是处理两个分组列聚合结果的另一种便捷方式。
+之前按年份和性别分组的结果是一个长表。我们可以使用 <code>pd.pivot_table</code> 将其转换为宽表，其中一个分组变量（如性别）变成列：</p>
+<div class="highlight"><pre><span></span><code><span class="n">mf_pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">baby</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span>   <span class="c1"># 新索引的列</span>
+    <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span>  <span class="c1"># 新列头的列</span>
+    <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="c1"># 用于聚合值的列</span>
+    <span class="n">aggfunc</span><span class="o">=</span><span class="nb">sum</span><span class="p">)</span>    <span class="c1"># 聚合函数</span>
+<span class="n">mf_pivot</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Sex</th>
+<th style="text-align: left;">F</th>
+<th style="text-align: left;">M</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Year</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">1880</td>
+<td style="text-align: left;">83929</td>
+<td style="text-align: left;">110490</td>
+</tr>
+<tr>
+<td style="text-align: left;">1881</td>
+<td style="text-align: left;">85034</td>
+<td style="text-align: left;">100738</td>
+</tr>
+<tr>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+</tr>
+<tr>
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">1581301</td>
+<td style="text-align: left;">1706423</td>
+</tr>
+</tbody>
+</table>
+<p>透视表中的数据值与 <code>.groupby()</code> 生成的表相同，只是排列方式不同。透视表非常适合快速汇总两个属性的数据。</p>
+<p><code>px.line()</code> 函数对透视表的支持也很好，它会自动为表中的每一列数据绘制一条线：</p>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">mf_pivot</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+</code></pre></div>
+<p>在本节中，我们介绍了在 pandas 中聚合数据的常见方法：使用 <code>.groupby()</code> 或 <code>pd.pivot_table()</code>。在下一节中，我们将解释如何<strong>连接 (join)</strong> Dataframe。</p>
+<hr />
+<h2 id="4-dataframe-joining">4. 连接 Dataframe (Joining)</h2>
+<p>数据科学家经常需要将两个或多个 Dataframe 连接在一起，以便关联不同 Dataframe 中的数据值。例如，一家在线书店可能有一个 Dataframe 记录每位用户订购的书籍，另一个 Dataframe 记录每本书的类型。通过连接这两个 Dataframe，数据科学家可以查看每位用户偏好的书籍类型。</p>
+<p>我们将继续使用婴儿名字数据。我们将使用连接 (joins) 来检验《纽约时报》文章中提到的一些关于婴儿名字的趋势。文章提到某些类别的名字随着时间的推移变得越来越流行或不流行。例如，文章指出像 Julius 和 Cassius 这样的神话名字变得流行，而像 Susan 和 Debbie 这样的婴儿潮一代名字变得不流行。这些类别的流行度随时间发生了怎样的变化？</p>
+<p>我们将《纽约时报》文章中的名字和类别放入一个小的 Dataframe 中：</p>
+<div class="highlight"><pre><span></span><code><span class="n">nyt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;nyt_names.csv&#39;</span><span class="p">)</span>
+<span class="n">nyt</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">nyt_name</th>
+<th style="text-align: left;">category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">Lucifer</td>
+<td style="text-align: left;">forbidden</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Lilith</td>
+<td style="text-align: left;">forbidden</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Danger</td>
+<td style="text-align: left;">forbidden</td>
+</tr>
+<tr>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+</tr>
+<tr>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">Venus</td>
+<td style="text-align: left;">celestial</td>
+</tr>
+<tr>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">Celestia</td>
+<td style="text-align: left;">celestial</td>
+</tr>
+<tr>
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">Skye</td>
+<td style="text-align: left;">celestial</td>
+</tr>
+</tbody>
+</table>
+<p><code>23 rows × 2 columns</code></p>
+<p>为了了解这些名字类别的流行程度，我们将 <code>nyt</code> Dataframe 与 <code>baby</code> Dataframe 连接起来，以获取 <code>baby</code> 表中的名字计数：</p>
+<div class="highlight"><pre><span></span><code><span class="n">baby</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;babynames.csv&#39;</span><span class="p">)</span>
+<span class="n">baby</span>
+</code></pre></div>
+<p><em>(显示部分 baby 表数据)</em></p>
+<p>直观地说，我们可以想象遍历 <code>baby</code> 表中的每一行，并询问：这个名字是否在 <code>nyt</code> 表中？如果是，则将 <code>category</code> 列的值添加到该行。这就是连接的基本思想。让我们先看几个较小 Dataframe 的例子。</p>
+<h3 id="41-inner-joins">4.1 内连接 (Inner Joins)</h3>
+<p>为了更清楚地观察连接表时发生的情况，我们首先创建 <code>baby</code> 和 <code>nyt</code> 表的较小版本：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 创建示例小 Dataframe</span>
+<span class="n">nyt_small</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;nyt_name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Karen&#39;</span><span class="p">,</span> <span class="s1">&#39;Julius&#39;</span><span class="p">,</span> <span class="s1">&#39;Freya&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;category&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;boomer&#39;</span><span class="p">,</span> <span class="s1">&#39;mythology&#39;</span><span class="p">,</span> <span class="s1">&#39;mythology&#39;</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="n">baby_small</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Noah&#39;</span><span class="p">,</span> <span class="s1">&#39;Julius&#39;</span><span class="p">,</span> <span class="s1">&#39;Karen&#39;</span><span class="p">,</span> <span class="s1">&#39;Karen&#39;</span><span class="p">,</span> <span class="s1">&#39;Noah&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Sex&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Count&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18252</span><span class="p">,</span> <span class="mi">960</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">325</span><span class="p">,</span> <span class="mi">305</span><span class="p">],</span>
+    <span class="s1">&#39;Year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2020</span><span class="p">]</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>要在 pandas 中连接表格，我们将使用 <code>.merge()</code> 方法：</p>
+<div class="highlight"><pre><span></span><code><span class="n">baby_small</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">nyt_small</span><span class="p">,</span>
+                 <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span>        <span class="c1"># 左表用于匹配的列</span>
+                 <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;nyt_name&#39;</span><span class="p">)</span>   <span class="c1"># 右表用于匹配的列</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Sex</th>
+<th style="text-align: left;">Count</th>
+<th style="text-align: left;">Year</th>
+<th style="text-align: left;">nyt_name</th>
+<th style="text-align: left;">category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">Julius</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: left;">960</td>
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">Julius</td>
+<td style="text-align: left;">mythology</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Karen</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">Karen</td>
+<td style="text-align: left;">boomer</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Karen</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: left;">325</td>
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">Karen</td>
+<td style="text-align: left;">boomer</td>
+</tr>
+</tbody>
+</table>
+<p>请注意，新表包含了 <code>baby_small</code> 和 <code>nyt_small</code> 表的所有列。名字为 Noah 的行消失了。剩下的行都有来自 <code>nyt_small</code> 的匹配类别。</p>
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>读者也应该知道 pandas 有一个 <code>.join()</code> 方法用于连接两个 Dataframe。但是，<code>.merge()</code> 方法在连接 Dataframe 方面具有更大的灵活性，这就是为什么我们专注于使用 <code>.merge()</code>。我们鼓励读者查阅 pandas 文档，了解两者之间的确切区别。</p>
+</div>
+<p>当我们连接两个表时，我们告诉 pandas 每个表中要用于进行连接的列（<code>left_on</code> 和 <code>right_on</code> 参数）。pandas 在连接列中的值匹配时将行匹配在一起。</p>
+<p>默认情况下，pandas 执行<strong>内连接 (inner join)</strong>。如果任一表中有在另一个表中没有匹配项的行，pandas 会从结果中丢弃这些行。在这种情况下，<code>baby_small</code> 中的 Noah 行在 <code>nyt_small</code> 中没有匹配项，因此它们被丢弃了。同样，<code>nyt_small</code> 中的 Freya 行在 <code>baby_small</code> 中没有匹配项，因此也被丢弃了。只有在两个表中都有匹配项的行才会保留在最终结果中。</p>
+<h3 id="42-left-right-and-outer-joins">4.2 左连接、右连接和外连接 (Left, Right, and Outer Joins)</h3>
+<p>有时我们希望保留没有匹配项的行，而不是完全丢弃它们。还有其他类型的连接——左连接 (Left)、右连接 (Right) 和外连接 (Outer)——即使没有匹配项，它们也会保留行。</p>
+<p>在<strong>左连接</strong>中，左表中没有匹配项的行会保留在最终结果中（通常填充 <code>NaN</code>）。要在 pandas 中执行左连接，请在调用 <code>.merge()</code> 时使用 <code>how='left'</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">baby_small</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">nyt_small</span><span class="p">,</span>
+                 <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span>        
+                 <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;nyt_name&#39;</span><span class="p">,</span>
+                 <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>           <span class="c1"># 左连接代替内连接</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Sex</th>
+<th style="text-align: left;">Count</th>
+<th style="text-align: left;">Year</th>
+<th style="text-align: left;">nyt_name</th>
+<th style="text-align: left;">category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">Noah</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: left;">18252</td>
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">NaN</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Julius</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: left;">960</td>
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">Julius</td>
+<td style="text-align: left;">mythology</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Karen</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">Karen</td>
+<td style="text-align: left;">boomer</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">Karen</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: left;">325</td>
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">Karen</td>
+<td style="text-align: left;">boomer</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">Noah</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: left;">305</td>
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">NaN</td>
+</tr>
+</tbody>
+</table>
+<p>注意，Noah 行保留在最终表中。由于这些行在 <code>nyt_small</code> Dataframe 中没有匹配项，连接操作会在 <code>nyt_name</code> 和 <code>category</code> 列中留下 <code>NaN</code> 值。另外注意，<code>nyt_small</code> 中的 Freya 行仍然被丢弃了。</p>
+<p><strong>右连接</strong>的工作方式类似于左连接，只是保留右表中不匹配的行，而不是左表：</p>
+<div class="highlight"><pre><span></span><code><span class="n">baby_small</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">nyt_small</span><span class="p">,</span>
+                 <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span>        
+                 <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;nyt_name&#39;</span><span class="p">,</span>
+                 <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Sex</th>
+<th style="text-align: left;">Count</th>
+<th style="text-align: left;">Year</th>
+<th style="text-align: left;">nyt_name</th>
+<th style="text-align: left;">category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">Karen</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: left;">6.0</td>
+<td style="text-align: left;">2020.0</td>
+<td style="text-align: left;">Karen</td>
+<td style="text-align: left;">boomer</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Karen</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: left;">325.0</td>
+<td style="text-align: left;">2020.0</td>
+<td style="text-align: left;">Karen</td>
+<td style="text-align: left;">boomer</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Julius</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: left;">960.0</td>
+<td style="text-align: left;">2020.0</td>
+<td style="text-align: left;">Julius</td>
+<td style="text-align: left;">mythology</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">Freya</td>
+<td style="text-align: left;">mythology</td>
+</tr>
+</tbody>
+</table>
+<p>最后，<strong>外连接</strong>即使没有匹配项也会保留两个表中的行：</p>
+<div class="highlight"><pre><span></span><code><span class="n">baby_small</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">nyt_small</span><span class="p">,</span>
+                 <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span>        
+                 <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;nyt_name&#39;</span><span class="p">,</span>
+                 <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Sex</th>
+<th style="text-align: left;">Count</th>
+<th style="text-align: left;">Year</th>
+<th style="text-align: left;">nyt_name</th>
+<th style="text-align: left;">category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">Noah</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: left;">18252.0</td>
+<td style="text-align: left;">2020.0</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">NaN</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Noah</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: left;">305.0</td>
+<td style="text-align: left;">2020.0</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">NaN</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Julius</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: left;">960.0</td>
+<td style="text-align: left;">2020.0</td>
+<td style="text-align: left;">Julius</td>
+<td style="text-align: left;">mythology</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">Karen</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: left;">6.0</td>
+<td style="text-align: left;">2020.0</td>
+<td style="text-align: left;">Karen</td>
+<td style="text-align: left;">boomer</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">Karen</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: left;">325.0</td>
+<td style="text-align: left;">2020.0</td>
+<td style="text-align: left;">Karen</td>
+<td style="text-align: left;">boomer</td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">NaN</td>
+<td style="text-align: left;">Freya</td>
+<td style="text-align: left;">mythology</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-example-popularity-of-nyt-name-categories">4.3 案例：纽约时报名字类别的流行度 (Example: Popularity of NYT Name Categories)</h3>
+<p>现在让我们回到完整的 Dataframe <code>baby</code> 和 <code>nyt</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># .head() 切出前几行 - 方便节省空间</span>
+<span class="n">baby</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> 
+<span class="c1"># 显示 baby 前两行...</span>
+<span class="n">nyt</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># 显示 nyt 前两行...</span>
+</code></pre></div>
+<p>我们要了解 <code>nyt</code> 中名字类别的流行度随时间的变化。为了回答这个问题：</p>
+<ol>
+<li>将 <code>baby</code> 与 <code>nyt</code> 进行<strong>内连接</strong>。</li>
+<li>按 <code>category</code> 和 <code>Year</code> 对表进行<strong>分组</strong>。</li>
+<li>使用总和 (sum) <strong>聚合</strong>计数：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">cate_counts</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">baby</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">nyt</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;nyt_name&#39;</span><span class="p">)</span> <span class="c1"># [1]</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">])</span>                       <span class="c1"># [2]</span>
+    <span class="p">[</span><span class="s1">&#39;Count&#39;</span><span class="p">]</span>                                            <span class="c1"># [3]</span>
+    <span class="o">.</span><span class="n">sum</span><span class="p">()</span>                                               <span class="c1"># [3]</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">cate_counts</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">category</th>
+<th style="text-align: left;">Year</th>
+<th style="text-align: left;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">boomer</td>
+<td style="text-align: left;">1880</td>
+<td style="text-align: left;">292</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">boomer</td>
+<td style="text-align: left;">1881</td>
+<td style="text-align: left;">298</td>
+</tr>
+<tr>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+</tr>
+<tr>
+<td style="text-align: left;">649</td>
+<td style="text-align: left;">mythology</td>
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">3489</td>
+</tr>
+</tbody>
+</table>
+<p>现在我们可以绘制 boomer（婴儿潮一代）名字和 mythology（神话）名字的流行度：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 筛选出 boomer 和 mythology 类别进行绘图</span>
+<span class="n">cate_subset</span> <span class="o">=</span> <span class="n">cate_counts</span><span class="p">[</span><span class="n">cate_counts</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;boomer&#39;</span><span class="p">,</span> <span class="s1">&#39;mythology&#39;</span><span class="p">])]</span>
+<span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">cate_subset</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+</code></pre></div>
+<p>正如《纽约时报》文章所称，自 2000 年以来，婴儿潮一代的名字已变得不再流行，而神话名字则变得更加流行。</p>
+<p>我们还可以一次绘制所有类别的流行度。看看下面的图表，看看它们是否支持《纽约时报》文章中的说法：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 绘制所有类别的流行度</span>
+<span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">cate_counts</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+</code></pre></div>
+<p>在本节中，我们介绍了 Dataframe 的连接操作。将 Dataframe 连接在一起时，我们使用 <code>.merge()</code> 函数匹配行。连接 Dataframe 时，考虑连接类型（内连接、左连接、右连接或外连接）非常重要。</p>
+<hr />
+<h2 id="5-transforming">5. 数据变换 (Transforming)</h2>
+<p>数据科学家经常变换 Dataframe 的列，即需要以相同的方式更改特征中的每个值。例如，如果一个特征包含以英尺为单位的身高，数据科学家可能希望将其变换为厘米。在本节中，我们将介绍 <code>apply</code>，这是一个使用用户定义函数变换数据列的操作。</p>
+<div class="highlight"><pre><span></span><code><span class="n">baby</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;babynames.csv&#39;</span><span class="p">)</span>
+<span class="n">baby</span>
+</code></pre></div>
+<p><em>(显示部分数据)</em></p>
+<p>在《纽约时报》的婴儿名字文章中，专家 Pamela 提到以字母 <strong>L</strong> 或 <strong>K</strong> 开头的名字在 2000 年后变得流行。另一方面，以字母 <strong>J</strong> 开头的名字在 1970 年代和 1980 年代达到顶峰，此后流行度下降。我们可以使用 <code>baby</code> 数据集来验证这些说法。</p>
+<p>我们使用以下步骤来解决这个问题：</p>
+<ol>
+<li>将 <code>Name</code> 列变换为一个新列，其中包含 <code>Name</code> 中每个值的首字母。</li>
+<li>按首字母和年份对 Dataframe 进行分组。</li>
+<li>通过求和聚合名字计数。</li>
+</ol>
+<p>为了完成第一步，我们将对 <code>Name</code> 列应用一个函数。</p>
+<h3 id="51-apply">5.1 使用 Apply</h3>
+<p><code>pd.Series</code> 对象包含一个 <code>.apply()</code> 方法，该方法接收一个函数并将其应用于 Series 中的每个值。例如，要查找每个名字的长度，我们可以应用 <code>len</code> 函数：</p>
+<div class="highlight"><pre><span></span><code><span class="n">names</span> <span class="o">=</span> <span class="n">baby</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span>
+<span class="n">names</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+<span class="c1"># 0          4</span>
+<span class="c1"># 1          4</span>
+<span class="c1"># 2          6</span>
+<span class="c1"># ...</span>
+<span class="c1"># Name: Name, Length: 2020722, dtype: int64</span>
+</code></pre></div>
+<p>要提取每个名字的首字母，我们定义一个自定义函数并将其传递给 <code>.apply()</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 函数的参数是序列中的单个值</span>
+<span class="k">def</span> <span class="nf">first_letter</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">string</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">names</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">first_letter</span><span class="p">)</span>
+<span class="c1"># 0          L</span>
+<span class="c1"># 1          N</span>
+<span class="c1"># ...</span>
+<span class="c1"># 2020721    W</span>
+<span class="c1"># Name: Name, Length: 2020722, dtype: object</span>
+</code></pre></div>
+<p>使用 <code>.apply()</code> 类似于使用 <code>for</code> 循环。上面的代码大致相当于：</p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">first_letter</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+</code></pre></div>
+<p>现在我们可以将首字母分配给 Dataframe 中的一个新列：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 使用 .assign 创建新列</span>
+<span class="n">letters</span> <span class="o">=</span> <span class="n">baby</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Firsts</span><span class="o">=</span><span class="n">names</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">first_letter</span><span class="p">))</span>
+<span class="n">letters</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Sex</th>
+<th style="text-align: left;">Count</th>
+<th style="text-align: left;">Year</th>
+<th style="text-align: left;">Firsts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">Liam</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: left;">19659</td>
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">L</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Noah</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: left;">18252</td>
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">N</td>
+</tr>
+<tr>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+</tr>
+<tr>
+<td style="text-align: left;">2020721</td>
+<td style="text-align: left;">Wilma</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">1880</td>
+<td style="text-align: left;">W</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>要在一个 Dataframe 中创建一个新列，你可能还会遇到这种语法：</p>
+<div class="highlight"><pre><span></span><code><span class="n">baby</span><span class="p">[</span><span class="s1">&#39;Firsts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">first_letter</span><span class="p">)</span>
+</code></pre></div>
+<p>这会通过添加一个名为 <code>Firsts</code> 的新列来<strong>修改 (mutate)</strong> <code>baby</code> 表。在前面的代码中，我们使用了 <code>.assign()</code>，它不会修改 <code>baby</code> 表本身；而是创建一个新的 Dataframe。修改 Dataframe 并没有错，但这可能是 Bug 的常见来源。正因为如此，我们在本书中主要使用 <code>.assign()</code>。</p>
+</div>
+<h3 id="52-l-popularity-of-l-names">5.2 案例："L" 开头名字的流行度 (Popularity of “L” Names)</h3>
+<p>现在我们可以使用 <code>letters</code> Dataframe 来查看首字母随时间的流行度：</p>
+<div class="highlight"><pre><span></span><code><span class="n">letter_counts</span> <span class="o">=</span> <span class="p">(</span><span class="n">letters</span>
+ <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Firsts&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">])</span>
+ <span class="p">[</span><span class="s1">&#39;Count&#39;</span><span class="p">]</span>
+ <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+ <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">letter_counts</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Firsts</th>
+<th style="text-align: left;">Year</th>
+<th style="text-align: left;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">1880</td>
+<td style="text-align: left;">16740</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">1881</td>
+<td style="text-align: left;">16257</td>
+</tr>
+<tr>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+</tr>
+<tr>
+<td style="text-align: left;">3640</td>
+<td style="text-align: left;">Z</td>
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">54011</td>
+</tr>
+</tbody>
+</table>
+<p>现在绘制以 "L" 开头的名字流行度：</p>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">letter_counts</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">letter_counts</span><span class="p">[</span><span class="s1">&#39;Firsts&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;L&#39;</span><span class="p">],</span>
+              <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Popularity of &quot;L&quot; names&#39;</span><span class="p">,</span>
+              <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span>
+</code></pre></div>
+<p>该图显示，“L”名字在 1960 年代很流行，在随后的几十年中有所下降，但自 2000 年以来确实重新流行起来。</p>
+<p>那 "J" 名字呢？</p>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">letter_counts</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">letter_counts</span><span class="p">[</span><span class="s1">&#39;Firsts&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;J&#39;</span><span class="p">],</span>
+              <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Popularity of &quot;J&quot; names&#39;</span><span class="p">,</span>
+              <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span>
+</code></pre></div>
+<p>《纽约时报》的文章称，“J”名字在 1970 年代和 80 年代很流行。图表吻合，并显示自 2000 年以来它们已变得不那么流行。</p>
+<h3 id="53-apply-the-price-of-apply">5.3 Apply 的代价 (The Price of Apply)</h3>
+<p><code>.apply()</code> 的强大之处在于它的灵活性——你可以用任何接收单个数据值并输出单个数据值的函数来调用它。</p>
+<p>然而，这种灵活性是有代价的。使用 <code>.apply()</code> 可能会很慢，因为 pandas 无法优化任意函数。例如，对于数值计算，使用 <code>.apply()</code> 比直接在 <code>pd.Series</code> 对象上使用向量化操作要慢得多：</p>
+<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">timeit</span>
+
+<span class="c1"># 使用向量化运算符计算年代</span>
+<span class="n">baby</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">//</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="c1"># 9.66 ms ± 755 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">timeit</span>
+
+<span class="k">def</span> <span class="nf">decade</span><span class="p">(</span><span class="n">yr</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">yr</span> <span class="o">//</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">10</span>
+
+<span class="c1"># 使用 apply 计算年代</span>
+<span class="n">baby</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">decade</span><span class="p">)</span>
+<span class="c1"># 658 ms ± 49.6 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)</span>
+</code></pre></div>
+<p>使用 <code>.apply()</code> 的版本慢了 30 倍以上！特别是对于数值操作，我们建议直接对 <code>pd.Series</code> 对象进行操作，利用其向量化特性。</p>
+<p>在本节中，我们介绍了数据变换。为了变换 Dataframe 中的值，我们通常使用 <code>.apply()</code> 和 <code>.assign()</code> 函数。在下一节中，我们将比较 Dataframe 与表示和操作数据表的其他方式。</p>
+<hr />
+<h2 id="6-dataframe-how-are-dataframes-different">6. Dataframe 与其他数据表示形式的区别 (How Are Dataframes Different?)</h2>
+<p>Dataframe 只是表示存储在表中的数据的一种方式。在实践中，数据科学家会遇到许多其他类型的数据表，如电子表格 (spreadsheets)、矩阵 (matrices) 和关系 (relations)。在本节中，我们将对比 Dataframe 与其他表示形式，解释为什么 Dataframe 在数据分析中如此广泛使用。我们还将指出其他表示形式可能更合适的情况。</p>
+<h3 id="61-dataframe-dataframes-and-spreadsheets">6.1 Dataframe 与 电子表格 (Dataframes and Spreadsheets)</h3>
+<p>电子表格是计算机应用程序，用户可以在网格中输入数据并使用公式进行计算。今天一个众所周知的例子是 Microsoft Excel，尽管电子表格的历史至少可以追溯到 1979 年的 VisiCalc。电子表格使查看和直接操作数据变得容易，因为电子表格公式可以在数据更改时自动重新计算结果。相比之下，当数据集更新时，Dataframe 代码通常需要手动重新运行。这些特性使得电子表格非常受欢迎——根据 2005 年的估计，有超过 5500 万电子表格用户，而行业中只有 300 万专业程序员。</p>
+<p>Dataframe 相比电子表格有几个关键优势。在像 Jupyter 这样的计算笔记本中编写 Dataframe 代码自然会产生<strong>数据血缘 (data lineage)</strong>。打开笔记本的人可以看到笔记本的输入文件以及数据是如何被更改的。电子表格不会使数据血缘可见；如果有人手动编辑单元格中的数据值，未来的用户很难知道哪些值被手动编辑过以及是如何编辑的。Dataframe 可以处理比电子表格更大的数据集，用户还可以使用分布式编程工具来处理很难加载到电子表格中的海量数据集。</p>
+<h3 id="62-dataframe-dataframes-and-matrices">6.2 Dataframe 与 矩阵 (Dataframes and Matrices)</h3>
+<p>矩阵是主要用于线性代数运算的二维数据数组。</p>
+<p>矩阵是由它们允许的运算符定义的数学对象。例如，矩阵可以相加或相乘。矩阵也有转置。这些运算符具有数据科学家在统计建模中依赖的非常有用的属性。</p>
+<p>矩阵和 Dataframe 之间的一个重要区别是，当矩阵被视为数学对象时，它们通常<strong>只能包含数字</strong>。另一方面，Dataframe 还可以包含其他类型的数据，如文本。这使得 Dataframe 在加载和处理可能包含各种数据类型的原始数据时更有用。在实践中，数据科学家经常将数据加载到 Dataframe 中，然后将数据处理成矩阵形式。在本书中，我们将通常使用 Dataframe 进行探索性数据分析和数据清洗，然后将数据处理成矩阵用于机器学习模型。</p>
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>数据科学家不仅将矩阵称为数学对象，也称为程序对象。例如，R 编程语言有一个矩阵对象，而在 Python 中我们可以使用二维 numpy 数组表示矩阵。Python 和 R 中实现的矩阵可以包含除数字以外的其他数据类型，但这样做会失去数学属性。这又是不同领域使用相同术语指代不同事物的另一个例子。</p>
+</div>
+<h3 id="63-dataframe-dataframes-and-relations">6.3 Dataframe 与 关系 (Dataframes and Relations)</h3>
+<p>关系是数据库系统（尤其是像 SQLite 和 PostgreSQL 这样的 SQL 系统）中使用的数据表表示形式。（我们将在 SQL 章节中介绍关系和 SQL）。关系与 Dataframe 有许多相似之处；两者都使用行表示记录，用列表示特征。两者都有列名，并且列内的数据具有相同的类型。</p>
+<p>Dataframe 的一个关键优势是，它们在加载阶段更加灵活。很多时候，原始数据并不是以可以直接放入关系的方便格式出现的。在这些情况下，数据科学家使用 Dataframe 加载和处理数据，因为 Dataframe 在这方面更灵活。通常，数据科学家会将原始数据加载到 Dataframe 中，然后将数据处理成可以轻松存储到关系中的格式。</p>
+<p>关系相比 Dataframe 的一个关键优势是，关系被像 PostgreSQL 这样的关系数据库系统使用，这些系统具有非常有用的数据存储和管理功能。考虑一家运营大型社交媒体网站的公司的数据科学家。数据库可能包含的数据太大，无法一次全部读入 pandas Dataframe；相反，数据科学家使用 SQL 查询来子集化和聚合数据，因为数据库系统更有能力处理大型数据集。此外，网站用户通过发帖、上传图片和编辑个人资料不断更新他们的数据。在这里，数据库系统让数据科学家重用现有的 SQL 查询来用最新数据更新他们的分析，而不必重复下载大型 CSV 文件。</p>
+<p><a href="../03_SQL/">下一章：SQL 与关系数据</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

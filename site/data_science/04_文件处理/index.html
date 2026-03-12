@@ -1,0 +1,3069 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../03_SQL/">
+      
+      
+        <link rel="next" href="../05_%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>4 文件处理 - Python 修行指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Python 修行指南" class="md-header__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python 修行指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4 文件处理
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Python 修行指南" class="md-nav__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Python 修行指南
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    前言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 预备知识
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 预备知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/01_Python%E7%A8%8B%E5%BA%8F%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Python程序基本结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/02_%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 基础语法与变量
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/03_%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 核心数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/04_%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 运算符与表达式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/05_%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 程序控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/06_%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 函数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/07_%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 文件操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/08_%E9%94%99%E8%AF%AF%E4%B8%8E%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 错误与异常处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/09_%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 面向对象编程基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 进阶修炼
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 进阶修炼
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/01_%E6%8E%A8%E5%AF%BC%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/02_%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 迭代器与生成器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/03_%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/04_%E8%A3%85%E9%A5%B0%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 装饰器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/05_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/06_%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%8C%85/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 模块与包
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/07_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 进阶输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/08_%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 命名空间与作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/09_%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 类型注解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/10_%E6%A0%87%E5%87%86%E5%BA%93%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 标准库概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/11_%E5%BC%82%E6%AD%A5IO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 异步IO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/01_%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 算法概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/02_%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%9E%9A%E4%B8%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 模拟与枚举
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/03_%E9%80%92%E5%BD%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 递归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/04_%E5%88%86%E6%B2%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 分治
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/05_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 二分查找
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/06_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 动态规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/07_%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 背包问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/08_%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 贪心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/09_%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 搜索算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/10_%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 图论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据科学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据科学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 生命周期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_%E7%9F%A9%E5%BD%A2%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 矩形数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 SQL与关系数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 文件处理
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 文件处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章概览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 数据来源示例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 数据来源示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-dawn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 药物滥用预警网络 (DAWN) 调查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 旧金山餐厅食品安全数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-file-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 文件格式 (File Formats)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 文件格式 (File Formats)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-delimited-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 分隔符格式 (Delimited Format)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-fixed-width-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 固定宽度格式 (Fixed-Width Format)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 其他文本格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-file-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 文件编码 (File Encoding)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 文件编码 (File Encoding)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 确定编码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 推测编码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 处理编码错误
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-file-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 文件大小 (File Size)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 文件大小 (File Size)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-ram-vs-disk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 内存 (RAM) vs 磁盘 (Disk)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 文件大小单位
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 检查文件大小
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 处理大数据的策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-shell-the-shell-and-command-line-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Shell 和命令行工具 (The Shell and Command-Line Tools)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Shell 和命令行工具 (The Shell and Command-Line Tools)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-ls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 查看文件列表 (ls)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-wc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 统计字数和行数 (wc)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-du" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 计算目录总大小 (du)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-head-tail-cat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 查看文件内容 (head, tail, cat)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 确定文件类型 (file)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-table-shape-and-granularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 表格形状和粒度 (Table Shape and Granularity)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 表格形状和粒度 (Table Shape and Granularity)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 检查形状
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 确定粒度：餐厅数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-dawn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 确定粒度：DAWN 调查数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 本章总结
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 本章总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键检查清单 (Checklist)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常用读取函数回顾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据清洗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 数据分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实用工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/01_Git%E4%B8%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Git与版本控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/02_Markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/03_Vibe_Coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Vibe Coding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/04_LeetCode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 LeetCode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/05_coze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 coze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/06_n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/07_PPT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 PPT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章概览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 数据来源示例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 数据来源示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-dawn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 药物滥用预警网络 (DAWN) 调查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 旧金山餐厅食品安全数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-file-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 文件格式 (File Formats)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 文件格式 (File Formats)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-delimited-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 分隔符格式 (Delimited Format)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-fixed-width-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 固定宽度格式 (Fixed-Width Format)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 其他文本格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-file-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 文件编码 (File Encoding)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 文件编码 (File Encoding)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 确定编码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 推测编码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 处理编码错误
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-file-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 文件大小 (File Size)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 文件大小 (File Size)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-ram-vs-disk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 内存 (RAM) vs 磁盘 (Disk)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 文件大小单位
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 检查文件大小
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 处理大数据的策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-shell-the-shell-and-command-line-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Shell 和命令行工具 (The Shell and Command-Line Tools)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Shell 和命令行工具 (The Shell and Command-Line Tools)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-ls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 查看文件列表 (ls)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-wc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 统计字数和行数 (wc)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-du" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 计算目录总大小 (du)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-head-tail-cat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 查看文件内容 (head, tail, cat)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 确定文件类型 (file)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-table-shape-and-granularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 表格形状和粒度 (Table Shape and Granularity)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 表格形状和粒度 (Table Shape and Granularity)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 检查形状
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 确定粒度：餐厅数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-dawn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 确定粒度：DAWN 调查数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 本章总结
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 本章总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键检查清单 (Checklist)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常用读取函数回顾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">文件处理</h1>
+<p>在将数据读入 Python 进行分析之前，了解存储数据的文件至关重要。通常我们需要先搞清楚两个基本问题：</p>
+<ol>
+<li><strong>数据量有多大？</strong></li>
+<li><strong>源文件的格式是什么？</strong></li>
+</ol>
+<p>如果文件过大或格式不符合预期，直接加载到 DataFrame 中可能会失败或出错。</p>
+<p>本书主要关注 <strong>数据表 (Data Tables)</strong> 形式的数据，例如 Pandas DataFrames 和 SQL 关系表。这是因为表格数据有成熟的工具支持，数学基础深厚（类似于矩阵），且在实际应用中非常普遍。</p>
+<h2 id="_2">本章概览</h2>
+<p>本章我们将学习：</p>
+<ol>
+<li><strong>典型文件格式与编码</strong>：重点介绍纯文本文件。</li>
+<li><strong>文件大小的度量</strong>：如何使用 Python 工具或 Shell 命令来查看文件大小。</li>
+<li><strong>检查源文件</strong>：使用 Python 和 Shell 探索文件内容。</li>
+<li><strong>Shell 解释器</strong>：介绍如何使用 Shell 命令在 Python 环境之外快速获取文件信息，这在处理大数据时非常高效。</li>
+<li><strong>数据的形状与粒度</strong>：检查行数、列数以及每一行数据的含义。</li>
+</ol>
+<h2 id="1">1. 数据来源示例</h2>
+<p>为了演示文件处理的概念，我们选择了两个具有代表性的数据集：</p>
+<h3 id="11-dawn">1.1 药物滥用预警网络 (DAWN) 调查</h3>
+<p><strong>DAWN (Drug Abuse Warning Network)</strong> 是一项监测全美药物滥用趋势的医疗调查。它通过统计医院急诊室的就诊记录，来评估药物滥用对医疗系统的影响。</p>
+<ul>
+<li><strong>数据内容</strong>：包含药物误用、滥用、意外摄入、自杀企图等各种类型的急诊记录。</li>
+<li><strong>数据特点</strong>：<ul>
+<li><strong>固定宽度格式 (Fixed-width formatting)</strong>：这是一种特殊的文本格式，通常需要配合代码簿 (Codebook) 才能解读。</li>
+<li><strong>数据量大</strong>：适合用来演示如何处理大文件。</li>
+<li><strong>粒度特殊</strong>：每一行数据代表一次“急诊就诊 (ER visit)”，而不是一个人。单次就诊可能涉及多种药物。</li>
+</ul>
+</li>
+</ul>
+<h3 id="12">1.2 旧金山餐厅食品安全数据</h3>
+<p>这是来自 <strong>旧金山公共卫生部</strong> 的行政管理数据。检查员会突击检查餐厅的食品安全，并根据违规情况打分。</p>
+<ul>
+<li><strong>数据来源</strong>：通过旧金山开放数据平台 (DataSF) 获取。</li>
+<li><strong>数据特点</strong>：<ul>
+<li><strong>多文件结构</strong>：包含检查摘要、违规详情、餐厅基本信息等多个文件，各自结构不同。</li>
+<li><strong>粒度多样</strong>：有的文件是按检查记录，有的是按违规项记录。</li>
+<li><strong>现实意义</strong>：这是典型的政府公开数据，包含从严重违规到轻微标牌张贴不当等各种细节。</li>
+</ul>
+</li>
+</ul>
+<p>这两个数据集虽然都是纯文本文件，但格式差异巨大。在接下来的章节中，我们将演示如何通过分析文件格式，正确地将它们读取到 DataFrame 中。</p>
+<h2 id="2-file-formats">2. 文件格式 (File Formats)</h2>
+<p>文件格式描述了数据在存储设备上的存储方式。了解文件格式有助于我们将数据正确读入 Python 并转换为数据表。本节主要介绍几种用于存储表格数据的常见纯文本格式。</p>
+<div class="admonition note">
+<p class="admonition-title">数据结构 vs 文件格式</p>
+<ul>
+<li><strong>数据结构</strong>是我们对数据的心理表征（如“表格”由行和列组成）。</li>
+<li><strong>文件格式</strong>是数据在文件中的实际存储方式（如 CSV 或 JSON）。同一个表格数据可以存储为多种不同的文件格式。</li>
+</ul>
+</div>
+<h3 id="21-delimited-format">2.1 分隔符格式 (Delimited Format)</h3>
+<p><strong>分隔符格式</strong>使用特定字符来分隔数据值。</p>
+<ul>
+<li><strong>常见分隔符</strong>：逗号 (CSV)、制表符 (TSV)、空格或冒号。</li>
+<li><strong>结构</strong>：每一行代表一条记录（通常用换行符分隔），行内的值由分隔符隔开。第一行通常包含列名。</li>
+</ul>
+<p><strong>旧金山餐厅评分数据</strong>就是 CSV 格式的典型例子。</p>
+<p>我们可以使用 Python 的 <code>pathlib</code> 库来跨平台处理文件路径并读取内容：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># 创建指向数据文件的跨平台路径</span>
+<span class="n">insp_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span> <span class="o">/</span> <span class="s1">&#39;inspections.csv&#39;</span>
+
+<span class="c1"># 读取文件内容的前几行文本</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">insp_path</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]))</span>
+</code></pre></div>
+<p>输出示例：</p>
+<div class="highlight"><pre><span></span><code>&quot;business_id&quot;,&quot;score&quot;,&quot;date&quot;,&quot;type&quot;
+19,&quot;94&quot;,&quot;20160513&quot;,&quot;routine&quot;
+19,&quot;94&quot;,&quot;20171211&quot;,&quot;routine&quot;
+</code></pre></div>
+<p>可以看到，字段名在第一行，值之间用逗号分隔。</p>
+<div class="admonition warning">
+<p class="admonition-title">CSV/TSV 不是 Excel 文件</p>
+<p>虽然 Excel 可以打开 CSV 文件，但 CSV/TSV 是纯文本格式，而 Excel (.xlsx) 是复杂的二进制或 XML 格式。在 Python 中读取它们需要使用不同的 Pandas 函数。</p>
+</div>
+<h3 id="22-fixed-width-format">2.2 固定宽度格式 (Fixed-Width Format)</h3>
+<p><strong>固定宽度格式 (FWF)</strong> 不使用分隔符。相反，特定字段的值出现在每一行的<strong>完全相同的位置</strong>。</p>
+<p><strong>DAWN 调查数据</strong>就使用了这种格式。由于没有分隔符，数据看起来像是挤在一起的，我们需要依赖外部文档（代码簿）来知道每一列数据的确切起始位置和长度。</p>
+<div class="highlight"><pre><span></span><code>     1 2251082    .9426354082   3 4 1 2201141 2 865 105 1102005 1
+     2 2291292   5.9920106887   911 1 3201134 12077  81  82 283-8
+</code></pre></div>
+<p>注意看数据主要是在垂直方向上对齐的。</p>
+<p>通常，我们可以通过文件扩展名（如 <code>.csv</code>, <code>.tsv</code>, <code>.txt</code>）来推测格式，但这只是建议，并不保证内容格式一定正确。</p>
+<h3 id="23">2.3 其他文本格式</h3>
+<p>除了上述两种用于表格数据的格式外，还有：</p>
+<ul>
+<li><strong>层级格式 (Hierarchical Formats)</strong>：如 <strong>JSON</strong>, <strong>XML</strong>, <strong>HTML</strong>。它们以嵌套的形式存储数据，常用于网络通信和文档存储。</li>
+<li><strong>松散格式文本 (Loosely Formatted Text)</strong>：如 <strong>Web 日志</strong>、仪器读数等。虽然不是标准的表格格式，但通常包含某种模式（如日期在方括号内），可以通过字符串处理提取信息。</li>
+</ul>
+<div class="highlight"><pre><span></span><code>[26/Jan/2004:10:47:58 -0800] &quot;GET /stat141/Winter04 HTTP/1.1&quot; 301 328
+</code></pre></div>
+<p>在本章中，我们将重点关注纯文本格式。需要注意的是，即使是纯文本文件也存在<strong>字符编码 (Encoding)</strong> 的问题，如果编码指定错误，读出的数据可能会变成乱码。</p>
+<h2 id="3-file-encoding">3. 文件编码 (File Encoding)</h2>
+<p>计算机将数据存储为位序列（0 和 1）。<strong>字符编码 (Character Encoding)</strong>（比如 ASCII）告诉计算机如何将这些位转换为文本。例如，在 ASCII 中，位 <code>100 0001</code> 代表字母 A。</p>
+<ul>
+<li><strong>ASCII</strong>：最基本的纯文本编码，仅支持标准 ASCII 字符（大小写英文字母、数字、标点符号和空格）。</li>
+<li><strong>UTF-8 / Latin-1</strong>：ASCII 无法表示许多特殊字符或其他语言。现代编码如 <strong>UTF-8</strong> 和 <strong>Latin-1 (ISO-8859-1)</strong> 支持更多字符。UTF-8 包含超过一百万个字符，并且向后兼容 ASCII。</li>
+</ul>
+<h3 id="31">3.1 确定编码</h3>
+<p>拿到文本文件时，我们需要弄清楚它的编码。如果使用错误的编码读取，Python 可能会读取到错误的值或直接抛出错误。
+<strong>最好的方法</strong>是查看数据的文档说明，文档通常会明确指出编码格式。</p>
+<h3 id="32">3.2 推测编码</h3>
+<p>如果不知道编码，我们只能进行猜测。<code>chardet</code> 包有一个 <code>detect()</code> 函数，可以推断文件的编码并给出置信度（0 到 1 之间）。</p>
+<p>让我们用它来检查示例文件：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">chardet</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># 定义打印格式</span>
+<span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:&lt;25}</span><span class="s1"> </span><span class="si">{:&lt;10}</span><span class="s1"> </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;File Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Encoding&#39;</span><span class="p">,</span> <span class="s1">&#39;Confidence&#39;</span><span class="p">))</span>
+
+<span class="c1"># 遍历 data 目录下的所有文件</span>
+<span class="k">for</span> <span class="n">filepath</span> <span class="ow">in</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">):</span>
+    <span class="c1"># 读取原始字节进行检测</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">chardet</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">filepath</span><span class="o">.</span><span class="n">read_bytes</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">filepath</span><span class="p">),</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;encoding&#39;</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;confidence&#39;</span><span class="p">]))</span>
+</code></pre></div>
+<p>输出结果可能如下：</p>
+<div class="highlight"><pre><span></span><code>File Name                 Encoding   Confidence
+data/inspections.csv      ascii      1.0
+data/co2_mm_mlo.txt       ascii      1.0
+...
+data/businesses.csv       ISO-8859-1 0.73
+</code></pre></div>
+<p>检测结果显示大多数文件是 ASCII 编码，但 <code>businesses.csv</code> 很可能是 <strong>ISO-8859-1</strong> 编码。</p>
+<h3 id="33">3.3 处理编码错误</h3>
+<p>如果我们忽略这一点，尝试直接将 <code>businesses.csv</code> 读入 pandas（默认通常使用 UTF-8），就会遇到问题：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 错误示范：未指定编码</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/businesses.csv&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>这将导致 <code>UnicodeDecodeError</code>，提示无法解码某些字节。为了成功读取数据，我们需要在 <code>read_csv</code> 中指定编码：</p>
+<div class="highlight"><pre><span></span><code><span class="n">bus</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/businesses.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;ISO-8859-1&#39;</span><span class="p">)</span>
+<span class="n">bus</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<p>这样就能正确读取包含特殊字符的文本了。</p>
+<p>文件编码有时比较隐晦，如果没有明确的元数据，就需要像这样进行推测。确定了编码后，我们还需要关注文件的另一个重要方面：<strong>文件大小</strong>。如果文件太大，我们可能无法将其一次性读入 DataFrame。</p>
+<h2 id="4-file-size">4. 文件大小 (File Size)</h2>
+<p>计算机资源是有限的。如果文件超过了计算机的处理能力，我们可能需要采用不同的策略。</p>
+<ul>
+<li><strong>小文件</strong>：可以直接用文本编辑器、Excel 或 Python 完全读入内存。</li>
+<li><strong>大文件</strong>：可能需要分块读取、使用数据库或分布式计算工具。</li>
+</ul>
+<h3 id="41-ram-vs-disk">4.1 内存 (RAM) vs 磁盘 (Disk)</h3>
+<p>通常，许多数据文件存储在<strong>磁盘</strong>上。为了使用 Python 分析数据，我们需要将其读入<strong>内存 (RAM)</strong>。
+<strong>关键问题</strong>：计算机的磁盘容量通常远大于内存容量（例如 1TB 磁盘 vs 16GB 内存）。这意味着许多存储在磁盘上的文件可能<strong>大大超过</strong>内存的承载能力。</p>
+<h3 id="42">4.2 文件大小单位</h3>
+<p>文件大小通常用字节 (Byte) 衡量。对于大文件，我们使用以下前缀：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">单位</th>
+<th style="text-align: left;">符号</th>
+<th style="text-align: left;">字节数 (Bytes)</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Kibibyte</td>
+<td style="text-align: left;">KiB</td>
+<td style="text-align: left;"><span class="arithmatex">\(1,024 = 2^{10}\)</span></td>
+<td style="text-align: left;">接近千字节 (KB)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mebibyte</td>
+<td style="text-align: left;">MiB</td>
+<td style="text-align: left;"><span class="arithmatex">\(1,024^2 = 2^{20}\)</span></td>
+<td style="text-align: left;">接近兆字节 (MB)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Gibibyte</td>
+<td style="text-align: left;">GiB</td>
+<td style="text-align: left;"><span class="arithmatex">\(1,024^3 = 2^{30}\)</span></td>
+<td style="text-align: left;">接近吉字节 (GB)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Tebibyte</td>
+<td style="text-align: left;">TiB</td>
+<td style="text-align: left;"><span class="arithmatex">\(1,024^4 = 2^{40}\)</span></td>
+<td style="text-align: left;">接近太字节 (TB)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pebibyte</td>
+<td style="text-align: left;">PiB</td>
+<td style="text-align: left;"><span class="arithmatex">\(1,024^5 = 2^{50}\)</span></td>
+<td style="text-align: left;">接近拍字节 (PB)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">KiB vs KB</p>
+<p>我们使用 KiB/MiB/GiB 这些基于 1024 (<span class="arithmatex">\(2^{10}\)</span>) 的单位，因为它们在计算机科学中定义更明确。而 KB/MB/GB 有时指 1000 倍，有时指 1024 倍，容易混淆。</p>
+</div>
+<h3 id="43">4.3 检查文件大小</h3>
+<p>在加载数据前，使用 Python 的 <code>os</code> 库检查文件大小是个好习惯：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">kib</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:&lt;25}</span><span class="s1"> </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;File&#39;</span><span class="p">,</span> <span class="s1">&#39;Size (KiB)&#39;</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">filepath</span> <span class="ow">in</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">filepath</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">size</span> <span class="o">/</span> <span class="n">kib</span><span class="p">)))</span>
+</code></pre></div>
+<p>输出示例：
+<div class="highlight"><pre><span></span><code>File                      Size (KiB)
+data/inspections.csv      455.0
+data/violations.csv       3639.0
+data/DAWN-Data.txt        273531.0
+data/businesses.csv       645.0
+</code></pre></div></p>
+<p>可以看到 <code>DAWN-Data.txt</code> 约为 270 MB (273,531 KiB)，这在现代计算机上通常可以处理，但如果是在较旧的机器上可能会变慢。</p>
+<div class="admonition tip">
+<p class="admonition-title">内存经验法则</p>
+<p>使用 Pandas 读取文件时，所需的内存通常是<strong>文件大小的 5 倍</strong>。
+例如，读取一个 1 GiB 的文件，可能需要 5 GiB 的可用内存。如果你的电脑只有 8 GiB 内存，且运行着浏览器和其他软件，这可能会导致内存溢出。</p>
+</div>
+<h3 id="44">4.4 处理大数据的策略</h3>
+<p>当数据量超过内存限制（即所谓的“大数据”场景）时，我们可以采取以下策略：</p>
+<ol>
+<li>
+<p><strong>数据子集化 (Subset)</strong>：</p>
+<ul>
+<li>只读取其中的一部分列或行。</li>
+<li>进行随机抽样。</li>
+<li>缺点：可能会丢失稀有事件的信息。</li>
+</ul>
+</li>
+<li>
+<p><strong>使用数据库系统 (Use a Database)</strong>：</p>
+<ul>
+<li>如 SQLite (单机)、MySQL/PostgreSQL (服务器)。</li>
+<li>数据库设计用于存储和查询超出内存限制的数据。</li>
+<li>方法：使用 SQL 进行筛选、聚合，将结果（通常较小）读入 Python 进行分析。</li>
+</ul>
+</li>
+<li>
+<p><strong>使用分布式计算系统 (Use Distributed Computing)</strong>：</p>
+<ul>
+<li>如 Spark, Ray, MapReduce。</li>
+<li>将数据和计算任务分割到多台计算机上并行处理。</li>
+<li>适用于海量数据，但配置和维护成本较高。</li>
+</ul>
+</li>
+</ol>
+<p>除了 Python，我们还可以使用 <strong>Shell 命令</strong>来快速获取文件信息，这在处理大文件时往往更加高效。我们将在下一节介绍 Shell 工具。</p>
+<h2 id="5-shell-the-shell-and-command-line-tools">5. Shell 和命令行工具 (The Shell and Command-Line Tools)</h2>
+<p>几乎所有的操作系统都提供了 shell 解释器（如 Bash, Zsh）。我们可以使用 <strong>命令行界面 (CLI)</strong> 工具对文件进行操作。</p>
+<ul>
+<li><strong>优点</strong>：语法简洁，执行速度快，适合批量处理和查看大文件。</li>
+<li><strong>注意</strong>：Windows 系统的命令可能不同。本文主要介绍类 Unix 系统（macOS/Linux）的 Bash 命令。Windows 用户可以使用 Git Bash 或 WSL (Windows Subsystem for Linux)。</li>
+</ul>
+<p>Jupyter Notebook 支持在命令前加 <code>!</code> 来直接运行 Shell 命令。</p>
+<h3 id="51-ls">5.1 查看文件列表 (<code>ls</code>)</h3>
+<p>使用 <code>ls</code> 列出目录内容。常用参数：
+*   <code>-l</code>: 显示详细信息（权限、所有者、大小、日期）。
+*   <code>-h</code>: 以人类可读的格式显示文件大小（如 KB, MB）。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 列出 data 目录下的文件及其大小</span>
+$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>data/
+
+total<span class="w"> </span><span class="m">556664</span>
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>nolan<span class="w">  </span>staff<span class="w">   </span>267M<span class="w"> </span>Dec<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">14</span>:03<span class="w"> </span>DAWN-Data.txt
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>nolan<span class="w">  </span>staff<span class="w">   </span>645K<span class="w"> </span>Dec<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">14</span>:01<span class="w"> </span>businesses.csv
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>nolan<span class="w">  </span>staff<span class="w">   </span><span class="m">3</span>.6M<span class="w"> </span>Dec<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">14</span>:01<span class="w"> </span>violations.csv
+...
+</code></pre></div>
+<h3 id="52-wc">5.2 统计字数和行数 (<code>wc</code>)</h3>
+<p><code>wc</code> (word count) 可以快速统计文件的行数、单词数和字符数。这对于了解数据规模非常有帮助。</p>
+<p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>wc<span class="w"> </span>data/DAWN-Data.txt
+
+<span class="w">  </span><span class="m">229211</span><span class="w"> </span><span class="m">22695570</span><span class="w"> </span><span class="m">280095842</span><span class="w"> </span>data/DAWN-Data.txt
+</code></pre></div>
+这表明文件有约 22.9 万行和 2.8 亿个字符。</p>
+<h3 id="53-du">5.3 计算目录总大小 (<code>du</code>)</h3>
+<p><code>ls</code> 不能直接显示文件夹的总大小，这时我们需要 <code>du</code> (disk usage)。</p>
+<ul>
+<li><code>-s</code>: 显示总和 (summary)。</li>
+<li><code>-h</code>: 人类可读格式。</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>du<span class="w"> </span>-sh<span class="w"> </span>data/
+
+272M<span class="w">    </span>data/
+</code></pre></div>
+<h3 id="54-head-tail-cat">5.4 查看文件内容 (<code>head</code>, <code>tail</code>, <code>cat</code>)</h3>
+<p>在读取文件前瞥一眼内容非常重要，有助于我们确认格式（如 CSV 表头）。</p>
+<ul>
+<li><code>head -n 5 file.csv</code>: 查看前 5 行。</li>
+<li><code>tail -n 5 file.csv</code>: 查看后 5 行。</li>
+<li><code>cat file.csv</code>: 打印整个文件（<strong>警告：不要对大文件使用！</strong>）。</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>data/inspections.csv
+
+<span class="s2">&quot;business_id&quot;</span>,<span class="s2">&quot;score&quot;</span>,<span class="s2">&quot;date&quot;</span>,<span class="s2">&quot;type&quot;</span>
+<span class="m">19</span>,<span class="s2">&quot;94&quot;</span>,<span class="s2">&quot;20160513&quot;</span>,<span class="s2">&quot;routine&quot;</span>
+<span class="m">19</span>,<span class="s2">&quot;94&quot;</span>,<span class="s2">&quot;20171211&quot;</span>,<span class="s2">&quot;routine&quot;</span>
+<span class="m">24</span>,<span class="s2">&quot;98&quot;</span>,<span class="s2">&quot;20171101&quot;</span>,<span class="s2">&quot;routine&quot;</span>
+</code></pre></div>
+<h3 id="55-file">5.5 确定文件类型 (<code>file</code>)</h3>
+<p><code>file</code> 命令可以帮助检测文件编码和类型：</p>
+<p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>file<span class="w"> </span>-I<span class="w"> </span>data/*
+
+data/DAWN-Data.txt:<span class="w">   </span>text/plain<span class="p">;</span><span class="w"> </span><span class="nv">charset</span><span class="o">=</span>us-ascii
+data/businesses.csv:<span class="w">  </span>application/csv<span class="p">;</span><span class="w"> </span><span class="nv">charset</span><span class="o">=</span>iso-8859-1
+</code></pre></div>
+这再次证实 <code>businesses.csv</code> 是 ISO-8859-1 编码。</p>
+<h3 id="_3">总结</h3>
+<p>Shell 命令提供了一种<strong>编程方式</strong>来处理文件，相比于鼠标点击，它更易于记录、复现和自动化，特别是在处理海量数据时。</p>
+<p>在将数据读入 DataFrame 后，我们的下一个任务就是弄清楚表格的<strong>形状 (Shape)</strong> 和<strong>粒度 (Granularity)</strong>。我们将从找出表格的行数和列数开始，然后深入理解每一行代表的意义，这是检查数据质量的第一步。</p>
+<h2 id="6-table-shape-and-granularity">6. 表格形状和粒度 (Table Shape and Granularity)</h2>
+<p>我们将表格的心理表征称为结构（即行和列），用 <strong>形状 (Shape)</strong> 来量化行数和列数，用 <strong>粒度 (Granularity)</strong> 来描述表格中每一行代表什么。</p>
+<h3 id="61">6.1 检查形状</h3>
+<p>确定文件格式后，我们可以加载数据并检查其形状：</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># 指定编码读取 businesses.csv</span>
+<span class="n">bus</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/businesses.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;ISO-8859-1&#39;</span><span class="p">)</span>
+<span class="n">insp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/inspections.csv&quot;</span><span class="p">)</span>
+<span class="n">viol</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/violations.csv&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; Businesses:&quot;</span><span class="p">,</span> <span class="n">bus</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> Inspections:&quot;</span><span class="p">,</span> <span class="n">insp</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> 
+      <span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> Violations:&quot;</span><span class="p">,</span> <span class="n">viol</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div>
+输出示例：
+<code>Businesses: (6406, 9)   Inspections: (14222, 4)     Violations: (39042, 3)</code></p>
+<h3 id="62">6.2 确定粒度：餐厅数据</h3>
+<p>对于 <code>bus</code> (Businesses) 表，我们有 6406 行。每一行代表什么？是通过查看前几行和主键来确定的。</p>
+<ol>
+<li><strong>观察数据</strong>：前两行显示了餐厅的具体信息。</li>
+<li><strong>验证主键</strong>：<code>business_id</code> 看起来是唯一标识符。</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of records:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bus</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of unique business ids:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bus</span><span class="p">[</span><span class="s1">&#39;business_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+</code></pre></div>
+如果两者相等（都是 6406），则说明 <code>business_id</code> 确实是主键，每一行代表一家独特的餐厅。</p>
+<p>对于 <code>insp</code> (Inspections) 表，行数 (14222) 远多于餐厅数。一个餐厅可能有多次检查。</p>
+<ul>
+<li><strong>粒度</strong>：大致是“一次检查”。</li>
+<li><strong>主键</strong>：通常是 <code>business_id</code> 和 <code>date</code> 的组合。<ul>
+<li><em>注意</em>：如果同一天有两次检查记录，可能需要进一步清洗数据。</li>
+</ul>
+</li>
+</ul>
+<p>对于 <code>viol</code> (Violations) 表，行数更多 (39042)。</p>
+<ul>
+<li><strong>粒度</strong>：一次检查中的一个违规项。一次检查可能发现多个违规行为，因此会对应多行。</li>
+</ul>
+<h3 id="63-dawn">6.3 确定粒度：DAWN 调查数据</h3>
+<p>DAWN 数据是固定宽度格式，我们需要根据代码簿 (Codebook) 指定列位置 (<code>colspecs</code>) 来读取。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 示例代码：读取固定宽度文件</span>
+<span class="n">colspecs</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span> <span class="p">(</span><span class="mi">33</span><span class="p">,</span><span class="mi">35</span><span class="p">),</span> <span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">37</span><span class="p">),</span> <span class="p">(</span><span class="mi">37</span><span class="p">,</span> <span class="mi">39</span><span class="p">),</span> <span class="p">(</span><span class="mi">1213</span><span class="p">,</span> <span class="mi">1214</span><span class="p">)]</span>
+<span class="n">varNames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="s2">&quot;race&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">]</span>
+<span class="n">dawn</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_fwf</span><span class="p">(</span><span class="s1">&#39;data/DAWN-Data.txt&#39;</span><span class="p">,</span> <span class="n">colspecs</span><span class="o">=</span><span class="n">colspecs</span><span class="p">,</span> 
+                   <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">varNames</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">代码详解：<code>read_fwf</code></p>
+<p>这段代码展示了如何读取固定宽度格式的文件。由于这种文件没有分隔符，我们需要手动指定每列数据的<strong>位置范围</strong>。</p>
+<ul>
+<li><strong><code>colspecs</code></strong>: 元组列表 <code>[(开始, 结束), ...]</code>。例如 <code>(0, 6)</code> 表示第 0 到 5 位字符是第一列。这些位置通常来自“代码簿”。</li>
+<li><strong>跳过无关数据</strong>：注意 <code>colspecs</code> 从 <code>(37, 39)</code> 直接跳到了 <code>(1213, 1214)</code>。这是 FWF 的一大优势：我们可以<strong>只读取感兴趣的列</strong>，完全忽略中间不关心的内容（即第 39 到 1213 字符之间的数据会被直接丢弃），这能极大节省内存。</li>
+<li><strong><code>header=None</code></strong>: 原文件没有列名行，告诉 Pandas 不要把第一行数据当成表头。</li>
+<li><strong><code>names=varNames</code></strong>: 手动指定列名。</li>
+<li><strong><code>index_col=0</code></strong>: 使用第一列（即 <code>id</code>）作为行索引。</li>
+</ul>
+</div>
+<ul>
+<li><strong>形状</strong>：<code>(229211, 5)</code>，行数与文件行数一致。</li>
+<li><strong>粒度</strong>：每一行代表一次 <strong>急诊室就诊 (Emergency Room Visit)</strong>。</li>
+<li><strong>权重 (Weights)</strong>：由于这是抽样调查，为了反映全国人口情况，每条记录都有一个权重 (<code>wt</code>)。<ul>
+<li>在计算统计量（如平均值、比例）时，必须使用这些权重，否则结果会有偏差。</li>
+</ul>
+</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">权重的重要性</p>
+<p>例如，计算女性比例。如果不加权，结果可能是 48.0%；加权后，结果可能是 52.3%。加权后的结果更能代表真实的全国人口情况。</p>
+</div>
+<h3 id="_4">总结</h3>
+<p>在处理文件时，我们不仅要关注如何读取（格式、编码、大小），还要关注读取后的数据结构（形状、粒度）。无论是简单的 CSV 还是复杂的调查数据，理解每一行代表的意义都是正确分析的前提。</p>
+<h2 id="7">7. 本章总结</h2>
+<p>数据清理是避免分析偏差的关键。本章我们主要关注了数据清理的第一步：<strong>从源文件读取数据</strong>。</p>
+<p>我们回顾了以下关键点：</p>
+<ol>
+<li><strong>文件格式与编码</strong>：学习了如何通过 <code>pd.read_csv</code> 和 <code>pd.read_fwf</code> 读取不同格式的文本文件，并使用 <code>encoding</code> 参数处理乱码。</li>
+<li><strong>文件大小</strong>：学会利用 <code>os.path.getsize</code> 评估文件大小，判断是否能直接读入内存。</li>
+<li><strong>Shell 工具</strong>：展示了命令行工具在快速检查大文件时的优势。</li>
+<li><strong>形状与粒度</strong>：强调了理解“数据的一行代表什么”的重要性。</li>
+</ol>
+<h3 id="checklist">关键检查清单 (Checklist)</h3>
+<p>在开始分析前，请确保你能回答以下关于<strong>数据粒度</strong>的问题：</p>
+<ul>
+<li><strong>这一行代表什么？</strong> (Record definition)</li>
+<li><strong>粒度是否统一？</strong> 是否混入了汇总行（如“Total”行）？ (Mixed granularity)</li>
+<li><strong>数据是否已被聚合？</strong> 是原始记录还是平均值？聚合后的数据往往波动更小，关系看起来更强。 (Aggregation)</li>
+<li><strong>不仅是读取</strong>：例如 DAWN 数据的粒度是“单次就诊”，这意味着我们可以分析就诊特征，但不能直接推断“患者”特征（因为一人可能多次就诊）。</li>
+</ul>
+<h3 id="_5">常用读取函数回顾</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">任务</th>
+<th style="text-align: left;">核心函数/方法</th>
+<th style="text-align: left;">常用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>读取 CSV</strong></td>
+<td style="text-align: left;"><code>pd.read_csv(path, encoding='...')</code></td>
+<td style="text-align: left;">最通用的表格数据格式</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>读取固定宽度</strong></td>
+<td style="text-align: left;"><code>pd.read_fwf(path, colspecs=...)</code></td>
+<td style="text-align: left;">旧式数据或大型调查数据 (如 DAWN)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>读取文本</strong></td>
+<td style="text-align: left;"><code>Path(path).read_text()</code></td>
+<td style="text-align: left;">快速查看文件内容或非结构化文本</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>读取字节</strong></td>
+<td style="text-align: left;"><code>Path(path).read_bytes()</code></td>
+<td style="text-align: left;">用于检测编码 (<code>chardet.detect</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>弄清楚了文件的物理属性（格式、编码、大小）和逻辑属性（形状、粒度），我们就为数据分析打下了坚实的基础。</p>
+<p>下一章，我们将讨论如何 <a href="../05_%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/">评估和提升数据质量</a>。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

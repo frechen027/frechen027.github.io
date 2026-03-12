@@ -1,0 +1,2555 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../algo/10_%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/">
+      
+      
+        <link rel="next" href="../02_%E7%9F%A9%E5%BD%A2%E6%95%B0%E6%8D%AE/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>1 生命周期 - Python 修行指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Python 修行指南" class="md-header__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python 修行指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1 生命周期
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Python 修行指南" class="md-nav__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Python 修行指南
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    前言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 预备知识
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 预备知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/01_Python%E7%A8%8B%E5%BA%8F%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Python程序基本结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/02_%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 基础语法与变量
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/03_%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 核心数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/04_%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 运算符与表达式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/05_%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 程序控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/06_%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 函数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/07_%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 文件操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/08_%E9%94%99%E8%AF%AF%E4%B8%8E%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 错误与异常处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/09_%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 面向对象编程基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 进阶修炼
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 进阶修炼
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/01_%E6%8E%A8%E5%AF%BC%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/02_%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 迭代器与生成器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/03_%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/04_%E8%A3%85%E9%A5%B0%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 装饰器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/05_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/06_%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%8C%85/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 模块与包
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/07_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 进阶输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/08_%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 命名空间与作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/09_%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 类型注解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/10_%E6%A0%87%E5%87%86%E5%BA%93%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 标准库概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/11_%E5%BC%82%E6%AD%A5IO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 异步IO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/01_%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 算法概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/02_%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%9E%9A%E4%B8%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 模拟与枚举
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/03_%E9%80%92%E5%BD%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 递归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/04_%E5%88%86%E6%B2%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 分治
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/05_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 二分查找
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/06_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 动态规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/07_%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 背包问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/08_%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 贪心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/09_%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 搜索算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/10_%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 图论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据科学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据科学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 生命周期
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 生命周期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 数据科学生命周期概览
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 数据科学生命周期概览">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-formulating-a-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 提出问题 (Formulating a Question)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-acquiring-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 获取数据 (Acquiring Data)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-understanding-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 理解数据 (Understanding Data)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-understanding-the-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 理解世界 (Understanding the World)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-questions-and-data-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 问题与数据范围 (Questions and Data Scope)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 问题与数据范围 (Questions and Data Scope)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 统计学的三层世界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-bias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 偏差 (Bias) 的来源
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-variation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 变异 (Variation) 的来源
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-simulation-and-data-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 仿真与抽样设计 (Simulation and Data Design)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 仿真与抽样设计 (Simulation and Data Design)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-the-urn-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 瓮模型 (The Urn Model)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 复杂的抽样设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-sampling-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 统计量的抽样分布 (Sampling Distribution)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 模拟实战：超几何分布
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-modeling-with-summary-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 利用汇总统计量建模 (Modeling with Summary Statistics)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 利用汇总统计量建模 (Modeling with Summary Statistics)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 案例：公交车晚点了吗？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-the-modeling-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 建模的三步法 (The Modeling Process)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 两种关键的损失函数对比
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 两种关键的损失函数对比">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-mae-l1-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方案 A：平均绝对误差 (MAE / L1 Loss)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-mse-l2-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方案 B：均方误差 (MSE / L2 Loss)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 总结：选均值还是中位数？
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_%E7%9F%A9%E5%BD%A2%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 矩形数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 SQL与关系数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 文件处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据清洗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 数据分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实用工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/01_Git%E4%B8%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Git与版本控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/02_Markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/03_Vibe_Coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Vibe Coding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/04_LeetCode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 LeetCode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/05_coze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 coze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/06_n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/07_PPT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 PPT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 数据科学生命周期概览
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 数据科学生命周期概览">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-formulating-a-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 提出问题 (Formulating a Question)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-acquiring-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 获取数据 (Acquiring Data)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-understanding-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 理解数据 (Understanding Data)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-understanding-the-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 理解世界 (Understanding the World)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-questions-and-data-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 问题与数据范围 (Questions and Data Scope)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 问题与数据范围 (Questions and Data Scope)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 统计学的三层世界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-bias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 偏差 (Bias) 的来源
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-variation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 变异 (Variation) 的来源
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-simulation-and-data-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 仿真与抽样设计 (Simulation and Data Design)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 仿真与抽样设计 (Simulation and Data Design)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-the-urn-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 瓮模型 (The Urn Model)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 复杂的抽样设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-sampling-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 统计量的抽样分布 (Sampling Distribution)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 模拟实战：超几何分布
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-modeling-with-summary-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 利用汇总统计量建模 (Modeling with Summary Statistics)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 利用汇总统计量建模 (Modeling with Summary Statistics)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 案例：公交车晚点了吗？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-the-modeling-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 建模的三步法 (The Modeling Process)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 两种关键的损失函数对比
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 两种关键的损失函数对比">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-mae-l1-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方案 A：平均绝对误差 (MAE / L1 Loss)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-mse-l2-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方案 B：均方误差 (MSE / L2 Loss)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 总结：选均值还是中位数？
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">数据科学生命周期</h1>
+<p>本章为你开启数据科学的大门。我们将探讨数据科学项目的核心工作流程（生命周期），并深入理解在收集和分析数据时必须面对的关键问题：数据的范围、质量以及如何使用数学模型来简化和理解错综复杂的现实世界。</p>
+<h2 id="1">1. 数据科学生命周期概览</h2>
+<p>数据科学不仅仅是用不用库或算法，它是一种解决问题的思维方式。一个典型的数据科学项目通常遵循以下四个阶段的迭代循环：</p>
+<h3 id="11-formulating-a-question">1.1 提出问题 (Formulating a Question)</h3>
+<p>一切始于一个好问题。提出正确的问题是数据科学中最关键、也往往是最困难的一步。根据分析目标，问题通常可以分为四类：</p>
+<ul>
+<li><strong>描述性问题 (Descriptive)</strong>：试图概括数据的特征。<ul>
+<li><em>例</em>：“过去十年西雅图的房价是如何变化的？”</li>
+</ul>
+</li>
+<li><strong>探索性问题 (Exploratory)</strong>：寻找数据中的关联、模式或趋势。<ul>
+<li><em>例</em>：“房屋的面积和售价之间有什么关系？”</li>
+</ul>
+</li>
+<li><strong>推断性问题 (Inferential)</strong>：希望通过手中的样本，推断出<strong>更大总体</strong>的特征。不仅仅局限于手头的数据，而是要对未知进行量化。<ul>
+<li><em>例</em>：“根据这 500 套房子的样本，我们可以推断出整个城市的平均房价吗？”</li>
+</ul>
+</li>
+<li><strong>预测性问题 (Predictive)</strong>：利用过去的数据构建模型，以预测未来或未知的数据。<ul>
+<li><em>例</em>：“如果我们知道这套房子的面积和位置，它的售价会是多少？”</li>
+</ul>
+</li>
+</ul>
+<h3 id="12-acquiring-data">1.2 获取数据 (Acquiring Data)</h3>
+<p>有了问题，我们就需要寻找能够回答这些问题的数据。</p>
+<ul>
+<li><strong>来源多样</strong>：数据库、API、网页抓取、传感器日志，甚至手动问卷。</li>
+<li><strong>现实残酷</strong>：现实中的数据往往是“脏”的 —— 包含缺失值、异常值、格式错误，或者数据本身与研究问题不完全匹配（例如你想研究全人类，但只拿到了大学生的数据）。</li>
+<li><strong>关键任务</strong>：无论数据来源如何，我们都需要仔细检查数据的<strong>质量</strong>和<strong>适用范围</strong>。</li>
+</ul>
+<h3 id="13-understanding-data">1.3 理解数据 (Understanding Data)</h3>
+<p>在这个阶段，我们会对数据进行初步的“体检”：</p>
+<ul>
+<li><strong>可视化 (Visualization)</strong>：绘制图表来发现模式、趋势和异常点。</li>
+<li><strong>探索性数据分析 (EDA)</strong>：计算汇总统计量（如均值、中位数），寻找潜在的问题。</li>
+<li><strong>初步建模</strong>：可能会构建简单的统计模型（如线性回归）来初步量化变量之间的关系。</li>
+<li><strong>迭代特性</strong>：对数据的理解往往会让我们“回退” —— 你可能会发现原先的问题没法回答，需要修改问题；或者发现数据不够，需要获取更多数据；甚至发现清洗得不对，需要重新清洗。</li>
+</ul>
+<h3 id="14-understanding-the-world">1.4 理解世界 (Understanding the World)</h3>
+<p>这是分析的终点，也是价值的体现：</p>
+<ul>
+<li>如果目标是<strong>描述</strong>或<strong>探索</strong>，我们在此阶段总结发现，向他人讲述数据背后的故事。</li>
+<li>如果目标是<strong>推断</strong>或<strong>预测</strong>，我们需要评估模型在“未知世界”中的表现（泛化能力），并量化结果的不确定性（例如给出 95% 的置信区间）。</li>
+</ul>
+<hr />
+<h2 id="2-questions-and-data-scope">2. 问题与数据范围 (Questions and Data Scope)</h2>
+<p>在大数据时代，并不是数据越多就越好。必须要考虑<strong>数据范围 (Scope)</strong> 是否能覆盖我们要回答的<strong>问题 (Question)</strong>。</p>
+<h3 id="21">2.1 统计学的三层世界</h3>
+<p>为了准确描述统计学概念，我们需要区分这三个层级：</p>
+<ol>
+<li><strong>目标总体 (Target Population)</strong>：我们最终想要研究和得出结论的全体对象集合（<em>理想</em>）。<ul>
+<li>比如：“全中国的所有成年人”。</li>
+</ul>
+</li>
+<li><strong>抽样框 (Access Frame)</strong>：我们可以实际接触和进行抽样的名单或集合（<em>现实限制</em>）。<ul>
+<li>比如：“拥有手机号码的成年人列表”。理想情况下，抽样框应与目标总体一致，但现实中往往有偏差（比如没手机的人就被漏掉了）。</li>
+</ul>
+</li>
+<li><strong>样本 (Sample)</strong>：实际被选中并进行测量的那一部分人或物（<em>实际数据</em>）。<ul>
+<li>比如：“实际接听电话并完成调查的 1000 人”。</li>
+</ul>
+</li>
+</ol>
+<h3 id="22-bias">2.2 偏差 (Bias) 的来源</h3>
+<p>当样本无法代表总体时，就会产生偏差。</p>
+<ul>
+<li><strong>覆盖偏差 (Coverage Bias)</strong>：抽样框没有覆盖到目标总体的全部。<ul>
+<li><em>场景</em>：仅通过在线问卷调查“老年人的互联网使用习惯”，显然会漏掉那些根本不上网的老年人。</li>
+</ul>
+</li>
+<li><strong>选择偏差 (Selection Bias)</strong>：选择样本的机制不随机，倾向于选择某种特定类型的人。<ul>
+<li><em>场景</em>：在市中心商场门口做调查，只会选到喜欢逛街的人，无法代表宅在家的人。</li>
+</ul>
+</li>
+<li><strong>无应答偏差 (Non-response Bias)</strong>：即使选样是随机的，但被选中的人拒绝回答，且拒绝回答的人与回答的人有显著不同。<ul>
+<li><em>场景</em>：对“工作满意度”进行调查，工作极度繁忙（可能不满意）的人直接挂断电话，导致结果偏向“满意”。</li>
+</ul>
+</li>
+<li><strong>测量偏差 (Measurement Bias)</strong>：测量工具本身有问题，导致结果系统性偏离真实值。<ul>
+<li><em>场景</em>：一个总是快 5 分钟的时钟；或者问卷问题具有诱导性，导致受访者倾向于选某个特定答案。</li>
+</ul>
+</li>
+</ul>
+<h3 id="23-variation">2.3 变异 (Variation) 的来源</h3>
+<p>即使没有偏差，每次抽样或测量的结果也不完全一样，这就是变异：</p>
+<ul>
+<li><strong>抽样变异 (Sampling Variability)</strong>：因为是随机抽样，每次抽到的人不一样，结果自然会有波动。这是统计学主要研究的对象。</li>
+<li><strong>分配变异 (Assignment Variability)</strong>：在随机对照实验（A/B测试）中，谁被分到实验组、谁被分到对照组是随机的，这种随机分配带来的结果差异。</li>
+<li><strong>测量误差 (Measurement Error)</strong>：仪器本身的精度限制或环境干扰导致的随机波动（围绕真实值上下波动）。</li>
+</ul>
+<hr />
+<h2 id="3-simulation-and-data-design">3. 仿真与抽样设计 (Simulation and Data Design)</h2>
+<p>当数学公式太复杂时，计算机模拟（Simulation）是理解概率和随机过程的强大工具。</p>
+<h3 id="31-the-urn-model">3.1 瓮模型 (The Urn Model)</h3>
+<p>这是一个经典的思维模型，用于理解<strong>简单随机抽样 (Simple Random Sample, SRS)</strong>。
+想象一个瓮（罐子）里装满了不同颜色的弹珠（代表总体中的个体），我们从中随机抓取几个（代表抽样）。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># 模拟一个瓮：3个蓝色(b)，2个白色(w)</span>
+<span class="n">urn</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">]</span>
+
+<span class="c1"># 进行两次随机抽样（不放回）</span>
+<span class="c1"># replace=False 表示取出一个后不放回去，保证同一个体不会被抽两次</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample 1:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">urn</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample 2:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">urn</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</code></pre></div>
+<ul>
+<li><strong>不放回抽样 (Without Replacement)</strong>：通常用于调查，避免同一个人被问两次。</li>
+<li><strong>放回抽样 (With Replacement)</strong>：通常用于数学模拟或 Bootstrap 方法。</li>
+</ul>
+<h3 id="32">3.2 复杂的抽样设计</h3>
+<p>为了提高效率或保证代表性，我们常使用比简单随机抽样更复杂的方法：</p>
+<ul>
+<li><strong>分层抽样 (Stratified Sampling)</strong>：先将总体按特征分组（层），然后从<strong>每一层</strong>中随机抽取。<ul>
+<li><em>目的</em>：确保小众群体（如少数民族）在样本中有足够的比例，减少抽样误差。</li>
+</ul>
+</li>
+<li><strong>聚类抽样 (Cluster Sampling)</strong>：先将总体分成许多小群体（聚类），随机抽取<strong>几个聚类</strong>，然后调查这些聚类里的<strong>所有人</strong>。<ul>
+<li><em>目的</em>：为了节省成本（例如，随机选几所学校，调查学校里的所有学生，而不是跑遍全省抽取几名学生）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="33-sampling-distribution">3.3 统计量的抽样分布 (Sampling Distribution)</h3>
+<p>这是统计推断的基石。</p>
+<p>如果我们只抽一次样，得到一个结果（例如支持率为 60%），我们不知道这个结果准不准。
+但如果我们<strong>重复抽样一万次</strong>，每次都能算出一个支持率，这 <strong>10,000 个支持率的分布</strong> 就叫<strong>抽样分布</strong>。</p>
+<p>它告诉我们：如果你做一次实验，结果大概率会落在什么范围内。因为现实中我们通常只做一次实验，了解抽样分布能帮我们评估这一次结果的可靠性。</p>
+<h3 id="34">3.4 模拟实战：超几何分布</h3>
+<p>我们可以利用计算机模拟来验证概率理论。比如从一个包含好坏产品的批次中抽检，这就是超几何分布。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 模拟：从瓮中抽球，计算抽出&#39;bad&#39;球的比例</span>
+<span class="c1"># 瓮中有 7 个球：4 个好(good/0)，3 个坏(bad/1)</span>
+<span class="c1"># 进行 10,000 次实验，每次抽 3 个</span>
+<span class="n">simulations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">hypergeometric</span><span class="p">(</span><span class="n">ngood</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">nbad</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">nsample</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10_000</span><span class="p">)</span>
+
+<span class="c1"># simulations 数组里存的就是这 10,000 次通过模拟得到的 &quot;坏球个数&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">simulations</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span> <span class="c1"># 看看前10次结果</span>
+</code></pre></div>
+<hr />
+<h2 id="4-modeling-with-summary-statistics">4. 利用汇总统计量建模 (Modeling with Summary Statistics)</h2>
+<p>模型是对现实的简化。最简单的模型就是<strong>常数模型 (Constant Model)</strong>：用一个数字去代表所有数据。虽然简单，但它蕴含了机器学习最核心的思想。</p>
+<h3 id="41">4.1 案例：公交车晚点了吗？</h3>
+<p><strong>背景</strong>：Jake 分析西雅图 C 路公交车的晚点数据（单位：分钟）。
+<strong>数据特征</strong>：</p>
+<ul>
+<li><strong>均值 (Mean)</strong>：1.92 分钟</li>
+<li><strong>中位数 (Median)</strong>：0.74 分钟</li>
+<li><strong>众数 (Mode)</strong>：0.00 分钟</li>
+</ul>
+<p><strong>核心问题</strong>：如果只能用一个数字 <span class="arithmatex">\(\theta\)</span> 来概括“公交车通常晚点多久”，该选哪一个？</p>
+<h3 id="42-the-modeling-process">4.2 建模的三步法 (The Modeling Process)</h3>
+<p>这三步曲贯穿了整个数据科学：</p>
+<ol>
+<li><strong>定义模型</strong>：预测值 <span class="arithmatex">\(\hat{y} = \theta\)</span> （无论输入什么，预测值都是常数 <span class="arithmatex">\(\theta\)</span>）。</li>
+<li><strong>定义损失函数 (Loss Function)</strong>：衡量预测值 <span class="arithmatex">\(\theta\)</span> 和真实值 <span class="arithmatex">\(y\)</span> 差得有多离谱。</li>
+<li><strong>最小化损失 (Optimization)</strong>：调整 <span class="arithmatex">\(\theta\)</span>，让所有数据的总损失最小。</li>
+</ol>
+<h3 id="43">4.3 两种关键的损失函数对比</h3>
+<p>我们定义单个数据的误差为 <span class="arithmatex">\(y - \theta\)</span>。</p>
+<h4 id="a-mae-l1-loss">方案 A：平均绝对误差 (MAE / L1 Loss)</h4>
+<ul>
+<li><strong>定义</strong>：<span class="arithmatex">\(L(\theta) = \frac{1}{n}\sum |y_i - \theta|\)</span></li>
+<li><strong>含义</strong>：平均偏差的绝对值。</li>
+<li><strong>最优解</strong>：当 <span class="arithmatex">\(\theta\)</span> 等于数据的<strong>中位数 (Median)</strong> 时，MAE 最小。</li>
+<li><strong>特点 (鲁棒性)</strong>：<strong>对异常值不敏感</strong>。<ul>
+<li>如果有一辆车晚点了 1000 分钟，中位数可能完全不变。MAE 能够反映“典型”情况。</li>
+</ul>
+</li>
+<li><strong>适用场景</strong>：想要描述“一般情况”或“典型情况”，不希望被个别极端数据带偏。</li>
+</ul>
+<h4 id="b-mse-l2-loss">方案 B：均方误差 (MSE / L2 Loss)</h4>
+<ul>
+<li><strong>定义</strong>：<span class="arithmatex">\(L(\theta) = \frac{1}{n}\sum (y_i - \theta)^2\)</span></li>
+<li><strong>含义</strong>：平均偏差的平方。</li>
+<li><strong>最优解</strong>：当 <span class="arithmatex">\(\theta\)</span> 等于数据的<strong>均值 (Mean)</strong> 时，MSE 最小。</li>
+<li><strong>特点 (敏感性)</strong>：<strong>对异常值非常敏感</strong>。<ul>
+<li>平方操作会放大大的误差。因为 <span class="arithmatex">\((100)^2\)</span> 远大于 <span class="arithmatex">\((1)^2\)</span>。只要有一个极端值，均值就会被拉过去，以试图减小那个巨大的平方误差。</li>
+</ul>
+</li>
+<li><strong>适用场景</strong>：如果极端错误（严重晚点）的代价非常大，我们需要模型尽量避免大误差，此时使用均值会更合适。</li>
+</ul>
+<h3 id="44">4.4 总结：选均值还是中位数？</h3>
+<p>这不是一个数学问题，而是一个<strong>业务问题</strong>。</p>
+<ul>
+<li>如果你问：“公交车<strong>大概</strong>什么时候到？”（想要典型值） -&gt; <strong>选 MAE (中位数)</strong> -&gt; 0.74 分钟。</li>
+<li>如果你是公交调度中心，问：“如果你总是说还有 0.74 分钟就到，但偶尔迟到 2 小时，乘客会炸锅吗？”（想要惩罚大误差） -&gt; <strong>选 MSE (均值)</strong> -&gt; 1.92 分钟。</li>
+</ul>
+<p><strong>一句话总结</strong>：常数模型虽然简单，但它完美演示了建模的本质——<strong>选择不同的损失函数，会得到不同的“最优”世界观。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

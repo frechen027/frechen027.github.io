@@ -1,60 +1,74 @@
 site_name: "Python 修行指南"
 
-nav:                       # 导航栏菜单结构，层级与目录结构对应
-  - 前言: index.md
-  - Python 预备知识:
-    - 1 Python程序基本结构: basic/01_Python程序基本结构.md
-    - 2 基础语法与变量: basic/02_基础语法与变量.md
-    - 3 核心数据结构: basic/03_核心数据结构.md
-    - 4 运算符与表达式: basic/04_运算符与表达式.md
-    - 5 程序控制流: basic/05_程序控制流.md
-    - 6 函数: basic/06_函数.md
-    - 7 文件操作: basic/07_文件操作.md
-    - 8 错误与异常处理: basic/08_错误与异常处理.md
-    - 9 面向对象编程基础: basic/09_面向对象编程基础.md
-  - 算法基础:
-    - 1 算法概述: algo/01_算法概述.md
-    - 2 模拟与枚举: algo/02_模拟与枚举.md
-    - 3 递归: algo/03_递归.md
-    - 4 分治: algo/04_分治.md
-    - 5 二分查找: algo/05_二分查找.md
-    - 6 动态规划: algo/06_动态规划.md
-    - 7 背包问题: algo/07_背包问题.md
-    - 8 贪心算法: algo/08_贪心算法.md
-    - 9 搜索算法: algo/09_搜索算法.md
-    - 10 图论基础: algo/10_图论基础.md
-  - 实用工具:
-    - 1 Git与版本控制: tools/01_Git与版本控制.md
-    - 2 Markdown: tools/02_Markdown.md
-    - 3 Vibe Coding: tools/03_Vibe_Coding.md
-    - 4 LeetCode: tools/04_LeetCode.md
-    - 5 coze: tools/05_coze.md
-    - 6 n8n: tools/06_n8n.md
-    - 7 PPT: tools/07_PPT.md
-
-
-
-
-
+nav: # 导航栏菜单结构，层级与目录结构对应
+    - 前言: index.md
+    - Python 预备知识:
+          - 1 Python程序基本结构: basic/01_Python程序基本结构.md
+          - 2 基础语法与变量: basic/02_基础语法与变量.md
+          - 3 核心数据结构: basic/03_核心数据结构.md
+          - 4 运算符与表达式: basic/04_运算符与表达式.md
+          - 5 程序控制流: basic/05_程序控制流.md
+          - 6 函数: basic/06_函数.md
+          - 7 文件操作: basic/07_文件操作.md
+          - 8 错误与异常处理: basic/08_错误与异常处理.md
+          - 9 面向对象编程基础: basic/09_面向对象编程基础.md
+    - Python 进阶修炼:
+          - 1 推导式: advanced/01_推导式.md
+          - 2 迭代器与生成器: advanced/02_迭代器与生成器.md
+          - 3 上下文管理器: advanced/03_上下文管理器.md
+          - 4 装饰器: advanced/04_装饰器.md
+          - 5 数据结构: advanced/05_数据结构.md
+          - 6 模块与包: advanced/06_模块与包.md
+          - 7 进阶输入输出: advanced/07_输入输出.md
+          - 8 命名空间与作用域: advanced/08_命名空间与作用域.md
+          - 9 类型注解: advanced/09_类型注解.md
+          - 10 标准库概览: advanced/10_标准库概览.md
+          - 11 异步IO: advanced/11_异步IO.md
+    - 算法基础:
+          - 1 算法概述: algo/01_算法概述.md
+          - 2 模拟与枚举: algo/02_模拟与枚举.md
+          - 3 递归: algo/03_递归.md
+          - 4 分治: algo/04_分治.md
+          - 5 二分查找: algo/05_二分查找.md
+          - 6 动态规划: algo/06_动态规划.md
+          - 7 背包问题: algo/07_背包问题.md
+          - 8 贪心算法: algo/08_贪心算法.md
+          - 9 搜索算法: algo/09_搜索算法.md
+          - 10 图论基础: algo/10_图论基础.md
+    - 数据科学:
+          - 1 生命周期: data_science/01_生命周期.md
+          - 2 矩形数据: data_science/02_矩形数据.md
+          - 3 SQL与关系数据: data_science/03_SQL.md
+          - 4 文件处理: data_science/04_文件处理.md
+          - 5 数据清洗: data_science/05_数据清洗.md
+          - 6 数据分析: data_science/06_数据分析.md
+          - 7 数据可视化: data_science/07_数据可视化.md
+    - 实用工具:
+          - 1 Git与版本控制: tools/01_Git与版本控制.md
+          - 2 Markdown: tools/02_Markdown.md
+          - 3 Vibe Coding: tools/03_Vibe_Coding.md
+          - 4 LeetCode: tools/04_LeetCode.md
+          - 5 coze: tools/05_coze.md
+          - 6 n8n: tools/06_n8n.md
+          - 7 PPT: tools/07_PPT.md
 
 theme:
-  name: material #主题
-  language: zh  #语言
+    name: material #主题
+    language: zh #语言
 
 markdown_extensions:
-  - admonition
-  - pymdownx.highlight
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.arithmatex:
-      generic: true
-
+    - admonition
+    - pymdownx.highlight
+    - pymdownx.superfences:
+          custom_fences:
+              - name: mermaid
+                class: mermaid
+                format: !!python/name:pymdownx.superfences.fence_code_format
+    - pymdownx.tabbed:
+          alternate_style: true
+    - pymdownx.arithmatex:
+          generic: true
 
 extra_javascript:
-  - javascripts/config.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    - javascripts/config.js
+    - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
