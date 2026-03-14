@@ -1,0 +1,2934 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../07_%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
+      
+      
+        <link rel="next" href="../09_%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>8 案例研究 - Python 修行指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#08" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Python 修行指南" class="md-header__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python 修行指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              8 案例研究
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Python 修行指南" class="md-nav__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Python 修行指南
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    前言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 预备知识
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 预备知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/01_Python%E7%A8%8B%E5%BA%8F%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Python程序基本结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/02_%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 基础语法与变量
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/03_%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 核心数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/04_%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 运算符与表达式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/05_%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 程序控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/06_%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 函数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/07_%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 文件操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/08_%E9%94%99%E8%AF%AF%E4%B8%8E%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 错误与异常处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/09_%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 面向对象编程基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 进阶修炼
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 进阶修炼
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/01_%E6%8E%A8%E5%AF%BC%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/02_%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 迭代器与生成器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/03_%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/04_%E8%A3%85%E9%A5%B0%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 装饰器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/05_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/06_%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%8C%85/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 模块与包
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/07_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 进阶输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/08_%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 命名空间与作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/09_%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 类型注解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/10_%E6%A0%87%E5%87%86%E5%BA%93%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 标准库概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/11_%E5%BC%82%E6%AD%A5IO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 异步IO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/01_%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 算法概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/02_%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%9E%9A%E4%B8%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 模拟与枚举
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/03_%E9%80%92%E5%BD%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 递归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/04_%E5%88%86%E6%B2%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 分治
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/05_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 二分查找
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/06_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 动态规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/07_%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 背包问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/08_%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 贪心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/09_%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 搜索算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/10_%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 图论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据科学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据科学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 生命周期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_%E7%9F%A9%E5%BD%A2%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 矩形数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 SQL与关系数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 文件处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据清洗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 数据分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 数据可视化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 案例研究
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        背景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据源对比
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目标与流程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-question-design-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 问题、设计与范围 (Question, Design, and Scope)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 问题、设计与范围 (Question, Design, and Scope)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 问题提出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 数据范围与设计思路
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-finding-collocated-sensors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 寻找共址传感器 (Finding Collocated Sensors)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 寻找共址传感器 (Finding Collocated Sensors)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-aqs-wrangling-the-list-of-aqs-sites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 整理 AQS 站点数据 (Wrangling the List of AQS Sites)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-purpleair-wrangling-the-list-of-purpleair-sites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 整理 PurpleAir 站点数据 (Wrangling the List of PurpleAir Sites)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-matching-aqs-and-purpleair-sensors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 匹配传感器 (Matching AQS and PurpleAir Sensors)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-aqs-wrangling-and-cleaning-aqs-sensor-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 清洗 AQS 传感器数据 (Wrangling and Cleaning AQS Sensor Data)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 清洗 AQS 传感器数据 (Wrangling and Cleaning AQS Sensor Data)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-checking-granularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 检查粒度与去重 (Checking Granularity)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-removing-unneeded-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 移除无关列 (Removing Unneeded Columns)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-checking-the-validty-of-dates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 检查日期的有效性 (Checking the Validty of Dates)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-pm25-checking-the-quality-of-measurements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 检查 PM2.5 数值质量 (Checking the Quality of Measurements)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-purpleair-wrangling-purpleair-sensor-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 处理和清理 PurpleAir 传感器数据 (Wrangling PurpleAir Sensor Data)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 处理和清理 PurpleAir 传感器数据 (Wrangling PurpleAir Sensor Data)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-data-loading-and-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 数据载入与筛选 (Data Loading and Selection)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-checking-the-granularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 检查数据粒度 (Checking the Granularity)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-data-cleaning-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 数据清洗逻辑 (Data Cleaning Pipeline)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-instrument-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 仪器一致性检查 (Instrument Consistency)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-purpleair-aqs-exploring-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 探索 PurpleAir 与 AQS 测量值的关系 (Exploring Data)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 探索 PurpleAir 与 AQS 测量值的关系 (Exploring Data)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-single-site-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 单站点分析 (Single Site Analysis)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-global-relationship-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 全局关系分析 (Global Relationship Analysis)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-creating-a-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 建立校正模型 (Creating a Model)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 建立校正模型 (Creating a Model)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-modeling-goals-and-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 建模目标与方法 (Modeling Goals and Approach)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-simple-linear-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 简单线性模型 (Simple Linear Model)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-multivariable-linear-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 多元线性模型 (Multivariable Linear Model)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 总结 (Summary)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 文本数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 数据交换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实用工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/01_Git%E4%B8%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Git与版本控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/02_Markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/03_Vibe_Coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Vibe Coding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/04_LeetCode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 LeetCode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/05_coze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 coze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/06_n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/07_PPT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 PPT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        背景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据源对比
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目标与流程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-question-design-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 问题、设计与范围 (Question, Design, and Scope)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 问题、设计与范围 (Question, Design, and Scope)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 问题提出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 数据范围与设计思路
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-finding-collocated-sensors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 寻找共址传感器 (Finding Collocated Sensors)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 寻找共址传感器 (Finding Collocated Sensors)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-aqs-wrangling-the-list-of-aqs-sites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 整理 AQS 站点数据 (Wrangling the List of AQS Sites)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-purpleair-wrangling-the-list-of-purpleair-sites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 整理 PurpleAir 站点数据 (Wrangling the List of PurpleAir Sites)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-matching-aqs-and-purpleair-sensors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 匹配传感器 (Matching AQS and PurpleAir Sensors)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-aqs-wrangling-and-cleaning-aqs-sensor-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 清洗 AQS 传感器数据 (Wrangling and Cleaning AQS Sensor Data)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 清洗 AQS 传感器数据 (Wrangling and Cleaning AQS Sensor Data)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-checking-granularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 检查粒度与去重 (Checking Granularity)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-removing-unneeded-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 移除无关列 (Removing Unneeded Columns)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-checking-the-validty-of-dates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 检查日期的有效性 (Checking the Validty of Dates)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-pm25-checking-the-quality-of-measurements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 检查 PM2.5 数值质量 (Checking the Quality of Measurements)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-purpleair-wrangling-purpleair-sensor-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 处理和清理 PurpleAir 传感器数据 (Wrangling PurpleAir Sensor Data)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 处理和清理 PurpleAir 传感器数据 (Wrangling PurpleAir Sensor Data)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-data-loading-and-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 数据载入与筛选 (Data Loading and Selection)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-checking-the-granularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 检查数据粒度 (Checking the Granularity)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-data-cleaning-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 数据清洗逻辑 (Data Cleaning Pipeline)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-instrument-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 仪器一致性检查 (Instrument Consistency)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-purpleair-aqs-exploring-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 探索 PurpleAir 与 AQS 测量值的关系 (Exploring Data)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 探索 PurpleAir 与 AQS 测量值的关系 (Exploring Data)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-single-site-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 单站点分析 (Single Site Analysis)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-global-relationship-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 全局关系分析 (Global Relationship Analysis)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-creating-a-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 建立校正模型 (Creating a Model)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 建立校正模型 (Creating a Model)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-modeling-goals-and-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 建模目标与方法 (Modeling Goals and Approach)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-simple-linear-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 简单线性模型 (Simple Linear Model)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-multivariable-linear-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 多元线性模型 (Multivariable Linear Model)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 总结 (Summary)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="08">08. 案例研究：空气质量测量的准确性</h1>
+<p>本章将通过一个完整的案例研究——<strong>校准空气质量传感器数据</strong>，来回顾和综合应用前面（01-07章）所学的数据科学知识。</p>
+<h2 id="_1">背景</h2>
+<p>加利福尼亚州经常遭受野火的侵袭，导致空气质量急剧下降。居民需要根据空气质量决定是否通过佩戴口罩、使用空气过滤器或减少外出来进行防护。</p>
+<p>在通过数据解决问题之前，我们首先需要了解可用的数据源及其特点。</p>
+<h2 id="_2">数据源对比</h2>
+<p>在本案例中，我们将对比两种主要的空气质量数据源：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">特性</th>
+<th style="text-align: left;"><strong>AQS (空气质量系统)</strong></th>
+<th style="text-align: left;"><strong>PurpleAir</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>运营方</strong></td>
+<td style="text-align: left;">美国政府 (EPA)</td>
+<td style="text-align: left;">私人/社区 (众包)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>精度</strong></td>
+<td style="text-align: left;"><strong>黄金标准</strong> (Gold Standard)，严格校准</td>
+<td style="text-align: left;"><strong>较低</strong>，使用简易计数方法，倾向于高估污染程度</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>成本</strong></td>
+<td style="text-align: left;">昂贵 ($15,000 - $40,000)</td>
+<td style="text-align: left;">便宜 (~$250)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>密度</strong></td>
+<td style="text-align: left;">稀疏，站点少</td>
+<td style="text-align: left;">密集，成千上万个家庭安装</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>时效性</strong></td>
+<td style="text-align: left;">滞后 1-2 小时 (经过校准处理)</td>
+<td style="text-align: left;"><strong>实时</strong> (每2分钟更新)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>总结</strong></td>
+<td style="text-align: left;"><strong>准确但不及时</strong></td>
+<td style="text-align: left;"><strong>及时但不准确</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">目标与流程</h2>
+<p><strong>目标</strong>：利用高精度的 AQS 数据来校准和改进及时性好的 PurpleAir 数据。</p>
+<p>这项工作遵循 Karoline Barkjohn 等人（美国环保署）的研究思路。目前，美国政府的官方地图（如 AirNow Fire and Smoke map）已经采用了这种校准方法。</p>
+<p>我们将按照<strong>数据科学生命周期</strong>进行操作，这也是对全书内容的实战复习：</p>
+<ol>
+<li><strong>问题与范围</strong> (Question &amp; Scope)：确立利用 AQS 校准 PurpleAir 的目标。</li>
+<li><strong>数据清洗与整理</strong> (Cleaning &amp; Wrangling)：这是最耗时的部分，需要处理脏数据、格式转换等。</li>
+<li><strong>探索性数据分析</strong> (EDA)：通过可视化理解数据特征。</li>
+<li><strong>建模</strong> (Modeling)：建立数学模型进行修正，以提高泛化能力。</li>
+</ol>
+<p>接下来，我们将从数据的获取和设计范围开始。</p>
+<h2 id="1-question-design-and-scope">1. 问题、设计与范围 (Question, Design, and Scope)</h2>
+<h3 id="11">1.1 问题提出</h3>
+<p>理想的空气质量监测应兼顾<strong>准确性</strong>与<strong>时效性</strong>：
+*   <strong>不准确</strong>：偏差的测量可能导致人们忽视风险或甚至产生不必要的恐慌。
+*   <strong>不及时</strong>：滞后的警报会让人们暴露在有害空气中。</p>
+<p>我们的核心问题是：<strong>能否利用 AQS 的高质量数据来改进 PurpleAir 传感器的测量结果？</strong></p>
+<h3 id="12">1.2 数据范围与设计思路</h3>
+<p>我们拥有：</p>
+<ul>
+<li>少量的 AQS 数据（可视为 <strong>Ground Truth</strong>，由于其误差极小且无明显偏差）。</li>
+<li>海量的 PurpleAir 数据（可获取成千上万个传感器，但存在偏差和较大的变异性）。</li>
+</ul>
+<p><strong>设计思路</strong>：</p>
+<ol>
+<li><strong>配对 (Pairing)</strong>：基于地理位置，寻找距离相近的 AQS 和 PurpleAir 传感器对。假设它们测量的是相同的空气样本。</li>
+<li><strong>建模 (Modeling)</strong>：以 AQS 数据为基准，研究 PurpleAir 测量的变化规律。</li>
+<li><strong>泛化 (Generalization)</strong>：如果我们发现了简单的数学关系（如线性关系），就可以将此模型应用于所有其他的 PurpleAir 传感器，修正其读数，使其更接近真实值。</li>
+</ol>
+<p>这是一个典型的<strong>结合大小数据集</strong>的案例：利用少量精准数据（AQS）去校准大量粗糙数据（PurpleAir），从而放大整个网络的效用。这就好比利用基准仪器去校准全城的温度计。</p>
+<p>接下来的章节，我们将开始数据整理工作，重点关注 <strong>PM2.5</strong>（直径小于 2.5 微米的颗粒物），这是对健康危害最大且随木柴烟雾最为常见的污染物。</p>
+<h2 id="2-finding-collocated-sensors">2. 寻找共址传感器 (Finding Collocated Sensors)</h2>
+<p>我们的第一步是找到位置几乎重合（Collocated）的 AQS 和 PurpleAir 传感器。</p>
+<ul>
+<li><strong>目的</strong>：控制变量。如果两个传感器紧挨着（例如在公园里），它们接触到的空气样本应极其相似。任何读数差异都可归因于传感器本身的构造或微小的局部波动，排除了环境差异（如一个在公园，一个在高速路旁）的干扰。</li>
+<li><strong>标准</strong>：参照 Barkjohn (EPA) 的研究，我们寻找距离在 <strong>50米</strong> 以内的传感器对。</li>
+</ul>
+<h3 id="21-aqs-wrangling-the-list-of-aqs-sites">2.1 整理 AQS 站点数据 (Wrangling the List of AQS Sites)</h3>
+<ol>
+<li><strong>加载数据</strong>：读取 <code>list_of_aqs_sites.csv</code>。</li>
+<li><strong>检查粒度 (Granularity)</strong>：<ul>
+<li>发现 <code>AQS_Site_ID</code> 有重复，说明每行代表一个<strong>仪器</strong>（Instrument）而非站点（Site）。一个站点可能有多个测量 PM2.5 的仪器。</li>
+<li><strong>处理</strong>：我们只关心站点位置，因此按 <code>AQS_Site_ID</code> 分组并取第一行，将粒度调整为<strong>站点级别</strong>。</li>
+</ul>
+</li>
+<li><strong>筛选列</strong>：仅保留 <code>site_id</code>, <code>lat</code> (纬度), <code>lon</code> (经度)。</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># 代码逻辑示意</span>
+<span class="n">aqs_sites</span> <span class="o">=</span> <span class="p">(</span><span class="n">aqs_sites_full</span>
+             <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">rollup_dup_sites</span><span class="p">)</span> <span class="c1"># 按站点ID去重</span>
+             <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">cols_aqs</span><span class="p">))</span>        <span class="c1"># 只保留ID和经纬度</span>
+</code></pre></div>
+<h3 id="22-purpleair-wrangling-the-list-of-purpleair-sites">2.2 整理 PurpleAir 站点数据 (Wrangling the List of PurpleAir Sites)</h3>
+<ol>
+<li><strong>加载数据</strong>：读取 <code>list_of_purpleair_sensors.json</code>。<ul>
+<li>这是一个 JSON 文件，包含 <code>fields</code> (列名) 和 <code>data</code> (数据值)。需要解析 JSON 并转换为 DataFrame。</li>
+</ul>
+</li>
+<li><strong>检查粒度</strong>：<ul>
+<li>检查 <code>ID</code> 列，发现无重复值。确认粒度为<strong>单个传感器</strong>。</li>
+</ul>
+</li>
+<li><strong>筛选列</strong>：保留 <code>id</code>, <code>label</code>, <code>lat</code>, <code>lon</code>。</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># 代码逻辑示意</span>
+<span class="n">pa_sites</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pa_json</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">pa_json</span><span class="p">[</span><span class="s1">&#39;fields&#39;</span><span class="p">])</span>
+<span class="n">pa_sites</span> <span class="o">=</span> <span class="n">pa_sites</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">cols_pa</span><span class="p">)</span> <span class="c1"># 只保留必要列</span>
+</code></pre></div>
+<h3 id="23-matching-aqs-and-purpleair-sensors">2.3 匹配传感器 (Matching AQS and PurpleAir Sensors)</h3>
+<p>我们需要找出距离小于 50 米的传感器对。仅靠 <code>pandas</code> 的 <code>merge</code> 很难直接实现“范围匹配”。</p>
+<ul>
+<li><strong>地理距离近似</strong>：我们使用简化的经纬度换算：<ul>
+<li>纬度 1 度 <span class="arithmatex">\(\approx\)</span> 111,111 米。</li>
+<li>经度 1 度 <span class="arithmatex">\(\approx\)</span> <span class="arithmatex">\(111,111 \times \cos(\text{latitude})\)</span> 米。</li>
+<li>据此计算出 25 米对应的经纬度偏移量 (<code>offset_in_lat</code>, <code>offset_in_lon</code>)，构建一个 50x50 米的矩形搜索框。</li>
+</ul>
+</li>
+<li><strong>SQL 查询</strong>：<ul>
+<li>利用 SQL 的非等值连接（Non-equi Join）功能，比 pandas 更高效地处理范围匹配。</li>
+<li>将 DataFrames 存入临时 SQLite 数据库，执行 JOIN 查询。</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">  </span><span class="n">aqs</span><span class="p">.</span><span class="n">site_id</span><span class="p">,</span><span class="w"> </span><span class="n">pa</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="p">...</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">aqs</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">pa</span>
+<span class="w">  </span><span class="k">ON</span><span class="w">  </span><span class="n">pa</span><span class="p">.</span><span class="n">lat</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">offset</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">aqs</span><span class="p">.</span><span class="n">lat</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">aqs</span><span class="p">.</span><span class="n">lat</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">pa</span><span class="p">.</span><span class="n">lat</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">offset</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">pa</span><span class="p">.</span><span class="n">lon</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">offset</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">aqs</span><span class="p">.</span><span class="n">lon</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">aqs</span><span class="p">.</span><span class="n">lon</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">pa</span><span class="p">.</span><span class="n">lon</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">offset</span>
+</code></pre></div>
+<p><strong>结果</strong>：成功匹配到了 <strong>149</strong> 对共址传感器。接下来，我们将深入清洗和分析这些传感器的具体测量数据。</p>
+<h2 id="3-aqs-wrangling-and-cleaning-aqs-sensor-data">3. 清洗 AQS 传感器数据 (Wrangling and Cleaning AQS Sensor Data)</h2>
+<p>在确定了共址传感器后，我们选取了位于加州萨克拉门托的一对传感器进行分析：</p>
+<ul>
+<li><strong>AQS ID</strong>: <code>06-067-0010</code></li>
+<li><strong>PurpleAir Name</strong>: <code>AMTS_TESTINGA</code></li>
+<li><strong>时间范围</strong>: 2018.05.20 - 2019.12.29</li>
+</ul>
+<p>本节主要展示如何清洗 AQS 的日均 PM2.5 数据。</p>
+<h3 id="31-checking-granularity">3.1 检查粒度与去重 (Checking Granularity)</h3>
+<p>我们加载数据后发现，每个日期有 12 条记录。</p>
+<ul>
+<li><strong>原因</strong>：AQS 数据包含根据不同标准或事件类型计算的多个测量值。</li>
+<li><strong>检查</strong>：计算每天 12 条记录的极差 (<code>max - min</code>)，发现全为 0。这意味着所有记录的数值是相同的。</li>
+<li><strong>处理</strong>：直接取每天的第一条记录，确保粒度为<strong>每日一条</strong>。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 代码逻辑：按日期分组取第一条</span>
+<span class="k">def</span> <span class="nf">rollup_dates</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date_local&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="32-removing-unneeded-columns">3.2 移除无关列 (Removing Unneeded Columns)</h3>
+<p>原始数据有 31 列，我们只需要日期和 PM2.5 测量值。</p>
+<ul>
+<li>保留 <code>date_local</code> 和 <code>arithmetic_mean</code>。</li>
+<li>将 <code>arithmetic_mean</code> 重命名为 <code>pm25</code>，便于理解。</li>
+</ul>
+<h3 id="33-checking-the-validty-of-dates">3.3 检查日期的有效性 (Checking the Validty of Dates)</h3>
+<ul>
+<li><strong>解析日期</strong>：使用 <code>pd.to_datetime</code> 将字符串类型的日期转换为时间戳对象。</li>
+<li><strong>检查缺失</strong>：通过计算最大日期与最小日期的差值，发现实际记录数少于理论天数，说明存在数据缺失（Gap）。但在后续建模中，只要有足够的数据点即可。</li>
+</ul>
+<h3 id="34-pm25-checking-the-quality-of-measurements">3.4 检查 PM2.5 数值质量 (Checking the Quality of Measurements)</h3>
+<p>PM2.5 单位为 <span class="arithmatex">\(\mu g/m^3\)</span>。我们要检查数据是否合理：</p>
+<ol>
+<li><strong>非负性</strong>：数值不能低于 0。</li>
+<li><strong>异常值 (Outliers)</strong>：结合实际情况判断高值是否合理。</li>
+</ol>
+<p><img alt="AQS Time Series" src="../../assets/images/data_science/pa_cleaning_aqs_36_0.svg" /></p>
+<ul>
+<li><strong>观察</strong>：数据均大于0。</li>
+<li><strong>验证</strong>：图表中 2018 年 11 月出现了一个巨大的峰值。经查证，这与当时加州历史上最具破坏性的 <strong>Camp Fire</strong> 山火时间吻合（起火点距萨克拉门托仅 80 英里）。这说明传感器准确记录了真实的极端空气污染事件。</li>
+</ul>
+<h2 id="4-purpleair-wrangling-purpleair-sensor-data">4. 处理和清理 PurpleAir 传感器数据 (Wrangling PurpleAir Sensor Data)</h2>
+<p>与 AQS 数据不同，PurpleAir 数据包含两个独立的测量仪器（A 和 B），每个仪器又分为主要（Primary）和次要（Secondary）数据。</p>
+<h3 id="41-data-loading-and-selection">4.1 数据载入与筛选 (Data Loading and Selection)</h3>
+<ul>
+<li><strong>文件识别</strong>：每个传感器对应 4 个 CSV 文件（仪器 A 的 Primary/Secondary，仪器 B 的 Primary/Secondary）。</li>
+<li><strong>目标数据</strong>：我们只关注 <strong>Primary</strong> 数据（包含 PM2.5、温度、湿度）。</li>
+<li><strong>列选择</strong>：PurpleAir 提供 <code>CF1</code> 和 <code>ATM</code> 两种转换算法。根据 Barkjohn 的研究，<code>PM2.5_CF1_ug/m3</code> 更准确，因此保留该列。</li>
+</ul>
+<h3 id="42-checking-the-granularity">4.2 检查数据粒度 (Checking the Granularity)</h3>
+<p>为了与 AQS 数据匹配，我们需要将两分钟一次的读数聚合为日均值。</p>
+<ul>
+<li><strong>时区转换</strong>：PurpleAir 使用 UTC 时间，必须转换为 <code>US/Pacific</code> 以匹配 AQS 的本地时间（需处理夏令时）。</li>
+<li><strong>采样率变化</strong>：<ul>
+<li>2019年5月30日之前：每80秒一次（理论每日 1080 个点）。</li>
+<li>2019年5月30日之后：每120秒一次（理论每日 720 个点）。</li>
+</ul>
+</li>
+<li><strong>可视化检查</strong>：通过绘制每日记录数折线图，可以清晰看到数据缺失（Gaps）和采样率变化导致的台阶状分布。</li>
+</ul>
+<p><img alt="PurpleAir Records Per Day" src="../../assets/images/data_science/pa_cleaning_purpleair_28_0.svg" /></p>
+<h3 id="43-data-cleaning-pipeline">4.3 数据清洗逻辑 (Data Cleaning Pipeline)</h3>
+<ol>
+<li><strong>去重</strong>：发现同一时间戳有重复记录，直接剔除。</li>
+<li><strong>处理缺失值</strong>：<ul>
+<li><strong>完整性阈值</strong>：仅保留由于设备故障或网络问题导致数据丢失较少的日期。</li>
+<li><strong>标准</strong>：如果当天记录数少于理论值的 <strong>90%</strong>，则视为无效天，不计算日均值。</li>
+</ul>
+</li>
+<li><strong>计算日均值</strong>：对满足条件的日期计算 PM2.5 平均值。</li>
+</ol>
+<h3 id="44-instrument-consistency">4.4 仪器一致性检查 (Instrument Consistency)</h3>
+<p>PurpleAir 的双仪器设计（A/B）可以用于质量控制：</p>
+<ul>
+<li>对仪器 B 重复上述清洗流程。</li>
+<li><strong>对比 A 和 B</strong>：如果两者的日均 PM2.5 差异过大（根据 Barkjohn 标准：差异 &gt; 61% 或 &gt; 5 <span class="arithmatex">\(\mu g/m^3\)</span>），则认为该数据不可靠并将其移除。</li>
+<li>最终得到高置信度的日均 PM2.5 数据集。</li>
+</ul>
+<h2 id="5-purpleair-aqs-exploring-data">5. 探索 PurpleAir 与 AQS 测量值的关系 (Exploring Data)</h2>
+<p>在进行建模之前，我们需要探索清洗后的匹配数据集，重点关注两种传感器测量值之间的关系。</p>
+<p>数据集概览：</p>
+<ul>
+<li><strong>pm25aqs</strong>：AQS 传感器的 PM2.5 测量值（基准值）。</li>
+<li><strong>pm25pa</strong>：PurpleAir 传感器的 PM2.5 测量值（待校准值）。</li>
+<li>其他变量：日期、站点ID、区域、温度、湿度、露点。</li>
+</ul>
+<h3 id="51-single-site-analysis">5.1 单站点分析 (Single Site Analysis)</h3>
+<p>选取数据量较大的站点（如 <code>NC4</code>）进行可视化分析：</p>
+<ol>
+<li>
+<p><strong>时间序列图</strong>：</p>
+<ul>
+<li>通过周平均值的折线图可以看出，PurpleAir 的读数趋势与 AQS 高度一致（同升同降）。</li>
+<li>但 PurpleAir 的读数<strong>始终高于</strong> AQS，表明需要进行校正。</li>
+</ul>
+<p><img alt="Time Series NC4" src="../../assets/images/data_science/pa_eda_13_0.svg" /></p>
+</li>
+<li>
+<p><strong>分布对比</strong>：</p>
+<ul>
+<li>两者的分布都呈右偏（受 0 值的下限限制）。</li>
+<li><strong>Q-Q 图（Quantile-Quantile Plot）</strong> 显示两者关系大致为线性，但 PurpleAir 的分布扩散程度（Spread）约为 AQS 的 2.2 倍。</li>
+<li><strong>差异分布</strong>：计算 <code>PurpleAir - AQS</code> 的差值，发现 90% 的情况下 PurpleAir 读数更高。</li>
+</ul>
+<p><img alt="Comparison Plots" src="../../assets/images/data_science/pa_eda_18_0.svg" /></p>
+</li>
+</ol>
+<h3 id="52-global-relationship-analysis">5.2 全局关系分析 (Global Relationship Analysis)</h3>
+<p>将所有站点的数据汇总进行散点图分析：</p>
+<ul>
+<li><strong>线性关系</strong>：尽管存在过高估计，但 PM2.5 AQS 与 PM2.5 PA 之间存在极强的线性相关性（相关系数 ~0.88）。</li>
+<li><strong>低值弯曲</strong>：在空气非常洁净（AQS &lt; 50）的区间，曲线有轻微弯曲，但整体趋势通过原点 (0,0)。</li>
+<li><strong>结论</strong>：PurpleAir 虽然系统性地高估了 PM2.5，但这种偏差是规律性的，这为通过数学模型进行校准提供了坚实基础。</li>
+</ul>
+<p><img alt="Scatter Plot" src="../../assets/images/data_science/pa_eda_29_0.svg" /></p>
+<h2 id="6-creating-a-model">6. 建立校正模型 (Creating a Model)</h2>
+<p>既然已经确认了 PurpleAir 和 AQS 读数之间的关系，最后一步就是建立模型来校正 PurpleAir 的测量值。</p>
+<h3 id="61-modeling-goals-and-approach">6.1 建模目标与方法 (Modeling Goals and Approach)</h3>
+<ul>
+<li><strong>目标</strong>：利用 PurpleAir (PA) 的测量值尽可能准确地预测真实的 PM2.5 值 (AQS)。</li>
+<li><strong>方法（校准 Calibration）</strong>：<ol>
+<li><strong>正向拟合</strong>：以 AQS 为基准（作为自变量 <span class="arithmatex">\(X\)</span>），拟合 PurpleAir 的读数（作为因变量 <span class="arithmatex">\(Y\)</span>）。这是因为 AQS 被认为是精确的“真值”，且误差极小。</li>
+<li><strong>反向预测</strong>：得到模型 <span class="arithmatex">\(PA = f(AQS)\)</span> 后，通过反函数 <span class="arithmatex">\(AQS = f^{-1}(PA)\)</span> 来根据 PurpleAir 的读数推算真实空气质量。</li>
+</ol>
+</li>
+</ul>
+<p><strong>为什么不直接用 PA 预测 AQS？</strong>
+线性回归通常假设 <span class="arithmatex">\(X\)</span> 轴测量无误差，通过最小化 <span class="arithmatex">\(Y\)</span> 轴方向的误差来拟合。因此，我们将精确的 AQS 放在 <span class="arithmatex">\(X\)</span> 轴作为校准曲线，然后反转用于预测。这类似于校准天平：用已知重量的砝码（AQS）去测试天平的读数（PurpleAir），得出偏差规律后再反向修正未来的读数。</p>
+<h3 id="62-simple-linear-model">6.2 简单线性模型 (Simple Linear Model)</h3>
+<p>我们使用最小二乘法（Least Squares）拟合线性模型，最小化平均平方误差（MSE）：
+<span class="arithmatex">\(PA \approx m \times AQS + b\)</span></p>
+<p>使用 <code>scikit-learn</code> 拟合数据后，反转公式得到估计值：
+<span class="arithmatex">\(\text{True Air Quality} \approx 0.53 \times PA + 1.4\)</span></p>
+<p>这与我们在 EDA 阶段的观察一致：PurpleAir 的读数大约是 AQS 的两倍，因此修正系数约为 0.5。</p>
+<h3 id="63-multivariable-linear-model">6.3 多元线性模型 (Multivariable Linear Model)</h3>
+<p>Barkjohn 最终采用的模型还引入了 <strong>相对湿度 (RH)</strong> 作为变量，因为湿度会影响传感器的读数：</p>
+<p><span class="arithmatex">\(PA \approx m_1 \times AQS + m_2 \times RH + b\)</span></p>
+<p>拟合并反转后的校准公式为：
+<span class="arithmatex">\(\text{True Air Quality} \approx 0.53 \times PA - 0.088 \times RH + 5.7\)</span></p>
+<p>该模型引入了湿度修正，相比简单线性模型能提供更准确的 PM2.5 估算值。关于如何比较和评估这两种模型的优劣，我们将在后续章节详细讨论。</p>
+<h2 id="7-summary">7. 总结 (Summary)</h2>
+<p>在本章中，我们复现了 Barkjohn 的分析工作，建立了一个模型来校正 PurpleAir 的测量值，使其与 AQS 的测量值高度一致。这一模型的准确性使得 PurpleAir 传感器得以被纳入美国官方的 AirNow 火灾与烟雾地图中，为公众提供了及时且准确的空气质量信息。</p>
+<p>我们展示了如何利用精确、维护严格的政府监测设备数据来提升众包开放数据的质量。在此过程中，重点在于清理和合并来自多个来源的数据，并拟合模型以调整和改进空气质量测量。</p>
+<p>本案例研究应用了本书前面章节涵盖的许多概念：</p>
+<ul>
+<li><strong>文件与数据整理 (Wrangling)</strong>：这是数据科学中庞大且重要的一部分。利用此前章节的粒度概念，我们将两个来源的数据整理成可分析的结构，实现了邻近空气质量传感器的匹配。</li>
+<li><strong>数据清洗 (Cleaning)</strong>：利用此前章节中的时间数据处理概念，我们发现并修正了诸如缺失数据点和重复数据值等众多问题，确保了数据在两个来源间的兼容性及其在分析中的可信度。</li>
+<li><strong>探索性数据分析 (EDA)</strong>：尽管建模看似是数据科学中最令人兴奋的部分，但深入了解和信任数据至关重要，且往往能为建模阶段带来重要洞见。</li>
+</ul>
+<p>接下来，我们将进入本书的后续部分，重点讨论 <strong>建模 (Modeling)</strong> 相关主题。但在那之前，我们将先介绍两个与数据整理相关的主题：如何从文本中提取可分析数据（下一章），以及其他源文件格式（再下一章）。</p>
+<p>恭喜你完成了这一部分的学习！你所掌握的原理和技术几乎适用于所有类型的数据分析，现在你可以开始将它们应用到自己的分析项目中了。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
