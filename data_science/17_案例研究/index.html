@@ -1,0 +1,3229 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../16_%E6%95%B0%E5%80%BC%E4%BC%98%E5%8C%96/">
+      
+      
+        <link rel="next" href="../../tools/01_Git%E4%B8%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>17 案例研究 - Python 修行指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#17-case-study-detecting-fake-news" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Python 修行指南" class="md-header__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python 修行指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              17 案例研究
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Python 修行指南" class="md-nav__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Python 修行指南
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    前言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 预备知识
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 预备知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/01_Python%E7%A8%8B%E5%BA%8F%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Python程序基本结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/02_%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 基础语法与变量
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/03_%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 核心数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/04_%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 运算符与表达式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/05_%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 程序控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/06_%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 函数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/07_%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 文件操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/08_%E9%94%99%E8%AF%AF%E4%B8%8E%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 错误与异常处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/09_%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 面向对象编程基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 进阶修炼
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 进阶修炼
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/01_%E6%8E%A8%E5%AF%BC%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/02_%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 迭代器与生成器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/03_%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/04_%E8%A3%85%E9%A5%B0%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 装饰器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/05_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/06_%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%8C%85/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 模块与包
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/07_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 进阶输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/08_%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 命名空间与作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/09_%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 类型注解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/10_%E6%A0%87%E5%87%86%E5%BA%93%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 标准库概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/11_%E5%BC%82%E6%AD%A5IO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 异步IO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/01_%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 算法概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/02_%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%9E%9A%E4%B8%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 模拟与枚举
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/03_%E9%80%92%E5%BD%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 递归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/04_%E5%88%86%E6%B2%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 分治
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/05_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 二分查找
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/06_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 动态规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/07_%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 背包问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/08_%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 贪心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/09_%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 搜索算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/10_%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 图论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据科学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据科学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 生命周期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_%E7%9F%A9%E5%BD%A2%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 矩形数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 SQL与关系数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 文件处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据清洗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 数据分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 数据可视化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 文本数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 数据交换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 线性模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 模型选择
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13_%E6%8E%A8%E7%90%86%E4%B8%8E%E9%A2%84%E6%B5%8B%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 推理与预测理论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15_%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16_%E6%95%B0%E5%80%BC%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 数值优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 案例研究
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#171-question-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.1 问题与范围 (Question and Scope)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#172-obtaining-and-wrangling-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2 获取和整理数据 (Obtaining and Wrangling the Data)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#173-exploring-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.3 探索数据 (Exploring the Data)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17.3 探索数据 (Exploring the Data)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1731-exploring-the-publishers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.3.1 探索出版商 (Exploring the Publishers)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1732-exploring-publication-date" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.3.2 探索发布日期 (Exploring Publication Date)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1733-exploring-words-in-articles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.3.3 探索文章中的词 (Exploring Words in Articles)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#174-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.4 建模 (Modeling)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17.4 建模 (Modeling)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1741-a-single-word-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.4.1 单词模型 (A Single-Word Model)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1742-multiple-word-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.4.2 多词模型 (Multiple-Word Model)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1743-tf-idf-predicting-with-the-tf-idf-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.4.3 使用 tf-idf 变换进行预测 (Predicting with the tf-idf Transform)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#175-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.5 总结 (Summary)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实用工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/01_Git%E4%B8%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Git与版本控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/02_Markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/03_Vibe_Coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Vibe Coding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/04_LeetCode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 LeetCode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/05_coze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 coze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/06_n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/07_PPT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 PPT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    深度学习入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deep_learning/01_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 深度学习概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#171-question-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.1 问题与范围 (Question and Scope)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#172-obtaining-and-wrangling-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2 获取和整理数据 (Obtaining and Wrangling the Data)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#173-exploring-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.3 探索数据 (Exploring the Data)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17.3 探索数据 (Exploring the Data)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1731-exploring-the-publishers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.3.1 探索出版商 (Exploring the Publishers)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1732-exploring-publication-date" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.3.2 探索发布日期 (Exploring Publication Date)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1733-exploring-words-in-articles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.3.3 探索文章中的词 (Exploring Words in Articles)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#174-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.4 建模 (Modeling)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17.4 建模 (Modeling)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1741-a-single-word-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.4.1 单词模型 (A Single-Word Model)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1742-multiple-word-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.4.2 多词模型 (Multiple-Word Model)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1743-tf-idf-predicting-with-the-tf-idf-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.4.3 使用 tf-idf 变换进行预测 (Predicting with the tf-idf Transform)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#175-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.5 总结 (Summary)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="17-case-study-detecting-fake-news">17. 案例研究：假新闻检测 (Case Study: Detecting Fake News)</h1>
+<p>假新闻——为了欺骗他人而制造的虚假信息——是一个重要的问题，因为它会伤害人们。例如，图 17.1 中的社交媒体帖子自信地宣称洗手液对冠状病毒无效。虽然实际上是不正确的，但它还是在社交媒体上传播开来：转发近 10 万次，可能有数百万人看到。</p>
+<p><img alt="假新闻示例" src="../../assets/images/case_study/dont-use-sanitizer.png" /></p>
+<p><center>图 17.1：2020 年 3 月 Twitter 上的一篇热门帖子错误地声称消毒剂不能杀死冠状病毒</center></p>
+<p>我们可能会想，如果不阅读这些故事，我们是否可以自动检测假新闻。在本案例研究中，我们将经历数据科学生命周期的各个步骤。我们首先完善我们的研究问题，并获取新闻文章和标签的数据集。然后我们将整理和转换数据。接下来，我们探索数据以了解其内容，并设计用于建模的特征。最后，我们使用逻辑回归构建模型来预测新闻文章是真是假，并评估其性能。</p>
+<p>我们包含这个案例研究是因为它让我们重申数据科学中的几个重要思想。首先，自然语言数据经常出现，即使是基本技术也能实现有用的分析。其次，模型选择是数据分析的重要组成部分，在本案例研究中，我们应用了我们学到的关于交叉验证、偏差-方差权衡和正则化的知识。最后，即使在测试集上表现良好的模型，当我们尝试在实践中使用它们时，也可能存在固有的局限性，我们很快就会看到。</p>
+<p>让我们从完善我们的研究问题并了解我们数据的范围开始。</p>
+<h2 id="171-question-and-scope">17.1 问题与范围 (Question and Scope)</h2>
+<p>我们最初的研究问题是：我们可以自动检测假新闻吗？为了完善这个问题，我们考虑构建假新闻检测模型可能使用的信息类型。如果我们有人工分类的新闻故事，其中人们已经阅读了每个故事并确定其是否为假新闻，那么我们的问题就变成了：我们能否构建一个基于内容准确预测新闻故事真伪的模型？</p>
+<p>为了解决这个问题，我们可以使用 Shu 等人描述的 FakeNewsNet 数据存储库。该存储库包含来自新闻和社交媒体网站的内容，以及用户参与度指标等元数据。为了简单起见，我们仅查看数据集中的政治新闻文章。该数据子集仅包括由 Politifact（一个声誉良好的无党派组织）进行事实核查的文章。数据集中的每篇文章都有一个基于 Politifact 评估的“真实”或“虚假”标签，我们将其用作基本事实 (ground truth)。</p>
+<p>Politifact 使用非随机抽样方法来选择要进行事实核查的文章。根据其网站，Politifact 的记者每天都会选择“最有新闻价值和最重要”的主张。Politifact 始于 2007 年，该存储库于 2020 年发布，因此大多数文章发表于 2007 年至 2020 年之间。</p>
+<p>总结这些信息，我们确定目标总体包括 2007 年至 2020 年期间在线发布的所有政治新闻故事（我们还需要列出故事的来源）。访问框架由 Politifact 对当天最有新闻价值的主张的认定决定。因此，这些数据的主要偏差来源包括：</p>
+<ul>
+<li><strong>覆盖偏差 (Coverage bias)</strong>：新闻媒体仅限于 Politifact 监控的那些，可能会遗漏晦涩或短命的网站。</li>
+<li><strong>选择偏差 (Selection bias)</strong>：数据仅限于 Politifact 决定足够有趣以进行事实核查的文章，这意味着文章可能会偏向于那些既广泛分享又有争议的文章。</li>
+<li><strong>测量偏差 (Measurement bias)</strong>：故事是否应被标记为“虚假”或“真实”由一个组织 (Politifact) 决定，并反映了该组织在其事实核查方法中具有的偏差（无意或其他）。</li>
+<li><strong>漂移 (Drift)</strong>：由于我们只有 2007 年至 2020 年之间发表的文章，内容可能会发生漂移。话题会在快速发展的新闻趋势中被普及和造假。</li>
+</ul>
+<p>在我们开始将数据整理成我们可以分析的形式时，我们将牢记数据的这些局限性。</p>
+<h2 id="172-obtaining-and-wrangling-the-data">17.2 获取和整理数据 (Obtaining and Wrangling the Data)</h2>
+<p>我们通过 FakeNewsNet 的 GitHub 页面将数据导入 Python。阅读存储库描述和代码，我们发现该存储库实际上并不存储新闻文章本身。相反，运行存储库代码会直接从在线网页抓取新闻文章（使用我们在第 14 章中介绍的技术）。这带来了一个挑战：如果一篇文章不再在线，它很可能会从我们的数据集中丢失。注意到这一点，我们继续下载数据。</p>
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>FakeNewsNet 代码突出了可重复研究中的一个挑战——在线数据集随时间变化，但存储和共享这些数据的副本可能很困难（甚至是非法的）。例如，FakeNewsNet 数据集的其他部分使用 Twitter 帖子，但如果数据集创建者在其存储库中存储帖子的副本，他们将违反 Twitter 的服务条款。处理从网络收集的数据时，我们建议记录收集数据的日期并仔细阅读数据源的服务条款。</p>
+</div>
+<p>运行脚本下载 Politifact 数据大约需要一个小时。之后，我们将数据文件放入 <code>data/politifact</code> 文件夹中。Politifact 标记为虚假和真实的文章分别位于 <code>data/politifact/fake</code> 和 <code>data/politifact/real</code> 中。让我们看一篇标记为“真实”的文章：</p>
+<p><div class="highlight"><pre><span></span><code>!ls<span class="w"> </span>-l<span class="w"> </span>data/politifact/real<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span>
+</code></pre></div>
+输出：
+<div class="highlight"><pre><span></span><code>total 0
+drwxr-xr-x  2 sam  staff  64 Jul 14  2022 politifact100
+drwxr-xr-x  3 sam  staff  96 Jul 14  2022 politifact1013
+drwxr-xr-x  3 sam  staff  96 Jul 14  2022 politifact1014
+drwxr-xr-x  2 sam  staff  64 Jul 14  2022 politifact10185
+</code></pre></div></p>
+<p><div class="highlight"><pre><span></span><code>!ls<span class="w"> </span>-lh<span class="w"> </span>data/politifact/real/politifact1013/
+</code></pre></div>
+输出：
+<div class="highlight"><pre><span></span><code>total 16
+-rw-r--r--  1 sam  staff   5.7K Jul 14  2022 news content.json
+</code></pre></div></p>
+<p>每篇文章的数据都存储在名为 <code>news content.json</code> 的 JSON 文件中。让我们将一篇文章的 JSON 加载到 Python 字典中（参见第 14 章）：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">article_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;data/politifact/real/politifact1013/news content.json&#39;</span><span class="p">)</span>
+<span class="n">article_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">article_path</span><span class="o">.</span><span class="n">read_text</span><span class="p">())</span>
+</code></pre></div>
+<p>在这里，我们将 <code>article_json</code> 中的键和值显示为表格：</p>
+<div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">article_json</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">key</th>
+<th style="text-align: left;">value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">url</td>
+<td style="text-align: left;">http://www.senate.gov/legislative/LIS/roll_cal...</td>
+</tr>
+<tr>
+<td style="text-align: left;">text</td>
+<td style="text-align: left;">Roll Call Vote 111th Congress - 1st Session\n...</td>
+</tr>
+<tr>
+<td style="text-align: left;">images</td>
+<td style="text-align: left;">[http://statse.webtrendslive.com/dcs222dj3ow9j...</td>
+</tr>
+<tr>
+<td style="text-align: left;">top_img</td>
+<td style="text-align: left;">http://www.senate.gov/resources/images/us_sen.ico</td>
+</tr>
+<tr>
+<td style="text-align: left;">keywords</td>
+<td style="text-align: left;">[]</td>
+</tr>
+<tr>
+<td style="text-align: left;">authors</td>
+<td style="text-align: left;">[]</td>
+</tr>
+<tr>
+<td style="text-align: left;">canonical_link</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">title</td>
+<td style="text-align: left;">U.S. Senate: U.S. Senate Roll Call Votes 111th...</td>
+</tr>
+<tr>
+<td style="text-align: left;">meta_data</td>
+<td style="text-align: left;">{'viewport': 'width=device-width, initial-scal...</td>
+</tr>
+<tr>
+<td style="text-align: left;">movies</td>
+<td style="text-align: left;">[]</td>
+</tr>
+<tr>
+<td style="text-align: left;">publish_date</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr>
+<td style="text-align: left;">source</td>
+<td style="text-align: left;">http://www.senate.gov</td>
+</tr>
+<tr>
+<td style="text-align: left;">summary</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>JSON 文件中有很多字段，但对于本分析，我们只关注几个主要与文章内容相关的字段：文章的标题、文本内容、URL 和发布日期。我们创建一个数据框，其中每一行代表一篇文章（新闻故事的粒度）。为此，我们将每个可用的 JSON 文件加载为 Python 字典，然后提取感兴趣的字段以存储名为 <code>df_raw</code> 的 pandas DataFrame：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">def</span> <span class="nf">df_row</span><span class="p">(</span><span class="n">content_json</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">content_json</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">content_json</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">content_json</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;publish_date&#39;</span><span class="p">:</span> <span class="n">content_json</span><span class="p">[</span><span class="s1">&#39;publish_date&#39;</span><span class="p">],</span>
+    <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">load_json</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+    <span class="n">filepath</span> <span class="o">=</span> <span class="n">folder</span> <span class="o">/</span> <span class="s1">&#39;news content.json&#39;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">df_row</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">filepath</span><span class="o">.</span><span class="n">read_text</span><span class="p">()))</span> <span class="k">if</span> <span class="n">filepath</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="k">else</span> <span class="p">{}</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="o">**</span><span class="n">data</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<span class="n">fakes</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;data/politifact/fake&#39;</span><span class="p">)</span>
+<span class="n">reals</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;data/politifact/real&#39;</span><span class="p">)</span>
+
+<span class="n">df_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">load_json</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;fake&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">fakes</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()]</span> <span class="o">+</span>
+                      <span class="p">[</span><span class="n">load_json</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;real&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">reals</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()])</span>
+<span class="n">df_raw</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"></th>
+<th style="text-align: left;">url</th>
+<th style="text-align: left;">text</th>
+<th style="text-align: left;">title</th>
+<th style="text-align: left;">publish_date</th>
+<th style="text-align: left;">label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">dailybuzzlive.com/cannibals-arrested-florida/</td>
+<td style="text-align: left;">Police in Vernal Heights, Florida, arrested 3-...</td>
+<td style="text-align: left;">Cannibals Arrested in Florida Claim Eating Hum...</td>
+<td style="text-align: left;">1.62e+09</td>
+<td style="text-align: left;">fake</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">https://web.archive.org/web/20171228192703/htt...</td>
+<td style="text-align: left;">WASHINGTON — Rod Jay Rosenstein, Deputy Attorn...</td>
+<td style="text-align: left;">BREAKING: Trump fires Deputy Attorney General ...</td>
+<td style="text-align: left;">1.45e+09</td>
+<td style="text-align: left;">fake</td>
+</tr>
+</tbody>
+</table>
+<p>探索此数据框揭示了我们在开始分析之前需要解决的一些问题。例如：</p>
+<ol>
+<li>有些文章无法下载。发生这种情况时，<code>url</code> 列包含 NaN。</li>
+<li>有些文章没有文本（例如只有视频内容的网页）。我们从数据框中删除这些文章。</li>
+<li>发布日期是 Unix 时间戳（自 1970 年 1 月 1 日以来的秒数），因此我们需要将它们转换为 <code>pandas.Timestamp</code> 对象。</li>
+<li>我们对网页的基本 URL 感兴趣。但是，与 <code>url</code> 列相比，JSON 文件中的 <code>source</code> 字段缺少许多值。因此，我们必须使用 <code>url</code> 列中的完整 URL 提取基本 URL。例如，从 <code>dailybuzzlive.com/cannibals-arrested-florida/</code> 我们得到 <code>dailybuzzlive.com</code>。</li>
+<li>有些文章是从存档网站 (web.archive.org) 下载的。发生这种情况时，我们要通过删除 <code>web.archive.org</code> 前缀从原始 URL 中提取实际的基本 URL。</li>
+<li>我们要将标题和文本列连接成一个包含文章所有文本内容的 <code>content</code> 列。</li>
+</ol>
+<p>我们可以使用 pandas 函数和正则表达式的组合来解决这些数据问题：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="c1"># [1], [2]</span>
+<span class="k">def</span> <span class="nf">drop_nans</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span> <span class="o">|</span>
+                <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">|</span> 
+                <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">))]</span>
+
+<span class="c1"># [3]</span>
+<span class="k">def</span> <span class="nf">parse_timestamps</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;publish_date&#39;</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">timestamp</span><span class="o">=</span><span class="n">timestamp</span><span class="p">)</span>
+
+<span class="c1"># [4], [5]</span>
+<span class="n">archive_prefix_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;https://web.archive.org/web/\d+/&#39;</span><span class="p">)</span>
+<span class="n">site_prefix_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(https?://)?(www\.)?&#39;</span><span class="p">)</span>
+<span class="n">port_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;:\d+&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">url_basename</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">archive_prefix_re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">archive_prefix_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="n">site</span> <span class="o">=</span> <span class="n">site_prefix_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">port_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">site</span><span class="p">)</span>
+
+<span class="c1"># [6]</span>
+<span class="k">def</span> <span class="nf">combine_content</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">subset_df</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="s1">&#39;baseurl&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">]]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_raw</span>
+ <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">drop_nans</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">baseurl</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">url_basename</span><span class="p">))</span>
+ <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">parse_timestamps</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">combine_content</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">subset_df</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>经过数据整理，我们最终得到了名为 <code>df</code> 的数据框：</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"></th>
+<th style="text-align: left;">timestamp</th>
+<th style="text-align: left;">baseurl</th>
+<th style="text-align: left;">content</th>
+<th style="text-align: left;">label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">2021-04-05 16:39:51</td>
+<td style="text-align: left;">dailybuzzlive.com</td>
+<td style="text-align: left;">Cannibals Arrested in Florida Claim Eating Hum...</td>
+<td style="text-align: left;">fake</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">2016-01-01 23:17:43</td>
+<td style="text-align: left;">houstonchronicle-tv.com</td>
+<td style="text-align: left;">BREAKING: Trump fires Deputy Attorney General ...</td>
+<td style="text-align: left;">fake</td>
+</tr>
+</tbody>
+</table>
+<p>现在我们已经加载并清理了数据，可以继续进行探索性数据分析。</p>
+<h2 id="173-exploring-the-data">17.3 探索数据 (Exploring the Data)</h2>
+<p>我们正在探索的新闻文章数据集只是更大的 FakeNewsNet 数据集的一部分。因此，原始论文并没有提供关于我们数据子集的详细信息。所以，为了更好地理解数据，我们必须自己探索它。</p>
+<p>在开始探索性数据分析之前，我们应用标准做法，将数据分为训练集和测试集。我们仅使用训练集进行 EDA：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;fake&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="s1">&#39;baseurl&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">]],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">],</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">X_train</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"></th>
+<th style="text-align: left;">timestamp</th>
+<th style="text-align: left;">baseurl</th>
+<th style="text-align: left;">content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">164</td>
+<td style="text-align: left;">2019-01-04 19:25:46</td>
+<td style="text-align: left;">worldnewsdailyreport.com</td>
+<td style="text-align: left;">Chinese lunar rover finds no evidence of Ameri...</td>
+</tr>
+<tr>
+<td style="text-align: right;">28</td>
+<td style="text-align: left;">2016-01-12 21:02:28</td>
+<td style="text-align: left;">occupydemocrats.com</td>
+<td style="text-align: left;">Virginia Republican Wants Schools To Check Chi...</td>
+</tr>
+</tbody>
+</table>
+<p>让我们统计一下训练集中真实和虚假文章的数量：</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">y_train</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</code></pre></div>
+输出：
+<div class="highlight"><pre><span></span><code>label
+0    320
+1    264
+Name: count, dtype: int64
+</code></pre></div></p>
+<p>我们的训练集有 584 篇文章，标记为真实的文章比标记为虚假的文章多大约 60 篇。接下来，我们检查这三个字段中的缺失值：</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">X_train</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</code></pre></div>
+输出：
+<div class="highlight"><pre><span></span><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 584 entries, 164 to 102
+Data columns (total 3 columns):
+ #   Column     Non-Null Count  Dtype         
+---  ------     --------------  -----         
+ 0   timestamp  306 non-null    datetime64[ns]
+ 1   baseurl    584 non-null    object        
+ 2   content    584 non-null    object        
+dtypes: datetime64[ns](1), object(2)
+memory usage: 18.2+ KB
+</code></pre></div></p>
+<p>近一半的时间戳为空。如果我们在分析中使用此特征，将会限制数据集。让我们仔细看看 <code>baseurl</code>，它代表发布原始文章的网站。</p>
+<h3 id="1731-exploring-the-publishers">17.3.1 探索出版商 (Exploring the Publishers)</h3>
+<p>为了理解 <code>baseurl</code> 列，我们首先统计每个网站的文章数量：</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;baseurl&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</code></pre></div>
+输出：
+<div class="highlight"><pre><span></span><code>baseurl
+whitehouse.gov               21
+abcnews.go.com               20
+nytimes.com                  17
+                             ..
+occupydemocrats.com           1
+legis.state.ak.us             1
+dailynewsforamericans.com     1
+Name: count, Length: 337, dtype: int64
+</code></pre></div></p>
+<p>我们的训练集有 584 行，我们发现有 337 个独特的发布网站。这意味着数据集包含许多只有几篇文章的出版物。每个网站发布的文章数量直方图证实了这一点：</p>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span><span class="o">=</span><span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;baseurl&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span> <span class="n">width</span><span class="o">=</span><span class="mi">450</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
+            <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;Number of articles published at a URL&quot;</span><span class="p">})</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="每个URL的文章数量" src="../../assets/images/case_study/fake_news_exploring_15_0.svg" /></p>
+<p>该直方图显示，绝大多数（337 个中的 261 个）网站在训练集中只有一篇文章，只有少数网站在训练集中有超过五篇文章。尽管如此，找出发布最多假新闻或真新闻的网站还是很有参考价值的。首先，我们找出发布假新闻最多的网站：</p>
+<div class="highlight"><pre><span></span><code><span class="n">top_fake_publishers</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">X_train</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">y_train</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;label == 1&quot;</span><span class="p">)</span>
+    <span class="p">[</span><span class="s2">&quot;baseurl&quot;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span>
+    <span class="n">top_fake_publishers</span><span class="p">,</span>
+    <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">550</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Number of articles published at a URL&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="s2">&quot;Base URL&quot;</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="发布假新闻最多的网站" src="../../assets/images/case_study/fake_news_exploring_17_0.svg" /></p>
+<p>接下来，我们列出发布真实新闻最多的网站：</p>
+<div class="highlight"><pre><span></span><code><span class="n">top_real_publishers</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">X_train</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">y_train</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;label == 0&quot;</span><span class="p">)</span>
+    <span class="p">[</span><span class="s2">&quot;baseurl&quot;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span>
+    <span class="n">top_real_publishers</span><span class="p">,</span>
+    <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">550</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Number of articles published at a URL&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="s2">&quot;Base URL&quot;</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="发布真新闻最多的网站" src="../../assets/images/case_study/fake_news_exploring_19_0.svg" /></p>
+<p>只有 <code>cnn.com</code> 同时出现在两个列表中。即使不知道这些网站的文章总数，我们也会预计 <code>yournewswire.com</code> 的文章更有可能被标记为虚假，而 <code>whitehouse.gov</code> 的文章更有可能被标记为真实。话虽如此，我们并不期望使用发布网站来预测文章的真实性会非常有效；数据集中大多数网站的文章实在太少了。</p>
+<p>接下来，让我们探索 <code>timestamp</code> 列，它记录了新闻文章的发布日期。</p>
+<h3 id="1732-exploring-publication-date">17.3.2 探索发布日期 (Exploring Publication Date)</h3>
+<p>在直方图上绘制时间戳显示，大多数文章是在 2000 年之后发表的，尽管似乎至少有一篇文章是在 1940 年之前发表的：</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
+    <span class="n">X_train</span><span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Publication year&quot;</span><span class="p">},</span> <span class="n">width</span><span class="o">=</span><span class="mi">550</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<img alt="发布年份直方图" src="../../assets/images/case_study/fake_news_exploring_24_0.svg" /></p>
+<p>当我们仔细查看 2000 年之前发表的新文章时，发现时间戳与文章的实际发布日期不符。这些日期问题很可能与网络爬虫从网页收集不准确的信息有关。我们可以放大直方图 2000 年之后的区域：</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
+    <span class="n">X_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X_train</span><span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="s2">&quot;2000&quot;</span><span class="p">,</span> <span class="s2">&quot;timestamp&quot;</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Publication year&quot;</span><span class="p">},</span> <span class="n">width</span><span class="o">=</span><span class="mi">550</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> 
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<img alt="2000年后发布年份直方图" src="../../assets/images/case_study/fake_news_exploring_26_0.svg" /></p>
+<p>不出所料，大多数文章是在 2007 年（Politifact 成立的那一年）和 2020 年（FakeNewsNet 仓库发布的那一年）之间发表的。但我们还发现，时间戳集中在 2016 年到 2018 年——充满争议的 2016 年美国总统大选年及其随后的两年。这一见解进一步警示我们，不要将我们的分析结果推广到非选举年。</p>
+<p>我们的主要目标是使用文本内容进行分类。接下来我们探索一些词频。</p>
+<h3 id="1733-exploring-words-in-articles">17.3.3 探索文章中的词 (Exploring Words in Articles)</h3>
+<p>我们想看看文章中使用的词语与文章被标记为虚假之间是否存在关系。一种简单的方法是查看单个词，如 <code>military</code>（军事），然后统计提到“military”的文章中有多少被标记为虚假。为了使 <code>military</code> 有用，提及它的文章中虚假文章的比例应该远高于或远低于 45%（数据集中虚假文章的比例：264/584）。</p>
+<p>我们可以利用我们的政治话题领域知识来挑选几个候选词进行探索。然后我们定义一个函数为每个词创建一个新特征，如果该词出现在文章中，则特征为 <code>True</code>，如果不出现则为 <code>False</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">make_word_features</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">words</span><span class="p">):</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="p">{</span> <span class="n">word</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span> <span class="p">}</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+</code></pre></div>
+<p>这就像是对单词存在的独热编码（参见第 14 章）。我们可以使用此函数进一步整理数据，并创建一个包含我们每个选定单词特征的新数据框：</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">df_words</span> <span class="o">=</span> <span class="n">make_word_features</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">word_features</span><span class="p">)</span>
+<span class="n">df_words</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span>
+<span class="n">df_words</span><span class="o">.</span><span class="n">shape</span>
+</code></pre></div>
+输出：
+<div class="highlight"><pre><span></span><code>(584, 16)
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="n">df_words</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"></th>
+<th style="text-align: left;">trump</th>
+<th style="text-align: left;">clinton</th>
+<th style="text-align: left;">state</th>
+<th style="text-align: left;">vote</th>
+<th style="text-align: left;">...</th>
+<th style="text-align: left;">swamp</th>
+<th style="text-align: left;">cnn</th>
+<th style="text-align: left;">the</th>
+<th style="text-align: left;">label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">164</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">True</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">True</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr>
+<td style="text-align: right;">28</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">True</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr>
+<td style="text-align: right;">708</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">True</td>
+<td style="text-align: left;">True</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">True</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr>
+<td style="text-align: right;">193</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">True</td>
+<td style="text-align: left;">1</td>
+</tr>
+</tbody>
+</table>
+<p>现在我们可以计算这些被标记为虚假的文章的比例。我们在下图中可视化这些计算结果。在左图中，我们用虚线标记了整个训练集中虚假文章的比例，这有助于我们了解每个词特征的信息量——信息量大的词，其点会远离这条线：</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">fake_props</span> <span class="o">=</span> <span class="p">(</span><span class="n">make_word_features</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">word_features</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="p">(</span><span class="n">y_train</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span>
+ <span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">],</span> <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;word&#39;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;appeared&#39;</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;appeared == True&#39;</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;word&#39;</span><span class="p">)</span>
+ <span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
+ <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span>
+ <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="s1">&#39;prop_fake&#39;</span><span class="p">})</span>
+ <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;prop_fake&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="s1">&#39;word&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">fake_props</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;word&#39;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;variable&#39;</span><span class="p">,</span>
+                <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="p">[[</span><span class="n">prop_ax</span><span class="p">,</span> <span class="n">_</span><span class="p">]]</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">axes</span>
+<span class="n">prop_ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mf">0.45</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">prop_ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">))</span>
+
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Proportion of articles marked fake&#39;</span><span class="p">,</span> <span class="s1">&#39;Number of articles with word&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">flat</span><span class="p">,</span> <span class="n">titles</span><span class="p">):</span>
+    <span class="c1"># Set a different title for each axes</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<img alt="词特征分析" src="../../assets/images/case_study/fake_news_exploring_38_0.svg" /></p>
+<p>该图揭示了一些有趣的建模考虑因素。例如，注意单词 <code>antifa</code> 具有很高的预测性——所有提到单词 <code>antifa</code> 的文章都被标记为虚假。然而，<code>antifa</code> 只出现在少数几篇文章中。另一方面，单词 <code>the</code> 几乎出现在每一篇文章中，但对于区分真假文章没有信息量，因为包含 <code>the</code> 的文章中虚假文章的比例与整体虚假文章的比例相匹配。我们最好使用像 <code>vote</code> 这样的词，它既具有预测性又出现在许多新闻文章中。</p>
+<p>这项探索性分析让我们了解了新闻文章发表的时间范围、数据中涵盖的各种发布网站，以及用于预测的候选词。接下来，我们拟合模型来预测文章是真是假。</p>
+<h2 id="174-modeling">17.4 建模 (Modeling)</h2>
+<p>现在我们已经获取、清洗并探索了数据，让我们拟合模型来预测文章是真是假。在本节中，我们使用逻辑回归，因为这是一个二元分类问题。我们拟合三个不同复杂度的模型。首先，我们拟合一个仅使用文档中单个手动选择的词作为解释特征的模型。然后，我们拟合一个使用多个手动选择的词的模型。最后，我们拟合一个使用训练集中所有词的模型，并使用 tf-idf 变换（在第 13 章中介绍）进行向量化。让我们从简单的单词模型开始。</p>
+<h3 id="1741-a-single-word-model">17.4.1 单词模型 (A Single-Word Model)</h3>
+<p>我们的 EDA 表明，单词 <code>vote</code> 与文章被标记为真实还是虚假有关。为了测试这一点，我们拟合一个逻辑回归模型，使用单个二元特征：如果单词 <code>vote</code> 出现在文章中则为 1，否则为 0。我们首先定义一个将文章内容转换为小写的函数：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">lowercase</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+</code></pre></div>
+<p>对于我们的第一个分类器，我们只使用单词 <code>vote</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">one_word</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;vote&#39;</span><span class="p">]</span>
+</code></pre></div>
+<p>我们可以将 <code>lowercase</code> 函数和 EDA 中的 <code>make_word_features</code> 函数链接到一个 scikit-learn 管道中。这提供了一种方便的方法来一次性转换和拟合数据：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegressionCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">FunctionTransformer</span>
+
+<span class="n">model1</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">FunctionTransformer</span><span class="p">(</span><span class="n">lowercase</span><span class="p">),</span>
+    <span class="n">FunctionTransformer</span><span class="p">(</span><span class="n">make_word_features</span><span class="p">,</span> <span class="n">kw_args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;words&#39;</span><span class="p">:</span> <span class="n">one_word</span><span class="p">}),</span>
+    <span class="n">LogisticRegressionCV</span><span class="p">(</span><span class="n">Cs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;saga&#39;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">),</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>使用时，上述管道将文章内容中的字符转换为小写，创建一个包含每个感兴趣单词的二元特征的数据框，并未逻辑回归模型拟合数据，同时使用正则化。此外，<code>LogisticRegressionCV</code> 函数使用交叉验证（默认为 5 折）来选择最佳的正则化参数。（有关正则化和交叉验证的更多信息，请参阅第 16 章。）</p>
+<p>让我们使用管道来拟合训练数据：</p>
+<p><div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">time</span>
+
+<span class="n">model1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model1</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="w"> </span><span class="n">y_train</span><span class="p">)</span><span class="si">:</span><span class="s1">.1%</span><span class="si">}</span><span class="s1"> accuracy on training set.&#39;</span><span class="p">)</span>
+</code></pre></div>
+输出：
+<div class="highlight"><pre><span></span><code>64.9% accuracy on training set.
+CPU times: user 110 ms, sys: 42.7 ms, total: 152 ms
+Wall time: 144 ms
+</code></pre></div>
+总体而言，单词分类器仅正确分类了 65% 的文章。我们绘制分类器在训练集上的混淆矩阵，看看它犯了什么样的错误：</p>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">ConfusionMatrixDisplay</span>
+
+<span class="n">ConfusionMatrixDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span>
+    <span class="n">model1</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">);</span>
+</code></pre></div>
+<img alt="单词模型混淆矩阵" src="../../assets/images/case_study/fake_news_modeling_18_0.svg" /></p>
+<p>我们的模型经常将真实文章 (0) 误分类为虚假文章 (1)。由于这个模型很简单，我们可以看看这两种情况的概率：单词 <code>vote</code> 在文章中或不在文章中：</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">vote_present</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;vote&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]})</span>
+<span class="n">vote_absent</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;vote&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]})</span>
+
+<span class="n">log_reg</span> <span class="o">=</span> <span class="n">model1</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;logisticregressioncv&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&quot;vote&quot; present: </span><span class="si">{</span><span class="n">log_reg</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">vote_present</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&quot;vote&quot; absent: </span><span class="si">{</span><span class="n">log_reg</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">vote_absent</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+输出：
+<div class="highlight"><pre><span></span><code>&quot;vote&quot; present: [[0.72 0.28]]
+&quot;vote&quot; absent: [[0.48 0.52]]
+</code></pre></div></p>
+<p>当一篇文章包含单词 <code>vote</code> 时，模型给出的文章为真实的概率很高，而当 <code>vote</code> 缺失时，概率略微倾向于文章为虚假。我们鼓励读者使用逻辑回归模型的定义和拟合系数自行验证这一点：</p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Intercept: </span><span class="si">{</span><span class="n">log_reg</span><span class="o">.</span><span class="n">intercept_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="p">[[</span><span class="n">coef</span><span class="p">]]</span> <span class="o">=</span> <span class="n">log_reg</span><span class="o">.</span><span class="n">coef_</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&quot;vote&quot; Coefficient: </span><span class="si">{</span><span class="n">coef</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+输出：
+<div class="highlight"><pre><span></span><code>Intercept: 0.08
+&quot;vote&quot; Coefficient: -1.00
+</code></pre></div></p>
+<p>正如我们在第 19 章中看到的，系数表示赔率随解释变量变化而变化的大小。对于像文章中单词存在或不存在这样的 0-1 变量，这具有特别直观的含义。对于一篇包含 <code>vote</code> 的文章，其为虚假的赔率减少了 <span class="arithmatex">\(e^{\text{coef}}\)</span> 倍，即：</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">coef</span><span class="p">)</span> 
+</code></pre></div>
+输出：
+<div class="highlight"><pre><span></span><code>0.36836305405149367
+</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>请记住，在这个建模场景中，标签 0 对应于真实文章，标签 1 对应于虚假文章。这可能看起来有点反直觉——我们说“真阳性”是指模型正确预测虚假文章为虚假。在二元分类中，我们通常说“阳性”结果是指存在某种异常情况的结果。例如，检测出某种疾病呈阳性的人会预期患有该疾病。</p>
+</div>
+<p>让我们通过引入更多单词特征使我们的模型更加复杂一些。</p>
+<h3 id="1742-multiple-word-model">17.4.2 多词模型 (Multiple-Word Model)</h3>
+<p>我们创建一个使用我们在训练集 EDA 中检查过的所有单词的模型，除了 <code>the</code>。让我们使用这 15 个特征拟合一个模型：</p>
+<div class="highlight"><pre><span></span><code><span class="n">model2</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">FunctionTransformer</span><span class="p">(</span><span class="n">lowercase</span><span class="p">),</span>
+    <span class="n">FunctionTransformer</span><span class="p">(</span><span class="n">make_word_features</span><span class="p">,</span> <span class="n">kw_args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;words&#39;</span><span class="p">:</span> <span class="n">word_features</span><span class="p">}),</span>
+    <span class="n">LogisticRegressionCV</span><span class="p">(</span><span class="n">Cs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;saga&#39;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">),</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">time</span>
+
+<span class="n">model2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model2</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="w"> </span><span class="n">y_train</span><span class="p">)</span><span class="si">:</span><span class="s1">.1%</span><span class="si">}</span><span class="s1"> accuracy on training set.&#39;</span><span class="p">)</span>
+</code></pre></div>
+输出：
+<div class="highlight"><pre><span></span><code>74.8% accuracy on training set.
+CPU times: user 1.54 s, sys: 59.1 ms, total: 1.6 s
+Wall time: 637 ms
+</code></pre></div></p>
+<p>该模型的准确率比单词模型高约 10 个百分点。从单词模型到 15 词模型仅获得 10 个百分点的提升似乎有点令人惊讶。混淆矩阵有助于弄清所犯错误的类型：</p>
+<p><img alt="多词模型混淆矩阵" src="../../assets/images/case_study/fake_news_modeling_32_0.svg" /></p>
+<p>我们可以看到，该分类器在准确分类真实文章方面做得更好。然而，在分类虚假文章时，它比简单的单词模型犯了更多错误——59 篇虚假文章被分类为真实。在这种情况下，我们可能更担心将真实文章误分类为虚假。所以我们希望有高精度——正确预测为虚假文章的数量与预测为虚假文章的总数之比：</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">model1_precision</span> <span class="o">=</span> <span class="mi">238</span> <span class="o">/</span> <span class="p">(</span><span class="mi">238</span> <span class="o">+</span> <span class="mi">179</span><span class="p">)</span>
+<span class="n">model2_precision</span> <span class="o">=</span> <span class="mi">205</span> <span class="o">/</span> <span class="p">(</span><span class="mi">205</span> <span class="o">+</span> <span class="mi">88</span><span class="p">)</span>
+
+<span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="p">[</span><span class="n">model1_precision</span><span class="p">,</span> <span class="n">model2_precision</span><span class="p">]]</span>
+</code></pre></div>
+输出：
+<div class="highlight"><pre><span></span><code>[0.57, 0.7]
+</code></pre></div></p>
+<p>我们较大的模型的精度有所提高，但仍有约 30% 被标记为虚假的文章实际上是真实的。让我们看看模型的系数：</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">log_reg2</span> <span class="o">=</span> <span class="n">model2</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;logisticregressioncv&#39;</span><span class="p">]</span>
+<span class="n">coefs</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;word&#39;</span><span class="p">:</span> <span class="n">word_features</span><span class="p">,</span> <span class="s1">&#39;coef&#39;</span><span class="p">:</span> <span class="n">log_reg2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]})</span>
+         <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;coef&#39;</span><span class="p">)</span>
+        <span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coefs</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;coef&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;word&#39;</span><span class="p">,</span>
+                 <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;coef&#39;</span><span class="p">:</span> <span class="s1">&#39;Model coefficient&#39;</span><span class="p">,</span><span class="s1">&#39;word&#39;</span><span class="p">:</span><span class="s1">&#39;Word&#39;</span><span class="p">},</span>
+                 <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_vline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">line_dash</span><span class="o">=</span><span class="s2">&quot;dash&quot;</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fig</span>
+</code></pre></div>
+<img alt="多词模型系数" src="../../assets/images/case_study/fake_news_modeling_36_0.svg" /></p>
+<p>我们可以通过查看符号来快速解释系数。<code>trump</code> 和 <code>investig</code> 上的大正值表明，模型预测包含这些单词的新文章更有可能为虚假。对于像 <code>congress</code> 和 <code>vote</code> 这样的词，情况恰恰相反，它们具有负权重。我们可以使用这些系数来比较文章包含或不包含特定单词时的对数赔率。</p>
+<p>虽然这个较大的模型比较简单的单词模型表现更好，但我们必须利用我们对新闻的了解手动挑选单词特征。如果我们错过了具有高度预测性的单词怎么办？为了解决这个问题，我们可以使用 tf-idf 变换结合文章中的所有单词。</p>
+<h3 id="1743-tf-idf-predicting-with-the-tf-idf-transform">17.4.3 使用 tf-idf 变换进行预测 (Predicting with the tf-idf Transform)</h3>
+<p>对于第三个也是最后一个模型，我们使用第 13 章中的词频-逆文档频率 (tf-idf) 变换对训练集中所有文章的整个文本进行向量化。回想一下，通过这种变换，一篇文章被转换成一个向量，其中包含 564 篇文章中出现的每个单词的一个元素。该向量由单词在文章中出现的次数的归一化计数组成，并按单词的稀有度进行归一化。tf-idf 将更多权重放在仅出现在少数文档中的单词上。这意味着我们的分类器使用训练集新闻文章中的所有单词进行预测。正如我们在介绍 tf-idf 时所做的那样，首先我们删除停用词，然后对单词进行分词，之后使用 scikit-learn 中的 <code>TfidfVectorizer</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">tfidf</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">=</span><span class="n">stemming_tokenizer</span><span class="p">,</span> <span class="n">token_pattern</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">make_column_transformer</span>
+
+<span class="n">model3</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">FunctionTransformer</span><span class="p">(</span><span class="n">lowercase</span><span class="p">),</span>
+    <span class="n">make_column_transformer</span><span class="p">((</span><span class="n">tfidf</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">)),</span>
+    <span class="n">LogisticRegressionCV</span><span class="p">(</span><span class="n">Cs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                         <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;saga&#39;</span><span class="p">,</span>
+                         <span class="n">n_jobs</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+                         <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">time</span>
+
+<span class="n">model3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model3</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="w"> </span><span class="n">y_train</span><span class="p">)</span><span class="si">:</span><span class="s1">.1%</span><span class="si">}</span><span class="s1"> accuracy on training set.&#39;</span><span class="p">)</span>
+</code></pre></div>
+输出：
+<div class="highlight"><pre><span></span><code>[Pipeline]  (step 1 of 3) Processing functiontransformer, total=   0.0s
+[Pipeline] . (step 2 of 3) Processing columntransformer, total=  14.5s
+[Pipeline]  (step 3 of 3) Processing logisticregressioncv, total=   6.3s
+100.0% accuracy on training set.
+CPU times: user 50.2 s, sys: 508 ms, total: 50.7 s
+Wall time: 34.2 s
+</code></pre></div></p>
+<p>我们发现该模型在训练集上达到了 100% 的准确率。我们可以查看 tf-idf 转换器以更好地理解模型。让我们首先找出分类器使用了多少个唯一 token：</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">tfidf</span> <span class="o">=</span> <span class="n">model3</span><span class="o">.</span><span class="n">named_steps</span><span class="o">.</span><span class="n">columntransformer</span><span class="o">.</span><span class="n">named_transformers_</span><span class="o">.</span><span class="n">tfidfvectorizer</span>
+<span class="n">n_unique_tokens</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tfidf</span><span class="o">.</span><span class="n">vocabulary_</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n_unique_tokens</span><span class="si">}</span><span class="s1"> tokens appeared across </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="si">}</span><span class="s1"> examples.&#39;</span><span class="p">)</span>
+</code></pre></div>
+输出：
+<div class="highlight"><pre><span></span><code>23800 tokens appeared across 584 examples.
+</code></pre></div></p>
+<p>这意味着我们的分类器有 23,812 个特征，与之前的模型相比有了大幅增加，之前的模型只有 15 个特征。由于我们无法显示那么多模型权重，我们显示 10 个最负和 10 个最正权重的特征：</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">log_reg</span> <span class="o">=</span> <span class="n">model3</span><span class="o">.</span><span class="n">named_steps</span><span class="o">.</span><span class="n">logisticregressioncv</span>
+<span class="n">coefs</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tfidf</span><span class="o">.</span><span class="n">vocabulary_</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+                      <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;word&#39;</span><span class="p">],</span>
+                      <span class="n">index</span><span class="o">=</span><span class="n">tfidf</span><span class="o">.</span><span class="n">vocabulary_</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+         <span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+         <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">coef</span><span class="o">=</span><span class="n">log_reg</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+         <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;coef&#39;</span><span class="p">)</span>
+        <span class="p">)</span>
+<span class="n">fig1</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coefs</span><span class="p">[:</span><span class="mi">10</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;coef&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;word&#39;</span><span class="p">)</span>
+<span class="n">fig2</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coefs</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:],</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;coef&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;word&#39;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">left_right</span><span class="p">(</span><span class="n">fig1</span><span class="p">,</span> <span class="n">fig2</span><span class="p">,</span> <span class="n">horizontal_spacing</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Model coefficient&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Word&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<img alt="TF-IDF模型系数" src="../../assets/images/case_study/fake_news_modeling_48_0.svg" /></p>
+<p>这些系数显示了关于该模型的一些奇怪之处。我们看到几个有影响力的特征对应于原始文本中的标点符号。目前尚不清楚我们是否应该在模型中清除标点符号。一方面，标点符号似乎不像单词那样传达那么多含义。另一方面，似乎有理由认为，例如，文章中的大量感叹号可以帮助模型判断文章是真还是假。在这种情况下，我们决定保留标点符号，但好奇的读者可以在去掉标点符号后重复此分析，看看结果模型会受到怎样的影响。</p>
+<p>最后，我们显示所有三个模型的测试集误差：</p>
+<div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;test set error&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">model1</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">),</span>
+                       <span class="n">model2</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">),</span>
+                       <span class="n">model3</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)]</span>
+<span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;model1&#39;</span><span class="p">,</span> <span class="s1">&#39;model2&#39;</span><span class="p">,</span> <span class="s1">&#39;model3&#39;</span><span class="p">])</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"></th>
+<th style="text-align: left;">test set error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">model1</td>
+<td style="text-align: left;">0.61</td>
+</tr>
+<tr>
+<td style="text-align: right;">model2</td>
+<td style="text-align: left;">0.70</td>
+</tr>
+<tr>
+<td style="text-align: right;">model3</td>
+<td style="text-align: left;">0.88</td>
+</tr>
+</tbody>
+</table>
+<p>正如我们所预料的那样，随着我们引入更多特征，模型变得更加准确。使用 tf-idf 的模型表现比使用手动选择的二元单词特征的模型好得多，但它没有达到在训练集上获得的 100% 准确率。这说明了建模中的一个常见权衡：如果有足够的数据，更复杂的模型通常可以胜过更简单的模型，尤其是在像本案例研究这样的情况下，更简单的模型具有太多的模型偏差，无法表现良好。然而，复杂的模型更难解释。例如，我们的 tf-idf 模型有超过 20,000 个特征，这使得基本上不可能解释我们的模型是如何做出决策的。此外，tf-idf 模型进行预测所需的时间要长得多——与模型 2 相比慢了 100 多倍。在决定在实践中使用哪种模型时，需要考虑所有这些因素。</p>
+<p>此外，我们需要注意我们的模型的用途。在这种情况下，我们的模型使用新闻文章的内容进行预测，使其高度依赖于训练集中出现的单词。然而，我们的模型在未来使用未出现在训练集中的单词的新闻文章上的表现可能不会那么好。例如，我们的模型使用 2016 年美国大选候选人的名字进行预测，但它们不会知道包含 2020 年或 2024 年候选人的名字。为了长期使用我们的模型，我们需要解决这种漂移问题。</p>
+<p>尽管如此，令人惊讶的是逻辑回归模型在使用相对少量的特征工程 (tf-idf) 下就能表现良好。我们已经解决了我们最初的研究问题：我们的 tf-idf 模型在检测数据集中的假新闻方面似乎是有效的，并且它有可能推广到训练数据所涵盖的同一时期发布的其他新闻。</p>
+<h2 id="175-summary">17.5 总结 (Summary)</h2>
+<p>我们很快就要结束本章，也就是本书的结尾。我们以讨论数据科学生命周期开始了本书。让我们再次看一下生命周期（图 17.2），以领会你所学到的一切。</p>
+<p><img alt="数据科学生命周期" src="../../assets/images/case_study/ds-lifecycle.svg" />
+<center>图 17.2：数据科学生命周期的四个高级步骤，我们在整本书中都深入探讨了其中的每一个步骤</center></p>
+<p>本案例研究逐步完成了数据科学生命周期的每个阶段：</p>
+<p>许多数据分析始于一个研究问题。我们在本章中介绍的案例研究始于询问我们是否可以创建模型来自动检测假新闻。</p>
+<p>我们通过使用在线找到的代码将网页抓取为 JSON 文件来获取数据。由于数据描述相对较少，我们需要清洗数据以理解它。这包括创建新特征来指示文章中是否存在某些单词。</p>
+<p>我们的初步探索确定了可能对预测有用的单词。在拟合简单模型并探索其精度和准确率之后，我们使用 tf-idf 进一步转换文章，将每篇新闻文章转换为归一化的单词向量。</p>
+<p>我们将向量化的文本用作逻辑回归模型中的特征，并使用正则化和交叉验证拟合了最终模型。最后，我们在测试集上找出了拟合模型的准确率和精度。</p>
+<p>当我们像这样写出生命周期的步骤时，这些步骤似乎顺畅地相互衔接。但现实是混乱的——正如生命周期图所示，实际的数据分析会在步骤之间反复跳转。例如，在我们的案例研究结束时，我们发现了一些数据清洗问题，这可能会促使我们重新审视生命周期的早期阶段。虽然我们的模型相当准确，但大部分训练数据来自 2016-2018 年期间，因此如果我们想在这一时间范围之外发表的文章上使用该模型，我们必须仔细评估模型的性能。</p>
+<p>本质上，在数据分析的每个阶段都牢记整个生命周期是很重要的。作为一名数据科学家，你将被要求证明你的决定是正确的，这意味着你需要深入了解你的研究问题和数据。为了培养这种理解，本书中的原则和技术为你提供了一套基础技能。当你继续你的数据科学之旅时，我们建议你通过以下方式继续扩展你的技能：</p>
+<ol>
+<li><strong>重温本书中的案例研究</strong>。从复制我们的分析开始，然后深入研究你对数据有的问题。</li>
+<li><strong>进行独立的数据分析</strong>。提出一个你感兴趣的研究问题，从网上找到相关数据，并分析数据以查看数据是否符合你的预期。这样做将让你获得整个数据科学生命周期的第一手经验。</li>
+<li><strong>深入研究一个主题</strong>。我们在附录的补充材料中提供了许多深入的资源。选择你最感兴趣的资源并了解更多信息。</li>
+</ol>
+<p>世界需要像你这样能够使用数据得出结论的人，因此我们真诚地希望你能利用这些技能帮助他人制定有效的策略、更好的产品和明智的决策。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

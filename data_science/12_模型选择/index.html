@@ -1,0 +1,3067 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../11_%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/">
+      
+      
+        <link rel="next" href="../13_%E6%8E%A8%E7%90%86%E4%B8%8E%E9%A2%84%E6%B5%8B%E7%90%86%E8%AE%BA/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>12 模型选择 - Python 修行指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#12" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Python 修行指南" class="md-header__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python 修行指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              12 模型选择
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Python 修行指南" class="md-nav__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Python 修行指南
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    前言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 预备知识
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 预备知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/01_Python%E7%A8%8B%E5%BA%8F%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Python程序基本结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/02_%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 基础语法与变量
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/03_%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 核心数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/04_%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 运算符与表达式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/05_%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 程序控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/06_%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 函数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/07_%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 文件操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/08_%E9%94%99%E8%AF%AF%E4%B8%8E%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 错误与异常处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/09_%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 面向对象编程基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 进阶修炼
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 进阶修炼
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/01_%E6%8E%A8%E5%AF%BC%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/02_%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 迭代器与生成器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/03_%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/04_%E8%A3%85%E9%A5%B0%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 装饰器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/05_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/06_%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%8C%85/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 模块与包
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/07_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 进阶输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/08_%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 命名空间与作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/09_%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 类型注解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/10_%E6%A0%87%E5%87%86%E5%BA%93%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 标准库概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/11_%E5%BC%82%E6%AD%A5IO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 异步IO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/01_%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 算法概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/02_%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%9E%9A%E4%B8%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 模拟与枚举
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/03_%E9%80%92%E5%BD%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 递归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/04_%E5%88%86%E6%B2%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 分治
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/05_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 二分查找
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/06_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 动态规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/07_%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 背包问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/08_%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 贪心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/09_%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 搜索算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/10_%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 图论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据科学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据科学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 生命周期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_%E7%9F%A9%E5%BD%A2%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 矩形数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 SQL与关系数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 文件处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据清洗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 数据分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 数据可视化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 文本数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 数据交换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 线性模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 模型选择
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 模型选择
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overfitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 过拟合 (Overfitting)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 过拟合 (Overfitting)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 示例：能源消耗
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-train-test-split" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 训练集-测试集分割 (Train-Test Split)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-cross-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 交叉验证 (Cross-Validation)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-regularization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 正则化 (Regularization)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-example-a-market-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 示例：市场分析 (Example: A Market Analysis)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-model-bias-and-variance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 模型偏差与方差 (Model Bias and Variance)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 总结 (Summary)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13_%E6%8E%A8%E7%90%86%E4%B8%8E%E9%A2%84%E6%B5%8B%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 推理与预测理论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15_%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16_%E6%95%B0%E5%80%BC%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 数值优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实用工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/01_Git%E4%B8%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Git与版本控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/02_Markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/03_Vibe_Coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Vibe Coding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/04_LeetCode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 LeetCode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/05_coze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 coze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/06_n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/07_PPT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 PPT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    深度学习入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deep_learning/01_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 深度学习概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overfitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 过拟合 (Overfitting)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 过拟合 (Overfitting)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 示例：能源消耗
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-train-test-split" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 训练集-测试集分割 (Train-Test Split)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-cross-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 交叉验证 (Cross-Validation)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-regularization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 正则化 (Regularization)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-example-a-market-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 示例：市场分析 (Example: A Market Analysis)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-model-bias-and-variance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 模型偏差与方差 (Model Bias and Variance)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 总结 (Summary)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="12">12. 模型选择</h1>
+<p>到目前为止，我们在拟合模型时，使用了一些策略来决定包含哪些特征：</p>
+<ul>
+<li>通过残差图评估模型拟合度。</li>
+<li>将统计模型与物理模型联系起来。</li>
+<li>保持模型简单。</li>
+<li>比较残差标准差和 MSE 在逐渐复杂的模型中的改进。</li>
+</ul>
+<p>例如，当我们检查第 11 章中的向上流动性单变量模型时，我们在残差图中发现了曲率。添加第二个变量极大地改善了平均损失（MSE 和相关的多元 <span class="arithmatex">\(R^2\)</span>），但残差中仍保留了一些曲率。然而，七个变量的模型在降低 MSE 方面相比两个变量的模型几乎没有改进，因此尽管两个变量的模型仍然显示出一些残差模式，我们还是选择了这个更简单的模型。</p>
+<p>作为另一个例子，当我们将在后续章节对驴的体重进行建模时，我们将从物理模型中获得指导。我们将忽略驴的四肢，并利用圆桶和驴身体之间的相似性，开始拟合一个通过长度和周长（类似于圆桶的高度和周长）来解释体重的模型。然后，我们将继续通过添加与驴的身体状况和年龄相关的分类特征来调整该模型，合并类别并排除其他可能的特征以保持模型简单。</p>
+<p>我们在构建这些模型时所做的决定是基于判断的，而在本章中，我们将通过更形式化的标准来增强这些判断。首先，我们提供一个例子来说明为什么在模型中包含太多特征通常不是一个好主意。这种现象称为<strong>过拟合 (Overfitting)</strong>，它通常会导致模型过于紧密地跟随数据并捕捉数据中的一些噪声。然后，当新的观测数据出现时，预测结果比来自更简单模型的预测结果更差。本章的其余部分提供了限制过拟合影响的技术，例如训练-测试分割 (train-test split)、交叉验证 (cross-validation) 和正则化 (regularization)。当模型中有大量潜在特征时，这些技术特别有用。我们还提供了一个合成示例，在这个示例中我们知道真正的模型，用来解释模型方差和偏差的概念，以及它们与过拟合和欠拟合的关系。</p>
+<h2 id="1-overfitting">1. 过拟合 (Overfitting)</h2>
+<p>当我们有很多特征可以包含在模型中时，选择包含或排除哪些特征会很快变得复杂。在第 11 章的向上流动性示例中，我们选择了七个变量中的两个来拟合模型，但如果是两个变量的模型，我们可以检查和拟合 21 对特征。如果我们要考虑所有一个、两个、...、七个变量的模型，那么有一百多个模型可供选择。检查数百个残差图、决定多简单才算简单以及最终确定一个模型是很困难的。不幸的是，最小化 MSE 的概念也不完全有帮助。每当我们在模型中添加一个变量，MSE 通常都会变小。回想一下模型拟合的几何视角（第 11 章），向模型添加特征就是在特征空间中增加一个 <span class="arithmatex">\(n\)</span> 维向量，而结果向量与其在解释变量所张成的空间中的投影之间的误差会缩小。我们可能认为这是一件好事，因为我们的模型更贴近数据，但也存在过拟合的危险。</p>
+<p><strong>过拟合 (Overfitting)</strong> 发生在模型过于紧密地跟随数据并捕捉到结果中随机噪声的变异性时。当发生这种情况时，新的观测结果将难以被良好预测。通过一个例子可以澄清这个概念。</p>
+<h3 id="11">1.1 示例：能源消耗</h3>
+<p>在这个例子中，我们检查一个数据集，其中包含了明尼苏达州一处私人住宅的公用事业账单信息。我们有家庭每月的天然气使用量（立方英尺）和该月的平均温度（华氏度）。我们首先读取数据：</p>
+<div class="highlight"><pre><span></span><code><span class="n">heat_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/utilities.csv&quot;</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;temp&quot;</span><span class="p">,</span> <span class="s2">&quot;ccf&quot;</span><span class="p">])</span>
+<span class="n">heat_df</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>      temp  ccf
+0     29    166
+1     31    179
+2     15    224
+...   ...   ...
+96    76    11
+97    55    32
+98    39    91
+
+99 rows × 2 columns
+</code></pre></div>
+<p>让我们首先看一看作为温度函数的天然气消耗量的散点图：</p>
+<p><img alt="Scatter plot overfit" src="../../assets/images/model_selection/ms_overfitting_6_0.svg" /></p>
+<p>这种关系显示出曲率（左图），当我们试图用对数变换将其拉直时（右图），低温区域出现了不同的曲率。此外，还有两个异常点。当我们查阅文档时，我们发现这些点代表记录错误，因此我们将它们移除。</p>
+<p>让我们看看二次曲线是否能捕捉天然气使用量和温度之间的关系。多项式仍然被认为是线性模型。它们对其多项式特征是线性的。例如，我们可以将二次模型表示为：</p>
+<div class="arithmatex">\[ y = \theta_0 + \theta_1 x + \theta_2 x^2 \]</div>
+<p>这个模型在特征 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(x^2\)</span> 上是线性的，用矩阵符号我们可以把这个模型写成 <span class="arithmatex">\(\mathbf{y} = \mathbf{X}\boldsymbol{\theta}\)</span>，其中 <span class="arithmatex">\(\mathbf{X}\)</span> 是设计矩阵：</p>
+<div class="arithmatex">\[
+\mathbf{X} = \begin{bmatrix}
+1 &amp; x_1 &amp; x_1^2 \\
+1 &amp; x_2 &amp; x_2^2 \\
+\vdots &amp; \vdots &amp; \vdots \\
+1 &amp; x_n &amp; x_n^2
+\end{bmatrix}
+\]</div>
+<p>我们可以使用 scikit-learn 中的 <code>PolynomialFeatures</code> 工具创建设计矩阵的多项式特征：</p>
+<div class="highlight"><pre><span></span><code><span class="n">y</span> <span class="o">=</span> <span class="n">heat_df</span><span class="p">[</span><span class="s1">&#39;ccf&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">heat_df</span><span class="p">[[</span><span class="s1">&#39;temp&#39;</span><span class="p">]]</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+
+<span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">poly_features</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">poly_features</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>array([[  29.,  841.],
+       [  31.,  961.],
+       [  15.,  225.],
+       ...,
+       [  76., 5776.],
+       [  55., 3025.],
+       [  39., 1521.]])
+</code></pre></div>
+<p>我们将 <code>include_bias</code> 参数设置为 <code>False</code>，因为我们计划使用 scikit-learn 中的 <code>LinearRegression</code> 方法来拟合多项式，而该方法默认会在模型中包含常数项。我们用以下代码拟合多项式：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="n">model_deg2</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">poly_features</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+<p>为了快速了解拟合质量，让我们把拟合的二次曲线叠加在散点图上，同时也看看残差：</p>
+<p><img alt="Quadratic fit" src="../../assets/images/model_selection/ms_overfitting_17_0.svg" /></p>
+<p>二次曲线很好地捕捉了数据中的曲线，但残差在 70°F 到 80°F 的温度范围内显示出轻微的上升趋势，这表明还有一些拟合不足。残差也有一些漏斗形状，在那里的较冷月份天然气消耗的变异性更大。我们可能会预料到这种行为，因为我们只有月平均温度。</p>
+<p>为了进行比较，我们拟合几个更高阶多项式的模型，并统观察拟合的曲线：</p>
+<div class="highlight"><pre><span></span><code><span class="n">poly12</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">poly_features12</span> <span class="o">=</span> <span class="n">poly12</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">degrees</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+
+<span class="n">mods</span> <span class="o">=</span> <span class="p">[</span><span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">poly_features12</span><span class="p">[:,</span> <span class="p">:</span><span class="n">deg</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">deg</span> <span class="ow">in</span> <span class="n">degrees</span><span class="p">]</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>我们在本节使用多项式特征来演示过拟合，但在实践中直接拟合 <span class="arithmatex">\(x, x^2, \dots, x^{12}\)</span> 多项式是不可取的。不幸的是，这些多项式特征往往高度相关。例如，能源数据的 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(x^2\)</span> 之间的相关性是 0.98。高度相关的特征会导致不稳定的系数，其中 x 值的微小变化可能导致多项式系数的巨大变化。此外，当 x 值很大时，正规方程组的条件数很差（ill-conditioned），系数可能难以解释和比较。</p>
+<p>更好的做法是<strong>使用彼此正交构建的多项式</strong>。这些多项式填充了与原始多项式相同的空间，但它们彼此不相关，并给出更稳定的拟合。</p>
+</div>
+<p>让我们把所有的多项式拟合放在同一张图上，这样我们可以看到更高阶的多项式是如何弯曲得越来越奇怪的：</p>
+<p><img alt="Multi-degree polynomial fit" src="../../assets/images/model_selection/ms_overfitting_23_0.svg" /></p>
+<p>我们也可以在单独的分面中可视化不同的多项式拟合：</p>
+<p><img alt="Facetted polynomial fit" src="../../assets/images/model_selection/ms_overfitting_25_0.svg" /></p>
+<p>左上角分面中的 1 阶曲线（直线）错过了数据中的弯曲模式。2 阶曲线开始捕捉到它，3 阶曲线看起来是一个改进，但请注意图表右侧的向上弯曲。6 阶、8 阶和 12 阶的多项式跟随数据越来越紧密，因为它们变得越来越弯曲。这些多项式似乎拟合了数据中的虚假波动。总而言之，这六条曲线说明了欠拟合和过拟合。左上角的拟合直线欠拟合，完全错过了曲率。而右下角的 12 阶多项式绝对过拟合，带有我们认为在这种背景下没有意义的摆动模式。</p>
+<p>一般来说，随着我们添加更多特征，模型变得更复杂，MSE 下降，但与此同时，拟合的模型变得越来越不稳定，对数据越来越敏感。当我们过拟合时，模型过于紧密地跟随数据，对新观测值的预测很差。评估拟合模型的一个简单技术是计算新数据上的 MSE，这些数据未用于构建模型。由于我们通常没有能力获取更多数据，我们留出一部分原始数据来评估拟合模型。这种技术是下一节的主题。</p>
+<h2 id="2-train-test-split">2. 训练集-测试集分割 (Train-Test Split)</h2>
+<p>虽然我们想利用所有数据来构建模型，但也想了解模型在新数据上的表现。我们通常没有条件收集额外的数据来评估模型，所以取而代之的是，我们留出一部分数据作为<strong>测试集 (Test Set)</strong>，用来充当新数据。剩余的数据称为<strong>训练集 (Train Set)</strong>，我们用这就部分数据来构建模型。然后，在选定模型之后，我们拿出测试集，看看在训练集上拟合的模型对测试集结果的预测效果如何。</p>
+<p><img alt="Train-Test Diagram" src="../../assets/images/model_selection/TrainTestDiagram.png" /></p>
+<p>通常，测试集由 10% 到 25% 的数据组成。从图中可能看不清楚的是，分割成两部分通常是随机进行的，这样训练集和测试集就彼此相似。</p>
+<p>我们可以用第 11 章介绍的概念来描述这个过程。设计矩阵 <span class="arithmatex">\(\textbf{X}\)</span> 和结果 <span class="arithmatex">\(\mathbf{y}\)</span> 分别被分成两部分；标记为 <span class="arithmatex">\(\textbf{X}_T\)</span> 的设计矩阵和对应的结果 <span class="arithmatex">\(\mathbf{y}_T\)</span> 构成训练集。我们使用这些数据最小化关于 <span class="arithmatex">\(\boldsymbol{\theta}\)</span> 的平均平方损失：</p>
+<div class="arithmatex">\[
+\min_{\boldsymbol{\theta}} \lVert \mathbf{y}_T - {\textbf{X}_T}{\boldsymbol{{\theta}}} \rVert^2
+\]</div>
+<p>最小化训练误差的系数 <span class="arithmatex">\(\boldsymbol{\hat{\theta}}_T\)</span> 用于预测测试集，测试集标记为 <span class="arithmatex">\(\textbf{X}_S\)</span> 和 <span class="arithmatex">\(\mathbf{y}_S\)</span>：</p>
+<div class="arithmatex">\[
+\lVert \mathbf{y}_S - {\textbf{X}_S}{\boldsymbol{\hat{\theta}}_T} \rVert^2
+\]</div>
+<p>由于 <span class="arithmatex">\(\textbf{X}_S\)</span> 和 <span class="arithmatex">\(\mathbf{y}_S\)</span> 没有用于构建模型，它们给出了我们对新观测值可能预期的损失的合理估计。</p>
+<p>我们用上一节的天然气消耗多项式模型来演示训练-测试分割。为此，我们执行以下步骤：</p>
+<ol>
+<li>将数据随机分成两部分：训练集和测试集。</li>
+<li>在训练集上拟合几个多项式模型并选择一个。</li>
+<li>计算所选多项式（使用在训练集上拟合的系数）在测试集上的 MSE。</li>
+</ol>
+<p>对于第一步，我们使用 scikit-learn 中的 <code>train_test_split</code> 方法分割数据，并留出 22 个观测值用于模型评估：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">test_size</span> <span class="o">=</span> <span class="mi">22</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">test_size</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Training set size: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Test set size: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Training set size: 75
+Test set size: 22
+</code></pre></div>
+<p>与上一节一样，我们拟合天然气消耗与温度的各种多项式模型。但这一次，我们只使用训练数据：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">poly_train</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+<span class="n">degree</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+
+<span class="n">mods</span> <span class="o">=</span> <span class="p">[</span><span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">poly_train</span><span class="p">[:,</span> <span class="p">:</span><span class="n">j</span><span class="p">],</span> <span class="n">y_train</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">degree</span><span class="p">]</span>
+</code></pre></div>
+<p>我们找出每个模型的 MSE：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+
+<span class="n">error_train</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">mods</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">poly_train</span><span class="p">[:,</span> <span class="p">:</span> <span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]))</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="p">]</span>
+</code></pre></div>
+<p>为了可视化 MSE 的变化，我们将每个拟合多项式的 MSE 对其阶数作图：</p>
+<div class="highlight"><pre><span></span><code><span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">error_train</span><span class="p">,</span> <span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">labels</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Degree of polynomial&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Train set MSE&#39;</span><span class="p">),</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="Train MSE" src="../../assets/images/model_selection/ms_train_test_12_0.svg" /></p>
+<p>请注意，训练误差随着模型复杂度的增加而降低。
+我们早些时候看到，高阶多项式表现出一种摆动行为，我们认为这并不反映数据中的潜在结构。考虑到这一点，我们可能会选择一个更简单但 MSE 显著降低的模型。那可能是 3 阶、4 阶或 5 阶。让我们选择 3 阶，因为这三个模型在 MSE 方面的差异很小，而且它是最简单的。</p>
+<p>既然我们选择了模型，我们就使用测试集对其 MSE 提供独立的评估。我们为测试集准备设计矩阵，并使用在训练集上拟合的 3 阶多项式来预测测试集中每一行的结果。最后，我们计算测试集的 MSE：</p>
+<div class="highlight"><pre><span></span><code><span class="n">poly_test</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_hat</span> <span class="o">=</span> <span class="n">mods</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">poly_test</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+
+<span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>307.44460133992294
+</code></pre></div>
+<p>该模型的 MSE 比在训练数据上计算的 MSE 大不少。这证明了使用相同数据来拟合和评估模型的问题：MSE 不能充分反映新观测值的 MSE。为了进一步演示过拟合的问题，我们计算这些模型中每一个的测试误差：</p>
+<div class="highlight"><pre><span></span><code><span class="n">error_test</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">mods</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">poly_test</span><span class="p">[:,</span> <span class="p">:</span> <span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]))</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="p">]</span>
+</code></pre></div>
+<p>在实践中，在确定模型之前我们不看测试集。在训练集上拟合模型和在测试集上评估模型之间交替，可能会导致过拟合。但为了演示目的，我们绘制所有已拟合多项式模型在测试集上的 MSE：</p>
+<p><img alt="Test MSE" src="../../assets/images/model_selection/ms_train_test_19_0.svg" /></p>
+<p>请注意，对于所有模型，不仅仅是我们选择的模型，测试集的 MSE 都大于训练集的 MSE。更重要的是，请注意测试集的 MSE 最初是如何随着模型从欠拟合变为更好地跟随数据曲率而降低的。然后，随着模型复杂度的增加，测试集的 MSE 也会增加。这些更复杂的模型对训练数据过拟合，导致预测测试集的误差很大。下图捕捉了该现象的理想化情况：</p>
+<p><img alt="Overfitting Idealized" src="../../assets/images/model_selection/train-test-overfitting.png" /></p>
+<p>测试数据提供了对新观测值预测误差的评估。<strong>至关重要的是只使用测试集一次，即在我们确定了模型之后</strong>。否则，我们就会陷入使用相同数据来选择和评估模型的陷阱。在选择模型时，我们依靠简单性论点，因为我们意识到越来越复杂的模型倾向于过拟合。然而，我们可以扩展训练-测试方法来帮助选择模型。这是下一节的主题。</p>
+<h2 id="3-cross-validation">3. 交叉验证 (Cross-Validation)</h2>
+<p>我们可以使用训练-测试范式来帮助我们选择模型。其想法是进一步将训练集分成几个部分，我们在其中一部分上拟合模型，在另一部分上评估它。这种方法称为<strong>交叉验证 (Cross-Validation)</strong>。我们描述一种称为 <strong><span class="arithmatex">\(k\)</span> 折交叉验证 (<span class="arithmatex">\(k\)</span>-fold Cross-Validation)</strong> 的版本。</p>
+<p><img alt="Cross Validation Diagram" src="../../assets/images/model_selection/CVDiagram.png" /></p>
+<p>交叉验证可以帮助选择模型的总体形式。由此我们指的是多项式的阶数、模型中特征的数量，或正则化惩罚的截断值（将在下一节中介绍）。<span class="arithmatex">\(k\)</span> 折交叉验证背后的基本步骤如下：</p>
+<ol>
+<li>将数据随机分成两部分：训练集和测试集。</li>
+<li>将训练集分成大小大致相同的 <span class="arithmatex">\(k\)</span> 部分；每一部分称为一个<strong>折 (fold)</strong>。通常，我们随机划分数据。</li>
+<li>留出一折作为验证集：<ul>
+<li>在剩余的训练数据（减去该特定折）上拟合所有模型。</li>
+<li>使用留出的那一折来评估所有这些模型。</li>
+</ul>
+</li>
+<li>重复此过程共 <span class="arithmatex">\(k\)</span> 次，每次留出一折，使用其余的训练集拟合模型，并在留出的那一折上评估它们。</li>
+<li>综合每个模型在各折上的拟合误差，并选择误差最小的模型。</li>
+</ol>
+<p>这些拟合模型在各折之间的系数不会完全相同。举个例子，当我们拟合一个 3 阶多项式时，我们对 <span class="arithmatex">\(k\)</span> 折的 MSE 取平均，得到 3 阶多项式的平均 MSE。然后我们比较 MSE，选择 MSE 最低的多项式阶数。三次多项式中 <span class="arithmatex">\(x, x^2, x^3\)</span> 项的实际系数在 <span class="arithmatex">\(k\)</span> 次拟合中的每一次都不是相同的。一旦选定了多项式阶数，我们将使用<strong>所有训练数据</strong>重新拟合模型，并在测试集上进行评估。（我们在之前的任何步骤中都没有使用测试集来选择模型。）</p>
+<p>通常，我们使用 5 或 10 折。另一种流行的选择是在每一折中只放一个观测值。这种特殊情况称为<strong>留一法交叉验证 (Leave-One-Out Cross-Validation, LOOCV)</strong>。它的流行源于调整最小二乘拟合以少一个观测值时的简单性。</p>
+<p>一般来说，<span class="arithmatex">\(k\)</span> 折交叉验证需要一些计算时间，因为我们通常必须为每一折从头开始重新拟合每个模型。scikit-learn 库提供了一个方便的 <code>sklearn.model_selection.KFold</code> 类来实现 <span class="arithmatex">\(k\)</span> 折交叉验证。</p>
+<p>为了让你了解 k 折交叉验证是如何工作的，我们将在这个天然气消耗示例上演示该技术。但是，这一次我们将拟合一种不同类型的模型。在数据的原始散点图中，看起来这些点落在两条连接的线段上。在低温下，天然气消耗量与温度之间的关系看起来大致呈线性，斜率为负，约为 -4 立方英尺/度，而在较暖的月份，这种关系显得几乎平坦。所以，与其拟合多项式，我们不如拟合一条弯曲的线。</p>
+<p>让我们从拟合一条在 65 度处弯曲的线开始。为此，我们创建一个特征，使温度高于 65°F 的点具有不同的斜率。模型是：</p>
+<div class="arithmatex">\[
+y = \theta_0 + \theta_1x + \theta_2(x-65)^+
+\]</div>
+<p>这里，<span class="arithmatex">\((~)^+\)</span> 代表“正部 (positive part)”，所以当 <span class="arithmatex">\(x\)</span> 小于 65 时它的计算结果为 0，当 <span class="arithmatex">\(x\)</span> 大于或等于 65 时它就是 <span class="arithmatex">\(x-65\)</span>。我们创建这个新特征并将其添加到设计矩阵中：</p>
+<div class="highlight"><pre><span></span><code><span class="n">y</span> <span class="o">=</span> <span class="n">heat_df</span><span class="p">[</span><span class="s2">&quot;ccf&quot;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">heat_df</span><span class="p">[[</span><span class="s2">&quot;temp&quot;</span><span class="p">]]</span>
+<span class="n">X</span><span class="p">[</span><span class="s2">&quot;temp65p&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s2">&quot;temp&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">65</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s2">&quot;temp&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">65</span><span class="p">)</span>
+</code></pre></div>
+<p>然后我们用这两个特征拟合模型：</p>
+<div class="highlight"><pre><span></span><code><span class="n">bend_index</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+<p>让我们把这条拟合的“曲线”叠加在散点图上，看看它捕捉数据形状的效果如何：</p>
+<p><img alt="Bent line fit" src="../../assets/images/model_selection/ms_cv_11_0.svg" /></p>
+<p>这个模型似乎比多项式更适合数据。但是许多弯折线模型是可能的。线可能在 55 度或 60 度弯曲等等。我们可以使用 <span class="arithmatex">\(k\)</span> 折交叉验证来选择线弯曲的温度值。让我们考虑在 <span class="arithmatex">\(40, 41, 42, \dots, 68, 69\)</span> 度弯曲的模型。对于每一个，我们需要创建额外的特征以使线在那里弯曲：</p>
+<div class="highlight"><pre><span></span><code><span class="n">bends</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">columns_to_keep</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span> <span class="s1">&#39;ccf&#39;</span><span class="p">]</span>
+<span class="n">heat_df</span> <span class="o">=</span> <span class="n">heat_df</span><span class="p">[</span><span class="n">columns_to_keep</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bends</span><span class="p">:</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="s2">&quot;temp&quot;</span> <span class="o">+</span> <span class="n">i</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;str&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;p&quot;</span>
+    <span class="n">heat_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">heat_df</span><span class="p">[</span><span class="s2">&quot;temp&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">heat_df</span><span class="p">[</span><span class="s2">&quot;temp&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">i</span><span class="p">)</span>
+
+<span class="n">heat_df</span>
+</code></pre></div>
+<p>交叉验证的第一步是创建我们的训练集和测试集。像以前一样，我们随机选择 22 个观测值放入测试集。这留下了 75 个作为训练集：</p>
+<div class="highlight"><pre><span></span><code><span class="n">y</span> <span class="o">=</span> <span class="n">heat_df</span><span class="p">[</span><span class="s1">&#39;ccf&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">heat_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ccf&#39;</span><span class="p">])</span>
+
+<span class="n">test_size</span> <span class="o">=</span> <span class="mi">22</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">test_size</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<p>现在我们可以将训练集分成几折。我们使用 3 折，这样每一折有 25 个观测值。对于每一折，我们拟合 30 个模型，每种弯曲线对应一个。对于这一步，我们使用 scikit-learn 中的 <code>KFold</code> 方法划分数据：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
+
+<span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">validation_errors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">validate_bend_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> <span class="n">bend_index</span><span class="p">):</span>
+    <span class="c1"># 选择 temp 列和对应的弯度列</span>
+    <span class="c1"># bend_index 是 1 到 30，对应 temp40p 到 temp69p</span>
+    <span class="c1"># X的第一列是 temp，后面是 temp40p...</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">bend_index</span><span class="p">]],</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_valid</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">bend_index</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_valid</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">fold</span><span class="p">,</span> <span class="p">(</span><span class="n">train_idx</span><span class="p">,</span> <span class="n">valid_idx</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X_train</span><span class="p">)):</span>
+    <span class="n">cv_X_train</span><span class="p">,</span> <span class="n">cv_X_valid</span> <span class="o">=</span> <span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_idx</span><span class="p">,</span> <span class="p">:],</span>
+                              <span class="n">X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">valid_idx</span><span class="p">,</span> <span class="p">:])</span>
+    <span class="n">cv_Y_train</span><span class="p">,</span> <span class="n">cv_Y_valid</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span>
+                              <span class="n">y_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">valid_idx</span><span class="p">])</span>
+
+    <span class="n">error_bend</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">validate_bend_model</span><span class="p">(</span>
+            <span class="n">cv_X_train</span><span class="p">,</span> <span class="n">cv_Y_train</span><span class="p">,</span> <span class="n">cv_X_valid</span><span class="p">,</span> <span class="n">cv_Y_valid</span><span class="p">,</span> <span class="n">bend_index</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">bend_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="n">validation_errors</span><span class="p">[</span><span class="n">fold</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">error_bend</span>
+</code></pre></div>
+<p>然后我们找出三折的平均验证误差，并将其对弯曲位置作图：</p>
+<div class="highlight"><pre><span></span><code><span class="n">totals</span> <span class="o">=</span> <span class="n">validation_errors</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">bends</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">totals</span><span class="p">,</span> <span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;Location of bend&quot;</span><span class="p">,</span> <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;MSE&quot;</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Cross Validation MSE" src="../../assets/images/model_selection/ms_cv_20_0.svg" /></p>
+<p>MSE 在 57 到 60 度之间看起相当平坦。最小值出现在 58 度，所以我们选择那个模型。为了在测试集上评估这个模型，我们首先在<strong>整个训练集</strong>上拟合 58 度处的弯线模型：</p>
+<div class="highlight"><pre><span></span><code><span class="n">bent_final</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">X_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;temp&quot;</span><span class="p">,</span> <span class="s2">&quot;temp58p&quot;</span><span class="p">]],</span> <span class="n">y_train</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>然后我们使用拟合的模型来预测测试集的天然气消耗：</p>
+<div class="highlight"><pre><span></span><code><span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">bent_final</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;temp&quot;</span><span class="p">,</span> <span class="s2">&quot;temp58p&quot;</span><span class="p">]])</span>
+
+<span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>71.40781435952441
+</code></pre></div>
+<p>让我们把弯线拟合叠加在散点图上，并检查残差以了解拟合质量：</p>
+<p><img alt="Bent Line Residuals" src="../../assets/images/model_selection/ms_cv_26_0.svg" /></p>
+<p>拟合曲线看起来很合理，残差比多项式拟合小得多。</p>
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>在本节中，出于教学目的，我们使用 <code>KFold</code> 手动将训练数据分成三折，然后使用循环找到模型验证误差。在实践中，我们建议使用 <code>sklearn.model_selection.GridSearchCV</code> 与 <code>sklearn.pipeline.Pipeline</code> 对象，它可以自动将数据分为训练集和验证集，并找到在各折中具有最低平均验证误差的模型。</p>
+</div>
+<p>使用交叉验证来管理模型复杂度有几个关键限制：通常它要求复杂度离散变化；并且可能没有一种自然的方法来对模型进行排序。</p>
+<h2 id="4-regularization">4. 正则化 (Regularization)</h2>
+<p>我们刚刚看到交叉验证如何帮助找到一个平衡欠拟合和过拟合的模型维度。与其选择模型的维度，我们可以使用<strong>所有</strong>特征构建模型，但限制系数的大小。通过在 MSE 中添加一个针对系数大小的惩罚项 (penalty term)，我们可以防止过拟合。这个惩罚项称为<strong>正则化项 (regularization term)</strong>，即 <span class="arithmatex">\(\lambda \sum_{j = 1}^{p} \theta_j^2\)</span>。我们通过最小化均方误差加上这个惩罚项的组合来拟合模型：</p>
+<div class="arithmatex">\[
+\frac{1}{n} \sum_{i=1}^{n}(y_i - \mathbf{x}_i \boldsymbol{\theta})^2  ~+~ \lambda \sum_{j = 1}^{p} \theta_j^2
+\]</div>
+<p>当<strong>正则化参数 (regularization parameter)</strong> <span class="arithmatex">\(\lambda\)</span> 很大时，它会惩罚大的系数。（我们通常通过交叉验证来选择它。）</p>
+<p>惩罚系数的平方称为 <strong><span class="arithmatex">\(L_2\)</span> 正则化</strong>，或<strong>岭回归 (Ridge Regression)</strong>。另一种流行的正则化惩罚系数的绝对值：</p>
+<div class="arithmatex">\[
+\frac{1}{n} \sum_{i=1}^{n}(y_i - \mathbf{x}_i \boldsymbol{\theta})^2  ~+~ \lambda \sum_{j = 1}^{p} |\theta_j|
+\]</div>
+<p>这种 <strong><span class="arithmatex">\(L_1\)</span> 正则化</strong>线性模型也称为<strong>套索回归 (Lasso Regression)</strong>（Lasso 代表 Least Absolute Shrinkage and Selection Operator）。</p>
+<p>为了理解正则化是如何工作的，让我们考虑极端的几种情况：当 <span class="arithmatex">\(\lambda\)</span> 非常大时，以及当它接近 0 时（<span class="arithmatex">\(\lambda\)</span> 永远不会是负数）。如果有很大的正则化参数，系数会受到严厉的惩罚，因此它们会收缩 (shrink)。另一方面，当 <span class="arithmatex">\(\lambda\)</span> 很小时，系数不受限制。实际上，当 <span class="arithmatex">\(\lambda\)</span> 为 0 时，我们又回到了普通最小二乘法 (OLS) 的世界。当我们考虑通过正则化控制系数大小时，会出现几个问题：</p>
+<ul>
+<li>我们不想正则化截距项 (intercept term)。这样，大的惩罚项会拟合出一个常数模型。</li>
+<li>当特征具有非常不同的尺度 (scales) 时，惩罚项对它们的影响会有所不同，大值的特征会比其他特征受到更多的惩罚。为了避免这种情况，我们在拟合模型之前将所有特征标准化 (standardize) 为均值为 0 且方差为 1。</li>
+</ul>
+<p>让我们看一个有 35 个特征的例子。</p>
+<h2 id="5-example-a-market-analysis">5. 示例：市场分析 (Example: A Market Analysis)</h2>
+<p>一家制药公司的<a href="https://doi.org/10.1080/02664763.2014.994480">市场研究项目</a>想要模拟消费者对购买一种唇疱疹保健产品的兴趣。他们从 1,023 名消费者那里收集数据。每个消费者都被要求在 10 分制下对 35 个因素进行评分，评分标准是这些因素在他们考虑购买唇疱疹治疗产品时是否重要。他们还对自己购买产品的兴趣进行了评分。</p>
+<p>我们首先读取数据：</p>
+<div class="highlight"><pre><span></span><code><span class="n">ma_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/market-analysis.csv&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>下表列出了 35 个因素，并提供了它们与结果（即购买产品的兴趣）的相关性。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Corr</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Corr</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">x1</td>
+<td style="text-align: left;">0.70</td>
+<td style="text-align: left;">provides soothing relief</td>
+<td style="text-align: left;">x19</td>
+<td style="text-align: left;">0.54</td>
+<td style="text-align: left;">has a non-messy application</td>
+</tr>
+<tr>
+<td style="text-align: left;">x2</td>
+<td style="text-align: left;">0.58</td>
+<td style="text-align: left;">moisturizes cold sore blister</td>
+<td style="text-align: left;">x20</td>
+<td style="text-align: left;">0.70</td>
+<td style="text-align: left;">good for any stage of a cold</td>
+</tr>
+<tr>
+<td style="text-align: left;">x3</td>
+<td style="text-align: left;">0.69</td>
+<td style="text-align: left;">provides long-lasting relief</td>
+<td style="text-align: left;">x21</td>
+<td style="text-align: left;">0.49</td>
+<td style="text-align: left;">easy to apply/take</td>
+</tr>
+<tr>
+<td style="text-align: left;">x4</td>
+<td style="text-align: left;">0.70</td>
+<td style="text-align: left;">provides fast-acting relief</td>
+<td style="text-align: left;">x22</td>
+<td style="text-align: left;">0.52</td>
+<td style="text-align: left;">package keeps from contamination</td>
+</tr>
+<tr>
+<td style="text-align: left;">x5</td>
+<td style="text-align: left;">0.72</td>
+<td style="text-align: left;">shortens duration of a cold</td>
+<td style="text-align: left;">x23</td>
+<td style="text-align: left;">0.57</td>
+<td style="text-align: left;">easy to dispense a right amount</td>
+</tr>
+<tr>
+<td style="text-align: left;">x6</td>
+<td style="text-align: left;">0.68</td>
+<td style="text-align: left;">stops the virus from spreading</td>
+<td style="text-align: left;">x24</td>
+<td style="text-align: left;">0.63</td>
+<td style="text-align: left;">worth the price it costs</td>
+</tr>
+<tr>
+<td style="text-align: left;">x7</td>
+<td style="text-align: left;">0.67</td>
+<td style="text-align: left;">dries up cold sore</td>
+<td style="text-align: left;">x25</td>
+<td style="text-align: left;">0.57</td>
+<td style="text-align: left;">recommended most by pharamacists</td>
+</tr>
+<tr>
+<td style="text-align: left;">x8</td>
+<td style="text-align: left;">0.72</td>
+<td style="text-align: left;">heals fast</td>
+<td style="text-align: left;">x26</td>
+<td style="text-align: left;">0.54</td>
+<td style="text-align: left;">recommended by doctors</td>
+</tr>
+<tr>
+<td style="text-align: left;">x9</td>
+<td style="text-align: left;">0.72</td>
+<td style="text-align: left;">penetrates deep</td>
+<td style="text-align: left;">x27</td>
+<td style="text-align: left;">0.54</td>
+<td style="text-align: left;">FDA approved</td>
+</tr>
+<tr>
+<td style="text-align: left;">x10</td>
+<td style="text-align: left;">0.65</td>
+<td style="text-align: left;">relieves pain</td>
+<td style="text-align: left;">x28</td>
+<td style="text-align: left;">0.64</td>
+<td style="text-align: left;">a brand I trust</td>
+</tr>
+<tr>
+<td style="text-align: left;">x11</td>
+<td style="text-align: left;">0.61</td>
+<td style="text-align: left;">prevents cold</td>
+<td style="text-align: left;">x29</td>
+<td style="text-align: left;">0.60</td>
+<td style="text-align: left;">clinically proven</td>
+</tr>
+<tr>
+<td style="text-align: left;">x12</td>
+<td style="text-align: left;">0.73</td>
+<td style="text-align: left;">prevents from getting worse</td>
+<td style="text-align: left;">x30</td>
+<td style="text-align: left;">0.68</td>
+<td style="text-align: left;">a brand I would recommend</td>
+</tr>
+<tr>
+<td style="text-align: left;">x13</td>
+<td style="text-align: left;">0.57</td>
+<td style="text-align: left;">medicated</td>
+<td style="text-align: left;">x31</td>
+<td style="text-align: left;">0.74</td>
+<td style="text-align: left;">an effective treatment</td>
+</tr>
+<tr>
+<td style="text-align: left;">x14</td>
+<td style="text-align: left;">0.61</td>
+<td style="text-align: left;">prescription strength</td>
+<td style="text-align: left;">x32</td>
+<td style="text-align: left;">0.37</td>
+<td style="text-align: left;">portable</td>
+</tr>
+<tr>
+<td style="text-align: left;">x15</td>
+<td style="text-align: left;">0.63</td>
+<td style="text-align: left;">repairs damaged skin</td>
+<td style="text-align: left;">x33</td>
+<td style="text-align: left;">0.37</td>
+<td style="text-align: left;">discreet packaging</td>
+</tr>
+<tr>
+<td style="text-align: left;">x16</td>
+<td style="text-align: left;">0.67</td>
+<td style="text-align: left;">blocks virus from spreading</td>
+<td style="text-align: left;">x34</td>
+<td style="text-align: left;">0.55</td>
+<td style="text-align: left;">helps conceal cold sores</td>
+</tr>
+<tr>
+<td style="text-align: left;">x17</td>
+<td style="text-align: left;">0.42</td>
+<td style="text-align: left;">contains SPF</td>
+<td style="text-align: left;">x35</td>
+<td style="text-align: left;">0.63</td>
+<td style="text-align: left;">absorbs quickly</td>
+</tr>
+<tr>
+<td style="text-align: left;">x18</td>
+<td style="text-align: left;">0.57</td>
+<td style="text-align: left;">non-irritating</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>仅根据标签，这 35 个特征中的一些似乎测量了类似的可取性方面。我们可以通过计算解释变量之间的相关性来证实这一点：</p>
+<div class="highlight"><pre><span></span><code><span class="n">ma_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</code></pre></div>
+<p>我们会看到，例如最后一个特征“吸收快 (absorbs quickly)”，与前三个特征：“提供舒缓缓解”、“保湿”和“提供持久缓解”高度相关。</p>
+<p>在开始拟合正则化模型之前，我们先建立设计矩阵和结果向量，并将数据分为训练集和测试集。我们将 200 个观测值放入测试集中：</p>
+<div class="highlight"><pre><span></span><code><span class="n">y</span> <span class="o">=</span> <span class="n">ma_df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">ma_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">])</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>如前所述，我们需要对特征进行标准化。我们标准化训练集，然后，当我们评估模型时，我们使用训练集的标准化参数来标准化测试集特征。<code>StandardScaler</code> 方法可以帮助我们完成这个过程：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="n">scalerX</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span> 
+<span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scalerX</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_scaled</span> <span class="o">=</span> <span class="n">scalerX</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</code></pre></div>
+<p>我们确认训练集中 35 个特征的均值都为 0，标准差 (SD) 都为 1：</p>
+<div class="highlight"><pre><span></span><code><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>True
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>True
+</code></pre></div>
+<p>值得注意的是，测试集的情况并非如此，因为我们使用训练集的均值和标准差来标准化测试集特征：</p>
+<div class="highlight"><pre><span></span><code><span class="n">X_test_scaled</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>array([-0.17, -0.12, -0.15, ..., -0.12, -0.1 , -0.24])
+</code></pre></div>
+<p>要执行 Lasso 回归，我们使用 <code>scikit-learn</code> 中的 <code>Lasso</code> 方法。让我们看看这 35 个特征的系数如何随 <span class="arithmatex">\(\lambda\)</span> 变化。我们要为正则化参数设置一系列值，并为每个值拟合 Lasso（此参数在 <code>Lasso</code> 中称为 <code>alpha</code>）：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lasso</span>
+
+<span class="n">coefs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mses</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alphas</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">coefs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+    <span class="n">mses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)))</span>
+</code></pre></div>
+<p>对于每个特征，我们可以叠加其系数随 <span class="arithmatex">\(\lambda\)</span> 变化的折线图：</p>
+<p><img alt="Lasso Coefficients" src="../../assets/images/model_selection/ms_regularization_24_0.svg" /></p>
+<p>随着 <span class="arithmatex">\(\lambda\)</span> 增加，模型拟合受到更严厉的惩罚，许多系数收缩为 0。图的左侧显示了更大的模型复杂度，对应于较小的 <span class="arithmatex">\(\lambda\)</span>。注意，当 <span class="arithmatex">\(\lambda = 0.5\)</span> 时，几乎所有的系数都为 0。例外的系数（从大到小）包括：<code>x12</code>, <code>x30</code>, <code>x31</code>, <code>x5</code>, <code>x7</code>, <code>x1</code>, <code>x9</code>, <code>x28</code>, <code>x20</code>。</p>
+<p>我们还可以绘制 MSE 随 <span class="arithmatex">\(\lambda\)</span> 变化的函数图，看看它如何随着惩罚力度的增加而变化：</p>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">alphas</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">mses</span><span class="p">,</span>
+        <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="s2">&quot;Lambda&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="s2">&quot;MSE&quot;</span><span class="p">},</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Lasso MSE" src="../../assets/images/model_selection/ms_regularization_26_0.svg" /></p>
+<p>当 <span class="arithmatex">\(\lambda\)</span> 达到大约 1.25 时，惩罚太大，以至于 Lasso 回归只是将常数模型拟合到数据中，MSE 不再变化。我们再次面临模型选择问题，但这次是以决定 <span class="arithmatex">\(\lambda\)</span> 的形式出现。我们可以使用交叉验证来帮助我们。</p>
+<p>我们使用 <code>LassoCV</code> 方法执行 5 折交叉验证来选择 <span class="arithmatex">\(\lambda\)</span>：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LassoCV</span>
+
+<span class="n">lasso_cv_model</span> <span class="o">=</span> <span class="n">LassoCV</span><span class="p">(</span>
+    <span class="n">alphas</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100000</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>注意，我们指定了最大迭代次数，因为最小化过程使用数值优化（参见后面章节）来求解系数，我们对运行的迭代次数设置了上限，以达到最优参数的指定容差。我们准备好在训练集上拟合模型了：</p>
+<div class="highlight"><pre><span></span><code><span class="n">lasso_best</span> <span class="o">=</span> <span class="n">lasso_cv_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</code></pre></div>
+<p>交叉验证选择了以下正则化参数：</p>
+<div class="highlight"><pre><span></span><code><span class="n">lasso_best</span><span class="o">.</span><span class="n">alpha_</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>0.04
+</code></pre></div>
+<p>接下来，让我们计算使用此交叉验证模型在测试集上进行预测的 MSE：</p>
+<div class="highlight"><pre><span></span><code><span class="n">y_test_pred</span> <span class="o">=</span> <span class="n">lasso_best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
+<span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>1.0957444655340487
+</code></pre></div>
+<p>让我们看看有多少个系数不为 0：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">lasso_best</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>16
+</code></pre></div>
+<p>接下来我们演示岭回归 (Ridge Regression) 系数如何随惩罚变化。岭回归使用 <span class="arithmatex">\(L_2\)</span> 惩罚，但在其他方面，实现与 Lasso 回归类似。和以前一样，我们要尝试一系列 <span class="arithmatex">\(\lambda\)</span> 值，然后绘制系数图看看它们如何变化：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
+
+<span class="n">coefsR</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">alphasR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1001</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alphasR</span><span class="p">:</span>
+    <span class="n">ridge</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">ridge</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">coefsR</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ridge</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="Ridge Coefficients" src="../../assets/images/model_selection/ms_regularization_39_0.svg" /></p>
+<p>该图显示了与 Lasso 系数图相比非常不同的形状。系数并没有完全消失。这些图有一个重要的相似之处，即随着惩罚的增加，系数会收缩。在某种程度上，对于岭回归，我们在一点点地使用所有变量。对于较大的 <span class="arithmatex">\(\lambda\)</span>，许多系数虽然不是 0，但也相当小。例如，我们可以计算当 <span class="arithmatex">\(\lambda = 600\)</span> 时大于 0.05 的系数数量：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">sum</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">coefsR</span><span class="p">[</span><span class="mi">24</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mf">0.05</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>13
+</code></pre></div>
+<p>与 Lasso 类似，许多特征的系数很小。</p>
+<p>同样，为了选择最好的 <span class="arithmatex">\(\lambda\)</span>，我们可以求助于交叉验证并使用 <code>RidgeCV</code>。我们在此省略细节，因为方法与 <code>LassoCV</code> 相同。</p>
+<p>使用 <span class="arithmatex">\(L_1\)</span> 或 <span class="arithmatex">\(L_2\)</span> 正则化可以让我们通过惩罚大系数来避免模型过拟合。<span class="arithmatex">\(L_1\)</span> 正则化的优点是能将系数归零；它通过丢弃系数为 0 的特征来执行<strong>特征选择 (feature selection)</strong>。这在处理具有许多特征的高维数据时特别有用。仅使用少数特征进行预测的模型比需要许多计算的模型运行得快得多。由于不需要的特征往往会增加模型方差而不减少偏差，通过使用 Lasso 回归选择要使用的特征子集，我们有时可以提高其他模型的准确性。</p>
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>有时我们更喜欢一种类型的正则化，因为它更贴近我们要处理的领域。例如，如果我们知道我们试图模拟的现象是由许多小因素造成的，我们可能会更喜欢岭回归，因为它不会丢弃这些因素。另一方面，一些结果是由少数极具影响力的特征造成的。在这些情况下，我们更喜欢 Lasso 回归，因为它会丢弃不需要的特征。<span class="arithmatex">\(L_2\)</span> 和 <span class="arithmatex">\(L_1\)</span> 都可以作为在欠拟合和过拟合之间导航的有用调节器。</p>
+</div>
+<p>正则化、训练-测试拆分和交叉验证都有减少过拟合的目标。过拟合的问题来自于使用数据既拟合模型又估计模型在预测新观测值时的误差。在下一节中，我们将为这一想法提供进一步的直觉。</p>
+<h2 id="6-model-bias-and-variance">6. 模型偏差与方差 (Model Bias and Variance)</h2>
+<p>在本节中，我们提供另一种思考过拟合和欠拟合问题的方式。我们将进行一项模拟研究，从我们设计的一个模型中生成合成数据。这样，我们就知道了<strong>真实模型</strong>，当我们对数据拟合模型时，我们可以看到我们离真相有多近。</p>
+<p>我们编造一个通用的数据模型如下：</p>
+<div class="arithmatex">\[ y = g(\mathbf{x}) + {\epsilon}\]</div>
+<p>这个表达式很容易看出模型的两个组成部分：信号 <span class="arithmatex">\(g(x)\)</span> 和噪声 <span class="arithmatex">\(\epsilon\)</span>。在我们的模型中，我们假设噪声没有趋势或模式；方差恒定；并且每个观测值的噪声相互独立。</p>
+<p>作为例子，让我们取 <span class="arithmatex">\(g(x) = \sin(x) + 0.3x\)</span>，噪声来自均值为 0 且标准差 (SD) = 0.2 的正态分布。我们可以使用以下函数从该模型生成数据：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="k">def</span> <span class="nf">gen_noise</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">points</span><span class="p">,</span> <span class="n">g</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">+</span> <span class="n">gen_noise</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</code></pre></div>
+<p>让我们从这个模型生成 50 个数据点 <span class="arithmatex">\((x_i, y_i)\)</span>, <span class="arithmatex">\(i=1, \ldots, 50\)</span>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">draw</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">ys</span> <span class="o">-</span> <span class="n">g</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+</code></pre></div>
+<p>我们可以绘制我们的数据，既然我们知道真实的信号，我们也可以找到误差并绘制它们：</p>
+<p><img alt="Signal and Noise" src="../../assets/images/model_selection/ms_risk_8_0.svg" /></p>
+<p>左边的图显示了虚线曲线 <span class="arithmatex">\(g\)</span>。我们还可以看到 <span class="arithmatex">\((x, y)\)</span> 对（点）在曲线周围形成了散点。右边的图显示了 50 个点的误差 <span class="arithmatex">\(y - g(x)\)</span>。请注意，它们没有形成任何模式。</p>
+<p>当我们对数据拟合模型时，我们要最小化均方误差。让我们通俗地写出这个最小化：</p>
+<div class="arithmatex">\[
+\min_{f \in \cal{F}} \frac{1}{n} \sum_{i = 1}^{n} [y_i - f(\mathbf{x}_i)]^2 
+\]</div>
+<p>最小化是在函数集合 <span class="arithmatex">\(\cal{F}\)</span> 上进行的。我们在本章中已经看到，这个函数集合可能是 12 阶多项式，或者仅仅是弯曲的线。重要的一点是，真实模型 <span class="arithmatex">\(g\)</span> 不必是集合中的函数之一。</p>
+<p>让我们取 <span class="arithmatex">\(\cal{F}\)</span> 为二次多项式的集合；换句话说，可以表示为 <span class="arithmatex">\(\theta_0 + \theta_1 x + \theta_2 x^2\)</span> 的函数。由于 <span class="arithmatex">\(g(x) = \sin(x) + 0.3x\)</span>，它不属于我们要优化的函数集合。</p>
+<p>让我们对我们的 50 个数据点拟合一个多项式：</p>
+<div class="highlight"><pre><span></span><code><span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">poly_features</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">xs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">model_deg2</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">poly_features</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fitted Model: </span><span class="si">{</span><span class="n">model_deg2</span><span class="o">.</span><span class="n">intercept_</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+      <span class="sa">f</span><span class="s2">&quot;+ </span><span class="si">{</span><span class="n">model_deg2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">x + </span><span class="si">{</span><span class="n">model_deg2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">x^2&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Fitted Model: 0.98 + -0.19x + 0.05x^2
+</code></pre></div>
+<p>同样，我们知道真实模型不是二次的（因为是我们构建的）。让我们绘制数据和拟合曲线：</p>
+<p><img alt="Quadratic Fit" src="../../assets/images/model_selection/ms_risk_15_0.svg" /></p>
+<p>二次方程拟合数据效果不好，它也不能很好地代表底层曲线，因为我们选择的模型集（二阶多项式）无法捕捉 <span class="arithmatex">\(g\)</span> 中的曲率。</p>
+<p>如果我们重复这个过程，从真实模型中再生成 50 个点，并对这些数据拟合一个二阶多项式，那么二次方程的拟合系数将会改变，因为它取决于新的数据集。我们可以重复这个过程多次，并对拟合曲线取平均值。这条平均曲线将类似于二阶多项式对我们真实模型中 50 个点的典型最佳拟合。为了演示这个概念，让我们生成 25 组 50 个数据点，并对每个数据集拟合一个二次方程：</p>
+<div class="highlight"><pre><span></span><code><span class="n">poly_features_x_full</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">xs_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">ys_new</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">xs_new</span><span class="p">)</span> <span class="o">+</span> <span class="n">gen_noise</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">X_new</span> <span class="o">=</span> <span class="n">xs_new</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">mod_new</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_new</span><span class="p">),</span> <span class="n">ys_new</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mod_new</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">poly_features_x_full</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">fits</span> <span class="o">=</span> <span class="p">[</span><span class="n">fit</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">)]</span>
+</code></pre></div>
+<p>我们可以在图上显示所有 25 个拟合模型，以及真实函数 <span class="arithmatex">\(g\)</span> 和拟合曲线的平均值 <span class="arithmatex">\(\bar{f}\)</span>。为了做到这一点，我们对 25 个拟合模型使用透明度来区分重叠的曲线：</p>
+<p><img alt="Model Bias and Variance" src="../../assets/images/model_selection/ms_risk_20_0.svg" /></p>
+<p>我们可以看到 25 个拟合的二次方程随数据变化。这个概念称为<strong>模型方差 (model variation)</strong>。25 个二次方程的平均值由实线黑色线表示。平均二次方程与真实曲线之间的差异称为<strong>模型偏差 (model bias)</strong>。</p>
+<p>当信号 <span class="arithmatex">\(g\)</span> 不属于模型空间 <span class="arithmatex">\(\cal{F}\)</span> 时，我们就会有模型偏差。如果模型空间能很好地逼近 <span class="arithmatex">\(g\)</span>，那么偏差就很小。例如，一个 10 阶多项式可以非常接近我们在例子中使用的 <span class="arithmatex">\(g\)</span>。另一方面，我们在本章前面已经看到，高阶多项式可能会过拟合数据，并且为了接近数据而变化很大。模型空间越复杂，拟合模型的变异性就越大。使用太简单的模型导致欠拟合会导致高模型偏差（<span class="arithmatex">\(g\)</span> 和 <span class="arithmatex">\(\bar{f}\)</span> 之间的差异），而使用太复杂的模型导致过拟合会导致高模型方差（<span class="arithmatex">\(\hat{f}\)</span> 围绕 <span class="arithmatex">\(\bar{f}\)</span> 的波动）。这个概念称为<strong>偏差-方差权衡 (bias–variance trade-off)</strong>。模型选择旨在平衡这些相互竞争的拟合不足来源。</p>
+<h2 id="7-summary">7. 总结 (Summary)</h2>
+<p>在本章中，我们看到当我们既用最小化均方误差来拟合模型又用它来评估模型时，会出现问题。训练-测试划分 (train-test split) 帮助我们绕过这个问题，我们用训练集拟合模型，并在留出的测试集上评估我们拟合的模型。</p>
+<p>重要的是不要“过度使用”测试集，所以我们要把它分开，直到我们确定了一个模型。为了帮助我们确定模型，我们可能会使用交叉验证 (cross-validation)，它模仿了数据划分为测试集和训练集的过程。再次强调，重要的是只使用训练集进行交叉验证，并使原始测试集远离任何模型选择过程。</p>
+<p>正则化 (Regularization) 采取了一种不同的方法，它通过惩罚均方误差来防止模型过于贴近数据。在正则化中，我们使用所有可用数据来拟合模型，但会收缩系数的大小。</p>
+<p>偏差-方差权衡允许我们更精确地描述我们在本章中看到的建模现象：欠拟合与模型偏差有关；过拟合导致模型方差。在下图中，x 轴衡量模型复杂度，y 轴衡量模型失拟的这两个分量：模型偏差和模型方差。注意，随着被拟合模型的复杂度增加，模型偏差减小而模型方差增加。从测试误差的角度来看，我们已经看到这种误差先减小然后增加，因为模型方差超过了模型偏差的减小。为了选择一个有用的模型，我们必须在模型偏差和方差之间取得平衡。</p>
+<p><img alt="Bias-Variance Trade-off" src="../../assets/images/model_selection/model-var%2Bbias.png" /></p>
+<p>如果模型能够精确拟合总体过程，收集更多的观测值可以减少偏差。如果模型本质上无法模拟总体（如我们的合成示例），即使是无限的数据也无法消除模型偏差。就方差而言，收集更多数据也会减少方差。数据科学最近的一个趋势是选择一个低偏差和高内在方差的模型（如神经网络），但收集大量数据点，以便模型方差足够低以做出准确的预测。虽然在实践中有效，但为这些模型收集足够的数据往往需要大量的时间和金钱。</p>
+<p>创建更多的特征，无论有用与否，通常都会增加模型方差。拥有许多参数的模型有许多可能的参数组合，因此比参数较少的模型具有更高的方差。另一方面，向模型添加有用的特征，例如当底层过程是二次时添加二次特征，可以减少偏差。但即使添加一个无用的特征也很少会增加偏差。</p>
+<p>意识到偏差-方差权衡可以帮助你更好地拟合模型。使用训练-测试划分、交叉验证和正则化等技术可以改善这个问题。</p>
+<p>建模的另一部分考虑拟合系数和曲线的变异。我们可能想要为系数提供置信区间，或者为未来的观测提供预测带。这些区间和带给出了拟合模型准确性的感觉。我们接下来讨论这个概念。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

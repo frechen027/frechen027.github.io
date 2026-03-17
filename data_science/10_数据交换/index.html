@@ -12,7 +12,7 @@
         <link rel="prev" href="../09_%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE/">
       
       
-        <link rel="next" href="../../tools/01_Git%E4%B8%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
+        <link rel="next" href="../11_%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/">
       
       
         
@@ -62,6 +62,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#10-data-exchange" class="md-skip">
+          跳转至
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -1527,6 +1532,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 数据交换
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -1545,6 +1570,632 @@
 
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 常见数据格式概览
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 常见数据格式概览">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-binary-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 二进制格式 (Binary Formats)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 结构化纯文本格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-acquiring-data-online" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 网络数据获取 (Acquiring Data Online)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 提取工具
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-netcdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. NetCDF 数据
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. NetCDF 数据">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-multidimensional-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 核心概念：多维网格 (Multidimensional Grid)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 主要优势
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 文件组件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-python-xarray-netcdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Python 实战：使用 xarray 处理 NetCDF
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-json-json-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. JSON 数据 (JSON Data)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. JSON 数据 (JSON Data)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 核心结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-python-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Python 处理 JSON
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-json-dataframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 JSON 组织 DataFrame 的三种常见方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. HTTP 协议
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. HTTP 协议">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-status-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 状态码 (Status Codes)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-python-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 使用 Python requests 库
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-request-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 请求方法 (Request Methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-rest-rest-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. REST 架构 (REST Architecture)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. REST 架构 (REST Architecture)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 核心特征
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-spotify-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 实战案例：使用 Spotify API 获取数据
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 实战案例：使用 Spotify API 获取数据">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#721-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2.1 第一步：认证 (Authentication)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#722-requesting-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2.2 第二步：请求资源 (Requesting Resources)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#723" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2.3 第三步：批量获取与数据处理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-xml-html-xpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. XML, HTML 与 XPath
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. XML, HTML 与 XPath">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-xml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 XML 基础结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-xpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 XPath 查询语言
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-python-i-html-lxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Python 实战 I：抓取 HTML 表格 (lxml)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-python-ii-xml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Python 实战 II：解析 XML 数据 (处理命名空间)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 总结与网络数据礼仪
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 总结与网络数据礼仪">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-web-etiquette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 最佳实践与网络礼仪 (Web Etiquette)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 下一步
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 线性模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 模型选择
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13_%E6%8E%A8%E7%90%86%E4%B8%8E%E9%A2%84%E6%B5%8B%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 推理与预测理论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15_%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16_%E6%95%B0%E5%80%BC%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 数值优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1807,6 +2458,88 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    深度学习入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deep_learning/01_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 深度学习概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1824,6 +2557,427 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 常见数据格式概览
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 常见数据格式概览">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-binary-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 二进制格式 (Binary Formats)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 结构化纯文本格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-acquiring-data-online" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 网络数据获取 (Acquiring Data Online)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 提取工具
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-netcdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. NetCDF 数据
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. NetCDF 数据">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-multidimensional-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 核心概念：多维网格 (Multidimensional Grid)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 主要优势
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 文件组件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-python-xarray-netcdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Python 实战：使用 xarray 处理 NetCDF
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-json-json-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. JSON 数据 (JSON Data)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. JSON 数据 (JSON Data)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 核心结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-python-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Python 处理 JSON
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-json-dataframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 JSON 组织 DataFrame 的三种常见方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. HTTP 协议
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. HTTP 协议">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-status-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 状态码 (Status Codes)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-python-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 使用 Python requests 库
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-request-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 请求方法 (Request Methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-rest-rest-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. REST 架构 (REST Architecture)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. REST 架构 (REST Architecture)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 核心特征
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-spotify-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 实战案例：使用 Spotify API 获取数据
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 实战案例：使用 Spotify API 获取数据">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#721-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2.1 第一步：认证 (Authentication)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#722-requesting-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2.2 第二步：请求资源 (Requesting Resources)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#723" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2.3 第三步：批量获取与数据处理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-xml-html-xpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. XML, HTML 与 XPath
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. XML, HTML 与 XPath">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-xml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 XML 基础结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-xpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 XPath 查询语言
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-python-i-html-lxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Python 实战 I：抓取 HTML 表格 (lxml)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-python-ii-xml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Python 实战 II：解析 XML 数据 (处理命名空间)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 总结与网络数据礼仪
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 总结与网络数据礼仪">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-web-etiquette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 最佳实践与网络礼仪 (Web Etiquette)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 下一步
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1840,9 +2994,435 @@
 
 
 
-  <h1>10 数据交换</h1>
+<h1 id="10-data-exchange">10. 数据交换 (Data Exchange)</h1>
+<p>我们在此前章节中专注于纯文本的分隔格式（如 CSV, TSV）和固定宽度格式（FWF）。但在实际的数据科学工作中，数据存储和交换的格式远不止这些。</p>
+<p>本章将扩展视野，介绍其他几种流行的文件格式和数据获取方式。
+虽然 CSV 等格式非常适合将数据组织成 DataFrame，但其他格式在<strong>节省空间</strong>或<strong>表示复杂结构</strong>方面可能更具优势。</p>
+<h2 id="1">1. 常见数据格式概览</h2>
+<h3 id="11-binary-formats">1.1 二进制格式 (Binary Formats)</h3>
+<p>二进制格式并非纯文本，因此通常比纯文本数据源更节省空间，读写效率更高。</p>
+<ul>
+<li><strong>NetCDF (Network Common Data Form)</strong>：一种用于交换大量科学数据（如气象、地理数据）的流行二进制格式。</li>
+</ul>
+<h3 id="12">1.2 结构化纯文本格式</h3>
+<p>除了扁平的表格数据，我们还需要处理具有层级或嵌套结构的数据。</p>
+<ul>
+<li><strong>JSON (JavaScript Object Notation)</strong>：一种轻量级的数据交换格式，易于人阅读和编写，同时也易于机器解析和生成。</li>
+<li><strong>XML (eXtensible Markup Language)</strong>：一种标记语言，用于定义文档的编码规则。</li>
+<li><strong>HTML (HyperText Markup Language)</strong>：网页的标准标记语言。虽然主要用于展示，但往往包含可供抓取和分析的有价值数据。</li>
+</ul>
+<h2 id="2-acquiring-data-online">2. 网络数据获取 (Acquiring Data Online)</h2>
+<p>过去，数据科学家可能需要物理移动磁盘来共享数据。现在，我们可以通过互联网自由地检索全球的数据集。为了实现<strong>可复现 (Reproducible)</strong> 的数据获取，我们需要了解一些网络技术：</p>
+<ul>
+<li><strong>HTTP (Hypertext Transfer Protocol)</strong>：Web 的主要通信协议。</li>
+<li><strong>REST (Representational State Transfer)</strong>：一种用于数据传输的软件架构风格，常用于 API 设计。</li>
+</ul>
+<h2 id="3">3. 提取工具</h2>
+<p>针对 XML 和 HTML 这种层级结构的数据，我们需要专门的工具来提取内容。</p>
+<ul>
+<li><strong>XPath</strong>：一种在 XML 文档中查找信息的语言，也常用于 HTML 解析。</li>
+</ul>
+<p>本章将从 NetCDF 开始，接着介绍 JSON，然后概述用于数据交换的 Web 协议，最后以 XML、HTML 和 XPath 结束。掌握这些技术将帮助我们更好地利用 Web 作为数据源。</p>
+<h2 id="4-netcdf">4. NetCDF 数据</h2>
+<p><strong>NetCDF (Network Common Data Form)</strong> 是一种用于存储面向数组的科学数据的高效格式，特别适合气象学、海洋学等领域。</p>
+<h3 id="41-multidimensional-grid">4.1 核心概念：多维网格 (Multidimensional Grid)</h3>
+<p>可以将 NetCDF 中的变量想象为一个多维立方体。</p>
+<ul>
+<li>例如：记录全球降雨量。</li>
+<li><strong>维度</strong>：经度 (Longitude)、纬度 (Latitude)、时间 (Time)。</li>
+<li><strong>网格单元</strong>：立方体中的每个单元格存储特定地点在特定日期的降雨量。</li>
+</ul>
+<p>相比于 CSV 等格式，NetCDF 不需要重复存储每个测量点的经纬度和时间信息，因此大大节省了空间。</p>
+<p><img alt="NetCDF Model" src="../../assets/images/data_science/netCDF-diagram.png" /></p>
+<h3 id="42">4.2 主要优势</h3>
+<ol>
+<li><strong>可扩展 (Scalable)</strong>：高效访问大型数据集的子集。</li>
+<li><strong>可追加 (Appendable)</strong>：无需重定义结构即可追加新数据。</li>
+<li><strong>可共享 (Sharable)</strong>：跨平台、跨语言的通用格式。</li>
+<li><strong>自描述 (Self-describing)</strong>：文件本身包含数据组织的描述（元数据）。</li>
+</ol>
+<blockquote>
+<p><strong>注意</strong>：NetCDF 是<strong>二进制格式</strong>，无法直接用文本编辑器打开，需要专用工具（如 Python 的 <code>xarray</code> 或 <code>netCDF4</code> 库）读取。</p>
+</blockquote>
+<h3 id="43">4.3 文件组件</h3>
+<p>一个 NetCDF 文件通常包含三个基本部分：</p>
+<ol>
+<li><strong>维度 (Dimensions)</strong>：定义轴的大小（如经度 1440 个点）。</li>
+<li><strong>变量 (Variables)</strong>：实际的数据数组（如降雨量、温度）。变量具有形状（Shape）和类型。</li>
+<li><strong>属性/元数据 (Attributes/Metadata)</strong>：<ul>
+<li><strong>变量属性</strong>：单位（如 <code>m</code>）、长描述。</li>
+<li><strong>全局属性</strong>：数据来源、发布者、历史记录等，对<strong>可复现性</strong>至关重要。</li>
+</ul>
+</li>
+</ol>
+<h3 id="44-python-xarray-netcdf">4.4 Python 实战：使用 xarray 处理 NetCDF</h3>
+<p>我们以一个包含温度和降水量的气候数据集（<code>CDS_ERA5_22-12.nc</code>）为例。</p>
+<p><strong>加载与查看数据</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;data/CDS_ERA5_22-12.nc&#39;</span><span class="p">)</span>
 
+<span class="c1"># 查看维度</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span>
+<span class="c1"># 输出: {&#39;longitude&#39;: 1440, &#39;latitude&#39;: 721, &#39;time&#39;: 408}</span>
 
+<span class="c1"># 查看坐标 (Coordinates)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">coords</span><span class="p">)</span>
+<span class="c1"># 包含 longitude, latitude, time 的具体数值数组</span>
+
+<span class="c1"># 查看数据变量</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">data_vars</span><span class="p">)</span>
+<span class="c1"># 输出: t2m (温度), tp (总降水), lsrr 等</span>
+</code></pre></div>
+<p><strong>数据切片与可视化</strong></p>
+<p><code>xarray</code> 提供了类似于 pandas 的选择功能，但针对多维数组进行了优化。</p>
+<ol>
+<li>
+<p><strong>时间序列图</strong>：选择特定经纬度，绘制降水随时间变化的曲线。
+    <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="mf">37.75</span><span class="p">,</span> <span class="n">longitude</span><span class="o">=</span><span class="mf">237.5</span><span class="p">)</span><span class="o">.</span><span class="n">tp</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>地理分布图</strong>：选择特定时间点和地理范围，绘制温度分布的热力图。
+    <div class="highlight"><pre><span></span><code><span class="c1"># 选择 2022-12-31 13:00，并限定在美国范围</span>
+<span class="n">ds_oneday_us</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;2022-12-31T13:00:00&#39;</span><span class="p">)</span>\
+                 <span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">ds</span><span class="o">.</span><span class="n">longitude</span> <span class="o">&gt;</span> <span class="mi">232</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">longitude</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">)</span> <span class="o">&amp;</span> 
+                        <span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">latitude</span> <span class="o">&gt;</span> <span class="mi">21</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">latitude</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">),</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 绘制温度图</span>
+<span class="n">ds_oneday_us</span><span class="o">.</span><span class="n">t2m</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</code></pre></div>
+    <img alt="US Temperature Map" src="../../assets/images/data_science/USmap.jpg" /></p>
+</li>
+</ol>
+<p><strong>生态系统</strong>：除了 <code>xarray</code>，Python 还有 <code>netCDF4</code>、<code>gdal</code> 等库可以读取 NetCDF，可视化方面可以使用 <code>matplotlib</code>, <code>cartopy</code> 等。</p>
+<h2 id="5-json-json-data">5. JSON 数据 (JSON Data)</h2>
+<p><strong>JSON (JavaScript Object Notation)</strong> 是一种轻量级的数据交换格式。它语法简单、灵活，非常契合 Python 的字典结构，既便于机器解析也便于人类阅读。</p>
+<h3 id="51">5.1 核心结构</h3>
+<p>JSON 由两种主要结构组成，可以互相嵌套：</p>
+<ol>
+<li><strong>对象 (Object)</strong>：无序的键值对集合，类似于 Python 的 <code>dict</code>。<ul>
+<li>格式：<code>{"name": value, ...}</code></li>
+</ul>
+</li>
+<li><strong>数组 (Array)</strong>：有序的值集合，类似于 Python 的 <code>list</code>。<ul>
+<li>格式：<code>[value1, value2, ...]</code></li>
+</ul>
+</li>
+</ol>
+<p><strong>数据类型</strong>：
+*   字符串 (Double-quoted string)
+*   数字 (Number)
+*   布尔值 (<code>true</code>, <code>false</code>)
+*   空值 (<code>null</code>)</p>
+<p>示例：
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;lender_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;matt&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;loan_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;sponsored&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sponsor_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;lender_dem&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;sex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">77</span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="52-python-json">5.2 Python 处理 JSON</h3>
+<p>Python 内置的 <code>json</code> 库可以轻松处理 JSON 数据。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
+<span class="c1"># 加载 JSON 文件为 Python 字典</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/ex.json&#39;</span><span class="p">))</span>
+</code></pre></div>
+<p>对于嵌套较深的半结构化数据，<code>pandas</code> 提供了 <code>json_normalize</code> 方法将其展平为表格：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="c1"># 结果会将嵌套字段转换为点分列名，如 lender_dem.sex</span>
+</code></pre></div>
+<h3 id="53-json-dataframe">5.3 JSON 组织 DataFrame 的三种常见方式</h3>
+<p>由于 JSON 的灵活性，即使是同一个表格数据，也可以用多种不同的 JSON 结构来表示。理解这些结构对于正确读取数据至关重要。</p>
+<p><img alt="JSON Structures" src="../../assets/images/data_science/JSON-diagram.png" /></p>
+<ol>
+<li>
+<p><strong>按行组织 (Row-oriented)</strong>：</p>
+<ul>
+<li>结构：对象列表，每个对象代表一行。</li>
+<li>示例：<code>[{"site": "0014", "aqi": 30}, {"site": "0014", "aqi": 17}]</code></li>
+<li>读取：<code>pd.DataFrame(data)</code></li>
+</ul>
+</li>
+<li>
+<p><strong>按列组织 (Column-oriented)</strong>：</p>
+<ul>
+<li>结构：包含列数组的对象。</li>
+<li>示例：<code>{"site": ["0014", "0014"], "aqi": [30, 17]}</code></li>
+<li>读取：<code>pd.read_json(path)</code> 通常能直接处理这种格式。</li>
+</ul>
+</li>
+<li>
+<p><strong>矩阵式 (Matrix/Values-oriented)</strong>：</p>
+<ul>
+<li>结构：将表头和数据分开存储。</li>
+<li>示例：<code>{"columns": ["site", "aqi"], "data": [["0014", 30], ["0014", 17]]}</code></li>
+<li>读取：需要分别提取列名和数据，<code>pd.DataFrame(data['data'], columns=data['columns'])</code></li>
+</ul>
+</li>
+</ol>
+<p><strong>总结</strong>：JSON 是 Web 数据交换的标准。由于其结构的灵活性，在将其转换为 DataFrame 之前，通常需要先检查文件的组织方式。接下来我们将介绍如何通过 HTTP 协议自动从 Web 获取这些数据。</p>
+<h2 id="6-http">6. HTTP 协议</h2>
+<p><strong>HTTP (HyperText Transfer Protocol)</strong> 是访问 Web 资源的基础设施。通过 HTTP，我们可以利用 Python 自动化地从互联网海量数据集中获取数据。</p>
+<h3 id="61">6.1 基本概念</h3>
+<p>HTTP 是一种简单的<strong>请求-响应 (Request-Response)</strong> 协议：客户端（如浏览器或 Python 脚本）发送格式化的文本请求，服务器返回格式化的文本响应。</p>
+<p><strong>请求结构</strong>：</p>
+<ol>
+<li><strong>起始行</strong>：包含方法（如 <code>GET</code>）、URL 和协议版本。</li>
+<li><strong>头部 (Header)</strong>：键值对，提供辅助信息（如 <code>User-Agent</code>）。</li>
+<li><strong>空行</strong>。</li>
+<li><strong>主体 (Body)</strong>：可选，用于 POST 请求等。</li>
+</ol>
+<p><strong>响应结构</strong>：</p>
+<ol>
+<li><strong>状态行</strong>：包含状态码（如 <code>200 OK</code>）。</li>
+<li><strong>头部 (Header)</strong>：提供响应的元数据（如 <code>Content-Type</code>, <code>Content-Length</code>）。</li>
+<li><strong>空行</strong>。</li>
+<li><strong>主体 (Body)</strong>：实际内容（如 HTML 代码、JSON 数据）。</li>
+</ol>
+<h3 id="62-status-codes">6.2 状态码 (Status Codes)</h3>
+<p>服务器通过状态码告知请求结果：</p>
+<ul>
+<li><strong>200s</strong>：成功（如 <code>200 OK</code>）。</li>
+<li><strong>300s</strong>：重定向。</li>
+<li><strong>400s</strong>：客户端错误（如 <code>404 Not Found</code> 资源不存在, <code>403 Forbidden</code> 无权访问）。</li>
+<li><strong>500s</strong>：服务器错误（如 <code>500 Internal Server Error</code>）。</li>
+</ul>
+<h3 id="63-python-requests">6.3 使用 Python <code>requests</code> 库</h3>
+<p>我们通常不需要手动编写原生 HTTP 报文，而是使用 <code>requests</code> 库。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c1"># 发送 GET 请求</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://en.wikipedia.org/wiki/1500_metres_world_record_progression&#39;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># 检查状态码</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span> <span class="c1"># 输出: 200</span>
+
+<span class="c1"># 查看响应头</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;content-type&#39;</span><span class="p">])</span> <span class="c1"># 输出: text/html; charset=UTF-8</span>
+
+<span class="c1"># 获取响应内容（前600字符）</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">600</span><span class="p">])</span> 
+<span class="c1"># 输出: &lt;!DOCTYPE html&gt;...</span>
+</code></pre></div>
+<h3 id="64-request-methods">6.4 请求方法 (Request Methods)</h3>
+<p>最常用的两种方法：</p>
+<ul>
+<li><strong>GET</strong>：用于检索数据（参数包含在 URL 中）。</li>
+<li><strong>POST</strong>：用于提交数据给服务器处理（参数包含在 Body 中），常用于登录、提交表单或复杂 API 调用。</li>
+</ul>
+<p>接下来，我们将介绍 REST 架构风格，这是一种利用 HTTP 协议进行数据交换的常见方式。</p>
+<h2 id="7-rest-rest-architecture">7. REST 架构 (REST Architecture)</h2>
+<p><strong>REST (REpresentational State Transfer)</strong> 是一种广泛使用的 Web 服务架构风格。许多现代 Web 服务（如 Twitter, Instagram, Spotify, GitHub API 等）都遵循 REST 架构，允许开发者通过 HTTP 协议以标准化的方式访问数据。</p>
+<h3 id="71">7.1 核心特征</h3>
+<ul>
+<li><strong>资源导向</strong>：每一个 URL 代表一种资源（Resource），如一首歌曲、一张图片或一个用户。</li>
+<li><strong>无状态 (Stateless)</strong>：服务器不会在请求之间保存客户端的状态。每个请求都必须包含处理该请求所需的所有信息（如认证令牌）。<ul>
+<li><em>优点</em>：可扩展性高，服务端和客户端解耦，代码修改互不影响。</li>
+</ul>
+</li>
+<li><strong>统一接口</strong>：使用标准的 HTTP 方法（GET, POST, PUT, DELETE）对资源进行操作。</li>
+</ul>
+<h3 id="72-spotify-api">7.2 实战案例：使用 Spotify API 获取数据</h3>
+<p>通常，REST API 会提供详细的开发文档。在这个例子中，我们将模拟访问 Spotify API 的流程（基于 <code>requests</code> 库），主要包括 <strong>认证</strong> 和 <strong>数据获取</strong> 两个步骤。</p>
+<blockquote>
+<p><strong>注意</strong>：在实际工程中，我们通常会直接使用 Spotify 的专用 Python 库 <code>spotipy</code>。但本节为了<strong>展示 REST API 的通用交互原理</strong>，特意不使用封装库，而是演示如何手动构建 HTTP 请求。掌握这种底层方法后，未来遇到没有现成 Python 库的小众 API 时，你也能应对自如。</p>
+</blockquote>
+<h4 id="721-authentication">7.2.1 第一步：认证 (Authentication)</h4>
+<p>大多数商业 API 都需要注册并获取凭证（Client ID 和 Client Secret）。Spotify 使用 OAuth 2.0 协议，我们需要发送一个 POST 请求，将凭证交换为访问令牌 (Access Token)。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c1"># 1. 设置认证 URL 和凭证 (这里仅为示例，实际使用需替换)</span>
+<span class="n">AUTH_URL</span> <span class="o">=</span> <span class="s1">&#39;https://accounts.spotify.com/api/token&#39;</span>
+<span class="n">CLIENT_ID</span> <span class="o">=</span> <span class="s1">&#39;your_client_id&#39;</span>
+<span class="n">CLIENT_SECRET</span> <span class="o">=</span> <span class="s1">&#39;your_client_secret&#39;</span>
+
+<span class="c1"># 2. 发送 POST 请求获取 Token</span>
+<span class="c1"># 凭证通常放在 Body 中或以 Basic Auth 形式发送</span>
+<span class="n">auth_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">AUTH_URL</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s1">&#39;grant_type&#39;</span><span class="p">:</span> <span class="s1">&#39;client_credentials&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;client_id&#39;</span><span class="p">:</span> <span class="n">CLIENT_ID</span><span class="p">,</span>
+    <span class="s1">&#39;client_secret&#39;</span><span class="p">:</span> <span class="n">CLIENT_SECRET</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="c1"># 3. 解析响应 (JSON 格式)</span>
+<span class="k">if</span> <span class="n">auth_response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="n">auth_data</span> <span class="o">=</span> <span class="n">auth_response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">access_token</span> <span class="o">=</span> <span class="n">auth_data</span><span class="p">[</span><span class="s1">&#39;access_token&#39;</span><span class="p">]</span> <span class="c1"># 获取 Token</span>
+    <span class="n">token_type</span> <span class="o">=</span> <span class="n">auth_data</span><span class="p">[</span><span class="s1">&#39;token_type&#39;</span><span class="p">]</span>     <span class="c1"># 通常是 &#39;Bearer&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;获取 Token 成功: </span><span class="si">{</span><span class="n">access_token</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;认证失败，状态码: </span><span class="si">{</span><span class="n">auth_response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="722-requesting-resources">7.2.2 第二步：请求资源 (Requesting Resources)</h4>
+<p>获取 Token 后，我们需要在后续每个 GET 请求的 <strong>Header</strong> 中携带它。</p>
+<p>假设我们要获取乐队 "The Clash" 的专辑信息：
+1.  <strong>构建 Header</strong>：包含认证信息。
+2.  <strong>构建 URL</strong>：根据 API 文档，通过 Artist ID 查找专辑。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. 构建 Header</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">token_type</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">access_token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+
+<span class="c1"># 2. 发送 GET 请求获取专辑列表</span>
+<span class="n">artist_id</span> <span class="o">=</span> <span class="s1">&#39;3RGLhK1IP9jnYFH4BRFJBS&#39;</span> <span class="c1"># The Clash 的 ID</span>
+<span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;https://api.spotify.com/v1/&quot;</span>
+<span class="n">albums_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s2">artists/</span><span class="si">{</span><span class="n">artist_id</span><span class="si">}</span><span class="s2">/albums&quot;</span>
+
+<span class="n">res_albums</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="n">albums_url</span><span class="p">,</span>
+    <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+    <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;include_groups&quot;</span><span class="p">:</span> <span class="s2">&quot;album&quot;</span><span class="p">}</span> <span class="c1"># 添加查询参数</span>
+<span class="p">)</span>
+
+<span class="c1"># 3. 解析专辑数据</span>
+<span class="k">if</span> <span class="n">res_albums</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="n">albums_data</span> <span class="o">=</span> <span class="n">res_albums</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="c1"># 打印前 3 张专辑的信息</span>
+    <span class="k">for</span> <span class="n">album</span> <span class="ow">in</span> <span class="n">albums_data</span><span class="p">[</span><span class="s1">&#39;items&#39;</span><span class="p">][:</span><span class="mi">3</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ID: </span><span class="si">{</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | Name: </span><span class="si">{</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;release_date&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="723">7.2.3 第三步：批量获取与数据处理</h4>
+<p>通常我们需要通过循环来获取更多细节。例如，遍历专辑 ID 获取每张专辑的所有单曲 (Tracks)，再获取每首单曲的音频特征 (Audio Features)。</p>
+<div class="highlight"><pre><span></span><code><span class="n">tracks_info</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># 伪代码逻辑展示流程：</span>
+<span class="c1"># for album in albums:</span>
+<span class="c1">#     1. 获取该专辑的所有 Tracks (GET /albums/{id}/tracks)</span>
+<span class="c1">#     for track in tracks:</span>
+<span class="c1">#         2. 获取该 Track 的特征 (GET /audio-features/{id})</span>
+<span class="c1">#         3. 整理数据 (track_name, album_name, danceability, loudness...)</span>
+<span class="c1">#         tracks_info.append(data)</span>
+
+<span class="c1"># 最后转换为 DataFrame 进行分析</span>
+<span class="c1"># import pandas as pd</span>
+<span class="c1"># df = pd.DataFrame(tracks_info)</span>
+</code></pre></div>
+<p>通过这种方式，我们可以构建起一个包含 <code>danceability</code> (可舞性), <code>loudness</code> (响度), <code>energy</code> (能量) 等特征的数据集，并使用 <code>plotly</code> 或 <code>matplotlib</code> 进行可视化分析。</p>
+<p><strong>总结</strong>：REST API 提供了一种标准化的数据交互方式。虽然示例使用的是 JSON 格式，但部分 API 也可能返回 XML 格式。如果是网页而非 API，则返回的是 HTML。下一节我们将介绍如何处理 XML 和 HTML 数据。</p>
+<h2 id="8-xml-html-xpath">8. XML, HTML 与 XPath</h2>
+<p><strong>XML (eXtensible Markup Language)</strong> 是一种通用的数据标记结构，常用于定义文件格式（如 <code>.docx</code>, <code>.svg</code>）和网络数据传输。<strong>HTML (HyperText Markup Language)</strong> 则是 Web 的标准语言，其结构与 XML 高度相似（XHTML 更是严格遵循 XML 规则）。</p>
+<p>对于数据科学家而言，掌握 XML 解析技术（特别是 <strong>XPath</strong>）是处理非结构化 Web 数据（网页抓取）和特定格式数据交换的关键。</p>
+<h3 id="81-xml">8.1 XML 基础结构</h3>
+<p>XML 是纯文本格式，具有层级（树状）结构。基本单位是<strong>元素 (Element)</strong>，也称为<strong>节点 (Node)</strong>。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;catalog&gt;</span><span class="w">                                </span><span class="cm">&lt;!-- 根节点 --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;plant&gt;</span><span class="w">                              </span><span class="cm">&lt;!-- 子节点 --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;common&gt;</span>Bloodroot<span class="nt">&lt;/common&gt;</span><span class="w">       </span><span class="cm">&lt;!-- 包含文本内容的节点 --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;price</span><span class="w"> </span><span class="na">curr=</span><span class="s">&quot;USD&quot;</span><span class="nt">&gt;</span>$2.44<span class="nt">&lt;/price&gt;</span><span class="w">  </span><span class="cm">&lt;!-- 带有属性的节点 --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;availability</span><span class="w"> </span><span class="na">date=</span><span class="s">&quot;0399&quot;</span><span class="nt">/&gt;</span><span class="w">      </span><span class="cm">&lt;!-- 空节点简写 --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/plant&gt;</span>
+<span class="nt">&lt;/catalog&gt;</span>
+</code></pre></div>
+<h3 id="82-xpath">8.2 XPath 查询语言</h3>
+<p><strong>XPath</strong> 是一种在 XML/HTML 文档中查找信息的语言。它像文件路径一样遍历文档树。</p>
+<p><strong>XPath 表达式三要素</strong>：</p>
+<ol>
+<li><strong>轴 (Axis)</strong>：方向 (如 <code>//</code> 表示在全文查找，<code>/</code> 表示仅在当前子节点查找，<code>..</code> 表示父节点)。</li>
+<li><strong>节点测试 (Node test)</strong>：标签名 (如 <code>table</code>) 或 <code>text()</code> (文本内容)。</li>
+<li><strong>谓语 (Predicate)</strong>：过滤条件 (如 <code>[1]</code> 表示第一个，<code>[@id="main"]</code> 表示特定属性)。</li>
+</ol>
+<p><strong>常用表达式示例</strong>：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">表达式</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>//common</code></td>
+<td style="text-align: left;">查找文档中所有的 <code>&lt;common&gt;</code> 节点</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>/catalog/plant/common</code></td>
+<td style="text-align: left;">从根节点严格按路径查找</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>//plant/price/text()</code></td>
+<td style="text-align: left;">查找所有 price 节点的文本内容 (如 "$2.44")</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>//plant[2]</code></td>
+<td style="text-align: left;">查找第二个 plant 节点</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>//@date</code></td>
+<td style="text-align: left;">查找名为 date 的属性值</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>//price[@curr="CAD"]</code></td>
+<td style="text-align: left;">查找 curr 属性为 "CAD" 的 price 节点</td>
+</tr>
+</tbody>
+</table>
+<h3 id="83-python-i-html-lxml">8.3 Python 实战 I：抓取 HTML 表格 (lxml)</h3>
+<p>我们可以使用 <code>lxml</code> 库配合 XPath 从网页中提取数据。例如从 Wikipedia 获取 1500米跑记录：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">html</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c1"># 1. 获取网页内容</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://en.wikipedia.org/wiki/1500_metres_world_record_progression&#39;</span>
+<span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># 2. 解析 HTML 树</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+<span class="c1"># 3. 使用 XPath 提取数据</span>
+<span class="c1"># 路径解释：</span>
+<span class="c1"># //table[3] : 查找文档中的第三个表格</span>
+<span class="c1"># /tbody/tr  : 进入表格主体，遍历每一行</span>
+<span class="c1"># /td[1]     : 选中第一列</span>
+<span class="c1"># /b         : **关键点**：数据被包裹在 &lt;b&gt; (粗体) 标签中，所以要深入一层</span>
+<span class="c1"># /text()    : 提取标签内的文本内容</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//table[3]/tbody/tr/td[1]/b/text()&#39;</span><span class="p">)</span>
+
+<span class="c1"># 同理，名字在第三列，且被包裹在 &lt;a&gt; (链接) 标签中</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//table[3]/tbody/tr/td[3]/a/text()&#39;</span><span class="p">)</span>
+
+<span class="c1"># 4. 转换为 DataFrame 进一步清洗</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="n">times</span><span class="p">,</span> <span class="s1">&#39;athlete&#39;</span><span class="p">:</span> <span class="n">names</span><span class="p">})</span>
+</code></pre></div>
+<h3 id="84-python-ii-xml">8.4 Python 实战 II：解析 XML 数据 (处理命名空间)</h3>
+<p>许多机构（如欧洲央行 ECB）提供 XML 格式的数据 API。处理此类 XML 时，常遇到的挑战是<strong>命名空间 (Namespaces)</strong>。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;gesmes:Envelope</span><span class="w"> </span><span class="na">xmlns:gesmes=</span><span class="s">&quot;...&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Cube&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Cube</span><span class="w"> </span><span class="na">time=</span><span class="s">&quot;2023-02-24&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;Cube</span><span class="w"> </span><span class="na">currency=</span><span class="s">&quot;USD&quot;</span><span class="w"> </span><span class="na">rate=</span><span class="s">&quot;1.057&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/Cube&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/Cube&gt;</span>
+<span class="nt">&lt;/gesmes:Envelope&gt;</span>
+</code></pre></div>
+<p>当 XML 包含 <code>xmlns</code> 定义时，XPath 查询必须指定命名空间：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+
+<span class="c1"># ... 获取 XML 响应 ...</span>
+<span class="n">xml_tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+<span class="c1"># 定义命名空间映射 (通常在 XML 头部的 xmlns 属性中找到 URL)</span>
+<span class="n">ns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="s1">&#39;http://www.ecb.int/vocabulary/2002-08-01/eurofxref&#39;</span><span class="p">}</span>
+
+<span class="c1"># 查询属性值 (注意 @time 前面的 / 路径需要带上前缀 x:)</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="n">xml_tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;.//x:Cube/@time&#39;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span>
+<span class="n">rates_USD</span> <span class="o">=</span> <span class="n">xml_tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;.//x:Cube[@currency=&quot;USD&quot;]/@rate&#39;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>总结</strong>：结合 JSON, HTTP, REST 和 XML/HTML/XPath 技术，我们几乎可以访问和处理网络上任何形式的数据资源。这也为构建自动化数据管道和分析展示奠定了坚实基础。</p>
+<h2 id="9">9. 总结与网络数据礼仪</h2>
+<p>通过本章，我们学习了多种数据格式（NetCDF, JSON, XML）以及如何通过编程方式（HTTP/REST）获取它们。这种<strong>代码化获取</strong>的方式不仅是为了效率，更是为了保证数据科学工作的<strong>可复现性 (Reproducibility)</strong>。</p>
+<h3 id="91-web-etiquette">9.1 最佳实践与网络礼仪 (Web Etiquette)</h3>
+<p>当我们通过代码自动获取网络数据时，请务必遵守以下原则：</p>
+<ol>
+<li><strong>检查权限</strong>：在抓取数据前，查看网站的 <code>robots.txt</code> 或服务条款 (Terms of Service)，确认是否允许爬虫访问。</li>
+<li><strong>不要滥用资源</strong>：控制请求频率，避免对服务器造成过大压力（DDoS）。如果数据量大，请尝试批量获取或在非高峰时段进行。</li>
+<li><strong>优先使用 API/下载</strong>：如果网站提供了 CSV/JSON 下载链接或官方 API（如 Spotify 的 <code>spotipy</code>），请优先使用这些官方渠道，而不是去抓取 HTML 页面。</li>
+<li><strong>本地缓存</strong>：在开发和测试阶段，将获取到的数据保存到本地文件。避免每次运行代码都重复向服务器发送请求。</li>
+</ol>
+<h3 id="92">9.2 下一步</h3>
+<p>掌握了从各种来源获取和交换数据的技能后，我们将在后续章节回归到<strong>建模 (Modeling)</strong> 这一核心主题，深入探讨如何利用这些数据挖掘价值。</p>
+<p>下一章：<a href="../11_%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/">线性模型</a></p>
 
 
 
