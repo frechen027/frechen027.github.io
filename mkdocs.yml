@@ -43,6 +43,16 @@ nav: # 导航栏菜单结构，层级与目录结构对应
           - 5 数据清洗: data_science/05_数据清洗.md
           - 6 数据分析: data_science/06_数据分析.md
           - 7 数据可视化: data_science/07_数据可视化.md
+          - 8 案例研究: data_science/08_案例研究.md
+          - 9 文本数据: data_science/09_文本数据.md
+          - 10 数据交换: data_science/10_数据交换.md
+          - 11 线性模型: data_science/11_线性模型.md
+          - 12 模型选择: data_science/12_模型选择.md
+          - 13 推理与预测理论: data_science/13_推理与预测理论.md
+          - 14 案例研究: data_science/14_案例研究.md
+          - 15 分类: data_science/15_分类.md
+          - 16 数值优化: data_science/16_数值优化.md
+          - 17 案例研究: data_science/17_案例研究.md
     - 实用工具:
           - 1 Git与版本控制: tools/01_Git与版本控制.md
           - 2 Markdown: tools/02_Markdown.md
@@ -51,6 +61,9 @@ nav: # 导航栏菜单结构，层级与目录结构对应
           - 5 coze: tools/05_coze.md
           - 6 n8n: tools/06_n8n.md
           - 7 PPT: tools/07_PPT.md
+    - 爆肝杰哥深度学习:
+          - 1 深度学习概述: deep_learning/jie_course/01_深度学习概述.md
+          - 2 API概览: deep_learning/jie_course/02_Notebook示例.ipynb
 
 theme:
     name: material #主题
@@ -72,3 +85,6 @@ markdown_extensions:
 extra_javascript:
     - javascripts/config.js
     - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+    - mkdocs-jupyter

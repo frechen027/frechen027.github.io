@@ -1,0 +1,3151 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../13_%E6%8E%A8%E7%90%86%E4%B8%8E%E9%A2%84%E6%B5%8B%E7%90%86%E8%AE%BA/">
+      
+      
+        <link rel="next" href="../15_%E5%88%86%E7%B1%BB/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>14 案例研究 - Python 修行指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#14-case-study-how-to-weigh-a-donkey" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Python 修行指南" class="md-header__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python 修行指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              14 案例研究
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Python 修行指南" class="md-nav__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Python 修行指南
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    前言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 预备知识
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 预备知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/01_Python%E7%A8%8B%E5%BA%8F%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Python程序基本结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/02_%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 基础语法与变量
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/03_%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 核心数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/04_%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 运算符与表达式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/05_%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 程序控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/06_%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 函数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/07_%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 文件操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/08_%E9%94%99%E8%AF%AF%E4%B8%8E%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 错误与异常处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/09_%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 面向对象编程基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 进阶修炼
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 进阶修炼
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/01_%E6%8E%A8%E5%AF%BC%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/02_%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 迭代器与生成器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/03_%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/04_%E8%A3%85%E9%A5%B0%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 装饰器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/05_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/06_%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%8C%85/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 模块与包
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/07_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 进阶输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/08_%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 命名空间与作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/09_%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 类型注解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/10_%E6%A0%87%E5%87%86%E5%BA%93%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 标准库概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/11_%E5%BC%82%E6%AD%A5IO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 异步IO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/01_%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 算法概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/02_%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%9E%9A%E4%B8%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 模拟与枚举
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/03_%E9%80%92%E5%BD%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 递归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/04_%E5%88%86%E6%B2%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 分治
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/05_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 二分查找
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/06_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 动态规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/07_%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 背包问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/08_%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 贪心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/09_%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 搜索算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/10_%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 图论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据科学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据科学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 生命周期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_%E7%9F%A9%E5%BD%A2%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 矩形数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 SQL与关系数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 文件处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据清洗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 数据分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 数据可视化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 文本数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 数据交换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 线性模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 模型选择
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13_%E6%8E%A8%E7%90%86%E4%B8%8E%E9%A2%84%E6%B5%8B%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 推理与预测理论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 案例研究
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-donkey-study-question-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 驴研究的问题与范围 (Donkey Study Question and Scope)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-wrangling-and-transforming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 数据整理与转换 (Wrangling and Transforming)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-exploring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 探索性数据分析 (Exploring)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#144" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4 驴的体重建模
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.4 驴的体重建模">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1441" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.1 麻醉剂处方的损失函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1442" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.2 拟合简单线性模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1443" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.3 拟合多元线性模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1444" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.4 将定性特征引入模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1445" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.5 模型评估
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#145" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5 总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15_%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16_%E6%95%B0%E5%80%BC%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 数值优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实用工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/01_Git%E4%B8%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Git与版本控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/02_Markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/03_Vibe_Coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Vibe Coding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/04_LeetCode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 LeetCode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/05_coze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 coze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/06_n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/07_PPT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 PPT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    深度学习入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deep_learning/01_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 深度学习概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-donkey-study-question-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 驴研究的问题与范围 (Donkey Study Question and Scope)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-wrangling-and-transforming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 数据整理与转换 (Wrangling and Transforming)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-exploring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 探索性数据分析 (Exploring)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#144" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4 驴的体重建模
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.4 驴的体重建模">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1441" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.1 麻醉剂处方的损失函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1442" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.2 拟合简单线性模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1443" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.3 拟合多元线性模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1444" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.4 将定性特征引入模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1445" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.5 模型评估
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#145" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5 总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="14-case-study-how-to-weigh-a-donkey">14. 案例研究：如何给驴称重 (Case Study: How to Weigh a Donkey)</h1>
+<p>驴在肯尼亚农村扮演着重要角色。人们需要它们来运输农作物、水和人，以及耕地。当驴生病时，兽医需要弄清楚驴有多重，以便开出正确剂量的药物。但是肯尼亚农村的许多兽医没有秤，所以他们需要猜测驴的体重。药量太少可能导致感染复发；药量太多可能导致有害的过量用药。肯尼亚有超过 180 万头驴，因此拥有一种简单、准确的方法来估计驴的体重非常重要。</p>
+<p>在本案例研究中，我们跟随 Kate Milner 和 Jonathan Rougier 的工作，创建一个肯尼亚农村兽医可以用来准确估计驴体重的模型。像往常一样，我们将通过数据科学生命周期的步骤，但这次我们的工作偏离了本书迄今为止涵盖的基础知识。你可以把这个案例研究看作是一个机会，反思处理数据的许多核心原则，并理解如何扩展这些原则以解决具体情况。我们直接评估测量误差的来源，设计一个反映对过量用药担忧的特殊损失函数，在构建模型时时刻牢记适用性，并使用相对于驴体型大小的特殊标准来评估模型预测。</p>
+<p>我们从数据的范围开始。</p>
+<h2 id="1-donkey-study-question-and-scope">1. 驴研究的问题与范围 (Donkey Study Question and Scope)</h2>
+<p>我们最初的研究问题是：当兽医在没有秤的农村时，如何准确估计驴的体重？让我们想想那些更容易获得的信息。他们可以携带卷尺，测量驴的其他尺寸，比如身高。他们可以观察动物的性别，评估其总体状况，询问驴的年龄。所以，我们可以将问题细化为：<strong>如何根据容易获得的测量数据准确预测驴的体重？</strong></p>
+<p>为了解决这个更精确的问题，驴庇护所（The Donkey Sanctuary）在肯尼亚农村的 17 个流动驱虫点开展了一项研究。</p>
+<p>就范围（第 2 章）而言，<strong>目标总体</strong>是肯尼亚农村的驴种群。<strong>访问框架</strong>是被带到驱虫点的所有驴的集合。<strong>样本</strong>由 2010 年 7 月 23 日至 8 月 11 日期间带到这些地点的所有驴组成，但有一些注意事项：如果一个地点的驴太多无法全部测量，科学家们会选择一部分驴进行测量；而且，任何怀孕或明显患病的驴都被排除在研究之外。</p>
+<p>为了避免意外地给同一头驴称重两次，每头驴在称重后都会做标记。为了量化测量误差并评估称重过程的可重复性，31 头驴在工作人员不知道的情况下被重新称重和测量了两次。</p>
+<p>考虑到这个抽样过程，该数据的潜在偏差来源包括：</p>
+<ul>
+<li><strong>覆盖偏差 (Coverage bias)</strong>：这 17 个地点位于肯尼亚东部 Yatta 区和裂谷 Naivasha 区周边的地区。</li>
+<li><strong>选择偏差 (Selection bias)</strong>：只有被带到庇护所的驴才被纳入研究，而且当一个地点的驴太多时，选择了非随机样本。</li>
+<li><strong>测量偏差 (Measurement bias)</strong>：除了测量误差外，秤本身可能存在偏差。理想情况下，秤应在现场使用前后进行校准（第 12 章）。</li>
+</ul>
+<p>尽管存在这些潜在的偏差来源，访问框架对于接触肯尼亚农村地区那些有主人照看健康的驴来说似乎是合理的。</p>
+<p>我们的下一步是清理数据。</p>
+<h2 id="2-wrangling-and-transforming">2. 数据整理与转换 (Wrangling and Transforming)</h2>
+<p>我们首先查看数据文件的内容。为此，我们打开文件并检查前几行（第 8 章）：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># Create a Path pointing to our data file</span>
+<span class="n">insp_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;data/donkeys.csv&#39;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">insp_path</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="c1"># Display first five lines of file</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>BCS,Age,Sex,Length,Girth,Height,Weight,WeightAlt
+3,&lt;2,stallion,78,90,90,77,NA
+2.5,&lt;2,stallion,91,97,94,100,NA
+1.5,&lt;2,stallion,74,93,95,74,NA
+3,&lt;2,female,87,109,96,116,NA
+</code></pre></div>
+<p>由于文件采用 CSV 格式，我们可以轻松将其读取到 dataframe 中：</p>
+<div class="highlight"><pre><span></span><code><span class="n">donkeys</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/donkeys.csv&quot;</span><span class="p">)</span>
+<span class="n">donkeys</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<div class="output_subarea output_html rendered_html output_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>BCS</th>
+      <th>Age</th>
+      <th>Sex</th>
+      <th>Length</th>
+      <th>Girth</th>
+      <th>Height</th>
+      <th>Weight</th>
+      <th>WeightAlt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3.0</td>
+      <td>&lt;2</td>
+      <td>stallion</td>
+      <td>78</td>
+      <td>90</td>
+      <td>90</td>
+      <td>77</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.5</td>
+      <td>&lt;2</td>
+      <td>stallion</td>
+      <td>91</td>
+      <td>97</td>
+      <td>94</td>
+      <td>100</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.5</td>
+      <td>&lt;2</td>
+      <td>stallion</td>
+      <td>74</td>
+      <td>93</td>
+      <td>95</td>
+      <td>74</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>541</th>
+      <td>2.5</td>
+      <td>10-15</td>
+      <td>stallion</td>
+      <td>103</td>
+      <td>118</td>
+      <td>103</td>
+      <td>174</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>542</th>
+      <td>3.0</td>
+      <td>2-5</td>
+      <td>stallion</td>
+      <td>91</td>
+      <td>112</td>
+      <td>100</td>
+      <td>139</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>543</th>
+      <td>3.0</td>
+      <td>5-10</td>
+      <td>stallion</td>
+      <td>104</td>
+      <td>124</td>
+      <td>110</td>
+      <td>189</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>544 rows × 8 columns</p>
+</div>
+</div>
+
+<p>超过 500 头驴参与了调查，每头驴测量了八个特征。根据文档，粒度是一头驴（第 9 章）。表 14.1 提供了这八个特征的描述。</p>
+<p><strong>表 14.1 驴研究代码本 (Donkey study codebook)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">特征 (Feature)</th>
+<th style="text-align: left;">数据类型 (Data type)</th>
+<th style="text-align: left;">特征类型 (Feature type)</th>
+<th style="text-align: left;">描述 (Description)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">BCS</td>
+<td style="text-align: left;">float64</td>
+<td style="text-align: left;">Ordinal</td>
+<td style="text-align: left;">身体状况评分：从 1（消瘦）到 3（健康）再到 5（肥胖），以 0.5 为增量。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Age</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Ordinal</td>
+<td style="text-align: left;">年龄（岁），分为 &lt;2, 2–5, 5–10, 10–15, 15–20, 和 &gt;20 岁</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sex</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Nominal</td>
+<td style="text-align: left;">性别类别：stallion（种马）, gelding（阉驴）, female（母驴）</td>
+</tr>
+<tr>
+<td style="text-align: left;">Length</td>
+<td style="text-align: left;">int64</td>
+<td style="text-align: left;">Numeric</td>
+<td style="text-align: left;">体长 (cm)，从前腿肘部到骨盆后部</td>
+</tr>
+<tr>
+<td style="text-align: left;">Girth</td>
+<td style="text-align: left;">int64</td>
+<td style="text-align: left;">Numeric</td>
+<td style="text-align: left;">身体周长 (cm)，在前腿后方测量</td>
+</tr>
+<tr>
+<td style="text-align: left;">Height</td>
+<td style="text-align: left;">int64</td>
+<td style="text-align: left;">Numeric</td>
+<td style="text-align: left;">身高 (cm)，直到颈部与背部连接点</td>
+</tr>
+<tr>
+<td style="text-align: left;">Weight</td>
+<td style="text-align: left;">int64</td>
+<td style="text-align: left;">Numeric</td>
+<td style="text-align: left;">体重 (kg)</td>
+</tr>
+<tr>
+<td style="text-align: left;">WeightAlt</td>
+<td style="text-align: left;">float64</td>
+<td style="text-align: left;">Numeric</td>
+<td style="text-align: left;">对部分驴进行的第二次体重测量</td>
+</tr>
+</tbody>
+</table>
+<p>图 14.1 是驴的风格化表示，作为一个带有颈部和腿部的圆柱体。身高是从地面测量到肩膀上方的颈部基部；周长是围绕身体，就在腿后方；长度是从前肘到骨盆后部。</p>
+<p><img alt="Diagram of a donkey’s girth, length, and height" src="../../assets/images/case_study/donkeyDiagram.png" />
+<em>图 14.1 驴的周长、长度和高度示意图，特征化为圆柱体上的测量</em></p>
+<p>我们的下一步是对数据进行一些质量检查。上一节中，我们根据范围列出了一些潜在的质量问题。接下来，我们检查测量的质量及其分布。</p>
+<p>让我们从比较对部分驴进行的两次体重测量开始，以检查秤的一致性。我们为这 31 头被称重两次的驴的两次测量之间的差异绘制直方图：</p>
+<div class="highlight"><pre><span></span><code><span class="n">donkeys</span> <span class="o">=</span> <span class="n">donkeys</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">difference</span><span class="o">=</span><span class="n">donkeys</span><span class="p">[</span><span class="s2">&quot;WeightAlt&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">donkeys</span><span class="p">[</span><span class="s2">&quot;Weight&quot;</span><span class="p">])</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">donkeys</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;difference&quot;</span><span class="p">,</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+    <span class="n">labels</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">difference</span><span class="o">=</span><span class="s2">&quot;Differences of two weighings (kg)&lt;br&gt;on the same donkey&quot;</span>
+    <span class="p">),</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Difference of two weighings" src="../../assets/images/case_study/donkey_clean_10_0.svg" /></p>
+<p>测量值都在 1 kg 以内，绝大多数完全相同（精确到最接近的千克）。这让我们对测量的准确性充满信心。</p>
+<p>接下来，我们在身体状况评分中寻找异常值：</p>
+<div class="highlight"><pre><span></span><code><span class="n">donkeys</span><span class="p">[</span><span class="s1">&#39;BCS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>BCS
+3.0    307
+2.5    135
+3.5     55
+      ... 
+1.5      5
+4.5      1
+1.0      1
+Name: count, Length: 8, dtype: int64
+</code></pre></div>
+<p>从输出中，我们看到只有一头消瘦（BCS = 1）和一头肥胖（BCS = 4.5）的驴。让我们看看这两头驴的完整记录：</p>
+<div class="highlight"><pre><span></span><code><span class="n">donkeys</span><span class="p">[(</span><span class="n">donkeys</span><span class="p">[</span><span class="s1">&#39;BCS&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">donkeys</span><span class="p">[</span><span class="s1">&#39;BCS&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">4.5</span><span class="p">)]</span>
+</code></pre></div>
+<div class="output_subarea output_html rendered_html output_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>BCS</th>
+      <th>Age</th>
+      <th>Sex</th>
+      <th>Length</th>
+      <th>Girth</th>
+      <th>Height</th>
+      <th>Weight</th>
+      <th>WeightAlt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>291</th>
+      <td>4.5</td>
+      <td>10-15</td>
+      <td>female</td>
+      <td>107</td>
+      <td>130</td>
+      <td>106</td>
+      <td>227</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>445</th>
+      <td>1.0</td>
+      <td>&gt;20</td>
+      <td>female</td>
+      <td>97</td>
+      <td>109</td>
+      <td>102</td>
+      <td>115</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>由于这些 BCS 值是极端的，我们在分析中要谨慎包含这两头驴。由于我们在每个极端类别中只有一头驴，我们的模型可能无法很好地扩展到 BCS 为 1 或 4.5 的驴。所以我们从 dataframe 中<strong>删除这两条记录</strong>，并注意我们的分析可能无法扩展到消瘦或肥胖的驴。一般来说，我们在删除 dataframe 中的记录时要谨慎。稍后，如果评分为 1.5 的五头驴在分析中显得异常，我们也可能决定删除它们，但现在，我们将它们保留在 dataframe 中。我们需要充分的理由来排除它们，记录我们的行为，并保持排除的观察数量较少，以免因为删除了任何与模型不一致的记录而使模型过拟合。</p>
+<p>接下来我们移除这两个异常值：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">remove_bcs_outliers</span><span class="p">(</span><span class="n">donkeys</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">donkeys</span><span class="p">[(</span><span class="n">donkeys</span><span class="p">[</span><span class="s1">&#39;BCS&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">donkeys</span><span class="p">[</span><span class="s1">&#39;BCS&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="p">)]</span> 
+
+<span class="n">donkeys</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/donkeys.csv&#39;</span><span class="p">)</span>
+           <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">remove_bcs_outliers</span><span class="p">))</span>
+</code></pre></div>
+<p>现在，我们检查体重的分布值，看看是否存在质量问题：</p>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">donkeys</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Weight&#39;</span><span class="p">,</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
+            <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Weight&#39;</span><span class="p">:</span><span class="s1">&#39;Weight (kg)&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Histogram of Weight" src="../../assets/images/case_study/donkey_clean_18_0.svg" /></p>
+<p>似乎有一头体重不到 30 公斤的非常轻的驴。接下来，我们检查体重和身高之间的关系，以评估用于分析的数据质量：</p>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">donkeys</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Height&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Weight&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
+          <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Weight&#39;</span><span class="p">:</span><span class="s1">&#39;Weight (kg)&#39;</span><span class="p">,</span> <span class="s1">&#39;Height&#39;</span><span class="p">:</span><span class="s1">&#39;Height (cm)&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Scatter Weight vs Height" src="../../assets/images/case_study/donkey_clean_20_0.svg" /></p>
+<p>这头小驴远离主要的驴群，会对我们的模型产生过度影响。因此，我们将其排除。同样，我们要记住，如果有那一两头重驴在未来的模型拟合中显得过度影响，我们也可能想要排除它们：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">remove_weight_outliers</span><span class="p">(</span><span class="n">donkeys</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">donkeys</span><span class="p">[(</span><span class="n">donkeys</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">40</span><span class="p">)]</span>
+
+<span class="n">donkeys</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/donkeys.csv&#39;</span><span class="p">)</span>
+           <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">remove_bcs_outliers</span><span class="p">)</span>
+           <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">remove_weight_outliers</span><span class="p">))</span>
+
+<span class="n">donkeys</span><span class="o">.</span><span class="n">shape</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(541, 8)
+</code></pre></div>
+<p>总之，基于我们的清理和质量检查，我们从 dataframe 中移除了三个异常观察值。现在我们几乎准备好开始我们的探索性分析了。在我们继续之前，我们将部分数据留作<strong>测试集 (test set)</strong>。</p>
+<p>我们在第 12 章讨论了为什么将测试集与训练集分开很重要。最佳实践是在分析的早期分离出测试集，在我们详细探索数据之前，因为在 EDA 中，我们开始决定拟合什么样的模型以及在模型中使用哪些变量。重要的是我们的测试集不参与这些决策，以便它能模拟我们的模型在处理全新数据时的表现。</p>
+<p>我们将数据按 80/20 分割，其中我们使用 80% 的数据进行探索和构建模型。然后我们使用预留的 20% 来评估模型。我们使用简单随机抽样将 dataframe 分割为测试集和训练集。首先，我们将 dataframe 的索引随机打乱：</p>
+<div class="highlight"><pre><span></span><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">donkeys</span><span class="p">)</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+<span class="n">n_train</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">((</span><span class="mf">0.8</span> <span class="o">*</span> <span class="n">n</span><span class="p">)))</span>
+</code></pre></div>
+<p>接下来，我们将 dataframe 的前 80% 分配给训练集，剩余的 20% 分配给测试集：</p>
+<div class="highlight"><pre><span></span><code><span class="n">train_set</span> <span class="o">=</span> <span class="n">donkeys</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">indices</span><span class="p">[:</span><span class="n">n_train</span><span class="p">]]</span>
+<span class="n">test_set</span> <span class="o">=</span> <span class="n">donkeys</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">n_train</span><span class="p">:]]</span>
+</code></pre></div>
+<p>现在我们准备好探索训练数据，寻找有助于我们建模的有用关系和分布。</p>
+<h2 id="3-exploring">3. 探索性数据分析 (Exploring)</h2>
+<p>让我们查看 dataframe 中的特征，寻找有助于我们进行转换和建模的形状和关系（第 10 章）。首先，我们要查看年龄、性别和身体状况等分类特征与体重的关系：</p>
+<div class="highlight"><pre><span></span><code><span class="n">f1</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Weight&quot;</span><span class="p">,</span> 
+            <span class="n">category_orders</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Age&quot;</span><span class="p">:[</span><span class="s1">&#39;&lt;2&#39;</span><span class="p">,</span> <span class="s1">&#39;2-5&#39;</span><span class="p">,</span> <span class="s1">&#39;5-10&#39;</span><span class="p">,</span> 
+                                      <span class="s1">&#39;10-15&#39;</span><span class="p">,</span> <span class="s1">&#39;15-20&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;20&#39;</span><span class="p">]})</span>
+<span class="n">f2</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Sex&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Weight&quot;</span><span class="p">)</span>
+
+<span class="c1"># 我們编写了 left_right 函数作为 plotly make_subplots 的简写</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">left_right</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">column_widths</span><span class="o">=</span><span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Age (yr)&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Weight (kg)&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Boxplots of Weight by Age and Sex" src="../../assets/images/case_study/donkey_eda_4_0.svg" /></p>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;BCS&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Weight&quot;</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span>
+             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Weight&#39;</span><span class="p">:</span><span class="s1">&#39;Weight (kg)&#39;</span><span class="p">,</span> <span class="s1">&#39;BCS&#39;</span><span class="p">:</span><span class="s1">&#39;Body condition score&#39;</span><span class="p">},</span>
+             <span class="n">width</span><span class="o">=</span><span class="mi">550</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Boxplot of Weight by BCS" src="../../assets/images/case_study/donkey_eda_5_0.svg" /></p>
+<p>注意，我们绘制了身体状况评分的点和箱形图，因为我们要记得之前看到的只有少数观察值的得分为 1.5，所以我们不想过多解读数据点很少的箱形图（第 11 章）。看来中位体重随着身体状况评分的增加而增加，但不是以简单的线性方式。另一方面，三个性别类别的体重分布大致相同。至于年龄，一旦驴子达到 5 岁，体重分布似乎就不会发生太大变化。但是 2 岁以下的驴子和 2 到 5 岁的驴子通常体重较轻。</p>
+<p>接下来，让我们检查定量变量。我们在散点图矩阵中绘制所有定量变量对：</p>
+<div class="highlight"><pre><span></span><code><span class="n">train_numeric</span> <span class="o">=</span> <span class="n">train_set</span><span class="p">[[</span><span class="s1">&#39;Weight&#39;</span><span class="p">,</span> <span class="s1">&#39;Length&#39;</span><span class="p">,</span> <span class="s1">&#39;Girth&#39;</span><span class="p">,</span> <span class="s1">&#39;Height&#39;</span><span class="p">]]</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">train_numeric</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Scatter matrix of quantitative variables" src="../../assets/images/case_study/donkey_eda_9_0.svg" /></p>
+<p>驴子的身高、体长和周长似乎都与体重以及彼此线性相关。这并不奇怪；给定驴子的一个尺寸，我们应该能够很好地猜测其他尺寸。周长与体重的相关性最高，这一点通过相关系数矩阵得到了证实：</p>
+<div class="highlight"><pre><span></span><code><span class="n">train_numeric</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</code></pre></div>
+<div class="output_subarea output_html rendered_html output_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Weight</th>
+      <th>Length</th>
+      <th>Girth</th>
+      <th>Height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Weight</th>
+      <td>1.00</td>
+      <td>0.78</td>
+      <td>0.90</td>
+      <td>0.71</td>
+    </tr>
+    <tr>
+      <th>Length</th>
+      <td>0.78</td>
+      <td>1.00</td>
+      <td>0.66</td>
+      <td>0.58</td>
+    </tr>
+    <tr>
+      <th>Girth</th>
+      <td>0.90</td>
+      <td>0.66</td>
+      <td>1.00</td>
+      <td>0.70</td>
+    </tr>
+    <tr>
+      <th>Height</th>
+      <td>0.71</td>
+      <td>0.58</td>
+      <td>0.70</td>
+      <td>1.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>我们的探索揭示了数据的几个方面，这些方面可能与建模有关。我们发现驴子的周长、体长和身高都与体重以及彼此呈线性关联，并且<strong>周长与体重具有最强的线性关系</strong>。我们还观察到，身体状况评分与体重呈正相关；驴子的性别似乎与体重无关；对于 5 岁以上的驴子，年龄也与体重无关。在下一节中，我们将使用这些发现来构建我们的模型。</p>
+<h2 id="144">14.4 驴的体重建模</h2>
+<p>我们希望建立一个简单的模型来预测驴的体重。该模型应该便于兽医在野外仅使用手持计算器就能实施。模型还应该易于解释。</p>
+<p>我们还希望模型取决于兽医的情况——例如，他们是在开抗生素还是麻醉剂。为了简洁起见，我们只考虑开麻醉剂的情况。我们的第一步是选择一个反映这种情况的损失函数。</p>
+<h3 id="1441">14.4.1 麻醉剂处方的损失函数</h3>
+<p>麻醉剂过量比剂量不足要糟糕得多。兽医很容易看出驴的麻醉剂量是否过少（它会抱怨），兽医可以再给驴一点。另一方面，过多的麻醉剂会产生严重后果，甚至可能致命。正因为如此，我们需要一个非对称的损失函数：与低估相比，它对高估体重的损失更大。这与我们在本书中迄今为止使用的其他损失函数形成对比，后者都是对称的。</p>
+<p>考虑到这一点，我们创建了一个损失函数 <code>anes_loss(x)</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">anes_loss</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">w</span>
+</code></pre></div>
+<p>相对误差为 <span class="arithmatex">\(100(y - \hat{y})/\hat{y}\)</span>，其中 <span class="arithmatex">\(y\)</span> 是真实值，<span class="arithmatex">\(\hat{y}\)</span> 是预测值。我们可以用图表来展示损失函数的非对称性：</p>
+<div class="highlight"><pre><span></span><code><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">anes_loss</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xs</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">loss</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Modified quadratic loss&#39;</span><span class="p">,</span>
+              <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;Relative error (%)&#39;</span><span class="p">,</span>
+    <span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;Loss&#39;</span><span class="p">,</span>
+    <span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Modified quadratic loss" src="../../assets/images/case_study/donkey_model_6_0.svg" /></p>
+<p>请注意，x 轴上的 -10 值反映了 10% 的高估（预测值大于真实值，导致 <span class="arithmatex">\(y - \hat{y}\)</span> 为负）。</p>
+<p>接下来，让我们使用这个损失函数拟合一个简单的线性模型。</p>
+<h3 id="1442">14.4.2 拟合简单线性模型</h3>
+<p>我们看到，在训练集的驴中，<strong>周长</strong>（Girth）与体重的相关性最高。所以我们要拟合一个形式如下的模型：</p>
+<div class="arithmatex">\[ \theta_0 + \theta_1 \text{Girth} \]</div>
+<p>为了找到数据的最佳拟合 <span class="arithmatex">\(\theta_0\)</span> 和 <span class="arithmatex">\(\theta_1\)</span>，我们首先创建一个包含周长和截距项的设计矩阵。我们还创建观测到的驴体重的 <span class="arithmatex">\(y\)</span> 向量：</p>
+<div class="highlight"><pre><span></span><code><span class="n">X</span> <span class="o">=</span> <span class="n">train_set</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">intr</span><span class="o">=</span><span class="mi">1</span><span class="p">)[[</span><span class="s1">&#39;intr&#39;</span><span class="p">,</span> <span class="s1">&#39;Girth&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">train_set</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span>
+<span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<p>现在我们想找到使数据上的平均麻醉损失最小化的 <span class="arithmatex">\(\theta_0\)</span> 和 <span class="arithmatex">\(\theta_1\)</span>。为了做到这一点，我们可以使用微积分，但在这里我们将使用 <code>scipy</code> 包中的 <code>minimize</code> 方法，它执行数值优化：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+
+<span class="k">def</span> <span class="nf">training_loss</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">loss</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
+        <span class="n">predicted</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">theta</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">anes_loss</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">predicted</span><span class="p">)</span> <span class="o">/</span> <span class="n">predicted</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">loss</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">training_loss</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">theta_hat</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After fitting:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;θ₀ = </span><span class="si">{</span><span class="n">theta_hat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">&gt;7.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;θ₁ = </span><span class="si">{</span><span class="n">theta_hat</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">&gt;7.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>让我们看看这个简单模型的效果如何。我们可以使用该模型来预测训练集上的驴体重，然后找到预测中的误差。随后的残差图显示了模型误差占预测值的百分比。预测误差相对于驴的大小较小更为重要，因为对于 100 公斤的驴来说，10 公斤的误差比 200 公斤的驴要糟糕得多。因此，我们找到每个预测的相对误差：</p>
+<div class="highlight"><pre><span></span><code><span class="n">predicted</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">theta_hat</span>
+<span class="n">resids</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">predicted</span><span class="p">)</span> <span class="o">/</span> <span class="n">predicted</span>
+
+<span class="n">resid</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Predicted weight (kg)&#39;</span><span class="p">:</span> <span class="n">predicted</span><span class="p">,</span> <span class="s1">&#39;Percent error&#39;</span><span class="p">:</span> <span class="n">resids</span><span class="p">})</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">resid</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Predicted weight (kg)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Percent error&#39;</span><span class="p">,</span>
+           <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Residual Plot" src="../../assets/images/case_study/donkey_model_16_0.svg" /></p>
+<p>对于最简单的模型，一些预测会有 20% 到 30% 的偏差。让我们看看稍微复杂一点的模型是否能改进预测。</p>
+<h3 id="1443">14.4.3 拟合多元线性模型</h3>
+<p>让我们考虑包含其他数值变量的其他模型。我们有三个测量驴周长、长度和高度的数值变量，共有七种组合这些变量的方法：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">itertools</span>
+
+<span class="n">numeric_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Girth&#39;</span><span class="p">,</span> <span class="s1">&#39;Length&#39;</span><span class="p">,</span> <span class="s1">&#39;Height&#39;</span><span class="p">]</span>
+
+<span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
+          <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+          <span class="k">for</span> <span class="n">subset</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">numeric_vars</span><span class="p">,</span> <span class="n">n</span><span class="p">)]</span>
+<span class="c1"># models</span>
+</code></pre></div>
+<p>对于这些变量组合中的每一个，我们都可以用我们特殊的损失函数拟合一个模型。然后我们可以看看每个模型在训练集上的表现如何：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">training_error</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">train_set</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">intr</span><span class="o">=</span><span class="mi">1</span><span class="p">)[[</span><span class="s1">&#39;intr&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">model</span><span class="p">]]</span>
+    <span class="n">theta_hat</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">training_loss</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+    <span class="n">predicted</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">theta_hat</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">anes_loss</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">predicted</span><span class="p">)</span><span class="o">/</span> <span class="n">predicted</span><span class="p">))</span>
+
+<span class="n">model_risks</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">training_error</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span>
+<span class="p">]</span>
+
+<span class="n">error_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">models</span><span class="p">],</span> <span class="s1">&#39;mean_training_error&#39;</span><span class="p">:</span> <span class="n">model_risks</span><span class="p">})</span>
+<span class="n">error_df</span>
+</code></pre></div>
+<p>如前所述，驴的周长是体重的最佳单一预测因子。然而，周长和长度的组合具有比单独周长小得多的平均损失，而且这个特定的双变量模型几乎与包含所有三个变量的模型一样好。由于我们想要一个简单的模型，我们选择双变量模型而不是三变量模型。</p>
+<p>接下来，我们使用特征工程将分类变量纳入模型，这可以改进我们的模型。</p>
+<h3 id="1444">14.4.4 将定性特征引入模型</h3>
+<p>在我们的探索性分析中，我们发现驴的身体状况（BCS）和年龄的体重箱线图可能包含预测体重的有用信息。由于这些是分类特征，我们可以通过独热编码（One-hot encoding）将它们转换为 0-1 变量。</p>
+<p>独热编码允许我们为每个类别组合调整模型中的截距项。我们目前的模型包括数值变量周长和长度：</p>
+<div class="arithmatex">\[ \theta_0 + \theta_1 \text{Girth} + \theta_2 \text{Length} \]</div>
+<p>如果我们清理年龄特征以包含三个类别——<code>Age&lt;2</code>、<code>Age2-5</code> 和 <code>Age&gt;5</code>——年龄的独热编码会创建三个 0-1 特征。在模型中包含独热编码特征会得出：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \theta_0
+    &amp; + \theta_1  \text{Girth }
+      + \theta_2  \text{Length } \\
+    &amp; + \theta_3  \text{Age&lt;2 }
+      + \theta_4  \text{Age2-5 }
+\end{aligned}
+\]</div>
+<p>在这个模型中，对于小于 2 岁的驴，<code>Age&lt;2</code> 为 1，否则为 0。类似地，对于 2 到 5 岁的驴，<code>Age2-5</code> 为 1，否则为 0。</p>
+<p>我们可以将此模型视为拟合三个除了常数大小外完全相同的线性模型。</p>
+<p>现在让我们对所有三个分类变量（身体状况、年龄和性别）应用独热编码：</p>
+<div class="highlight"><pre><span></span><code><span class="n">X_one_hot</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">train_set</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">intr</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">[[</span><span class="s1">&#39;intr&#39;</span><span class="p">,</span> <span class="s1">&#39;Length&#39;</span><span class="p">,</span> <span class="s1">&#39;Girth&#39;</span><span class="p">,</span> <span class="s1">&#39;BCS&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Sex&#39;</span><span class="p">]]</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;BCS&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Sex&#39;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;BCS_3.0&#39;</span><span class="p">,</span> <span class="s1">&#39;Age_5-10&#39;</span><span class="p">,</span> <span class="s1">&#39;Sex_female&#39;</span><span class="p">])</span>
+<span class="p">)</span>
+<span class="n">X_one_hot</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<p>我们为每个分类特征删除了一个虚拟变量。由于 <code>BCS</code>、<code>Age</code> 和 <code>Sex</code> 分别有六个、六个和三个类别，我们在设计矩阵中添加了 12 个虚拟变量，总共 15 列，包括截距项、周长和长度。</p>
+<p>让我们看看哪些分类变量（如果有）改进了我们的双变量模型。为此，我们可以拟合包含所有三个分类特征的虚拟变量以及周长和长度的模型：</p>
+<div class="highlight"><pre><span></span><code><span class="n">results</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">training_loss</span><span class="p">(</span><span class="n">X_one_hot</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X_one_hot</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="n">theta_hat</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">X_one_hot</span> <span class="o">@</span> <span class="n">theta_hat</span>
+<span class="n">tr_error</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">anes_loss</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">/</span> <span class="n">y_pred</span><span class="p">)))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Training error: </span><span class="si">{</span><span class="n">tr_error</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>根据平均损失，这个模型比仅有 <code>Girth</code> 和 <code>Length</code> 的先前模型表现更好。但让我们尝试在保持准确性的同时使这个模型更简单。为此，我们查看每个虚拟变量的系数，看看它们离 0 有多近，以及彼此之间有多近。换句话说，如果不将系数包含在模型中，我们想看看截距可能会发生多大变化。系数图将使这种比较变得容易：</p>
+<div class="highlight"><pre><span></span><code><span class="n">bcs_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BCS_1.5&#39;</span><span class="p">,</span> <span class="s1">&#39;BCS_2.0&#39;</span><span class="p">,</span> <span class="s1">&#39;BCS_2.5&#39;</span><span class="p">,</span> <span class="s1">&#39;BCS_3.5&#39;</span><span class="p">,</span> <span class="s1">&#39;BCS_4.0&#39;</span><span class="p">]</span>
+<span class="n">age_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Age_&lt;2&#39;</span><span class="p">,</span> <span class="s1">&#39;Age_2-5&#39;</span><span class="p">,</span> <span class="s1">&#39;Age_10-15&#39;</span><span class="p">,</span> <span class="s1">&#39;Age_15-20&#39;</span><span class="p">,</span> <span class="s1">&#39;Age_&gt;20&#39;</span><span class="p">]</span>
+<span class="n">sex_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Sex_gelding&#39;</span><span class="p">,</span> <span class="s1">&#39;Sex_stallion&#39;</span><span class="p">]</span>
+
+<span class="n">thetas</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;var&#39;</span><span class="p">:</span> <span class="n">X_one_hot</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="s1">&#39;theta_hat&#39;</span><span class="p">:</span> <span class="n">theta_hat</span><span class="p">})</span>
+          <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;var&#39;</span><span class="p">))</span>
+
+<span class="c1"># 绘制系数图</span>
+<span class="kn">import</span> <span class="nn">plotly.subplots</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+
+<span class="n">f1</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">thetas</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">bcs_vars</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;var&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;theta_hat&#39;</span><span class="p">)</span>
+<span class="n">f2</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">thetas</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sex_vars</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;var&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;theta_hat&#39;</span><span class="p">)</span>
+<span class="n">f3</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">thetas</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">age_vars</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;var&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;theta_hat&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">shared_yaxes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">column_widths</span><span class="o">=</span><span class="p">[</span><span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">trace</span> <span class="ow">in</span> <span class="n">f1</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">trace</span> <span class="ow">in</span> <span class="n">f2</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">trace</span> <span class="ow">in</span> <span class="n">f3</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">550</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Coefficients&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Coefficients" src="../../assets/images/case_study/donkey_model_34_0.svg" /></p>
+<p>系数证实了我们在箱线图中看到的情况。驴性别的系数接近于零，这意味着知道性别并不会真正改变体重预测。我们还看到，合并 5 岁以上驴的年龄类别可以简化模型而不会损失太多。最后，由于身体状况评分为 1.5 的驴很少，且其系数接近 BCS 为 2 的系数，我们倾向于合并这两个类别。</p>
+<p>鉴于这些发现，我们更新设计矩阵：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">combine_bcs</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="c1"># 检查列是否存在，防止重复合并或列不存在错误</span>
+    <span class="k">if</span> <span class="s1">&#39;BCS_2.0&#39;</span> <span class="ow">in</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="s1">&#39;BCS_1.5&#39;</span> <span class="ow">in</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">new_bcs_2</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;BCS_2.0&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;BCS_1.5&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">X</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s1">&#39;BCS_2.0&#39;</span><span class="p">:</span> <span class="n">new_bcs_2</span><span class="p">})</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;BCS_1.5&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">X</span>
+
+<span class="k">def</span> <span class="nf">combine_age_and_sex</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">cols_to_drop</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Age_10-15&#39;</span><span class="p">,</span> <span class="s1">&#39;Age_15-20&#39;</span><span class="p">,</span> <span class="s1">&#39;Age_&gt;20&#39;</span><span class="p">,</span> <span class="s1">&#39;Sex_gelding&#39;</span><span class="p">,</span> <span class="s1">&#39;Sex_stallion&#39;</span><span class="p">]</span>
+    <span class="c1"># 只删除存在的列</span>
+    <span class="n">existing_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols_to_drop</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">existing_cols</span><span class="p">)</span>
+
+<span class="n">X_one_hot_simple</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">X_one_hot</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">combine_bcs</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">combine_age_and_sex</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>然后我们拟合更简单的模型：</p>
+<div class="highlight"><pre><span></span><code><span class="n">results</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">training_loss</span><span class="p">(</span><span class="n">X_one_hot_simple</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>
+                   <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X_one_hot_simple</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">theta_hat</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">X_one_hot_simple</span> <span class="o">@</span> <span class="n">theta_hat</span>
+<span class="n">tr_error</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">anes_loss</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">/</span> <span class="n">y_pred</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Training error: </span><span class="si">{</span><span class="n">tr_error</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>平均误差与更复杂的模型足够接近，我们可以确定这个更简单的模型。让我们显示系数并总结模型：</p>
+<div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;var&#39;</span><span class="p">:</span> <span class="n">X_one_hot_simple</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="s1">&#39;theta_hat&#39;</span><span class="p">:</span> <span class="n">theta_hat</span><span class="p">})</span>
+</code></pre></div>
+<p>我们的模型大致为：</p>
+<div class="arithmatex">\[ \text{Weight} \approx -175 + \text{Length} + 2\text{Girth} \]</div>
+<p>在这个初步近似之后，我们使用分类特征进行一些调整：</p>
+<ul>
+<li>BCS 2 或更低？减去 6.5 公斤。</li>
+<li>BCS 2.5？减去 5.1 公斤。</li>
+<li>BCS 3.5？加上 7.4 公斤。</li>
+<li>BCS 4？加上 20 公斤。</li>
+<li>年龄小于 2 岁？减去 6.5 公斤。</li>
+<li>年龄在 2 到 5 岁之间？减去 3.5 公斤。</li>
+</ul>
+<p>这个模型似乎很容易实施，因为在根据驴的长度和周长进行初步估计后，我们根据几个是/否问题的答案加上或减去几个数字。让我们看看模型在预测测试集中的驴体重方面表现如何。</p>
+<h3 id="1445">14.4.5 模型评估</h3>
+<p>请记住，在探索和建模剩余的 80% 之前，我们将 20% 的数据放在一边。只要我们不对测试集进行训练，我们现在就可以将从训练集中学到的知识应用于测试集。也就是说，我们利用我们拟合的模型来预测测试集中驴的体重。</p>
+<p>为此，我们需要准备测试集。我们的模型使用驴的周长和长度，以及驴年龄和身体状况评分的虚拟变量。我们将训练集上的所有转换应用于测试集：</p>
+<div class="highlight"><pre><span></span><code><span class="n">y_test</span> <span class="o">=</span> <span class="n">test_set</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span>
+
+<span class="n">X_test</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">test_set</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">intr</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">[[</span><span class="s1">&#39;intr&#39;</span><span class="p">,</span> <span class="s1">&#39;Length&#39;</span><span class="p">,</span> <span class="s1">&#39;Girth&#39;</span><span class="p">,</span> <span class="s1">&#39;BCS&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Sex&#39;</span><span class="p">]]</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;BCS&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Sex&#39;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;BCS_3.0&#39;</span><span class="p">,</span> <span class="s1">&#39;Age_5-10&#39;</span><span class="p">,</span> <span class="s1">&#39;Sex_female&#39;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">combine_bcs</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">combine_age_and_sex</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>我们整合了对设计矩阵的所有操作，以创建我们在训练集建模中确定的最终版本。现在我们要使用我们在训练集上拟合的 <span class="arithmatex">\(\theta\)</span> 来预测测试集中那些驴的体重：</p>
+<div class="highlight"><pre><span></span><code><span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">X_test</span> <span class="o">@</span> <span class="n">theta_hat</span>
+<span class="n">test_set_error</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">y_pred_test</span><span class="p">)</span> <span class="o">/</span> <span class="n">y_pred_test</span>
+</code></pre></div>
+<p>然后我们可以绘制相对预测误差：</p>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">y_pred_test</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">test_set_error</span><span class="p">,</span>
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Test set predictions&#39;</span><span class="p">,</span>
+                 <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_hline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_hline</span><span class="p">(</span><span class="n">y</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;Predicted weight (kg)&#39;</span><span class="p">,</span>
+    <span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;Relative error (%)&#39;</span><span class="p">,</span>
+    <span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Test set predictions" src="../../assets/images/case_study/donkey_model_47_0.svg" /></p>
+<p>请记住，正相对误差意味着低估体重，这并不像高估体重那样危急。从这个残差图中，我们看到几乎所有测试集的体重都在预测的 10% 以内，只有一个超过 10% 的误差是高估了。考虑到我们的损失函数对高估的惩罚更多，这也是有道理的。</p>
+<p>另一种显示实际值和预测值以及标记 10% 误差线的散点图提供了不同的视角：</p>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">y_pred_test</span><span class="p">,</span> 
+                 <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Test set predictions with 10</span><span class="si">% e</span><span class="s2">rror lines&quot;</span><span class="p">,</span>
+                 <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">350</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># 添加辅助线</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;0</span><span class="si">% e</span><span class="s1">rror&#39;</span><span class="p">,</span>
+                         <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">66</span><span class="p">,</span> <span class="mi">220</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;10</span><span class="si">% e</span><span class="s1">rror&#39;</span><span class="p">,</span>
+                         <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">54</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;-10</span><span class="si">% e</span><span class="s1">rror&#39;</span><span class="p">,</span>
+                         <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)))</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+                  <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;Predicted weight (kg)&quot;</span><span class="p">,</span>
+                  <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Actual weight (kg)&quot;</span><span class="p">,</span>
+                  <span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Test set predictions with error lines" src="../../assets/images/case_study/donkey_model_49_0.svg" /></p>
+<p>10% 的线在较大体重处离预测线更远。</p>
+<p>我们实现了我们的目标！我们有一个模型，它使用易于获得的测量值，简单到可以在说明书上解释，并且做出的预测在实际驴体重的 10% 以内。接下来，我们总结这个案例研究并反思我们的模型。</p>
+<h2 id="145">14.5 总结</h2>
+<p>在这个案例研究中，我们展示了建模的不同目的：描述、推断和预测。对于描述，我们寻求一个简单、易懂的模型。我们根据从分析的探索阶段得出的发现，手工构建了这个模型。我们在模型中包含特征、合并类别或转换特征所采取的每一个行动，都相当于我们在调查数据时做出的决定。</p>
+<p>在对诸如驴的体重等自然现象进行建模时，理想情况下我们会利用物理和统计模型。在这种情况下，物理模型是将驴表示为一个圆柱体。好奇的读者可能已经指出，我们可以直接使用这种表示法，根据驴的长度和周长（因为周长是 <span class="arithmatex">\(2\pi r\)</span>）来估计其（圆柱体）重量：</p>
+<div class="arithmatex">\[ \text{weight} \propto \text{girth}^2 \times \text{length} \]</div>
+<p>这个物理模型表明，对数变换后的重量与周长和长度近似呈线性关系：</p>
+<div class="arithmatex">\[ \log(\text{weight}) \propto 2\log(\text{girth}) + \log(\text{length}) \]</div>
+<p>鉴于这个物理模型，你可能会想，为什么我们在拟合模型时没有使用对数或平方变换。我们留给你去更详细地研究这样的模型。但一般来说，如果测量值的范围很小，那么对数函数大致是线性的。为了保持我们的模型简单，考虑到我们在周长和体重之间看到的高相关性所显示的统计模型的强度，我们选择不进行这些变换。</p>
+<p>在这个建模练习中，我们做了大量的<em>数据挖掘</em>（data dredging）。我们检查了由数值特征的线性组合构建的所有可能模型，并检查了虚拟变量的系数以决定是否合并类别。当我们使用像这样的迭代方法创建模型时，<strong>留出数据来评估模型是极其重要的</strong>。在新数据上评估模型使我们确信我们选择的模型效果良好。我们留出的数据没有进入构建模型时的任何决策过程，因此它让我们很好地了解模型在进行预测时的效果。</p>
+<p>我们应该牢记前面描述的数据范围及其潜在偏差。我们的模型在测试集上表现良好，但测试集和训练集来自同一个数据收集过程。只要新数据的范围保持不变，我们期望我们的模型在实践中也能表现良好。</p>
+<p>最后，这个案例研究表明，拟合模型往往是在简单与复杂之间，以及物理模型与统计模型之间的一种平衡。物理模型可以是建模的一个很好的起点，而统计模型可以为物理模型提供信息。作为数据科学家，我们需要在分析的每一步做出判断。建模既是一门艺术，也是一门科学。</p>
+<p>本案例研究及其前面的几章主要集中在拟合线性模型上。接下来，我们将考虑一种不同类型的建模，用于当我们要解释或预测的响应变量是定性（Categorical）的而不是定量（Quantitative）的情况（即分类问题）。</p>
+<p>下一章：<a href="../15_%E5%88%86%E7%B1%BB/">分类建模</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

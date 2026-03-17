@@ -1,0 +1,3621 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../06_%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+      
+      
+        <link rel="next" href="../08_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>7 数据可视化 - Python 修行指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#07" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Python 修行指南" class="md-header__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python 修行指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7 数据可视化
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Python 修行指南" class="md-nav__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Python 修行指南
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    前言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 预备知识
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 预备知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/01_Python%E7%A8%8B%E5%BA%8F%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Python程序基本结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/02_%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 基础语法与变量
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/03_%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 核心数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/04_%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 运算符与表达式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/05_%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 程序控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/06_%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 函数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/07_%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 文件操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/08_%E9%94%99%E8%AF%AF%E4%B8%8E%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 错误与异常处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/09_%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 面向对象编程基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 进阶修炼
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 进阶修炼
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/01_%E6%8E%A8%E5%AF%BC%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/02_%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 迭代器与生成器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/03_%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/04_%E8%A3%85%E9%A5%B0%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 装饰器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/05_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/06_%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%8C%85/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 模块与包
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/07_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 进阶输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/08_%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 命名空间与作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/09_%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 类型注解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/10_%E6%A0%87%E5%87%86%E5%BA%93%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 标准库概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/11_%E5%BC%82%E6%AD%A5IO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 异步IO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/01_%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 算法概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/02_%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%9E%9A%E4%B8%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 模拟与枚举
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/03_%E9%80%92%E5%BD%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 递归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/04_%E5%88%86%E6%B2%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 分治
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/05_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 二分查找
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/06_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 动态规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/07_%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 背包问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/08_%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 贪心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/09_%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 搜索算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/10_%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 图论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据科学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据科学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 生命周期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_%E7%9F%A9%E5%BD%A2%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 矩形数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 SQL与关系数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 文件处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据清洗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 数据分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 数据可视化
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 数据可视化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心原则
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工具与方法
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-choosing-scale-to-reveal-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 选择刻度以揭示结构 (Choosing Scale to Reveal Structure)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 选择刻度以揭示结构 (Choosing Scale to Reveal Structure)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-filling-the-data-region" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 填充数据区域 (Filling the Data Region)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-including-zero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 包含零点 (Including Zero)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-revealing-shape-through-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 通过变换揭示形状 (Revealing Shape Through Transformations)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-banking-to-decipher-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 倾斜以解读关系 (Banking to Decipher Relationships)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-revealing-relationships-through-straightening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 通过“拉直”揭示关系 (Revealing Relationships Through Straightening)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-smoothing-and-aggregating-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 平滑与聚合数据 (Smoothing and Aggregating Data)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 平滑与聚合数据 (Smoothing and Aggregating Data)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-smoothing-techniques-to-uncover-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 揭示形状的平滑技术 (Smoothing Techniques to Uncover Shape)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-smoothing-techniques-to-uncover-relationships-and-trends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 揭示关系与趋势的平滑技术 (Smoothing Techniques to Uncover Relationships and Trends)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-smoothing-techniques-need-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 平滑技术的调优 (Smoothing Techniques Need Tuning)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-reducing-distributions-to-quantiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 将分布简化为分位数 (Reducing Distributions to Quantiles)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-when-not-to-smooth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 何时不应平滑 (When Not to Smooth)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-facilitating-meaningful-comparisons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 促进有意义的比较 (Facilitating Meaningful Comparisons)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 促进有意义的比较 (Facilitating Meaningful Comparisons)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-emphasize-the-important-difference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 强调重要差异 (Emphasize the Important Difference)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-ordering-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 组别排序 (Ordering Groups)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-avoid-stacking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 避免堆叠 (Avoid Stacking)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-selecting-a-color-palette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 选择调色板 (Selecting a Color Palette)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-guidelines-for-comparisons-in-plots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 图表比较指南 (Guidelines for Comparisons in Plots)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-incorporating-the-data-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 结合研究设计 (Incorporating the Data Design)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 结合研究设计 (Incorporating the Data Design)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-data-collected-over-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 时间序列数据 (Data Collected Over Time)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-observational-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 观察性研究 (Observational Studies)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-unequal-sampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 不等概率抽样 (Unequal Sampling)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-geographic-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 地理数据 (Geographic Data)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-adding-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 添加上下文信息 (Adding Context)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 添加上下文信息 (Adding Context)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-text-and-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 文本与标签 (Text and Labels)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-reference-markers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 参考标记 (Reference Markers)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 案例：100米短跑成绩
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-plotly-creating-plots-using-plotly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 使用 plotly 创建图表 (Creating Plots Using plotly)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 使用 plotly 创建图表 (Creating Plots Using plotly)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-figure-trace-figure-and-trace-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Figure 和 Trace 对象 (Figure and Trace Objects)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-modifying-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 修改布局 (Modifying Layout)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-plotting-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 常用绘图函数 (Plotting Functions)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 注释 (Annotations)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-other-tools-for-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 其他可视化工具 (Other Tools for Visualization)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 其他可视化工具 (Other Tools for Visualization)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-matplotlib-seaborn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 matplotlib &amp; seaborn
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-grammar-of-graphics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 图形语法 (Grammar of Graphics)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 总结 (Summary)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 文本数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 数据交换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 线性模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 模型选择
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13_%E6%8E%A8%E7%90%86%E4%B8%8E%E9%A2%84%E6%B5%8B%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 推理与预测理论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15_%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16_%E6%95%B0%E5%80%BC%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 数值优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实用工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/01_Git%E4%B8%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Git与版本控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/02_Markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/03_Vibe_Coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Vibe Coding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/04_LeetCode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 LeetCode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/05_coze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 coze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/06_n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/07_PPT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 PPT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    深度学习入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deep_learning/01_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 深度学习概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心原则
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工具与方法
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-choosing-scale-to-reveal-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 选择刻度以揭示结构 (Choosing Scale to Reveal Structure)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 选择刻度以揭示结构 (Choosing Scale to Reveal Structure)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-filling-the-data-region" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 填充数据区域 (Filling the Data Region)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-including-zero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 包含零点 (Including Zero)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-revealing-shape-through-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 通过变换揭示形状 (Revealing Shape Through Transformations)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-banking-to-decipher-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 倾斜以解读关系 (Banking to Decipher Relationships)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-revealing-relationships-through-straightening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 通过“拉直”揭示关系 (Revealing Relationships Through Straightening)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-smoothing-and-aggregating-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 平滑与聚合数据 (Smoothing and Aggregating Data)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 平滑与聚合数据 (Smoothing and Aggregating Data)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-smoothing-techniques-to-uncover-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 揭示形状的平滑技术 (Smoothing Techniques to Uncover Shape)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-smoothing-techniques-to-uncover-relationships-and-trends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 揭示关系与趋势的平滑技术 (Smoothing Techniques to Uncover Relationships and Trends)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-smoothing-techniques-need-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 平滑技术的调优 (Smoothing Techniques Need Tuning)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-reducing-distributions-to-quantiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 将分布简化为分位数 (Reducing Distributions to Quantiles)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-when-not-to-smooth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 何时不应平滑 (When Not to Smooth)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-facilitating-meaningful-comparisons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 促进有意义的比较 (Facilitating Meaningful Comparisons)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 促进有意义的比较 (Facilitating Meaningful Comparisons)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-emphasize-the-important-difference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 强调重要差异 (Emphasize the Important Difference)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-ordering-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 组别排序 (Ordering Groups)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-avoid-stacking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 避免堆叠 (Avoid Stacking)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-selecting-a-color-palette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 选择调色板 (Selecting a Color Palette)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-guidelines-for-comparisons-in-plots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 图表比较指南 (Guidelines for Comparisons in Plots)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-incorporating-the-data-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 结合研究设计 (Incorporating the Data Design)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 结合研究设计 (Incorporating the Data Design)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-data-collected-over-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 时间序列数据 (Data Collected Over Time)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-observational-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 观察性研究 (Observational Studies)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-unequal-sampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 不等概率抽样 (Unequal Sampling)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-geographic-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 地理数据 (Geographic Data)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-adding-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 添加上下文信息 (Adding Context)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 添加上下文信息 (Adding Context)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-text-and-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 文本与标签 (Text and Labels)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-reference-markers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 参考标记 (Reference Markers)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 案例：100米短跑成绩
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-plotly-creating-plots-using-plotly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 使用 plotly 创建图表 (Creating Plots Using plotly)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 使用 plotly 创建图表 (Creating Plots Using plotly)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-figure-trace-figure-and-trace-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Figure 和 Trace 对象 (Figure and Trace Objects)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-modifying-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 修改布局 (Modifying Layout)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-plotting-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 常用绘图函数 (Plotting Functions)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 注释 (Annotations)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-other-tools-for-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 其他可视化工具 (Other Tools for Visualization)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 其他可视化工具 (Other Tools for Visualization)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-matplotlib-seaborn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 matplotlib &amp; seaborn
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-grammar-of-graphics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 图形语法 (Grammar of Graphics)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 总结 (Summary)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="07">07. 数据可视化</h1>
+<p>作为数据科学家，我们创建数据可视化的目的主要有两个：<strong>理解数据</strong>和<strong>解释分析</strong>。一个好的图表应该传达明确的信息，而我们的工作就是尽可能清晰地传达这一信息。</p>
+<h2 id="_1">核心原则</h2>
+<p>本章将讨论有效数据可视化的原则，使受众更容易掌握图表中的信息：</p>
+<ul>
+<li><strong>选择合适的坐标轴刻度</strong> (Choosing scales)</li>
+<li><strong>处理大量数据</strong> (Handling large amounts of data)：利用平滑 (smoothing) 和聚合 (aggregation) 技术。</li>
+<li><strong>促进有意义的比较</strong> (Facilitating meaningful comparisons)</li>
+<li><strong>结合研究设计</strong> (Incorporating study design)</li>
+<li><strong>添加上下文信息</strong> (Adding contextual information)</li>
+</ul>
+<h2 id="_2">工具与方法</h2>
+<p>虽然可视化软件经常更新，但我们将重点放在广泛适用的<strong>高层数据可视化原则</strong>上，同时提供具体的代码实现。即使软件更新，这些原则仍然可以指导可视化的创建。</p>
+<p>本章节将主要使用 Python 的 <strong>plotly</strong> 库进行演示。</p>
+<h2 id="1-choosing-scale-to-reveal-structure">1. 选择刻度以揭示结构 (Choosing Scale to Reveal Structure)</h2>
+<p>通过调整坐标轴的刻度、范围和比例，我们可以更好地揭示数据的分布形状和变量间的关系。</p>
+<h3 id="11-filling-the-data-region">1.1 填充数据区域 (Filling the Data Region)</h3>
+<p>当大部分数据挤在图表的一小部分区域时（例如存在极值），数据的分布特征（如偏度、多峰）会被掩盖。</p>
+<ul>
+<li><strong>策略</strong>：调整坐标轴范围，排除异常大的观测值（在图表中注明），使数据主体填充绘图区域。这有助于更清晰地展示数据的实际分布。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">right_hist</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">sfh</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;price&#39;</span><span class="p">)</span>
+<span class="n">left_hist</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">sfh</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;price&#39;</span><span class="p">)</span>
+<span class="c1"># We wrote the left_right function as a shorthand for plotly&#39;s make_subplots</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">left_right</span><span class="p">(</span><span class="n">left_hist</span><span class="p">,</span> <span class="n">right_hist</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2e6</span><span class="p">],</span> <span class="n">title_text</span><span class="o">=</span><span class="s2">&quot;Sale price (USD, under $2M)&quot;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mf">2e6</span><span class="p">,</span> <span class="mf">9e6</span><span class="p">],</span> <span class="n">title_text</span><span class="o">=</span><span class="s2">&quot;Sale price (USD, over $2M)&quot;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span>
+</code></pre></div>
+<p><img alt="Sale Prices Histogram" src="../../assets/images/data_science/viz_scale_9_0.svg" /></p>
+<h3 id="12-including-zero">1.2 包含零点 (Including Zero)</h3>
+<p>是否在坐标轴上包含 0 取决于图表类型和目的：</p>
+<ul>
+<li><strong>散点图 (Scatter Plots)</strong>：通常<strong>不需要</strong>包含 0，尤其是当数据远离 0 时。包含 0 可能会导致大量空白区域，压缩数据展示空间，掩盖变量间的线性关系。</li>
+<li><strong>条形图 (Bar Charts)</strong>：<strong>必须</strong>包含 0。条形的高度代表数值，如果截断坐标轴，容易误导读者（例如夸大差异）。</li>
+<li><strong>点图 (Dot Plots)</strong> 与 <strong>比例数据</strong>：类似于条形图，包含 0 有助于准确比较类别大小或比例（0 到 1）。</li>
+</ul>
+<p><img alt="Comparison" src="../../assets/images/data_science/viz_scale_12_0.svg" /></p>
+<p>上面右侧的散点图在两个轴上都包含了 0。这使得数据被推到了数据区域的顶部，留下了空白区域，不利于我们观察线性关系。</p>
+<p><img alt="Comparison" src="../../assets/images/data_science/viz_scale_15_0.svg" /></p>
+<p>例如上图，如果不包含 0，从右侧的图表很容易得出错误的结论，即小型犬的寿命是大型犬的两倍。</p>
+<p><img alt="Comparison" src="../../assets/images/data_science/viz_scale_17_0.svg" /></p>
+<p>在处理比例时，我们通常也需要包含 0，因为比例的范围在 0 到 1 之间。</p>
+<h3 id="13-revealing-shape-through-transformations">1.3 通过变换揭示形状 (Revealing Shape Through Transformations)</h3>
+<p>对于偏态分布（Skewed Data），线性刻度往往难以展示细节。</p>
+<ul>
+<li><strong>对数变换 (Log Transformation)</strong>：也就是 "Log Scale"。<ul>
+<li>可以让长尾分布变得更对称，揭示隐藏的模式（如次级波峰）。</li>
+<li>变换坐标轴（Log Axis）比变换数据本身更直观，因为坐标轴保留了原始单位。</li>
+<li>也可以用于散点图，将大数值拉向中心，揭示跨越多个数量级的变量之间的关系。</li>
+</ul>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="n">sfl</span> <span class="o">=</span> <span class="n">sfh</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">log_price</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">sfh</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]))</span>
+
+<span class="n">orig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">sfl</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                    <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="n">logged</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">sfl</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;log_price&#39;</span><span class="p">,</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> 
+                      <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">left_right</span><span class="p">(</span><span class="n">orig</span><span class="p">,</span> <span class="n">logged</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s1">&#39;Sale price (USD)&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s1">&#39;Sale price (USD log10)&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<img alt="Log Scale Scatter" src="../../assets/images/data_science/viz_scale_21_0.svg" /></p>
+<p>对数变换还可以揭示散点图的形状。这里，我们以建筑物面积为 x 轴，地块面积为 y 轴绘制了散点图。由于许多点都集中在数据区域的底部，因此很难看出该图的形状：</p>
+<div class="highlight"><pre><span></span><code><span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sfh</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;bsqft&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;lsqft&#39;</span><span class="p">,</span> 
+           <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;bsqft&quot;</span><span class="p">:</span> <span class="s2">&quot;Building size (sq ft)&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;lsqft&quot;</span><span class="p">:</span> <span class="s2">&quot;Lot size (sq ft)&quot;</span><span class="p">},</span>
+           <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="Log Scale Scatter" src="../../assets/images/data_science/viz_scale_26_0.svg" /></p>
+<p>但是，当我们对 x 轴和 y 轴都使用对数刻度时，这种关系的形状就更容易看清了：</p>
+<div class="highlight"><pre><span></span><code><span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sfh</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;bsqft&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;lsqft&#39;</span><span class="p">,</span>
+           <span class="n">log_x</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">log_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+           <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;bsqft&quot;</span><span class="p">:</span> <span class="s2">&quot;Building size (sq ft)&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;lsqft&quot;</span><span class="p">:</span> <span class="s2">&quot;Lot size (sq ft)&quot;</span><span class="p">},</span>
+           <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="Log Scale Scatter" src="../../assets/images/data_science/viz_scale_28_0.svg" /></p>
+<p>通过坐标轴变换，我们可以看到地块面积与建筑面积（​​对数坐标）大致呈线性关系。对数变换将较大的值——比其他值大几个数量级的值——向中心靠拢。这种变换有助于填充数据区域并揭示隐藏的结构，正如我们在房价分布以及房屋面积与地块面积的关系中所看到的那样。</p>
+<h3 id="14-banking-to-decipher-relationships">1.4 倾斜以解读关系 (Banking to Decipher Relationships)</h3>
+<ul>
+<li><strong>Banking to 45 degrees</strong>：调整图表的长宽比（Aspect Ratio），使数据点的趋势大致沿着 45 度线分布。这种比例最符合人眼识别偏差的习惯，能帮助我们更容易地发现数据是否遵循线性关系或存在异常。</li>
+</ul>
+<p><img alt="倾斜角度" src="../../assets/images/data_science/viz_scale_31_0.svg" /></p>
+<p>将图像倾斜 45 度有助于我们判断数据是否呈线性关系，但当数据呈现明显的曲线时，就很难确定其关系的具体形式。此时，我们可以尝试进行一些变换，使数据点落在一条直线上。对数变换有助于揭示曲线关系的一般形式。</p>
+<h3 id="15-revealing-relationships-through-straightening">1.5 通过“拉直”揭示关系 (Revealing Relationships Through Straightening)</h3>
+<p>当两个变量呈非线性关系（曲线）时，难以判断其具体形式。通过对轴进行对数变换，可以尝试将曲线“拉直”为直线，从而推断变量间的数学关系。</p>
+<p>例如，这里我们绘制了不同犬种的身高与体重的关系图：</p>
+<p><img alt="关系图" src="../../assets/images/data_science/viz_scale_35_0.svg" /></p>
+<p>我们发现个子高的狗体重更重，但这种关系并非线性关系。</p>
+<p>当两个变量之间看似存在非线性关系时，尝试对 x 轴、y 轴或两者都应用对数刻度会很有帮助。让我们在变换坐标轴后的散点图中寻找线性关系。这里我们重新绘制了犬种体重与身高的关系图，但这次我们对 y 轴应用了对数刻度：</p>
+<div class="highlight"><pre><span></span><code><span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dogs</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="n">log_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+           <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="s2">&quot;Height (cm)&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="s2">&quot;Weight (lb)&quot;</span><span class="p">},</span>
+           <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="对数刻度后关系图" src="../../assets/images/data_science/viz_scale_38_0.svg" /></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">X轴变换</th>
+<th style="text-align: left;">Y轴变换</th>
+<th style="text-align: left;">关系类型 (Relationship)</th>
+<th style="text-align: left;">别名 (Also known as)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">无 (Linear)</td>
+<td style="text-align: left;">无 (Linear)</td>
+<td style="text-align: left;">Linear: <span class="arithmatex">\(y = a + bx\)</span></td>
+<td style="text-align: left;">Linear</td>
+</tr>
+<tr>
+<td style="text-align: left;">对数 (Log)</td>
+<td style="text-align: left;">无 (Linear)</td>
+<td style="text-align: left;">Log: <span class="arithmatex">\(y = a + b \log_{10}(x)\)</span></td>
+<td style="text-align: left;">Linear-Log</td>
+</tr>
+<tr>
+<td style="text-align: left;">无 (Linear)</td>
+<td style="text-align: left;">对数 (Log)</td>
+<td style="text-align: left;">Exponential: <span class="arithmatex">\(\log_{10}(y) = a + bx\)</span></td>
+<td style="text-align: left;">Log-Linear</td>
+</tr>
+<tr>
+<td style="text-align: left;">对数 (Log)</td>
+<td style="text-align: left;">对数 (Log)</td>
+<td style="text-align: left;">Power: <span class="arithmatex">\(\log_{10}(y) = a + b \log_{10}(x)\)</span></td>
+<td style="text-align: left;">Log-Log</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Log-Linear</strong>：单轴对数变换，揭示指数关系。</li>
+<li><strong>Log-Log</strong>：双轴对数变换，揭示幂律关系 (Power Law) 或多项式关系。</li>
+</ul>
+<p><img alt="Transforms" src="../../assets/images/data_science/example-transforms.png" />
+图 11.1：对数变换如何将曲线关系“拉直”为线性关系。</p>
+<h2 id="2-smoothing-and-aggregating-data">2. 平滑与聚合数据 (Smoothing and Aggregating Data)</h2>
+<p>当数据量很大时，许多点会重叠在一起（Overplotting），导致我们无法看清数据的分布和关系。为了解决这个问题，我们可以使用平滑（Smoothing）和聚合（Aggregation）的技术。</p>
+<p><img alt="Overplotting" src="../../assets/images/data_science/cherry-overplotting.png" /></p>
+<h3 id="21-smoothing-techniques-to-uncover-shape">2.1 揭示形状的平滑技术 (Smoothing Techniques to Uncover Shape)</h3>
+<ul>
+<li><strong>直方图 (Histogram)</strong>：最常见的平滑技术，将数据聚合到不同的“箱子”（Bins）中，每个箱子的高度代表该范围内数据的数量或比例。</li>
+<li><strong>Rug Plot</strong>：在坐标轴边缘绘制每条数据的细线。对于少量数据，它可以展示具体位置；但对于大量数据，它会严重重叠。</li>
+<li><strong>核密度估计 (Kernel Density Estimation, KDE)</strong>：使用平滑曲线代替柱状图来展示分布形状。它类似于直方图，但更平滑。</li>
+</ul>
+<p><img alt="Histogram and Rug Plot" src="../../assets/images/data_science/viz_smoothing_9_0.svg" /></p>
+<p><em>直方图与 Rug Plot 结合，Rug Plot 显示了数据点的具体位置，而直方图展示了整体分布。</em></p>
+<p><img alt="KDE Plot" src="../../assets/images/data_science/viz_smoothing_12_0.svg" /></p>
+<p><em>KDE 曲线（蓝色）与直方图叠加，展示了平滑后的分布形状。</em></p>
+<h3 id="22-smoothing-techniques-to-uncover-relationships-and-trends">2.2 揭示关系与趋势的平滑技术 (Smoothing Techniques to Uncover Relationships and Trends)</h3>
+<p>对于散点图中的重叠问题，我们可以使用类似的方法：</p>
+<ul>
+<li><strong>六边形分箱图 (Hexbin Plot)</strong>：类似于二维的直方图。将平面划分为六边形区域，根据落入每个区域的点的数量进行着色。颜色越深，密度越高。</li>
+<li><strong>二维 KDE (2D KDE)</strong>：类似于等高线地图（Topographical Map）。展示了数据点的高密度区域（类似山峰）。</li>
+<li><strong>分箱均值 (Binning and Averaging)</strong>：将 x 轴分段（例如每 5 岁一组），计算每组中 y 值（如跑步时间）的平均值，然后连接这些均值点。这能清晰地揭示 x 与 y 之间的变化趋势。</li>
+</ul>
+<p><img alt="Hexbin Plot" src="../../assets/images/data_science/viz_smoothing_15_0.svg" /></p>
+<p><em>六边形分箱图：深色区域表示跑步者集中的年龄段（25-40岁）和完赛时间。</em></p>
+<p><img alt="2D KDE Plot" src="../../assets/images/data_science/viz_smoothing_17_0.svg" /></p>
+<p><em>二维 KDE 图：等高线展示了数据的高密度核心区域。</em></p>
+<p><img alt="Binned Means Plot" src="../../assets/images/data_science/viz_smoothing_20_0.svg" /></p>
+<p><em>分箱均值图：清晰地展示了跑步时间随年龄变化的趋势（年轻和年长跑者较慢，中年跑者较快）。</em></p>
+<p>分箱和核平滑技术依赖于一个调优参数，该参数指定了箱的宽度或核的扩展范围。我们在绘制直方图、核密度估计 (KDE) 或平滑曲线时，通常需要指定此参数。这将是下一节的主题。</p>
+<h3 id="23-smoothing-techniques-need-tuning">2.3 平滑技术的调优 (Smoothing Techniques Need Tuning)</h3>
+<p>平滑技术通常需要调整参数：</p>
+<ul>
+<li><strong>直方图</strong>：箱体宽度 (Bin Width) 或数量。</li>
+<li><strong>KDE</strong>：带宽 (Bandwidth)。</li>
+<li><strong>影响</strong>：<ul>
+<li><strong>过宽/带宽过大</strong>：过度平滑 (Over-smoothed)，丢失重要细节（如多峰结构）。</li>
+<li><strong>过窄/带宽过小</strong>：平滑不足 (Under-smoothed)，包含过多噪声。
+需要尝试不同的参数值，找到最能反映数据特征的平衡点。</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Smoothing Tuning" src="../../assets/images/data_science/viz_smoothing_24_0.svg" /></p>
+<p><em>左图过度平滑，丢失了分布形状；右图平滑不足，近似于 Rug Plot。</em></p>
+<h3 id="24-reducing-distributions-to-quantiles">2.4 将分布简化为分位数 (Reducing Distributions to Quantiles)</h3>
+<p>当比较两个分布时，除了直方图，我们还可以使用分位数（Quantiles）：</p>
+<ul>
+<li><strong>箱线图 (Box Plot)</strong>：基于四分位数（25%, 50%, 75%）展示分布，便于比较多个组的中心和离散程度。</li>
+<li><strong>Q-Q 图 (Quantile-Quantile Plot)</strong>：将两个分布的分位数对应画在散点图上。<ul>
+<li><strong>y = x 线</strong>：如果点落在直线上，说明两个分布形状相似。</li>
+<li><strong>平行线</strong>：中心位置平移。</li>
+<li><strong>斜率不同</strong>：离散程度不同。</li>
+<li><strong>弯曲</strong>：形状不同（如尾部更长）。</li>
+</ul>
+</li>
+</ul>
+<p>当两个分布形状大致相似时，很难用直方图进行比较。例如，下面的直方图显示了旧金山住房数据中两居室和四居室房屋的价格分布。这些分布的形状看起来大致相似。但是，绘制它们的分位数图可以方便地比较分布的中心、离散程度和尾部</p>
+<p><img alt="Quantile Hists" src="../../assets/images/data_science/viz_smoothing_29_0.svg" /></p>
+<p>然后，我们将匹配的百分位数绘制在散点图上。我们通常还会显示参考线 y = x，以帮助进行比较。</p>
+<p>当分位数点落在一条线上时，这些变量的分布形状相似。与参考线平行的线表示中心位置不同；斜率不为 1 的线表示离散程度不同；曲线则表示形状不同。</p>
+<p><img alt="Q-Q Plot" src="../../assets/images/data_science/viz_smoothing_33_0.svg" /></p>
+<h3 id="25-when-not-to-smooth">2.5 何时不应平滑 (When Not to Smooth)</h3>
+<p>平滑适合大量数据。当数据量很少（如少于几十个点）时，平滑会产生误导。</p>
+<ul>
+<li><strong>避免使用箱线图</strong>：对于极少量样本（如每组 2-3 个），箱线图会掩盖样本量过少的事实，并暗示不存在的分布形状。</li>
+<li><strong>推荐使用 Strip Plot</strong>：直接展示所有数据点。</li>
+<li><strong>Jittering (抖动)</strong>：如果点重叠（例如数值被取整），可以给数据点加上微小的随机噪声，使其错开，从而看清重叠的点数。</li>
+</ul>
+<p><img alt="Box Plot Bad" src="../../assets/images/data_science/viz_smoothing_36_0.svg" /></p>
+<p><em>样本量极少时，箱线图可能产生误导。</em></p>
+<p><img alt="Strip Plot Good" src="../../assets/images/data_science/viz_smoothing_38_0.svg" /></p>
+<p><em>Strip Plot 清晰展示了每组的实际数据点数量和位置。</em></p>
+<h2 id="3-facilitating-meaningful-comparisons">3. 促进有意义的比较 (Facilitating Meaningful Comparisons)</h2>
+<p>好的图表应该帮助读者进行有意义的比较。以下原则可以提高图表的清晰度。</p>
+<h3 id="31-emphasize-the-important-difference">3.1 强调重要差异 (Emphasize the Important Difference)</h3>
+<p>在比较不同组别时，确保图表设计突出了你想要强调的差异。</p>
+<ul>
+<li><strong>对齐方式</strong>：将要比较的元素对齐，比分散排列更容易比较。</li>
+<li><strong>示例</strong>：<ul>
+<li><strong>并列条形图 (Grouped Bar Chart)</strong>：如果在同一教育水平下比较男女收入，将男女的条形放在一起比分开展示更好。</li>
+<li><strong>点图 (Dot Plot)</strong>：相比条形图，<strong>垂直对齐</strong>的点图能更清晰地展示同一类别下不同组别的差距（如教育水平增加时，男女收入差距扩大）。</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Dot plot comparison" src="../../assets/images/data_science/viz_comparisons_5_0.svg" /></p>
+<p><img alt="Dot plot comparison" src="../../assets/images/data_science/viz_comparisons_7_0.svg" /></p>
+<p><img alt="Dot plot comparison" src="../../assets/images/data_science/viz_comparisons_9_0.svg" /></p>
+<p><em>点图通过垂直对齐，清晰展示了随教育程度提高，男女收入差距扩大的趋势。</em></p>
+<p>我们考虑了三张可视化相同数据的图表，但它们在图表信息的清晰度上有所不同。我们更倾向于最后一张图，因为它将收入差异垂直排列，使比较更加容易。</p>
+<h3 id="32-ordering-groups">3.2 组别排序 (Ordering Groups)</h3>
+<ul>
+<li><strong>有序特征 (Ordinal Features)</strong>：保持其自然顺序（如教育程度：小学 -&gt; 中学 -&gt; 大学）。</li>
+<li><strong>名义特征 (Nominal Features)</strong>：没有固有顺序（如城市、犬种）。<strong>原则</strong>：根据数值大小（如平均寿命、中位数房价）进行排序，而不是按字母顺序。这样可以更容易地比较各组的大小和分布。</li>
+</ul>
+<p><img alt="Sorted Bar Chart" src="../../assets/images/data_science/viz_comparisons_12_0.svg" /></p>
+<p><em>右图按平均寿命排序，比左图按字母排序更易于比较。</em></p>
+<p><img alt="Sorted Box Plot" src="../../assets/images/data_science/viz_comparisons_15_0.svg" /></p>
+<p><em>右图按中位数房价排序，各城市的房价分布高低一目了然。</em></p>
+<p>如果可能，在条形图中按高度对条形进行排序，在箱线图中按中位数对箱体进行排序，可以更方便地进行组间比较。</p>
+<h3 id="33-avoid-stacking">3.3 避免堆叠 (Avoid Stacking)</h3>
+<ul>
+<li><strong>堆叠条形图 (Stacked Bar Plots)</strong>：虽然能展示比例，但在比较非底层（基线不在此）的段落时非常困难。因为基线在“抖动” (Jiggling the baseline)，我们的眼睛很难准确判断长度差异。</li>
+<li><strong>堆叠面积图/线图 (Stacked Line Plots)</strong>：同样存在基线抖动问题，难以观察单个类别的变化趋势或进行相互比较。</li>
+<li><strong>建议</strong>：<ul>
+<li>使用<strong>非堆叠</strong>的线条（可以用颜色区分）。</li>
+<li>使用对数刻度（如果数据跨度大）。
+这样每个类别的基线都是平直的 x 轴，只需比较 y 轴高度即可。</li>
+</ul>
+</li>
+</ul>
+<p>图中每个条形的高度都相同，均为 1，因为这些条形代表城市中拥有一个或多个卧室的房屋的比例，因此加起来等于 1 或 100%：</p>
+<p><img alt="Bubble Chart Bad" src="../../assets/images/data_science/viz_comparisons_22_0.svg" /></p>
+<p><em>堆叠条形图难以准确比较非底层的段落长度。</em></p>
+<p><img alt="Stacked Area Bad" src="../../assets/images/data_science/viz_comparisons_26_0.svg" /></p>
+<p><em>堆叠面积图难以比较各国的排放量变化。</em></p>
+<p><img alt="Line Chart Good" src="../../assets/images/data_science/viz_comparisons_28_0.svg" /></p>
+<p><em>非堆叠线图（配合对数刻度）清晰展示了各国排放量的具体趋势和比较。</em></p>
+<h3 id="34-selecting-a-color-palette">3.4 选择调色板 (Selecting a Color Palette)</h3>
+<p>颜色应传达信息，不应滥用。</p>
+<ul>
+<li><strong>避免</strong>：过于刺眼或过暗的颜色；对色盲不友好的配色（如红绿混用）。</li>
+<li><strong>分类数据 (Categorical)</strong>：使用<strong>定性 (Qualitative)</strong> 调色板，颜色之间区分度高，无明显顺序。</li>
+<li><strong>数值数据 (Numeric)</strong>：<ul>
+<li><strong>顺序 (Sequential)</strong>：颜色渐变（浅到深），强调大值或小值（如癌症率）。</li>
+<li><strong>发散 (Diverging)</strong>：两种对比色从中间向两端加深，强调两极（如选举结果）。</li>
+</ul>
+</li>
+<li><strong>感知均匀 (Perceptually Uniform)</strong>：数值翻倍时，颜色的感知强度也应翻倍。</li>
+</ul>
+<p><img alt="Color Palettes" src="../../assets/images/data_science/threePalettes.jpg" /></p>
+<p><em>图 11.2：ColorBrewer 提供的三种调色板：定性（上）、发散（中）、顺序（下）。</em></p>
+<h3 id="35-guidelines-for-comparisons-in-plots">3.5 图表比较指南 (Guidelines for Comparisons in Plots)</h3>
+<p>研究表明，人类对不同视觉编码的感知准确度从高到低依次为：</p>
+<ol>
+<li><strong>沿通用刻度的位置 (Positions along a common scale)</strong>：如散点图、点图。</li>
+<li><strong>沿相同但不相关刻度的位置 (Positions on identical, nonaligned scales)</strong>：如分面散点图。</li>
+<li><strong>长度 (Length)</strong>：如条形图。</li>
+<li><strong>角度与斜率 (Angle and slope)</strong>：如饼图。</li>
+<li><strong>面积 (Area)</strong>：如气泡图。</li>
+<li><strong>体积与密度 (Volume and density)</strong>：如3D图。</li>
+<li><strong>颜色饱和度与色调 (Color saturation and hue)</strong>：如热力图。</li>
+</ol>
+<p><strong>总结</strong>：</p>
+<p>尽量使用<strong>位置</strong>和<strong>长度</strong>来进行比较。避免使用饼图（角度难以判断），除非只有很少的切片。</p>
+<p><img alt="Pie vs Bar" src="../../assets/images/data_science/viz_comparisons_40_0.svg" /></p>
+<p><em>条形图（长度）比饼图（角度）更容易准确读取比例和排序。</em></p>
+<h2 id="4-incorporating-the-data-design">4. 结合研究设计 (Incorporating the Data Design)</h2>
+<p>创建可视化时，必须考虑数据的来源和收集方式（Data Scope）。这些因素决定了我们应该如何展示数据以及如何得出一个有效的结论。</p>
+<h3 id="41-data-collected-over-time">4.1 时间序列数据 (Data Collected Over Time)</h3>
+<p>对于随时间收集的数据，通常使用线图，时间作为 x 轴。</p>
+<ul>
+<li><strong>通胀调整 (Inflation Adjustment)</strong>：涉及货币的时间序列（如跨越多年的房价），通常需要根据通货膨胀率进行调整，以保持比较的公平性。</li>
+<li><strong>基准化 (Normalization)</strong>：将所有线条的起始点设为同一基准（如 "相对于 2003 年的价格"），可以清晰展示不同组别随时间变化的相对幅度。</li>
+</ul>
+<p><img alt="Time Series" src="../../assets/images/data_science/viz_data_design_6_0.svg" /></p>
+<p><em>中位数房价随时间的变化。</em></p>
+<p><img alt="Relative Time Series" src="../../assets/images/data_science/viz_data_design_8_0.svg" /></p>
+<p><em>从图中可以看出，低价位（10th percentile）房屋在崩盘中受到的冲击最大，而高价位房屋受到的影响较小。</em></p>
+<h3 id="42-observational-studies">4.2 观察性研究 (Observational Studies)</h3>
+<p>观察性数据（非普查或科学抽样）需要格外小心。</p>
+<ul>
+<li><strong>横截面研究 (Cross-Sectional vs. Longitudinal)</strong>：<ul>
+<li><strong>误区</strong>：从横截面数据（同一时间点不同年龄的人）推断纵向趋势（同一个人随年龄的变化）。</li>
+<li><strong>示例</strong>：跑步时间随年龄变化的图表是横截面的。60 岁的跑步者和 40 岁的跑步者是不同的人群（60 岁的可能本身就是更健康的幸存者或长期坚持者）。因此，不能简单得出“一个人变老后跑步速度会按此曲线下降”的结论。</li>
+</ul>
+</li>
+<li><strong>队列效应 (Cohort Effect)</strong>：不同年份的参与者群体可能不同。例如，随着比赛知名度提高，更多新手参与，导致整体成绩下降。分年份绘制线图可以揭示这种变化。</li>
+</ul>
+<p><img alt="Cohort Analysis" src="../../assets/images/data_science/viz_data_design_11_0.svg" /></p>
+<p><em>横截面数据可能导致对个体变化的错误推断。</em></p>
+<p><img alt="Cohort Analysis" src="../../assets/images/data_science/viz_data_design_15_0.svg" /></p>
+<p><em>分年份绘制显示，2010 年的跑步者在各个年龄段都比 1999 年的更慢，暗示了参与者群体的变化。</em></p>
+<h3 id="43-unequal-sampling">4.3 不等概率抽样 (Unequal Sampling)</h3>
+<p>在科学抽样（如调查）中，如果抽样是不等概率的（例如某些群体被过度抽样），则必须使用<strong>采样权重 (Sampling Weights)</strong>。</p>
+<ul>
+<li><strong>忽略权重的后果</strong>：会导致对分布的有偏估计。例如，未加权的图表可能夸大了“其他”类别的急诊访问比例，而加权后的图表则还原了真实的人口比例。</li>
+</ul>
+<p><img alt="Weighted vs Unweighted" src="../../assets/images/data_science/viz_data_design_19_0.svg" /></p>
+<p><em>左图未加权，右图加权。忽略权重会导致对总体分布的错误认识。</em></p>
+<h3 id="44-geographic-data">4.4 地理数据 (Geographic Data)</h3>
+<p>当数据包含地理信息（经纬度）时，地图是必不可少的工具。</p>
+<ul>
+<li>简单的直方图可能会掩盖数据的空间分布特征（如某些地区数据点密集）。</li>
+<li><strong>建议</strong>：结合地图展示位置，并利用颜色、大小或分面（Facet）来展示特定区域的数据分布。</li>
+</ul>
+<p><img alt="Geo Map" src="../../assets/images/data_science/viz_data_design_23_0.svg" /></p>
+<p><em>地图揭示了数据点在地理上的不均匀分布（如集中在加州和东海岸），这是简单统计图无法体现的。</em></p>
+<h2 id="5-adding-context">5. 添加上下文信息 (Adding Context)</h2>
+<p>一个好的图表应该包含足够的上下文信息，使其能够<strong>独立存在</strong> (Stand Alone)。读者不需要寻找额外的解释就能理解图表的主旨。</p>
+<h3 id="51-text-and-labels">5.1 文本与标签 (Text and Labels)</h3>
+<ul>
+<li><strong>轴标签 (Axis Labels)</strong>：应包含测量单位及清晰的物理意义。</li>
+<li><strong>标题 (Titles)</strong>：直接陈述图表的主要结论或所绘内容。</li>
+<li><strong>图例 (Legends)</strong>：当图表包含多个系列时，图例是必须的。</li>
+<li><strong>说明文字 (Captions)</strong>：描述图表内容、指出重要特征并评论其含义。读者往往只看图和标题，因此说明文字应自成一体。</li>
+</ul>
+<h3 id="52-reference-markers">5.2 参考标记 (Reference Markers)</h3>
+<ul>
+<li><strong>参考线 (Reference Lines)</strong>：<ul>
+<li>在 Q-Q 图中添加 <span class="arithmatex">\(y=x\)</span> 线。</li>
+<li>在时间序列图中添加垂直线标记特殊事件（如政策颁布、自然灾害）。</li>
+<li>添加水平线标记基准值（如平均值、目标值、阈值）。</li>
+</ul>
+</li>
+<li><strong>注释 (Annotations)</strong>：直接在图表中标记关键数据点（如最大值、最小值、异常值）。</li>
+</ul>
+<h3 id="53-100">5.3 案例：100米短跑成绩</h3>
+<p>我们从一个基本的散点图开始，展示自 1968 年以来男子 100 米短跑中跑进 10 秒的成绩。</p>
+<p><img alt="Basic Scatter" src="../../assets/images/data_science/viz_context_10_0.svg" /></p>
+<p>为了使图表达到发布标准，我们添加了上下文：</p>
+<ol>
+<li><strong>标题</strong>：不仅是 "Race Times vs Year"，而是直接陈述结论（如 "The 100m Sprint is Getting Faster"）。</li>
+<li><strong>轴标签</strong>：明确单位。</li>
+<li><strong>参考线</strong>：在 10 秒处添加水平线，说明这是进入门槛。</li>
+<li><strong>注释</strong>：特别标记了 Usain Bolt 的世界纪录 (9.58s) 和第二好成绩，吸引读者注意。</li>
+</ol>
+<p><img alt="Context added" src="../../assets/images/data_science/viz_context_12_0.svg" /></p>
+<p><em>添加上下文后的图表：清晰传达了选手成绩逐年提高以及博尔特纪录的不可撼动。</em></p>
+<p>人们往往记住了图表，而不是大段的文字或公式。为图表添加充分的上下文，是数据可视化的重要一步。</p>
+<h2 id="6-plotly-creating-plots-using-plotly">6. 使用 plotly 创建图表 (Creating Plots Using plotly)</h2>
+<p><code>plotly</code> 是本书主要使用的 Python 绘图库。与静态图像库不同，它创建的是<strong>交互式图表</strong>，支持缩放、平移和悬停查看数据。此外，它还支持导出矢量图 (SVG) 格式。我们将主要使用简洁的 <code>plotly.express</code> 接口 (通常导入为 <code>px</code>)。</p>
+<h3 id="61-figure-trace-figure-and-trace-objects">6.1 Figure 和 Trace 对象 (Figure and Trace Objects)</h3>
+<p>在 <code>plotly</code> 中，每个图表都被封装在一个 <strong>Figure</strong> 对象中。</p>
+<ul>
+<li><strong>Figure</strong>：负责管理绘图内容（如散点图、线图）和布局（如标题、图例、尺寸）。</li>
+<li><strong>Trace</strong>：实际的数据系列（一优曲线、一组点等）。</li>
+<li><strong>plotly.express</strong>：提供高级 API，函数返回的就是 Figure 对象。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">dogs</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;height&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span>
+    <span class="n">labels</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="s2">&quot;Height (cm)&quot;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;Weight (kg)&quot;</span><span class="p">),</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># 显示图表</span>
+</code></pre></div>
+<p><img alt="Scatter Plot" src="../../assets/images/data_science/viz_plotly_11_0.svg" /></p>
+<h3 id="62-modifying-layout">6.2 修改布局 (Modifying Layout)</h3>
+<p>虽然 <code>px</code> 能自动生成布局，但我们经常需要通过 <code>update_layout</code>、<code>update_xaxes</code> 和 <code>update_yaxes</code> 方法进行微调。</p>
+<ul>
+<li><strong>update_layout()</strong>：修改全局布局属性，如标题、边距 (margins)、图例显示等。</li>
+<li><strong>update_xaxes() / update_yaxes()</strong>：修改坐标轴属性，如范围 (range)、刻度数量 (nticks)、轴标签 (title) 等。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">40</span><span class="p">))</span> <span class="c1"># 增加顶部边距，防止标题被截断</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">18</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Typical lifespan (yr)&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Average weight (kg)&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="Layout Updated" src="../../assets/images/data_science/viz_plotly_19_0.svg" /></p>
+<h3 id="63-plotting-functions">6.3 常用绘图函数 (Plotting Functions)</h3>
+<p><code>plotly.express</code> 提供了丰富的绘图函数，API 设计非常统一：第一个参数是 DataFrame，然后通过 <code>x</code> 和 <code>y</code> 参数指定列名。</p>
+<ul>
+<li>
+<p><strong>基本图表</strong>：</p>
+<ul>
+<li><code>px.line()</code>：线图</li>
+<li><code>px.scatter()</code>：散点图</li>
+<li><code>px.bar()</code>：条形图</li>
+<li><code>px.box()</code>：箱线图</li>
+<li><code>px.histogram()</code>：直方图</li>
+</ul>
+</li>
+<li>
+<p><strong>分面 (Faceting)</strong>：</p>
+<ul>
+<li><strong>颜色/符号</strong>：在同一图表中区分组别。<code>color='col_name'</code>, <code>symbol='col_name'</code>。</li>
+<li><strong>子图 (Subplots)</strong>：将组别分开放置。<code>facet_col='col_name'</code>, <code>facet_row='col_name'</code>。</li>
+</ul>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># 使用颜色和符号进行分面</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dogs</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> 
+                 <span class="n">color</span><span class="o">=</span><span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">&#39;size&#39;</span><span class="p">,</span>
+                 <span class="n">labels</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="s2">&quot;Height (cm)&quot;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;Weight (kg)&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;Size&quot;</span><span class="p">))</span>
+</code></pre></div>
+<img alt="Color Facet" src="../../assets/images/data_science/viz_plotly_28_0.svg" /></p>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># 使用列分面</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">dogs</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;longevity&#39;</span><span class="p">,</span> <span class="n">facet_col</span><span class="o">=</span><span class="s1">&#39;size&#39;</span><span class="p">)</span>
+</code></pre></div>
+<img alt="Col Facet" src="../../assets/images/data_science/viz_plotly_30_0.svg" /></p>
+<h3 id="64-annotations">6.4 注释 (Annotations)</h3>
+<p>使用 <code>Figure.add_annotation()</code> 添加文本和箭头，用于标记特定数据点或提供额外说明。</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">fig</span><span class="o">.</span><span class="n">add_annotation</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Chihuahuas live 16.5 years on average!&#39;</span><span class="p">,</span>
+                   <span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">16.5</span><span class="p">,</span> <span class="c1"># 箭头指向的坐标</span>
+                   <span class="n">ax</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">ay</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>   <span class="c1"># 文本偏移量</span>
+                   <span class="n">xshift</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">xanchor</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</code></pre></div>
+<img alt="Annotation" src="../../assets/images/data_science/viz_plotly_33_0.svg" /></p>
+<h2 id="7-other-tools-for-visualization">7. 其他可视化工具 (Other Tools for Visualization)</h2>
+<p>虽然本书主要使用 <code>plotly</code>，但了解其他常用工具也是很有价值的。</p>
+<h3 id="71-matplotlib-seaborn">7.1 matplotlib &amp; seaborn</h3>
+<ul>
+<li><strong>matplotlib</strong>：Python 最早、最广泛使用的绘图库。生态系统庞大，<code>pandas</code> 内置绘图功能即基于此。适合创建静态图像。</li>
+<li><strong>seaborn</strong>：建立在 matplotlib 之上，提供更简洁的 API 用于统计绘图（如带置信区间的点图）。其 API 设计曾启发了 <code>plotly</code>。</li>
+<li><strong>对比</strong>：<ul>
+<li><strong>优点</strong>：社区庞大，资源丰富，适合静态出版物。</li>
+<li><strong>缺点</strong>：通常生成静态图片，缺乏交互性（缩放、悬停）。</li>
+<li><em>注：本书部分图表使用 seaborn/matplotlib 制作，因为 plotly 暂不支持某些特定类型的图表。</em></li>
+</ul>
+</li>
+</ul>
+<h3 id="72-grammar-of-graphics">7.2 图形语法 (Grammar of Graphics)</h3>
+<ul>
+<li><strong>理论基础</strong>：由 Lee Wilkinson 提出，将图表分解为“几何对象”、“标度”、“坐标系”等基本组件。例如，条形图和点图的区别仅在于几何对象（矩形 vs 点）。</li>
+<li><strong>实现</strong>：<ul>
+<li><strong>R 语言</strong>：<code>ggplot2</code></li>
+<li><strong>JavaScript</strong>：<code>Vega</code></li>
+<li><strong>Python</strong>：<code>Vega-Altair</code> (基于 Vega)</li>
+</ul>
+</li>
+<li><strong>Vega-Altair</strong>：<ul>
+<li><strong>优点</strong>：极其灵活，支持交互，基于图形语法理论。</li>
+<li><strong>缺点</strong>：API 可能比 <code>plotly</code> 稍显复杂。</li>
+</ul>
+</li>
+<li><strong>选择理由</strong>：本书选择 <code>plotly</code> 是因为它在交互性和 API 易用性之间取得了良好的平衡，足以满足大多数数据分析需求。</li>
+</ul>
+<h2 id="8-summary">8. 总结 (Summary)</h2>
+<p>数据可视化是一个<strong>迭代</strong>的过程。我们通过创建图表来发现模式，然后不断调整或更换图表类型以更清晰地传达信息。</p>
+<p>本章涵盖了做出这些决策的核心原则：
+1.  <strong>刻度 (Scale)</strong>：通过调整和变换坐标轴揭示隐藏的数据结构。
+2.  <strong>平滑与聚合 (Smoothing and Aggregating)</strong>：处理大量数据，解决重叠问题。
+3.  <strong>比较 (Comparisons)</strong>：利用其感知原则（如对齐基线），使比较更有意义。
+4.  <strong>数据设计 (Data Design)</strong>：考虑数据的收集背景，避免误导。
+5.  <strong>上下文 (Context)</strong>：添加标题、标签和注释，帮助读者理解。</p>
+<p>请记住，没有一步到位的完美图表。我们需要耐心地迭代、完善，最终挑选出最能有力支撑我们分析结论的图表呈现给受众。</p>
+<p>下一章我们将通过一个<a href="../08_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/">实例</a>来实践我们此前章节中学到的知识。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
