@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../jie_course/numpy/">
+        <link rel="prev" href="../../data_science/17_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/">
       
       
-        <link rel="next" href="../02_Markdown/">
+        <link rel="next" href="../numpy/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>1 Git与版本控制 - Python 修行指南</title>
+        <title>Python深度学习 - Python 修行指南</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#git" class="md-skip">
+        <a href="#python" class="md-skip">
           跳转至
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1 Git与版本控制
+              Python深度学习
             
           </span>
         </div>
@@ -1752,18 +1752,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -1784,7 +1786,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1799,10 +1801,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../jie_course/Python%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python深度学习
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1818,6 +1847,304 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        环境搭建与配置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="环境搭建与配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Conda 虚拟环境管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 常用库管理 (Pip)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-gpu-cuda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. GPU 与 CUDA 基础
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-pytorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. PyTorch 安装指南
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. PyTorch 安装指南">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方法一：官方命令安装（推荐）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方法二：离线 Wheel 安装（网络不佳时）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-jupyter-notebook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Jupyter Notebook 配置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Jupyter Notebook 配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关联虚拟环境
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Python 基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 变量与数据类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 核心数据结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 程序控制流
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 程序控制流">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        条件判断与循环
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 函数与模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#numpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NumPy 科学计算库
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NumPy 科学计算库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 数组创建 (Creation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 数组属性 (Attributes)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 索引与切片 (Indexing)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-reshape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 维度变换 (Reshape)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-broadcasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 运算与广播 (Broadcasting)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 常用数学与统计函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1830,7 +2157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../jie_course/numpy/" class="md-nav__link">
+      <a href="../numpy/" class="md-nav__link">
         
   
   
@@ -1862,20 +2189,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -1896,7 +2221,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1911,37 +2236,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    1 Git与版本控制
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../tools/01_Git%E4%B8%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" class="md-nav__link">
         
   
   
@@ -1957,331 +2255,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#git_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        为什么需要 Git？
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 安装与配置
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. 安装与配置">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#git_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        安装 Git
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        全局配置 (首次使用必做)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 核心概念
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 基础工作流
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. 基础工作流">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        初始化仓库
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        日常操作三板斧
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        删除与移动文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        查看状态与历史
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-branching" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 分支管理 (Branching)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. 分支管理 (Branching)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常用分支命令
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        合并流程示例
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-remote" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 远程仓库 (Remote)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. 远程仓库 (Remote)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        克隆远程仓库
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        关联远程仓库
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        配置 SSH 密钥 (免密登录)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pull-vs-fetch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        拉取远程代码 (Pull vs Fetch)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-gitignore" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. .gitignore 文件
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. 常见问题与回滚
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. 常见问题与回滚">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#stash" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        临时保存工作现场 (Stash)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        撤销工作区的修改
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        撤销暂存区的修改
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        回退版本
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-githubgitlab-pull-request" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. GitHub/GitLab 工作流 (Pull Request)
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2294,7 +2267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02_Markdown/" class="md-nav__link">
+      <a href="../../tools/02_Markdown/" class="md-nav__link">
         
   
   
@@ -2322,7 +2295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03_Vibe_Coding/" class="md-nav__link">
+      <a href="../../tools/03_Vibe_Coding/" class="md-nav__link">
         
   
   
@@ -2350,7 +2323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04_LeetCode/" class="md-nav__link">
+      <a href="../../tools/04_LeetCode/" class="md-nav__link">
         
   
   
@@ -2378,7 +2351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../05_coze/" class="md-nav__link">
+      <a href="../../tools/05_coze/" class="md-nav__link">
         
   
   
@@ -2406,7 +2379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../06_n8n/" class="md-nav__link">
+      <a href="../../tools/06_n8n/" class="md-nav__link">
         
   
   
@@ -2434,7 +2407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../07_PPT/" class="md-nav__link">
+      <a href="../../tools/07_PPT/" class="md-nav__link">
         
   
   
@@ -2489,116 +2462,189 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#git_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        为什么需要 Git？
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 安装与配置
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. 安装与配置">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#git_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        安装 Git
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        全局配置 (首次使用必做)
+        环境搭建与配置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="环境搭建与配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Conda 虚拟环境管理
       
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+          <li class="md-nav__item">
+  <a href="#2-pip" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 核心概念
+        2. 常用库管理 (Pip)
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#3-gpu-cuda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 基础工作流
+        3. GPU 与 CUDA 基础
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. 基础工作流">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-pytorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. PyTorch 安装指南
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. PyTorch 安装指南">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        初始化仓库
+        方法一：官方命令安装（推荐）
       
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#wheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方法二：离线 Wheel 安装（网络不佳时）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-jupyter-notebook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Jupyter Notebook 配置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Jupyter Notebook 配置">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        日常操作三板斧
+        关联虚拟环境
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Python 基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 变量与数据类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 核心数据结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 程序控制流
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 程序控制流">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        删除与移动文件
+        条件判断与循环
       
     </span>
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        查看状态与历史
+        4. 函数与模块
       
     </span>
   </a>
@@ -2611,22 +2657,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-branching" class="md-nav__link">
+  <a href="#numpy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. 分支管理 (Branching)
+        NumPy 科学计算库
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. 分支管理 (Branching)">
+    <nav class="md-nav" aria-label="NumPy 科学计算库">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#1-creation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        常用分支命令
+        1. 数组创建 (Creation)
       
     </span>
   </a>
@@ -2634,10 +2680,54 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#2-attributes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        合并流程示例
+        2. 数组属性 (Attributes)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 索引与切片 (Indexing)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-reshape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 维度变换 (Reshape)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-broadcasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 运算与广播 (Broadcasting)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 常用数学与统计函数
       
     </span>
   </a>
@@ -2646,150 +2736,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-remote" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 远程仓库 (Remote)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. 远程仓库 (Remote)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        克隆远程仓库
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        关联远程仓库
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        配置 SSH 密钥 (免密登录)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pull-vs-fetch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        拉取远程代码 (Pull vs Fetch)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-gitignore" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. .gitignore 文件
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. 常见问题与回滚
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. 常见问题与回滚">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#stash" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        临时保存工作现场 (Stash)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        撤销工作区的修改
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        撤销暂存区的修改
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        回退版本
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-githubgitlab-pull-request" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. GitHub/GitLab 工作流 (Pull Request)
-      
-    </span>
-  </a>
   
 </li>
       
@@ -2810,301 +2756,349 @@
 
 
 
-<h1 id="git">Git 与版本控制</h1>
-<p>Git 是目前世界上最先进的分布式版本控制系统（Distributed Version Control System，DVCS）。无论你是个人开发者还是团队成员，Git 都是必备技能。</p>
-<h2 id="git_1">为什么需要 Git？</h2>
-<p>试想以下场景：</p>
-<ul>
-<li><strong>后悔药</strong>：代码写炸了，想回到昨天的状态？</li>
-<li><strong>多版本管理</strong>：老板要一个"正式版"，又要一个"春节特别版"？</li>
-<li><strong>协同工作</strong>：多个人同时修改一个文件，怎么合并？</li>
-</ul>
-<p>Git 就是为了解决这些问题而生的。</p>
-<h2 id="1">1. 安装与配置</h2>
-<h3 id="git_2">安装 Git</h3>
-<ul>
-<li><strong>Windows</strong>: 下载 <a href="https://git-scm.com/download/win">Git for Windows</a> 并安装。</li>
-<li><strong>Mac</strong>: 使用 Homebrew (<code>brew install git</code>) 或下载安装包。</li>
-<li><strong>Linux</strong>: <code>sudo apt install git</code> (Ubuntu/Debian)。</li>
-</ul>
-<h3 id="_1">全局配置 (首次使用必做)</h3>
-<p>安装后，告诉 Git 你是谁：</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;你的名字&quot;</span>
-git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;你的邮箱@example.com&quot;</span>
-</code></pre></div>
-<p>查看配置信息：</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--list
-</code></pre></div>
-<h2 id="2">2. 核心概念</h2>
-<p>理解 Git 的三个区至关重要：</p>
-<ol>
-<li><strong>工作区 (Working Directory)</strong>: 你电脑里能看到的目录，平时写代码的地方。</li>
-<li><strong>暂存区 (Staging Area/Index)</strong>: 临时存储即将提交的修改 (类似于购物车的“待结算”状态)。</li>
-<li><strong>本地仓库 (Local Repository)</strong>: 只有 <code>commit</code> 之后，修改才算真正进入了版本库（安全了）。</li>
-</ol>
-<pre class="mermaid"><code>graph LR
-    A[工作区] -- git add --&gt; B[暂存区]
-    B -- git commit --&gt; C[本地仓库]
-    C -- git push --&gt; D[远程仓库]</code></pre>
-<h2 id="3">3. 基础工作流</h2>
-<h3 id="_2">初始化仓库</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 在当前目录创建一个 Git 仓库</span>
-git<span class="w"> </span>init
-</code></pre></div>
-<p>这会生成一个隐藏的 <code>.git</code> 文件夹，不要删除它。</p>
-<p>新建文件时是未被跟踪的，需要 <code>git add</code> 才能进入暂存区。</p>
-<h3 id="_3">日常操作三板斧</h3>
-<ol>
-<li>
-<p><strong>添加 (Add)</strong>: 将文件修改添加到暂存区。</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>filename.py<span class="w">   </span><span class="c1"># 添加指定文件</span>
-git<span class="w"> </span>add<span class="w"> </span>.<span class="w">             </span><span class="c1"># 添加当前目录所有文件 (最常用)</span>
-</code></pre></div>
-</li>
-<li>
-<p><strong>提交 (Commit)</strong>: 将暂存区的内容提交到本地仓库。</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;完成登录功能&quot;</span><span class="w">  </span><span class="c1"># -m 后面是提交说明，必须写清楚</span>
-</code></pre></div>
-</li>
-<li>
-<p><strong>推送 (Push)</strong>: 将本地仓库推送到远程仓库 (如 GitHub, GitLab)。
-    <div class="highlight"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
-</code></pre></div></p>
-</li>
-</ol>
-<h3 id="_4">删除与移动文件</h3>
-<p>并不是直接在文件管理器删除那么简单，建议使用 git 命令操作：</p>
-<ol>
-<li>
-<p><strong>删除文件 (Remove)</strong></p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 从版本库和工作区中同时删除 (最彻底)</span>
-git<span class="w"> </span>rm<span class="w"> </span>filename.py
+<h1 id="python">Python 深度学习笔记</h1>
+<div class="admonition info">
+<p class="admonition-title">简介</p>
+<p>本笔记主要参考自 B 站 <strong>爆肝杰哥</strong> 的深度学习视频教程。这是本人首次正式系统性地学习深度学习，旨在掌握这一核心技能。</p>
+<p>注: 本章环境搭建过程仅作记录，后续实战将主要利用 <strong>Kaggle</strong> 的免费 GPU 资源完成。</p>
+</div>
+<h2 id="_1">环境搭建与配置</h2>
+<h3 id="1-conda">1. Conda 虚拟环境管理</h3>
+<p>在开始深度学习之前，建议为每个项目创建独立的虚拟环境，以避免依赖冲突。以下是常用的 Conda 命令速查：</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">基础操作</label><label for="__tabbed_1_2">环境创建与删除</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># 清屏 (Windows)</span>
+cls
 
-<span class="c1"># 仅从版本库删除，但在工作区保留 (比如误提交了 .env 或 __pycache__)</span>
-git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>filename.py
-</code></pre></div>
-</li>
-<li>
-<p><strong>移动/重命名 (Move)</strong>
-    <div class="highlight"><pre><span></span><code><span class="c1"># 相当于：mv old.py new.py + git add new.py + git rm old.py</span>
-git<span class="w"> </span>mv<span class="w"> </span>old.py<span class="w"> </span>new.py
-</code></pre></div></p>
-</li>
-</ol>
-<h3 id="_5">查看状态与历史</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 查看当前状态 (有哪些文件修改了？哪些在暂存区？)</span>
-git<span class="w"> </span>status
+<span class="c1"># 列出所有环境</span>
+conda<span class="w"> </span>env<span class="w"> </span>list
 
-<span class="c1"># 查看提交历史</span>
-git<span class="w"> </span>log
-git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w">  </span><span class="c1"># 简洁模式</span>
+<span class="c1"># 激活虚拟环境</span>
+conda<span class="w"> </span>activate<span class="w"> </span>&lt;环境名&gt;
+
+<span class="c1"># 退出当前虚拟环境</span>
+conda<span class="w"> </span>deactivate
 </code></pre></div>
-<h2 id="4-branching">4. 分支管理 (Branching)</h2>
-<p>分支是 Git 的杀手锏。开发新功能时，通常新建一个分支，不影响主分支 (main/master)。</p>
-<h3 id="_6">常用分支命令</h3>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># 创建名为 &quot;env_name&quot; 的环境，指定 Python 版本 (默认在 conda 安装目录下的 envs 中)</span>
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>env_name<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9
+
+<span class="c1"># 指定路径创建环境 (例如在当前目录下)</span>
+conda<span class="w"> </span>create<span class="w"> </span>--prefix<span class="o">=</span>./env_name<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9
+
+<span class="c1"># 删除环境 (及其所有包)</span>
+conda<span class="w"> </span>remove<span class="w"> </span>-n<span class="w"> </span>env_name<span class="w"> </span>--all
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="2-pip">2. 常用库管理 (Pip)</h3>
+<p>进入虚拟环境后，使用 <code>pip</code> 安装所需的科学计算库。</p>
+<div class="admonition tip">
+<p class="admonition-title">加速安装技巧</p>
+<p>使用国内镜像源（如清华源）可以显著提升下载速度：
+<code>-i https://pypi.tuna.tsinghua.edu.cn/simple</code></p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 查看当前环境下的所有库 (Conda)</span>
+conda<span class="w"> </span>list
+
+<span class="c1"># 查看特定库的版本</span>
+pip<span class="w"> </span>show<span class="w"> </span>numpy
+
+<span class="c1"># 安装基础科学计算库 (指定版本示例)</span>
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.21.5<span class="w"> </span>-i<span class="w"> </span>https://pypi.tuna.tsinghua.edu.cn/simple
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">pandas</span><span class="o">==</span><span class="m">1</span>.2.4<span class="w"> </span>-i<span class="w"> </span>https://pypi.tuna.tsinghua.edu.cn/simple
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">matplotlib</span><span class="o">==</span><span class="m">3</span>.5.1<span class="w"> </span>-i<span class="w"> </span>https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre></div>
+<h3 id="3-gpu-cuda">3. GPU 与 CUDA 基础</h3>
+<p>深度学习通常需要 GPU 加速。理解显卡驱动、CUDA 与 PyTorch 的关系非常重要。</p>
+<div class="admonition abstract">
+<p class="admonition-title">核心概念</p>
+<ul>
+<li><strong>NVIDIA 显卡</strong>: 硬件基础。</li>
+<li><strong>CUDA (System)</strong>: 显卡驱动层面的运算平台。即使有显卡，也需要安装 CUDA Toolkit。</li>
+<li><strong>cuda (PyTorch)</strong>: PyTorch 库内部集成的 cuda 组件（通常较小）。</li>
+</ul>
+<p><strong>版本兼容原则</strong>：</p>
+<blockquote>
+<p>System CUDA Version <span class="arithmatex">\(\ge\)</span> PyTorch Internal cuda Version</p>
+</blockquote>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>如果运行报错，可能需要更新显卡驱动或重新安装匹配版本的 CUDA Toolkit。</p>
+</div>
+<h3 id="4-pytorch">4. PyTorch 安装指南</h3>
+<p>PyTorch 主要包含三个模块：<code>torch</code> (核心，约 2G)、<code>torchvision</code> (视觉)、<code>torchaudio</code> (音频)。</p>
+<h4 id="_2">方法一：官方命令安装（推荐）</h4>
+<p>访问 <a href="https://pytorch.org/get-started/previous-versions/">PyTorch 官网</a>，选择对应的 OS、Package (Pip)、Language (Python) 和 Compute Platform (CUDA 版本)，获取安装命令。</p>
+<h4 id="wheel">方法二：离线 Wheel 安装（网络不佳时）</h4>
+<p>如果直接 pip 安装速度过慢或失败，可以下载 <code>.whl</code> 文件进行离线安装。</p>
+<ol>
+<li>访问 <a href="https://download.pytorch.org/whl/torch_stable.html">PyTorch Wheel 下载站</a>。</li>
+<li>下载对应版本 (注意核对 <code>cu</code> 版本, <code>cp</code> python版本, <code>os</code> 系统)。</li>
+<li>在虚拟环境中执行安装：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># 示例：安装 PyTorch 1.12.0 (CUDA 11.3, Python 3.9, Windows)</span>
+pip<span class="w"> </span>install<span class="w"> </span>D:<span class="se">\w</span>hl<span class="se">\t</span>orch-1.12.0+cu113-cp39-cp39-win_amd64.whl<span class="w"> </span>
+pip<span class="w"> </span>install<span class="w"> </span>D:<span class="se">\w</span>hl<span class="se">\t</span>orchvision-0.13.0+cu113-cp39-cp39-win_amd64.whl<span class="w"> </span>
+pip<span class="w"> </span>install<span class="w"> </span>D:<span class="se">\w</span>hl<span class="se">\t</span>orchaudio-0.12.0+cu113-cp39-cp39-win_amd64.whl
+</code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">提示</p>
+<p>安装完毕后，即可删除 <code>D:\whl</code> 文件夹（但建议留着备份，之后可能还要安装）。</p>
+</div>
+<h3 id="5-jupyter-notebook">5. Jupyter Notebook 配置</h3>
+<h4 id="_3">关联虚拟环境</h4>
+<p>默认情况下，Jupyter Notebook 可能只能识别 base 环境。为了在 Notebook 中使用我们创建的 <code>DL</code> 环境，需要安装 <code>ipykernel</code> 并注册内核。</p>
+<p><strong>步骤如下：</strong></p>
+<ol>
+<li><strong>激活环境</strong>: <code>conda activate DL</code></li>
+<li><strong>安装 ipykernel</strong>:
+    <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>ipykernel<span class="w"> </span>-i<span class="w"> </span>https://pypi.tuna.tsinghua.edu.cn/simple<span class="w"> </span>
+</code></pre></div></li>
+<li><strong>写入 Kernel</strong>:
+    <div class="highlight"><pre><span></span><code><span class="c1"># --name 指定内核名称，--user 针对当前用户安装</span>
+python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="o">=</span>环境名
+</code></pre></div></li>
+</ol>
+<p>这样，在启动 Jupyter Notebook 后，就可以在 "Kernel" -&gt; "Change kernel" 中找到 <code>DL</code> 环境了。</p>
+<h2 id="python_1">Python 基础</h2>
+<p>本部分梳理了 Python 语言的核心特性，重点关注深度学习常用的基础语法。</p>
+<h3 id="1">1. 变量与数据类型</h3>
+<p>Python 是动态类型语言，无需显式声明变量类型。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">基础类型</label><label for="__tabbed_2_2">类型转换</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li><strong>整数 (int)</strong>: 如 <code>10</code>, <code>-5</code></li>
+<li><strong>浮点数 (float)</strong>: 如 <code>3.14</code>, <code>1.2e-3</code></li>
+<li><strong>布尔值 (bool)</strong>: <code>True</code>, <code>False</code></li>
+<li><strong>字符串 (str)</strong>:用单/双引号包裹，如 <code>'hello'</code>, <code>"world"</code></li>
+</ul>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># 10.0</span>
+<span class="n">z</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>    <span class="c1"># &quot;10.0&quot;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="2">2. 核心数据结构</h3>
+<p>掌握列表和字典对于数据处理至关重要。</p>
+<div class="admonition abstract">
+<p class="admonition-title">常用容器</p>
+<ul>
+<li><strong>列表 (list)</strong>: 有序、可变。<code>li = [1, 2, 3]</code></li>
+<li><strong>元组 (tuple)</strong>: 有序、不可变。<code>tu = (1, 2)</code></li>
+<li><strong>字典 (dict)</strong>: 键值对映射。<code>di = {'name': 'AI', 'ver': 2.0}</code></li>
+<li><strong>集合 (set)</strong>: 无序、去重。<code>se = {1, 2, 3}</code></li>
+</ul>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 列表推导式 (List Comprehension) - 高频用法</span>
+<span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>  <span class="c1"># [0, 1, 4, 9, 16]</span>
+</code></pre></div>
+<h3 id="3">3. 程序控制流</h3>
+<h4 id="_4">条件判断与循环</h4>
+<p>Python 使用缩进来表示代码块。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># if-elif-else</span>
+<span class="n">score</span> <span class="o">=</span> <span class="mi">85</span>
+<span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+
+<span class="c1"># for 循环</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>  <span class="c1"># 输出 0, 1, 2</span>
+
+<span class="c1"># while 循环</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+<h3 id="4">4. 函数与模块</h3>
+<p>函数用于封装代码逻辑，模块用于组织代码结构。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">函数定义</label><label for="__tabbed_3_2">模块导入</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;返回 a + b，b 默认为 1&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># 6</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="c1"># 常用别名导入</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">学习建议</p>
+<p>对于深度学习，切勿在此阶段深究 Python 的所有细节。掌握上述基础后，即可直接进入库的学习（如 Numpy, PyTorch），在实践中补充高级特性。</p>
+</div>
+<h2 id="numpy">NumPy 科学计算库</h2>
+<p>NumPy 是 Python 进行科学计算的基础包，提供高性能的多维数组对象（ndarray）及相关操作，是几乎所有深度学习框架（如 PyTorch, TensorFlow）的数据处理基石。</p>
+<p>常用导入惯例：
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</code></pre></div></p>
+<h3 id="1-creation">1. 数组创建 (Creation)</h3>
+<p>深度学习中常需要初始化特定的数组作为输入数据或模型参数。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">基础创建</label><label for="__tabbed_4_2">常用生成函数</label><label for="__tabbed_4_3">随机数生成</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># 从列表创建</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="c1"># 指定数据类型（重要：深度学习常默认 float32）</span>
+<span class="n">arr_f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># 全 0 数组 (常用于初始化)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>  <span class="c1"># 3行4列</span>
+
+<span class="c1"># 全 1 数组</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># 等差数列 [0, 2, 4, 6, 8]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 线性等分 (0到1之间5个点)</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><strong>参数初始化</strong>常用。
+<div class="highlight"><pre><span></span><code><span class="c1"># 均匀分布 [0, 1)</span>
+<span class="n">r1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># 标准正态分布 (均值0, 方差1) - 权重初始化常用</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># 随机整数 [low, high)</span>
+<span class="n">r3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># 固定随机种子（复现实验结果必备）</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</code></pre></div></p>
+</div>
+</div>
+</div>
+<h3 id="2-attributes">2. 数组属性 (Attributes)</h3>
+<p>调试神经网络时，经常需要检查张量的形状。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">命令</th>
-<th style="text-align: left;">作用</th>
+<th style="text-align: left;">属性</th>
+<th style="text-align: left;">说明</th>
+<th style="text-align: left;">示例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>git branch</code></td>
-<td style="text-align: left;">列出所有本地分支</td>
+<td style="text-align: left;"><code>arr.ndim</code></td>
+<td style="text-align: left;">维度数 (秩)</td>
+<td style="text-align: left;"><code>2</code> (矩阵), <code>3</code> (张量)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>git branch -a</code></td>
-<td style="text-align: left;">列出所有分支 (含远程)</td>
+<td style="text-align: left;"><code>arr.shape</code></td>
+<td style="text-align: left;">形状 (各维度大小)</td>
+<td style="text-align: left;"><code>(3, 4)</code> (3行4列)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>git branch feature-A</code></td>
-<td style="text-align: left;">创建名为 feature-A 的分支</td>
+<td style="text-align: left;"><code>arr.size</code></td>
+<td style="text-align: left;">元素总数</td>
+<td style="text-align: left;"><code>12</code></td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>git checkout feature-A</code></td>
-<td style="text-align: left;">切换到 feature-A 分支</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>git checkout -b feature-A</code></td>
-<td style="text-align: left;"><strong>[常用]</strong> 创建并切换到 feature-A</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>git merge feature-A</code></td>
-<td style="text-align: left;">将 feature-A 合并到当前分支</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>git branch -d feature-A</code></td>
-<td style="text-align: left;">删除分支</td>
+<td style="text-align: left;"><code>arr.dtype</code></td>
+<td style="text-align: left;">元素数据类型</td>
+<td style="text-align: left;"><code>float32</code>, <code>int64</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="_7">合并流程示例</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 1. 在 main 分支上创建并切换到新分支 dev</span>
-git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>dev
+<h3 id="3-indexing">3. 索引与切片 (Indexing)</h3>
+<p>NumPy 的切片操作比 Python 列表更强大，支持高维操作。</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># 5行4列的数据</span>
 
-<span class="c1"># 2. 在 dev 分支上写代码、提交</span>
-touch<span class="w"> </span>new_feature.py
-git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;开发新功能&quot;</span>
+<span class="c1"># 基础切片 [行, 列]</span>
+<span class="n">row_1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>    <span class="c1"># 第0行所有元素</span>
+<span class="n">col_1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>    <span class="c1"># 第1列所有元素</span>
+<span class="n">part</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># 第1~2行，第0~1列</span>
 
-<span class="c1"># 3. 切换回 main 分支</span>
-git<span class="w"> </span>checkout<span class="w"> </span>main
-
-<span class="c1"># 4. 将 dev 分支合并到 main</span>
-git<span class="w"> </span>merge<span class="w"> </span>dev
-
-<span class="c1"># 5. 删除 dev 分支 (可选)</span>
-git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>dev
+<span class="c1"># 布尔索引 (条件筛选) - 非常实用</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">positive</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="c1"># 选出所有大于0的元素（结果展平为1维）</span>
 </code></pre></div>
-<h2 id="5-remote">5. 远程仓库 (Remote)</h2>
-<h3 id="_8">克隆远程仓库</h3>
-<p>如果你是加入一个已有的项目：</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/username/repo.git
-</code></pre></div>
-<h3 id="_9">关联远程仓库</h3>
-<p>如果你是本地新建的项目，想推送到 GitHub：</p>
-<ol>
-<li>在 GitHub 上新建一个空仓库。</li>
-<li>
-<p>在本地运行：</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 添加远程仓库别名为 origin</span>
-git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/username/repo.git
-
-<span class="c1"># 将本地 main 分支推送到 origin (初次推送加 -u)</span>
-git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">为什么加 -u 参数？</p>
+<div class="admonition warning">
+<p class="admonition-title">视图 vs 副本</p>
+<p>NumPy 切片通常返回<strong>视图（View）</strong>，修改切片会直接修改原数组。
+如果需要独立副本，请使用 <code>.copy()</code> 方法。</p>
 </div>
-<p><code>-u</code> 是 <code>--set-upstream</code> 的缩写。它的作用是将本地分支与远程分支<strong>绑定</strong>（建立追踪关系）。绑定后，以后只需要运行简短的 <code>git push</code> 或 <code>git pull</code>，Git 就会自动知道要往 <code>origin</code> 的 <code>main</code> 分支同步。</p>
-</li>
-</ol>
-<h3 id="ssh">配置 SSH 密钥 (免密登录)</h3>
-<p>使用 HTTPS 协议每次推送都需要输入账号密码（或 Token），推荐使用 SSH 协议。</p>
-<ol>
-<li>
-<p><strong>生成 SSH 密钥</strong>:</p>
-<div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;你的邮箱@example.com&quot;</span>
-</code></pre></div>
-<p>一路回车即可（默认路径和空密码）。</p>
-</li>
-<li>
-<p><strong>获取公钥</strong>:
-    密钥生成在用户主目录的 <code>.ssh</code> 文件夹下。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 查看公钥内容</span>
-cat<span class="w"> </span>~/.ssh/id_rsa.pub
-</code></pre></div>
-</li>
-<li>
-<p><strong>配置 GitHub</strong>:
-    复制上一步输出的公钥内容（以 <code>ssh-rsa</code> 开头），打开 <strong>GitHub Settings</strong> -&gt; <strong>SSH and GPG keys</strong> -&gt; <strong>New SSH key</strong>，粘贴即可。</p>
-</li>
-<li>
-<p><strong>测试连接</strong>:
-    <div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-T<span class="w"> </span>git@github.com
-<span class="c1"># 看到 &quot;Hi username! You&#39;ve successfully authenticated...&quot; 即成功</span>
-</code></pre></div></p>
-</li>
-</ol>
-<h3 id="pull-vs-fetch">拉取远程代码 (Pull vs Fetch)</h3>
-<ol>
-<li>
-<p><strong>直接拉取 (Pull)</strong>:
-    <code>git pull</code> 相当于 <strong>下载代码</strong> + <strong>自动合并</strong>。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 拉取并自动合并 (最常用)</span>
-git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
-</code></pre></div>
-</li>
-<li>
-<p><strong>仅获取更新 (Fetch)</strong>:
-    如果你只想把远程代码下载下来，但不合并到你的分支（想看看别人改了什么），使用 <code>git fetch</code>。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 下载远程更新，但不改变当前工作区</span>
-git<span class="w"> </span>fetch<span class="w"> </span>origin<span class="w"> </span>main
+<h3 id="4-reshape">4. 维度变换 (Reshape)</h3>
+<p>深度学习中经常需要在不同层之间转换数据形状（如 Flatten、Batch处理）。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">形状改变</label><label for="__tabbed_5_2">维度展平与转置</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
 
-<span class="c1"># 之后可以查看 diff，确认没问题再手动 merge</span>
-git<span class="w"> </span>diff<span class="w"> </span>main<span class="w"> </span>origin/main
-git<span class="w"> </span>merge<span class="w"> </span>origin/main
+<span class="c1"># 改变形状 (不复制数据)</span>
+<span class="n">new_arr</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># 自动推导维度 (-1)</span>
+<span class="c1"># 系统会自动计算列数为4 (12 / 3 = 4)</span>
+<span class="n">auto_arr</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> 
 </code></pre></div>
-<p>!!! info "Fetch vs Pull" - <code>git fetch</code>: <strong>安全</strong>，只是下载更新到本地仓库，不会弄乱你正在写代码的工作区。 - <code>git pull</code>: <strong>快捷</strong>，但如果远程代码和你本地有冲突，会直接触发合并流程，可能产生冲突文件。</p>
-</li>
-</ol>
-<h2 id="6-gitignore">6. <code>.gitignore</code> 文件</h2>
-<p>有些文件不应该提交到仓库中（如密码、虚拟环境、编译产生的临时文件）。
-在项目根目录创建一个名为 <code>.gitignore</code> 的文件，写入要忽略的规则：</p>
-<div class="highlight"><pre><span></span><code># 忽略 Python 编译文件
-__pycache__/
-*.pyc
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># 展平为一维 (常用在全连接层前)</span>
+<span class="n">flat</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 
-# 忽略虚拟环境
-venv/
-.env
-
-# 忽略 IDE 配置
-.vscode/
-.idea/
+<span class="c1"># 转置 (矩阵操作)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">new_arr</span><span class="o">.</span><span class="n">T</span> 
+<span class="c1"># 或者指定轴交换 (Transposing axes)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">new_arr</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="7">7. 常见问题与回滚</h2>
-<h3 id="stash">临时保存工作现场 (Stash)</h3>
-<p>场景：代码写了一半需要切换分支去修紧急 Bug，但不想提交依然 Broken 的代码。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 1. 保存当前进度到堆栈 (工作区瞬间变干净)</span>
-git<span class="w"> </span>stash
-<span class="c1"># 或者带个备注</span>
-git<span class="w"> </span>stash<span class="w"> </span>save<span class="w"> </span><span class="s2">&quot;暂存未完成的登录功能&quot;</span>
+</div>
+</div>
+</div>
+<h3 id="5-broadcasting">5. 运算与广播 (Broadcasting)</h3>
+<p>NumPy 支持向量化运算，速度远快于 Python 循环。</p>
+<p><strong>广播机制 (Broadcasting)</strong> 是 NumPy 的核心特性，允许不同形状的数组在算术运算期间进行处理（如矩阵加向量）。</p>
+<p><strong>规则</strong>：从后缘维度（最后一维）开始比较，如果维度相等或其中一个为 1，则可以广播。</p>
+<div class="highlight"><pre><span></span><code><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>     <span class="c1"># shape (4,) -&gt; Broadcasats to (1, 4) -&gt; (3, 4)</span>
 
-<span class="c1"># 2. 此时可以安全切换分支了</span>
-git<span class="w"> </span>checkout<span class="w"> </span>main
-
-<span class="c1"># ... (修完 Bug 后切回来) ...</span>
-
-<span class="c1"># 3. 恢复最近一次保存的现场 (恢复并从堆栈删除)</span>
-git<span class="w"> </span>stash<span class="w"> </span>pop
+<span class="n">C</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">b</span>  <span class="c1"># b 会被加到 A 的每一行上</span>
 </code></pre></div>
-<p><strong>其他常用命令：</strong></p>
-<ul>
-<li><code>git stash list</code>: 查看所有暂存记录</li>
-<li><code>git stash apply</code>: 恢复但不删除记录</li>
-<li><code>git stash clear</code>: 清空所有记录</li>
-</ul>
-<h3 id="_10">撤销工作区的修改</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 丢弃文件在工作区的修改 (慎用！无法找回)</span>
-git<span class="w"> </span>checkout<span class="w"> </span>--<span class="w"> </span>filename.py
-<span class="c1"># 或 (新版 Git)</span>
-git<span class="w"> </span>restore<span class="w"> </span>filename.py
-</code></pre></div>
-<h3 id="_11">撤销暂存区的修改</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 将文件从暂存区撤回工作区 (unstage)</span>
-git<span class="w"> </span>reset<span class="w"> </span>HEAD<span class="w"> </span>filename.py
+<h3 id="6">6. 常用数学与统计函数</h3>
+<div class="highlight"><pre><span></span><code><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 
-<span class="c1"># 将所有的修改从暂存区撤回 (Undo `git add .`)</span>
-git<span class="w"> </span>reset<span class="w"> </span>HEAD
+<span class="c1"># 聚合运算</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>          <span class="c1"># 所有元素求和</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># 按列求均值 (压缩行，保留列特征)</span>
+<span class="n">mx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 按行求最大值</span>
 
-<span class="c1"># 或 (新版 Git)</span>
-git<span class="w"> </span>restore<span class="w"> </span>--staged<span class="w"> </span>filename.py
-</code></pre></div>
-<h3 id="_12">回退版本</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 回退到上一个版本 (保留工作区修改)</span>
-git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>HEAD^
-<span class="c1"># 或者 (HEAD^ 和 HEAD~ 是一样的，都是指上一个版本)</span>
-git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>HEAD~
+<span class="c1"># 矩阵乘法 (注意区分元素乘法 *)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 
-<span class="c1"># 彻底回退到指定 commit (危险操作，修改全丢)</span>
-git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>&lt;commit_id&gt;
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span> <span class="c1"># 还有更现代的写法: C = A @ B</span>
 </code></pre></div>
-<p>!!! question "HEAD^ 与 HEAD~ 的区别" - <code>git reset --soft HEAD^</code> 和 <code>git reset --soft HEAD~</code> <strong>功能完全一样</strong>，都是回退到上一个版本。 - <code>HEAD^</code> (Caret) 主要用于合并节点，选择第几个父提交。 - <code>HEAD~</code> (Tilde) 主要用于线性回退，<code>HEAD~2</code> 代表回退两步。 - 在 Windows 命令行 (CMD/PowerShell) 中，<code>^</code> 是转义字符，所以<strong>推荐使用 <code>HEAD~</code></strong>，否则你需要写成 <code>HEAD^^</code> 或 <code>"HEAD^"</code>。</p>
-<h2 id="8-githubgitlab-pull-request">8. GitHub/GitLab 工作流 (Pull Request)</h2>
-<p>团队开发的标准流程：</p>
-<ol>
-<li><strong>Fork</strong> 项目到自己仓库 (若是开源项目) 或 <strong>Clone</strong> 项目。</li>
-<li>新建分支 <code>feature-xxx</code> 开发。</li>
-<li>开发完成，<code>Push</code> 到远程。</li>
-<li>在网页端发起 <strong>Pull Request (PR)</strong> 或 <strong>Merge Request (MR)</strong>。</li>
-<li>团队成员 <strong>Code Review</strong>。</li>
-<li>代码没问题，管理员点击 <strong>Merge</strong> 合并进主分支。</li>
-</ol>
-<hr />
-<p><em>下一章：<a href="../02_Markdown/">Markdown 写作指南</a></em></p>
 
 
 
