@@ -3321,13 +3321,17 @@
 <h2 id="_1">张量</h2>
 <h3 id="_2">数组与张量</h3>
 <p>PyTorch 作为当前首屈一指的深度学习库，其将 NumPy 数组的语法尽数吸收，作为自己处理张量的基本语法，且运算速度从使用 CPU 的数组进步到使用 GPU 的张量。</p>
-<p>NumPy 和 PyTorch 的基础语法几乎一致，具体表现为：
-- np 对应 torch；
-- 数组 array 对应张量 tensor；
-- NumPy 的 n 维数组对应着 PyTorch 的 n 阶张量。</p>
-<p>数组与张量之间可以相互转换：
-- 数组 arr 转为张量 ts：ts = torch.tensor(arr)；
-- 张量 ts 转为数组 arr：arr = np.array(ts)。</p>
+<p>NumPy 和 PyTorch 的基础语法几乎一致，具体表现为：</p>
+<ul>
+<li>np 对应 torch；</li>
+<li>数组 array 对应张量 tensor；</li>
+<li>NumPy 的 n 维数组对应着 PyTorch 的 n 阶张量。</li>
+</ul>
+<p>数组与张量之间可以相互转换：</p>
+<ul>
+<li>数组 arr 转为张量 ts：ts = torch.tensor(arr)；</li>
+<li>张量 ts 转为数组 arr：arr = np.array(ts)。</li>
+</ul>
 <h3 id="_3">从数组到张量</h3>
 <p><img alt="image.png" src="../dnn-code_files/dfbb3f46-933e-44f7-a5d1-01689c7819ce.png" /></p>
 <h3 id="gpu">用GPU存储张量</h3>
@@ -3416,18 +3420,22 @@ True
 <p>损失函数计算好后，逐层退回求梯度，逐层退回求梯度，这个过程很复杂，原理不必掌握，大致意思就是，看每一个内部参数是变大还是变小，才会使得损失函数变小。这样就达到了优化内部参数的目的。</p>
 <p>在这个过程中，有一个外部参数叫学习率。学习率越大，内部参数的优化越快，但过大的学习率可能会使损失函数越过最低点，并在谷底反复横跳。因此，在网络的训练开始之前，选择一个合适的学习率很重要。</p>
 <h4 id="batch_size">batch_size</h4>
-<p>前向传播与反向传播一次时，有三种情况：
-- 批量梯度下降（Batch Gradient Descent，BGD），把所有样本一次性输入进网络，这种方式计算量开销很大，速度也很慢。
-- 随机梯度下降（Stochastic Gradient Descent，SGD），每次只把一个样本输入进网络，每计算一个样本就更新参数。这种方式虽然速度比较快，但是收敛性能差，可能会在最优点附近震荡，两次参数的更新也有可能抵消。
-- 小批量梯度下降（Mini-Batch Gradient Decent，MBGD）是为了中和上面二者而生，这种办法把样本划分为若干个批，按批来更新参数。</p>
+<p>前向传播与反向传播一次时，有三种情况：</p>
+<ul>
+<li>批量梯度下降（Batch Gradient Descent，BGD），把所有样本一次性输入进网络，这种方式计算量开销很大，速度也很慢。</li>
+<li>随机梯度下降（Stochastic Gradient Descent，SGD），每次只把一个样本输入进网络，每计算一个样本就更新参数。这种方式虽然速度比较快，但是收敛性能差，可能会在最优点附近震荡，两次参数的更新也有可能抵消。</li>
+<li>小批量梯度下降（Mini-Batch Gradient Decent，MBGD）是为了中和上面二者而生，这种办法把样本划分为若干个批，按批来更新参数。</li>
+</ul>
 <p>所以，batch_size 即一批中的样本数，也是一次喂进网络的样本数。此外，由于 Batch Normalization 层（用于将每次产生的小批量样本进行标准化）的存在，batch_size 一般设置为 2 的幂次方，并且不能为 1。</p>
 <p>注：PyTorch 实现时只支持批量与小批量，不支持单个样本的输入方式。PyTorch 里的 torch.optim.SGD 只表示梯度下降。</p>
 <h4 id="epochs">epochs</h4>
 <p>1 个 epoch 就是指全部样本进行 1 次前向传播与反向传播。</p>
-<p>假设有 10240 个训练样本，batch_size 是 1024，epochs 是 5。那么：
-- 全部样本将进行 5 次前向传播与反向传播；
-- 1 个 epoch，将发生 10 次（10240/1024）前向传播与反向传播；
-- 一共发生 50 次（10 * 5）前向传播和反向传播。</p>
+<p>假设有 10240 个训练样本，batch_size 是 1024，epochs 是 5。那么：</p>
+<ul>
+<li>全部样本将进行 5 次前向传播与反向传播；</li>
+<li>1 个 epoch，将发生 10 次（10240/1024）前向传播与反向传播；</li>
+<li>一共发生 50 次（10 * 5）前向传播和反向传播。</li>
+</ul>
 <h3 id="_8">测试网络</h3>
 <p>为了防止训练的网络过拟合，因此需要拿出少量的样本进行测试。过拟合的意思是：网络优化好的内部参数只能对训练样本有效，换成其它就寄。以线性回归为例，过拟合如图 2-3（b）所示。</p>
 <p><img alt="image.png" src="../dnn-code_files/20778210-5b2c-486b-9e95-337f1d2dc84a.png" /></p>
@@ -3447,12 +3455,14 @@ True
 </code></pre></div>
 <h3 id="_10">制作数据集</h3>
 <p>在训练之前，要准备好训练集的样本。</p>
-<p>这里生成10000个样本，设定3个输入特征与3个输出特征，其中：
-- 每个输入特征相互独立，均服从均匀分布
-- 当(X1+X2+X3)&lt; 1 时，Y1 为 1，否则 Y1 为 0；
-- 当 1&lt;(X1+X2+X3)&lt;2 时，Y2 为 1，否则 Y2 为 0；
-- 当(X1+X2+X3)&gt;2 时，Y3 为 1，否则 Y3 为 0；
-- <code>.float()</code>将布尔型张量转化为浮点型张量。</p>
+<p>这里生成10000个样本，设定3个输入特征与3个输出特征，其中：</p>
+<ul>
+<li>每个输入特征相互独立，均服从均匀分布</li>
+<li>当(X1+X2+X3)&lt; 1 时，Y1 为 1，否则 Y1 为 0；</li>
+<li>当 1&lt;(X1+X2+X3)&lt;2 时，Y2 为 1，否则 Y2 为 0；</li>
+<li>当(X1+X2+X3)&gt;2 时，Y3 为 1，否则 Y3 为 0；</li>
+<li><code>.float()</code>将布尔型张量转化为浮点型张量。</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="c1"># 生成数据集</span>
 <span class="n">X1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 输入特征 1</span>
 <span class="n">X2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 输入特征 2</span>
@@ -3582,9 +3592,11 @@ tensor([ 0.1857, -0.0293, -0.4400], device=&#39;cuda:0&#39;, requires_grad=True)
 <p>代码一共给了我们8个参数，其中参数与形状的结果如下表所示，考虑到其数值初始状态是随机的，此处不进行讨论。</p>
 <p><img alt="image.png" src="../dnn-code_files/3d8bbde0-d334-4421-810a-a1d0c4149e0e.png" /></p>
 <p>可见，具有权重与偏置的地方只有 net.0、net.2、net.4、net.6，结合此前的输出结果，可知这几个地方其实就是所有的隐藏层与输出层，奇数为激活函数层，这符合理论。
-首先，net.0.weight 的权重形状为<code>[5, 3]</code>，5 表示它自己的节点数是 5，3 表示与之连接的前一层的节点数为 3。
-- 其次，由于进行了 <code>model =DNN().to('cuda:0')</code>操作，因此所有的内部参数都自带 device='cuda:0'。
-- 最后，注意到 <code>requires_grad=True</code>，说明所有需要进行反向传播的内部参数（即权重与偏置）都打开了张量自带的梯度计算功能。</p>
+首先，net.0.weight 的权重形状为<code>[5, 3]</code>，5 表示它自己的节点数是 5，3 表示与之连接的前一层的节点数为 3。</p>
+<ul>
+<li>其次，由于进行了 <code>model =DNN().to('cuda:0')</code>操作，因此所有的内部参数都自带 device='cuda:0'。</li>
+<li>最后，注意到 <code>requires_grad=True</code>，说明所有需要进行反向传播的内部参数（即权重与偏置）都打开了张量自带的梯度计算功能。</li>
+</ul>
 <h3 id="_13">网络的外部参数</h3>
 <p>外部参数即超参数，这是调参师们关注的重点。搭建网络时的超参数有：网络的层数、各隐藏层节点数、各节点激活函数、内部参数的初始值等。训练网络的超参数有：如损失函数、学习率、优化算法、batch_size、epochs 等。</p>
 <h4 id="_14">激活函数</h4>
@@ -3800,10 +3812,12 @@ tensor([ 0.1857, -0.0293, -0.4400], device=&#39;cuda:0&#39;, requires_grad=True)
 <div class="highlight"><pre><span></span><code>测试集精准度: 73.24561309814453 %
 </code></pre></div>
 <h2 id="_28">小批量梯度下降</h2>
-<p>本章将继续使用第四章中的 Excel 与神经网络结构，但使用小批量训练。在使用小批量梯度下降时，必须使用 3 个 PyTorch 内置的实用工具（utils）：
-- DataSet 用于封装数据集；
-- DataLoader 用于加载数据不同的批次；
-- random_split 用于划分训练集与测试集。</p>
+<p>本章将继续使用第四章中的 Excel 与神经网络结构，但使用小批量训练。在使用小批量梯度下降时，必须使用 3 个 PyTorch 内置的实用工具（utils）：</p>
+<ul>
+<li>DataSet 用于封装数据集；</li>
+<li>DataLoader 用于加载数据不同的批次；</li>
+<li>random_split 用于划分训练集与测试集。</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">torch</span>
@@ -3944,13 +3958,15 @@ tensor([ 0.1857, -0.0293, -0.4400], device=&#39;cuda:0&#39;, requires_grad=True)
 <span class="kn">from</span> <span class="nn">matplotlib_inline</span> <span class="kn">import</span> <span class="n">backend_inline</span>
 <span class="n">backend_inline</span><span class="o">.</span><span class="n">set_matplotlib_formats</span><span class="p">(</span><span class="s1">&#39;svg&#39;</span><span class="p">)</span>
 </code></pre></div>
-<p>在下载数据集之前，要设定转换参数：transform，该参数里解决两个问题：
-- ToTensor：将图像数据转为张量，且调整三个维度的顺序为 <code>C*W*H</code>；C表示通道数，二维灰度图像的通道数为 1，三维 RGB 彩图的通道数为 3。
-- Normalize：将神经网络的输入数据转化为标准正态分布，训练更好；根据统计计算，MNIST 训练集所有像素的均值是 0.1307、标准差是 0.3081。</p>
+<p>在下载数据集之前，要设定转换参数：transform，该参数里解决两个问题：</p>
+<ul>
+<li>ToTensor：将图像数据转为张量，且调整三个维度的顺序为 <code>C*W*H</code>；C表示通道数，二维灰度图像的通道数为 1，三维 RGB 彩图的通道数为 3。</li>
+<li>Normalize：将神经网络的输入数据转化为标准正态分布，训练更好；根据统计计算，MNIST 训练集所有像素的均值是 0.1307、标准差是 0.3081。</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="c1"># 制作数据集</span>
 <span class="c1"># 数据集转换参数</span>
 <span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
-    <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span> 
+    <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
     <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="mf">0.1307</span><span class="p">,</span> <span class="mf">0.3081</span><span class="p">)</span>
 <span class="p">])</span>
 <span class="c1"># 下载训练集与测试集</span>
@@ -3977,7 +3993,7 @@ tensor([ 0.1857, -0.0293, -0.4400], device=&#39;cuda:0&#39;, requires_grad=True)
 <span class="n">test_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">test_Data</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="_35">搭建神经网络</h3>
-<p>每个样本的输入都是形状为 28 * 28 的二维数组，那么对于 DNN 来说，输入层的神经元节点就要有 28 * 28 = 784个；输出层使用独热编码，需要 10 个节点。</p>
+<p>每个样本的输入都是形状为 28 _ 28 的二维数组，那么对于 DNN 来说，输入层的神经元节点就要有 28 _ 28 = 784个；输出层使用独热编码，需要 10 个节点。</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">DNN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39; 搭建神经网络各层 &#39;&#39;&#39;</span>
@@ -4054,7 +4070,7 @@ tensor([ 0.1857, -0.0293, -0.4400], device=&#39;cuda:0&#39;, requires_grad=True)
         <span class="n">Pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># 一次前向传播（小批量）</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">Pred</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">correct</span> <span class="o">+=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span> <span class="p">)</span>
-        <span class="n">total</span> <span class="o">+=</span> <span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> 
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;测试集精准度: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">correct</span><span class="o">/</span><span class="n">total</span><span class="si">}</span><span class="s1"> %&#39;</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>测试集精准度: 97.06999969482422 %
