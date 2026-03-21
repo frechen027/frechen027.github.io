@@ -53,6 +53,11 @@ nav: # 导航栏菜单结构，层级与目录结构对应
           - 15 分类: data_science/15_分类.md
           - 16 数值优化: data_science/16_数值优化.md
           - 17 案例研究: data_science/17_案例研究.md
+    - 爆肝杰哥深度学习:
+          - Python深度学习: jie_course/Python深度学习.md
+          - Numpy: jie_course/numpy.md
+          - Matplotlib: jie_course/matplotlib.md
+          - Pandas: jie_course/pandas.md
     - 实用工具:
           - 1 Git与版本控制: tools/01_Git与版本控制.md
           - 2 Markdown: tools/02_Markdown.md
@@ -61,9 +66,6 @@ nav: # 导航栏菜单结构，层级与目录结构对应
           - 5 coze: tools/05_coze.md
           - 6 n8n: tools/06_n8n.md
           - 7 PPT: tools/07_PPT.md
-    - 爆肝杰哥深度学习:
-          - 1 深度学习概述: deep_learning/jie_course/01_深度学习概述.md
-          - 2 API概览: deep_learning/jie_course/02_Notebook示例.ipynb
 
 theme:
     name: material #主题
@@ -87,4 +89,4 @@ extra_javascript:
     - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 plugins:
-    - mkdocs-jupyter
+    - search
