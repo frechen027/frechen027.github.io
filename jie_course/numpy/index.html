@@ -2892,6 +2892,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DNN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4761,7 +4789,14 @@
  [1 3]]
 </code></pre></div>
 <h3 id="_31">数组的翻转</h3>
-<p>数组的翻转方法有两个，一个是上下翻转的 np.flipud( ) ，表示 up-down；一个是左右翻转的 np.fliplr( )，表示 left-right。其中，向量只能使用 np.flipud( )，在数学中，<strong>向量并不是横着排的，而是竖着排的</strong>。</p>
+<p>数组的翻转方法有两个，一个是上下翻转的 np.flipud( ) ，表示 up-down；一个是左右翻转的 np.fliplr( )，表示 left-right。其中，向量只能使用 np.flipud( )，在数学中，<del>向量并不是横着排的，而是竖着排的</del>。</p>
+<p>注意：</p>
+<ul>
+<li>np.flipud()（flip up-down）确实容易让人误解为“垂直方向”。</li>
+<li>本质：flipud 实际上是 沿着 Axis 0 翻转。</li>
+<li>在 2D 矩阵中：Axis 0 是“行索引”，翻转行索引 = 上下翻转。</li>
+<li>在 1D 数组中：Axis 0 是唯一的轴。翻转它 = 反转数组顺序</li>
+</ul>
 <h4 id="_32">向量的翻转</h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># 创建向量</span>
 <span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
