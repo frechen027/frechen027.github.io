@@ -1486,6 +1486,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="滑动窗口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        无重复字符的最长子串
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        找到字符串中所有字母异位词
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        子串
+      
+    </span>
+  </a>
+  
 </li>
       
     </ul>
@@ -2767,6 +2806,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="滑动窗口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        无重复字符的最长子串
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        找到字符串中所有字母异位词
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        子串
+      
+    </span>
+  </a>
+  
 </li>
       
     </ul>
@@ -3457,6 +3535,120 @@
 </code></pre></div>
 <p>关键在于每个柱子能接的雨水量，即柱子两边的柱子中较小的一个减去柱子的高度。分别向左和向右找到能看到的最高的柱子。</p>
 <h2 id="_13">滑动窗口</h2>
+<p>一般解决连续子串问题，可以使用滑动窗口。其实滑动窗口就是两个指针，一个指向窗口的左边界，一个指向窗口的右边界。</p>
+<h3 id="_14">无重复字符的最长子串</h3>
+<p>给定一个字符串 s ，请你找出其中不含有重复字符的 <strong>最长子串</strong> 的长度。</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">char_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>  <span class="c1"># 用集合存储当前窗口的字符，查找速度 O(1)</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">right</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
+            <span class="c1"># 如果当前字符已在窗口中，不断移动左指针直到移除该字符</span>
+            <span class="k">while</span> <span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="ow">in</span> <span class="n">char_set</span><span class="p">:</span>
+                <span class="n">char_set</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">])</span>
+                <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="c1"># 将当前字符加入窗口</span>
+            <span class="n">char_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">])</span>
+
+            <span class="c1"># 更新最大长度 (此时窗口是合法的 [left, right])</span>
+            <span class="c1"># 窗口长度 = right - left + 1</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<p>由于<strong>不含有重复字符</strong>的最长子串，因此，只需要使用<strong>一个集合</strong>来存储当前窗口的元素，并使用两个指针来移动窗口。</p>
+<p>连续子串问题，理应想到使用滑动窗口来优化解法，其本质还是双指针，利用窗口的左右边界来确定窗口内字符的集合，从而判断窗口是否合法。</p>
+<p>窗口的左右边界，以及窗口内字符的集合，都是通过指针移动来更新的。</p>
+<p>注意点：添加元素</p>
+<ul>
+<li>想要排队（有顺序、可重复），用 append (List/Deque)。</li>
+<li>想要集邮（不重复、不在乎顺序），用 add (Set)。</li>
+</ul>
+<p>注意点：移除元素</p>
+<ul>
+<li>pop 通常跟位置/键有关，且会返回被删的东西。</li>
+<li>remove 跟具体的值有关，且不返回东西（返回 None）。</li>
+</ul>
+<h3 id="_15">找到字符串中所有字母异位词</h3>
+<p>给定两个字符串 s 和 p，找到 s 中所有 p 的 异位词 的子串，返回这些子串的起始索引。不考虑答案输出的顺序。</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">findAnagrams</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">window_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">total_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">total_size</span> <span class="o">&lt;</span> <span class="n">window_size</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">need</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">window</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">p_item</span> <span class="ow">in</span> <span class="n">p</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">p_item</span> <span class="ow">in</span> <span class="n">need</span><span class="p">:</span>
+                <span class="n">need</span><span class="p">[</span><span class="n">p_item</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">need</span><span class="p">[</span><span class="n">p_item</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="k">for</span> <span class="n">right</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_size</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="ow">in</span> <span class="n">need</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="ow">in</span> <span class="n">window</span><span class="p">:</span>
+                    <span class="n">window</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">window</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+
+                <span class="k">if</span> <span class="n">need</span> <span class="o">==</span> <span class="n">window</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="n">window_size</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="ow">in</span> <span class="n">window</span><span class="p">:</span>
+                    <span class="n">window</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]]</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<p>上面我使用了字典的比较操作，相等是要比较全部的键和值。</p>
+<p>同时由于本题是定长的窗口，内部可以不使用循环而仅仅采用条件判断，因为窗口内元素达到数量时，左右会跟随移动。</p>
+<p>使用 Counter 进行比较，可以优化我们的代码。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 请选择 Python3 提交代码，而不是 Python</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">findAnagrams</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">cnt_p</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>  <span class="c1"># 统计 p 的每种字母的出现次数</span>
+        <span class="n">cnt_s</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>  <span class="c1"># 统计 s 的长为 len(p) 的子串 t 的每种字母的出现次数</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">right</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+            <span class="n">cnt_s</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># 右端点字母进入窗口</span>
+
+            <span class="n">left</span> <span class="o">=</span> <span class="n">right</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># 窗口长度不足 len(p)</span>
+                <span class="k">continue</span>
+
+            <span class="k">if</span> <span class="n">cnt_s</span> <span class="o">==</span> <span class="n">cnt_p</span><span class="p">:</span>  <span class="c1"># t 和 p 的每种字母的出现次数都相同</span>
+                <span class="n">ans</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>  <span class="c1"># t 左端点下标加入答案</span>
+
+            <span class="n">cnt_s</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]]</span> <span class="o">-=</span> <span class="mi">1</span>  <span class="c1"># 左端点字母离开窗口</span>
+
+        <span class="k">return</span> <span class="n">ans</span>
+</code></pre></div>
+<p>Counter的比较运算：</p>
+<div class="highlight"><pre><span></span><code><span class="n">cnt3</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+<span class="n">cnt4</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cnt3</span> <span class="o">==</span> <span class="n">cnt4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cnt4</span> <span class="o">&lt;</span> <span class="n">cnt3</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Output：
+
+True
+False
+</code></pre></div>
+<p>注意：</p>
+<ul>
+<li>Counter之间可以进行比较运算，支持 <code>==, !=, &lt;, &lt;=, &gt;, &gt;=</code> 。</li>
+<li>在比较时，<strong>如果不存在的元素，会用计数0进行比较</strong>，所以上面的<strong>cnt3和cnt4相等</strong>。</li>
+<li>对于小于，只要Counter中有一个元素的计数值小于另一个Counter，其他元素的计数值可以相等，此时会返回True。大于同理。</li>
+</ul>
+<h2 id="_16">子串</h2>
 
 
 
