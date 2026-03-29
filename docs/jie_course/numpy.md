@@ -884,6 +884,7 @@ print(arr2)
 数组的翻转方法有两个，一个是上下翻转的 np.flipud( ) ，表示 up-down；一个是左右翻转的 np.fliplr( )，表示 left-right。其中，向量只能使用 np.flipud( )，在数学中，~~向量并不是横着排的，而是竖着排的~~。
 
 注意：
+
 - np.flipud()（flip up-down）确实容易让人误解为“垂直方向”。
 - 本质：flipud 实际上是 沿着 Axis 0 翻转。
 - 在 2D 矩阵中：Axis 0 是“行索引”，翻转行索引 = 上下翻转。
