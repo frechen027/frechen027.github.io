@@ -1279,7 +1279,63 @@
   <span class="md-ellipsis">
     
   
-    1 Hot100
+    1 Hot100(上)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/02_Hot100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Hot100(中)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/03_Hot100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Hot100(下)
   
 
     
@@ -2394,6 +2450,67 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        梯度下降算法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="梯度下降算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        如何实现梯度下降算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        梯度下降算法的意义
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学习率
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        示例
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2747,6 +2864,67 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        梯度下降算法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="梯度下降算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        如何实现梯度下降算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        梯度下降算法的意义
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学习率
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        示例
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2792,6 +2970,66 @@
 <p>评价好坏的标准？Cost Function！</p>
 <p>一般使用平方误差代价函数。</p>
 <p>线性回归的价值就是使得<span class="arithmatex">\(J(w,b)\)</span>尽可能小。手动找出显然不现实，编写高效算法代码，用于自动寻找最小化的<span class="arithmatex">\(J\)</span>的<span class="arithmatex">\(w\)</span>和<span class="arithmatex">\(b\)</span>，最佳拟合线。</p>
+<p>梯度下降算法，通过计算<span class="arithmatex">\(J(w,b)\)</span>对<span class="arithmatex">\(w\)</span>和<span class="arithmatex">\(b\)</span>的导数，从而找到最小化的<span class="arithmatex">\(J\)</span>的<span class="arithmatex">\(w\)</span>和<span class="arithmatex">\(b\)</span>。</p>
+<h2 id="_6">梯度下降算法</h2>
+<p>想象站在一个高度为<span class="arithmatex">\(h\)</span>的山上，要下降到山底，如何快速到达山底？</p>
+<ul>
+<li>环视一圈，找到一个最高效的方向，迈出我们最速下降的一小步。</li>
+<li>站在新的点上，重复上述过程</li>
+<li>一步步迈出，最终到达一个局部最小的谷底</li>
+</ul>
+<p>由于初始时可以选择不同的参数，即起点可以不一样，重复梯度下降的过程，最终可能到达一个不同的局部最小值。</p>
+<h3 id="_7">如何实现梯度下降算法</h3>
+<p><span class="arithmatex">\(w\)</span>和<span class="arithmatex">\(b\)</span>的更新公式：</p>
+<ul>
+<li><span class="arithmatex">\(w = w - \alpha * \frac{\partial J}{\partial w}\)</span></li>
+<li><span class="arithmatex">\(b = b - \alpha * \frac{\partial J}{\partial b}\)</span></li>
+</ul>
+<p>其中<span class="arithmatex">\(\alpha\)</span>为学习率，控制下坡时步子的大小，<span class="arithmatex">\(\alpha\)</span>越小，越慢，小步下坡，<span class="arithmatex">\(\alpha\)</span>越大，越快，大步下坡。选择一个合适的<span class="arithmatex">\(\alpha\)</span>很重要。</p>
+<p>导数项可以看作是采取小步的方向，与学习率结合，可以共同决定下坡步伐的大小。</p>
+<p>重复梯度下降算法，直到找到一个局部最小值。</p>
+<p>细节？需要同时对于<span class="arithmatex">\(w\)</span>和<span class="arithmatex">\(b\)</span>进行更新。</p>
+<p>正确做法：</p>
+<ul>
+<li><span class="arithmatex">\(tmp\_w = w - \alpha * \frac{\partial J}{\partial w}\)</span></li>
+<li><span class="arithmatex">\(tmp\_b = b - \alpha * \frac{\partial J}{\partial b}\)</span></li>
+<li><span class="arithmatex">\(w = tmp\_w\)</span></li>
+<li><span class="arithmatex">\(b = tmp\_b\)</span></li>
+</ul>
+<p>错误做法：</p>
+<ul>
+<li><span class="arithmatex">\(tmp\_w = w - \alpha * \frac{\partial J}{\partial w}\)</span></li>
+<li><span class="arithmatex">\(w = tmp\_w\)</span></li>
+<li><span class="arithmatex">\(tmp\_b = b - \alpha * \frac{\partial J}{\partial b}\)</span></li>
+<li><span class="arithmatex">\(b = tmp\_b\)</span></li>
+</ul>
+<p>代入计算的都应该是旧值，而不是新值！</p>
+<h3 id="_8">梯度下降算法的意义</h3>
+<p>简化一下，将<span class="arithmatex">\(b\)</span>暂时忽略，只考虑<span class="arithmatex">\(w\)</span>的更新公式：</p>
+<p><span class="arithmatex">\(J = J(w)\)</span></p>
+<p><span class="arithmatex">\(w = w - \alpha * \frac{\partial J}{\partial w}\)</span></p>
+<p>也就变成一个单变量的优化问题，求一个最小值。一元函数求导，沿着切线方向不断走。在最小值右侧时，导数大于0，在最小值左侧时，导数小于0，由于<span class="arithmatex">\(\alpha\)</span>始终大于0，所以都是沿着梯度下降的方向走，最终会找到一个局部最小值。</p>
+<p>导数项背后的直觉！</p>
+<h2 id="_9">学习率</h2>
+<p>学习率过小时，算法收敛速度慢，过大时，算法收敛速度快，但是可能无法找到全局最小值，导致远离最小值，甚至发散。</p>
+<p>处于局部最小值时，由于导数为0，无法继续下降，算法结束。这对于存在多个局部最小值的情况，可能无法找到全局最小值。</p>
+<p>一般来说，越接近极小值，导数越接近0，梯度下降会自动采取更小的步长，即使学习率始终不变，最终找到一个局部最小值。</p>
+<h2 id="_10">示例</h2>
+<p>线性回归模型，使用平方差误差代价函数，使用梯度下降算法，求解模型参数。我们最终要拟合到一条直线。</p>
+<p>建立线性回归模型：</p>
+<p><span class="arithmatex">\(f_{w,b}(x) = wx + b\)</span></p>
+<p>误差函数：</p>
+<p><span class="arithmatex">\(J(w,b) = \frac{1}{2m} \sum_{i=1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})^2\)</span></p>
+<p>由于求偏导时可以抵消掉<span class="arithmatex">\(2\)</span>，所以为了使得式子更简洁，将<span class="arithmatex">\(2\)</span>除掉。</p>
+<p>梯度下降算法：</p>
+<p><span class="arithmatex">\(w = w - \alpha * \frac{\partial J}{\partial w}\)</span></p>
+<p><span class="arithmatex">\(b = b - \alpha * \frac{\partial J}{\partial b}\)</span></p>
+<p>可以求得导数为：</p>
+<p><span class="arithmatex">\(\frac{\partial J}{\partial w} = \frac{1}{m} \sum_{i=1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)}) * x^{(i)}\)</span></p>
+<p><span class="arithmatex">\(\frac{\partial J}{\partial b} = \frac{1}{m} \sum_{i=1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})\)</span></p>
+<p>虽然局部最小值可能不是全局最小值，但事实可以证明，线性回归的平方误差代价函数，是凸函数，因此，全局最小值一定存在。</p>
+<p>更准确来说，我们现在使用的是 "Batch Gradient Descent"，批量梯度下降算法，每次迭代时，都使用所有数据点计算梯度，然后更新参数。</p>
+<p>如今我们了解了单变量、单特征的线性回归，那么如何推广到多特征、非线性模型呢？</p>
 
 
 
