@@ -4646,15 +4646,15 @@
 <p><strong>对于你的 <code>maxDepth</code> 代码，有两种改法：</strong></p>
 <ol>
 <li>
-<p><strong>加 <code>nonlocal</code> (最小改动):</strong>
-    <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
+<p><strong>加 <code>nonlocal</code> (最小改动):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
     <span class="k">nonlocal</span> <span class="n">result</span>  <span class="c1"># 告诉 Python 别把 result 当局部变量</span>
     <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span>
     <span class="c1"># ...</span>
     <span class="k">if</span> <span class="n">depth</span> <span class="o">&gt;</span> <span class="n">result</span><span class="p">:</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">depth</span>
-</code></pre></div></p>
+</code></pre></div>
 </li>
 <li>
 <p><strong>改用返回值 (最佳实践):</strong>
@@ -4678,7 +4678,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">invertTree</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">invertTree</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">root</span>        
+        <span class="k">return</span> <span class="n">root</span>
 </code></pre></div>
 <h3 id="_7">二叉树的直径</h3>
 <p>给定一个二叉树，你需要计算它的直径长度。一棵二叉树的直径长度是任意两个结点路径长度中的最大值。这条路径可能穿过也可能不穿过根结点。</p>
@@ -4850,10 +4850,10 @@
 </li>
 <li><strong>返回值</strong>：当前这整棵树（1-2-3-4-5-6）拉直后的 <strong>尾节点（6）</strong> 需要返回给上一层（如果 1 是某个节点的左孩子，上一层需要把 1 的尾连起来）。</li>
 </ol>
-<p><strong>结论：</strong> 这两个函数虽然名叫 <code>flatten</code>，但实际上它们充当了 <strong><code>dfs</code>  helper</strong> 的角色，<strong>返回值是当前子树扁平化后的尾节点</strong>。</p>
+<p><strong>结论：</strong> 这两个函数虽然名叫 <code>flatten</code>，但实际上它们充当了 <strong><code>dfs</code> helper</strong> 的角色，<strong>返回值是当前子树扁平化后的尾节点</strong>。</p>
 <hr />
 <h4 id="2">2. 两段代码的对比分析</h4>
-<p><strong>代码 1：统一处理（隐式叶节点）</strong>
+<p><strong>代码 1：统一处理（隐式叶节点）</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 终止条件只处理了 None</span>
 <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="k">return</span> <span class="kc">None</span>
@@ -4863,7 +4863,7 @@
 <span class="c1"># 核心区别在这里 👇</span>
 <span class="c1"># 通过逻辑或运算，自动判断谁是尾节点</span>
 <span class="k">return</span> <span class="n">right_tail</span> <span class="ow">or</span> <span class="n">left_tail</span> <span class="ow">or</span> <span class="n">root</span>
-</code></pre></div></p>
+</code></pre></div>
 <ul>
 <li><strong>逻辑：</strong> 它不专门区分“叶节点”。<ul>
 <li>如果有右子树，<code>right_tail</code> 存在，返回它（整棵树的尾在右边）。</li>
@@ -4874,7 +4874,7 @@
 <li><strong>优点：</strong> 代码更简洁，少了一个 <code>if</code> 判断，逻辑复用性高。</li>
 <li><strong>缺点：</strong> 哪怕到了叶节点，也要执行完后面的逻辑才返回，多了一层函数栈。</li>
 </ul>
-<p><strong>代码 2：显式处理叶节点（优化终止条件）</strong>
+<p><strong>代码 2：显式处理叶节点（优化终止条件）</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 终止条件处理了 None 和 叶节点</span>
 <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="k">return</span>
@@ -4885,7 +4885,7 @@
 
 <span class="c1"># 因为排除了叶节点，这里必然至少有一个子树存在</span>
 <span class="k">return</span> <span class="n">right</span> <span class="ow">or</span> <span class="n">left</span>
-</code></pre></div></p>
+</code></pre></div>
 <ul>
 <li><strong>逻辑：</strong> 它在递归开始前就拦截了叶节点。<ul>
 <li>既然是叶节点，扁平化后尾节点就是自己，直接 <code>return root</code>。</li>
@@ -4934,7 +4934,7 @@
 <strong>如果函数后续的逻辑依赖于“节点有孩子”</strong>，你必须提前返回，否则会报错（如 <code>NoneType has no attribute 'val'</code>）。</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="c1"># ❌ 错误：如果 node 是叶节点，node.left 是 None，下一行会报错</span>
-    <span class="c1"># if node.left.val &gt; 10: </span>
+    <span class="c1"># if node.left.val &gt; 10:</span>
     <span class="c1">#     ...</span>
 
     <span class="c1"># ✅ 正确：先确保有孩子</span>
@@ -4954,10 +4954,10 @@
 例如：计算路径和。叶节点代表路径结束，可能需要特殊处理（如将当前路径加入结果集），而中间节点只是累加。</p>
 <hr />
 <h4 id="5-leetcode">5. 一个重要的潜在问题（LeetCode 签名）</h4>
-<p>虽然你的代码逻辑是通的，但在 <strong>LeetCode 原题 (114. Flatten Binary Tree to Linked List)</strong> 中，函数签名通常是：
+<p>虽然你的代码逻辑是通的，但在 <strong>LeetCode 原题 (114. Flatten Binary Tree to Linked List)</strong> 中，函数签名通常是：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TreeNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </code></pre></div>
-<strong>注意返回类型是 <code>None</code></strong>。</p>
+<p><strong>注意返回类型是 <code>None</code></strong>。</p>
 <ul>
 <li>你的代码中写了 <code>-&gt; Optional[TreeNode]</code> 并且 <code>return</code> 了节点。</li>
 <li>在 LeetCode 上，如果签名是 <code>-&gt; None</code>，你 <code>return</code> 的值会被忽略。但你的递归调用 <code>left_tail = self.flatten(root.left)</code> 会接收到 <code>None</code>，导致逻辑崩溃。</li>
@@ -5117,9 +5117,11 @@
 </li>
 </ol>
 <h4 id="_16">优化方案</h4>
-<p>为了达到 <strong><span class="arithmatex">\(O(N)\)</span></strong> 的时间复杂度，通常采用以下两种优化手段：
-1.  <strong>使用哈希表存储中序遍历的值与索引的映射</strong>：避免每次递归都调用 <code>index()</code> 方法查找根节点位置。
-2.  <strong>使用索引指针代替数组切片</strong>：传递原数组的起始和结束下标（<code>start</code>, <code>end</code>），而不是复制子数组。</p>
+<p>为了达到 <strong><span class="arithmatex">\(O(N)\)</span></strong> 的时间复杂度，通常采用以下两种优化手段：</p>
+<ol>
+<li><strong>使用哈希表存储中序遍历的值与索引的映射</strong>：避免每次递归都调用 <code>index()</code> 方法查找根节点位置。</li>
+<li><strong>使用索引指针代替数组切片</strong>：传递原数组的起始和结束下标（<code>start</code>, <code>end</code>），而不是复制子数组。</li>
+</ol>
 <h4 id="_17">优化后的代码示例</h4>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">buildTree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preorder</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">inorder</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TreeNode</span><span class="p">]:</span>
@@ -5426,7 +5428,7 @@
                 <span class="k">return</span> <span class="kc">False</span>
 
             <span class="c1"># 递归检查左右子树，更新边界</span>
-            <span class="k">return</span> <span class="p">(</span><span class="n">dfs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">min_val</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span><span class="p">)</span> <span class="ow">and</span> 
+            <span class="k">return</span> <span class="p">(</span><span class="n">dfs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">min_val</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span><span class="p">)</span> <span class="ow">and</span>
                     <span class="n">dfs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="n">max_val</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="n">dfs</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;-inf&#39;</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">))</span>
@@ -5463,7 +5465,7 @@
             <span class="k">if</span> <span class="n">sign</span><span class="p">:</span>
                 <span class="k">return</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span>
-                <span class="k">return</span> 
+                <span class="k">return</span>
             <span class="n">dfs</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
             <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="n">k</span><span class="p">:</span>
@@ -5554,7 +5556,7 @@
 <li>值 0 代表空单元格；</li>
 <li>值 1 代表新鲜橘子；</li>
 <li>值 2 代表腐烂的橘子。
-每分钟，腐烂的橘子 周围 4 个方向上相邻 的新鲜橘子都会腐烂。</li>
+  每分钟，腐烂的橘子 周围 4 个方向上相邻 的新鲜橘子都会腐烂。</li>
 </ul>
 <p>返回 直到单元格中没有新鲜橘子为止所必须经过的最小分钟数。如果不可能，返回 -1 。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
@@ -5730,7 +5732,7 @@
 </code></pre></div>
 <h3 id="_28">课程表</h3>
 <p>你这个学期必须选修 numCourses 门课程，记为 0 到 numCourses - 1 。</p>
-<p>在选修某些课程之前需要一些先修课程。 先修课程按数组 prerequisites 给出，其中 prerequisites[i] = [ai, bi] ，表示如果要学习课程 ai 则 必须 先学习课程  bi 。</p>
+<p>在选修某些课程之前需要一些先修课程。 先修课程按数组 prerequisites 给出，其中 prerequisites[i] = [ai, bi] ，表示如果要学习课程 ai 则 必须 先学习课程 bi 。</p>
 <p>例如，先修课程对 [0, 1] 表示：想要学习课程 0 ，你需要先完成课程 1 。
 请你判断是否可能完成所有课程的学习？如果可以，返回 true ；否则，返回 false 。</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
@@ -5823,10 +5825,12 @@
     <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>  <span class="c1"># ❌ 错误：添加的是引用</span>
     <span class="k">return</span>
 </code></pre></div>
-<p><strong>问题说明：</strong>
-- <code>path</code> 是一个列表对象，<code>append(path)</code> 添加的是 <strong>引用（内存地址）</strong>，不是拷贝。
-- 所有 <code>results</code> 中的元素都指向 <strong>同一个 <code>path</code> 对象</strong>。
-- 回溯过程中 <code>path</code> 会被不断修改，最终所有结果都变成 <strong>最后一次的状态</strong>。</p>
+<p><strong>问题说明：</strong></p>
+<ul>
+<li><code>path</code> 是一个列表对象，<code>append(path)</code> 添加的是 <strong>引用（内存地址）</strong>，不是拷贝。</li>
+<li>所有 <code>results</code> 中的元素都指向 <strong>同一个 <code>path</code> 对象</strong>。</li>
+<li>回溯过程中 <code>path</code> 会被不断修改，最终所有结果都变成 <strong>最后一次的状态</strong>。</li>
+</ul>
 <p><strong>错误演示</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 假设 nums = [1, 2]</span>
 <span class="c1"># 期望输出：[[1, 2], [2, 1]]</span>
@@ -5843,10 +5847,12 @@
 <p><strong>2. 次要问题：<code>nonlocal</code> 多余</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">nonlocal</span> <span class="n">path</span>  <span class="c1"># ⚠️ 多余</span>
 </code></pre></div>
-<p><strong>说明：</strong>
-- <code>path</code> 是列表（可变对象），在嵌套函数中修改其内容（如 <code>path[step-1] = nums[i]</code>）<strong>不需要</strong> <code>nonlocal</code>。
-- <code>nonlocal</code> 只用于修改 <strong>不可变对象的绑定</strong>（如重新赋值 <code>path = []</code>）。
-- 这行代码不影响功能，但建议删除。</p>
+<p><strong>说明：</strong></p>
+<ul>
+<li><code>path</code> 是列表（可变对象），在嵌套函数中修改其内容（如 <code>path[step-1] = nums[i]</code>）<strong>不需要</strong> <code>nonlocal</code>。</li>
+<li><code>nonlocal</code> 只用于修改 <strong>不可变对象的绑定</strong>（如重新赋值 <code>path = []</code>）。</li>
+<li>这行代码不影响功能，但建议删除。</li>
+</ul>
 <hr />
 <p><strong>3. 代码风格问题：step 从 1 开始不够直观</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">dfs</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># step 从 1 开始</span>
@@ -5961,7 +5967,7 @@
         <span class="n">numbers</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;mno&#39;</span><span class="p">)</span>
         <span class="n">numbers</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;pqrs&#39;</span><span class="p">)</span>
         <span class="n">numbers</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;tuv&#39;</span><span class="p">)</span>
-        <span class="n">numbers</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;wxyz&#39;</span><span class="p">)</span>                
+        <span class="n">numbers</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;wxyz&#39;</span><span class="p">)</span>
         <span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">step</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">step</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span>  <span class="c1"># step 从 0 开始，等于 n 时结束</span>
                 <span class="n">result</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
@@ -6013,7 +6019,7 @@
         <span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">left</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">right</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span> <span class="c1"># 填完了</span>
                 <span class="n">ans</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
-                <span class="k">return</span> 
+                <span class="k">return</span>
             <span class="k">if</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
                 <span class="n">path</span><span class="p">[</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;(&#39;</span>
                 <span class="n">dfs</span><span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
@@ -6022,7 +6028,7 @@
                 <span class="n">dfs</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 
         <span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ans</span>   
+        <span class="k">return</span> <span class="n">ans</span>
 </code></pre></div>
 <p>本质是「选或不选」的思想，你可以把填左括号视作「选」，填右括号视作「不选」。</p>
 <ul>
@@ -6345,7 +6351,7 @@
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">lower_bound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>        
+    <span class="k">def</span> <span class="nf">lower_bound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">:</span>
             <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
             <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">target</span><span class="p">:</span>
@@ -6427,19 +6433,25 @@ nums2: [  | 2]     ← 在索引0处切一刀
 <ol>
 <li><strong>选短数组二分</strong>：在长度较小的数组上二分查找分割点 <code>i</code>，保证时间复杂度为 <code>O(log(min(m,n)))</code>。</li>
 <li><strong>自动计算另一个分割点</strong>：<code>j = (m + n + 1) // 2 - i</code>。这个公式保证了左右两侧元素个数平衡。</li>
-<li><strong>获取关键值</strong>：分割线会把数组切成四块，我们需要关注紧挨着分割线的四个值：</li>
+<li><strong>获取关键值</strong>：分割线会把数组切成四块，我们需要关注紧挨着分割线的四个值：<ul>
 <li><code>max_left1</code>（nums1左侧最大值）</li>
 <li><code>min_right1</code>（nums1右侧最小值）</li>
 <li><code>max_left2</code>（nums2左侧最大值）</li>
 <li><code>min_right2</code>（nums2右侧最小值）
-   <em>(边界处理：越界时用 <code>-∞</code> 或 <code>+∞</code> 代替)</em></li>
+  <em>(边界处理：越界时用 <code>-∞</code> 或 <code>+∞</code> 代替)</em></li>
+</ul>
+</li>
 <li><strong>检查分割是否合法</strong>：必须满足 <code>max_left1 &lt;= min_right2</code> 且 <code>max_left2 &lt;= min_right1</code>。</li>
-<li><strong>调整二分边界</strong>：</li>
+<li><strong>调整二分边界</strong>：<ul>
 <li>如果 <code>max_left1 &gt; min_right2</code> → nums1 左边太大，分割点 <code>i</code> 需左移 (<code>right = i - 1</code>)</li>
 <li>否则 → nums1 左边太小，分割点 <code>i</code> 需右移 (<code>left = i + 1</code>)</li>
-<li><strong>计算中位数</strong>：</li>
+</ul>
+</li>
+<li><strong>计算中位数</strong>：<ul>
 <li>总长度为奇数：<code>max(max_left1, max_left2)</code></li>
 <li>总长度为偶数：<code>(max(max_left1, max_left2) + min(min_right1, min_right2)) / 2</code></li>
+</ul>
+</li>
 </ol>
 <h4 id="python">✅ Python 代码（带详细注释）</h4>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
@@ -6486,7 +6498,7 @@ nums2: [  | 2]     ← 在索引0处切一刀
         <span class="k">return</span> <span class="mf">0.0</span>
 </code></pre></div>
 <h4 id="_49">🧪 手动模拟示例</h4>
-<p><strong>示例 1：</strong> <code>nums1 = [1,3]</code>, <code>nums2 = [2]</code>
+<p><strong>示例 1：</strong> <code>nums1 = [1,3]</code>, <code>nums2 = [2]</code></p>
 <div class="highlight"><pre><span></span><code>m=2, n=1, 总长=3（奇数），左边需要 (3+1)//2 = 2 个元素
 初始: left=0, right=2
 ① i=1, j=2-1=1
@@ -6495,8 +6507,8 @@ nums2: [  | 2]     ← 在索引0处切一刀
    max_left2=2, min_right2=+∞
    检查: 1≤∞ ✅, 2≤3 ✅ → 找到合法分割！
    中位数 = max(1,2) = 2 ✅
-</code></pre></div></p>
-<p><strong>示例 2：</strong> <code>nums1 = [1,2]</code>, <code>nums2 = [3,4]</code>
+</code></pre></div>
+<p><strong>示例 2：</strong> <code>nums1 = [1,2]</code>, <code>nums2 = [3,4]</code></p>
 <div class="highlight"><pre><span></span><code>m=2, n=2, 总长=4（偶数），左边需要 (4+1)//2 = 2 个元素
 ① i=1, j=2-1=1
    nums1: [1 | 2], nums2: [3 | 4]
@@ -6511,7 +6523,7 @@ nums2: [  | 2]     ← 在索引0处切一刀
    max_left2=-∞, min_right2=3
    检查: 2≤3 ✅, -∞≤∞ ✅ → 合法！
    中位数 = (max(2,-∞) + min(∞,3)) / 2 = (2+3)/2 = 2.5 ✅
-</code></pre></div></p>
+</code></pre></div>
 <h4 id="_50">📊 复杂度分析</h4>
 <table>
 <thead>
@@ -6543,7 +6555,7 @@ nums2: [  | 2]     ← 在索引0处切一刀
 <li>合法条件：<code>max_left1 &lt;= min_right2</code> <strong>且</strong> <code>max_left2 &lt;= min_right1</code>（必须双向检查）</li>
 <li>调整方向：<code>max_left1 &gt; min_right2</code> → <code>i</code> 左移；否则 → <code>i</code> 右移</li>
 </ul>
-<p><strong>🚫 常见错误</strong>
+<p><strong>🚫 常见错误</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ❌ 错误1：j 的计算漏了 +1，导致奇数时左右不平衡</span>
 <span class="n">j</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="n">n</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">i</span>
 
@@ -6552,9 +6564,9 @@ nums2: [  | 2]     ← 在索引0处切一刀
 
 <span class="c1"># ❌ 错误3：只检查一边，导致分割线交叉</span>
 <span class="k">if</span> <span class="n">max_left1</span> <span class="o">&lt;=</span> <span class="n">min_right2</span><span class="p">:</span>  <span class="c1"># 漏了 max_left2 &lt;= min_right1！</span>
-</code></pre></div></p>
+</code></pre></div>
 <h4 id="_52">🎁 附：更简洁的写法（进阶）</h4>
-<p>逻辑完全一致，去除了冗余注释，适合面试快速手写：
+<p>逻辑完全一致，去除了冗余注释，适合面试快速手写：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">findMedianSortedArrays</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums1</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">nums2</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">nums1</span><span class="p">,</span> <span class="n">nums2</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
@@ -6579,7 +6591,7 @@ nums2: [  | 2]     ← 在索引0处切一刀
             <span class="n">hi</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">lo</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-</code></pre></div></p>
+</code></pre></div>
 
 
 
