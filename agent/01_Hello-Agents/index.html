@@ -1,0 +1,5028 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../leetcode/04_%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%85%B8150/">
+      
+      
+        <link rel="next" href="../../data_science/01_%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>1 Hello-Agents - Python 修行指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hello-agents" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Python 修行指南" class="md-header__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python 修行指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1 Hello-Agents
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Python 修行指南" class="md-nav__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Python 修行指南
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    前言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 预备知识
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 预备知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/01_Python%E7%A8%8B%E5%BA%8F%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Python程序基本结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/02_%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 基础语法与变量
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/03_%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 核心数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/04_%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 运算符与表达式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/05_%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 程序控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/06_%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 函数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/07_%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 文件操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/08_%E9%94%99%E8%AF%AF%E4%B8%8E%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 错误与异常处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/09_%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 面向对象编程基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 进阶修炼
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 进阶修炼
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/01_%E6%8E%A8%E5%AF%BC%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/02_%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 迭代器与生成器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/03_%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/04_%E8%A3%85%E9%A5%B0%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 装饰器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/05_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/06_%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%8C%85/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 模块与包
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/07_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 进阶输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/08_%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 命名空间与作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/09_%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 类型注解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/10_%E6%A0%87%E5%87%86%E5%BA%93%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 标准库概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/11_%E5%BC%82%E6%AD%A5IO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 异步IO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/01_%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 算法概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/02_%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%9E%9A%E4%B8%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 模拟与枚举
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/03_%E9%80%92%E5%BD%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 递归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/04_%E5%88%86%E6%B2%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 分治
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/05_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 二分查找
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/06_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 动态规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/07_%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 背包问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/08_%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 贪心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/09_%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 搜索算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/10_%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 图论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法实战
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法实战
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/01_Hot100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Hot100(上)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/02_Hot100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Hot100(中)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/03_Hot100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Hot100(下)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/04_%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%85%B8150/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 面试经典150(上)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Hello-Agents
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Hello-Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        初始智能体
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="初始智能体">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么是智能体
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        智能体的构成和运行原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        智能体协作模式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工作流和智能体差异
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        智能体发展史
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="智能体发展史">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于符号与逻辑的早期智能体
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于规则的聊天机器人
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        心智社会
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学习范式的演进与现代智能体
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大语言模型基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大语言模型基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        语言模型与 Transformer 架构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="语言模型与 Transformer 架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nn-vs-rnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 普通NN vs RNN：处理同一个句子，到底哪里不一样？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnn_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📉 RNN 为什么“梯度不更新” = “记不住开头”？（因果链）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnnlstm3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 RNN和LSTM核心区别（3个维度）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lstm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LSTM伪码解析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 知识点整理：静态向量 vs 动态向量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-k-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Q, K, V 机制是如何发挥作用的？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么是V而不是V转置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-head-vs-single-head" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 多头注意力（Multi-Head） vs 单头注意力（Single-Head）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据科学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据科学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/01_%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 生命周期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/02_%E7%9F%A9%E5%BD%A2%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 矩形数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/03_SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 SQL与关系数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/04_%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 文件处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/05_%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据清洗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/06_%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 数据分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/07_%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 数据可视化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/08_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/09_%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 文本数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/10_%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 数据交换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/11_%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 线性模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/12_%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 模型选择
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/13_%E6%8E%A8%E7%90%86%E4%B8%8E%E9%A2%84%E6%B5%8B%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 推理与预测理论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/14_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/15_%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/16_%E6%95%B0%E5%80%BC%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 数值优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/17_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    爆肝杰哥深度学习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    爆肝杰哥深度学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/Python%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python深度学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/numpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/matplotlib/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matplotlib
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/pandas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pandas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/DNN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/CNN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CNN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    吴恩达机器学习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    吴恩达机器学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wu_course/01_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 机器学习基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自然语言处理
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    自然语言处理
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nlp/01_%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 软微自然语言处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    后训练
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    后训练
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_training/01_%E5%90%8E%E8%AE%AD%E7%BB%83%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 后训练概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    个人面经
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    个人面经
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/%E9%9D%A2%E7%BB%8F%E6%B5%81%E6%B0%B4%E8%B4%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 面经流水账
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实用工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/01_Git%E4%B8%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Git与版本控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/02_Markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/03_Vibe_Coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Vibe Coding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/04_LeetCode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 LeetCode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/05_coze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 coze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/06_n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/07_PPT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 PPT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        初始智能体
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="初始智能体">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么是智能体
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        智能体的构成和运行原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        智能体协作模式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工作流和智能体差异
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        智能体发展史
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="智能体发展史">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于符号与逻辑的早期智能体
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于规则的聊天机器人
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        心智社会
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学习范式的演进与现代智能体
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大语言模型基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大语言模型基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        语言模型与 Transformer 架构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="语言模型与 Transformer 架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nn-vs-rnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 普通NN vs RNN：处理同一个句子，到底哪里不一样？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnn_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📉 RNN 为什么“梯度不更新” = “记不住开头”？（因果链）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnnlstm3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 RNN和LSTM核心区别（3个维度）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lstm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LSTM伪码解析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 知识点整理：静态向量 vs 动态向量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-k-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Q, K, V 机制是如何发挥作用的？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么是V而不是V转置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-head-vs-single-head" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 多头注意力（Multi-Head） vs 单头注意力（Single-Head）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="hello-agents">Hello-Agents</h1>
+<blockquote>
+<p>记录回顾一下Hello-Agents的笔记。</p>
+</blockquote>
+<h2 id="_1">初始智能体</h2>
+<h3 id="_2">什么是智能体</h3>
+<ul>
+<li>什么是智能体？<ul>
+<li>人工智能领域被定义为可以感知所处环境，并自主通过执行器采取行动以达到特定目标的实体。</li>
+</ul>
+</li>
+<li>传统视角下的智能体<ul>
+<li>反射智能体：决策核心为明确的“条件-动作”规则构成。完全依赖当前感知输入，不具备记忆或者预测能力。</li>
+<li>基于模型的反射智能体：引入“状态”，构建一个世界模型，试图使智能体理解世界。</li>
+<li>基于目标的智能体：不再是被动对环境作出回应，而是主动、有遇见向某个方向行动。</li>
+<li>基于效用的智能体：回答哪种行为能够获得最大的效用。</li>
+<li>学习型智能体：不再依赖预设，而是通过与环境交互自主学习。强化学习是其代表性路径。</li>
+</ul>
+</li>
+<li>大语言模型驱动的新范式<ul>
+<li>核心不再是编写代码，而是转向引导一个通用的“大脑”去规划、行动和学习。</li>
+</ul>
+</li>
+<li>智能体分类：<ul>
+<li>基于内部决策架构的分类：之前的传统智能体，基于模型、基于目标、基于效用、基于学习</li>
+<li>基于时间与反应性的分类：追求速度的反应性与追求最优解的规划性之间的平衡。<ul>
+<li>反应式智能体：速度快、计算开销低，“短视”</li>
+<li>规划式智能体：决策的战略性和远见，高昂的时间和计算成本</li>
+<li>混合式智能体：LLM智能体便是一种体现，既包含思考也包含决策反馈。</li>
+</ul>
+</li>
+<li>基于知识表示的分类：<ul>
+<li>符号主义：智能体源于对符号的逻辑操作。追求可解释性，但存在“知识获取瓶颈”</li>
+<li>亚符号主义：知识不是显示的规则，而是隐藏在神经网络中，是从海量数据之中学习来的，伴随不透明性。</li>
+<li>神经符号主义：想将上述两者进行融合，混合智能体。大模型驱动的智能体也是？思考过程为黑盒网络，采取的决策却是清晰可追溯。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_3">智能体的构成和运行原理</h3>
+<ul>
+<li>任务环境</li>
+<li>运行机制：智能体循环<ul>
+<li>感知：观察</li>
+<li>思考：思考过程中会包含规划和工具选择</li>
+<li>行动</li>
+</ul>
+</li>
+</ul>
+<h3 id="_4">智能体协作模式</h3>
+<ul>
+<li>开发者工具：Copilot、Cursor</li>
+<li>自主协作者：一些智能体开发框架</li>
+</ul>
+<h3 id="_5">工作流和智能体差异</h3>
+<ul>
+<li>workflow是让AI按部就班执行指令。</li>
+<li>agent则是赋予AI自由度去自主达成目标。</li>
+</ul>
+<h2 id="_6">智能体发展史</h2>
+<h3 id="_7">基于符号与逻辑的早期智能体</h3>
+<ul>
+<li>信念：人类的智能，尤其是逻辑推理能力，可以被形式化的符号体系所捕获和复现。</li>
+<li>智能体的行为核心是基于一套明确的规则对符号进行操作，其智慧来源于设计者预先编码的知识库和推理规则，而非通过自主学习获得。</li>
+<li>物理符号系统假说：理论依据，大胆宣称智能的本质，就是符号的计算与处理。</li>
+<li>专家系统：最重要、最成功的应用成果，将专家的知识和经验编码成计算机程序。<ul>
+<li>知识库与推理机</li>
+<li>知识库包含一系列IF-THEN</li>
+<li>推理机根据用户事实，在知识库中寻找并应用相关规则</li>
+</ul>
+</li>
+<li>符号主义根本挑战<ul>
+<li>常识知识与知识获取瓶颈</li>
+<li>框架问题和系统脆弱性</li>
+</ul>
+</li>
+</ul>
+<h3 id="_8">基于规则的聊天机器人</h3>
+<ul>
+<li>构建基于规则的聊天机器人<ul>
+<li>ELIZA的设计思想</li>
+<li>从不正面回答问题，而是识别关键词，应用转换规则，将用户陈述转为开放问题。</li>
+<li>证明通过句式转换，机器在不了解对话内容情况下，营造出虚假的智能和共情。</li>
+<li>核心就是基于模式匹配与文本替换</li>
+</ul>
+</li>
+<li>直接印证先前挑战：<ul>
+<li>缺乏语义理解</li>
+<li>无上下文记忆</li>
+<li>规则扩展性问题</li>
+</ul>
+</li>
+</ul>
+<h3 id="_9">心智社会</h3>
+<ul>
+<li>对单一整体智能模型的反思<ul>
+<li>“理解”是什么？单一能力还是多种心智过程协同工作的结果。</li>
+<li>“常识”是什么？是规则逻辑知识库还是简单规则交织形成的网络。</li>
+<li>智能体应该如何构建？追求完整、统一的逻辑系统，还是承认智能本身就不是完美的？</li>
+<li>从而将智能体看作扁平化的、充满互动与协作的“社会”</li>
+</ul>
+</li>
+<li>作为协作体的智能<ul>
+<li>简单的智能体组织起来、形成功能更加强大的机构。</li>
+<li>智能体之间通过去中心化的激活和抑制信号相互影响，形成动态的控制流。</li>
+<li>涌现？复杂的、有目的性的智能行为，并非由某个高级智能体预先规划，而是大量简单底层智能体的局部交互中自发产生。</li>
+</ul>
+</li>
+<li>对多智能体系统的理论启发</li>
+</ul>
+<h3 id="_10">学习范式的演进与现代智能体</h3>
+<p>如果智能无法被完全设计，是否可以被学习出来？</p>
+<ul>
+<li>从符号到联结<ul>
+<li>知识的分布式表示：知识是以连接权重形式存储在神经元之间。</li>
+<li>简单的处理单元：每个神经元只执行简单计算，通过一个激活函数进行处理，将结果输出给下一个神经元。</li>
+<li>通过学习调整权重：智能来源于学习过程，通过某种学习算法，自动、迭代调整神经元之间的连接权重。</li>
+<li>联结主义赋予智能体强大的感知和模式识别能力，使其能够从原始数据中理解世界。如何使得智能体学会在与环境的动态交互中做出最优的序贯决策？强化学习</li>
+</ul>
+</li>
+<li>基于强化学习的智能体<ul>
+<li>联结主义主要解决了感知问题，例如图片中有什么？</li>
+<li>智能体更核心的任务是进行决策，例如该情况下，我应该做什么？</li>
+<li>强化学习正是专注于解决序贯决策问题的学习范式，并非从标注好的静态数据集中学习，而是通过智能体与环境直接交互，在试错中学习如何最大化长期收益。AlphaGo</li>
+<li>强化学习框架核心要素：<ul>
+<li>智能体</li>
+<li>环境</li>
+<li>状态</li>
+<li>行动</li>
+<li>奖励</li>
+</ul>
+</li>
+<li>智能体的学习目标，并非最大化某一时间步的即时奖励，而是最大化当前时刻开始到未来的累计奖励，也称为回报。</li>
+</ul>
+</li>
+<li>基于大规模数据的预训练<ul>
+<li>强化学习赋予了智能体从交互中学习决策的能力，但通常需要海量的、特定任务的交互数据，导致智能体学习之初缺乏先验知识。</li>
+<li>如何使得智能体在开始学习具体任务前，具备对于世界的广泛理解？基于大规模数据的预训练。</li>
+<li>预训练与微调范式的提出</li>
+<li>大语言模型的诞生与涌现能力</li>
+</ul>
+</li>
+<li>基于大语言模型的智能体<ul>
+<li>感知-观察模块：智能体决策的起点，处理后被传递给思考阶段。</li>
+<li>思考：智能体的认知核心，进行规划分解、推理和决策</li>
+<li>行动：执行模块解析思考阶段生成的工具调用指令，调用工具来与环境交互。</li>
+<li>观察与循环：工具结果会产生全新环境状态，从而进行新一轮观察感知循环。</li>
+</ul>
+</li>
+</ul>
+<h2 id="_11">大语言模型基础</h2>
+<h3 id="transformer">语言模型与 Transformer 架构</h3>
+<ul>
+<li>从 N-gram 到 RNN<ul>
+<li>统计语言模型与 N-gram 的思想<ul>
+<li>深度学习兴起之前，统计方法是语言模型的主流。</li>
+<li>核心思想：一个句子出现的概率，等于该句子中每个词出现的条件概率的连乘，也称为链式法则。</li>
+<li>完整计算链式法则几乎不可能，由此提出了马尔可夫假设，近似认为，一个词的出现概率只与前有限的n-1个词有关，称为N-gram模型。</li>
+<li>其中的各个概率可以通过语料库中的统计量进行最大似然估计来计算。</li>
+<li>数据稀疏性：语料库中从未出现则概率估计为0</li>
+<li>泛化能力差：模型无法理解词与词之间的语义相似性，例如无法理解agent与robot在语义上的相似性。</li>
+</ul>
+</li>
+<li>神经网络语言模型与词嵌入<ul>
+<li>N-gram 模型根本缺陷在于将词视为孤立、离散的符号。使用连续向量表示词？前馈神经网络语言模型</li>
+<li>核心思想：构建一个语义空间，将词汇表中的每个词映射为空间中的一个点，称为词嵌入，语义相近向量在空间中相近。学习从上下文到下一个词的映射，利用神经网络强大的拟合能力，学习一个函数，输入为前n-1个词的词向量，输出是词汇表中每个词在当前上下文后出现的概率分布。</li>
+<li>词嵌入为模型训练过程中自动学习得到，为了完成“预测下一个词”这个任务，会不断调整每个词的向量位置，最终使得向量能够蕴含丰富的语义信息。</li>
+<li>我们可以使用例如余弦相似度来计算两个向量的相似性。</li>
+<li>神经网络模型通过词嵌入，解决了泛化能力差的问题，但依旧受限于固定的上下文窗口。</li>
+</ul>
+</li>
+<li>循环神经网络RNN和长短时记忆网络LSTM<ul>
+<li>为了打破固定窗口的限制，RNN应运而生。其核心是为网络增加“记忆”能力。</li>
+<li>引入一个隐藏状态向量，用以表示网络的短期记忆，类似于一个小本本，不断记录并传递。</li>
+<li>处理序列每一步的时候，会结合当前输入和小本本中内容，生成一个新的记忆并传给下一步。</li>
+<li>问题：长期依赖问题，训练过程中，模型需要通过反向传播算法根据输入端误差来调整网络深处权重，对于RNN而言，序列长度就是网络深度。序列很长时，反向传播经过多次连乘，会导致梯度消失或者梯度爆炸问题。梯度消失会使得模型无法有效学习到序列早期信息对后期输出的影响，难以捕捉长距离的依赖关系。网络能不能“记住开头”，取决于误差信号能不能成功传回开头。</li>
+<li>为了解决长期依赖问题，长短时记忆网络LSTM被设计，核心创新为引入细胞状态Cell State和一套精密的门控机制。细胞状态可以看作独立于隐藏状态的信息通路，允许信息在时间步之间更加顺畅传递。门控机制由几个小型神经网络组成，学习如何有选择地让信息通过，从而控制细胞状态的更新，包括遗忘门，输入门，输出门。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Transformer 架构解析<ul>
+<li>RNN和LSTM引入循环一定程度上解决了捕捉长距离以来的问题。但是，必须按时间步顺序处理数据，无法进行大规模的并行计算。</li>
+<li>Transformer 完全摒弃了循环结构，转为依赖注意力机制来捕获序列内的依赖关系，实现并行计算。</li>
+<li>Encoder-Decoder整体结构<ul>
+<li>最初视为机器翻译任务设计，遵循经典的编码器-解码器架构。</li>
+<li>编码器Encoder：理解整个输入句子，读取所有输入词元并为每个token生成富含上下文信息的向量表示。</li>
+<li>解码器Decoder：任务是“生成”目标句子，参考自己已经生成的前文，并“咨询”编码器的理解结果，来生成下一个词。</li>
+</ul>
+</li>
+<li>从自注意力到多头注意力<ul>
+<li>骨架中最关键模块：注意力机制。</li>
+<li>人脑阅读句子“The agent learns because it is intelligent.”读取到it时会将更多注意力放到agent上，自注意力机制就是对此的数学建模。</li>
+<li>允许模型处理每一个词的时候，兼顾句子中所有的其他词，并为这些词分配不同的“注意力权重”。</li>
+<li>权重越高，代表与当前词关联性越强，其信息在当前词的表示中也要占据更大的比重。</li>
+<li>为此，自注意力机制为每个输入的词元向量引入三个可学习角色：<ul>
+<li>查询Q：代表当前词元，主动查询其他词元以获取信息。</li>
+<li>键K：代表句子中可被查询词元的“标签”或“索引”</li>
+<li>值V：代表词元本身携带的“内容”或信息。</li>
+</ul>
+</li>
+<li>上述三个向量都是由原始的词嵌入向量乘以三个不同的、可学习的权重矩阵得到。Q、K、V发挥作用的过程可以想象成下面的一场开卷考试：<ul>
+<li>准备考题和资料，对于句子中的每个词，通过权重矩阵生成Q、K、V向量。</li>
+<li>计算相关性得分：要计算词A的在整个句子中的新表示，我们需要其他词对A的影响。于是，我们使用A的Q向量，去和句子中所有词(包括A本身)的K向量进行点积运算。该得分反映其他词对于理解A的重要性。</li>
+<li>稳定化与归一化：将得到的所有分数除以一个缩放因子，防止梯度过小，高维向量点积的数值会随维度膨胀 → 让 Softmax 输出“非0即1”的极端值 → Softmax 在极端区的导数 ≈ 0 → 梯度传不回来。然后用 softmax 函数将分数转换为总和为1的权重，也就是归一化的过程。</li>
+<li>加权求和：将上一步得到的权重分别乘以每个词对应的V向量，然后将所有结果相加。最终得到的向量，就是词A融合了全局上下文信息后的新表示。</li>
+</ul>
+</li>
+<li>只进行一次注意力计算(单头)，模型可能只学会关注一种类型的关联。但语言中关系是复杂的，我们希望模型能够同时关注多种关系(如指代关系、时态关系、从属关系等)。多头注意力机制应运而生，简单的核心思想：将一次做完的分成几组，分开做，再合并。<ul>
+<li>将原始Q/K/V向量在维度上切分为h份，每一份单独进行一次单头注意力计算。好比让h个不同专家从不同的角度审视句子，每个专家都能捕获一种不同特征关系。最后，将h个专家意见拼接起来，再通过一个线性变化进行整合，由此得到最终输出。</li>
+<li>由此能够让模型共同关注来自不同位置、不同表示子空间的信息，极大增强了模型表达能力。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>前馈神经网络<ul>
+<li>每个Encoder和Decoder层中，多头注意力子层后都跟着一个逐位置前馈网络(Position-wise Feed-Forward Network，FFN)</li>
+<li>注意力层作用为从整个序列中“动态地聚合”相关信息，前馈网络地作用则是从这些聚合后的信息中提取更高阶的特征。</li>
+<li>关键：逐位置。这个前馈网络会独立地作用于序列的每一个词元向量。</li>
+<li>实际被调用<code>seq_len</code>次，每次处理一个词元。</li>
+<li>所有位置共享同一组网络权重，既保持了对每个位置进行独立加工的能力，又大大减少了模型的参数量。</li>
+<li>由两个线性变换和一个ReLU激活函数构成，通常第一个线性层输出维度<code>d_ff</code>会远大于输入维度<code>d_model</code>，经过ReLU激活函数后再通过第二个线性层映射回<code>d_model</code>维度。这种“先扩大再缩小”的模式，被认为有助于模型学习更为丰富的特征表示。</li>
+</ul>
+</li>
+<li>残差连接与层归一化<ul>
+<li>所有子模块都被一个 Add &amp; Norm 操作包裹，该组合是为了保证能够稳定训练。</li>
+<li>两个部分组成：<ul>
+<li>残差连接(Add)：将子模块输入x直接加到该子模块输出 Sublayer(x) 上。该结构解决了深度神经网络中的梯度消失问题。在反向传播时，梯度可以绕过子模块直接反向传播，从而保证即使网络层数很深，模型也能得到有效训练。它是一条“恒等高速公路”：不学特征、只传误差，确保深层网络底层始终能收到教学信号。</li>
+<li>层归一化(Norm)：对单个样本所有特征进行归一化，使其均值为0，方差为1。解决了模型训练过程中的内部协变量偏移问题，使得每一层的输入分布保持稳定，从而加速模型收敛并提高训练的稳定性。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>位置编码<ul>
+<li>自注意力机制通过计算序列中任意两个词元之间的关系来捕捉依赖，但其本身不包含任何关于词元顺序或位置的信息，由此<code>agent learns</code>和<code>learns agent</code>完全等价，由此引入了位置编码(Positional Encoding)</li>
+<li>核心思想：为输入序列每一个词元嵌入向量，都额外加上一个能够代表其绝对位置和相对位置信息的“位置向量”。这个位置向量不是通过学习得到，而是固定数学公式直接计算所得。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="rnn">RNN</h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+
+<span class="k">class</span> <span class="nc">SimpleRNNCell</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># 对应公式里的 W 和 U，nn.Linear 自带权重矩阵和偏置 b</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">U</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h_prev</span><span class="p">):</span>
+        <span class="c1"># x: (batch, input_size)  当前输入</span>
+        <span class="c1"># h_prev: (batch, hidden_size) 上一步的“小本本”</span>
+        <span class="n">h_new</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">U</span><span class="p">(</span><span class="n">h_prev</span><span class="p">))</span>  <span class="c1"># 核心：新记忆 = 当前输入 + 旧记忆</span>
+        <span class="k">return</span> <span class="n">h_new</span>
+</code></pre></div>
+<h4 id="nn-vs-rnn">🔍 普通NN vs RNN：处理同一个句子，到底哪里不一样？</h4>
+<p>我用一个具体句子 <strong>"我爱吃火锅"</strong>，从<strong>输入形状 → 处理流程 → 输出结果</strong>，全程对比给你看。</p>
+<hr />
+<p><strong>📦 第一步：输入数据长什么样？</strong></p>
+<p>假设每个词已经转成向量（embedding），维度是 4：</p>
+<div class="highlight"><pre><span></span><code>我   → [0.1, 0.2, 0.3, 0.4]
+爱   → [0.5, 0.6, 0.7, 0.8]
+吃   → [0.2, 0.4, 0.6, 0.8]
+火锅 → [0.9, 0.8, 0.7, 0.6]
+</code></pre></div>
+<p>🔸 普通神经网络（MLP）的输入</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 把4个词&quot;拍扁&quot;成一个大向量</span>
+<span class="n">x_mlp</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span>  <span class="mf">0.5</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span>  <span class="mf">0.2</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span>  <span class="mf">0.9</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.6</span><span class="p">]</span>
+<span class="c1"># 形状: (16,) 或 (1, 16)</span>
+</code></pre></div>
+<p>👉 <strong>特点</strong>：</p>
+<ul>
+<li>所有词"同时"喂进去</li>
+<li>网络不知道"我"在"爱"前面，只知道这16个数在一起</li>
+<li>如果句子变长（比如10个词），输入维度变成40，网络结构要重设计 ❌</li>
+</ul>
+<p>🔸 RNN 的输入</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 保持&quot;时间顺序&quot;，一个时间步喂一个词</span>
+<span class="n">x_rnn</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span>  <span class="c1"># t=1: &quot;我&quot;</span>
+    <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">],</span>  <span class="c1"># t=2: &quot;爱&quot;</span>
+    <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">],</span>  <span class="c1"># t=3: &quot;吃&quot;</span>
+    <span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span>  <span class="c1"># t=4: &quot;火锅&quot;</span>
+<span class="p">]</span>
+<span class="c1"># 形状: (4, 4) → (seq_len=4, input_size=4)</span>
+</code></pre></div>
+<p>👉 <strong>特点</strong>：</p>
+<ul>
+<li>词按顺序一个个来</li>
+<li>网络结构固定，不管句子多长，<code>input_size</code> 永远是4 ✅</li>
+<li>每一步都知道"现在是第几个词"</li>
+</ul>
+<hr />
+<p><strong>⚙️ 第二步：处理过程怎么跑？（核心对比）</strong></p>
+<p>🔸 普通NN：一次性"吞"，垂直流动</p>
+<div class="highlight"><pre><span></span><code>输入层(16维) → 隐藏层(8维) → 输出层(2维)
+     ↓              ↓             ↓
+[16个数一起算] → [8个神经元一起激活] → [输出结果]
+</code></pre></div>
+<p><strong>代码示意</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>  <span class="c1"># 拍扁的句子</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span> <span class="o">@</span> <span class="n">W1</span> <span class="o">+</span> <span class="n">b1</span><span class="p">)</span>  <span class="c1"># 一层全连接</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">h</span> <span class="o">@</span> <span class="n">W2</span> <span class="o">+</span> <span class="n">b2</span>  <span class="c1"># 输出</span>
+</code></pre></div>
+<p>🔍 <strong>问题在哪？</strong></p>
+<ul>
+<li>"我"和"火锅"在输入向量里相隔12个位置，网络很难学到它们的关联</li>
+<li>如果换顺序成"火锅吃爱我"，输入向量只是数字重排，网络输出几乎不变 → <strong>词序信息丢失</strong> ❌</li>
+</ul>
+<p>🔸 RNN：一步步"读"，水平+垂直流动</p>
+<div class="highlight"><pre><span></span><code>t=1: &quot;我&quot;   → h1 = tanh(W·x1 + U·h0)  → 记住&quot;主语是我&quot;
+t=2: &quot;爱&quot;   → h2 = tanh(W·x2 + U·h1)  → 记住&quot;我在表达喜欢&quot;
+t=3: &quot;吃&quot;   → h3 = tanh(W·x3 + U·h2)  → 记住&quot;喜欢的动作是吃&quot;
+t=4: &quot;火锅&quot; → h4 = tanh(W·x4 + U·h3)  → 记住&quot;整句: 我爱吃火锅&quot;
+</code></pre></div>
+<p><strong>代码示意</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">h</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>  <span class="c1"># 初始记忆</span>
+<span class="k">for</span> <span class="n">x_t</span> <span class="ow">in</span> <span class="n">x_rnn</span><span class="p">:</span>  <span class="c1"># 逐个时间步</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">W</span> <span class="o">@</span> <span class="n">x_t</span> <span class="o">+</span> <span class="n">U</span> <span class="o">@</span> <span class="n">h</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># 新记忆 = 当前词 + 旧记忆</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">h</span>  <span class="c1"># 最后一步的h代表整句理解</span>
+</code></pre></div>
+<p>🔍 <strong>优势在哪？</strong></p>
+<ul>
+<li>处理"火锅"时，<code>h3</code> 里已经包含了"我爱吃"的信息 → <strong>上下文融合</strong> ✅</li>
+<li>换顺序成"火锅吃爱我"，每一步的 <code>h</code> 都会变，输出自然不同 → <strong>词序敏感</strong> ✅</li>
+</ul>
+<hr />
+<p><strong>🎯 第三步：输出结果有什么不同？</strong></p>
+<p>假设任务：<strong>判断句子情感（正面/负面）</strong></p>
+<table>
+<thead>
+<tr>
+<th>句子</th>
+<th>普通NN可能输出</th>
+<th>RNN可能输出</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"我爱吃火锅"</td>
+<td>✅ 正面</td>
+<td>✅ 正面</td>
+<td>都学到了"爱""火锅"是正向词</td>
+</tr>
+<tr>
+<td>"火锅不爱吃我"</td>
+<td>❌ 可能还是正面（词都在）</td>
+<td>✅ 负面（顺序变了意思变）</td>
+<td>RNN能捕捉"主谓宾"结构</td>
+</tr>
+<tr>
+<td>"我昨天今天明天都爱吃火锅"</td>
+<td>❌ 输入太长要截断/重训</td>
+<td>✅ 正常处理（循环复用参数）</td>
+<td>RNN天然支持变长序列</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>🖼️ 一图看懂流程差异</strong></p>
+<div class="highlight"><pre><span></span><code>🔸 普通NN（像&quot;拍照&quot;）：
+[我][爱][吃][火锅]  →  拍成一张大图  →  一次性识别
+       ↓
+   丢失顺序，只认&quot;图里有什么&quot;
+
+🔸 RNN（像&quot;读字幕&quot;）：
+[我]→读+记 → [爱]→读+记 → [吃]→读+记 → [火锅]→读+记→输出
+       ↓
+   边读边理解，知道&quot;谁对谁做了什么&quot;
+</code></pre></div>
+<hr />
+<p><strong>💡 关键总结（3句话记住区别）</strong></p>
+<ol>
+<li><strong>输入形状</strong>：普通NN要"拍扁"成固定向量；RNN保持<code>(时间步, 特征)</code>的二维序列</li>
+<li><strong>计算顺序</strong>：普通NN所有输入同时算；RNN按时间步串行算，每步带着上一步的记忆</li>
+<li><strong>顺序敏感性</strong>：普通NN对词序不敏感（除非手动加位置编码）；RNN天然感知顺序</li>
+</ol>
+<blockquote>
+<p>✨ 一句话比喻：<br />
+<strong>普通NN = 看一眼整句话的快照</strong> 📸<br />
+<strong>RNN = 逐字朗读并理解</strong> 📖</p>
+</blockquote>
+<hr />
+<p>🧪 想亲手试试？（3行代码对比）</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch</span><span class="o">,</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+
+<span class="c1"># 普通NN：必须指定输入长度</span>
+<span class="n">mlp</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># 4个词×4维=16维输入</span>
+<span class="n">out1</span> <span class="o">=</span> <span class="n">mlp</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>  <span class="c1"># 只能处理4词句子</span>
+
+<span class="c1"># RNN：输入长度随便变</span>
+<span class="n">rnn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">RNN</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># 输入永远是4维/词</span>
+<span class="n">out2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">rnn</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>  <span class="c1"># 10个词？没问题！</span>
+<span class="n">out3</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">rnn</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="c1"># 100个词？照样跑！</span>
+</code></pre></div>
+<hr />
+<h4 id="rnn_1">📉 RNN 为什么“梯度不更新” = “记不住开头”？（因果链）</h4>
+<p>我们用一条清晰的逻辑链拆开：</p>
+<ul>
+<li>梯度 ≈ 0 → 反向传播到第1步时，误差信号已经微弱到看不见。</li>
+<li>参数不更新 → 共享权重 W, U 没有因为“第1个词”而做任何调整。</li>
+<li>没学会关联 → 网络根本不知道 x₁（开头词）和最终答案有什么关系。</li>
+<li>功能退化 → 为了降低整体误差，网络会自发学会“只依赖最后几个词”，因为那些词的梯度大、好调整。</li>
+<li>实际表现 → 推理时，开头词输入进去，对最终输出几乎没影响 → “记不住开头” ✅</li>
+</ul>
+<p>生活比喻：改长作文的老师</p>
+<ul>
+<li>假设你让学生写一篇 1000 字的议论文，你只批改最后一段：</li>
+<li>学生不知道开头论点写得好不好、逻辑通不通。</li>
+<li>几次之后，学生发现：“反正开头写啥都不影响分数，我随便糊弄，把精力全放在最后一段就行。”</li>
+<li>结果：作文开头越来越敷衍，看起来像“失忆”了。</li>
+</ul>
+<p>直接说结论：<strong>RNN 只有一个状态 <code>h</code>，它既要当记忆又要当输出；LSTM 把它拆成了两个独立状态：<code>c</code>（细胞状态）专管长期记忆，<code>h</code>（隐藏状态）专管短期输出。</strong> 它们不是替代关系，而是<strong>分工协作</strong>。</p>
+<hr />
+<h4 id="rnnlstm3">🔍 RNN和LSTM核心区别（3个维度）</h4>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>RNN 的隐藏状态 <code>h</code></th>
+<th>LSTM 的细胞状态 <code>c</code></th>
+<th>LSTM 的隐藏状态 <code>h</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>职责</strong></td>
+<td>一身兼两职：记忆 + 当前步输出</td>
+<td><strong>只负责长期记忆</strong>，像仓库底层货架</td>
+<td><strong>只负责当前步表示</strong>，像前台展示柜</td>
+</tr>
+<tr>
+<td><strong>更新方式</strong></td>
+<td><code>tanh</code> 全量覆盖：<br><code>h = tanh(Wx + Uh_prev)</code></td>
+<td><strong>线性加法 + 门控筛选</strong>：<br><code>c = f·c_prev + i·c̃</code></td>
+<td>从 <code>c</code> 过滤而来：<br><code>h = o·tanh(c)</code></td>
+</tr>
+<tr>
+<td><strong>信息损耗</strong></td>
+<td>每步都被 <code>tanh</code> 强行压缩，早期信息易丢失</td>
+<td>加法路径让信息<strong>原样保留</strong>，损耗极小</td>
+<td>按需暴露，不破坏 <code>c</code> 里的原始记忆</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>🧠 直观比喻：整理档案室</strong></p>
+<ul>
+<li><strong>RNN 的 <code>h</code></strong> 像<strong>一块白板</strong>：每次来新文件，你得擦掉旧内容重新写。写多了，第一页的内容早就模糊不清。</li>
+<li><strong>LSTM 的 <code>c</code></strong> 像<strong>一条带抽屉的传送带</strong>：文件放上去，除非你主动拉开“遗忘门”扔出去，否则它会平稳传到末尾。中间只往抽屉里加新文件（输入门），不破坏旧文件。</li>
+<li><strong>LSTM 的 <code>h</code></strong> 像<strong>传送带旁边的“当前摘要台”</strong>：从传送带上挑出此刻需要的部分，打包成报告传给下一步。下一步的门控计算，看的也是这个 <code>h</code>，不是 <code>c</code>。</li>
+</ul>
+<hr />
+<p><strong>📐 公式/代码对照（一眼看懂差异）</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 🔸 RNN：只有 h，直接覆盖</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">W</span> <span class="o">@</span> <span class="n">x</span> <span class="o">+</span> <span class="n">U</span> <span class="o">@</span> <span class="n">h_prev</span><span class="p">)</span>
+
+<span class="c1"># 🔸 LSTM：c 和 h 分离</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">f</span> <span class="o">*</span> <span class="n">c_prev</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">c_tilde</span>      <span class="c1"># 细胞状态：加法为主，信息平稳传递</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">o</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>             <span class="c1"># 隐藏状态：从细胞状态“提炼”出的当前表示</span>
+</code></pre></div>
+<p>🔑 <strong>关键设计</strong>：</p>
+<ul>
+<li><code>c</code> 的更新路径<strong>没有非线性激活函数</strong>（只有 <code>+</code> 和 <code>*</code>），梯度可以像坐高铁一样直接传回开头 → <strong>解决梯度消失</strong></li>
+<li><code>h</code> 依然保留 <code>tanh</code>，保证输出值稳定在 <code>(-1,1)</code>，方便下一步门控计算</li>
+</ul>
+<hr />
+<p><strong>⚠️ 常见误区澄清</strong></p>
+<table>
+<thead>
+<tr>
+<th>误区</th>
+<th>真相</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“LSTM 用 <code>c</code> 替换了 <code>h</code>”</td>
+<td>❌ LSTM <strong>同时有 <code>c</code> 和 <code>h</code></strong>。<code>c</code> 是暗线（长期记忆库），<code>h</code> 是明线（当前步特征）</td>
+</tr>
+<tr>
+<td>“下一步门控用的是 <code>c</code>”</td>
+<td>❌ 遗忘门/输入门/输出门的计算<strong>全部依赖 <code>h</code></strong>（<code>h = o·tanh(c)</code> 才是暴露给外界的窗口）</td>
+</tr>
+<tr>
+<td>“<code>c</code> 可以直接当输出”</td>
+<td>❌ 实际任务（如分类、生成）的输出通常接在 <code>h</code> 上，<code>c</code> 只在内部传递，不直接暴露</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>💡 为什么这样设计？（工程视角）</strong></p>
+<ol>
+<li><strong>防梯度消失</strong>：<code>c</code> 的加法路径让反向传播时梯度近似 <code>1×1×1...</code>，不连乘衰减</li>
+<li><strong>解耦记忆与表达</strong>：长期记忆（<code>c</code>）不需要每步都变形，短期表达（<code>h</code>）按需过滤，各司其职</li>
+<li><strong>硬件友好</strong>：<code>c</code> 的更新全是逐元素操作（<code>+</code>, <code>*</code>），GPU 并行效率极高</li>
+</ol>
+<hr />
+<p><strong>🎯 终极一句话总结</strong></p>
+<blockquote>
+<p><strong>RNN 的 <code>h</code> 是“记忆+输出”混合体，每步重写易失真；<br>LSTM 的 <code>c</code> 是“纯记忆传送带”，加法保真；<code>h</code> 是“当前步摘要”，按需过滤。</strong><br />
+两者并存，分工明确，这才是 LSTM 能记住长序列的根本原因。</p>
+</blockquote>
+<h4 id="lstm">LSTM伪码解析</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. 忘记门：决定旧记忆留多少</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">Wf</span> <span class="o">@</span> <span class="n">x</span> <span class="o">+</span> <span class="n">Uf</span> <span class="o">@</span> <span class="n">h_prev</span> <span class="o">+</span> <span class="n">bf</span><span class="p">)</span>
+<span class="c1"># 2. 输入门：决定新信息记多少</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">Wi</span> <span class="o">@</span> <span class="n">x</span> <span class="o">+</span> <span class="n">Ui</span> <span class="o">@</span> <span class="n">h_prev</span> <span class="o">+</span> <span class="n">bi</span><span class="p">)</span>
+<span class="c1"># 3. 候选记忆：提炼当前输入的关键信息</span>
+<span class="n">c_tilde</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">Wc</span> <span class="o">@</span> <span class="n">x</span> <span class="o">+</span> <span class="n">Uc</span> <span class="o">@</span> <span class="n">h_prev</span> <span class="o">+</span> <span class="n">bc</span><span class="p">)</span>
+<span class="c1"># 4. 更新长期记忆（cell state）</span>
+<span class="n">c_new</span> <span class="o">=</span> <span class="n">f</span> <span class="o">*</span> <span class="n">c_prev</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">c_tilde</span>
+<span class="c1"># 5. 输出门：决定当前暴露给下一步的隐藏状态</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">Wo</span> <span class="o">@</span> <span class="n">x</span> <span class="o">+</span> <span class="n">Uo</span> <span class="o">@</span> <span class="n">h_prev</span> <span class="o">+</span> <span class="n">bo</span><span class="p">)</span>
+<span class="n">h_new</span> <span class="o">=</span> <span class="n">o</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">c_new</span><span class="p">)</span>
+</code></pre></div>
+<p>这些公式看着吓人，其实拆开就是 <strong>“5个开关 + 2个仓库”</strong> 的流水线操作。我们先用<strong>符号词典</strong>认脸，再用一个<strong>带数字的真实例子</strong>跑一遍，保证你一眼看懂。</p>
+<hr />
+<p><strong>📖 第一步：符号词典（每个字母是干嘛的？）</strong></p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>真实身份</th>
+<th>形状</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td>当前看到的词向量</td>
+<td><code>(input_size,)</code></td>
+<td>比如“包子”转成的数字列表</td>
+</tr>
+<tr>
+<td><code>h_prev</code></td>
+<td>上一步的<strong>短期记忆/输出</strong></td>
+<td><code>(hidden_size,)</code></td>
+<td>上一步总结的“当前上下文”</td>
+</tr>
+<tr>
+<td><code>c_prev</code></td>
+<td>上一步的<strong>长期记忆</strong></td>
+<td><code>(hidden_size,)</code></td>
+<td>之前记下的所有重要信息（核心仓库）</td>
+</tr>
+<tr>
+<td><code>W, U, b</code></td>
+<td>训练出来的<strong>权重矩阵/偏置</strong></td>
+<td>形状匹配</td>
+<td>相当于“滤镜”或“打分器”，决定网络看重什么</td>
+</tr>
+<tr>
+<td><code>@</code></td>
+<td>矩阵乘法</td>
+<td>-</td>
+<td>把输入投影到隐藏维度（线性变换）</td>
+</tr>
+<tr>
+<td><code>*</code> 和 <code>+</code></td>
+<td><strong>逐位</strong>乘/加（不是矩阵运算！）</td>
+<td>向量对向量</td>
+<td>每个位置独立计算，不交叉</td>
+</tr>
+<tr>
+<td><code>sigmoid</code></td>
+<td>压缩机 → <code>0~1</code></td>
+<td>向量逐位</td>
+<td>生成“开关强度”</td>
+</tr>
+<tr>
+<td><code>tanh</code></td>
+<td>压缩机 → <code>-1~1</code></td>
+<td>向量逐位</td>
+<td>生成“标准化内容”</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 关键前提：假设我们的隐藏维度 <code>hidden_size = 3</code>。所有向量都是 3 个数，比如 <code>[0.2, -0.5, 0.8]</code>。</p>
+</blockquote>
+<hr />
+<p><strong>🧪 第二步：带入真实例子跑一遍</strong></p>
+<p>假设当前处理到句子：<strong>“我早上吃了 包子”</strong><br />
+此时：</p>
+<ul>
+<li><code>x</code> = “包子”的向量 → <code>[0.1, 0.9, 0.3]</code></li>
+<li><code>c_prev</code> = 长期仓库（之前记下了“我”“早上”“吃了”）→ <code>[0.8, 0.6, 0.2]</code></li>
+<li><code>h_prev</code> = 短期输出（上一步的总结）→ <code>[0.7, 0.4, 0.1]</code></li>
+</ul>
+<p>网络经过训练，<code>W, U, b</code> 已经学会了怎么组合这些数。我们直接看计算结果：</p>
+<p>🔹 1. 遗忘门 <code>f</code>：旧记忆留多少？</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 网络对 h_prev 和 x 打分，再 sigmoid 压缩到 0~1</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">Wf</span> <span class="o">@</span> <span class="n">x</span> <span class="o">+</span> <span class="n">Uf</span> <span class="o">@</span> <span class="n">h_prev</span> <span class="o">+</span> <span class="n">bf</span><span class="p">)</span>
+<span class="c1"># → 假设算出: [0.9, 0.3, 0.8]</span>
+</code></pre></div>
+<p>👉 <strong>人话</strong>：仓库有3个抽屉。第1个抽屉保留 90%，第2个只留 30%（快忘了），第3个留 80%。</p>
+<p>🔹 2. 输入门 <code>i</code>：新信息记多少？</p>
+<div class="highlight"><pre><span></span><code><span class="n">i</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">Wi</span> <span class="o">@</span> <span class="n">x</span> <span class="o">+</span> <span class="n">Ui</span> <span class="o">@</span> <span class="n">h_prev</span> <span class="o">+</span> <span class="n">bi</span><span class="p">)</span>
+<span class="c1"># → 假设算出: [0.2, 0.9, 0.1]</span>
+</code></pre></div>
+<p>👉 <strong>人话</strong>：当前词“包子”很重要，但只有第2个抽屉值得重点记（90%），其他两个不太相关。</p>
+<p>🔹 3. 候选记忆 <code>c_tilde</code>：新信息具体长啥样？</p>
+<div class="highlight"><pre><span></span><code><span class="n">c_tilde</span> <span class="o">=</span> <span class="n">tanh</span><span class="p">(</span><span class="n">Wc</span> <span class="o">@</span> <span class="n">x</span> <span class="o">+</span> <span class="n">Uc</span> <span class="o">@</span> <span class="n">h_prev</span> <span class="o">+</span> <span class="n">bc</span><span class="p">)</span>
+<span class="c1"># → 假设算出: [0.1, 0.85, -0.3]</span>
+</code></pre></div>
+<p>👉 <strong>人话</strong>：把“包子”和上下文揉在一起，提炼出原始内容。<code>tanh</code> 保证值在 <code>-1~1</code>，不爆炸。</p>
+<p>🔹 4. 更新仓库 <code>c_new</code>：旧记忆 + 新记忆</p>
+<div class="highlight"><pre><span></span><code><span class="n">c_new</span> <span class="o">=</span> <span class="n">f</span> <span class="o">*</span> <span class="n">c_prev</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">c_tilde</span>
+<span class="c1"># 逐位计算：</span>
+<span class="c1"># 第1位: 0.9*0.8  + 0.2*0.1   = 0.72 + 0.02 = 0.74</span>
+<span class="c1"># 第2位: 0.3*0.6  + 0.9*0.85  = 0.18 + 0.765 = 0.945</span>
+<span class="c1"># 第3位: 0.8*0.2  + 0.1*(-0.3) = 0.16 - 0.03 = 0.13</span>
+<span class="c1"># → c_new = [0.74, 0.945, 0.13]</span>
+</code></pre></div>
+<p>👉 <strong>人话</strong>：这就是 LSTM 的<strong>核心魔法</strong>。用 <code>f</code> 过滤旧仓库，用 <code>i</code> 注入新内容，<strong>加法拼接</strong>，不覆盖、不丢失。长期记忆平滑更新了。</p>
+<p>🔹 5. 输出门 <code>o</code> &amp; 生成短期记忆 <code>h_new</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">o</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">Wo</span> <span class="o">@</span> <span class="n">x</span> <span class="o">+</span> <span class="n">Uo</span> <span class="o">@</span> <span class="n">h_prev</span> <span class="o">+</span> <span class="n">bo</span><span class="p">)</span>
+<span class="c1"># → 假设算出: [0.8, 0.4, 0.6]</span>
+
+<span class="n">h_new</span> <span class="o">=</span> <span class="n">o</span> <span class="o">*</span> <span class="n">tanh</span><span class="p">(</span><span class="n">c_new</span><span class="p">)</span>
+<span class="c1"># tanh(c_new) ≈ [0.63, 0.74, 0.13]</span>
+<span class="c1"># 逐位乘 o:</span>
+<span class="c1"># [0.8*0.63, 0.4*0.74, 0.6*0.13] ≈ [0.50, 0.30, 0.08]</span>
+<span class="c1"># → h_new = [0.50, 0.30, 0.08]</span>
+</code></pre></div>
+<p>👉 <strong>人话</strong>：<code>c_new</code> 是完整仓库，但下一步不需要看全部。<code>o</code> 决定“此刻对外展示哪些抽屉”，<code>h_new</code> 就是展示出来的<strong>短期摘要</strong>，传给下一个词。</p>
+<hr />
+<p><strong>🔍 为什么公式要这么设计？（设计意图）</strong></p>
+<table>
+<thead>
+<tr>
+<th>公式行</th>
+<th>设计目的</th>
+<th>如果去掉会怎样？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>f = sigmoid(...)</code></td>
+<td>主动遗忘无关旧信息</td>
+<td>仓库塞满垃圾，后期全是噪声</td>
+</tr>
+<tr>
+<td><code>i = sigmoid(...)</code></td>
+<td>控制新信息注入量</td>
+<td>重要信息被冲淡，或无关信息乱入</td>
+</tr>
+<tr>
+<td><code>c_tilde = tanh(...)</code></td>
+<td>生成稳定范围的新内容</td>
+<td>数值爆炸或消失，训练崩溃</td>
+</tr>
+<tr>
+<td><code>c_new = f*c_prev + i*c_tilde</code></td>
+<td><strong>加法更新，保留梯度通道</strong></td>
+<td>变成 RNN 的 <code>tanh</code> 覆盖 → 梯度消失</td>
+</tr>
+<tr>
+<td><code>o * tanh(c_new)</code></td>
+<td>按需暴露，不污染仓库</td>
+<td>每次全量输出，浪费计算且干扰门控</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>📦 终极比喻：智能档案管理员</strong></p>
+<p>把 LSTM 想象成一个<strong>带透明隔板的档案柜</strong>：</p>
+<ul>
+<li><code>c</code>（细胞状态）= <strong>主档案柜</strong>（长期记忆），隔板是透明的，信息直接穿过</li>
+<li><code>h</code>（隐藏状态）= <strong>前台接待台</strong>（短期输出），只放当前需要的文件</li>
+<li><code>f</code>（遗忘门）= <strong>碎纸机强度旋钮</strong>（0~1），决定旧文件粉碎多少</li>
+<li><code>i</code>（输入门）= <strong>盖章笔力度</strong>（0~1），决定新文件盖多深</li>
+<li><code>c_tilde</code> = <strong>新文件草稿</strong></li>
+<li><code>o</code>（输出门）= <strong>前台展示柜玻璃透明度</strong>，决定外面能看到多少</li>
+</ul>
+<p>管理员每来一个新文件（<code>x</code>），就：</p>
+<ol>
+<li>调碎纸机处理旧档案（<code>f * c_prev</code>）</li>
+<li>调盖章笔处理新草稿（<code>i * c_tilde</code>）</li>
+<li>两者相加放进主柜（<code>c_new</code>）</li>
+<li>调玻璃透明度，把当前摘要推到前台（<code>h_new</code>）</li>
+</ol>
+<hr />
+<p><strong>💎 一句话记住 LSTM 公式</strong></p>
+<blockquote>
+<p><strong><code>f</code> 决定忘什么，<code>i</code> 决定记什么，<code>c_tilde</code> 提供新内容，加法更新仓库 <code>c</code>，<code>o</code> 决定对外输出什么 <code>h</code>。</strong><br />
+全是对齐的 0~1 开关和逐位运算，没有玄学，只有精准的流量控制。</p>
+</blockquote>
+<h4 id="vs">📚 知识点整理：静态向量 vs 动态向量</h4>
+<blockquote>
+<p><strong>一句话核心结论</strong>：<br />
+<strong>静态向量 = 词的"通用身份证"（有语义，但脱离语境）</strong><br />
+<strong>动态向量 = 词在句中的"临时工作证"（语义随上下文动态调整）</strong><br />
+两者都有语义，但<strong>粒度、适应性、用途</strong>完全不同。</p>
+</blockquote>
+<hr />
+<p><strong>🔹 知识点1：静态向量（Tokenizer + Embedding 输出）</strong></p>
+<p>✅ 它是什么？</p>
+<ul>
+<li>输入：原始文本 → Tokenizer 切词 → 得到 <code>token_id</code></li>
+<li>处理：<code>token_id</code> 查 Embedding 表 → 得到固定向量</li>
+<li>输出形状：<code>(seq_len, hidden_size)</code>，<strong>但每个词的向量与句子无关</strong></li>
+</ul>
+<p>✅ 它包含哪些语义？（不是没语义！）</p>
+<table>
+<thead>
+<tr>
+<th>语义类型</th>
+<th>例子</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔤 字面/形态相似</td>
+<td>"跑"≈"跳"；"苹果"≈"香蕉"</td>
+<td>共现统计、子词结构（BPE）</td>
+</tr>
+<tr>
+<td>🌍 领域/主题倾向</td>
+<td>"量子"靠近"物理"；"梯度"靠近"优化"</td>
+<td>同领域词高频共现</td>
+</tr>
+<tr>
+<td>🔗 浅层关系</td>
+<td><code>king - man + woman ≈ queen</code></td>
+<td>向量空间线性结构</td>
+</tr>
+<tr>
+<td>🎭 多义混合</td>
+<td>"打" = 击打+拨打+打字...的<strong>平均压缩</strong></td>
+<td>所有语境下的"打"被训练成一个向量</td>
+</tr>
+</tbody>
+</table>
+<p>⚠️ 核心局限</p>
+<ul>
+<li><strong>脱离语境</strong>：同一个词在任何句子里向量<strong>完全相同</strong></li>
+<li><strong>多义混淆</strong>：无法区分"苹果(水果)"vs"苹果(公司)"</li>
+<li><strong>无法推理</strong>：处理不了否定、指代、长距离依赖等需要"理解句子"的任务</li>
+</ul>
+<hr />
+<p><strong>🔹 知识点2：动态向量（Encoder 输出）</strong></p>
+<p>✅ 它是什么？</p>
+<ul>
+<li>输入：静态向量（Embedding 输出）</li>
+<li>处理：经过 N 层 Self-Attention + FFN，每个词"看到"句中所有其他词</li>
+<li>输出形状：同样是 <code>(seq_len, hidden_size)</code>，<strong>但每个词的向量随句子内容动态变化</strong></li>
+</ul>
+<p>✅ 它额外获得了什么语义？</p>
+<table>
+<thead>
+<tr>
+<th>能力</th>
+<th>例子</th>
+<th>实现机制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🎭 消歧义</td>
+<td>"苹果"在"吃苹果"中偏向水果，在"苹果发布"中偏向公司</td>
+<td>Self-Attention 让词聚焦相关上下文</td>
+</tr>
+<tr>
+<td>🔁 指代解析</td>
+<td>"他"的向量融入"张三"的特征</td>
+<td>"他"Attention 到前文实体</td>
+</tr>
+<tr>
+<td>⚡ 否定/反转</td>
+<td>"不无聊"整体编码为正面</td>
+<td>"不"和"无聊"互相融合，联合表示</td>
+</tr>
+<tr>
+<td>🧵 长程依赖</td>
+<td>句首主语和句尾谓语直接关联</td>
+<td>Attention 让任意两词"直连"，不管距离</td>
+</tr>
+</tbody>
+</table>
+<p>🔑 核心设计</p>
+<ul>
+<li><strong>不是替换</strong>静态向量，而是<strong>加工升级</strong></li>
+<li>静态向量是"原材料"，Encoder 是"语境加工厂"</li>
+<li>输出向量 = 原始词义 + 语法角色 + 语义倾向 + 逻辑关系</li>
+</ul>
+<hr />
+<p><strong>🆚 终极对比表（收藏版）</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>静态向量（Embedding）</th>
+<th>动态向量（Encoder 输出）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>是否依赖上下文</strong></td>
+<td>❌ 否，查表即得，全局固定</td>
+<td>✅ 是，每句重算，动态生成</td>
+</tr>
+<tr>
+<td><strong>多义词处理</strong></td>
+<td>❌ 所有义项混合成一个向量</td>
+<td>✅ 自动聚焦当前语境义项</td>
+</tr>
+<tr>
+<td><strong>生成方式</strong></td>
+<td>查表（O(1)）</td>
+<td>多层 Attention 计算（O(n²)）</td>
+</tr>
+<tr>
+<td><strong>信息含量</strong></td>
+<td>词级先验统计</td>
+<td>词+句级推理结果</td>
+</tr>
+<tr>
+<td><strong>典型用途</strong></td>
+<td>关键词匹配、轻量检索、初始化</td>
+<td>分类、生成、问答、翻译等复杂任务</td>
+</tr>
+<tr>
+<td><strong>计算成本</strong></td>
+<td>极低</td>
+<td>较高（但值得）</td>
+</tr>
+<tr>
+<td><strong>可解释性</strong></td>
+<td>可用 t-SNE 看词聚类</td>
+<td>可用 Attention 权重看词间关系</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>🧪 验证思路（3行代码看清区别）</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoModel</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+
+<span class="c1"># 加载模型</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;bert-base-chinese&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;bert-base-chinese&quot;</span><span class="p">)</span>
+
+<span class="c1"># 两个含&quot;苹果&quot;的句子</span>
+<span class="n">sent1</span> <span class="o">=</span> <span class="s2">&quot;我喜欢吃苹果&quot;</span>      <span class="c1"># 水果</span>
+<span class="n">sent2</span> <span class="o">=</span> <span class="s2">&quot;苹果发布了新手机&quot;</span>  <span class="c1"># 公司</span>
+
+<span class="c1"># 1. 静态向量：查表得到，完全相同</span>
+<span class="n">ids1</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">sent1</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">]</span>
+<span class="n">ids2</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">sent2</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">]</span>
+<span class="n">static1</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">word_embeddings</span><span class="p">(</span><span class="n">ids1</span><span class="p">)</span>
+<span class="n">static2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">word_embeddings</span><span class="p">(</span><span class="n">ids2</span><span class="p">)</span>
+<span class="c1"># → &quot;苹果&quot;位置的向量余弦相似度 = 1.000</span>
+
+<span class="c1"># 2. 动态向量：Encoder 计算，明显不同</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">out1</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">ids1</span><span class="p">)</span><span class="o">.</span><span class="n">last_hidden_state</span>
+    <span class="n">out2</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">ids2</span><span class="p">)</span><span class="o">.</span><span class="n">last_hidden_state</span>
+<span class="c1"># → &quot;苹果&quot;位置的向量余弦相似度 ≈ 0.5~0.7</span>
+
+<span class="c1"># 3. 结论：静态认字，动态懂句</span>
+</code></pre></div>
+<hr />
+<p><strong>🎯 应用场景指南</strong></p>
+<table>
+<thead>
+<tr>
+<th>任务类型</th>
+<th>推荐用向量</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔍 关键词检索/匹配</td>
+<td>✅ 静态向量</td>
+<td>快、够用、无需理解语境</td>
+</tr>
+<tr>
+<td>📝 文本分类（短文本）</td>
+<td>⚠️ 两者都可</td>
+<td>简单任务静态够用，复杂任务动态更准</td>
+</tr>
+<tr>
+<td>🤖 问答/翻译/生成</td>
+<td>✅ 动态向量</td>
+<td>必须理解上下文、指代、逻辑</td>
+</tr>
+<tr>
+<td>🧠 语义相似度计算</td>
+<td>✅ 动态向量</td>
+<td>需要消歧义、捕捉句级含义</td>
+</tr>
+<tr>
+<td>🚀 轻量级部署/嵌入式</td>
+<td>⚠️ 静态向量+简单聚合</td>
+<td>权衡效果与计算成本</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>💡 终极比喻（帮助记忆）</strong></p>
+<div class="highlight"><pre><span></span><code>📚 静态向量 = 字典里的词条目
+   • &quot;打&quot;字下面列20条释义，固定不变
+   • 优点：查得快，覆盖广
+   • 缺点：脱离句子，不知道此刻用哪条
+
+🧠 动态向量 = 你听到句子时的瞬间理解
+   • 听到&quot;打电话&quot;，大脑自动高亮&quot;通讯&quot;义项
+   • 听到&quot;打篮球&quot;，自动切换&quot;运动&quot;义项
+   • 优点：精准、灵活、能推理
+   • 缺点：计算慢，需要&quot;思考&quot;
+
+🔗 关系：字典是基础，大脑是引擎。
+   没有字典，大脑无从理解；
+   只有字典，无法应对真实对话。
+</code></pre></div>
+<hr />
+<p><strong>✨ 一句话复习清单</strong></p>
+<ul>
+<li>✅ 静态向量<strong>有语义</strong>，是预训练学到的"词的通用统计特征"</li>
+<li>✅ 动态向量<strong>更精准</strong>，是 Encoder 结合语境"实时推理"的结果</li>
+<li>✅ 静态是"原材料"，动态是"加工品"，两者配合才能既懂词又懂句</li>
+<li>✅ 选哪个？看任务：轻量匹配用静态，复杂理解用动态</li>
+</ul>
+<blockquote>
+<p>🎁 彩蛋记忆法：<br />
+<strong>静态向量 = 食材（土豆、牛肉）</strong><br />
+<strong>Encoder = 厨师 + 菜谱 + 火候</strong><br />
+<strong>动态向量 = 端上桌的"土豆烧牛肉"（味道取决于搭配和语境）</strong></p>
+</blockquote>
+<h4 id="q-k-v">🔍 Q, K, V 机制是如何发挥作用的？</h4>
+<blockquote>
+<p><strong>一句话总结</strong>：<br />
+Q、K、V 是 Self-Attention 的<strong>“信息检索三剑客”</strong>。<br />
+它们让每个词能：<strong>按需提问（Q） → 全局匹配（K） → 精准提取（V）</strong>，从而一次性融合整句话的上下文，生成动态向量。</p>
+</blockquote>
+<p>下面用<strong>比喻 + 步骤拆解 + 矩阵形状 + 代码直觉</strong>，帮你彻底看透它的工作原理。</p>
+<hr />
+<p><strong>📦 符号词典：Q、K、V 到底是谁？</strong></p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>真实身份</th>
+<th>作用</th>
+<th>形状</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Q (Query)</strong></td>
+<td>当前词发出的“问题”</td>
+<td>“我想从上下文里找什么？”</td>
+<td><code>(seq_len, d_k)</code></td>
+</tr>
+<tr>
+<td><strong>K (Key)</strong></td>
+<td>每个词自带的“标签”</td>
+<td>“我有什么特征可供别人检索？”</td>
+<td><code>(seq_len, d_k)</code></td>
+</tr>
+<tr>
+<td><strong>V (Value)</strong></td>
+<td>每个词携带的“内容”</td>
+<td>“我的真实信息长什么样？”</td>
+<td><code>(seq_len, d_v)</code></td>
+</tr>
+</tbody>
+</table>
+<p>💡 <strong>关键设计</strong>：Q 和 K 负责<strong>“算相似度”</strong>（匹配），V 负责<strong>“存信息”</strong>（内容）。把“怎么找”和“找什么”拆开，是 Attention 灵活性的核心。</p>
+<hr />
+<p><strong>🔄 5步工作流（以句子 <code>“猫 追 老鼠”</code> 为例）</strong></p>
+<p>假设输入是3个词的静态向量，隐藏维度 <code>d_k = d_v = 4</code>。</p>
+<p>① 投影：生成 Q, K, V</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 输入 X: (3, 4) → [猫, 追, 老鼠] 的静态向量</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">W_Q</span>   <span class="c1"># 用学习到的权重矩阵，把每个词转成“提问向量”</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">W_K</span>   <span class="c1"># 转成“标签向量”</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">W_V</span>   <span class="c1"># 转成“内容向量”</span>
+</code></pre></div>
+<p>👉 此时 Q、K、V 形状都是 <code>(3, 4)</code>。每个词都有了属于自己的 Q、K、V。</p>
+<p>② 匹配：算出“谁该关注谁”</p>
+<div class="highlight"><pre><span></span><code><span class="n">scores</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">@</span> <span class="n">K</span><span class="o">.</span><span class="n">T</span>   <span class="c1"># 形状: (3, 3)</span>
+</code></pre></div>
+<p>📊 <strong>矩阵含义</strong>：<code>scores[i][j]</code> 表示 <strong>第 i 个词对第 j 个词的关注原始分</strong>。</p>
+<ul>
+<li>例：<code>scores[0][2]</code> = “猫”对“老鼠”的匹配度</li>
+<li>例：<code>scores[1][0]</code> = “追”对“猫”的匹配度</li>
+</ul>
+<p>③ 缩放 + 归一化：变成概率分布</p>
+<div class="highlight"><pre><span></span><code><span class="n">weights</span> <span class="o">=</span> <span class="n">softmax</span><span class="p">(</span><span class="n">scores</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>   <span class="c1"># 形状: (3, 3)</span>
+</code></pre></div>
+<ul>
+<li><code>/ sqrt(d_k)</code>：防止数值过大导致 softmax 变成“非0即1”的硬选择</li>
+<li><code>softmax</code>：每行加起来 = 1，变成<strong>注意力权重</strong>（0~1）</li>
+<li>例：第一行 <code>[0.1, 0.2, 0.7]</code> → “猫” 10%关注自己，20%关注“追”，70%关注“老鼠”</li>
+</ul>
+<p>④ 加权提取：融合上下文信息</p>
+<div class="highlight"><pre><span></span><code><span class="n">output</span> <span class="o">=</span> <span class="n">weights</span> <span class="o">@</span> <span class="n">V</span>   <span class="c1"># 形状: (3, 4)</span>
+</code></pre></div>
+<p>🔍 <strong>这是最关键的一步</strong>：</p>
+<ul>
+<li>每个词的输出 = <code>所有词的 V 向量 × 对应权重</code> 的加权和</li>
+<li>“猫”的输出 = <code>0.1*V猫 + 0.2*V追 + 0.7*V老鼠</code></li>
+<li>结果就是<strong>富含上下文的动态向量</strong>！</li>
+</ul>
+<p>⑤ 输出：交给下一层</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># output 就是 Encoder 这一层的输出，形状 (3, 4)</span>
+<span class="c1"># 传入下一层 Attention，反复提纯 → 最终得到完整上下文表示</span>
+</code></pre></div>
+<hr />
+<p><strong>💡 为什么要把“匹配”和“内容”分开？（QK vs V）</strong></p>
+<table>
+<thead>
+<tr>
+<th>设计</th>
+<th>如果合并（只用 X）</th>
+<th>分开设计（Q, K, V）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>灵活性</strong></td>
+<td>匹配和内容绑定，无法区分“我想找什么”和“我有什么”</td>
+<td>Q 决定搜索意图，K 决定被检索特征，V 决定实际内容</td>
+</tr>
+<tr>
+<td><strong>表达能力</strong></td>
+<td>只能做“对称匹配”</td>
+<td>可做“非对称匹配”（如：主语关注动词，动词关注宾语）</td>
+</tr>
+<tr>
+<td><strong>多任务适配</strong></td>
+<td>固定模式</td>
+<td>同一组词，在不同任务中可学习出不同的 Q/K/V 投影</td>
+</tr>
+</tbody>
+</table>
+<p>🎯 <strong>生活比喻：相亲网站</strong></p>
+<ul>
+<li>你填的“择偶条件” → <strong>Q</strong></li>
+<li>别人主页的“个人标签” → <strong>K</strong></li>
+<li>别人主页的“详细资料/照片” → <strong>V</strong></li>
+<li>系统用你的 Q 去匹配所有人的 K，算出匹配度，再按匹配度加权展示 V → 得到你的“推荐列表”</li>
+</ul>
+<hr />
+<p><strong>📐 代码/矩阵形状直观展示</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+
+<span class="c1"># 1. 输入 (seq=3, d_model=4)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># 2. 投影到 Q, K, V</span>
+<span class="n">W_Q</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">W_K</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">W_V</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">W_Q</span>   <span class="c1"># (3, 4)</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">W_K</span>   <span class="c1"># (3, 4)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">W_V</span>   <span class="c1"># (3, 4)</span>
+
+<span class="c1"># 3. 注意力计算</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">@</span> <span class="n">K</span><span class="o">.</span><span class="n">T</span>           <span class="c1"># (3, 3) 原始匹配分</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">scores</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span><span class="o">**</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># (3, 3) 归一化权重</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">weights</span> <span class="o">@</span> <span class="n">V</span>       <span class="c1"># (3, 4) 融合后的上下文向量</span>
+</code></pre></div>
+<p>🔑 <strong>形状变化一目了然</strong>：<br />
+<code>输入(3,4) → Q/K/V(3,4) → 权重(3,3) → 输出(3,4)</code><br />
+<strong>句子长度变长？只是矩阵变大，公式不变，天然支持并行。</strong></p>
+<hr />
+<p><strong>🆚 对比 RNN / 静态向量：为什么是“降维打击”？</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>RNN</th>
+<th>静态 Embedding</th>
+<th>QKV Self-Attention</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>信息融合方式</strong></td>
+<td>串行传递 <code>h</code>，易衰减</td>
+<td>无融合，各词独立</td>
+<td>全量并行匹配，任意两词直连</td>
+</tr>
+<tr>
+<td><strong>长距离依赖</strong></td>
+<td>靠 <code>h</code> 一步步传，易丢失</td>
+<td>不存在</td>
+<td>直接 <code>Q@K^T</code>，距离再远也是一步</td>
+</tr>
+<tr>
+<td><strong>并行计算</strong></td>
+<td>❌ 必须按时间步串行</td>
+<td>✅ 但无上下文</td>
+<td>✅ 纯矩阵运算，GPU 跑满</td>
+</tr>
+<tr>
+<td><strong>动态语义</strong></td>
+<td>有，但受限于顺序和梯度</td>
+<td>❌ 固定不变</td>
+<td>✅ 强，每词按需提取上下文</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>⚠️ 常见误区澄清</strong></p>
+<table>
+<thead>
+<tr>
+<th>误区</th>
+<th>真相</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“Q、K、V 是固定的词向量”</td>
+<td>❌ 它们是每个词经过<strong>可学习线性投影</strong>后的临时表示，随训练更新</td>
+</tr>
+<tr>
+<td>“Q 只能匹配自己的 K”</td>
+<td>❌ Self-Attention 是<strong>全连接匹配</strong>，每个 Q 和所有 K 算分</td>
+</tr>
+<tr>
+<td>“多头注意力是多个模型”</td>
+<td>❌ 是同一层内<strong>多组独立的 Q/K/V 投影</strong>，分别捕捉语法、语义、位置等不同关系，最后拼接</td>
+</tr>
+<tr>
+<td>“softmax 后权重都很平均”</td>
+<td>❌ 训练后通常会<strong>极度稀疏</strong>（1~2个词权重接近1，其余≈0），实现精准聚焦</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>🎯 终极总结（3句话记住 QKV）</strong></p>
+<ol>
+<li><strong>Q 是“问题”，K 是“标签”，V 是“内容”</strong>。用 Q 去碰所有 K，算出关注度。</li>
+<li><strong>关注度归一化后，加权求和所有 V</strong>，得到当前词的上下文动态向量。</li>
+<li><strong>全并行、全连接、可学习</strong>，让模型摆脱顺序限制，真正实现“见词知意”。</li>
+</ol>
+<blockquote>
+<p>✨ 一句话比喻：<br />
+<strong>QKV = 智能搜索引擎</strong><br />
+你输入搜索词（Q） → 引擎比对网页标题/标签（K） → 按相关度抓取正文（V） → 返回精准摘要。</p>
+</blockquote>
+<hr />
+<h4 id="vv">为什么是V而不是V转置</h4>
+<p>直接回答：<strong>因为矩阵乘法维度必须对齐，且 <code>weights @ V</code> 的数学操作正好是“按权重对词的内容向量做加权求和”。用 <code>V.T</code> 会维度报错，且语义完全错乱。</strong></p>
+<p>下面用 <strong>维度对齐 → 计算目的 → 代码验证</strong> 三步拆透，保证你看完不会再有疑问。</p>
+<hr />
+<p><strong>📐 1. 维度对齐证明（为什么只能是 <code>V</code>？）</strong></p>
+<p>假设标准输入形状（PyTorch/HF 默认）：</p>
+<ul>
+<li><code>seq_len = 3</code>（句子3个词）</li>
+<li><code>d_v = 4</code>（向量维度4）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>张量</th>
+<th>形状</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>weights</code>（注意力权重）</td>
+<td><code>(3, 3)</code></td>
+<td>每行是某个词对其他3个词的关注比例</td>
+</tr>
+<tr>
+<td><code>V</code>（值矩阵）</td>
+<td><code>(3, 4)</code></td>
+<td><strong>每一行</strong>是一个词的内容向量</td>
+</tr>
+<tr>
+<td><code>V.T</code>（转置后）</td>
+<td><code>(4, 3)</code></td>
+<td><strong>每一列</strong>变成一个词的内容向量</td>
+</tr>
+</tbody>
+</table>
+<p>✅ <code>weights @ V</code> → <code>(3, 3) × (3, 4) = (3, 4)</code><br />
+👉 维度完美对齐！输出形状和输入一致，可直接传给下一层。</p>
+<p>❌ <code>weights @ V.T</code> → <code>(3, 3) × (4, 3)</code><br />
+👉 <strong>内维不匹配</strong>（3 ≠ 4），PyTorch/NumPy 直接抛 <code>RuntimeError: mat1 and mat2 shapes cannot be multiplied</code>。</p>
+<hr />
+<p><strong>🎯 2. 为什么 <code>K</code> 要转置，<code>V</code> 不用？（计算目的不同）</strong></p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>公式</th>
+<th>目的</th>
+<th>为什么转置？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>算相似度</strong></td>
+<td><code>Q @ K.T</code></td>
+<td>让每个 Q 和每个 K 做点积，得到“谁该关注谁”</td>
+<td><code>K</code> 转置后，<strong>行变列</strong>，才能和 Q 的每一行做内积（行×列）</td>
+</tr>
+<tr>
+<td><strong>加权融合</strong></td>
+<td><code>weights @ V</code></td>
+<td>用算好的权重，把 V 的向量<strong>按行加权求和</strong></td>
+<td><code>V</code> <strong>不转置</strong>，保持行是词向量，权重矩阵乘上去正好实现加权平均</td>
+</tr>
+</tbody>
+</table>
+<p>🔍 <strong>关键洞察</strong>：</p>
+<ul>
+<li><code>Q @ K.T</code> 是 <strong>“匹配阶段”</strong>：需要两两算分 → 必须转置让行列对齐做点积</li>
+<li><code>weights @ V</code> 是 <strong>“提取阶段”</strong>：需要加权求和 → 保持原样让权重直接乘在词向量行上</li>
+</ul>
+<hr />
+<p><strong>🧠 3. 语义层面：用 <code>V</code> 是“跨词融合”，用 <code>V.T</code> 是“维度大乱炖”</strong></p>
+<p>假设 <code>weights</code> 第一行是 <code>[0.1, 0.2, 0.7]</code>（词1的关注分布），<code>V</code> 三行分别是 <code>v1, v2, v3</code>。</p>
+<p>✅ <code>weights @ V</code> 的第一行输出：</p>
+<div class="highlight"><pre><span></span><code>out1 = 0.1*v1 + 0.2*v2 + 0.7*v3
+</code></pre></div>
+<p>👉 <strong>物理意义</strong>：词1的新表示 = 10%自己 + 20%词2内容 + 70%词3内容。<strong>跨词融合，完美符合注意力本质。</strong></p>
+<p>❌ 如果强行用 <code>V.T</code>（假设维度碰巧能乘）：
+权重会乘在<strong>列</strong>上，变成：</p>
+<div class="highlight"><pre><span></span><code>out1_dim0 = 0.1*v1_dim0 + 0.2*v2_dim1 + 0.7*v3_dim2
+</code></pre></div>
+<p>👉 <strong>物理意义</strong>：把词1的第0维、词2的第1维、词3的第2维混在一起。<strong>维度交叉污染，向量空间结构彻底破坏</strong>，模型根本学不出任何有效特征。</p>
+<hr />
+<p><strong>🧪 4. 3行代码直观验证</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">W</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]])</span>  <span class="c1"># (1, 3) 注意力权重</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>                <span class="c1"># (3, 4) 三个词的内容向量</span>
+
+<span class="nb">print</span><span class="p">((</span><span class="n">W</span> <span class="o">@</span> <span class="n">V</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1"># → torch.Size([1, 4]) ✅ 合法：加权求和</span>
+<span class="c1"># print(W @ V.T)       # → RuntimeError: size mismatch, 3 != 4 ❌ 直接报错</span>
+</code></pre></div>
+<p>🔍 看数值也能验证：</p>
+<div class="highlight"><pre><span></span><code><span class="n">manual</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">V</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">V</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.7</span><span class="o">*</span><span class="n">V</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">W</span> <span class="o">@</span> <span class="n">V</span><span class="p">,</span> <span class="n">manual</span><span class="p">))</span>  <span class="c1"># → True</span>
+</code></pre></div>
+<p><strong><code>@ V</code> 就是线性代数里的“加权行组合”</strong>，数学和代码完全一致。</p>
+<hr />
+<p><strong>📜 附：为什么有些资料写成 <code>V^T</code>？</strong></p>
+<p>极少数早期论文或特定数学推导中，会把序列放在<strong>第二维</strong>，即形状为 <code>(d_v, seq_len)</code>。在那种排版下，公式会写成 <code>V^T @ weights^T</code> 来保持维度对齐。<br />
+但<strong>现代所有框架（PyTorch <code>nn.MultiheadAttention</code>、HuggingFace、JAX）统一采用 <code>(seq_len, d_v)</code></strong>，所以标准公式永远是：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Attention</span> <span class="o">=</span> <span class="n">softmax</span><span class="p">(</span><span class="n">Q</span> <span class="o">@</span> <span class="n">K</span><span class="o">.</span><span class="n">T</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">d_k</span><span class="p">))</span> <span class="o">@</span> <span class="n">V</span>
+</code></pre></div>
+<hr />
+<p><strong>💎 终极一句话总结</strong></p>
+<blockquote>
+<p><strong><code>K.T</code> 是为了“算点积匹配”，<code>V</code> 不转置是为了“按行加权求和”。</strong><br />
+维度必须对齐，语义必须是“词向量加权融合”，用 <code>V.T</code> 既会报错又会破坏特征空间。</p>
+</blockquote>
+<p>归根结底，行向量与矩阵相乘，就是把矩阵的行向量按行向量提供的系数做线性组合，分块矩阵乘法也能解释。</p>
+<h4 id="multi-head-vs-single-head">🔍 多头注意力（Multi-Head） vs 单头注意力（Single-Head）</h4>
+<blockquote>
+<p><strong>一句话总结</strong>：<br />
+<strong>单头 = 用一套 Q/K/V 全局看一遍，只能捕捉一种主导关系；</strong><br />
+<strong>多头 = 把隐藏维度拆成多份，每份独立算 Attention，各自专注不同子空间的关系，最后拼接融合。</strong><br />
+本质是<strong>“分工并行 + 信息集成”</strong>，不是单纯“多算几遍”。</p>
+</blockquote>
+<hr />
+<p><strong>📐 1. 结构对比（形状与流程）</strong></p>
+<p>假设 <code>d_model = 8</code>（隐藏维度），<code>seq_len = 3</code></p>
+<p>🔸 单头注意力</p>
+<div class="highlight"><pre><span></span><code><span class="n">Q</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">W_Q</span>   <span class="c1"># (3, 8)</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">W_K</span>   <span class="c1"># (3, 8)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">W_V</span>   <span class="c1"># (3, 8)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">softmax</span><span class="p">(</span><span class="n">Q</span> <span class="o">@</span> <span class="n">K</span><span class="o">.</span><span class="n">T</span> <span class="o">/</span> <span class="err">√</span><span class="mi">8</span><span class="p">)</span> <span class="o">@</span> <span class="n">V</span>  <span class="c1"># (3, 8)</span>
+</code></pre></div>
+<p>👉 <strong>全程只有一套投影权重</strong>，所有关系混在一个 8 维空间里竞争注意力。</p>
+<p>🔸 多头注意力（假设 <code>h = 4</code> 头）</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. 投影到总维度 (3, 8)</span>
+<span class="n">Q_all</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">W_Q_all</span>
+<span class="n">K_all</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">W_K_all</span>
+<span class="n">V_all</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">W_V_all</span>
+
+<span class="c1"># 2. 拆成 4 个头 (关键：reshape + transpose)</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">Q_all</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># (3, 4, 2) → (4, 3, 2)</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">K_all</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># 每个头维度: d_k = d_v = 8/4 = 2</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">V_all</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 3. 每个头独立算 Attention（框架底层高度并行，无显式 for）</span>
+<span class="c1"># head_i: (3, 2) → softmax(Q_i@K_i.T/√2) @ V_i</span>
+<span class="n">head_outs</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 列表存4个 (3, 2)</span>
+
+<span class="c1"># 4. 拼接 + 输出投影（必不可少的一步）</span>
+<span class="n">concat</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">head_outs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># (3, 8)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">concat</span> <span class="o">@</span> <span class="n">W_O</span>                      <span class="c1"># (3, 8)</span>
+</code></pre></div>
+<p>🔑 <strong>关键设计</strong>：</p>
+<ul>
+<li><code>d_k = d_v = d_model / h</code>：保证总参数量与单头接近，不盲目膨胀</li>
+<li><code>W_O</code> 输出投影：<strong>不是摆设</strong>，负责把多头的“专项报告”重新混合成统一表示</li>
+</ul>
+<hr />
+<p><strong>🧠 2. 为什么一定要拆多头？（核心动机）</strong></p>
+<p>高维向量（如 768 维）里<strong>同时编码了多种信息</strong>：语法结构、语义相似、指代关系、位置顺序、领域特征等。</p>
+<table>
+<thead>
+<tr>
+<th>设计</th>
+<th>信息处理方式</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>单头</strong></td>
+<td>所有关系在同一个 768 维空间里“抢”注意力</td>
+<td>强势关系（如词频高的语义相似）会压制弱势关系（如远距离指代），模型被迫“平均化”或“妥协”</td>
+</tr>
+<tr>
+<td><strong>多头</strong></td>
+<td>拆成 12 个 64 维子空间，每个头独立学习投影权重</td>
+<td>头1专盯主谓一致，头2专盯代词指代，头3专盯同义替换，头4专盯位置关系……<strong>互不干扰，各尽所长</strong></td>
+</tr>
+</tbody>
+</table>
+<p>💡 <strong>本质</strong>：多头不是“增加容量”，而是<strong>“解耦信息通道”</strong>。就像把一条拥挤的单行道拆成多条专用车道，通行效率反而更高。</p>
+<hr />
+<p><strong>🎨 3. 直观比喻（秒懂分工逻辑）</strong></p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>单头注意力</th>
+<th>多头注意力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔍 <strong>破案</strong></td>
+<td>一个全能侦探：既要找时间线，又要查人物关系，还要核对地点，容易顾此失彼</td>
+<td>侦探团队：头1盯资金流，头2盯通讯记录，头3盯监控轨迹，头4盯社交关系。队长(<code>W_O</code>)最后汇总成完整案情</td>
+</tr>
+<tr>
+<td>🎧 <strong>听交响乐</strong></td>
+<td>一只耳朵听所有乐器混音，很难分离小提琴和定音鼓</td>
+<td>多只麦克风分频段收音，后期调音台(<code>W_O</code>)重新混音，层次清晰</td>
+</tr>
+<tr>
+<td>📊 <strong>数据分析</strong></td>
+<td>用主成分分析(PCA)降成1维，丢失大量结构</td>
+<td>保留多个正交子空间，信息完整</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>📊 4. 实际效果对比（为什么现代模型标配多头？）</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>单头</th>
+<th>多头（典型 8~16 头）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>表达能力</strong></td>
+<td>只能捕捉一种主导关系</td>
+<td>多子空间并行，语法/语义/指代/位置可分离</td>
+</tr>
+<tr>
+<td><strong>鲁棒性</strong></td>
+<td>某个关系占优会压制其他，易过拟合噪声</td>
+<td>头部可互补/冗余，对局部扰动更稳定</td>
+</tr>
+<tr>
+<td><strong>计算成本</strong></td>
+<td>1 次 Attention</td>
+<td><code>h</code> 次，但<strong>完全并行</strong>，GPU 吞吐不降</td>
+</tr>
+<tr>
+<td><strong>参数量</strong></td>
+<td>少</td>
+<td>略多（约 <code>+h/(h-1)</code> 倍），但信息密度高</td>
+</tr>
+<tr>
+<td><strong>现代实践</strong></td>
+<td>仅用于极简/嵌入式场景</td>
+<td>Transformer 标配（BERT:12, GPT-2:12~16, LLaMA:32）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>⚠️ 5. 常见误区澄清</strong></p>
+<table>
+<thead>
+<tr>
+<th>误区</th>
+<th>真相</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“多头就是把同一个句子跑 h 遍”</td>
+<td>❌ 是<strong>同一层内并行</strong>，用不同的可学习投影矩阵 <code>W_Q_i, W_K_i, W_V_i</code></td>
+</tr>
+<tr>
+<td>“头越多效果一定越好”</td>
+<td>❌ 有收益递减。<code>d_k</code> 太小（如 &lt;16）会导致子空间表达力不足，且注意力分布变平滑</td>
+</tr>
+<tr>
+<td>“每个头必须有明确人类可解释的语义”</td>
+<td>❌ 不需要。网络自动学习分工，头之间可能高度纠缠，只要整体表征有效即可</td>
+</tr>
+<tr>
+<td>“去掉 <code>W_O</code> 拼接结果就行”</td>
+<td>❌ <code>W_O</code> 是<strong>跨头信息融合器</strong>。没有它，多头只是独立通道的简单堆叠，无法交互</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>💎 终极总结（3句话记住）</strong></p>
+<ol>
+<li><strong>单头是“全能但妥协”，多头是“分工再融合”</strong>。拆维度是为了让不同关系在独立子空间里充分表达。</li>
+<li><strong><code>W_O</code> 不是冗余</strong>：它把多头的“专项输出”重新投影回原空间，允许跨头信息交叉。</li>
+<li><strong>现代大模型不用单头</strong>：因为自然语言/代码/多模态数据的关系是多维交织的，单头无法解耦，多头是性价比最高的结构升级。</li>
+</ol>
+<blockquote>
+<p>✨ 一句话比喻：<br />
+<strong>单头 = 用一支笔画所有细节</strong><br />
+<strong>多头 = 用一套彩色铅笔分层上色，最后透明叠加</strong><br />
+颜色不串味，画面更立体。</p>
+</blockquote>
+<hr />
+<p>很多人学多头注意力时的核心困惑：</p>
+<blockquote>
+<p><strong>“总维度没变，凭什么说表达能力更强？是不是只是把一个大矩阵拆成几个小矩阵，最后又拼回去，纯属多此一举？”</strong></p>
+</blockquote>
+<p>答案是：<strong>维度总数相同 ≠ 表达能力相同。关键差别不在“容量大小”，而在“信息如何组织、梯度如何更新、关系如何解耦”。</strong></p>
+<p>下面用 <strong>优化动力学 → 表示结构 → 架构设计</strong> 三层拆透，保证你看完不再觉得“换汤不换药”。</p>
+<hr />
+<p><strong>🔪 1. 优化视角：单头是“梯度打架”，多头是“并行修路”</strong></p>
+<p>假设 <code>d_model = 512</code>，句子包含三种关系：主谓结构、代词指代、同义替换。</p>
+<table>
+<thead>
+<tr>
+<th>机制</th>
+<th>梯度更新过程</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>单头</strong></td>
+<td>所有关系挤在 512 维空间里竞争注意力。训练时，梯度要同时优化三种目标，方向可能冲突（如主谓要求权重集中，指代要求分散）→ <strong>梯度互相抵消或震荡</strong></td>
+<td>模型被迫学出“平均化/妥协”的表示，收敛慢，易卡在局部最优</td>
+</tr>
+<tr>
+<td><strong>多头（8头×64维）</strong></td>
+<td>每个头有独立的 <code>W_Q, W_K, W_V</code>，<strong>独立算 Softmax、独立回传梯度</strong>。头1专学主谓，头2专学指代，头3专学同义… → <strong>梯度路径隔离，互不干扰</strong></td>
+<td>每个子空间都能快速收敛到适合自己任务的流形，整体训练更稳更快</td>
+</tr>
+</tbody>
+</table>
+<p>💡 <strong>关键洞察</strong>：神经网络不是静态的数学空间，而是<strong>动态优化的过程</strong>。同样的维度，组织方式不同，优化难度天差地别。</p>
+<hr />
+<p><strong>🧩 2. 表示视角：独立 Softmax 防止“赢家通吃”</strong></p>
+<p>这是最容易被忽略的<strong>结构差异</strong>：</p>
+<ul>
+<li><strong>单头</strong>：<code>softmax</code> 在 <strong>512 维全局</strong>归一化。如果“语义相似”关系很强，注意力权重会被它吸走大半，其他关系直接饿死。</li>
+<li><strong>多头</strong>：每个头在 <strong>64 维局部</strong>独立归一化。头1可以 100% 关注语法，头2 可以 100% 关注位置，<strong>互不抢夺</strong>。</li>
+</ul>
+<p>👉 这就像：</p>
+<ul>
+<li>单头 = 全国只有一个高考分数线，文科理科一起卷，偏科生直接淘汰</li>
+<li>多头 = 文理分科独立划线，特长生各展所长，最后总分相加</li>
+</ul>
+<p><strong>同样的总维度，多头通过“局部归一化”强制模型保留多样性表示。</strong></p>
+<hr />
+<p><strong>🔗 3. 架构视角：<code>W_O</code> 不是拼接，而是“跨通道混合器”</strong></p>
+<p>你提到“最后合并还是这么多维”。注意：多头不是简单 <code>cat</code> 完就结束，而是：</p>
+<div class="highlight"><pre><span></span><code><span class="n">out</span> <span class="o">=</span> <span class="n">concat</span><span class="p">(</span><span class="n">head_1</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">head_h</span><span class="p">)</span> <span class="o">@</span> <span class="n">W_O</span>  <span class="c1"># W_O 是 d_model × d_model 的全连接层</span>
+</code></pre></div>
+<ul>
+<li><code>W_O</code> 的作用是让<strong>不同头的特征交叉融合</strong>。</li>
+<li>例：头1输出“主语位置”，头2输出“动词类型”，<code>W_O</code> 学会把它们组合成“主谓搭配是否合理”。</li>
+<li>单头没有这个<strong>显式的跨子空间交互层</strong>，所有混合必须在前面的非线性里隐式完成，极难优化。</li>
+</ul>
+<p>🔍 <strong>数学本质</strong>：
+单头学习的是 <code>f(X) = softmax(QK^T)V</code><br />
+多头学习的是 <code>g(X) = W_O · concat( softmax(Q₁K₁ᵀ)V₁, ..., softmax(QₕKₕᵀ)Vₕ )</code><br />
+这两个函数的<strong>假设空间（Hypothesis Space）完全不同</strong>。多头的函数更“平滑”、更“可分解”，对复杂语言结构拟合能力更强。</p>
+<hr />
+<p><strong>📊 实验与可视化证据（不是玄学）</strong></p>
+<table>
+<thead>
+<tr>
+<th>证据来源</th>
+<th>发现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>📐 <strong>参数效率对比</strong>（Vaswani et al. 2017）</td>
+<td>同等参数量下，8头比单头在翻译任务上 BLEU 高 1.5~2.0</td>
+</tr>
+<tr>
+<td>🔍 <strong>头部角色可视化</strong>（Clark et al. 2019）</td>
+<td>BERT 的 12 个头自动分化：有的专盯标点/句法，有的专盯实体共指，有的专盯否定词</td>
+</tr>
+<tr>
+<td>📉 <strong>消融实验</strong></td>
+<td>去掉多头（改用单头+同等维度）：下游任务准确率下降 3%~8%，长文本生成连贯性明显变差</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>🎯 终极对照表（收藏版）</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>单头注意力</th>
+<th>多头注意力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>归一化范围</strong></td>
+<td>全局 <code>d_model</code> 维 Softmax</td>
+<td>每个头 <code>d_k</code> 维独立 Softmax</td>
+</tr>
+<tr>
+<td><strong>梯度路径</strong></td>
+<td>单一路径，多目标竞争</td>
+<td>多路并行，目标隔离</td>
+</tr>
+<tr>
+<td><strong>表示结构</strong></td>
+<td>一锅乱炖，易赢家通吃</td>
+<td>分层解耦，多样性保留</td>
+</tr>
+<tr>
+<td><strong>跨关系交互</strong></td>
+<td>隐式、难优化</td>
+<td>显式 <code>W_O</code> 线性混合，易学习</td>
+</tr>
+<tr>
+<td><strong>函数空间</strong></td>
+<td>高度耦合的非线性流形</td>
+<td>可分解的子流形拼接</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>💎 一句话总结</strong></p>
+<blockquote>
+<p><strong>多头不是“增加维度”，而是“改造维度的使用方式”。</strong><br />
+把大空间拆成独立子空间 → 独立归一化防内卷 → 独立梯度易优化 → <code>W_O</code> 负责跨头融合。<br />
+同样的 512 维，单头是“一条拥挤的单行道”，多头是“多车道+智能立交”，通行效率自然不同。</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
