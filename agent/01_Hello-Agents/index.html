@@ -1776,6 +1776,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        智能体经典范式构建
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2815,7 +2826,7 @@
   <span class="md-ellipsis">
     
   
-    个人面经
+    面经
   
 
     
@@ -2831,7 +2842,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    个人面经
+    面经
   
 
           </label>
@@ -2897,7 +2908,7 @@
   <span class="md-ellipsis">
     
   
-    实用工具
+    经验贴参考
   
 
     
@@ -2910,6 +2921,116 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    经验贴参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 大模型算法岗，3个项目走上人生，癫疯😎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 如何找到第一份大厂算法岗日常实习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3422,6 +3543,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        智能体经典范式构建
+      
+    </span>
+  </a>
   
 </li>
       
@@ -5084,8 +5216,8 @@ Q、K、V 是 Self-Attention 的<strong>“信息检索三剑客”</strong>。<
 </ul>
 </li>
 <li>优化算法<ul>
-<li>WordPiece：合并标准不是“最高频率”，而是优先合并那些能够让整个语料库“通顺度”提升最大的词元对。</li>
-<li>SentencePiece：将空格也视为普通字符，使得分词和解码过程完全可逆，且不依赖于特定的语言。</li>
+<li><strong>WordPiece</strong>：合并标准不是简单看“谁出现最频繁”，而是用<strong>语言模型似然</strong>衡量——优先合并那些能最大程度提升语料库整体预测概率的词元对（如 "un" + "##happy" 比 "unh" + "appy" 更能帮助模型理解词根与派生关系），本质是<strong>让分词结果服务于下游建模效果</strong>。</li>
+<li><strong>SentencePiece</strong>：直接把原始文本（含空格、标点）当作字符序列处理，空格也被编码为特殊符号（如 <code>▁</code>），使得<strong>分词→编码→解码→还原</strong>全程严格可逆，且无需依赖语言特定的预处理规则（如英文空格切分、中文无空格），真正实现<strong>语言无关、端到端、损失无损</strong>的文本数字化。</li>
 </ul>
 </li>
 </ul>
@@ -5111,6 +5243,130 @@ Q、K、V 是 Self-Attention 的<strong>“信息检索三剑客”</strong>。<
 <li>事实性幻觉、忠实性幻觉、内在幻觉</li>
 <li>解决<ul>
 <li>数据层面、模型层面、推理与生成层面</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="_14">智能体经典范式构建</h2>
+<p>三种代表性的智能体范式：</p>
+<ul>
+<li>ReAct：一种将“思考”和行动紧密结合的范式，让智能体边想边做，动态调整。</li>
+<li>Plan-and-Solve：一种“三思而后行”的范式，通过自我批判和修正来优化结果。</li>
+<li>
+<p>Reflection：一种赋予智能体“反思”能力的范式，通过自我批评和修正来优化结果。</p>
+</li>
+<li>
+<p>ReAct</p>
+<ul>
+<li>核心思想是模仿人类解决问题的方式，将推理(Reasoning)与行动(Acting)显式地结合起来，形成一个“思考-行动-观察”的循环。</li>
+<li>工作流程，不断重复执行“思考、行动、观察”的循环，将新的观察结果追加到历史记录中，形成不断增长的上下文，直到思考中觉得已经找到最终答案，输出结果。</li>
+<li>推理使得行动更具有目的性，而行动则为推理提供了事实依据。</li>
+<li>历史记录中可以不记录此前思考结果，而只记录原始问题以及所有步骤的“行动-观察”历史轨迹。</li>
+<li>适用场景：<ul>
+<li>需要外部知识的任务：查询实时天气、搜索专业领域的知识等。</li>
+<li>需要精确计算的任务</li>
+<li>需要与API交互的任务</li>
+</ul>
+</li>
+<li>关键也就是需要使得智能体具备调用外部工具的能力。</li>
+<li>实现一个ReAct智能体：<ul>
+<li>系统提示词设计：<ul>
+<li>角色定义：告知任务并提醒可以使用工具</li>
+<li>工具清单：告知有哪些可用的“手脚”</li>
+<li>格式规约：最重要部分，强制LLM的输出具有结构性，使得我们能够通过代码精确解析意图。</li>
+<li>动态上下文：将原始问题和不断积累交互历史注入，使得LLM基于完整上下文进行决策。</li>
+</ul>
+</li>
+<li>核心循环实现：不断“格式化提示词-&gt;调用LLM-&gt;执行动作-&gt;整合结果”，直到任务完成或达到最大步数限制。</li>
+<li>解析输出结果：解析思考和行动，进一步解析行动，提取出工具名和参数</li>
+<li>工具调用与执行<ul>
+<li>检查是否Finish，否则调用对应工具并得到observation。</li>
+</ul>
+</li>
+<li>观察结果整合<ul>
+<li>将Action和Observation添加回历史记录，为下一轮循环提供新的上下文。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>主要特点：<ul>
+<li>高可解释性：Thought链让我们看到智能体决策的心路历程。</li>
+<li>动态规划与纠错能力：走一步，看一部，动态调整后续的Thought和Action。</li>
+<li>工具协同能力：LLM思考与外部工具执行能力的结合。</li>
+</ul>
+</li>
+<li>局限性：<ul>
+<li>对LLM自身能力强依赖</li>
+<li>执行效率问题：多次调用，串行循环</li>
+<li>提示词脆弱：整个机制建立在精心设计提示词模板上</li>
+<li>可能局部最优：步进式，缺乏一个全局的、长远的规划</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Plan-and-Solve<ul>
+<li>将任务处理明确分为两个阶段：先规划，后执行</li>
+<li>工作原理：<ul>
+<li>核心动机是为了解决思维链在处理多步骤、复杂问题时容易偏离轨道问题</li>
+<li>两个核心阶段：<ul>
+<li>规划阶段：将问题分解，制定一个清晰、分步骤地行动计划</li>
+<li>执行阶段：严格按照计划中步骤，逐一执行，直到计划中的所有步骤都完成，最终得出答案。</li>
+</ul>
+</li>
+<li>对于第i步骤，其解决方案依赖于原始问题、完整计划以及之前所有步骤的执行结果。</li>
+<li>最终答案就是最后一个步骤的执行结果。</li>
+</ul>
+</li>
+<li>适用场景：结构性强、可以被清晰分解的复杂任务<ul>
+<li>多步数学应用题</li>
+<li>需要整合多个信息源的报告撰写</li>
+<li>代码生成：需要先构思好函数、类和模块的结构，再逐一实现</li>
+</ul>
+</li>
+<li>规划阶段目标是让大模型接收原始问题，输出一个清晰、分步骤地行动计划，这个计划必须是结构化的。<ul>
+<li>例如要求输出计划为Python列表形式，简化解析工作，使得比解析自然语言更稳定、更可靠。</li>
+</ul>
+</li>
+<li>执行器与状态管理<ul>
+<li>执行器的提示词与规划器不同，其目标是在已有上下文基础上，专注解决当前一个步骤。</li>
+<li>提示词包括：原始问题、完整计划、历史步骤与结果、当前步骤</li>
+</ul>
+</li>
+<li>整体流程：先计划，后执行，两套提示词，仅此而已。</li>
+</ul>
+</li>
+<li>Reflection<ul>
+<li>上述范式，智能体一旦完成任务，其工作流程结束。</li>
+<li>核心思想：引入一种事后的自我校正循环，审视工作，发现不足，并进行迭代优化。</li>
+<li>核心流程：执行-&gt;反思-&gt;优化，不断循环。<ul>
+<li>执行：可以使用上述范式尝试完成任务，得到“初稿”</li>
+<li>反思：独立、特殊提示的大模型扮演该角色进行事实性、逻辑、效率等评估</li>
+<li>优化：将初稿和反馈作为上下文，根据反馈进行修正，生成更完善的“修订版”</li>
+</ul>
+</li>
+<li>特点：<ul>
+<li>内部纠错回路、将一次性任务转变为持续优化过程、为智能体提供“短期记忆”的宝贵经验</li>
+</ul>
+</li>
+<li>记忆管理机制：例如可以记录反思和优化轨迹，并取出作为上一轮结果</li>
+<li>智能体设计<ul>
+<li>提示词设计：<ul>
+<li>初始执行提示词：起点，相对简单</li>
+<li>反思提示词：对上一轮回答生成批判性分析，提供具体的、可操作的反馈</li>
+<li>优化提示词：依据反馈，进行修改和优化</li>
+</ul>
+</li>
+<li>迭代循环：反思和优化</li>
+</ul>
+</li>
+<li>成本收益<ul>
+<li>每一轮迭代至少调用两次大模型，串行过程，任务延迟显著提高</li>
+</ul>
+</li>
+<li>核心收益<ul>
+<li>解决方案质量的跃迁，自我纠错循环提升了最终结果的可靠性。</li>
+<li>适用于对最终结果的质量、准确性和可靠性有极高要求，且对任务完成的实时性要求相对宽松的场景。</li>
 </ul>
 </li>
 </ul>
