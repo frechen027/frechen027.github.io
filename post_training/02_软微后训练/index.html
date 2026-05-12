@@ -2557,6 +2557,539 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="后训练的定义与基本流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LLM开发的三阶段流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        后训练的核心方法全景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tulu-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tülu 3：开源后训练的黄金标准
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qwen3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qwen3 的四阶段后训练流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本节小结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        监督微调核心概念
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="监督微调核心概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chat-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        聊天模板（Chat Template）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="聊天模板（Chat Template）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chatml-qwen3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ChatML 格式（Qwen3 使用）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llama" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Llama 格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多轮对话格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply_chat_template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用 apply_chat_template 自动转换
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#masked-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        掩码损失（Masked Loss）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="掩码损失（Masked Loss）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么需要掩码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        掩码损失公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        掩码示意图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trl-sfttrainer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        在 TRL SFTTrainer 中的实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据质量重于数量
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据质量重于数量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lima1000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LIMA：1,000 条精选数据的力量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRAPE：选择"适合"模型的数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#magpie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MAGPIE：合成数据从零生成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据质量核心原则
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本节小结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参数高效微调
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="参数高效微调">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么需要参数高效微调
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="为什么需要参数高效微调">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        全参数微调的显存瓶颈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        显存构成与精确计算法则
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LoRA：低秩适配
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LoRA：低秩适配">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心思想
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        前向传播
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参数效率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键超参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        初始化策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qlora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QLoRA：量化低秩适配
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="QLoRA：量化低秩适配">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心思想
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nf4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NF4 量化原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qlora_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QLoRA 训练流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitsandbytesconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BitsAndBytesConfig 配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        显存对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        近期进展简介
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="近期进展简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dora-lora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DoRA：权重分解 LoRA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spectrum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spectrum：基于信噪比的层选择
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实践建议总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本节小结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -3437,6 +3970,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 两万人看过的“混进”算法岗后续
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3752,6 +4313,539 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="后训练的定义与基本流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LLM开发的三阶段流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        后训练的核心方法全景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tulu-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tülu 3：开源后训练的黄金标准
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qwen3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qwen3 的四阶段后训练流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本节小结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        监督微调核心概念
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="监督微调核心概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chat-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        聊天模板（Chat Template）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="聊天模板（Chat Template）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chatml-qwen3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ChatML 格式（Qwen3 使用）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llama" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Llama 格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多轮对话格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply_chat_template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用 apply_chat_template 自动转换
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#masked-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        掩码损失（Masked Loss）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="掩码损失（Masked Loss）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么需要掩码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        掩码损失公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        掩码示意图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trl-sfttrainer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        在 TRL SFTTrainer 中的实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据质量重于数量
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据质量重于数量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lima1000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LIMA：1,000 条精选数据的力量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRAPE：选择"适合"模型的数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#magpie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MAGPIE：合成数据从零生成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据质量核心原则
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本节小结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参数高效微调
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="参数高效微调">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么需要参数高效微调
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="为什么需要参数高效微调">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        全参数微调的显存瓶颈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        显存构成与精确计算法则
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LoRA：低秩适配
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LoRA：低秩适配">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心思想
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        前向传播
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参数效率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键超参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        初始化策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qlora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QLoRA：量化低秩适配
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="QLoRA：量化低秩适配">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心思想
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nf4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NF4 量化原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qlora_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QLoRA 训练流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitsandbytesconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BitsAndBytesConfig 配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        显存对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        近期进展简介
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="近期进展简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dora-lora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DoRA：权重分解 LoRA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spectrum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spectrum：基于信噪比的层选择
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实践建议总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本节小结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -3807,7 +4901,7 @@
 <li>完成第一次完整的模型微调实验：将 Qwen3-1.7B 基座模型微调为指令跟随助手</li>
 </ol>
 <h3 id="_4">后训练的定义与基本流程</h3>
-<p>LLM开发的三阶段流程</p>
+<h4 id="llm">LLM开发的三阶段流程</h4>
 <ul>
 <li>预训练（Pre-training）<ul>
 <li>预训练是LLM的基础。这一阶段，万亿级token预料进行下一个token预测，学习语言知识和世界知识。</li>
@@ -3815,7 +4909,677 @@
 <li>最终产出一个“博学但不听话”的基座模型，拥有丰富知识，但不懂遵循人类指令，也不懂对话格式。</li>
 </ul>
 </li>
+<li>后训练（Post-training）<ul>
+<li>是将基座模型转化为实用助手的关键阶段。通过SFT、偏好对齐、强化学习等手段，赋予模型指令跟随、安全回复、推理思考等能力。</li>
+<li>计算量：仅占预训练的约5%，但决定了模型实际可用性。</li>
+<li>核心目标：让模型学会怎么说话、怎么选择、怎么思考</li>
+<li>产出：一个能够遵循指令、安全有用的对齐模型</li>
 </ul>
+</li>
+<li>推理阶段（Interence）<ul>
+<li>部署优化：量化（INT8/INT4）、蒸馏、剪枝等方法减少模型体积和推理成本</li>
+<li>推理时计算扩展：思维链、Best-of-N采用、树搜索等方法在推理时分配更多计算资源</li>
+</ul>
+</li>
+</ul>
+<h4 id="_5">后训练的核心方法全景</h4>
+<p>按照功能可以分为四大类。</p>
+<ol>
+<li>监督微调（Supervised Fine-Tuning, SFT）<ul>
+<li>教模型"怎么说话"——学会遵循指令、按格式回复。</li>
+<li>SFT 使用高质量的 (指令, 回复) 对来训练模型。模型学习的是：给定一个指令，如何生成符合期望的回复。这是后训练的第一步，也是其他所有方法的基础。</li>
+<li>输入："用三句话介绍量子计算"</li>
+<li>期望输出："量子计算利用量子力学原理进行信息处理..."</li>
+</ul>
+</li>
+<li>偏好对齐（Preference Alignment: DPO/RLHF）<ul>
+<li>教模型"怎么选择"——在多个可能的回复中选择更好的。</li>
+<li>SFT 后的模型可能生成多种回复，但并非所有回复都同样好。偏好对齐通过人类偏好数据（"回复 A 优于回复 B"）来教模型区分好坏：</li>
+<li>RLHF（Reinforcement Learning from Human Feedback）：训练奖励模型 + PPO 优化</li>
+<li>DPO（Direct Preference Optimization）：直接在偏好对上训练，无需奖励模型</li>
+</ul>
+</li>
+<li>推理强化学习（Reasoning RL: GRPO/RLVR）<ul>
+<li>教模型"怎么思考"——发展逐步推理和自我验证能力。</li>
+<li>这是 2024-2025 年最激动人心的进展。通过可验证奖励（如数学答案的正确性），模型在纯强化学习中自发涌现出推理能力：<ul>
+<li>GRPO（Group Relative Policy Optimization）：DeepSeek 提出的高效 RL 算法</li>
+<li>RLVR（RL with Verifiable Rewards）：使用确定性奖励函数代替人类标注</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>专项适配<ul>
+<li>根据应用场景扩展模型能力：<ul>
+<li>工具使用：学会调用 API、函数调用（Function Calling）</li>
+<li>多模态理解：视觉-语言对齐（VLM）</li>
+<li>领域知识注入：医疗、法律、金融等垂直领域微调</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="tulu-3">Tülu 3：开源后训练的黄金标准</h4>
+<p>Tülu 3（Lambert 等，2024）是目前最完整的开源后训练方案，其流程为本课程提供了核心参考框架：</p>
+<p>SFT 阶段</p>
+<ul>
+<li>在精心混合的多源指令数据上进行监督微调。Tülu 3 使用了来自多个来源的数据，并通过系统性的数据混合实验确定最优配比。</li>
+</ul>
+<p>DPO 阶段</p>
+<ul>
+<li>使用偏好数据进行 DPO 对齐，提升模型的回复质量和安全性。关键发现：在策略（on-policy）生成的偏好数据效果优于离线数据。</li>
+</ul>
+<p>RLVR 阶段</p>
+<ul>
+<li>使用可验证奖励进行强化学习，专门提升数学推理和指令跟随能力。这一步是 Tülu 3 在 GSM8K 等推理基准上取得突破的关键。</li>
+</ul>
+<p>Tülu 3 的核心贡献在于其系统性的消融实验：每一步的设计选择（数据配比、超参数、方法选型）都有实验支撑，为开源社区提供了可复现的最佳实践。</p>
+<h4 id="qwen3">Qwen3 的四阶段后训练流程</h4>
+<p>Qwen3 的后训练流程是本课程技术体系的最佳案例。根据 Qwen3 技术报告（arXiv:2505.09388），其后训练分为四个精心设计的阶段：</p>
+<p>阶段 1：长思维链冷启动 SFT（Long-CoT Cold Start）</p>
+<ul>
+<li>使用精心构造的长思维链数据进行 SFT，为模型注入基本的推理模式。这些数据包含详细的逐步推理过程，教会模型如何展开深度思考。</li>
+<li>数据来源：通过强模型生成、人工筛选的高质量推理数据</li>
+<li>目标：让模型掌握 <think>...</think> 格式的思维链输出</li>
+</ul>
+<p>阶段 2：推理 RL（Reasoning Reinforcement Learning）</p>
+<ul>
+<li>在数学、代码等可验证任务上进行大规模 GRPO 训练，强化模型的推理能力。</li>
+<li>奖励信号：答案正确性（可验证奖励）</li>
+<li>关键效果：模型学会了更长、更深入的推理链，自发涌现出自我验证和回溯能力</li>
+</ul>
+<p>阶段 3：思考模式融合（Thinking Mode Fusion）</p>
+<ul>
+<li>将推理 RL 阶段获得的深度思考能力融合回统一模型，使模型同时具备：<ul>
+<li>思考模式（Thinking Mode）：生成详细的内部推理过程</li>
+<li>非思考模式（Non-Thinking Mode）：直接给出简洁回复</li>
+</ul>
+</li>
+<li>这一阶段本质上是一种蒸馏：将 RL 训练的推理专家能力蒸馏到一个统一的模型中。</li>
+</ul>
+<p>阶段 4：通用 RL（General Reinforcement Learning）</p>
+<ul>
+<li>使用通用奖励信号（包括人类偏好和规则奖励）进行最终的强化学习，全面提升模型在各项能力上的表现，包括指令跟随、安全性、多语言等。</li>
+</ul>
+<p>Qwen3 的四阶段后训练流程正好对应了本课程的技术体系：阶段 1 对应第 1-2 课（SFT），阶段 2 对应第 4 课（GRPO），阶段 3-4 对应第 3 课（偏好对齐）和第 5 课（部署优化）。</p>
+<p>Qwen3 Instruct 模型内置了思考模式切换功能，这是后训练赋予模型的核心能力之一。</p>
+<ul>
+<li>思考模式 /think</li>
+<li>非思考模式 /no_think</li>
+<li>在思考模式下，模型会先在 <code>&lt;think&gt;</code> 标签内展开内部推理，然后给出最终回复。</li>
+<li>思考模式适合需要深度推理的任务：数学题、编程、逻辑分析等。</li>
+<li>只有经过完整后训练流程的 Instruct 版本才支持 /think 和 /no_think 模式切换。基座模型（Base）不具备这一能力——这正是后训练的价值所在。</li>
+</ul>
+<h4 id="_6">本节小结</h4>
+<ul>
+<li>预训练：万亿级 token 上的语言建模，产出基座模型</li>
+<li>后训练：SFT + 偏好对齐 + 推理 RL，将基座模型转化为实用助手<ul>
+<li>SFT：教模型“怎么说话”</li>
+<li>DPO/PLHF：教模型“怎么选择”</li>
+<li>GRPO/RLVR：教模型“怎么思考”</li>
+<li>Tülu 3：开源后训练的黄金标准：SFT -&gt; DPO -&gt; PLVR</li>
+<li>Qwen3：四阶段后训练：冷启动SFT -&gt; 推理RL -&gt; 模式融合 -&gt; 通用RL</li>
+</ul>
+</li>
+</ul>
+<h3 id="_7">监督微调核心概念</h3>
+<h4 id="chat-template">聊天模板（Chat Template）</h4>
+<p>SFT 的第一步是将指令-回复对格式化为模型能理解的输入格式。不同模型家族使用不同的聊天模板，格式错误是 SFT 最常见的 bug 来源。</p>
+<h5 id="chatml-qwen3">ChatML 格式（Qwen3 使用）</h5>
+<p>ChatML（Chat Markup Language）是 Qwen3 系列采用的聊天模板格式。它使用特殊 token 标记每个角色的消息边界：</p>
+<div class="highlight"><pre><span></span><code>&lt;|im_start|&gt;system
+You are a helpful assistant.&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+用三句话介绍量子计算&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant
+量子计算是一种利用量子力学原理进行信息处理的新型计算范式。
+它使用量子比特（qubit）代替经典比特，能够同时处于多个状态的叠加。
+在特定问题上，量子计算机有望实现指数级的加速。&lt;|im_end|&gt;
+</code></pre></div>
+<p>关键元素说明：</p>
+<p>| Token       | 含义                         |
+| :---------- | :--------------------------- | --- | --------------------------------------- |
+| <code>&lt;          | im_start                     | &gt;</code>  | 消息开始标记（im = internal monologue） |
+| <code>&lt;          | im_end                       | &gt;</code>  | 消息结束标记                            |
+| <code>system</code>    | 系统角色，设定模型行为和约束 |
+| <code>user</code>      | 用户角色，提供指令或问题     |
+| <code>assistant</code> | 助手角色，模型的回复         |</p>
+<p>Qwen3 的思考模式在 ChatML 基础上增加了 <code>&lt;think&gt;...&lt;/think&gt;</code> 标签。在思考模式下，assistant 回复的开头是 <code>&lt;think&gt;</code> 标签包裹的内部推理，随后才是面向用户的最终回复。</p>
+<h5 id="llama">Llama 格式</h5>
+<p>Meta 的 Llama 系列使用不同的模板格式：</p>
+<div class="highlight"><pre><span></span><code>&lt;|begin_of_text|&gt;&lt;|start_header_id|&gt;system&lt;|end_header_id|&gt;
+You are a helpful assistant.&lt;|eot_id|&gt;&lt;|start_header_id|&gt;user&lt;|end_header_id|&gt;
+用三句话介绍量子计算&lt;|eot_id|&gt;&lt;|start_header_id|&gt;assistant&lt;|end_header_id|&gt;
+量子计算是一种利用量子力学原理进行信息处理的新型计算范式。
+它使用量子比特（qubit）代替经典比特，能够同时处于多个状态的叠加。
+在特定问题上，量子计算机有望实现指数级的加速。&lt;|eot_id|&gt;
+</code></pre></div>
+<h5 id="_8">多轮对话格式</h5>
+<p>ChatML 天然支持多轮对话，只需按顺序排列多轮 user/assistant 消息：</p>
+<div class="highlight"><pre><span></span><code>&lt;|im_start|&gt;system
+You are a helpful assistant.&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+什么是机器学习？&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant
+机器学习是人工智能的一个分支，通过数据驱动的方式让计算机自动学习模式和规律。&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+它和深度学习有什么区别？&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant
+深度学习是机器学习的子集，特指使用深层神经网络的方法。传统机器学习依赖手工特征工程，而深度学习能自动从原始数据中学习层次化的特征表示。&lt;|im_end|&gt;
+</code></pre></div>
+<h5 id="apply_chat_template">使用 <code>apply_chat_template</code> 自动转换</h5>
+<p>在实践中，不要手动拼接模板字符串。使用 Hugging Face Transformers 提供的 <code>apply_chat_template</code> 方法可以自动处理格式转换：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;Qwen/Qwen3-1.7B&quot;</span><span class="p">)</span>
+<span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a helpful assistant.&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;用三句话介绍量子计算&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;量子计算是...&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="c1"># 自动应用 ChatML 模板并 tokenize</span>
+<span class="n">formatted</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">apply_chat_template</span><span class="p">(</span>
+    <span class="n">messages</span><span class="p">,</span>
+    <span class="n">tokenize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>              <span class="c1"># 返回字符串而非 token ID</span>
+    <span class="n">add_generation_prompt</span><span class="o">=</span><span class="kc">False</span>  <span class="c1"># 训练时不添加生成提示</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">formatted</span><span class="p">)</span>
+</code></pre></div>
+<p>关键原则：始终使用 <code>tokenizer.apply_chat_template()</code> 而非手动拼接。不同模型的特殊 token ID 不同，手动拼接极易出错。格式错误通常不会报错，但会导致训练后的模型行为异常。</p>
+<h4 id="masked-loss">掩码损失（Masked Loss）</h4>
+<h5 id="_9">为什么需要掩码</h5>
+<p>标准的语言建模训练会在所有 token 上计算交叉熵损失。但在 SFT 中，我们只希望模型学习"如何回答"，而不是学习"如何复述问题"。</p>
+<p>考虑以下训练样本：</p>
+<div class="highlight"><pre><span></span><code>&lt;|im_start|&gt;system
+You are a helpful assistant.&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+什么是量子计算？&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant
+量子计算是一种利用量子力学原理进行信息处理的新型计算范式。&lt;|im_end|&gt;
+</code></pre></div>
+<p>如果在所有 token 上计算损失：</p>
+<ul>
+<li>模型会花费大量梯度学习如何生成 system 提示和 user 问题的内容</li>
+<li>这不是我们想要的——用户输入在推理时是给定的，不需要模型生成</li>
+</ul>
+<h5 id="_10">掩码损失公式</h5>
+<p>SFT 的训练目标是仅在 assistant token 上计算交叉熵损失：</p>
+<div class="arithmatex">\[L_{SFT} = - \sum_{t \in A} \log P_\theta (x_t \mid x_{&lt;t})\]</div>
+<p>其中 <span class="arithmatex">\(A\)</span> 表示 assistant 回复对应的 token 位置集合。</p>
+<p>具体实现中，使用一个二值掩码 <span class="arithmatex">\(m_t\)</span> 来控制哪些位置参与损失计算：</p>
+<div class="arithmatex">\[L_{SFT} = - \frac{1}{|A|} \sum_{t=1}^T m_t \cdot \log P_\theta (x_t \mid x_{&lt;t}), \quad m_t = \begin{cases} 1 &amp; \text{if } t \in A \\ 0 &amp; \text{otherwise} \end{cases}\]</div>
+<h5 id="_11">掩码示意图</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Token</th>
+<th style="text-align: left;">Mask</th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>system 消息</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;\|im_start\|&gt; system You are ... &lt;\|im_end\|&gt;</code></td>
+<td style="text-align: left;">0 0 0 0</td>
+<td style="text-align: left;">← 不计算损失（mask = 0）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>user 消息</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;\|im_start\|&gt; user 什么是... &lt;\|im_end\|&gt;</code></td>
+<td style="text-align: left;">0 0 0 0</td>
+<td style="text-align: left;">← 不计算损失（mask = 0）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>assistant 消息 ✓</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;\|im_start\|&gt; assistant 量子计算... &lt;\|im_end\|&gt;</code></td>
+<td style="text-align: left;">1 1 1 1</td>
+<td style="text-align: left;">← 计算交叉熵损失（mask = 1）</td>
+</tr>
+</tbody>
+</table>
+<h5 id="trl-sfttrainer">在 TRL SFTTrainer 中的实现</h5>
+<p>Hugging Face TRL 库的 <code>SFTTrainer</code> 通过 <code>DataCollatorForCompletionOnlyLM</code> 自动实现掩码损失：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">trl</span> <span class="kn">import</span> <span class="n">SFTTrainer</span><span class="p">,</span> <span class="n">SFTConfig</span>
+
+<span class="c1"># SFTConfig 默认会在 assistant token 上计算损失</span>
+<span class="n">sft_config</span> <span class="o">=</span> <span class="n">SFTConfig</span><span class="p">(</span>
+    <span class="c1"># ...其他配置</span>
+    <span class="n">dataset_text_field</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span>            <span class="c1"># 格式化后的文本字段</span>
+    <span class="n">max_seq_length</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>                  <span class="c1"># 最大序列长度</span>
+    <span class="n">packing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>                        <span class="c1"># 是否启用样本拼接</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>也可以使用 <code>DataCollatorForCompletionOnlyLM</code> 显式指定 response template：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">trl</span> <span class="kn">import</span> <span class="n">DataCollatorForCompletionOnlyLM</span>
+
+<span class="c1"># 指定 assistant 回复的起始标记</span>
+<span class="n">response_template</span> <span class="o">=</span> <span class="s2">&quot;&lt;|im_start|&gt;assistant</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="n">collator</span> <span class="o">=</span> <span class="n">DataCollatorForCompletionOnlyLM</span><span class="p">(</span>
+    <span class="n">response_template</span><span class="o">=</span><span class="n">response_template</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span>
+<span class="p">)</span>
+</code></pre></div>
+<h4 id="_12">数据质量重于数量</h4>
+<p>SFT 的一个关键发现是：精选少量高质量数据往往优于大量低质量数据。</p>
+<h5 id="lima1000">LIMA：1,000 条精选数据的力量</h5>
+<p>LIMA（Zhou 等，2023）是证明数据质量重于数量的里程碑论文：</p>
+<ul>
+<li>仅使用 1,000 条精心挑选的指令-回复对进行 SFT</li>
+<li>在人类评估中，效果接近甚至超过使用 50,000+ 条数据训练的模型（如当时的 GPT-4 Alpaca）</li>
+<li>提出了 "Superficial Alignment Hypothesis"（表层对齐假说）：模型的知识和能力主要来自预训练，SFT 的作用仅仅是教会模型使用正确的输出格式和风格</li>
+</ul>
+<p>表层对齐假说的启示：SFT 不是在教模型新知识，而是在"激活"预训练阶段已经学到的能力。因此，SFT 数据的关键是格式和风格的多样性，而非信息量。</p>
+<h5 id="grape">GRAPE：选择"适合"模型的数据</h5>
+<p>GRAPE（Zhang et al., 2025）方法进一步细化了数据选择策略：</p>
+<ul>
+<li><strong>核心思想</strong>：不是所有高质量数据对特定基座模型都同样有效</li>
+<li><strong>方法</strong>：选择与基座模型分布匹配的数据——既不太简单（模型已经会），也不太难（模型学不会）</li>
+<li><strong>效果</strong>：在相同数据量下，GRAPE 选择的数据子集显著优于随机选择</li>
+</ul>
+<h5 id="magpie">MAGPIE：合成数据从零生成</h5>
+<p>MAGPIE（Xu 等，ICLR 2025）提出了一种创新的指令数据合成方法：</p>
+<ol>
+<li><strong>利用对齐模型的自动补全</strong>：向一个已经对齐的 LLM（如 Qwen3-32B Instruct）仅输入系统提示和用户消息的前缀 token（<code>&lt;|im_start|&gt;user\n</code>），让模型自动补全出一条指令。</li>
+<li><strong>生成回复</strong>：将生成的指令重新输入模型，获得对应的回复。</li>
+<li><strong>质量过滤</strong>：使用多维度过滤（长度、多样性、质量评分）筛选高质量样本。</li>
+</ol>
+<p>MAGPIE 的关键优势：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">特性</th>
+<th style="text-align: left;">MAGPIE</th>
+<th style="text-align: left;">传统合成方法（Self-Instruct）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>是否需要种子数据</strong></td>
+<td style="text-align: left;">不需要</td>
+<td style="text-align: left;">需要 175 条种子任务</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>指令多样性</strong></td>
+<td style="text-align: left;">高（来自模型自身分布）</td>
+<td style="text-align: left;">受种子数据限制</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>生成速度</strong></td>
+<td style="text-align: left;">快（单次前向传播）</td>
+<td style="text-align: left;">慢（多次 API 调用）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>成本</strong></td>
+<td style="text-align: left;">低</td>
+<td style="text-align: left;">依赖 API 调用成本</td>
+</tr>
+</tbody>
+</table>
+<h5 id="_13">数据质量核心原则</h5>
+<p>综合以上研究，SFT 数据准备的核心原则可总结为：</p>
+<ul>
+<li><strong>质量 &gt; 数量</strong>：1K 条精选数据可以超越 50K 条噪声数据。</li>
+<li><strong>多样性很关键</strong>：涵盖多种任务类型、输出格式、难度等级。</li>
+<li><strong>匹配基座模型</strong>：选择适合当前模型能力水平的数据。</li>
+<li><strong>格式一致性</strong>：确保所有数据使用统一的聊天模板格式。</li>
+<li><strong>避免有害内容</strong>：数据中不应包含有害、偏见或不准确的回复。</li>
+</ul>
+<h4 id="_14">本节小结</h4>
+<ul>
+<li>选择模型对应的聊天模板：ChatML、Llama格式</li>
+<li><code>apply_chat_template</code>：自动处理格式转换，而不要手动拼接</li>
+<li>SFT使用掩码损失：仅在assistant token上计算交叉熵</li>
+<li>LIMA：少量精选数据胜过多条噪声数据</li>
+<li>GRAPE：选择与基座模型分布匹配的数据进行SFT效果更好</li>
+<li>MAGPIE：利用已经对齐模型自动补全生成指令数据</li>
+</ul>
+<h3 id="_15">参数高效微调</h3>
+<p>掌握 LoRA 和 QLoRA 的原理与实践，理解参数高效微调的必要性和显存优化策略。</p>
+<h4 id="_16">为什么需要参数高效微调</h4>
+<h5 id="_17">全参数微调的显存瓶颈</h5>
+<p>以 Qwen3-8B 为例，全参数微调（Full Fine-Tuning）的显存需求远超单张 GPU 容量：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">组件</th>
+<th style="text-align: left;">计算方式</th>
+<th style="text-align: left;">显存需求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">模型参数（FP16）</td>
+<td style="text-align: left;">8B × 2 bytes</td>
+<td style="text-align: left;">~16 GB</td>
+</tr>
+<tr>
+<td style="text-align: left;">梯度（FP16）</td>
+<td style="text-align: left;">8B × 2 bytes</td>
+<td style="text-align: left;">~16 GB</td>
+</tr>
+<tr>
+<td style="text-align: left;">优化器状态（AdamW, FP32）</td>
+<td style="text-align: left;">8B × 8 bytes（动量 + 方差）</td>
+<td style="text-align: left;">~64 GB</td>
+</tr>
+<tr>
+<td style="text-align: left;">激活值（估计）</td>
+<td style="text-align: left;">取决于 batch size 和 seq len</td>
+<td style="text-align: left;">~4–16 GB</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>总计</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>~100–112 GB</strong></td>
+</tr>
+</tbody>
+</table>
+<p>单张 A100-80G 无法完成 8B 模型的全参数微调！即便是 A100-80G 也仅有 80GB 显存，而全参数微调需要约 100GB。这使得全参数微调对于大多数研究者来说是不切实际的。</p>
+<h5 id="_18">显存构成与精确计算法则</h5>
+<p>训练时的显存主要由四部分构成，我们可以通过总参数量（<span class="arithmatex">\(P\)</span>，单位为 Billion即十亿/B）和参与训练的参数量（<span class="arithmatex">\(P_{train}\)</span>）来进行估算：</p>
+<div class="arithmatex">\[Memory_{total} = Memory_{params} + Memory_{gradients} + Memory_{optimizer} + Memory_{activations}\]</div>
+<p><strong>1. 模型权重（<span class="arithmatex">\(Memory_{params}\)</span>）</strong>
+取决于模型加载的精度：</p>
+<ul>
+<li><strong>FP32</strong>：<span class="arithmatex">\(P \times 4\)</span> GB</li>
+<li><strong>FP16 / BF16</strong>：<span class="arithmatex">\(P \times 2\)</span> GB（如 8B 模型约需 16 GB）</li>
+<li><strong>INT8 量化</strong>：<span class="arithmatex">\(P \times 1\)</span> GB</li>
+<li><strong>NF4 / INT4 量化</strong>：<span class="arithmatex">\(P \times 0.5\)</span> GB（如 8B 模型约需 4~5 GB）</li>
+</ul>
+<p><strong>2. 梯度（<span class="arithmatex">\(Memory_{gradients}\)</span>）</strong>
+只计算可训练参数 <span class="arithmatex">\(P_{train}\)</span> 的梯度，通常以 FP16/BF16 存储：</p>
+<ul>
+<li>需求计算：<span class="arithmatex">\(P_{train} \times 2\)</span> GB</li>
+<li><em>全参微调</em> 时 <span class="arithmatex">\(P_{train} = P\)</span>； <em>LoRA</em> 时 <span class="arithmatex">\(P_{train}\)</span> 极小（约百兆字节，可忽略）。</li>
+</ul>
+<p><strong>3. 优化器状态（<span class="arithmatex">\(Memory_{optimizer}\)</span>）</strong>
+通常是整个训练过程中<strong>最大的开销</strong>。以最常用的 AdamW 为例，需要为每个可训练参数维护一阶动量和二阶动量，通常都必须使用 FP32 存储以防止精度溢出：</p>
+<ul>
+<li>一阶动量 (<span class="arithmatex">\(P_{train} \times 4\)</span> bytes) + 二阶动量 (<span class="arithmatex">\(P_{train} \times 4\)</span> bytes)</li>
+<li>需求计算：<span class="arithmatex">\(P_{train} \times 8\)</span> GB</li>
+</ul>
+<p><strong>4. 激活值（<span class="arithmatex">\(Memory_{activations}\)</span>）</strong>
+模型前向传播时产生的中间张量，用于反向传播。取决于 Batch Size、序列长度（Seq Length）等。</p>
+<ul>
+<li>未开启重算（Gradient Checkpointing）时占用极大（与模型层数成正比）。</li>
+<li>开启<strong>梯度检查点（Gradient Checkpointing）</strong>后，用“前向重算”的时间换空间，可极大降低激活值占用。通常 8B 模型在 2048 序列长度下的激活显存约 4~8 GB。</li>
+</ul>
+<p><strong>🧮 计算公式小结</strong>
+将上述相加，可得不同模式的理论显存基线（其中梯度和优化器共占 <span class="arithmatex">\(P_{train} \times 10\)</span> GB）：</p>
+<ul>
+<li><strong>全参数微调 (FP16)</strong> ≈ <span class="arithmatex">\(P \times (2 + 2 + 8) + Act \approx \mathbf{P \times 12 \text{ GB} + 激活值}\)</span></li>
+<li><strong>LoRA (FP16权重)</strong> ≈ <span class="arithmatex">\(P \times 2 + (P_{train} \times 10) + Act \approx \mathbf{P \times 2 \text{ GB} + 激活值}\)</span></li>
+<li><strong>QLoRA (4-bit权重)</strong> ≈ <span class="arithmatex">\(P \times 0.5 + (P_{train} \times 10) + Act \approx \mathbf{P \times 0.5 \text{ GB} + 激活值}\)</span></li>
+</ul>
+<p><strong>参数高效微调（PEFT）</strong> 的核心动机正是基于这个数学事实：通过冻结基座权重（将 <span class="arithmatex">\(P_{train}\)</span> 从 100% 降至 1% 不到），直接抹除了 <span class="arithmatex">\(\approx P \times 10 \text{ GB}\)</span> 庞大的梯度和优化器显存墙。</p>
+<h4 id="lora">LoRA：低秩适配</h4>
+<h5 id="_19">核心思想</h5>
+<p>LoRA（Low-Rank Adaptation，Hu 等，2021）基于一个关键假设：预训练模型在微调时的权重更新具有低秩结构。</p>
+<p>对于预训练权重矩阵 <span class="arithmatex">\(W_0 \in \mathbb{R}^{d \times k}\)</span>，LoRA 不直接更新 <span class="arithmatex">\(W_0\)</span>，而是将权重更新分解为两个低秩矩阵的乘积：</p>
+<div class="arithmatex">\[W' = W_0 + \Delta W = W_0 + BA\]</div>
+<p>其中：</p>
+<ul>
+<li><span class="arithmatex">\(B \in \mathbb{R}^{d \times r}\)</span>，<span class="arithmatex">\(A \in \mathbb{R}^{r \times k}\)</span></li>
+<li><span class="arithmatex">\(r \ll \min(d, k)\)</span> 是秩（rank），通常取 16–64</li>
+<li><span class="arithmatex">\(W_0\)</span> 被冻结，不参与梯度计算</li>
+<li>仅 <span class="arithmatex">\(A\)</span> 和 <span class="arithmatex">\(B\)</span> 参与训练</li>
+</ul>
+<h5 id="_20">前向传播</h5>
+<p>LoRA 修改后的前向传播：</p>
+<div class="arithmatex">\[h = W_0 x + \Delta W x = W_0 x + \frac{\alpha}{r} BAx\]</div>
+<p>其中 <span class="arithmatex">\(\alpha\)</span> 是缩放因子（scaling factor），<span class="arithmatex">\(\frac{\alpha}{r}\)</span> 控制了 LoRA 更新的幅度。</p>
+<div class="highlight"><pre><span></span><code>输入 x
+  │
+  ├──► W₀x (冻结) ──────────────┐
+  │                           │
+  └──► A (r×k) 可训练        ⊕ 加法求和
+       │                      │
+       └──► B (d×r) 可训练  ───┘
+              │
+              └─► (α/r)·BAx
+
+输出 h = W₀x + (α/r)BAx
+</code></pre></div>
+<h5 id="_21">参数效率</h5>
+<p>以 Qwen3-8B 中一个典型的线性层（<span class="arithmatex">\(d=4096, k=4096\)</span>）为例：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">方法</th>
+<th style="text-align: left;">训练参数量</th>
+<th style="text-align: left;">相对占比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">全参数微调</td>
+<td style="text-align: left;"><span class="arithmatex">\(d \times k = 16,777,216\)</span></td>
+<td style="text-align: left;">100%</td>
+</tr>
+<tr>
+<td style="text-align: left;">LoRA（r=16）</td>
+<td style="text-align: left;"><span class="arithmatex">\(d \times r + r \times k = 131,072\)</span></td>
+<td style="text-align: left;">0.78%</td>
+</tr>
+<tr>
+<td style="text-align: left;">LoRA（r=64）</td>
+<td style="text-align: left;"><span class="arithmatex">\(d \times r + r \times k = 524,288\)</span></td>
+<td style="text-align: left;">3.13%</td>
+</tr>
+</tbody>
+</table>
+<h5 id="_22">关键超参数</h5>
+<p>秩 <span class="arithmatex">\(r\)</span> 决定了 LoRA 的表达能力：</p>
+<ul>
+<li><span class="arithmatex">\(r\)</span> 太小（如 4-8）：模型表达能力受限，可能欠拟合</li>
+<li><span class="arithmatex">\(r\)</span> 太大（如 128-256）：接近全参数微调，失去效率优势</li>
+</ul>
+<p><strong>推荐范围</strong>：16-64，通常 r=32 是一个好的起点。</p>
+<p><strong>经验法则</strong>：</p>
+<ul>
+<li>简单任务（风格调整）：r=8-16</li>
+<li>中等任务（指令跟随）：r=32</li>
+<li>复杂任务（领域适配）：r=64</li>
+</ul>
+<h5 id="_23">初始化策略</h5>
+<p>LoRA 的初始化确保训练开始时不改变原始模型行为：</p>
+<ul>
+<li>矩阵 <span class="arithmatex">\(A\)</span>：使用 Kaiming 均匀分布初始化</li>
+<li>矩阵 <span class="arithmatex">\(B\)</span>：初始化为全零</li>
+</ul>
+<p>这保证了 <span class="arithmatex">\(\Delta W = BA = 0\)</span>，即训练开始时 <span class="arithmatex">\(W' = W_0\)</span>。</p>
+<h4 id="qlora">QLoRA：量化低秩适配</h4>
+<h5 id="_24">核心思想</h5>
+<p>QLoRA（Dettmers 等，2023）在 LoRA 基础上增加了 4-bit NormalFloat（NF4）量化，将基座模型的权重从 FP16（16 bit）量化到 4 bit，进一步将显存需求减半。</p>
+<h5 id="nf4">NF4 量化原理</h5>
+<p>NormalFloat 量化基于一个关键观察：预训练模型的权重近似服从正态分布。NF4 将正态分布的分位数作为量化级别，使得量化误差在信息论意义上最优。</p>
+<div class="arithmatex">\[W_{NF4} = Quantize_{NF4}(W_0) \approx W_0\]</div>
+<p>QLoRA 还引入了<strong>双重量化（Double Quantization）</strong>：对量化常数本身再做一次量化，额外节省约 0.4 bit/参数。</p>
+<h5 id="qlora_1">QLoRA 训练流程</h5>
+<p>前向传播：</p>
+<ul>
+<li><span class="arithmatex">\(W_0\)</span> 从 NF4 反量化到 FP16 后参与计算</li>
+<li>LoRA 部分（<span class="arithmatex">\(B\)</span>, <span class="arithmatex">\(A\)</span>）始终保持 FP16 精度</li>
+<li>反向传播仅经过 LoRA 参数，<span class="arithmatex">\(W_0\)</span> 不计算梯度</li>
+</ul>
+<div class="highlight"><pre><span></span><code>输入 x
+  │
+  ├──► 反量化→FP16 ──► W₀ (NF4 4-bit) 冻结 ─────────┐
+  │                                               │
+  └──► BA (FP16) 可训练 LoRA ──► × (α/r) ─────────⊕ 加法求和
+                                                  │
+                                               输出 h
+</code></pre></div>
+<h5 id="bitsandbytesconfig">BitsAndBytesConfig 配置</h5>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">BitsAndBytesConfig</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">bnb_config</span> <span class="o">=</span> <span class="n">BitsAndBytesConfig</span><span class="p">(</span>
+    <span class="n">load_in_4bit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>                    <span class="c1"># 启用 4-bit 加载</span>
+    <span class="n">bnb_4bit_quant_type</span><span class="o">=</span><span class="s2">&quot;nf4&quot;</span><span class="p">,</span>            <span class="c1"># 使用 NF4 量化</span>
+    <span class="n">bnb_4bit_compute_dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">,</span> <span class="c1"># 计算时使用 BF16</span>
+    <span class="n">bnb_4bit_use_double_quant</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>       <span class="c1"># 启用双重量化</span>
+<span class="p">)</span>
+</code></pre></div>
+<h5 id="_25">显存对比</h5>
+<p>以 Qwen3-8B 模型为例，不同微调方法的显存对比：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">方法</th>
+<th style="text-align: left;">模型加载</th>
+<th style="text-align: left;">可训练参数</th>
+<th style="text-align: left;">优化器状态</th>
+<th style="text-align: left;">总显存</th>
+<th style="text-align: left;">GPU 需求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">全参数微调（FP16）</td>
+<td style="text-align: left;">16 GB</td>
+<td style="text-align: left;">8B (16 GB)</td>
+<td style="text-align: left;">~64 GB</td>
+<td style="text-align: left;"><strong>~100 GB</strong></td>
+<td style="text-align: left;">2× A100-80G</td>
+</tr>
+<tr>
+<td style="text-align: left;">LoRA（FP16, r=32）</td>
+<td style="text-align: left;">16 GB</td>
+<td style="text-align: left;">~40M (80 MB)</td>
+<td style="text-align: left;">~320 MB</td>
+<td style="text-align: left;"><strong>~20 GB</strong></td>
+<td style="text-align: left;">1× A100-40G</td>
+</tr>
+<tr>
+<td style="text-align: left;">QLoRA（NF4, r=32）</td>
+<td style="text-align: left;">5 GB</td>
+<td style="text-align: left;">~40M (80 MB)</td>
+<td style="text-align: left;">~320 MB</td>
+<td style="text-align: left;"><strong>~10 GB</strong></td>
+<td style="text-align: left;">1× RTX 4090</td>
+</tr>
+</tbody>
+</table>
+<p><strong>显存经验法则（7B-8B 模型）</strong>：</p>
+<ul>
+<li>全参数微调：~100 GB（需多卡）</li>
+<li>LoRA（FP16）：~20 GB（A100-40G 或 RTX 4090）</li>
+<li>QLoRA（NF4）：~10 GB（T4 16GB 勉强可用）</li>
+</ul>
+<p><strong>QLoRA 使大模型微调真正走向了消费级 GPU！</strong></p>
+<h4 id="_26">近期进展简介</h4>
+<h5 id="dora-lora">DoRA：权重分解 LoRA</h5>
+<p>DoRA（Weight-Decomposed Low-Rank Adaptation，2024）将权重矩阵分解为幅度（magnitude）和方向（direction）两个分量，LoRA 仅作用于方向分量：</p>
+<div class="arithmatex">\[W' = m \cdot \frac{W_0 + BA}{\|W_0 + BA\|_c}\]</div>
+<p>其中 <span class="arithmatex">\(m\)</span> 是可学习的幅度向量。DoRA 在多项基准上略优于标准 LoRA，但增加的计算开销很小。</p>
+<h5 id="spectrum">Spectrum：基于信噪比的层选择</h5>
+<p>Spectrum（2024）提出了一种更智能的层选择策略：</p>
+<ol>
+<li>计算每一层的<strong>信噪比（Signal-to-Noise Ratio）</strong></li>
+<li>只对信噪比高的层应用 LoRA，跳过信噪比低的层</li>
+</ol>
+<p>效果：在相同参数预算下，Spectrum 优于对所有层统一应用 LoRA。
+这种方法的直觉是：不同层在微调中的贡献是不均等的，集中资源到"关键层"可以获得更好的效果。</p>
+<h4 id="_27">实践建议总结</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">决策</th>
+<th style="text-align: left;">推荐选择</th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">全参数 vs. PEFT</td>
+<td style="text-align: left;"><strong>PEFT（LoRA/QLoRA）</strong></td>
+<td style="text-align: left;">除非资源充裕且数据极多</td>
+</tr>
+<tr>
+<td style="text-align: left;">LoRA vs. QLoRA</td>
+<td style="text-align: left;"><strong>QLoRA</strong>（显存有限时）</td>
+<td style="text-align: left;">A100-40G 上 LoRA 亦可</td>
+</tr>
+<tr>
+<td style="text-align: left;">秩 r</td>
+<td style="text-align: left;"><strong>32</strong></td>
+<td style="text-align: left;">通用起点，可按需调整</td>
+</tr>
+<tr>
+<td style="text-align: left;">Alpha</td>
+<td style="text-align: left;"><strong><span class="arithmatex">\(2 \times r\)</span></strong></td>
+<td style="text-align: left;">如 r=32 则 alpha=64</td>
+</tr>
+<tr>
+<td style="text-align: left;">目标层</td>
+<td style="text-align: left;"><strong>所有线性层</strong></td>
+<td style="text-align: left;">q/k/v/o_proj + gate/up/down_proj</td>
+</tr>
+<tr>
+<td style="text-align: left;">Dropout</td>
+<td style="text-align: left;"><strong>0.05</strong></td>
+<td style="text-align: left;">防止过拟合</td>
+</tr>
+<tr>
+<td style="text-align: left;">计算精度</td>
+<td style="text-align: left;"><strong>BF16</strong></td>
+<td style="text-align: left;">比 FP16 更稳定，A100 原生支持</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_28">本节小结</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">概念</th>
+<th style="text-align: left;">要点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>全参数微调瓶颈</strong></td>
+<td style="text-align: left;">8B 模型需 ~100GB 显存，单卡无法完成</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>LoRA</strong></td>
+<td style="text-align: left;">冻结 <span class="arithmatex">\(W_0\)</span>，训练低秩 <span class="arithmatex">\(BA\)</span>，仅 ~0.2-1% 参数</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>LoRA 公式</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(W' = W_0 + \frac{\alpha}{r} BA\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>QLoRA</strong></td>
+<td style="text-align: left;">LoRA + NF4 4-bit 量化，显存再减半</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>显存对比</strong></td>
+<td style="text-align: left;">全参 ~100GB → LoRA ~20GB → QLoRA ~10GB</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DoRA</strong></td>
+<td style="text-align: left;">权重分解，幅度+方向，略优于 LoRA</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Spectrum</strong></td>
+<td style="text-align: left;">信噪比层选择，集中资源到关键层</td>
+</tr>
+</tbody>
+</table>
 
 
 
