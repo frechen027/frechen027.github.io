@@ -3353,11 +3353,72 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pass1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        四、 二级量化流程演练器
+        关于pass@1等指标
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关于pass@1等指标">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-passk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 为什么要用 pass@k？（背景）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 核心指标含义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-passk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 数学计算：如何“科学”地计算 pass@k？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 常见的评测集
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 总结：这指标说明了什么？
       
     </span>
   </a>
@@ -5325,11 +5386,72 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pass1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        四、 二级量化流程演练器
+        关于pass@1等指标
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关于pass@1等指标">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-passk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 为什么要用 pass@k？（背景）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 核心指标含义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-passk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 数学计算：如何“科学”地计算 pass@k？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 常见的评测集
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 总结：这指标说明了什么？
       
     </span>
   </a>
@@ -6138,8 +6260,12 @@ $<span class="arithmatex">\(W_{dequant}[i] = \text{nf4\_lut}[\text{index}[i]] \t
 <ul>
 <li><strong>输入：</strong> 阶段 1 产生的一级缩放因子数组 <span class="arithmatex">\(c_1\)</span>（FP32 类型）。</li>
 <li><strong>操作：</strong> 将 <span class="arithmatex">\(c_1\)</span> 视为新的待量化目标，采用更大的分块大小 <span class="arithmatex">\(B_2\)</span>（默认 <span class="arithmatex">\(B_2=256\)</span>）进行二次切分。</li>
-<li><strong>结果：</strong></li>
-<li>将 <span class="arithmatex">\(c_1\)</span> 从 FP32 量化为 <strong>8-bit 浮点数（FP8）</strong>。</li>
+<li>
+<p><strong>结果：</strong></p>
+</li>
+<li>
+<p>将 <span class="arithmatex">\(c_1\)</span> 从 FP32 量化为 <strong>8-bit 浮点数（FP8）</strong>。</p>
+</li>
 <li>每 256 个 <span class="arithmatex">\(c_1\)</span> 产生一个新的、顶层的 <strong>FP32 二级缩放因子 <span class="arithmatex">\(c_2\)</span></strong>。</li>
 </ul>
 <hr />
@@ -6193,8 +6319,64 @@ $<span class="arithmatex">\(W_{dequant}[i] = \text{nf4\_lut}[\text{index}[i]] \t
 </ul>
 <p>在大模型微调中，省出 3GB 显存往往决定了你能否将 <code>batch_size</code> 翻倍，或者能否将上下文长度（Context Length）进一步拉长。</p>
 <hr />
-<h3 id="_31">四、 二级量化流程演练器</h3>
-<p>为了让你更直观地观察不同参数配置对二级量化压缩效率的影响，我为你构建了一个可交互的结构模拟器。你可以调整模型参数量与分块大小，动态查看底层数据块的层级关系与显存收益推演。</p>
+<h2 id="pass1">关于pass@1等指标</h2>
+<p>在代码大模型（Code LLM）的评测中，<strong>pass@k</strong> 是目前最核心的“金标准”指标。作为一名计算机专业的研一同学，你在读代码生成相关的论文（比如 Codex, DeepSeek-Coder, Llama-3 等）时，一定会频繁遇到它。</p>
+<p>简单来说，它衡量的是：<strong>模型生成代码的“功能正确性”，而非“文本相似度”。</strong></p>
+<hr />
+<h3 id="1-passk">1. 为什么要用 pass@k？（背景）</h3>
+<p>在传统的文本任务中，我们常用 <strong>BLEU</strong> 或 <strong>ROUGE</strong>。但在代码领域，这些指标非常不靠谱：</p>
+<ul>
+<li><strong>差之毫厘，谬以千里</strong>：代码中少写一个 <code>!</code> 或者写错一个变量名，逻辑就彻底崩溃了，但在 BLEU 看来，它的相似度依然高达 99%。</li>
+<li><strong>条条大路通罗马</strong>：实现同一个功能，可以用 <code>for</code> 循环，也可以用递归。虽然文本完全不同，但它们都是正确的。</li>
+</ul>
+<p>因此，代码评测必须通过运行单元测试（Unit Tests）来判断正误。<strong>pass@k 表示：如果让模型生成 <span class="arithmatex">\(k\)</span> 个候选答案，其中至少有一个能通过所有测试用例的概率。</strong></p>
+<hr />
+<h3 id="2_4">2. 核心指标含义</h3>
+<ul>
+<li><strong>pass@1</strong>：模型<strong>只生成一次</strong>代码，能直接跑通测试的概率。这反映了模型在“贪婪搜索”或单次推理下的<strong>硬实力</strong>。</li>
+<li><strong>pass@5 / pass@10</strong>：模型生成 5 个或 10 个候选答案，只要其中有一个是对的就算过。这反映了模型的<strong>潜力</strong>，即正确答案是否在模型预测的“搜索空间”内。</li>
+</ul>
+<hr />
+<h3 id="3-passk">3. 数学计算：如何“科学”地计算 pass@k？</h3>
+<p>早期的研究是直接让模型生成 <span class="arithmatex">\(k\)</span> 个样本来数个数，但这样做随机性太大（方差高）。
+现在的通用做法（源自 OpenAI 的 Codex 论文）是：</p>
+<ol>
+<li>对每个题目，让模型生成 <span class="arithmatex">\(n\)</span> 个样本（比如 <span class="arithmatex">\(n=200\)</span>）。</li>
+<li>统计其中通过测试的样本数量 <span class="arithmatex">\(c\)</span>。</li>
+<li>通过组合数公式计算一个<strong>无偏估计值</strong>：</li>
+</ol>
+<div class="arithmatex">\[\text{pass@k} = \mathbb{E} \left[ 1 - \frac{\binom{n-c}{k}}{\binom{n}{k}} \right]\]</div>
+<p><strong>直观理解：</strong> 这个公式是在算“如果我们从 <span class="arithmatex">\(n\)</span> 个样本当中随机抽 <span class="arithmatex">\(k\)</span> 个，抽到的全是不及格样本的概率是多少”，然后用 1 减去它。</p>
+<hr />
+<h3 id="4_5">4. 常见的评测集</h3>
+<p>当你看到 pass@k 指标时，通常是对应以下两个主流数据集：</p>
+<ul>
+<li><strong>HumanEval</strong>：OpenAI 发布的，包含 164 道手写的 Python 编程题。</li>
+<li><strong>MBPP</strong> (Mostly Basic Python Problems)：包含约 1000 道入门级 Python 题目。</li>
+</ul>
+<h3 id="5_1">5. 总结：这指标说明了什么？</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>考察重点</th>
+<th>应用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>pass@1</strong></td>
+<td>准确性、鲁棒性</td>
+<td>自动补全、即时编程助手（如 Copilot）</td>
+</tr>
+<tr>
+<td><strong>pass@10/100</strong></td>
+<td>生成的多样性、解题上限</td>
+<td>离散思维链、自动化漏洞修复、复杂架构设计</td>
+</tr>
+</tbody>
+</table>
+<p>在跑实验时，如果你发现自己的模型 pass@1 很低，但 pass@10 很高，说明模型“知道正确答案在哪，但概率分布不够集中”，这时候可能需要通过 <strong>SFT（微调）</strong> 或者 <strong>DPO/RLHF（强化学习）</strong> 来对齐偏好，把正确答案的概率刷上去。</p>
 
 
 
