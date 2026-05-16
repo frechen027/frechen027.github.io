@@ -12,7 +12,7 @@
         <link rel="prev" href="../02_%E8%BD%AF%E5%BE%AE%E5%90%8E%E8%AE%AD%E7%BB%83/">
       
       
-        <link rel="next" href="../../interview/%E9%9D%A2%E7%BB%8F%E6%B5%81%E6%B0%B4%E8%B4%A6/">
+        <link rel="next" href="../04_%E8%B8%A9%E5%9D%91%E6%97%A5%E8%AE%B0/">
       
       
         
@@ -3430,10 +3430,210 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#qlora_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        qlora的学习率为什么通常大一些
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="qlora的学习率为什么通常大一些">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 量化带来的“精度压缩”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 训练参数极少（参数稀疏性）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 正则化效应与过拟合风险降低
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实践建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模型三个配置文件的作用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模型三个配置文件的作用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 核心定位对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 逐文件拆解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 逐文件拆解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ config.json → 模型架构配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-tokenizer_configjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ tokenizer_config.json → 分词器配置（🌟 事实来源）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-generation_configjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ generation_config.json → 生成策略默认配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 三者如何协作？（以一次 SFT 推理为例）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛡️ 实战优先级链条（背下来不踩坑）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💎 总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_%E8%B8%A9%E5%9D%91%E6%97%A5%E8%AE%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 踩坑日记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -5463,6 +5663,178 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#qlora_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        qlora的学习率为什么通常大一些
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="qlora的学习率为什么通常大一些">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 量化带来的“精度压缩”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 训练参数极少（参数稀疏性）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 正则化效应与过拟合风险降低
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实践建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模型三个配置文件的作用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模型三个配置文件的作用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 核心定位对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 逐文件拆解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 逐文件拆解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ config.json → 模型架构配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-tokenizer_configjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ tokenizer_config.json → 分词器配置（🌟 事实来源）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-generation_configjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ generation_config.json → 生成策略默认配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 三者如何协作？（以一次 SFT 推理为例）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛡️ 实战优先级链条（背下来不踩坑）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💎 总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6377,6 +6749,180 @@ $<span class="arithmatex">\(W_{dequant}[i] = \text{nf4\_lut}[\text{index}[i]] \t
 </tbody>
 </table>
 <p>在跑实验时，如果你发现自己的模型 pass@1 很低，但 pass@10 很高，说明模型“知道正确答案在哪，但概率分布不够集中”，这时候可能需要通过 <strong>SFT（微调）</strong> 或者 <strong>DPO/RLHF（强化学习）</strong> 来对齐偏好，把正确答案的概率刷上去。</p>
+<h2 id="qlora_3">qlora的学习率为什么通常大一些</h2>
+<p>在微调大模型时，QLoRA（Quantized LoRA）相比于传统的 LoRA 或全量微调，确实通常建议使用稍大一些的学习率（比如 <span class="arithmatex">\(2 \times 10^{-4}\)</span> 或 <span class="arithmatex">\(1 \times 10^{-4}\)</span>）。</p>
+<p>这并不是随意的经验之谈，而是由其核心机制决定的。以下是几个主要原因：</p>
+<h3 id="1_6">1. 量化带来的“精度压缩”</h3>
+<p>QLoRA 的核心是将预训练模型的权重压缩到了 <strong>4-bit</strong>（使用 NF4 格式）。虽然 QLoRA 通过双重量化和分页优化尽量减少了信息损失，但量化本质上是对参数空间的一种“粗粒化”处理。</p>
+<ul>
+<li><strong>低精度的阻力</strong>：在 4-bit 的权重基础上进行梯度回传时，微小的参数更新可能不足以跨越量化带来的舍入误差。</li>
+<li><strong>补偿效应</strong>：使用较大的学习率可以产生更大的权重更新量（Update Step），从而更容易“跳出”量化带来的数值陷阱，使模型能够有效地从损失函数中学习到特征。</li>
+</ul>
+<h3 id="2_5">2. 训练参数极少（参数稀疏性）</h3>
+<p>无论是 LoRA 还是 QLoRA，我们只训练旁路的 Adapter 矩阵，而冻结了绝大部分原始权重。</p>
+<ul>
+<li><strong>梯度稀释</strong>：由于可训练参数量通常只占总参数量的不到 1%，为了让这些少量的参数能够承载起改变整个模型行为的重任，需要更强的刺激信号（即更大的学习率）。</li>
+<li><strong>低秩约束</strong>：Adapter 的秩（Rank）通常较小，这限制了模型的表达空间。较大的学习率有助于在受限的低秩空间内快速找到最优解。</li>
+</ul>
+<h3 id="3_2">3. 正则化效应与过拟合风险降低</h3>
+<p>QLoRA 天然具有很强的正则化效果：</p>
+<ul>
+<li><strong>天然屏障</strong>：4-bit 量化本身就像一种噪声或随机失活（Dropout），它限制了模型去死记硬背训练数据的能力。</li>
+<li><strong>抗过拟合</strong>：正因为量化误差的存在，QLoRA 比全量微调更不容易过拟合。这给了我们“挥霍”空间，可以使用更大的学习率来加速收敛，而不必担心像全量微调那样稍微加大步长就导致模型崩溃（Model Collapse）。</li>
+</ul>
+<hr />
+<h3 id="_31">实践建议</h3>
+<p>在实际操作中，QLoRA 的学习率调整可以参考以下逻辑：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>推荐学习率 (Learning Rate)</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>全量微调</strong></td>
+<td><span class="arithmatex">\(1 \times 10^{-5}\)</span> ~ <span class="arithmatex">\(5 \times 10^{-5}\)</span></td>
+<td>参数多，极易过拟合，需倍加小心。</td>
+</tr>
+<tr>
+<td><strong>标准 LoRA</strong></td>
+<td><span class="arithmatex">\(5 \times 10^{-5}\)</span> ~ <span class="arithmatex">\(1 \times 10^{-4}\)</span></td>
+<td>适中，取决于 Rank 的大小。</td>
+</tr>
+<tr>
+<td><strong>QLoRA</strong></td>
+<td><strong><span class="arithmatex">\(1 \times 10^{-4}\)</span> ~ <span class="arithmatex">\(3 \times 10^{-4}\)</span></strong></td>
+<td><strong>官方论文推荐值通常为 <span class="arithmatex">\(2 \times 10^{-4}\)</span>。</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>小贴士：</strong>
+如果你发现 QLoRA 训练时 <strong>Loss 下降非常缓慢</strong> 或者 <strong>完全不收敛</strong>，第一反应应该是检查是否学习率给得太保守了（比如还停留在全量微调的 <span class="arithmatex">\(10^{-6}\)</span> 级别）。调大一点，往往会有惊喜。</p>
+<h2 id="_32">模型三个配置文件的作用</h2>
+<p>这三个文件是 Hugging Face <code>transformers</code> 生态的<strong>标准三剑客</strong>，分别掌管大模型工作流中<strong>三个完全独立</strong>的环节。它们的解耦设计允许模型权重、文本处理、推理策略独立迭代，互不干扰。</p>
+<p>下面用一张表+逐层拆解，帮你彻底理清：</p>
+<hr />
+<h3 id="_33">📊 核心定位对比</h3>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>掌管环节</th>
+<th>类比</th>
+<th>加载时机</th>
+<th>是否影响模型计算</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config.json</code></td>
+<td><strong>模型架构与初始化</strong></td>
+<td>厨房设备图纸</td>
+<td><code>AutoModel.from_pretrained()</code></td>
+<td>✅ 决定网络结构、数据类型、显存布局</td>
+</tr>
+<tr>
+<td><code>tokenizer_config.json</code></td>
+<td><strong>文本 ↔ ID 转换规则</strong></td>
+<td>食材切配标准</td>
+<td><code>AutoTokenizer.from_pretrained()</code></td>
+<td>❌ 仅影响数据预处理/后处理</td>
+</tr>
+<tr>
+<td><code>generation_config.json</code></td>
+<td><strong>解码策略默认值</strong></td>
+<td>上菜控制手册</td>
+<td><code>model.generate()</code> 未传参时读取</td>
+<td>❌ 仅影响外部生成循环的默认行为</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="_34">🔍 逐文件拆解</h3>
+<h4 id="1-configjson">1️⃣ <code>config.json</code> → 模型架构配置</h4>
+<ul>
+<li><strong>作用</strong>：定义神经网络的“骨架”和计算规则。</li>
+<li><strong>核心字段</strong>：<code>architectures</code>, <code>hidden_size</code>, <code>num_hidden_layers</code>, <code>attention_dropout</code>, <code>rms_norm_eps</code>, <code>tie_word_embeddings</code>, <code>torch_dtype</code> 等。</li>
+<li><strong>何时生效</strong>：加载模型权重时，框架根据它初始化层、分配计算图、决定前向传播逻辑。</li>
+<li>⚠️ <strong>注意</strong>：里面的 <code>eos_token_id: 151643</code> 只是<strong>基座预训练阶段的兜底值</strong>，不参与实际对话逻辑。模型本身“不认识” EOS，只输出概率分布。</li>
+</ul>
+<h4 id="2-tokenizer_configjson">2️⃣ <code>tokenizer_config.json</code> → 分词器配置（🌟 事实来源）</h4>
+<ul>
+<li><strong>作用</strong>：定义文本如何切分、特殊符号映射、对话模板拼接。</li>
+<li><strong>核心字段</strong>：<code>tokenizer_class</code>, <code>pad_token</code>, <code>eos_token</code>, <code>bos_token</code>, <code>chat_template</code>, <code>added_tokens_decoder</code>, <code>model_max_length</code>。</li>
+<li><strong>何时生效</strong>：加载 tokenizer 时。决定：<ul>
+<li>输入文本怎么切 token</li>
+<li>多轮对话怎么拼成模型能懂的序列（靠 <code>chat_template</code>）</li>
+<li><strong>训练时哪里该掩码、推理时什么符号代表“结束”</strong></li>
+</ul>
+</li>
+<li>✅ <strong>黄金原则</strong>：SFT 构造 <code>labels</code>、判断生成停止、设置 <code>pad/eos</code> ID，<strong>永远以 <code>tokenizer.xxx</code> 为准</strong>。</li>
+</ul>
+<h4 id="3-generation_configjson">3️⃣ <code>generation_config.json</code> → 生成策略默认配置</h4>
+<ul>
+<li><strong>作用</strong>：提供调用 <code>.generate()</code> 时的开箱即用参数。</li>
+<li><strong>核心字段</strong>：<code>do_sample</code>, <code>temperature</code>, <code>top_p</code>, <code>max_new_tokens</code>, <code>eos_token_id</code>, <code>pad_token_id</code>, <code>repetition_penalty</code> 等。</li>
+<li><strong>何时生效</strong>：仅当你<strong>不传参</strong>调用 <code>model.generate(input_ids)</code> 时，框架会读取它作为默认值。</li>
+<li>⚠️ <strong>现实情况</strong>：Chat/Instruct 模型常忘记同步更新此文件，导致里面的 <code>eos_token_id</code> 仍是基座值。<strong>代码显式传参会 100% 覆盖它</strong>。</li>
+</ul>
+<hr />
+<h3 id="sft">🔗 三者如何协作？（以一次 SFT 推理为例）</h3>
+<div class="highlight"><pre><span></span><code>用户输入: &quot;你好，介绍一下Qwen3&quot;
+   ↓
+1. tokenizer_config.json  + chat_template → 拼成模型输入序列 [151644, 1024, 88, ..., 151645]
+   ↓
+2. config.json 决定模型如何用这些 ID 做注意力计算、前向传播
+   ↓
+3. model.generate() 启动外部循环：
+   ├─ 默认读 generation_config.json 的 max_new_tokens, do_sample...
+   ├─ 但你显式传了 eos_token_id=tokenizer.eos_token_id → 强制使用 151645
+   ├─ 模型每步输出 logits，采样得 next_token
+   └─ 外部循环检查：if next_token == 151645 → break ✅ 停止生成
+</code></pre></div>
+<hr />
+<h3 id="_35">🛡️ 实战优先级链条（背下来不踩坑）</h3>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>该信谁？</th>
+<th>代码写法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>特殊 Token ID</td>
+<td><code>tokenizer.xxx_token_id</code></td>
+<td><code>eos_id = tokenizer.eos_token_id</code></td>
+</tr>
+<tr>
+<td>生成参数</td>
+<td><code>generate()</code> 显式传参 &gt; <code>generation_config.json</code> &gt; <code>config.json</code></td>
+<td><code>model.generate(..., eos_token_id=eos_id)</code></td>
+</tr>
+<tr>
+<td>训练掩码</td>
+<td><code>tokenizer.pad_token_id</code></td>
+<td><code>labels[labels == tokenizer.pad_token_id] = -100</code></td>
+</tr>
+<tr>
+<td>对话格式</td>
+<td><code>tokenizer.chat_template</code></td>
+<td><code>tokenizer.apply_chat_template(messages, ...)</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="_36">💎 总结</h3>
+<ul>
+<li><code>config.json</code> → <strong>模型怎么算</strong>（架构/权重）</li>
+<li><code>tokenizer_config.json</code> → <strong>文本怎么转</strong>（切词/模板/特殊标记）</li>
+<li><code>generation_config.json</code> → <strong>默认怎么生成</strong>（解码策略兜底）</li>
+<li><strong>你只需记住</strong>：训练和推理时，<strong>一切以 <code>tokenizer</code> 对象动态解析的值为准，代码显式传参覆盖所有 JSON 默认值</strong>。</li>
+</ul>
 
 
 
