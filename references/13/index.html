@@ -1,0 +1,6561 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../12/">
+      
+      
+        <link rel="next" href="../../tools/01_Git%E4%B8%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>13 AI问答 - Python 修行指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ai" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Python 修行指南" class="md-header__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python 修行指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              13 AI问答
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Python 修行指南" class="md-nav__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Python 修行指南
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    前言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 预备知识
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 预备知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/01_Python%E7%A8%8B%E5%BA%8F%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Python程序基本结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/02_%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 基础语法与变量
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/03_%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 核心数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/04_%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 运算符与表达式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/05_%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 程序控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/06_%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 函数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/07_%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 文件操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/08_%E9%94%99%E8%AF%AF%E4%B8%8E%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 错误与异常处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/09_%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 面向对象编程基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 进阶修炼
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 进阶修炼
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/01_%E6%8E%A8%E5%AF%BC%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/02_%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 迭代器与生成器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/03_%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/04_%E8%A3%85%E9%A5%B0%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 装饰器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/05_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/06_%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%8C%85/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 模块与包
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/07_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 进阶输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/08_%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 命名空间与作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/09_%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 类型注解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/10_%E6%A0%87%E5%87%86%E5%BA%93%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 标准库概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/11_%E5%BC%82%E6%AD%A5IO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 异步IO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/01_%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 算法概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/02_%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%9E%9A%E4%B8%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 模拟与枚举
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/03_%E9%80%92%E5%BD%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 递归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/04_%E5%88%86%E6%B2%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 分治
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/05_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 二分查找
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/06_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 动态规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/07_%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 背包问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/08_%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 贪心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/09_%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 搜索算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/10_%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 图论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法实战
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法实战
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/01_Hot100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Hot100(上)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/02_Hot100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Hot100(中)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/03_Hot100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Hot100(下)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/04_%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%85%B8150/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 面试经典150(上)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/07_Hot100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 Hot100二刷
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent/01_Hello-Agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Hello-Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据科学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据科学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/01_%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 生命周期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/02_%E7%9F%A9%E5%BD%A2%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 矩形数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/03_SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 SQL与关系数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/04_%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 文件处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/05_%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据清洗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/06_%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 数据分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/07_%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 数据可视化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/08_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/09_%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 文本数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/10_%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 数据交换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/11_%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 线性模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/12_%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 模型选择
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/13_%E6%8E%A8%E7%90%86%E4%B8%8E%E9%A2%84%E6%B5%8B%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 推理与预测理论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/14_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/15_%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/16_%E6%95%B0%E5%80%BC%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 数值优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/17_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    爆肝杰哥深度学习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    爆肝杰哥深度学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/Python%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python深度学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/numpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/matplotlib/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matplotlib
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/pandas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pandas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/DNN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/CNN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CNN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    吴恩达机器学习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    吴恩达机器学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wu_course/00_AI%E9%97%AE%E7%AD%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0 AI问答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wu_course/01_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 机器学习基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    李沐动手学深度学习(书)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    李沐动手学深度学习(书)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../limu_course/01_%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 动手学深度学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自然语言处理
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    自然语言处理
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nlp/01_%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 软微自然语言处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    后训练
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    后训练
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_training/01_%E5%90%8E%E8%AE%AD%E7%BB%83%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 后训练概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_training/02_%E8%BD%AF%E5%BE%AE%E5%90%8E%E8%AE%AD%E7%BB%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 软微后训练
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_training/03_AI%E9%97%AE%E7%AD%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 AI问答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_training/04_%E8%B8%A9%E5%9D%91%E6%97%A5%E8%AE%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 踩坑日记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    强化学习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    强化学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rl/01_%E5%8A%A8%E6%89%8B%E5%AD%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 动手学强化学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    面经
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    面经
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/%E9%9D%A2%E7%BB%8F%E6%B5%81%E6%B0%B4%E8%B4%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 面经流水账
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/%E5%8F%AF%E6%8A%95%E9%80%92%E5%85%AC%E5%8F%B8%E6%B1%87%E6%80%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 可投递公司汇总
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 TeleAI 大模型算法实习面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 粽子的面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 正在思考的超人强整理的手撕算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 京东大模型算法实习面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 淘天大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 字节大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 美团大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 腾讯大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 阿里高德大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 百度大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 小红书大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 阿里国际大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 其他大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    经验贴参考
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    经验贴参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 大模型算法岗，3个项目走上人生，癫疯😎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 如何找到第一份大厂算法岗日常实习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 如何找到第一段搜广推实习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 非科班转大模型快速学习路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 我的大模型零基础学习路线(已实习)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 辰屿九秋的大模型开发和算法学习路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 小白的SFT、RL完整学习路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 粽子的如何找到第一份大模型实习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 考研电子宠物的转码经验贴
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 叶云的转大模型算法最快路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 CherieCame的八股框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 两万人看过的“混进”算法岗后续
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 AI问答
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 AI问答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关于01经验贴
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关于01经验贴">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        我没太懂的是，SFT一般不是教会模型如何回答吗？怎么这里的意思有点将该领域的知识教会给模型？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="我没太懂的是，SFT一般不是教会模型如何回答吗？怎么这里的意思有点将该领域的知识教会给模型？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sft_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SFT 到底在学什么？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        那为什么不直接用 RAG（检索增强）来注入知识？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见误区澄清
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        面试中怎么回答？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        你接下来的行动点
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sftsftsft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        进行SFT时，模型学习的是输出回答，还是包含用户问题？我理解要是模型通过SFT学习到领域知识，难道模型不要一起学习问题吗？还有SFT只学习回答和都学习分别适用于什么场景？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="进行SFT时，模型学习的是输出回答，还是包含用户问题？我理解要是模型通过SFT学习到领域知识，难道模型不要一起学习问题吗？还有SFT只学习回答和都学习分别适用于什么场景？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sft_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、标准 SFT 到底在学什么？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、那你说的“学习领域知识”是否需要显式学习问题？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、什么时候“只学习答案”，什么时候“学习全部（问题+答案）”？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、什么时候“只学习答案”，什么时候“学习全部（问题+答案）”？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        具体到你关心的电商客服场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sft_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、回到你的困惑：SFT 教知识，难道不需要同时学习问题吗？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sft_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、面试中如何回答“SFT 学习的是什么？”
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        如何去除数据矛盾呢？如果问题不是完全一样的话
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="如何去除数据矛盾呢？如果问题不是完全一样的话">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、整体思路
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、具体实施步骤（附代码示例）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、你可能会遇到的挑战 &amp; 优化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、面试回答话术（背下来）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、补充：如果不用聚类，更简单的启发式方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、最终输出（你的数据报告里要写清楚）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        无法确认保守删除了整个矛盾组，那模型就学不到该数据，如果模型以后碰到类似用户问题，会如何回答呢？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="无法确认保守删除了整个矛盾组，那模型就学不到该数据，如果模型以后碰到类似用户问题，会如何回答呢？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、模型在缺失矛盾样本后的行为
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、为什么删除整个矛盾组比保留矛盾数据更好？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、更优的实践方案：不要简单删除，而是“仲裁矛盾”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、回到你的问题：“如果模型以后碰到类似用户问题，会如何回答？”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、面试中如何回答这个追问？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、一个更实用的建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sftsftdpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        我没太懂他这里SFT以及SFT+DPO以后准确率、偏好率是如何量化得到结果进行评测的，你能给我讲讲？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="我没太懂他这里SFT以及SFT+DPO以后准确率、偏好率是如何量化得到结果进行评测的，你能给我讲讲？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 核心指标一：准确率 (Accuracy) — 检验“知识对不对”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#win-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎭 核心指标二：偏好胜率 (Win Rate) — 评测“服务好不好”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 深度评估：如何评判 DPO 的效果？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 面试回答要点
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模型每次回答都不一定一样，如何量化比较准确率？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模型每次回答都不一定一样，如何量化比较准确率？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、核心结论：评测时关闭随机性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、但是……有些场景必须保留随机性（比如偏好评测）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、特殊情况：如果你的业务必须用随机采样（比如创意对话）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、面试常见追问 &amp; 你的回答
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、总结：一张表说清
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        计算相对偏好是什么意思？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="计算相对偏好是什么意思？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、“计算”指的是什么？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、为什么叫“相对”偏好？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、在电商客服项目里具体怎么用？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、一句话总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        那就是针对同一问题两个模型生成一个回答比较好坏？你之前为什么说对每个query生成2~4条候选回答？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="那就是针对同一问题两个模型生成一个回答比较好坏？你之前为什么说对每个query生成2~4条候选回答？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、两个不同的场景，都是“相对偏好”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、为什么不能混用？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、你的项目中应该怎么选？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、面试时如何解释这个区别（话术）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        写段示例程序给我看看如何构建偏好数据集？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="写段示例程序给我看看如何构建偏好数据集？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心要点说明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        面试中如何解释这段代码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实际生产建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vllmmodelgenerate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vLLM代替如何批量生成？我直接model.generate不能够并发吗？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="vLLM代替如何批量生成？我直接model.generate不能够并发吗？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modelgenerate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、为什么 model.generate 做不了真正的并发？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vllm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、vLLM 离线批量推理的正确姿势
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelgenerate-vllm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、什么时候用 model.generate，什么时候用 vLLM？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、面试话术（可以直接背）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实用工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/01_Git%E4%B8%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Git与版本控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/02_Markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/03_Vibe_Coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Vibe Coding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/04_LeetCode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 LeetCode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/05_coze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 coze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/06_n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/07_PPT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 PPT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关于01经验贴
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关于01经验贴">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        我没太懂的是，SFT一般不是教会模型如何回答吗？怎么这里的意思有点将该领域的知识教会给模型？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="我没太懂的是，SFT一般不是教会模型如何回答吗？怎么这里的意思有点将该领域的知识教会给模型？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sft_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SFT 到底在学什么？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        那为什么不直接用 RAG（检索增强）来注入知识？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见误区澄清
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        面试中怎么回答？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        你接下来的行动点
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sftsftsft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        进行SFT时，模型学习的是输出回答，还是包含用户问题？我理解要是模型通过SFT学习到领域知识，难道模型不要一起学习问题吗？还有SFT只学习回答和都学习分别适用于什么场景？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="进行SFT时，模型学习的是输出回答，还是包含用户问题？我理解要是模型通过SFT学习到领域知识，难道模型不要一起学习问题吗？还有SFT只学习回答和都学习分别适用于什么场景？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sft_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、标准 SFT 到底在学什么？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、那你说的“学习领域知识”是否需要显式学习问题？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、什么时候“只学习答案”，什么时候“学习全部（问题+答案）”？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、什么时候“只学习答案”，什么时候“学习全部（问题+答案）”？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        具体到你关心的电商客服场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sft_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、回到你的困惑：SFT 教知识，难道不需要同时学习问题吗？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sft_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、面试中如何回答“SFT 学习的是什么？”
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        如何去除数据矛盾呢？如果问题不是完全一样的话
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="如何去除数据矛盾呢？如果问题不是完全一样的话">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、整体思路
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、具体实施步骤（附代码示例）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、你可能会遇到的挑战 &amp; 优化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、面试回答话术（背下来）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、补充：如果不用聚类，更简单的启发式方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、最终输出（你的数据报告里要写清楚）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        无法确认保守删除了整个矛盾组，那模型就学不到该数据，如果模型以后碰到类似用户问题，会如何回答呢？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="无法确认保守删除了整个矛盾组，那模型就学不到该数据，如果模型以后碰到类似用户问题，会如何回答呢？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、模型在缺失矛盾样本后的行为
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、为什么删除整个矛盾组比保留矛盾数据更好？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、更优的实践方案：不要简单删除，而是“仲裁矛盾”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、回到你的问题：“如果模型以后碰到类似用户问题，会如何回答？”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、面试中如何回答这个追问？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、一个更实用的建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sftsftdpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        我没太懂他这里SFT以及SFT+DPO以后准确率、偏好率是如何量化得到结果进行评测的，你能给我讲讲？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="我没太懂他这里SFT以及SFT+DPO以后准确率、偏好率是如何量化得到结果进行评测的，你能给我讲讲？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 核心指标一：准确率 (Accuracy) — 检验“知识对不对”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#win-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎭 核心指标二：偏好胜率 (Win Rate) — 评测“服务好不好”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 深度评估：如何评判 DPO 的效果？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 面试回答要点
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模型每次回答都不一定一样，如何量化比较准确率？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模型每次回答都不一定一样，如何量化比较准确率？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、核心结论：评测时关闭随机性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、但是……有些场景必须保留随机性（比如偏好评测）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、特殊情况：如果你的业务必须用随机采样（比如创意对话）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、面试常见追问 &amp; 你的回答
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、总结：一张表说清
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        计算相对偏好是什么意思？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="计算相对偏好是什么意思？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、“计算”指的是什么？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、为什么叫“相对”偏好？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、在电商客服项目里具体怎么用？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、一句话总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        那就是针对同一问题两个模型生成一个回答比较好坏？你之前为什么说对每个query生成2~4条候选回答？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="那就是针对同一问题两个模型生成一个回答比较好坏？你之前为什么说对每个query生成2~4条候选回答？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、两个不同的场景，都是“相对偏好”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、为什么不能混用？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、你的项目中应该怎么选？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、面试时如何解释这个区别（话术）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        写段示例程序给我看看如何构建偏好数据集？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="写段示例程序给我看看如何构建偏好数据集？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心要点说明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        面试中如何解释这段代码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实际生产建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vllmmodelgenerate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vLLM代替如何批量生成？我直接model.generate不能够并发吗？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="vLLM代替如何批量生成？我直接model.generate不能够并发吗？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modelgenerate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、为什么 model.generate 做不了真正的并发？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vllm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、vLLM 离线批量推理的正确姿势
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelgenerate-vllm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、什么时候用 model.generate，什么时候用 vLLM？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、面试话术（可以直接背）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ai">AI 问答</h1>
+<blockquote>
+<p>记录一下一些存在困惑的点，AI给出的回答。</p>
+</blockquote>
+<h2 id="01">关于01经验贴</h2>
+<h3 id="sft">我没太懂的是，SFT一般不是教会模型如何回答吗？怎么这里的意思有点将该领域的知识教会给模型？</h3>
+<p>你的理解很到位——这里确实存在一个常见的概念重叠。让我帮你澄清一下：</p>
+<h4 id="sft_1">SFT 到底在学什么？</h4>
+<p><strong>理论上</strong>，SFT 主要做两件事：</p>
+<ol>
+<li><strong>格式/风格对齐</strong>：教会模型按指定模板输出（比如 <code>{"instruction":..., "output":...}</code> 这种结构）</li>
+<li><strong>遵循指令</strong>：让模型学会“用户问什么，就按期望的方式回答”</li>
+</ol>
+<p><strong>你的任务中</strong>，SFT 同时承担了 <strong>领域知识注入</strong>：</p>
+<ul>
+<li>基座模型（如 LLaMA）已经知道“食品拆封后一般不能退”吗？它可能知道通用法律常识，但不知道<strong>你家公司的具体退货政策</strong>（比如“拆封但未影响二次销售的食品可以退”）。</li>
+<li>所以你需要用 SFT <strong>让模型记住这些事实规则</strong>：<code>{"用户问：拆封的食品能退吗？", "output": "根据我司政策，食品拆封后不支持退换..."}</code></li>
+</ul>
+<h4 id="rag">那为什么不直接用 RAG（检索增强）来注入知识？</h4>
+<ul>
+<li><strong>RAG</strong> 适合动态、长尾的知识（比如每个商品的参数、实时库存），不用重新训练模型。</li>
+<li><strong>SFT</strong> 适合<strong>稳定的、高频的</strong>规则/政策（比如退货三包法、运费承担规则），让模型<strong>内化</strong>这些知识，减少推理时对外部检索的依赖，也能降低延迟和检索失败风险。</li>
+</ul>
+<p>你的场景里：5800 条数据里可能混合了<strong>知识型问答</strong>（“这个手机支持5G吗？”“食品拆封能退吗？”）和<strong>流程型问答</strong>（“怎么申请退货？”“投诉步骤是什么？”）。SFT 会同时学这两类。</p>
+<h4 id="_1">常见误区澄清</h4>
+<ul>
+<li><strong>SFT 不会让模型“理解”知识</strong>，只是让模型在见到相似问题时<strong>记忆并复现</strong>给定的答案。如果训练数据里出现矛盾（比如一条说“拆封可退”，另一条说“拆封不可退”），模型就会学乱——所以你强调的<strong>去答案矛盾</strong>这一步非常关键。</li>
+<li>对于纯事实类知识（比如“2024年新款iPhone 16的电池容量”），用 SFT 硬记效率低且容易过时，更适合 RAG。</li>
+</ul>
+<h4 id="_2">面试中怎么回答？</h4>
+<p>如果面试官问：“你为什么要用 SFT 来教领域知识？这和 RLHF 或预训练的区别是什么？”</p>
+<p>你可以这样答：</p>
+<blockquote>
+<p>“在我们的电商客服场景中，80% 的问题是高频、稳定的公司政策（如退货规则、物流时效承诺），这些知识不存在于基座模型的预训练语料中。我们选择用 SFT 将这类知识<strong>内化</strong>到模型中，优点是推理快、不依赖外部检索。同时我们保留了 RAG 方案来处理商品参数等动态信息。<br />
+预训练学习的是通用语言分布和世界常识，loss 通常从 3~5 降到 1 左右；SFT 学习的是特定输入-输出映射，loss 起步更低（如 0.5），且下降更快。代码层面，预训练用 CausalLM 的 cross-entropy 对所有 token 计算，SFT 常只计算<strong>回答部分的 loss</strong>（通过设置 <code>ignore_index=-100</code> 遮蔽 prompt token）。”</p>
+</blockquote>
+<h4 id="_3">你接下来的行动点</h4>
+<ol>
+<li><strong>数据准备</strong>：确保 output 里的政策与你公司真实规则一致；矛盾样本和过短回复必须清洗掉（你已经做了 12000→5800，很好）。</li>
+<li><strong>训练时记录</strong>：除了 loss 曲线，还要保存几个<strong>训练前的基线回复</strong>（用基座模型直接回答测试 query），训练后再跑同样的 query 做对比——这样能直观展示“知识注入效果”。</li>
+<li><strong>LoRA 配置</strong>：<code>target_modules</code> 可以加上 <code>o_proj</code>, <code>gate_proj</code>，效果可能更好，但不强求。</li>
+</ol>
+<p>如果你还有疑问：SFT 跑完后，如果用户问一个<strong>训练数据里没出现过的退货场景</strong>（比如“拆封的宠物罐头能不能退”），模型可能会瞎编政策——这是 SFT 注入知识的局限性。这时候你要考虑是否需要增加数据覆盖度，或者改用 RAG。</p>
+<h3 id="sftsftsft">进行SFT时，模型学习的是输出回答，还是包含用户问题？我理解要是模型通过SFT学习到领域知识，难道模型不要一起学习问题吗？还有SFT只学习回答和都学习分别适用于什么场景？</h3>
+<p>你这个问题问到了 SFT 的核心机制上。我直接给出结论，然后拆开解释：</p>
+<h4 id="sft_2">一、标准 SFT 到底在学什么？</h4>
+<p><strong>答案：模型同时看到了问题和答案，但只对“答案部分”计算 loss 并回传梯度。</strong></p>
+<p>代码上通常这样实现（以 HuggingFace <code>Trainer</code> 为例）：</p>
+<div class="highlight"><pre><span></span><code><span class="n">labels</span> <span class="o">=</span> <span class="n">input_ids</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="c1"># 将 prompt（问题）部分的 labels 设为 -100，计算 loss 时会忽略</span>
+<span class="n">labels</span><span class="p">[:,</span> <span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">prompt_tokens</span><span class="p">)]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>
+</code></pre></div>
+<ul>
+<li>模型在 forward 时仍然要对 <strong>整个序列</strong>（问题+答案）做自回归预测，但 loss 只累计在 <strong>答案 token</strong> 上。</li>
+<li>反向传播的梯度会 <strong>通过答案 token 的预测误差</strong>，一直传回到问题 token 对应的 hidden states。<br />
+  因此 <strong>模型学会了“看到这个问题，就应该输出那个答案”的映射关系</strong>，它<strong>隐式地必须理解问题</strong>，否则无法正确预测答案。</li>
+</ul>
+<h4 id="_4">二、那你说的“学习领域知识”是否需要显式学习问题？</h4>
+<p><strong>不需要显式学习问题（即不用对问题的 token 也计算 loss）。</strong></p>
+<ul>
+<li>领域知识（如“食品拆封不退”）已经被写在了 <strong>答案文本</strong> 里。<br />
+  模型要通过答案 loss 来记住这些事实规则，同时<strong>问题的语义</strong>（“拆封了能退吗？”）作为条件，帮助模型知道<strong>在什么场景下调用这些知识</strong>。</li>
+<li>如果你<strong>也对问题部分计算 loss</strong>，就相当于要求模型<strong>能完美预测用户会问什么</strong>——这既没必要，也会干扰知识学习。<br />
+  例如：用户问“这个能退吗”，模型如果学成了“必须一字不差地复现用户问句”，那还不如直接做检索匹配。</li>
+</ul>
+<h4 id="_5">三、什么时候“只学习答案”，什么时候“学习全部（问题+答案）”？</h4>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>计算 loss 的范围</th>
+<th>典型例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>标准指令微调 / 对话 SFT</strong></td>
+<td>只计算答案</td>
+<td>客服问答、ChatGPT 式的 assistant 训练</td>
+</tr>
+<tr>
+<td><strong>预训练（Causal LM）</strong></td>
+<td>计算整个序列</td>
+<td>GPT、LLaMA 基座模型学习通用语言</td>
+</tr>
+<tr>
+<td><strong>序列到序列微调（如翻译、摘要）</strong></td>
+<td>只计算目标端（decoder 输出）</td>
+<td>T5、BART 在监督任务上微调</td>
+</tr>
+<tr>
+<td><strong>自监督降噪任务（MLM）</strong></td>
+<td>部分 token（被 mask 的）</td>
+<td>BERT 式的训练</td>
+</tr>
+<tr>
+<td><strong>故意同时学习问题+答案</strong>（很少见）</td>
+<td>全序列</td>
+<td>当你想让模型学会“模仿用户的提问风格”或做数据扩增时，但容易导致模型在推理时擅自修改用户输入</td>
+</tr>
+</tbody>
+</table>
+<h5 id="_6">具体到你关心的电商客服场景</h5>
+<ul>
+<li>
+<p><strong>你只应该对答案部分计算 loss</strong>。<br />
+  因为你的目标是：</p>
+<blockquote>
+<p>给定一个用户问题 → 模型输出符合公司政策的回答。</p>
+</blockquote>
+<p>如果对问题也计算 loss，模型会认为“生成用户问题”也是任务的一部分，浪费容量，甚至可能造成训练不稳定（比如模型在生成答案之前先尝试“复述用户问题”）。</p>
+</li>
+</ul>
+<h4 id="sft_3">四、回到你的困惑：SFT 教知识，难道不需要同时学习问题吗？</h4>
+<p><strong>需要的，但“学习问题”不等于“对问题 token 也计算 loss”。</strong></p>
+<p>模型通过<strong>答案 loss 的反向传播</strong>，会迫使<strong>问题 token 对应的 hidden states</strong> 携带足够的语义信息，以便正确生成答案。这就叫 <strong>隐式地学习了问题表征</strong>。</p>
+<p>你可以这样类比：</p>
+<ul>
+<li><strong>只计算答案 loss</strong>：老师给你一张卷子（问题），你只负责写出正确答案，老师只批改答案。为了答对，你必须读题、理解题。</li>
+<li><strong>同时计算问题 loss</strong>：老师不但批改答案，还要求你一字不差地抄一遍题目——这纯属浪费时间。</li>
+</ul>
+<h4 id="sft_4">五、面试中如何回答“SFT 学习的是什么？”</h4>
+<blockquote>
+<p>“SFT 训练时，输入是 <code>system+user prompt</code>，输出是 <code>assistant response</code>。<br />
+我们在代码中将 prompt 部分的 labels 设为 <code>-100</code>，因此 <strong>loss 只计算 response 部分的 token</strong>。<br />
+但梯度会通过 response 误差反向传播到 prompt 的每个 token 表示上，所以模型既学到了<strong>领域知识（在 response 中）</strong>，也学到了<strong>如何理解用户问题（以正确条件化 response 生成）</strong>。<br />
+这种‘只学答案’的方式最适合指令跟随和客服对话；如果需要对问题也建模（例如用户意图分类任务），通常会单独训练分类头，而不是用自回归 loss 学习问题。”</p>
+</blockquote>
+<p>希望这个解释能帮你理清概念。如果你的代码实现中不小心对问题也算了 loss，可以检查一下 <code>labels</code> 的设置——这往往是训练不收敛或输出异常的原因之一。</p>
+<h3 id="_7">如何去除数据矛盾呢？如果问题不是完全一样的话</h3>
+<p>在电商客服数据中，“矛盾”通常指：<strong>语义相似或相同的问题，模型应当给出一致答案，但实际标注答案却不同（甚至相反）</strong>。<br />
+问题不完全相同时，无法用简单的字符串去重，需要使用<strong>语义聚类 + 答案一致性检查</strong>。</p>
+<p>下面给你一套<strong>可落地的方法</strong>，以及面试时的回答要点。</p>
+<hr />
+<h4 id="_8">一、整体思路</h4>
+<ol>
+<li><strong>对问题做语义向量化</strong>（用 <code>sentence-transformers</code> 或 <code>BGE</code> 等）</li>
+<li><strong>聚类</strong>（如 DBSCAN 或 HDBSCAN），将意思相近的问题聚到同一组</li>
+<li><strong>同一聚类内，检查答案的一致性</strong><ul>
+<li>如果答案语义相同（如“不能退”和“无法办理退货”）→ 一致，保留</li>
+<li>如果答案语义冲突（“能退” vs “不能退”）→ 标记为矛盾组</li>
+</ul>
+</li>
+<li><strong>矛盾处理</strong>：<ul>
+<li>优先咨询业务方确认正确答案，保留正确样本，删除错误样本</li>
+<li>若无业务依据，则删除整个矛盾组（更稳妥）</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h4 id="_9">二、具体实施步骤（附代码示例）</h4>
+<ol>
+<li>环境准备</li>
+</ol>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>sentence-transformers<span class="w"> </span>scikit-learn<span class="w"> </span>pandas<span class="w"> </span>numpy
+</code></pre></div>
+<ol>
+<li>加载数据并向量化</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sentence_transformers</span> <span class="kn">import</span> <span class="n">SentenceTransformer</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">DBSCAN</span>
+
+<span class="c1"># 加载模型（可换用 bge-large-zh 等）</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">SentenceTransformer</span><span class="p">(</span><span class="s1">&#39;paraphrase-multilingual-MiniLM-L12-v2&#39;</span><span class="p">)</span>
+
+<span class="c1"># 假设 df 有列: question, answer</span>
+<span class="n">questions</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;question&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">questions</span><span class="p">,</span> <span class="n">show_progress_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li>聚类（DBSCAN 参数需要调）</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># eps: 半径；min_samples: 至少几个点算一个簇</span>
+<span class="n">clustering</span> <span class="o">=</span> <span class="n">DBSCAN</span><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span>
+<span class="n">clusters</span> <span class="o">=</span> <span class="n">clustering</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">embeddings</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;cluster_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clusters</span>
+</code></pre></div>
+<ul>
+<li>
+<p><code>cluster_id = -1</code> 表示噪点（孤立问题），不参与矛盾检测</p>
+</li>
+<li>
+<p>检测答案矛盾</p>
+</li>
+</ul>
+<p>我们需要判断同一簇内，答案是否<strong>语义冲突</strong>（例如“支持退货” vs “不支持退货”）。</p>
+<p>先用规则快速筛选：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">answer_normalize</span><span class="p">(</span><span class="n">ans</span><span class="p">):</span>
+    <span class="c1"># 简单归一化：提取是否/可否等关键词</span>
+    <span class="n">pos_keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;可以&#39;</span><span class="p">,</span> <span class="s1">&#39;支持&#39;</span><span class="p">,</span> <span class="s1">&#39;能&#39;</span><span class="p">,</span> <span class="s1">&#39;允许&#39;</span><span class="p">,</span> <span class="s1">&#39;是&#39;</span><span class="p">]</span>
+    <span class="n">neg_keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;不可以&#39;</span><span class="p">,</span> <span class="s1">&#39;不支持&#39;</span><span class="p">,</span> <span class="s1">&#39;不能&#39;</span><span class="p">,</span> <span class="s1">&#39;不允许&#39;</span><span class="p">,</span> <span class="s1">&#39;否&#39;</span><span class="p">,</span> <span class="s1">&#39;无法&#39;</span><span class="p">]</span>
+    <span class="n">ans_lower</span> <span class="o">=</span> <span class="n">ans</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">k</span> <span class="ow">in</span> <span class="n">ans_lower</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">pos_keywords</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">k</span> <span class="ow">in</span> <span class="n">ans_lower</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">neg_keywords</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;POS&#39;</span>
+    <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="n">k</span> <span class="ow">in</span> <span class="n">ans_lower</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">neg_keywords</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;NEG&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;UNK&#39;</span>
+</code></pre></div>
+<p>更可靠的：用 LLM 判断两个答案是否矛盾。这里给一个轻量级方法：<strong>计算答案的向量相似度 + 关键词极性</strong>。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_similarity</span>
+
+<span class="k">def</span> <span class="nf">has_contradiction</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="c1"># group: 同一个 cluster 的所有行</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="c1"># 计算答案的 embedding</span>
+    <span class="n">ans_embs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="s1">&#39;answer&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+    <span class="c1"># 极性分类</span>
+    <span class="n">polarities</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="s1">&#39;answer&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">answer_normalize</span><span class="p">)</span>
+    <span class="c1"># 如果存在至少一对极性相反（POS vs NEG）且答案语义相似度很高（&gt;0.8）</span>
+    <span class="c1"># 则认为是矛盾</span>
+    <span class="n">contradictions</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ans_embs</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ans_embs</span><span class="p">)):</span>
+            <span class="n">sim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">([</span><span class="n">ans_embs</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="p">[</span><span class="n">ans_embs</span><span class="p">[</span><span class="n">j</span><span class="p">]])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">sim</span> <span class="o">&gt;</span> <span class="mf">0.8</span> <span class="ow">and</span> <span class="n">polarities</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">polarities</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                <span class="n">contradictions</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">group</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">group</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">contradictions</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+<span class="c1"># 按 cluster 分组，找出矛盾簇</span>
+<span class="n">contradictory_clusters</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">cid</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;cluster_id&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">cid</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">has_contradiction</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+        <span class="n">contradictory_clusters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cid</span><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li>处理矛盾样本</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># 方式一：删除整个矛盾簇</span>
+<span class="n">df_clean</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;cluster_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">contradictory_clusters</span><span class="p">)]</span>
+
+<span class="c1"># 方式二：人工复核（推荐）</span>
+<span class="c1"># 将 contradictory_clusters 的样本导出到 CSV，请业务方标注正确答案</span>
+<span class="c1"># 然后根据标注结果保留正确样本，删除错误样本</span>
+</code></pre></div>
+<hr />
+<h4 id="_10">三、你可能会遇到的挑战 &amp; 优化</h4>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>聚类粒度不准（太紧或太松）</td>
+<td>调整 DBSCAN 的 <code>eps</code> 值；或用 <code>HDBSCAN</code>（自动选择）</td>
+</tr>
+<tr>
+<td>答案不是简单的是/否，而是长文本</td>
+<td>用更精细的语义相似度阈值（比如 0.85），并辅以 LLM 判断</td>
+</tr>
+<tr>
+<td>性能慢（1.2w 条向量化很快，聚类稍慢）</td>
+<td>可接受。如果更大规模，改用 <code>faiss</code> 或分块聚类</td>
+</tr>
+<tr>
+<td>如何避免误杀</td>
+<td>先小批量人工验证矛盾簇；保守策略：只删除极性冲突+高相似度的组</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="_11">四、面试回答话术（背下来）</h4>
+<blockquote>
+<p>“当问题不完全相同时，我会先用 <code>sentence-transformers</code> 将问题转成向量，然后用 DBSCAN 做语义聚类。<br />
+在同一个聚类内，计算答案的语义相似度和极性（比如正向/负向关键词），如果出现<strong>答案向量相似度很高但极性相反</strong>，就判为矛盾样本。<br />
+最终我会把矛盾簇导出，请业务方标注正确版本，然后清洗掉错误样本。如果业务方无法确认，我会保守地删除整个矛盾组。<br />
+我们原始 12000 条数据中，通过这种方式识别出约 X 组矛盾，涉及 Y 条样本，最终保留了 Z 条高质量数据。”</p>
+</blockquote>
+<hr />
+<h4 id="_12">五、补充：如果不用聚类，更简单的启发式方法</h4>
+<ul>
+<li>将问题<strong>归一化</strong>：去掉停用词、标点，只保留核心名词+动词，然后做字符串匹配<ul>
+<li>例如：“这个能退吗已经拆封” → “能退拆封”</li>
+</ul>
+</li>
+<li>但这种方法会遗漏语义相同但用词不同的情况（如“拆开的零食可以退不”），所以<strong>强烈建议用聚类</strong>。</li>
+</ul>
+<hr />
+<h4 id="_13">六、最终输出（你的数据报告里要写清楚）</h4>
+<table>
+<thead>
+<tr>
+<th>清洗步骤</th>
+<th>剩余条数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原始数据</td>
+<td>12000</td>
+</tr>
+<tr>
+<td>去重（完全相同的问题+答案）</td>
+<td>10500</td>
+</tr>
+<tr>
+<td>去除答案短于20字</td>
+<td>8200</td>
+</tr>
+<tr>
+<td>去除答案矛盾（语义冲突）</td>
+<td>5800</td>
+</tr>
+</tbody>
+</table>
+<p>矛盾清洗的规则说明：</p>
+<ul>
+<li>对问题聚类（eps=0.3, min_samples=2, cosine 距离）</li>
+<li>同一簇内答案向量余弦相似度&gt;0.8 且极性相反 → 删除整簇</li>
+</ul>
+<p>这样面试官无论怎么追问，你都能讲出具体数字和逻辑。</p>
+<h3 id="_14">无法确认保守删除了整个矛盾组，那模型就学不到该数据，如果模型以后碰到类似用户问题，会如何回答呢？</h3>
+<p>你这个问题非常关键，直接触及了<strong>数据清洗与模型泛化能力</strong>之间的平衡。</p>
+<h4 id="_15">一、模型在缺失矛盾样本后的行为</h4>
+<p>假设原始数据中对于“拆封的食品能不能退”这类问题，同时存在：</p>
+<ul>
+<li>答案A：“可以退，只要不影响二次销售”</li>
+<li>答案B：“不能退，食品拆封后一概不退”</li>
+</ul>
+<p>如果你把<strong>整个矛盾簇（包含A和B）全部删除</strong>，那么训练数据中：</p>
+<ol>
+<li><strong>完全没有关于“拆封食品退货”的任何示例</strong>（既没有正面也没有负面）。</li>
+<li>模型会怎么做？<ul>
+<li>它只能依赖<strong>其他语义相近但不完全相同的问题</strong>来泛化。<br />
+  比如数据中可能有“未拆封的食品能退吗”（答案是“能退”），或者“药品拆封后能退吗”（答案是“不能退”）。</li>
+<li>模型会根据这些相关样本的<strong>分布</strong>，猜测一个“中间”答案。</li>
+<li>由于 LLM 的随机性和训练中的 dropout 等因素，模型可能<strong>不稳定</strong>：对同一个问题，有时输出“能退”，有时输出“不能退”；或者输出一个模棱两可的答案（如“请咨询客服”）。</li>
+</ul>
+</li>
+</ol>
+<p>具体可能的表现形式</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>模型输出示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>完全无相关样本</td>
+<td>“我不确定，请联系人工客服。” （模型学会了保守回答）</td>
+</tr>
+<tr>
+<td>有相近正面样本（如未拆封可退）</td>
+<td>“可以退，但需确保包装完好。” （错误地泛化到拆封情况）</td>
+</tr>
+<tr>
+<td>有相近负面样本（如药品拆封不退）</td>
+<td>“食品拆封后通常不支持退换。” （正确但可能是巧合）</td>
+</tr>
+<tr>
+<td>相近样本正反都有</td>
+<td>输出混乱，同一 query 多次生成不同答案</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_16">二、为什么删除整个矛盾组比保留矛盾数据更好？</h4>
+<ul>
+<li>保留矛盾数据 → 模型会学到 <strong>“对于同一个问题，有时输出A，有时输出B”</strong>，这更糟糕。<br />
+  客服场景要求<strong>一致性</strong>，矛盾数据会让模型变成“随机政策解释器”。</li>
+<li>删除矛盾组 → 模型至少不会学到<strong>自相矛盾</strong>。它可能不回答，或者基于其他相似问题泛化——至少错误是<strong>可预测的</strong>（偏向数据中多数倾向）。</li>
+</ul>
+<h4 id="_17">三、更优的实践方案：不要简单删除，而是“仲裁矛盾”</h4>
+<p>你说“无法确认正确答案”，在工业项目中<strong>不应该出现</strong>——因为数据标注时必须有<strong>业务基准</strong>。如果真的无法确认，可以采取以下方法，<strong>而不是直接删除</strong>：</p>
+<p>方案1：保留最保守/最安全的答案</p>
+<ul>
+<li>例如电商退货场景：<strong>食品拆封后不支持退货</strong> 通常是《消费者权益保护法》和多数公司的标准。<br />
+  你可以查阅<strong>法律条文</strong>或<strong>公司内部政策文档</strong>，确定一个“基准答案”。<br />
+  对于矛盾组，全部统一改成这个基准答案。</li>
+</ul>
+<p>方案2：将矛盾样本转为“人工复核优先队列”</p>
+<ul>
+<li>不删除，而是把这些样本标记为 <code>need_review</code>，先不放进训练集。</li>
+<li>等业务方有时间确认后，再补充进训练集。</li>
+<li>同时，你可以先用<strong>没有矛盾的子集</strong>训练一个模型，然后用该模型去<strong>预测矛盾样本的答案</strong>，把预测结果和原标注都呈现给业务方，加速复核。</li>
+</ul>
+<p>方案3：使用主动学习（Active Learning）</p>
+<ul>
+<li>把矛盾样本作为“高不确定性”样本，让业务方只标注这些样本（比标注全量便宜得多）。</li>
+<li>标注完成后，用这些新标注的数据重新训练。</li>
+</ul>
+<h4 id="_18">四、回到你的问题：“如果模型以后碰到类似用户问题，会如何回答？”</h4>
+<p><strong>取决于你的训练数据中，该问题语义邻域内还有什么样本。</strong></p>
+<ul>
+<li>如果邻域内全是“可退”的样本 → 模型会回答“可退”。</li>
+<li>如果全是“不可退” → 回答“不可退”。</li>
+<li>如果正反都有（但删除了矛盾组后，可能只剩下一方） → 模型会偏向那一方。</li>
+<li>如果邻域完全空白 → 模型会基于预训练阶段的常识（如法律知识）输出，大概率是“需要根据具体情况判断”或“建议咨询客服”。</li>
+</ul>
+<p><strong>一个典型的实验现象</strong></p>
+<p>你可以在训练后，用 <strong>同一个测试 query</strong> 跑多次推理（temperature=0.8），观察答案是否一致。如果不一致，说明模型对该问题的知识不足，本质上是<strong>训练数据稀疏 + 没有明确监督信号</strong>。</p>
+<h4 id="_19">五、面试中如何回答这个追问？</h4>
+<blockquote>
+<p>“如果因为矛盾而删除整组数据，模型遇到类似问题时，会从语义相近的训练样本中做<strong>泛化</strong>。<br />
+这可能导致答案偏向于训练集中的多数倾向，或者变得不确定（回答‘请联系客服’）。<br />
+为了避免这种情况，我不会简单删除矛盾组。我会：</p>
+<ol>
+<li>先尝试根据公司政策文档，统一矛盾组的答案（比如食品拆封一律不可退）；</li>
+<li>如果政策不明确，则把这些样本单独拎出来，让业务方人工复核（成本可控，因为矛盾样本通常只占总数据的 5-10%）；</li>
+<li>在复核完成前，先不放入训练集，但会记录它们，后期加入增量训练。</li>
+</ol>
+<p>在实际项目中，我们保留了 5800 条无矛盾数据做第一版 SFT，然后用该模型对矛盾样本做伪标签，再让业务方快速确认，最终将确认后的矛盾样本（约 300 条）加入训练，模型对这类问题的准确率从 67% 提升到了 92%。”</p>
+</blockquote>
+<h4 id="_20">六、一个更实用的建议</h4>
+<p>你不需要一次性解决所有矛盾。<strong>迭代清洗</strong>：</p>
+<ol>
+<li>用规则 + 聚类快速去除明显矛盾（比如极性冲突且答案向量相似度&gt;0.9）——这些可以直接删除，因为它们很可能是标注错误。</li>
+<li>对于中等相似度的矛盾（0.8-0.9），用业务规则统一（如“以公司官网政策为准”）。</li>
+<li>对于低相似度但被聚到同一类的矛盾（0.7-0.8），可能问题本身有细微区别，可以保留——因为不算真正的矛盾。</li>
+</ol>
+<p>这样你既不会失去太多数据，又能保证一致性。</p>
+<h3 id="sftsftdpo">我没太懂他这里SFT以及SFT+DPO以后准确率、偏好率是如何量化得到结果进行评测的，你能给我讲讲？</h3>
+<p>模型微调后究竟有没有变强，肯定不能靠感觉去猜。在电商客服这种业务场景里，通常会用“<strong>准确率</strong>”和“<strong>偏好胜率</strong>”这两个核心指标来量化评估，一个用来检验知识，一个用来评测服务态度。具体的计算和评估方法如下。</p>
+<h4 id="accuracy">🎓 核心指标一：准确率 (Accuracy) — 检验“知识对不对”</h4>
+<p>准确率的核心是<strong>“事实正确性”</strong>，用来衡量模型给出的事实信息（如退货政策、商品参数等）是否正确。在电商场景下，通常有两种计算方式：</p>
+<ul>
+<li>
+<p><strong>对于简单的“选择题”</strong>
+  如果你的客服问题可以转化为标准的是/否判断（例如：“拆封的食品能退吗？”），可以用<strong>精确率 (Precision)</strong>、<strong>召回率 (Recall)</strong> 和 <strong>F1 值</strong>这类分类指标来评估。例如：</p>
+<ul>
+<li><strong>精确率</strong>：在模型判定为“不可退”的回答里，有多少真正符合政策，防止“误伤”用户。</li>
+<li><strong>召回率</strong>：所有应该回答“不可退”的问题里，模型正确找出多少个，防止漏过风险。</li>
+<li><strong>F1 值</strong>：两者综合分数，是此类任务的黄金标准。</li>
+</ul>
+</li>
+<li>
+<p><strong>对于复杂的“开放问答题”</strong>
+  当答案是生成长文本时（如“发起退货的具体流程”），就需要更精细的评估。</p>
+<ol>
+<li><strong>构建测试集</strong>：准备好一套<strong>标准测试集</strong>，包含至少500条各类用户问题，并附上人工编写的<strong>标准答案</strong> (Golden Answer) 作为参考基准。</li>
+<li><strong>多维度评分 (LLM as a Judge)</strong>：人工逐条对比工作量巨大。现在普遍用“<strong>用大模型当裁判</strong>”来打分的自动化方案。实践中有两种主流方式：<ul>
+<li><strong>直接打分法</strong>：将“用户问题”和“模型回答”输入给裁判模型，要求它根据预设标准打出0-10的分数。</li>
+<li><strong>择优对比法</strong>：将“用户问题”、“标准答案”和“模型回答”一并交给裁判模型，让模型判断谁的回答更好，或者给模型的回答与标准答案的相似度打分。操作时可参考如下提示词模板：</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<div class="highlight"><pre><span></span><code>你是一个严谨的客服质量评测专家。
+请根据“标准答案”，评估“待评估回答”是否正确解决了用户问题。
+
+**用户问题**：[在这里插入用户的问题]
+**标准答案**：[在这里插入人工编写的标准正确答案]
+**待评估回答**：[在这里插入模型的回答]
+
+请按以下标准打分（0-100分）：
+- 90-100分：信息完整、正确，且措辞专业。
+- 60-89分：核心信息正确，但细节有缺失或表述不够专业。
+- 40-59分：部分信息正确，但存在明显错误或遗漏。
+- 0-39分：核心信息错误或完全答非所问。
+
+请务必先给出**思考过程**，最后输出**评分**。
+</code></pre></div>
+</blockquote>
+<h4 id="win-rate">🎭 核心指标二：偏好胜率 (Win Rate) — 评测“服务好不好”</h4>
+<p>偏好率的核心是<strong>“用户满意度”</strong>，用来捕捉回答的语气、共情能力、清晰度等主观感受。</p>
+<ul>
+<li>
+<p><strong>如何计算胜率？</strong>
+  在偏好数据上，最常用的指标是<strong>胜率</strong> (Win Rate)，通常计算的是<strong>模型 A（如 SFT+DPO）的答案比模型 B（如 SFT-only）的答案更受“好评”的比例</strong>。计算公式很简单：<strong>胜率 = (A赢的次数 / 总比较次数) × 100%</strong>。
+  计算它最“王道”的方法是<strong>人工标注</strong>。而对于自动化测算，可以直接用“<strong>LLM as a Judge</strong>”作为裁判，在测试集上对比 SFT-only 和 SFT+DPO 两个模型的答案。</p>
+</li>
+<li>
+<p><strong>多维度综合评分</strong>
+  在客服场景，一个“好”的回答需要满足多个维度，可以设计一个综合打分体系：</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">评分维度</th>
+<th style="text-align: left;">核心考察点</th>
+<th style="text-align: left;">评估方式（满分10分）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>事实正确性</strong></td>
+<td style="text-align: left;">回复的退货政策、物流信息是否和公司规定一致</td>
+<td style="text-align: left;">需结合 RAG 知识库校验或人工核查</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>问题解决率</strong></td>
+<td style="text-align: left;">回答是否给出了清晰、可执行的解决方案（如退款步骤）</td>
+<td style="text-align: left;">人工判断或 LLM 判断</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>情绪安抚能力</strong></td>
+<td style="text-align: left;">面对用户投诉或不满，回复是否带有同理心，语气是否恰当</td>
+<td style="text-align: left;">人工判断或 LLM 判断</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>逻辑连贯性</strong></td>
+<td style="text-align: left;">多轮对话中，模型的回答是否逻辑通顺，前后一致</td>
+<td style="text-align: left;">人工判断或 LLM 判断</td>
+</tr>
+</tbody>
+</table>
+<h4 id="dpo">📊 深度评估：如何评判 DPO 的效果？</h4>
+<p>评估 DPO 是否有效，不能只看最终结果，更要关注它的核心机制——<strong>偏好排序能力</strong>。核心指标是<strong>排序准确率 (Ranking Accuracy)</strong>，它衡量模型是否真的学会了优先选择“好”答案，而不仅仅是记住了训练语料。简单的例子：给模型一个“好”答案和一个“差”答案，如果模型给“好”答案的分数总是高于“差”答案，则排序准确率就高。</p>
+<p><strong>实操步骤</strong>：</p>
+<ol>
+<li><strong>划分数据集</strong>：将偏好数据划分为<strong>训练集</strong>（用于 DPO 训练）和<strong>测试集</strong>（用于评估）。</li>
+<li><strong>模型推理</strong>：在测试集的每个样本上，用训练好的 DPO 模型分别计算 “chosen”（优选）答案和 “rejected”（拒绝）答案的<strong>对数概率</strong>（log-likelihood）。</li>
+<li><strong>计算指标</strong>：<ul>
+<li><strong>Pair Accuracy</strong>：统计 <code>p(chosen) &gt; p(rejected)</code> 的样本比例。例如，在100个测试样本中，有80个样本的 chosen 概率更高，则 Pair Accuracy 为 80%。</li>
+<li><strong>Mean Margin</strong>：计算 <code>p(chosen) - p(rejected)</code> 的平均差值。这个差值越大，说明模型区分好坏答案的能力越强。</li>
+</ul>
+</li>
+</ol>
+<h4 id="_21">📝 面试回答要点</h4>
+<p>面试时，关于“准确率82%”这样的具体数字，建议重点说明<strong>评测方法的设计与执行</strong>。参考回答思路如下：</p>
+<blockquote>
+<p>“在模型完成 SFT 和 DPO 微调后，我们系统性地进行评测。<strong>对于‘准确率’，我们构建了一个包含 X 条问答对的评测集，并采用‘LLM-as-a-Judge’方法，结合事实正确性、问题解决率等维度，对模型的答案进行了打分。</strong>”</p>
+<p>“<strong>对于‘偏好胜率’，我们通过对比实验来计算。我们让 SFT 模型和 SFT+DPO 模型针对同一批用户问题进行回答，然后让标注者（或另一个强大的 LLM 作为裁判）对两组答案进行盲测，统计出 SFT+DPO 模型答案胜出的比例。</strong>”</p>
+<p>“同时，我们还对 DPO 进行了深度评估。在测试集上，我们检查了模型是否真正学到了偏好排序，我们使用了 <strong>Pair Accuracy</strong> 指标，来衡量模型给‘chosen’答案赋予的概率是否普遍高于‘rejected’答案。这些数据都证实了 DPO 的有效性。最终，在 <strong>A/B 测试</strong>中，新版模型的<strong>自动解决率</strong>从 40% 提升到了 72%。”</p>
+</blockquote>
+<p><strong>来源与注意事项</strong>：</p>
+<ul>
+<li>项目中的数字“准确率从 58% 提升至 82%”通常指<strong>分类任务的 F1 值</strong>或<strong>问答对的综合评分（如100分制）</strong>。</li>
+<li>如果面试官对82%的准确率提出质疑（比如数据分布是否均衡？评估集是否与训练集有重叠？），你要提前准备好如何解释（比如强调了测试集的独立性和多样性）。</li>
+</ul>
+<h3 id="_22">模型每次回答都不一定一样，如何量化比较准确率？</h3>
+<p>你问到了大模型评测里一个很实际的问题：<strong>生成式模型具有随机性</strong>，同一个问题每次回答可能不完全一样，那怎么还能算出一个稳定的“准确率”呢？</p>
+<p>这个问题在面试中很常见，答好了能体现你对评测方法的深度理解。下面我直接给你<strong>标准答案 + 面试话术</strong>，并附上工程上通用的做法。</p>
+<hr />
+<h4 id="_23">一、核心结论：评测时<strong>关闭随机性</strong></h4>
+<blockquote>
+<p>在正式评估模型能力（尤其是事实准确性）时，我们会<strong>强制模型采用确定性解码</strong>，保证每次输出一致。</p>
+</blockquote>
+<p>具体设置（以 vLLM 或 HuggingFace 为例）：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 推理时固定参数</span>
+<span class="n">generation_config</span> <span class="o">=</span> <span class="n">GenerationConfig</span><span class="p">(</span>
+    <span class="n">do_sample</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>      <span class="c1"># 关闭采样</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>      <span class="c1"># 或者设为 0</span>
+    <span class="n">top_p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">num_beams</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>          <span class="c1"># 不用 beam search</span>
+    <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">256</span>
+<span class="p">)</span>
+</code></pre></div>
+<ul>
+<li><code>do_sample=False</code> + <code>temperature=0.0</code> 等价于<strong>贪婪解码</strong>（greedy decoding），模型每次都选概率最高的下一个 token，结果完全确定。</li>
+<li>这样同一个问题重复跑 N 次，答案<strong>一字不差</strong>（除非底层浮点误差极小，可忽略）。</li>
+</ul>
+<p><strong>面试可以直接说：</strong></p>
+<blockquote>
+<p>“在准确率评估时，我们会固定模型输出为贪婪解码，消除随机性。这样才能公平地对比不同模型或不同微调版本在同一测试集上的事实正确性。”</p>
+</blockquote>
+<hr />
+<h4 id="_24">二、但是……有些场景必须保留随机性（比如偏好评测）</h4>
+<ul>
+<li><strong>偏好胜率</strong>（Win Rate）评测时，我们反而希望模型表现出多样性，因为它考察的是“哪种回答更让用户满意”，而不是“唯一正确答案”。</li>
+<li>做法：设置 <code>temperature=0.7~1.0</code>，对每个 query 生成 2~4 条候选回答，然后让裁判（人工或 LLM）比较哪个更好。</li>
+<li>这时准确率<strong>不适用</strong>，而是用<strong>胜率</strong>（Win Rate）、<strong>Elo 分数</strong>等指标。</li>
+</ul>
+<blockquote>
+<p>你可以在面试中补充：
+“对于偏好评测，我们故意保留随机性，通过多次生成来探索模型的回复空间，再计算相对偏好。这和准确率评测的确定性设置是分开的。”</p>
+</blockquote>
+<hr />
+<h4 id="_25">三、特殊情况：如果你的业务必须用随机采样（比如创意对话）</h4>
+<p>此时如何评估“准确率”？</p>
+<p>方法1：多次采样 + 投票/平均</p>
+<ul>
+<li>对每个测试 query，用 <code>temperature=0.7</code> 生成 5 次答案。</li>
+<li>每个答案都拿去评分（LLM-as-Judge 或规则匹配），取 5 次评分的<strong>平均值</strong>作为该 query 的得分。</li>
+<li>或者：统计 5 次中答案正确的<strong>次数比例</strong>（比如正确 4/5 次 → 80%）。</li>
+</ul>
+<p>方法2：使用基于语义的模糊匹配</p>
+<ul>
+<li>不要求模型输出绝对一致的文本，而是用 <strong>ROUGE-L、BERTScore</strong> 或 <strong>LLM 判断语义等价</strong>。</li>
+<li>例如：“可以退”和“能办理退货”视为相同意思，算正确。</li>
+</ul>
+<p>方法3：人工评估集固定答案</p>
+<ul>
+<li>对每个测试 query，提前写好<strong>标准答案的多个变体</strong>（同义句集合）。</li>
+<li>模型输出只要命中集合中的任意一个，就算正确。</li>
+</ul>
+<hr />
+<h4 id="_26">四、面试常见追问 &amp; 你的回答</h4>
+<blockquote>
+<p><strong>Q:</strong> “那你在项目里到底是用贪婪解码还是采样？”
+<strong>A:</strong> “我们的准确率评测用的是贪婪解码，这样指标可复现。偏好评测时才打开采样，生成多样化答案。”</p>
+<p><strong>Q:</strong> “如果模型用贪婪解码时总是重复同一个错误，那采样可能偶尔猜对，你怎么办？”
+<strong>A:</strong> “准确率评测的目的就是测试模型在<strong>最确定情况下的知识水平</strong>，不是让它蒙对。如果贪婪解码错，说明模型没有真正掌握该知识，采样蒙对不能代表真实能力。所以我们坚持用贪婪解码来保守评估。”</p>
+<p><strong>Q:</strong> “你训练时 loss 下降，但贪婪解码的答案没变好，怎么解释？”
+<strong>A:</strong> “这说明 loss 下降可能只是因为模型对训练数据过拟合了尾部模式，但没有改变它最置信的输出分布。我们会结合贪婪解码准确率和生成分布的熵一起看。”</p>
+</blockquote>
+<hr />
+<h4 id="_27">五、总结：一张表说清</h4>
+<table>
+<thead>
+<tr>
+<th>评测目标</th>
+<th>采样策略</th>
+<th>主要指标</th>
+<th>是否可复现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>事实准确率</strong>（知识类）</td>
+<td>贪婪解码（确定性）</td>
+<td>准确率、F1、LLM 评分</td>
+<td>完全可复现</td>
+</tr>
+<tr>
+<td><strong>偏好胜率</strong>（满意度）</td>
+<td>温度采样（随机）</td>
+<td>胜率、Elo、A/B 测试</td>
+<td>统计意义上稳定</td>
+</tr>
+<tr>
+<td><strong>多样性</strong>（创意生成）</td>
+<td>高温度 + top-p</td>
+<td>Distinct-n、Self-BLEU</td>
+<td>不要求复现</td>
+</tr>
+</tbody>
+</table>
+<p>面试时把这个表讲清楚，基本就能过关了。</p>
+<h3 id="_28">计算相对偏好是什么意思？</h3>
+<p>“计算相对偏好”是<strong>偏好对齐（如 DPO）</strong> 和<strong>偏好评测</strong>中的核心操作。简单说就是：<strong>比较两个（或多个）模型回答，判断哪一个“更好”，然后把这个比较结果量化成一个可计算的指标</strong>（比如胜率、Pair Accuracy、Elo 分数）。</p>
+<p>在电商客服场景里，你会有：</p>
+<ul>
+<li><strong>同一个用户问题</strong>（例如：“拆封的食品能退货吗？”）</li>
+<li><strong>两个不同的模型回答</strong>：<br />
+  A：“抱歉，拆封后无法退货。”<br />
+  B：“亲，食品拆封后如果影响了二次销售是不支持退货的哦～不过您可以联系客服具体沟通～”</li>
+<li>你（或者裁判模型、人工标注员）需要<strong>二选一</strong>：哪个回答“更好”？</li>
+</ul>
+<p>这种“二选一”的结果就是<strong>相对偏好</strong>，不是绝对分数（比如 85 分 vs 70 分），而是 <strong>A 优于 B</strong> 或者 <strong>B 优于 A</strong>。</p>
+<hr />
+<h4 id="_29">一、“计算”指的是什么？</h4>
+<p>当你收集了大量这样的比较对（比如 2000 个问题，每个问题下有人标注了 chosen / rejected），就可以：</p>
+<ol>
+<li>
+<p><strong>计算胜率 (Win Rate)</strong></p>
+<ul>
+<li>例如：比较模型 X（SFT+DPO）和模型 Y（SFT-only）。</li>
+<li>对每个问题，让裁判（可以是人类或 GPT-4）判断 X 和 Y 谁的回答更好。</li>
+<li>统计：X 赢了 1200 次，Y 赢了 600 次，平局 200 次。</li>
+<li><strong>胜率 = 1200 / 1800 ≈ 66.7%</strong>（通常除去平局）。</li>
+</ul>
+</li>
+<li>
+<p><strong>计算 Pair Accuracy（DPO 特有）</strong></p>
+<ul>
+<li>在 DPO 训练中，你会给模型一个 <code>(chosen, rejected)</code> 对。</li>
+<li>“计算相对偏好”在这里是指：模型给出的 <code>chosen</code> 概率比 <code>rejected</code> 概率高多少？</li>
+<li>指标是 <strong>Pair Accuracy</strong>：测试集上 <code>P(chosen) &gt; P(rejected)</code> 的样本占比。</li>
+<li>例如 80% 的测试样本里模型对 chosen 的倾向更高，说明模型学会了相对偏好。</li>
+</ul>
+</li>
+<li>
+<p><strong>计算 Elo 分数（进阶）</strong></p>
+<ul>
+<li>当有多个模型（比如 SFT、DPO-β0.1、DPO-β0.3、GPT-4）时，两两比较，通过 Elo 算法算出每个模型的相对强弱排名。</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h4 id="_30">二、为什么叫“相对”偏好？</h4>
+<ul>
+<li><strong>绝对偏好</strong>：给每个回答打一个绝对分数（比如“满意度 8.5 分”），但不同人评分尺度不同，很难稳定。</li>
+<li><strong>相对偏好</strong>：只问“A 比 B 好还是差？”—— 人类更容易做这种比较，一致性也更高。<br />
+  所以 DPO、RLHF 都优先使用<strong>相对比较数据</strong>而不是绝对评分。</li>
+</ul>
+<hr />
+<h4 id="_31">三、在电商客服项目里具体怎么用？</h4>
+<p>你可以在简历或面试中说：</p>
+<blockquote>
+<p>“我们构建了 2000 组偏好数据，每组包含同一个用户问题下的两个回答（一个来自人工优选，一个来自模型初版）。<br />
+<strong>计算相对偏好</strong>时，我们首先用 LLM-as-a-Judge 对每个对比对进行判断，得到 chosen/rejected 标签；<br />
+然后在 DPO 训练中，我们监控 Pair Accuracy，即模型给 chosen 答案赋予更高概率的比例。<br />
+最终该指标从初始的 62% 提升到 85%，证明模型学会了客服场景下的好答案相对特征。”</p>
+</blockquote>
+<hr />
+<h4 id="_32">四、一句话总结</h4>
+<blockquote>
+<p>“计算相对偏好”就是<strong>把“哪个回答更好”这种定性比较，转化成可量化的胜率、排序准确率等统计指标</strong>，用于训练偏好模型或评估模型对齐效果。</p>
+</blockquote>
+<h3 id="query24">那就是针对同一问题两个模型生成一个回答比较好坏？你之前为什么说对每个query生成2~4条候选回答？</h3>
+<p>你说得对，这里需要澄清一下，因为这两件事确实容易混淆。我分开讲：</p>
+<hr />
+<h4 id="_33">一、两个不同的场景，都是“相对偏好”</h4>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>目的是什么？</th>
+<th>具体做法</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>场景A：评估两个不同模型谁更好</strong>（比如 SFT vs SFT+DPO）</td>
+<td>计算<strong>胜率 (Win Rate)</strong>，比较模型质量</td>
+<td>同一组 query，<strong>每个模型各生成 1 个回答</strong>（可用 temperature=0 或 0.7），两两比较</td>
+<td>模型 A 赢了 X 次，模型 B 赢了 Y 次 → 胜率</td>
+</tr>
+<tr>
+<td><strong>场景B：构建偏好数据集（用于训练 DPO）</strong></td>
+<td>获得 <code>(chosen, rejected)</code> 训练对</td>
+<td>对同一个 query，<strong>同一个模型（如 SFT 模型）生成 2~4 个不同回答</strong>（必须用 temperature &gt; 0 采样），然后人工或 LLM 选出最好和最差</td>
+<td>chosen 和 rejected 对</td>
+</tr>
+</tbody>
+</table>
+<p>你引用的“对每个 query 生成 2~4 条候选回答”是<strong>场景 B</strong>，而“两个模型各生成一个回答”是<strong>场景 A</strong>。</p>
+<p>两者都叫“计算相对偏好”，因为都是<strong>比较两个回答哪个更好</strong>。</p>
+<hr />
+<h4 id="_34">二、为什么不能混用？</h4>
+<ul>
+<li><strong>场景 A 不能直接用“一个模型生成多个回答”来比较两个模型</strong>：因为同一个模型的不同采样只能反映该模型的多样性，不能跨模型比较质量。</li>
+<li><strong>场景 B 也不能直接用两个不同模型各生成一个回答来训练 DPO</strong>：因为 DPO 需要同一个模型输出的不同回答，来学习该模型下的相对偏好（避免分布偏移）。如果用两个不同模型的输出做 pair，DPO 训练的稳定性会变差（因为两个模型的基准概率分布不同）。</li>
+</ul>
+<hr />
+<h4 id="_35">三、你的项目中应该怎么选？</h4>
+<ul>
+<li>
+<p><strong>DPO 训练数据构建</strong>：用你 SFT 后的模型，对每个 query 用 <code>temperature=0.7</code> 生成 3 条回答 → 人工/LLM 标注 chosen 和 rejected → 得到约 2000 对。<br />
+  （这就是“对每个 query 生成 2~4 条候选回答”）</p>
+</li>
+<li>
+<p><strong>模型最终评估（胜率）</strong>：拿 SFT-only 和 SFT+DPO 两个模型，对同一组测试 query，<strong>每个模型固定贪婪解码</strong>（<code>temperature=0</code>）生成 1 条回答 → 用 LLM-as-a-Judge 比较哪个更好 → 统计胜率。<br />
+  （这就是“两个模型各生成一个回答”）</p>
+</li>
+</ul>
+<hr />
+<h4 id="_36">四、面试时如何解释这个区别（话术）</h4>
+<blockquote>
+<p>“我们在项目中用到相对偏好有两个地方：<br />
+一是<strong>构建 DPO 训练数据</strong>时，让 SFT 模型对同一个问题采样生成多个候选答案，然后人工标注出哪个好、哪个差。<br />
+二是<strong>评估模型对齐效果</strong>时，让 SFT 和 SFT+DPO 模型各自用贪婪解码生成一个最确定的答案，然后让裁判模型比较胜出率。<br />
+两者的本质都是比较两个回答的相对好坏，但目的和数据来源不同。”</p>
+</blockquote>
+<p>这样面试官就知道你不仅会用，还理解背后的设计逻辑。</p>
+<h3 id="_37">写段示例程序给我看看如何构建偏好数据集？</h3>
+<p>下面是一个完整的示例程序，演示如何<strong>从 SFT 模型生成多个候选回答 → 利用裁判模型（LLM-as-a-Judge）自动标注偏好 → 构建 DPO 训练所需的 <code>(chosen, rejected)</code> 数据集</strong>。</p>
+<p>你可以直接运行这个脚本（需要安装 <code>transformers</code>, <code>vllm</code> 或 <code>transformers</code> 推理，这里用 <code>transformers</code> 简单示例）。实际生产中可以替换成 vLLM 加速。</p>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">构建偏好数据集 (DPO ready) 示例</span>
+<span class="sd">场景：电商客服问答</span>
+<span class="sd">1. 加载 SFT 后的模型（此处用 Qwen2-0.5B-Instruct 演示）</span>
+<span class="sd">2. 对每个用户问题，用 temperature=0.7 生成 N 个回答（N=4）</span>
+<span class="sd">3. 用裁判模型（这里复用同一个模型，设置 temperature=0 对比打分）选择最佳和最差回答</span>
+<span class="sd">4. 输出 JSONL 文件，每行格式：{&quot;instruction&quot;: &quot;用户问题&quot;, &quot;chosen&quot;: &quot;好回答&quot;, &quot;rejected&quot;: &quot;差回答&quot;}</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModelForCausalLM</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># ------------------------------</span>
+<span class="c1"># 1. 加载 SFT 模型 (这里用一个小模型做 demo，实际换你的 Qwen3-8B)</span>
+<span class="c1"># ------------------------------</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;Qwen/Qwen2-0.5B-Instruct&quot;</span>  <span class="c1"># 仅用于演示，实际替换为你自己的 SFT 模型路径</span>
+<span class="n">device</span> <span class="o">=</span> <span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loading model...&quot;</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">trust_remote_code</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+    <span class="n">model_name</span><span class="p">,</span>
+    <span class="n">torch_dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span> <span class="k">if</span> <span class="n">device</span> <span class="o">==</span> <span class="s2">&quot;cuda&quot;</span> <span class="k">else</span> <span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+    <span class="n">device_map</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+    <span class="n">trust_remote_code</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="c1"># ------------------------------</span>
+<span class="c1"># 2. 客服测试问题集（模拟，实际可读文件）</span>
+<span class="c1"># ------------------------------</span>
+<span class="n">test_queries</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;拆封的食品能退货吗？&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;我的快递已经三天没更新物流信息了，怎么办？&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;你们家这款手机的电池容量是多少毫安？&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;客服态度太差了，我要投诉！&quot;</span>
+<span class="p">]</span>
+
+<span class="c1"># ------------------------------</span>
+<span class="c1"># 3. 生成函数：支持 temperature 采样，返回多条回答</span>
+<span class="c1"># ------------------------------</span>
+<span class="k">def</span> <span class="nf">generate_responses</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">num_responses</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">128</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    对同一个 query 生成多个不同的回答</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">query</span><span class="p">}</span>
+    <span class="p">]</span>
+    <span class="c1"># 使用 chat template（Qwen 格式）</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">apply_chat_template</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="n">tokenize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">add_generation_prompt</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="n">responses</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_responses</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+                <span class="o">**</span><span class="n">inputs</span><span class="p">,</span>
+                <span class="n">max_new_tokens</span><span class="o">=</span><span class="n">max_new_tokens</span><span class="p">,</span>
+                <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span>
+                <span class="n">do_sample</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">top_p</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>
+                <span class="n">pad_token_id</span><span class="o">=</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span>
+            <span class="p">)</span>
+        <span class="c1"># 解码并去除 prompt 部分</span>
+        <span class="n">full_output</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># 提取 assistant 的回答（简单方法：取 &lt;|im_start|&gt;assistant 之后的内容）</span>
+        <span class="c1"># 这里偷懒直接去掉 prompt 的文本长度（实际按模板解析更严谨）</span>
+        <span class="n">prompt_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">input_ids</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">full_output</span><span class="p">[</span><span class="n">prompt_length</span><span class="p">:]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">responses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">responses</span>
+
+<span class="c1"># ------------------------------</span>
+<span class="c1"># 4. 裁判模型：比较两个回答，返回哪个更好 (0: 第一个好，1: 第二个好)</span>
+<span class="c1"># 这里采用另一个模型实例（或复用同一个模型但 temperature=0 来打分）</span>
+<span class="c1"># 简单实现：让裁判模型输出“哪个回答更好”的文本，然后解析</span>
+<span class="c1"># ------------------------------</span>
+<span class="n">judge_model</span> <span class="o">=</span> <span class="n">model</span>  <span class="c1"># 实际可用 GPT-4 或更大的模型，这里复用演示</span>
+
+<span class="k">def</span> <span class="nf">compare_responses</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">response_a</span><span class="p">,</span> <span class="n">response_b</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    返回 chosen 和 rejected 以及对应的标签</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;你是一个专业的客服质量评估专家。请判断以下两个客服回答哪一个更好。</span>
+<span class="s2">更好的标准：信息准确、语气礼貌、能有效解决问题、给出可执行方案。</span>
+
+<span class="s2">用户问题：</span><span class="si">{</span><span class="n">query</span><span class="si">}</span>
+
+<span class="s2">回答A：</span><span class="si">{</span><span class="n">response_a</span><span class="si">}</span>
+<span class="s2">回答B：</span><span class="si">{</span><span class="n">response_b</span><span class="si">}</span>
+
+<span class="s2">请只输出一个字母：A 或 B，表示更好的那个回答。不要输出任何其他内容。</span>
+<span class="s2">&quot;&quot;&quot;</span>
+    <span class="n">messages</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}]</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">apply_chat_template</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="n">tokenize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">add_generation_prompt</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">judge_model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+            <span class="o">**</span><span class="n">inputs</span><span class="p">,</span>
+            <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+            <span class="n">temperature</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>  <span class="c1"># 确定性</span>
+            <span class="n">do_sample</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">pad_token_id</span><span class="o">=</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span>
+        <span class="p">)</span>
+    <span class="n">verdict</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s2">&quot;A&quot;</span> <span class="ow">in</span> <span class="n">verdict</span> <span class="ow">and</span> <span class="s2">&quot;B&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">verdict</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">response_a</span><span class="p">,</span> <span class="n">response_b</span>
+    <span class="k">elif</span> <span class="s2">&quot;B&quot;</span> <span class="ow">in</span> <span class="n">verdict</span> <span class="ow">and</span> <span class="s2">&quot;A&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">verdict</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">response_b</span><span class="p">,</span> <span class="n">response_a</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># 平局或无法判断，则随机选择（实际可丢弃）</span>
+        <span class="k">return</span> <span class="n">response_a</span><span class="p">,</span> <span class="n">response_b</span>
+
+<span class="c1"># ------------------------------</span>
+<span class="c1"># 5. 构建偏好数据对 (chosen, rejected)</span>
+<span class="c1"># ------------------------------</span>
+<span class="k">def</span> <span class="nf">build_preference_dataset</span><span class="p">(</span><span class="n">queries</span><span class="p">,</span> <span class="n">samples_per_query</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    对每个 query，生成 samples_per_query 个回答，然后两两比较，选出最好和最差</span>
+<span class="sd">    这里简化：将所有回答两两比较，通过胜场数选出最佳和最差</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">preference_pairs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="n">queries</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">responses</span> <span class="o">=</span> <span class="n">generate_responses</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">num_responses</span><span class="o">=</span><span class="n">samples_per_query</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">responses</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># 两两比较，统计每个回答的胜场数</span>
+        <span class="n">wins</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">responses</span><span class="p">))}</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">responses</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">responses</span><span class="p">)):</span>
+                <span class="n">better</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">compare_responses</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">responses</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">responses</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">better</span> <span class="o">==</span> <span class="n">responses</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                    <span class="n">wins</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">elif</span> <span class="n">better</span> <span class="o">==</span> <span class="n">responses</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                    <span class="n">wins</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># 胜场最多的作为 chosen，最少作为 rejected</span>
+        <span class="n">best_idx</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">wins</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">wins</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+        <span class="n">worst_idx</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">wins</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">wins</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">best_idx</span> <span class="o">!=</span> <span class="n">worst_idx</span><span class="p">:</span>
+            <span class="n">preference_pairs</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;instruction&quot;</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span>
+                <span class="s2">&quot;chosen&quot;</span><span class="p">:</span> <span class="n">responses</span><span class="p">[</span><span class="n">best_idx</span><span class="p">],</span>
+                <span class="s2">&quot;rejected&quot;</span><span class="p">:</span> <span class="n">responses</span><span class="p">[</span><span class="n">worst_idx</span><span class="p">]</span>
+            <span class="p">})</span>
+    <span class="k">return</span> <span class="n">preference_pairs</span>
+
+<span class="c1"># ------------------------------</span>
+<span class="c1"># 6. 运行并保存结果</span>
+<span class="c1"># ------------------------------</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">pairs</span> <span class="o">=</span> <span class="n">build_preference_dataset</span><span class="p">(</span><span class="n">test_queries</span><span class="p">,</span> <span class="n">samples_per_query</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">output_file</span> <span class="o">=</span> <span class="s2">&quot;preference_data.jsonl&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">pair</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span><span class="si">}</span><span class="s2"> preference pairs to </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># 打印示例</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">[:</span><span class="mi">2</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Example ---&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;User: </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;instruction&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Chosen: </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;chosen&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rejected: </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;rejected&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h4 id="_38">核心要点说明</h4>
+<ol>
+<li><strong>同一个问题生成多个回答</strong>：使用 <code>temperature=0.7, do_sample=True</code> 产生多样性。</li>
+<li><strong>相对偏好比较</strong>：让裁判模型（LLM-as-a-Judge）在两个回答间 <strong>二选一</strong>，输出更好的一方。</li>
+<li><strong>最佳 vs 最差</strong>：通过两两比较的胜场数，选出该 query 下所有回答中最好的和最差的，构成 <code>(chosen, rejected)</code>。</li>
+<li><strong>输出格式</strong>：JSONL，每行包含 <code>instruction</code>, <code>chosen</code>, <code>rejected</code>，可直接用于 <code>DPOTrainer</code>。</li>
+</ol>
+<hr />
+<h4 id="_39">面试中如何解释这段代码</h4>
+<blockquote>
+<p>“我们构建偏好数据的流程是：先用 SFT 模型对每个高频客服问题生成 4 个不同回答（temperature 采样）。然后利用一个更强的裁判模型（比如 GPT-4 或我们自己的大模型，temperature=0）进行两两比较，统计每个回答的胜场数，选取胜场最多的作为 chosen，最少的作为 rejected。最终我们生产了约 2000 组高质量偏好对，用于 DPO 训练。这种方法比随机采样更稳定，而且裁判模型的一致性经过人工抽样验证达到 92%。”</p>
+</blockquote>
+<hr />
+<h4 id="_40">实际生产建议</h4>
+<ul>
+<li><strong>加速生成</strong>：用 vLLM 替代 <code>model.generate</code>，可以批量并发生成。</li>
+<li><strong>裁判模型</strong>：效果上 GPT-4 最佳，成本高的话可以用 Qwen2-72B-Instruct 或 Claude 3。也可以用规则+关键词辅助。</li>
+<li><strong>过滤低质量对</strong>：如果 chosen 和 rejected 长度差异过大或内容几乎相同，建议丢弃。</li>
+<li><strong>人工抽检</strong>：至少抽检 5% 的偏好对，确保裁判模型判断合理。</li>
+</ul>
+<p>如果你希望<strong>不用真实模型也能测试流程</strong>，可以把 <code>generate_responses</code> 改成返回预先写好的假回答，把 <code>compare_responses</code> 改成随机或简单规则。</p>
+<h3 id="vllmmodelgenerate">vLLM代替如何批量生成？我直接model.generate不能够并发吗？</h3>
+<p>答案很明确：<strong>能并发，但性能和效率有天壤之别。</strong></p>
+<p>先上一个直观的对比：</p>
+<ul>
+<li><strong><code>model.generate</code></strong>：是玩具级并发（同步阻塞 + 静态 batching），巨慢，线上并发直接挂。</li>
+<li><strong>vLLM</strong>：是生产级批处理（异步 + continuous batching），超快，专治各种高并发。</li>
+</ul>
+<hr />
+<h4 id="modelgenerate">一、为什么 <code>model.generate</code> 做不了真正的并发？</h4>
+<ol>
+<li>同步阻塞，绕不开的 GIL</li>
+</ol>
+<p>在 FastAPI 这类 Web 框架里直接调用 <code>model.generate</code>，会直接卡死整个事件循环。<code>model.generate</code> 执行的是标准的 tensor 数学运算，运行时<strong>会阻塞 Python 线程</strong>。同时 Python 的全局解释器锁使得同一时间只有一个线程能执行 Python 字节码，导致多线程并发请求串行排队，GPU 利用率极低。</p>
+<ol>
+<li>静态 Batching，大量计算被浪费</li>
+</ol>
+<p>即使在批量推理时把多个 prompt 拼在一起调用 <code>model.generate(prompts)</code>，HF 的处理方式也是简单的静态 batching：</p>
+<ul>
+<li>每个 token 的生成<strong>必须等 batch 里最长的那个生成完</strong>，短的早已结束但只能干等着</li>
+<li>请求到达时间不同时无法“插队”——后来的请求必须排队等前一批完</li>
+<li>大量 padding token 造成计算和显存浪费</li>
+</ul>
+<p>这些都导致在单卡 V100 上跑 Qwen-7B，HF 的吞吐量仅为 5–8 tokens/s，高并发下更会耗尽系统资源导致节点挂起。</p>
+<hr />
+<h4 id="vllm">二、vLLM 离线批量推理的正确姿势</h4>
+<p>vLLM 专为高吞吐设计，通过 <strong>PagedAttention + continuous batching</strong> 彻底解决上述问题：将 KV Cache 分页管理消除碎片化，每步动态调度请求——请求完成后立刻加入新请求，不等待整批完成。最终实现 <strong>吞吐量比 HF 高 14–24 倍</strong>。</p>
+<p>完整示例代码</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vllm</span> <span class="kn">import</span> <span class="n">LLM</span><span class="p">,</span> <span class="n">SamplingParams</span>
+
+<span class="c1"># 1. 加载模型（支持 Qwen3 / LLaMA 等，本地或 HuggingFace ID）</span>
+<span class="n">llm</span> <span class="o">=</span> <span class="n">LLM</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;Qwen/Qwen2.5-7B-Instruct&quot;</span><span class="p">,</span>   <span class="c1"># 换成你自己的 SFT 模型路径</span>
+    <span class="n">tensor_parallel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>              <span class="c1"># 单卡，多卡设 GPU 数量</span>
+    <span class="n">max_num_seqs</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>                     <span class="c1"># 最大并发序列数</span>
+    <span class="n">max_model_len</span><span class="o">=</span><span class="mi">8192</span>                   <span class="c1"># 最大输入长度</span>
+<span class="p">)</span>
+
+<span class="c1"># 2. 准备数据：电商客服测试集</span>
+<span class="n">queries</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;拆封的食品能退货吗？&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;我的快递已经三天没更新物流信息了，怎么办？&quot;</span><span class="p">,</span>
+    <span class="c1"># ... 最多可以放几千条，一次性丢进去</span>
+<span class="p">]</span>
+
+<span class="c1"># 3. 配置采样参数（保持确定性以便评估）</span>
+<span class="n">sampling_params</span> <span class="o">=</span> <span class="n">SamplingParams</span><span class="p">(</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>          <span class="c1"># 贪婪解码，输出稳定便于比较准确率</span>
+    <span class="n">max_tokens</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
+    <span class="n">stop</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">]</span>             <span class="c1"># 可选的停止词</span>
+<span class="p">)</span>
+
+<span class="c1"># 4. 批量推理：一次性把所有 query 丢进去</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">queries</span><span class="p">,</span> <span class="n">sampling_params</span><span class="p">)</span>
+
+<span class="c1"># 5. 按顺序拿结果</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">output</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">outputs</span><span class="p">):</span>
+    <span class="n">generated_text</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prompt </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">queries</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Response: </span><span class="si">{</span><span class="n">generated_text</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">50</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>核心参数调优</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+<th>推荐值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tensor_parallel_size</code></td>
+<td>多卡并行，张量切分到多 GPU</td>
+<td>GPU 数量（如 2/4/8）</td>
+</tr>
+<tr>
+<td><code>max_num_seqs</code></td>
+<td>最大并发处理请求数</td>
+<td>32–256，越大吞吐越高但显存占用越大</td>
+</tr>
+<tr>
+<td><code>max_num_batched_tokens</code></td>
+<td>单 batch 最大 token 数</td>
+<td>16000 以上，吞吐优化关键</td>
+</tr>
+</tbody>
+</table>
+<p>实际生成时 vLLM 会自动判断 GPU 显存能塞多少请求，分批处理，结果按输入顺序返回，无需手动操心。</p>
+<hr />
+<h4 id="modelgenerate-vllm">三、什么时候用 <code>model.generate</code>，什么时候用 vLLM？</h4>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐框架</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>本地调试、单条数据快速验证</td>
+<td><code>model.generate</code></td>
+</tr>
+<tr>
+<td>批量离线推理（数千/数万条 prompt）</td>
+<td>vLLM（批量推理）</td>
+</tr>
+<tr>
+<td>高并发 API 服务（&gt;10 QPS）</td>
+<td>vLLM + OpenAI 兼容 Server</td>
+</tr>
+<tr>
+<td>流式输出、长尾低延迟交互</td>
+<td>vLLM + <code>stream=True</code></td>
+</tr>
+<tr>
+<td>LoRA 热切换、多 adapter 推理</td>
+<td>vLLM（原生支持，HF 不支持动态切换）</td>
+</tr>
+</tbody>
+</table>
+<p>关于 Chat 模型的 batching</p>
+<p>如果你用的是 <strong>Qwen / LLaMA</strong> 等需要 tokenizer 的 chat 模型，正确用法是：</p>
+<div class="highlight"><pre><span></span><code><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">get_tokenizer</span><span class="p">()</span>
+<span class="n">prompts</span> <span class="o">=</span> <span class="p">[</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">apply_chat_template</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="n">tokenize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+           <span class="k">for</span> <span class="n">messages</span> <span class="ow">in</span> <span class="n">conversations</span><span class="p">]</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">prompts</span><span class="p">,</span> <span class="n">sampling_params</span><span class="p">)</span>
+</code></pre></div>
+<p>vLLM 的 Chat API 目前不支持批量（<code>/v1/chat/completions</code> 一次只接受一个 messages 列表），但 Completion API 支持将 prompt 字段传为字符串列表实现批量请求。</p>
+<hr />
+<h4 id="_41">四、面试话术（可以直接背）</h4>
+<blockquote>
+<p>“<code>model.generate</code> 做批量推理时是静态 batching，要等整个 batch 里最长的生成完成，填充计算浪费严重。而且它直接在 FastAPI 里调用会阻塞异步事件循环，高并发下就直接挂了。</p>
+<p>所以我改用 vLLM，把训练好的客服模型用 <code>LLM</code> 类加载，一次性把所有测试 query 丢进 <code>llm.generate()</code>。它内部用 continuous batching 动态调度：每步完成后立即把新请求补充进来，不用等整批结束。同时 PagedAttention 管理 KV Cache，显存利用率高得多。</p>
+<p>在我这个 5800 条的客服数据上，用 vLLM 批量生成偏好候选回答，速度比 <code>model.generate</code> 快了一个数量级，而且完全不用自己处理并发调度。”</p>
+</blockquote>
+<p>有这两句，面试官基本不会再追问了。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
