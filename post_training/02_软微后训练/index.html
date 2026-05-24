@@ -9410,36 +9410,13 @@ You are a helpful assistant.&lt;|im_end|&gt;
 在特定问题上，量子计算机有望实现指数级的加速。&lt;|im_end|&gt;
 </code></pre></div>
 <p>关键元素说明：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Token</th>
-<th style="text-align: left;">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>&lt;|im_start|&gt;</code></td>
-<td style="text-align: left;">消息开始标记（im = internal monologue）</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>&lt;|im_end|&gt;</code></td>
-<td style="text-align: left;">消息结束标记</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>system</code></td>
-<td style="text-align: left;">系统角色，设定模型行为和约束</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>user</code></td>
-<td style="text-align: left;">用户角色，提供指令或问题</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>assistant</code></td>
-<td style="text-align: left;">助手角色，模型的回复</td>
-</tr>
-</tbody>
-</table>
+<p>| Token       | 含义                         |
+| :---------- | :--------------------------- | --- | --------------------------------------- |
+| <code>&lt;          | im_start                     | &gt;</code>  | 消息开始标记（im = internal monologue） |
+| <code>&lt;          | im_end                       | &gt;</code>  | 消息结束标记                            |
+| <code>system</code>    | 系统角色，设定模型行为和约束 |
+| <code>user</code>      | 用户角色，提供指令或问题     |
+| <code>assistant</code> | 助手角色，模型的回复         |</p>
 <p>Qwen3 的思考模式在 ChatML 基础上增加了 <code>&lt;think&gt;...&lt;/think&gt;</code> 标签。在思考模式下，assistant 回复的开头是 <code>&lt;think&gt;</code> 标签包裹的内部推理，随后才是面向用户的最终回复。</p>
 <h5 id="llama">Llama 格式</h5>
 <p>Meta 的 Llama 系列使用不同的模板格式：</p>
@@ -15626,12 +15603,12 @@ p_i^T = \frac{\exp(z_i/T)}{\sum_j \exp(z_j/T)}
 <li>收集图片 + 问题</li>
 <li>让 VLM 生成多个回答</li>
 <li>用人工或自动工具标注哪些回答有幻觉（rejected）、哪些忠实于图像（chosen）</li>
-<li>在这些偏好对上做 DPO 训练：
-    $$
-    \mathcal{L}<em>{\text{VLM-DPO}} = - \mathbb{E} \left[ \log \sigma \left( \beta \log \frac{\pi</em>\theta(y_{\text{faithful}}|x,I)}{\pi_{\text{ref}}(y_{\text{faithful}}|x,I)} - \beta \log \frac{\pi_\theta(y_{\text{halluc}}|x,I)}{\pi_{\text{ref}}(y_{\text{halluc}}|x,I)} \right) \right]
-    $$
-    其中 <span class="arithmatex">\(I\)</span> 表示输入图像。</li>
+<li>在这些偏好对上做 DPO 训练：</li>
 </ol>
+<p>$$
+\mathcal{L}<em>{\text{VLM-DPO}} = - \mathbb{E} \left[ \log \sigma \left( \beta \log \frac{\pi</em>\theta(y_{\text{faithful}}|x,I)}{\pi_{\text{ref}}(y_{\text{faithful}}|x,I)} - \beta \log \frac{\pi_\theta(y_{\text{halluc}}|x,I)}{\pi_{\text{ref}}(y_{\text{halluc}}|x,I)} \right) \right]
+$$
+其中 <span class="arithmatex">\(I\)</span> 表示输入图像。</p>
 <blockquote>
 <p>LLaVA-RLHF 是首个将 RLHF 应用于 VLM 的工作，通过人类偏好数据训练奖励模型，有效降低了幻觉率。后续的 RLHF-V 和 RLAIF-V 进一步使用 AI 反馈替代人类反馈，降低标注成本。</p>
 </blockquote>

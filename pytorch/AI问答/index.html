@@ -5924,11 +5924,11 @@ H(P, Q) = - \log(Q(\text{狗}))
 <p>从统计学角度看：</p>
 <ul>
 <li><strong>似然 (Likelihood)</strong>：给定模型参数，观察到当前数据（真实标签）的概率。我们希望这个概率越大越好。
-  $$ L = Q(y_{true}) $$</li>
+  <span class="arithmatex">\(L = Q(y\_{true})\)</span></li>
 <li><strong>对数似然 (Log Likelihood)</strong>：为了方便计算（连乘变连加），取对数。
-  $$ \log(L) = \log(Q(y_{true})) $$</li>
+  <span class="arithmatex">\(\log(L) = \log(Q(y\_{true}))\)</span></li>
 <li><strong>负对数似然 (Negative Log Likelihood)</strong>：因为我们习惯<strong>最小化</strong>损失函数，而我们要<strong>最大化</strong>似然，所以加个负号。
-  $$ \text{NLL} = -\log(Q(y_{true})) $$</li>
+  <span class="arithmatex">\(\text{NLL} = -\log(Q(y\_{true}))\)</span></li>
 </ul>
 <p>你看，这和上面推导出的交叉熵结果一模一样。</p>
 <hr />
