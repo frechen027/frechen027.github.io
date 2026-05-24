@@ -14606,7 +14606,7 @@ R_{\text{total}} = R_{\text{correctness}} + R_{\text{format}} - \lambda \cdot \m
 <p>如果是 7B 模型（如 Qwen3-8B 的前身 Qwen2.5-7B），FP16 权重约 14 GB——在 16GB 的 T4 GPU 上几乎无法运行推理。</p>
 <p><strong>量化的核心思想</strong>：将模型权重从高精度（FP16/BF16，16 bit）压缩到低精度（INT8 为 8 bit，INT4 为 4 bit），从而将显存占用减少到原来的 1/2 甚至 1/4，同时尽可能保持模型质量。</p>
 <div class="arithmatex">\[
-\text{量化压缩比} = \frac{\text{目标精度位宽}}{\text{原始精度位宽}} = \frac{8}{16} = 2\times \text{ 或 } \frac{4}{16} = 4\times
+\text{量化压缩比} = \frac{\text{目标精度位宽}}{\text{原始精度位宽}} = \frac{16}{8} = 2\times \text{ 或 } \frac{4}{16} = 4\times
 \]</div>
 <h4 id="_105">数值精度基础</h4>
 <p>在深入量化方法之前，先回顾常见的数值精度格式：</p>
