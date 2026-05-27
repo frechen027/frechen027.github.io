@@ -5432,6 +5432,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_rlhfbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 rlhfbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -6438,7 +6466,7 @@
   <span class="md-ellipsis">
     
   
-    实用工具
+    八股
   
 
     
@@ -6451,6 +6479,88 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    八股
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bagu/01_github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 minimind
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -14107,21 +14217,29 @@ DeepSeek-R1 的完整训练流程包含四个阶段：</p>
 <p><strong>技术1：Clip-Higher</strong></p>
 <ul>
 <li><strong>问题</strong>：标准 PPO 的截断范围 <span class="arithmatex">\([1-\epsilon, 1+\epsilon]\)</span> 是对称的，但在 RLHF 场景中，抑制坏回复（比值下降）和强化好回复（比值上升）的需求不对称。</li>
-<li><strong>解决方案</strong>：使用不对称截断：
-    $$
-    \text{clip}(\rho_t, 1-\epsilon_{\text{low}}, 1+\epsilon_{\text{high}})
-    $$
-    其中 <span class="arithmatex">\(\epsilon_{\text{high}} &gt; \epsilon_{\text{low}}\)</span>，例如 <span class="arithmatex">\(\epsilon_{\text{low}}=0.2\)</span>，<span class="arithmatex">\(\epsilon_{\text{high}}=0.28\)</span>。</li>
-<li><strong>效果</strong>：给好回复更大的"上升空间"，防止策略过早收敛到低熵状态。</li>
+<li>
+<p><strong>解决方案</strong>：使用不对称截断：</p>
+<div class="arithmatex">\[
+\text{clip}(\rho_t, 1-\epsilon_{\text{low}}, 1+\epsilon_{\text{high}})
+\]</div>
+<p>其中 <span class="arithmatex">\(\epsilon_{\text{high}} &gt; \epsilon_{\text{low}}\)</span>，例如 <span class="arithmatex">\(\epsilon_{\text{low}}=0.2\)</span>，<span class="arithmatex">\(\epsilon_{\text{high}}=0.28\)</span>。</p>
+</li>
+<li>
+<p><strong>效果</strong>：给好回复更大的"上升空间"，防止策略过早收敛到低熵状态。</p>
+</li>
 </ul>
 <p><strong>技术2：动态采样（Dynamic Sampling）</strong></p>
 <ul>
-<li><strong>问题</strong>：当组内 <span class="arithmatex">\(G\)</span> 个回复全部正确或全部错误时：
-    $$
-    \text{std}({r_1, \ldots, r_G}) = 0 \implies \hat{A}_i = \frac{r_i - \mu}{0} \text{ (未定义)}
-    $$
-    通常设为 0，但这意味着浪费了该批次的计算。</li>
-<li><strong>解决方案</strong>：当组内方差为零时，重新采样或过滤掉该组，只保留有信息量的训练样本：</li>
+<li>
+<p><strong>问题</strong>：当组内 <span class="arithmatex">\(G\)</span> 个回复全部正确或全部错误时：</p>
+<div class="arithmatex">\[
+\text{std}(\{r_1, \ldots, r_G\}) = 0 \implies \hat{A}_i = \frac{r_i - \mu}{0} \text{ (未定义)}
+\]</div>
+<p>通常设为 0，但这意味着浪费了该批次的计算。</p>
+</li>
+<li>
+<p><strong>解决方案</strong>：当组内方差为零时，重新采样或过滤掉该组，只保留有信息量的训练样本：</p>
+</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">dynamic_sampling</span><span class="p">(</span><span class="n">rewards</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;过滤掉无信息量的组&quot;&quot;&quot;</span>
