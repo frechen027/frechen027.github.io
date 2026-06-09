@@ -23,7 +23,7 @@
     
     
       
-        <title>1 minimind - Python 修行指南</title>
+        <title>1 minimind - 橙世闲游</title>
       
     
     
@@ -80,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../.." title="Python 修行指南" class="md-header__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+    <a href="../.." title="橙世闲游" class="md-header__button md-logo" aria-label="橙世闲游" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -94,7 +94,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Python 修行指南
+            橙世闲游
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -178,13 +178,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Python 修行指南" class="md-nav__button md-logo" aria-label="Python 修行指南" data-md-component="logo">
+    <a href="../.." title="橙世闲游" class="md-nav__button md-logo" aria-label="橙世闲游" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Python 修行指南
+    橙世闲游
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -4145,6 +4145,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#minimindgrpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimind的GRPO及其变体
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4717,6 +4728,17 @@
     <span class="md-ellipsis">
       
         Minimind的PPO
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minimindgrpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimind的GRPO及其变体
       
     </span>
   </a>
@@ -6102,6 +6124,55 @@
 <li>获取Critic的每一个预测值，预测从这个Token开始直到句子结束，模型还能够获得多少奖励。</li>
 <li>计算Token级别的优势GAE</li>
 <li>Actor计算Token级别的Loss并更新，这里会用到比率以及PPO的Clip</li>
+</ul>
+</li>
+</ul>
+<h2 id="minimindgrpo">Minimind的GRPO及其变体</h2>
+<p>引言</p>
+<ul>
+<li>随着Agentic和Reasoning模型崛起，传统的PPO由于依赖庞大且难以训练的Critic模型，在极高现存开销和稀疏奖励评估难的问题上面临巨大瓶颈。</li>
+<li>GRPO横空出世，<strong>彻底移除了Critic模型</strong>，通过<strong>同prompt下的组内相对得分评估优势</strong>，不仅大幅降低了训练成本，更是在数学推理和代码生成等客观评判任务中展现出惊人的潜力。</li>
+<li>GRPO并非银弹，在长思维链和混合专家架构中，暴露了长度惩罚偏误、方差爆炸、探索能力衰退等局限性，衍生了一系列改进算法<ul>
+<li>Dr. GRPO：从数学底层修正了基线与长度偏差，防止模型“靠凑字数作弊”；</li>
+<li>DAPO：通过解耦裁剪释放了长文本的探索潜力，缓解策略坍塌；</li>
+<li>GSPO：将重要性采样提升至序列级，稳住了 MoE 架构极易崩溃的训练方差；</li>
+<li>SAPO：用温度控制的软门控机制榨干了每一次采样的梯度价值；</li>
+<li>GTPO：利用策略熵实现了无过程奖励模型下的精细化信用分配。</li>
+<li>此外，PRM（过程奖励模型）与 STaR（自学推理者）等机制的引入，更是补齐了复杂推理数据冷启动与步骤级验证的短板。</li>
+</ul>
+</li>
+</ul>
+<p>数据准备</p>
+<ul>
+<li>GRPO数据集和PPO完全一样</li>
+</ul>
+<p>GRPO流程详解</p>
+<ul>
+<li>GRPO核心输入与设置<ul>
+<li>输入提示词 (Prompt/Query, q)：来自训练数据集的用户问题或指令。</li>
+<li>策略模型 (Actor Model, <span class="arithmatex">\(π_θ\)</span>)：当前正在训练的大语言模型，负责生成回答。</li>
+<li>参考模型 (Reference Model, <span class="arithmatex">\(π_ref\)</span>)：策略模型在强化学习前的快照（通常是 SFT 阶段的模型），其参数在训练过程中被冻结，<strong>用于限制策略模型的更新幅度</strong>，防止模型“遗忘”原有能力。</li>
+<li>奖励模型 (Reward Model, RM) 或规则系统：用于对生成的回答进行打分。在代码或数学场景下，<strong>这也可以是一个基于规则的校验器</strong>（Rule-based Verifier）。</li>
+<li>采样组大小 (G)：一个超参数，表示针对同一个提示词q，<strong>策略模型需要生成的独立回答数量</strong>。</li>
+</ul>
+</li>
+<li>GRPO核心流程<ul>
+<li>GRPO核心思想是通过<strong>组内比较来确定哪些回答更好</strong>，而不是依赖一个全局的绝对基准。</li>
+<li>类似于推荐系统中的列表级排序，相对优劣比绝对分值更指导模型的进化。</li>
+<li>训练流程：<ul>
+<li>群体采样：给定一个提示词生成G个不用的输出</li>
+<li>奖励计算：奖励模型或规则验证器对G个输出进行评估，得到对应的<strong>绝对奖励分数</strong></li>
+<li>计算相对优势：对上面的一组绝对奖励进行标准化处理，计算每个输出的相对优势，优势大于0表示<strong>该回答在同组中表现高于平均水平，应当被鼓励</strong>，否则被抑制。</li>
+<li>计算KL散度惩罚：为了防止偏离参考模型太远，GRPO每个生成的Token级别计算直接的KL散度估计，并将其作为惩罚项加入。</li>
+<li>策略更新：模型通过最大化以下目标函数来更新参数，结合了截断机制和KL散度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>GRPO vs PPO流程的主要区别<ul>
+<li>PPO依赖于额外的Critic（价值模型）来预测绝对baseline，GRPO则巧妙剔除了这个庞大的组件</li>
+<li>由此GRPO直接砍掉了Critic模型，节省了一整个LLM的显存开销</li>
+<li>GRPO只需要做Actor的前向和反向传播，推理和寻来你速度更快</li>
 </ul>
 </li>
 </ul>
