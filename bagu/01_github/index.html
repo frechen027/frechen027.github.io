@@ -3975,6 +3975,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kv-cacheflashattention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最常见的大模型优化方法：从KV Cache到FlashAttention
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        混合专家模型（MoE）深度技术分析
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4095,6 +4117,28 @@
     <span class="md-ellipsis">
       
         强化学习概览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miniminddpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimind的DPO
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minimindppo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimind的PPO
       
     </span>
   </a>
@@ -4509,6 +4553,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kv-cacheflashattention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最常见的大模型优化方法：从KV Cache到FlashAttention
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        混合专家模型（MoE）深度技术分析
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4629,6 +4695,28 @@
     <span class="md-ellipsis">
       
         强化学习概览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miniminddpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimind的DPO
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minimindppo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimind的PPO
       
     </span>
   </a>
@@ -4986,9 +5074,451 @@
 <li>为什么NLP摒弃了Batch Normalization？<ul>
 <li>BN (批归一化)：在一个 mini-batch 内，对<strong>不同样本</strong>的<strong>同一特征维度</strong>进行归一化</li>
 <li>LN (层归一化)：在<strong>每个样本内部</strong>，对该样本的<strong>所有特征维度进行归一化</strong></li>
-<li>变长序列的处理难题：BN依赖 batch 内所有样本的统计量。然而，NLP任务中的序列<strong>长度差异巨大</strong>。对于短序列，其添加的 <code>[PAD]</code> 填充符会干扰BN的均值和方差统计，导致计算结果不准确，破坏归一化的效果。BN在推理时<strong>依赖于训练阶段积累的全局统计量</strong>。如果训练数据中预设了 max_len，那么<strong>推理时序列长度就不能超过它</strong>，这极大地限制了模型的灵活性。</li>
+<li>变长序列的处理难题：BN依赖 batch 内所有样本的统计量。然而，NLP任务中的序列<strong>长度差异巨大</strong>。对于短序列，其添加的 <code>[PAD]</code> 填充符会<strong>干扰BN的均值和方差统计</strong>，导致<strong>计算结果不准确</strong>(毕竟和一堆空数据进行归一化)，破坏归一化的效果。BN在推理时<strong>依赖于训练阶段积累的全局统计量</strong>。如果训练数据中预设了 max_len，那么<strong>推理时序列长度就不能超过它</strong>，这极大地限制了模型的灵活性。</li>
 <li>小批量不稳定：BN的效果<strong>高度依赖于 batch size 的大小</strong>，当 batch size 较小时（如小于8），<strong>统计量会很不稳定</strong>，导致模型性能急剧下降。而在LLM训练中，受限于显存，<strong>batch size 往往不大</strong>。</li>
 <li>跨样本统计的语义噪音：BN会将不同样本中“同一位置”（如所有句子的第一个词）的向量特征混在一起归一化。但这些词在<strong>语义上可能毫无关联</strong>（例如“苹果”vs“特朗普”），强行让它们的特征分布对齐，<strong>会给模型学习带来很大的噪声</strong>。BN 强制在 Batch 维度上进行统计，<strong>破坏了 Token 级特征的独立性</strong>。</li>
+</ul>
+</li>
+<li>不采用Batch Normalization，所以Layer Normalization应运而生。<ul>
+<li>LN沿着<strong>特征维度</strong>对单个样本进行归一化，使得其<strong>统计量的计算仅仅依赖于样本本身</strong>。</li>
+<li>这一特性使得LN称为处理变长序列数据和RNN/Transformer架构的天然选择。</li>
+</ul>
+</li>
+</ul>
+<p>标准归一化范式：Layer Normalization(LN)</p>
+<ul>
+<li>是Transformer的标准配置，也是后续所有变体的基础。</li>
+<li>对于特征维度为d的输入向量，LN计算包含两个步骤：标准化(Normalization)和仿射变换(Affine Transformation)<ul>
+<li>计算输入向量均值和方差</li>
+<li>用这两个统计量对输入进行<strong>标准化</strong>，坟墓上添加一个微小的常数，防止分母为0带来的数值不稳定</li>
+<li>最后，为了保证模型的表达能力，引入可学习的缩放参数和偏置参数，理论上可以还原出原本输入<ul>
+<li>初始阶段，通常缩放参数设置为1，偏置参数设置为0，使得初始状态LN近似只做标准化。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>性质？<ul>
+<li><strong>重中心化不变性</strong>：对于任意<span class="arithmatex">\(\delta\)</span>，都有 <span class="arithmatex">\(LN(\mathbf{x} + \delta) = LN(\mathbf{x})\)</span>。意味着<strong>模型对于输入数据的绝对偏移不敏感</strong>，有助于处理不同偏置的输入。其实不难理解，x维度数据整体偏移，均值变化，方差不变，标准化没影响。<ul>
+<li>实际意义：<strong>数据预处理中常见偏移、前一层偏置导致的输出数据整体偏移都会被消除</strong>，同样意味着反向传播时，梯度不会被极端的均值偏移所主导，更新更加稳定。</li>
+</ul>
+</li>
+<li><strong>重缩放不变性（Re-scaling Invariance）：</strong> 对于任意缩放因子 <span class="arithmatex">\(\lambda\)</span>，都有 <span class="arithmatex">\(LN(\lambda \mathbf{x}) = LN(\mathbf{x})\)</span>。这意味着权重矩阵的模长（Norm）不会影响输出值的幅度。在反向传播中，这一性质使得梯度的大小与权重的模长成反比，隐式地起到了一种类似于学习率衰减（Learning Rate Decay）的调节作用，防止权重无限增长。<ul>
+<li>实际意义：输入整体向量扩大十倍，模型对于输入整体幅度完全不敏感，就比如上一层是线性层<code>y = Wx</code>，如果<code>W</code>的模长很大，即整体权重矩阵很大，但一旦进行标准化，模场被压缩，因此后续层接受到的永远是尺度稳定的输入，<strong>避免了层间幅度的指数级爆炸或消失</strong>。</li>
+<li>隐式的学习率调整？方向传播会经过LN的缩放因子<span class="arithmatex">\(1/\delta\)</span>，<code>W</code>模长大，则<span class="arithmatex">\(1/\delta\)</span>小，所以<strong>权重变得很大时，梯度自动减小，阻止进一步放大</strong>。权重很小，梯度自动变大，鼓励权重增长。</li>
+</ul>
+</li>
+<li>尽管表现优异，但需要进行减法操作，引入额外计算开销和存储访问，基于此提出RMSNorm。</li>
+</ul>
+</li>
+</ul>
+<p>架构位置的演进：Post-Norm与Pre-Norm的博弈</p>
+<ul>
+<li>归一化层<strong>位置的选择直接决定模型的训练稳定性、收敛速度以及最终性能上限</strong>。</li>
+<li>Post-Norm：经典但脆弱的原始设计<ul>
+<li>最初论文以及BERT模型中，采用的是Post-Norm结构，即<strong>归一化层被放置在残差连接之后</strong>。</li>
+<li>Post-Norm的特性：<ul>
+<li>梯度爆炸/消失风险：反向传播时，每一层都会引入一个缩放因子<span class="arithmatex">\(1/\delta\)</span>，这些因子的<strong>连乘会导致整体梯度的指数级衰减或爆炸</strong>。Post-Norm结构中的梯度范数在靠近输出层时较大，而在靠近输入层时迅速衰减（梯度消失）或在某些初始化下剧烈震荡（梯度爆炸）。</li>
+<li>Warm-up的必要性：由于初始截断梯度极其不稳定，我们必须使用学习率预热（Warm-up）策略，<strong>即在训练初期使用极小的学习率，优化器稳定后再逐步增加</strong>。没有Warm-up，Post-Norm往往训练初期就会发散。</li>
+<li>性能上限：但由于这样<strong>严格的要求</strong>，每步都要求学生回到标准姿势，虽然过程痛苦且容易摔倒，但<strong>一旦练成，基本功更加扎实</strong>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Pre-Norm：现代大模型的稳定性基石<ul>
+<li>主流大模型转向了Pre-Norm结构，即<strong>归一化层被放置在子层的输入端，且位于残差分支内部</strong>。</li>
+<li>动力学特性分析：<ul>
+<li><strong>高速公路效应？</strong>，存在一条恒等传播路径，使得<strong>梯度可以不依赖于子层的表现而直接到达浅层</strong>。就类似于纯粹的残差，反向传播时，一部分梯度可以直接沿着这条主干路无损地传导，而<strong>不需要经过非线性化的归一层</strong>，使得训练超深网络成为可能。</li>
+<li>移除Warm-up：由于梯度稳定，可以采用更加激进的学习率策略，显著缩短训练初期“爬坡”时间。</li>
+<li><strong>“深层诅咒”</strong>？深层残差分支对于主干的贡献权重会被<strong>隐式缩小</strong>？<span class="arithmatex">\(1/L\)</span>，非常深的网络，深层网络可能已经退化为恒等映射，对于表征学习贡献微乎其微。</li>
+</ul>
+</li>
+<li>Pre‑Norm：紧急通道永远开放。你可以直接从楼顶跑到一楼，不经过任何工作间。即使所有工作间都关门（梯度为零），你也能轻松下楼。</li>
+<li>Post‑Norm：没有紧急通道。每下一层都必须经过一个旋转门（LayerNorm），如果你不走工作间，也得被旋转门卡一下。工作间一堵，下楼就难了。</li>
+</ul>
+</li>
+<li>大模型对于稳定性的极高要求，Pre-Norm已成为默认选择，为了弥补其性能和深层退化问题，其他方案应运而生。</li>
+</ul>
+<p>RMSNorm：极简主义的效率革命？</p>
+<ul>
+<li>Root Mean Square Normalization(RMSNorm)基于对LayerNorm的“去中心化”理念，成为LLaMA等的标准配置</li>
+<li>核心理念：去中心化的归一化<ul>
+<li>LayerNorm的成功<strong>主要归结于重缩放不变性</strong>，而非重中心化不变性。</li>
+<li><strong>强制中心化的收益微乎其微</strong>，但计算均值却引入了额外的操作，<strong>增加了时间复杂度</strong>。</li>
+</ul>
+</li>
+<li>RMSNorm的数学形式与变体<ul>
+<li>RMSNorm省略了均值计算，直接使用<strong>均方根（Root Mean Square）进行归一化</strong>。</li>
+<li>去掉了仿射变换中的偏置项，仅仅保留可学习的缩放参数</li>
+</ul>
+</li>
+<li>效率优势分析：内存带宽与计算的权衡<ul>
+<li>理论浮点运算次数上来看，减少微不足道，但在实际硬件上，RMSNorm带来了显著的速度提升</li>
+<li>差异的根源在于LN是带宽受限的操作<ul>
+<li>LN需要<strong>两次全向量扫描</strong>分别计算均值和方差(因为方差的计算还得依靠均值)，需要频繁从显存中读取数据并进行同步。</li>
+<li>RMSNorm只需要<strong>一次扫描计算平方和</strong>，显著降低了内存访问开销，在显存带宽通常是瓶颈的推理阶段，<strong>这种优化的收益被放大</strong></li>
+</ul>
+</li>
+<li>此外，RMSNorm间接性利于算子融合，在高性能推理框架中通常被深度优化，速度进一步提升。</li>
+</ul>
+</li>
+</ul>
+<p>DeepNorm：打破深度极限的缩放法则？</p>
+<ul>
+<li>Pre-Norm解决了基本的稳定性问题，但其深层退化问题限制了模型层数的进一步扩展。</li>
+<li>DeepNorm旨在结合Post-Norm的高性能和Pre-Norm的稳定性，构建超深的Transformer。</li>
+<li>理论核心：无论模型多深，每一步的模型更新量的期望值都可以被约束在一个常数范围内。</li>
+<li>本质上是一种改进的Post-Norm策略</li>
+<li>其实似乎好像也就是在Post-Norm基础上<strong>加了一个大于1的常数</strong>，用于<strong>放大残差主干路径的信号</strong>。</li>
+<li><strong>放大了主干公路，也就间接抑制了子层的输出的相对幅度</strong>，从而控制了梯度的方差，避免了梯度爆炸问题。</li>
+<li>DeepNorm成功严重依赖于特定的初始化规则，即相关参数的大小。</li>
+<li>总之，最后实验证明DeepNorm不仅解决了深层模型的训练收敛问题，还有效避免了Pre-Norm中的层级退化问题，使得深层参数能真正贡献于表征学习。</li>
+</ul>
+<p>驯服注意力机制：QK-Norm与熵坍塌</p>
+<ul>
+<li>模型规模进一步扩大，Attention模块引入了新的不稳定性来源——Attention Logits的数值爆炸。</li>
+<li>现象：注意力熵坍塌<ul>
+<li>Q*K结果数值会变得极大，达到很高的数量级</li>
+<li>巨大的Logits值会使得Softmax函数进入极端饱和区，<strong>所有数值都很大且彼此差异巨大</strong>。softmax所有数值都很大会导致梯度消失？<strong>即使所有logits都乘以同一个很大的数字，softmax的输出也会变成几乎one-hot</strong>，即某一个位置概率为1，其余为0，这种现象被称为<strong>注意力熵坍塌</strong>。梯度消失了。<strong>反向传播时，Attention 层几乎不更新，模型停止学习</strong>。你无法再通过调整 Q 和 K 来改变那个微小的“相对比例”，因为所有方向的导数都是 0。</li>
+<li>Softmax对于差值<strong>极其敏感</strong>。</li>
+</ul>
+</li>
+<li>解决方案：QK-Norm<ul>
+<li>计算点积之前，<strong>分别对于Query和Key向量进行归一化</strong>。</li>
+<li>可以采用LN或者其他归一化方式。</li>
+</ul>
+</li>
+<li>作用机制：<ul>
+<li>通过<strong>对于Q和K进行归一化</strong>，QK-Norm<strong>强制约束了两个向量的模长</strong>，这直接限制了Attention Logits的数值范围，<strong>防止其随深度或训练步数无限增长</strong>。</li>
+<li>允许模型使用更大的学习率，<strong>显著减少了训练过程中的Loss尖峰</strong>。</li>
+</ul>
+</li>
+<li>变体：QKV-Norm和Softmax Capping<ul>
+<li>对于V也进行归一化？</li>
+</ul>
+</li>
+</ul>
+<p>专用化变体：Sandwich-Norm和NormFormer</p>
+<ul>
+<li>生图模型在处理图像数据时会出现数值溢出，对于数值的敏感度远高于纯文本任务，提出三明治归一化，在Pre-Norm基础上，残差分支再额外套一层LN，也就相当于LN-Sublayer-LN这种结构。<ul>
+<li>通过对于残差信号二次归一化，严格限制每一层输入的数值分布，消除梯度爆炸和数值溢出风险</li>
+</ul>
+</li>
+<li>NormFormer：<strong>通过“过归一化”加速收敛</strong><ul>
+<li>更为激进的归一化策略，每一个Transformer层中插入三个归一化操作</li>
+<li>Pre-LN：标准的子层输入归一化</li>
+<li>Post-Attention LN：在Self-Attention输出后理解加一个LN</li>
+<li>Head-Scaling：对Attention的每个Head输出进行<strong>可学习的标量缩放</strong></li>
+<li>适度“过归一化”有助于优化器更快找到下降方向？尤其是训练的早期阶段。</li>
+</ul>
+</li>
+</ul>
+<h2 id="kv-cacheflashattention">最常见的大模型优化方法：从KV Cache到FlashAttention</h2>
+<p>本文基于Minimind所使用到的优化技术，对KV Cache、Attention变体（MQA/GQA）以及Falsh Attention进行梳理和总结。</p>
+<ul>
+<li>KV Cache是实现实时自回归生成的必要前提，但其引入的显存线性增长问题迫使架构设计从MHA转变</li>
+<li>Falsh-Attention通过算法层面的IO感知，打破传统注意力机制的二次方复杂度存储瓶颈</li>
+</ul>
+<p>自回归推理的物理约束与计算瓶颈</p>
+<ul>
+<li>基于Decoder-only架构的自回归生成模式，下一个Token的生成严格依赖于所有历史Token</li>
+<li>分为两个阶段：预填充阶段和解码阶段<ul>
+<li>预填充阶段所有Token并行计算，主要受限于GPU算力</li>
+<li>解码阶段是逐个生成Token阶段，每次需要加载全部模型权重并只进行一次前向计算，算术强度低，硬件性能受限于显存带宽。</li>
+<li><strong>内存墙</strong>是制约LLM推理速度的根本物理障碍</li>
+</ul>
+</li>
+<li>注意：解码时一个标记的注意力<strong>仅仅取决于其前面的标记</strong>，所以其实我们每次其实<strong>只计算新标记的注意力就好了</strong></li>
+</ul>
+<p>注意力机制的二次方困境</p>
+<ul>
+<li>计算 <span class="arithmatex">\(QK^T\)</span> 会生成一个 <span class="arithmatex">\(L \times L\)</span> 的注意力分数矩阵。<ul>
+<li><strong>时间复杂度</strong>：<span class="arithmatex">\(O(L^2)\)</span></li>
+<li><strong>空间复杂度</strong>：<span class="arithmatex">\(O(L^2)\)</span></li>
+</ul>
+</li>
+<li>随着上下文长度的增加，显存占用呈二次方爆炸式增长。</li>
+<li>传统方式需要频繁写入注意力矩阵并计算，频繁读写不仅耗时而且容易OOM</li>
+</ul>
+<p>KV Cache：自回归推理的基石</p>
+<ul>
+<li>键值缓存时推理中最基础的优化技术，目的是<strong>以空间换时间</strong>，消除自回归生成中的冗余计算</li>
+<li>通过缓存之前的键值对，我们可以专注于计算新token的注意力。</li>
+<li>为什么不缓存Q？<ul>
+<li>Q代表当前关注点，随着生成的推进而不断变化。</li>
+<li>Query向量在每一步都是全新的，必须重新计算</li>
+</ul>
+</li>
+<li>KV Cache避免了重复计算K/V，但也<strong>引入了巨大的显存开销</strong></li>
+<li>KV Cache的体积最终往往甚至会超过模型权重本身，<strong>成为限制并发量的主要瓶颈</strong>，催生了注意力架构的演进。</li>
+</ul>
+<p>注意力架构的演进：MHA、MQA与GQA</p>
+<ul>
+<li>为了缓解上述缓存压力，提出了一系列改进的注意力机制，本质是在模型表现力与显存效率寻找平衡点。</li>
+<li>MHA：<ul>
+<li>Multi-Head Attention (MHA)：多头注意力</li>
+<li>拥有<span class="arithmatex">\(H\)</span>个Query头，<span class="arithmatex">\(H\)</span>个Key头，和<span class="arithmatex">\(H\)</span>个Value头。</li>
+</ul>
+</li>
+<li>MQA：<ul>
+<li>Multi-Query Attention (MQA)：多查询注意力</li>
+<li>保留<span class="arithmatex">\(H\)</span>个Query头，但<strong>所有Query头共享同一个Key头和同一个Value头</strong>。</li>
+<li>KV Cache的<strong>大小直接缩小了H倍</strong>。如果模型有32个头，KV Cache仅为MHA的1/32。</li>
+<li>显存占用<strong>大大减少</strong>。</li>
+<li>精度损失：由于所有Query头只能在<strong>同一个Key-Value子空间中进行注意力检索</strong>，<strong>模型的表达能力受到限制，容易导致生成质量下降</strong>。</li>
+</ul>
+</li>
+<li>GQA：<ul>
+<li>Grouped-Query Attention (GQA)：分组查询注意力</li>
+<li>折中方案，目前LLM的标配。</li>
+<li>将Query头分成G个组（Group），每组包含H/G个Query头。每个组共享一个Key头和一个Value头。</li>
+<li><code>Query : Key : Value = H : G : G</code>。</li>
+<li>精度接近MHA，速度接近MQA</li>
+</ul>
+</li>
+<li>Minimind中实现GQA和MQA，会使用repeat_kv()函数来重复，在和Q进行相乘进行注意力计算</li>
+</ul>
+<p>Flash Attention：IO层面的优化</p>
+<ul>
+<li>GQA减少了KV Cache的存储量，但Flash Attention解决的是注意力计算过程中的<strong>数据传输效率问题</strong>，这是从GPU硬件特性出发的优化。</li>
+<li>GPU内存结构：<ul>
+<li>SRAM：速度极快、容量极小</li>
+<li>HBM：速度较慢、容量较大</li>
+</ul>
+</li>
+<li>标准Attention视线中，会<strong>频繁进行HBM读写</strong>占据大部分运算时间，而非矩阵乘法本身</li>
+<li>Flash Attention V1 &amp; V2核心原理<ul>
+<li>提出一种<strong>IO感知算法</strong>，通过<strong>分块和重计算技术</strong></li>
+<li>分块：通过将Q、K、V矩阵分成能放入SRAM的小块，在SRAM内部完成矩阵乘法、Softmax等操作<ul>
+<li>中间巨大的<span class="arithmatex">\(N*N\)</span>注意力矩阵从未完整写入HBM，直接在SRAM中被消耗</li>
+</ul>
+</li>
+<li>重计算：方向传播阶段，为了计算梯度，需要前向传播的注意力矩阵，Falsh Attention由于没有存储该矩阵，所以选择<strong>重新计算一遍</strong><ul>
+<li>虽然计算量增加，但减少了极慢的HBM访问，反而大幅缩短时间</li>
+</ul>
+</li>
+<li>V2的改进<ul>
+<li>进一步优化了并行策略，引入序列维度并行，同时调整了循环顺序，减少了写入HBM的同步开销</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Flash Decoding：推理专用的优化</p>
+<ul>
+<li>Flash Attention主要优化是<strong>训练和预填充阶段</strong>，生成阶段Decoding，<strong>由于Query长度通常为1，GPU利用率极低</strong>。</li>
+<li>Flash Decoding专门针对此场景：<ul>
+<li>Split-K：将长序列的KV Cache切分为多个块</li>
+<li>并行计算：启动多个CUDA并行计算Query和这些KV块的注意力分数</li>
+<li>规约Reduction：最后通过一个Reduce操作合并各个块的结果</li>
+<li>效果：充分利用GPU的SM核心，而不是让大部分空闲</li>
+</ul>
+</li>
+</ul>
+<p>关于显存的计算</p>
+<ul>
+<li>模型权重 + KV Cache + 激活值</li>
+<li>推理阶段激活值相对较小，主要由权重和KV Cache主导，长序列下KV Cache占主导</li>
+<li>显存的计算：<ul>
+<li>GQA为什么比MHA省显存？</li>
+<li>计算并发极限？需要计算装入模型权重后剩余可用显存，保守计算可能还要预留一些空间给上下文和激活值，再计算单个用户的KV开销，由此就能够得到最大batch size，也就是<strong>同时能够并发服务多少用户</strong>。</li>
+<li>分析长文本为什么生成慢？首先是KV Cache爆表，会爆显存。其次每次都需要搬运这些KV Cache进入计算核心，每生成一个字，GPU都要花费很多时间去“搬砖”。使用了Flash Decoding后切分分发计算，提高了<strong>读取</strong>和计算的并行度。</li>
+</ul>
+</li>
+</ul>
+<p>其他</p>
+<ul>
+<li>DeepSeek的Multi-Head Latent Attention (MLA) 。MLA 通过低秩矩阵分解技术，将 Key-Value 压缩为一个极小的 Latent Vector。压缩了每个头的内部的数据表示。</li>
+<li>PagedAttention用于解决物理显存碎片化问题，类似于操作系统的虚拟内存分页。</li>
+</ul>
+<p>通过GQA和Flash Attention，我们驯服了显存与计算的复杂度。但是传统架构依然<strong>每次推理都需要全员出动激活所有参数</strong>，这无疑也是一种巨大的算力浪费。下一张对准FFN层，剖析SwiGLU和Hybrid MoE的结合，探究Minimind只在需要时激活特定专家神经元。</p>
+<h2 id="moe">混合专家模型（MoE）深度技术分析</h2>
+<p>稀疏网络</p>
+<ul>
+<li>传统稠密模型架构中，每输入一个Token，<strong>网络中每一个参数都必须参与计算</strong></li>
+<li>为了打破“参数量即计算量”的线性约束，混合专家MoE架构应运而生。</li>
+<li>还是对于生物神经网络的仿生学思考，稀疏激活以及条件计算</li>
+<li>MoE实际上是一个<strong>极其复杂的系统工程</strong>，除了模型架构，更为重要的是工业级MoE模型在训练和部署中的各种训练和推理优化。</li>
+</ul>
+<p>MoE的核心理念与理论基础</p>
+<ul>
+<li>稀疏激活<ul>
+<li>稀疏激活是MoE架构和稠密模型最大的区别。</li>
+<li>稠密模型中，前馈神经网络FFN层是一个<strong>全局共享的巨大矩阵</strong>，处理<strong>所有</strong>输入数据。</li>
+<li>MoE架构中，FFN层被<strong>拆解</strong>为多个独立的子网络，<strong>称为专家</strong><ul>
+<li>对于任意输入向量（通常是Attention层经过LN后的向量），MoE层输出y不再是单一网络的映射，而是<strong>多个专家输出的加权和</strong>。</li>
+<li>加权通过<strong>门控网络或路由器得到输出向量</strong>，表示<strong>每个专家对于当前输入x的重要性加权</strong>。为了降低计算量，我们会强制该向量具有稀疏性，<strong>即大多数元素为0</strong>。</li>
+</ul>
+</li>
+<li>两个关键的参数度量维度<ul>
+<li>总参数量：模型包含的所有权重之和，表示<strong>总知识量</strong></li>
+<li>激活参数量：处理单个Token时<strong>实际参与计算的参数量</strong></li>
+</ul>
+</li>
+<li>DeepSeek-V3总参数量为671B，激活参数量为37B，稀疏比大约为5.5%</li>
+</ul>
+</li>
+<li>条件计算<ul>
+<li>条件计算只网络根据输入数据特性动态决定执行哪部分计算图的机制</li>
+<li>在MoE中，每个Token的计算路径时动态变化的，不同专家专精于不同领域知识</li>
+<li>尽管推理时只需要一小部分参数，但是MoE模型<strong>还是需要将所有参数加载到显存中</strong>。</li>
+</ul>
+</li>
+</ul>
+<p>基础组件详解：从SwiGLU到投影层</p>
+<ul>
+<li>现在MoE模型<strong>普遍采用SwiGLU作为专家网络的核心激活单元</strong>。</li>
+<li>注意上面的稀疏激活是选择特定专家，而<strong>这里的SwiGLU函数是在每个专家内部的组件</strong></li>
+<li>SwiGLU激活函数<ul>
+<li>激活函数扮演着神经元“开关”的角色。</li>
+<li>早期ReLU简单粗暴，解决了梯度消失问题</li>
+<li>随后的GeLU在BERT和GPT-2中引入概率思想</li>
+<li>MoE时代，SwiGLU成为新架构的首选</li>
+<li>SwiGLU的优越性：<ul>
+<li><strong>从“单行道”到“双车道”</strong>？</li>
+<li>传统模式ReLU那些：单行道 + 收费站<ul>
+<li>激活函数相当于收费站</li>
+<li>逻辑是：正数放行，负数拦截置为0</li>
+<li><strong>硬拦截导致信息的永久丢失，即神经元死亡</strong>，且无法根据上下文<strong>灵活调整</strong>通过的比例</li>
+</ul>
+</li>
+<li>SwiGLU模式：双车道 + 智能阀门<ul>
+<li>引入了GLU（门控线性单元）机制，将输入信号复制一份，分流到两条并行路径上</li>
+<li>实值路径和门控路径：一个负责<strong>搬运实际信息内容</strong>，一个负责<strong>计算一个0-1之间的阀门开度</strong></li>
+<li>如此，模型可以自己学习对于当前输入，应该保留某个特征的多少，而不是死板地一刀切</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数学定义与结构拆解<ul>
+<li>SwiGLU全称是Swish-Gated Linear Unit，是Swish激活函数与GLU门控结构的组合。</li>
+<li>Swish激活函数，“门”不是简单的Sigmoid函数<ul>
+<li>是一条平滑曲线，<strong>负半轴允许微小的负值存在</strong>，且函数光滑可导，使得<strong>深层网络的梯度传播极其顺畅</strong>。</li>
+</ul>
+</li>
+<li>计算过程：<span class="arithmatex">\(\text{FFN}_{\text{SwiGLU}}(x) = (\underbrace{\text{Swish}(x W_g)}_{\text{门控信号}} \odot \underbrace{(x W_u)}_{\text{内容信息}}) W_d\)</span><ul>
+<li><span class="arithmatex">\(x\)</span>：输入向量。</li>
+<li><span class="arithmatex">\(W_g\)</span> (Gate)：门控投影矩阵，<strong>负责计算“通过率”</strong>。</li>
+<li><span class="arithmatex">\(W_u\)</span> (Up)：<strong>升维</strong>投影矩阵，<strong>负责变换“内容”</strong>。</li>
+<li><span class="arithmatex">\(\odot\)</span>：逐元素乘法（Hadamard Product），即“门”与“内容”的结合。</li>
+<li><span class="arithmatex">\(W_d\)</span> (Down)：<strong>降维</strong>投影矩阵，<strong>负责将结果映射回原维度</strong>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>物理意义与性能优势<ul>
+<li>为什么这种复杂结构比简单的ReLU更好？</li>
+<li>仔细看上述公式，其实<strong>引入了x的二次方级别的高阶特征</strong>，由此能够<strong>捕捉到特征之间更加复杂的关系</strong>。</li>
+<li><strong>梯度的稳定性</strong>，激活函数本身包含x和Sigmoid的导数项，且处处光滑，保证了梯度信号的清晰传播。</li>
+</ul>
+</li>
+<li>工程权衡：2/3系数<ul>
+<li>SwiGLU相较于标准FFN多了<span class="arithmatex">\(W_{gate}\)</span>矩阵，相同隐藏层宽度下参数量和计算量会增长50%，因此为了恢复预算，我们需要<strong>缩减隐藏层宽度</strong>。</li>
+<li>不难计算得出隐藏层宽度需要被设置为标准宽度的2/3。</li>
+<li>标准Transformer中，隐藏层宽度h通常为输入维度的4倍，即<span class="arithmatex">\(4d\)</span>，因此Llama等模型中，SwiGLU宽度设定为<span class="arithmatex">\(\frac{8}{3}d\)</span>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>投影层的深层解析<ul>
+<li>投影层Projections三个向量</li>
+<li>Gate Projection和Up Projection负责将输入Token从模型维度映射到<strong>更高维度的中间特征空间</strong><ul>
+<li>Up Projection 提供了丰富的信息内容（Value）。</li>
+<li>Gate Projection 提供了选择信息的控制信号（Attention/Gating）。</li>
+<li>这种分离的设计允许模型<strong>独立地学习“内容”和“控制”</strong>，类似于LSTM中的门控逻辑，但在前馈网络中以<strong>并行方式实现高效计算</strong>。</li>
+</ul>
+</li>
+<li>Down Projection负责将高维的中间特征<strong>“压缩”回模型维度</strong><ul>
+<li>这一步不仅仅是降维，更是<strong>特征的融合</strong>（Aggregation）。经过<strong>门控筛选和非线性变换后的特征在这里被线性组合</strong>，<strong>形成该专家对Token的最终处理结果</strong>。</li>
+<li>在量化（Quantization）研究中发现，Down Projection <strong>对数值精度极为敏感</strong>，通常不能过度量化，而Up Projection 相对鲁棒。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>MoE架构形态的探索</p>
+<ul>
+<li>DeepSeekMoE：细粒度专家与知识解耦<ul>
+<li>传统MoE面临的两个核心问题：<strong>专家粒度过粗导致的知识混合</strong>以及<strong>路由坍缩导致的参数冗余</strong></li>
+<li>细粒度专家分割<ul>
+<li>增加专家数量，减小中间维度</li>
+<li>将大专家切碎为小专家，从而更加灵活地组合，增加了表达能力</li>
+</ul>
+</li>
+<li>共享专家从而进行知识解耦<ul>
+<li>传统MoE中，所有专家都需要通过<strong>路由竞争被激活</strong><ul>
+<li>每个专家都需要学习公共知识，重复存储，造成了参数冗余</li>
+</ul>
+</li>
+<li>DeepSeek将<strong>一部分专家固定为“共享专家”</strong>，总是被激活，不参与路由竞争<ul>
+<li>解放了路由专家，专注于捕获长尾知识或特定领域知识</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>路由机制：MoE的“大脑”</p>
+<ul>
+<li>专家网络是执行任务的“手脚”，路由器是<strong>指挥调度的“大脑”</strong></li>
+<li>Top-K路由机制<ul>
+<li>最经典的路由机制是基于Softmax的Top-K Gating。</li>
+<li>输入向量x与一组可学习的路由权重矩阵计算亲和度分数，表示输入x与每个专家的匹配程度</li>
+<li>Top-K截断：为了保持稀疏性，<strong>只保留分数最高的K个值，其余置为负无穷</strong></li>
+<li>Softmax归一化：也就得到了最终的门控权重，<strong>K个元素非0，且和为1</strong></li>
+</ul>
+</li>
+<li>负载均衡与辅助损失<ul>
+<li>专家坍缩问题<ul>
+<li>赢家通吃现象，初始化时，某些专家可能因随机噪声获得稍高的权重，<strong>导致更多数据被路由给它</strong>。</li>
+<li>该专家因此<strong>获得更多梯度更新，变得更强，进而吸引更多数据</strong>。最终，少数几个专家处理了所有数据，而<strong>其余专家处于“死亡”状态</strong>（Dead Experts），模型<strong>退化为一个小型的稠密模型</strong>，浪费了大量参数容量。</li>
+</ul>
+</li>
+<li>传统辅助损失<ul>
+<li>引入了负载均衡辅助损失</li>
+<li>强制要求接近于均匀分布，这虽然解决了坍缩问题，但也带来了副作用：<strong>模型被迫为了“均衡”而将Token路由给次优的专家</strong>，这种<strong>刚性约束</strong>损害了模型的主任务性能。</li>
+</ul>
+</li>
+<li>DeepSeek的创新：无辅助损失负载均衡（Auxiliary-Loss-Free）<ul>
+<li>使用偏置的方法，这个<span class="arithmatex">\(b_i\)</span>不参与梯度下降，而是通过一种类似PID控制的机制动态更新。</li>
+<li>专家过载就减小偏置降低重要性分数，反之拔高</li>
+<li>这种方法的精妙之处在于解耦：<ul>
+<li>权重<span class="arithmatex">\(W_r\)</span><strong>仅由主任务（Cross-Entropy Loss）优化</strong>，负责学习“哪个专家最适合处理这个Token”。</li>
+<li>偏置<span class="arithmatex">\(b_i\)</span><strong>仅由负载情况调整，负责“交通管制”</strong>。由于Aux Loss被移除，梯度的方向不再受制于人为的均衡目标。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>训练与工程优化</p>
+<ul>
+<li>MoE模型的训练难度远高于稠密模型，主要体现在<strong>分布式并行的通信开销</strong>、<strong>显存管理以及训练稳定性上</strong>。</li>
+<li>专家并行EP<ul>
+<li>当模型规模超过单个GPU显存时，必须使用并行技术。</li>
+<li>数据并行（DP）：复制模型，划分数据。对MoE不适用，因为MoE模型总参数太大，单卡放不下。</li>
+<li>张量并行（TP）：切分矩阵计算。适用于Attention层。</li>
+<li>专家并行（EP）：<strong>将不同的专家放置在不同的GPU上</strong>。例如，GPU 0持有专家1-64，GPU 1持有专家65-128。</li>
+<li>All-to-All通信挑战<ul>
+<li>Token分片到GPU 0和GPU 1</li>
+<li>各自Router计算：<strong>每个GPU上都有</strong>一个独立的Router副本，负责计算当前GPU上的Token该去往哪一个专家</li>
+<li>All-to-All dispatch：Router决定Token A要去专家5（在GPU 1上）。此时，GPU 0必须将Token A的数据发送给GPU 1。由于每个GPU都要向其他所有GPU发送数据，这构成了一个All-to-All通信模式。</li>
+<li>专家计算</li>
+<li>All-to-All combine：GPU 1上的专家5处理完Token A后，必须将结果发回GPU 0（Token A的原始位置），再次进行All-to-All通信。</li>
+<li>DS-V3通过优化CUDA内核并利用NVLink的高带宽，实现了通信与计算的重叠。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>混合精度训练：FP8的突破<ul>
+<li>DS-V3是首个大规模使用FP8（8位浮点数）进行预训练的开源模型</li>
+<li>FP8相比BF16/FP16：<ul>
+<li>显存占用减少50%。</li>
+<li>数据传输带宽需求减少50%。</li>
+<li>计算速度（Tensor Core）提升2倍（理论值）。</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -5517,6 +6047,64 @@
 当 <span class="arithmatex">\(A&lt;0\)</span> 时，它限制了概率比 <span class="arithmatex">\(r\)</span> 向下突破 <span class="arithmatex">\(1-\epsilon\)</span>，防止策略把坏动作的概率直接降到 0，保留了探索空间。</p>
 <p>而如果模型在错误的方向上更新（比如 <span class="arithmatex">\(A&lt;0\)</span> 时反而增大 <span class="arithmatex">\(r\)</span>），<span class="arithmatex">\(\min\)</span> 函数会故意不触发 Clip，直接暴露巨大的负收益，从而产生大梯度将模型强行拉回正确方向。这就是 PPO 既能保证训练稳定（Clip 保护），又能快速纠正错误（不 Clip 错误方向）的精妙之处。”</p>
 </blockquote>
+<h2 id="miniminddpo">Minimind的DPO</h2>
+<ul>
+<li>DPO数据由偏序对组成，chosen和rejected分别表示我们认为好的回答和坏的回答。<ul>
+<li>核心是告诉模型：在面对同样的输入时，回答A比回答B更好。</li>
+<li>chosen和rejected的<strong>用户输入必须完全一致</strong>。</li>
+<li>模型的回复是DPO算法主要学习差异的地方。</li>
+</ul>
+</li>
+</ul>
+<h2 id="minimindppo">Minimind的PPO</h2>
+<ul>
+<li>正式进入不使用监督学习方法，而使用强化学习方法来提升模型能力的范畴</li>
+<li>PPO数据格式与SFT数据格式相同，因为本来就可以从SFT模型获得，但<strong>assistant部分并不需要内容</strong><ul>
+<li>因为训练过程中<strong>完全由策略模型实时采样生成模型回答</strong></li>
+<li>训练过程中，模型会基于user的问题生成回答，而后由奖励函数/模型对回答打分，<strong>分数高的回答会被鼓励，增加策略概率</strong>，分数低的回答会被抑制，降低策略概率。</li>
+<li>上面这个打分、调整循环就是强化学习的核心。</li>
+</ul>
+</li>
+<li>四个模型<ul>
+<li>分为两组，分别是正在训练的模型和冻结参数的模型</li>
+<li>Actor Model：策略模型，可训练<ul>
+<li>初始化为SFT后的模型</li>
+<li>这就是我们最终想要得到的模型</li>
+<li>负责根据输入的prompt生成回答，训练过程中，参数不断更新，目的是使得生成的回答获得更高的奖励分数</li>
+</ul>
+</li>
+<li>Critic Model：评论家模型/价值模型，可训练<ul>
+<li>通常初始化自Reward Model或者SFT模型（将最后的输出层改为标量回归头）</li>
+<li>是一个<strong>价值函数估计器</strong>，接收当前输入（prompt+Actor生成的部分回答），预估当前状态未来能够获得多少总收益（Value）</li>
+<li>核心功能是用于<strong>计算优势函数</strong>，<strong>告诉Actor这一步是走得好于预期还是差于预期</strong>，从而指导Actor梯度更新方向。</li>
+</ul>
+</li>
+<li>Reward Model：奖励模型，<strong>冻结参数</strong><ul>
+<li>在此之前使用人类偏好数据训练出来的模型</li>
+<li>作为裁判，当Actor生成<strong>完整回答</strong>后，给回答生成一个分数，<strong>反映回答符合人类偏好的程度</strong>。</li>
+</ul>
+</li>
+<li>Reference Model：参考模型，<strong>冻结参数</strong><ul>
+<li>Actor Model在PPO训练之前的完全拷贝，即SFT模型</li>
+<li>用于计算KL散度，防止模型崩坏</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Minimind中的Critic模型<ul>
+<li>为每个Token计算出一个价值，但在实际训练中只使用了最后一个token的value<strong>代表整个回答的价值</strong>。</li>
+<li>标准的复杂PPO实现中，通常会利用完整value输出计算基于Token的广义优势估计GAE。</li>
+<li>但MiniMind代码为了极简，将整个过程视为了一步，所以<strong>只使用了最后一个Token的价值对齐</strong>。</li>
+</ul>
+</li>
+<li>标准PPO的Critic模型<ul>
+<li><strong>将奖励分配到每个Token</strong>，除了最后一个Token获取到Reward模型的分数，所有Token奖励都是KL散度惩罚。注意这一步是奖励模型。</li>
+<li>获取Critic的每一个预测值，预测从这个Token开始直到句子结束，模型还能够获得多少奖励。</li>
+<li>计算Token级别的优势GAE</li>
+<li>Actor计算Token级别的Loss并更新，这里会用到比率以及PPO的Clip</li>
+</ul>
+</li>
+</ul>
 
 
 
