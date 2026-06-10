@@ -9125,14 +9125,43 @@ state = None
 <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">temp</span><span class="p">):</span>               <span class="c1"># 隐式调用 bool() 做真值测试</span>
     <span class="o">...</span>
 </code></pre></div>
-<p><strong>真值测试规则</strong>：
-| 对象 | <code>bool()</code> 结果 | 在条件中视为 |
-|-----|--------------|------------|
-| <code>None</code> | <code>False</code> | 假 |
-| <code>0</code> | <code>False</code> | 假 |
-| <code>""</code> (空字符串) | <code>False</code> | 假 |
-| <code>[]</code> (空列表) | <code>False</code> | 假 |
-| 非空对象 | <code>True</code> | 真 |</p>
+<p><strong>真值测试规则</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th><code>bool()</code> 结果</th>
+<th>在条件中视为</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>None</code></td>
+<td><code>False</code></td>
+<td>假</td>
+</tr>
+<tr>
+<td><code>0</code></td>
+<td><code>False</code></td>
+<td>假</td>
+</tr>
+<tr>
+<td><code>""</code> (空字符串)</td>
+<td><code>False</code></td>
+<td>假</td>
+</tr>
+<tr>
+<td><code>[]</code> (空列表)</td>
+<td><code>False</code></td>
+<td>假</td>
+</tr>
+<tr>
+<td>非空对象</td>
+<td><code>True</code></td>
+<td>真</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h4 id="3">3. 对比演示</h4>
 <div class="highlight"><pre><span></span><code><span class="n">list1</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 非空节点</span>
