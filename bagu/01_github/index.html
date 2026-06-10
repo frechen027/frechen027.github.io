@@ -12,7 +12,7 @@
         <link rel="prev" href="../../references/13/">
       
       
-        <link rel="next" href="../../project/%E7%94%B5%E5%95%86%E5%AE%A2%E6%9C%8D/">
+        <link rel="next" href="../02_%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A/">
       
       
         
@@ -4165,6 +4165,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 技术报告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -6171,8 +6199,200 @@
 </li>
 <li>GRPO vs PPO流程的主要区别<ul>
 <li>PPO依赖于额外的Critic（价值模型）来预测绝对baseline，GRPO则巧妙剔除了这个庞大的组件</li>
-<li>由此GRPO直接砍掉了Critic模型，节省了一整个LLM的显存开销</li>
-<li>GRPO只需要做Actor的前向和反向传播，推理和寻来你速度更快</li>
+<li>由此GRPO直接砍掉了Critic模型，<strong>节省了一整个LLM的显存开销</strong></li>
+<li>GRPO<strong>只需要做Actor的前向和反向传播</strong>，推理和训练速度更快</li>
+</ul>
+</li>
+<li>训练代码主体<ul>
+<li>calculate_rewards函数：<ul>
+<li><strong>接收模型生成的回复</strong>，并计算出一个<strong>综合得分</strong>（Reward张量），告诉策略模型这次回答得有多好。</li>
+<li>Minimind主要拆解为两个主要流程：规则奖励以及模型打分奖励，而后进行加权融合</li>
+</ul>
+</li>
+<li>grpo_train_epoch函数，用于训练：<ul>
+<li>数据准备与Prompt Token化：从DataLoader中取出一个批次的用户提示词<ul>
+<li>使用<code>padding_size="left"</code>进行左填充保证右侧是对齐的。</li>
+</ul>
+</li>
+<li>策略模型生成回复（Rollout阶段）：纯生成阶段，不需要计算偷渡，对于B个问题，模型生成<code>B*G</code>个不同的回答</li>
+</ul>
+</li>
+<li>计算对数概率（Log Probabilities）：给定 token 序列，计算模型生成这些 token 的对数概率，也就是模型生成这些回复的<strong>自信程度</strong>。<ul>
+<li>计算当前策略生成这些字的概率需要开启梯度计算，因为这是我们需要优化的对象。</li>
+<li>计算参考模型，也就是未经过微调的老模型生成一模一样子的概率不需要计算梯度，只是作为锚点</li>
+<li>计算获得KL散度，防止模型走火入魔</li>
+</ul>
+</li>
+<li>奖励结算与相对优势计算：GRPO的灵魂<ul>
+<li>计算组内优势</li>
+</ul>
+</li>
+<li>计算KL散度</li>
+<li>计算最终Loss并反向传播</li>
+<li>优化器步进与日志更新</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>总结： grpo_train_epoch 就像是一个严谨的流水线：出题 (Prompt) -&gt; 答题 (Rollout) -&gt; 打分 (Reward) -&gt; 组内排名 (Advantage) -&gt; 分析得失 (Loss &amp; KL) -&gt; 自我反省并进步 (Backward &amp; Step)。</li>
+</ul>
+</li>
+</ul>
+<p>关于GRPO的一些讨论</p>
+<ul>
+<li>GRPO的核心流程与连坐机制<ul>
+<li>GRPO的基础流程非常直接：多生几个-&gt;算算平均分-&gt;谁在平均分之上就学谁</li>
+<li>十分适合结果导向的任务，只要结果对了，我们就可以通过对比，自动筛选出那些导致正确结果的推理步骤，不需要一个极其聪明而且昂贵的Critic模型来一步步指导。</li>
+<li>优势值的整句统一<ul>
+<li>标准GRPO中，优势通常不是逐个Token变化的，而是整句统一的，也就是不同位置的Token被分配的优势值完全一样。</li>
+</ul>
+</li>
+<li>信用分配难题<ul>
+<li>假设我写了 100 行代码，只错了一个变量名导致运行失败，会给这 100 行代码全部打低分（负优势）。<strong>那模型岂不是把前面 99 行正确的逻辑也“冤枉”了</strong>？</li>
+</ul>
+</li>
+<li>GRPO的解法：采样与统计平均<ul>
+<li>回答 1 (失败)：前面逻辑对，第 99 步错了 → 全体负分</li>
+<li>回答 2 (成功)：前面逻辑对，第 99 步也对 → 全体正分</li>
+<li>回答 3 (失败)：第一步就错了 → 全体负分</li>
+<li>对于“前面的正确逻辑”：<strong>它在“回答 1”中被惩罚，但在“回答 2”中被奖励</strong>。如果采样的<strong>样本够多</strong>，只要它是<strong>导致成功的必要条件，它总会更有可能出现在高分样本中</strong>。平均下来，它的<strong>概率会被推高</strong>。</li>
+<li>对于“第 99 步的错误”：它主要出现在负分样本中，所以会被抑制。</li>
+</ul>
+</li>
+<li>结论： GRPO 虽然<strong>单次看是“连坐”（一人犯错，全句受罚）</strong>，但<strong>通过大量数据的统计</strong>，模型<strong>最终能学会区分“哪些 Token 是真正导致成功的关键”</strong>。</li>
+</ul>
+</li>
+<li>为什么Agentic RL这么爱GRPO<ul>
+<li>GRPO vs. PPO：为了去肥与摆脱Critic</li>
+<li>GRPO vs. DPO：为了“探索”与“无中生有”<ul>
+<li>DPO：需要预先准备好成对的数据（好回答 vs 坏回答）。<strong>模型只是在学习“模仿好的，远离坏的”，无法让模型学会它没见过的东西</strong>。</li>
+<li>GRPO：典型的<strong>在线强化学习</strong>。模型在训练过程中<strong>不断尝试</strong>（Sample），一旦它偶然做对了一次（Aha Moment），奖励函数就会给予高分，模型就会强化这条路径。非常适合结合 Rule-based Reward（规则奖励）。在代码场景中，我们可以定义详细规则（通过编译 0.2 分，测试用例过半 0.5 分，全对 1.0 分）。<strong>GRPO 会在一组生成中，自动分析哪些特征导致了更高分数，精细化优化策略</strong>，也就是<strong>具备处理部分正确的能力</strong>。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>GRPO的一些改进算法：</p>
+<ul>
+<li>Dr. GRPO：修正 GRPO 的内在优化偏差 (GRPO Done Right)<ul>
+<li>面试考点：为什么标准 GRPO 会导致模型越回答越长（尤其是答错的时候）？如何修正？</li>
+<li>痛点分析：标准GRPO的数学偏差<ul>
+<li>基线偏差：计算相对优势时，选取均值作为baseline，实际包含了当前这一条</li>
+<li>相应长度偏差：对于正确答案，优势为正，模型会觉得用更少的字拿到同样的正向优势更加划算，这在<strong>无意中过度惩罚了正确思维链的长度</strong>，抑制了模型进行长程探索和深度思考的能力。对于错误答案，除以长度会<strong>稀释负面惩罚</strong>，模型很快会发现一个漏洞：<strong>“只要我回答错误，我就尽可能瞎扯得很长，这样每个 Token 分摊到的惩罚系数就变小了”。</strong>这就是为什么很多使用原生 GRPO 训练的模型在遇到难题时，会陷入“无限复读”或输出极长且无意义废话的根本原因。</li>
+</ul>
+</li>
+<li>核心改进：<ul>
+<li>无偏优势估计、剔除不合理的长度除法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DAPO：Decoupled Clip and Dynamic sAmpling Policy Optimization<ul>
+<li>GRPO在实际进行 Long-CoT（长思维链）训练时，暴露出以下几个致命痛点：<ul>
+<li><strong>优势为零</strong>时的算力浪费（无效采样），全错或者全对</li>
+<li>熵坍塌与探索能力受限（对称裁剪问题），由于上限被死死卡在1.2，模型对这个好方向的鼓励被<strong>过早截断</strong>（Capped early）。这会导致模型倾向于只输出安全、重复的废话，<strong>系统多样性丧失，发生熵坍塌</strong>（Entropy Collapse）。</li>
+<li>长度偏置（样本级 Loss 的天然缺陷），原生的 GRPO 计算 Loss 是在<strong>样本级别</strong>（Sample-level）。它先计算每个回复序列内部所有 Token 的平均 Loss，然后再把<strong>多个样本的 Loss 平均</strong>。这就导致了一个严重问题：一条包含 1000 个 Token 的高质量长推理，和一条只有 10 个 Token 的短回复，在<strong>全局梯度更新时的权重是一样的</strong>。这<strong>变相惩罚了模型去进行复杂的长推理</strong>。</li>
+<li>截断带来的奖励噪声（Reward Noise），训练时为了防止 OOM，<strong>通常会设置最大生成长度。如果模型还没输出完就被强行截断</strong>，规则奖励系统（Rule-based RM）通常会直接给低分。但模型<strong>无法区分“我是因为逻辑错了被扣分”还是“我是因为话没说完被扣分”，这引入了巨大的噪声</strong>。</li>
+</ul>
+</li>
+<li>核心改进：<ul>
+<li>Dynamic Sampling（动态采样）—— 解决算力浪费，在生成数据后，DAPO 会动态检查这一组数据的奖励标准差。如果std=0（全对或全错，没有相对优势），直接<strong>丢弃（Skip）</strong>这组数据，不参与计算。确保每次反向传播都在<strong>做有效更新</strong>。</li>
+<li>Clip-Higher（解耦的非对称裁剪）—— 解决熵坍塌，既然好 Token 的概率上升空间被限制，DAPO 提出了非对称裁剪（Asymmetric Clipping），<strong>解耦了上下限</strong>。</li>
+<li>Token-Level Policy Gradient Loss（Token 级损失）—— 解决长度偏置，DAPO 将 GRPO 的样本级归一化改成了 Token 级归一化。它<strong>不再先求单条样本的均值，而是把 Batch 内所有样本的所有 Token 拉平</strong>，直接在这个巨大的 Token 集合上计算策略梯度 Loss。长度越长、思考越深入的高质量回答，<strong>在 Loss 中占据的权重就越大，从底层逻辑上鼓励模型在必要时进行 Long-CoT 推理</strong>。</li>
+<li>Overlong Filtering &amp; Shaping（超长过滤与软惩罚）—— 解决截断噪声。<ul>
+<li>过滤（Filtering）： 如果一条数据是因为<strong>达到最大长度被截断的</strong>，DAPO 会在计算 Loss 时<strong>直接 Mask 掉</strong>它，<strong>避免模型学到错误的截断逻辑</strong>。</li>
+<li>软惩罚（Soft Overlong Punishment）： 为了<strong>防止模型为了水字数而无限循环（比如像死循环一样的无意义重复思考），DAPO 引入了长度感知惩罚</strong>。如果回复过长，<strong>会在原本的奖励基础上扣除一个随长度增长的惩罚值</strong>。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>GSPO：序列级组相对策略优化 (Group Sequence Policy Optimization)<ul>
+<li>虽然 GRPO 去掉了 Critic 模型，极大降低了显存开销，但在面对超长逻辑推理（Long-CoT）和超大规模的混合专家模型（MoE）时，它暴露出一个底层设计上的致命缺陷：<strong>Token 级的优化与 Sequence 级的奖励不匹配</strong>。<ul>
+<li><strong>Token 级重要性采样带来的“高方差与梯度爆炸”</strong> GRPO 在计算新旧策略的差异时，是计算每一个 Token 的概率比（Importance Ratio）。但在强化学习中，一个 Token 在一次生成中只被采样一次。在长达几千字的长思考序列中，个别极其生僻或概率波动极大的 Token 会导致整个<strong>重要性采样的乘积剧烈震荡</strong>。这种高方差的噪声很容易<strong>导致梯度不稳定，甚至训练直接崩溃</strong>。</li>
+<li>奖励与优化的粒度错位（Mismatch） 我们在训练推理模型时，奖励（Reward）通常是给整个句子的（比如：这道数学题最终做对了得 1 分，做错了得 0 分）。这是一个 Sequence-level（序列级） 的信号。但是，GRPO 却把这个宏观的奖励，<strong>强行分配给每一个 Token，并在 Token-level（Token 级） 上进行裁剪和优化</strong>。</li>
+<li>MoE 架构下的路由崩溃（Routing Drift） 在训练大规模 MoE 模型（如 DeepSeek-V3 或 Qwen 系列）时，由于 GRPO Token 级的<strong>梯度噪声太大</strong>，会<strong>导致 MoE 的路由网络（Router）在每次更新后发生剧烈偏移</strong>。为了防止专家负载不均衡或模型崩盘，GRPO 往往需要<strong>引入非常复杂且极其消耗算力的工程 Hack 手段</strong>，比如 Routing Replay（路由重放），这让训练成本再次飙升。</li>
+<li><strong>对工程框架的精度极度敏感</strong> 因为 GRPO <strong>优化到 Token 级别</strong>，训练引擎（如 Megatron）和推理引擎（如 vLLM）在底层浮点数计算上的<strong>微小精度差异</strong>，都会在长序列中<strong>被无限放大</strong>，导致<strong>新旧策略概率比（Logprob ratio）计算失准</strong>。</li>
+</ul>
+</li>
+<li>核心改进<ul>
+<li>1.序列级概率比与长度归一化（Sequence-Level Likelihood Ratio）<ul>
+<li>GSPO 不再挨个计算 Token 的概率比，而是<strong>直接计算整个回答序列在新旧策略下的似然比</strong>。</li>
+<li>为了防止长序列导致这个比值呈指数级爆炸或趋于零，GSPO 极其巧妙地<strong>引入了长度归一化（取几何平均）</strong>。</li>
+<li>彻底<strong>消除了单个 Token 带来的剧烈方差噪声</strong>，让<strong>重要性采样变得极其平滑和稳定</strong>。</li>
+</ul>
+</li>
+<li>2.序列级裁剪（Sequence-Level Clipping）<ul>
+<li>对序列权重而非裁剪单个Token的概率比，完美对齐了“序列级奖励”和“序列级优化”。模型不再因为某几个异常 Token 而被过度惩罚或鼓励，整体逻辑链条的连贯性得到了更好的保护。</li>
+</ul>
+</li>
+<li>3.原生稳定的 MoE 训练（抛弃 Routing Replay）<ul>
+<li>得益于序列级更新带来的极低方差和极高稳定性，GSPO 的梯度信号变得非常清晰。使用 GSPO 训练庞大的 MoE 模型时，<strong>路由网络不再发生剧烈漂移</strong>。因此，可以完全废弃掉昂贵的 Routing Replay 机制，模型依然能稳定收敛，大幅提升了训练吞吐量。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SAPO：平滑软优势策略优化 (Soft Advantage Policy Optimization)<ul>
+<li>SAPO 解决的核心痛点之一，恰恰是在给带有复杂路由的 MoE 模型做 RL 时极易引发的崩溃问题。</li>
+<li>痛点分析：<strong>硬截断的资源浪费</strong>，某个极具创造性的 Token 概率翻倍了（比如<span class="arithmatex">\(r_t=2.0\)</span>），<strong>超出了1.2的上限</strong>，GRPO 会直接把它的<strong>梯度抹零</strong>。这意味着模型不仅没有被鼓励，反而<strong>白白浪费了一次宝贵的探索</strong>。在动辄几千 Token 的推理链中，大量的有效梯度因为“出界”而<strong>被直接丢弃，导致样本效率极低</strong>。在包含海量专家的 MoE 模型中，新旧模型哪怕只发生了一点点路由变化（Routing Heterogeneity），同一个 Token 的输出概率也可能产生天壤之别，导致概率比<span class="arithmatex">\(r_t\)</span>极不稳定。裁剪区间太窄或太宽都不太行，GSPO 为了解决这个问题，<strong>把粒度提升到了“序列级”</strong>。但 GSPO 也有副作用——如果一个几千字的优秀推理序列里只混进了几个极其离谱的错误 Token，<strong>GSPO 会把整条序列的梯度都压制掉，这属于“连坐惩罚”</strong>。</li>
+<li>核心改进<ul>
+<li>1.温度控制的软门控机制（Soft Gate Function），SAPO 用一个基于 Sigmoid 的<strong>连续动态门控函数替换了 GRPO 那个带棱角的 Clip 截断</strong>。永远不会一刀切变成0。</li>
+<li>2.<strong>非对称温度调节</strong>（Asymmetric Temperature）。在 RL 训练中，“鼓励好行为”和“惩罚坏行为”的<strong>风险是不一样的</strong>，优势为负时，在庞大的词表中，压低一个 Token，往往意味着<strong>其他成千上万个垃圾 Token 的 Logits 会被动上升</strong>，这极其容易引发模型输出乱码或退化。赋予了负优势更高的温度（更陡峭的衰减）。也就是说，在惩罚坏 Token 时，SAPO 的态度<strong>更加保守和谨慎</strong>，<strong>防止因为惩罚力度过大而把其他无关的词表概率搞崩</strong>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>GTPO：组 Token 级策略优化 (Group Token Policy Optimization)<ul>
+<li>面试考点：没有过程奖励（PRM），<strong>如何在极长的思考过程中进行精准的信用分配</strong>？</li>
+<li>痛点分析：GRPO 本质上是基于结果的（Outcome-based），即常说的 ORM（Outcome Reward Model）。这就导致了一个“连坐”问题：模型写了 1000 字的思维链（CoT），最后答案蒙对了，GRPO 就会把这 1000 个字统一赋予正向 Advantage。<strong>但实际上，这 1000 字里可能包含了一段完全错误的逻辑</strong>。这就是<strong>经典的“稀疏信用分配”难题</strong>。</li>
+<li>核心改进：<strong>动态熵权重</strong><ul>
+<li>1.将“策略熵（Policy Entropy）”作为重要性探针，GTPO 提出了一个极其聪明且直觉的假设：在正确的推理序列中，<strong>模型表现出高熵（高不确定性、在多个选项中纠结）的位置</strong>，往往就是推理链条中<strong>最关键的“决策点（Decision Points）”或认知努力最大的地方</strong>。</li>
+<li>2.Token 级的动态奖励再分配，GTPO 不再把全局优势平均分给所有 Token，会根据内部熵计算动态权重，<strong>彻底打破了平均主义</strong>！如果模型最终答对了题，那么在生成过程中那些<strong>让模型“绞尽脑汁、高度不确定”的关键 Token，会分到最大比例的奖励</strong>；而那些<strong>水到渠成、闭着眼睛都能生成的低熵 Token，只分到很小的奖励</strong>。</li>
+<li>3.负向序列的防崩溃机制，对于回答错误的序列（负面奖励），GTPO 的<strong>处理非常谨慎</strong>。因为错误可能是由某一个致命的“愚蠢决定”导致的，但<strong>高熵并不一定代表那个致命错误发生的位置</strong>。因此，在处理负向 Advantage 时，GTPO 通常会回退到更平缓的分配方式，或者结合我们上文提到的 SAPO 类似的软截断，防止误伤无辜 Token。</li>
+<li>4.“白嫖”的伪过程奖励，GTPO 最惊艳的一点在于，<strong>策略熵（Logits 的分布情况）是模型在 Forward（前向传播）生成文本时天然就会计算出来的副产物</strong>。GTPO <strong>巧妙地“白嫖”了这个内部信号</strong>，完全不需要引入外部的 PRM 网络，就<strong>实现了类似过程奖励的效果</strong>，极大地提升了样本利用率和上限（Ceiling）。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>PRM：过程奖励模型 (Process Reward Model)</p>
+<ul>
+<li>面试考点：为什么解数学题和写代码，PRM 比 ORM 更重要？<ul>
+<li>虽然前文提到的算法都在试图弥补只看结果的缺陷，但在<strong>攻克极度复杂的数学定理证明或大型工程代码时，PRM（过程奖励模型） 依然是不可逾越的护城河</strong>（如 DeepSeek-Math 的成功就高度依赖 PRM）。</li>
+</ul>
+</li>
+<li>ORM vs PRM<ul>
+<li>ORM (Outcome Reward Model)：<strong>只看最终结果</strong>。优点是数据好获取（比如代码是否通过测试用例），缺点是<strong>反馈极其稀疏</strong>，模型不知道中间哪一步走错了。</li>
+<li>PRM (Process Reward Model)：<strong>看过程</strong>。优点是数据量大（比如代码生成过程中，每个步骤的输出结果），缺点是<strong>反馈不那么及时</strong>。</li>
+</ul>
+</li>
+<li>PRM 的价值与挑战<ul>
+<li>在基于 PPO 或 GRPO 的架构中挂载 PRM 后，模型在生成推理轨迹时，可以<strong>获得密集的正负反馈</strong>。如果第 3 步算错了，PRM 立即给负分，<strong>后续生成的优势值 A 就会被切断</strong>，逼迫模型学习正确的中间逻辑。 难点：<strong>PRM 的标注成本极其高昂</strong>。目前主流的做法是结合<strong>蒙特卡洛树搜索（MCTS）</strong>自动生成大量的逻辑分支，或者<strong>利用基于规则的验证器（代码编译器、符号学工具）来自动化构建 PRM 的训练数据</strong>。</li>
+</ul>
+</li>
+</ul>
+<p>STaR：自学推理者 (Self-Taught Reasoner)</p>
+<ul>
+<li>面试考点：什么是大模型的“左脚踩右脚”起飞？（推理数据的冷启动机制）<ul>
+<li>在聊完 RL 算法后，必须了解一个前置概念：STaR。它虽然不是严格意义上的 RL 策略梯度算法，但<strong>它是目前所有推理模型（包括 OpenAI o1, DeepSeek-R1 早期冷启动）生成高质量训练数据的核心思想</strong>。</li>
+</ul>
+</li>
+<li>运行逻辑<ul>
+<li>假设我们只有问题和最终答案（只有题干和选项），没有中间的推导过程。STaR 提出了一个极具优雅的 Bootstrapping（自举）循环：<ul>
+<li>生成 (Generate)：让当前语言模型针对问题生成思维链（Rationale）和答案。</li>
+<li>过滤 (Filter)：比对最终答案。<strong>把做对的那些样本（连同它的思维链）直接加入到微调数据集中。</strong></li>
+<li>合理化补充 (Rationalization)：对于做错的问题，<strong>把正确的答案直接告诉模型（作为 Hint），命令模型：“答案是 X，请你倒推并写出为什么是 X 的思维链”。如果这次推导逻辑通顺，也将其加入数据集。</strong></li>
+<li>微调 (Fine-tune)：使用<strong>这批自己生成的、包含正确逻辑的高质量数据对模型进行 SFT（监督微调）。</strong></li>
+<li>循环：拿着变聪明的模型，重新回到第 1 步。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>STaR 在 RL 体系中的地位<ul>
+<li>强化学习（GRPO/PPO）需要模型<strong>本身具备一定的基础概率去命中正确答案</strong>，否则就<strong>会陷入“永远得不到正奖励”的死循环</strong>。STaR 通过“生成-过滤-反思”机制，用<strong>极低的成本为大模型注入了初始的 CoT（思维链）能力</strong>，为后续接入 GRPO 算法进行无止境的上限探索铺平了道路。</li>
 </ul>
 </li>
 </ul>
