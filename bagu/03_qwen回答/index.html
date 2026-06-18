@@ -4776,7 +4776,7 @@
 <li>自回归生成时，每生成一个新token需要用到之前所有token的Key和Value</li>
 <li>不缓存：每步都要重新计算所有token的K、V，复杂度O(n²)</li>
 <li>缓存：只计算新token的Q、K、V，与缓存的K、V做attention，复杂度O(n)</li>
-<li>内存占用：<span class="arithmatex">\(2 \times n_{layers} \times n_{heads} \times d_{head} \times seq\_len \times batch\_size \times \text{dtype\_size}\)</span></li>
+<li>内存占用：<span class="arithmatex">\(2 \times n_{layers} \times n_{heads} \times d_{head} \times seq\_len \times batch\_size \times dtype\_size\)</span></li>
 <li>优化方向：<ul>
 <li>MQA/GQA：减少KV head数量</li>
 <li>量化KV Cache：FP16→INT8/INT4</li>
