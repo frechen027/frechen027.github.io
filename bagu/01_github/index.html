@@ -4807,6 +4807,78 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#grpoloss0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        grpo训练最开始的时候为什么loss会是0
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="grpo训练最开始的时候为什么loss会是0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-r_t-1-policy-loss-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 核心原因一：概率比 \(r_t = 1\)，导致 Policy Loss 期望为 0
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-kl-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 核心原因二：KL 散度项严格为 0
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-loss-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 面试高分避坑指南：Loss 为 0，那模型怎么更新？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 工程实现中的细节补充
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-loss-0-bug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 什么时候 Loss 为 0 是 Bug？
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6097,6 +6169,78 @@
     <span class="md-ellipsis">
       
         4. 延伸思考：为什么现在的主流大模型（Llama/Qwen）不用 DeepNorm？
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grpoloss0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        grpo训练最开始的时候为什么loss会是0
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="grpo训练最开始的时候为什么loss会是0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-r_t-1-policy-loss-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 核心原因一：概率比 \(r_t = 1\)，导致 Policy Loss 期望为 0
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-kl-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 核心原因二：KL 散度项严格为 0
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-loss-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 面试高分避坑指南：Loss 为 0，那模型怎么更新？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 工程实现中的细节补充
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-loss-0-bug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 什么时候 Loss 为 0 是 Bug？
       
     </span>
   </a>
@@ -8288,6 +8432,76 @@ $<span class="arithmatex">\(x_{l+1} = \text{LayerNorm}(\alpha \cdot x_l + \text{
 <li><strong>MoE（混合专家）架构的兴起</strong>：现在提升模型容量主要靠增加 MoE 的专家数量，而不是单纯增加 Transformer 的层数（深度）。既然不需要训 1000 层，DeepNorm 解决“超深网络”痛点的核心价值就用不上了。</li>
 </ol>
 <p><strong>总结</strong>：DeepNorm 是一项极其优雅的<strong>理论突破</strong>，它解决了 Transformer 深度扩展的极限问题；但在当前的<strong>工程实践</strong>中，由于模型深度需求未达极限且追求极致效率，Pre-LN (RMSNorm) 依然是性价比最高的选择。</p>
+<h3 id="grpoloss0">grpo训练最开始的时候为什么loss会是0</h3>
+<p>在GRPO（以及PPO等基于策略梯度的RL算法）训练的<strong>绝对第一步</strong>，Loss 显示为 0（或者极其接近 0 的浮点数，如 <code>1e-8</code>）是<strong>完全正常且符合数学预期</strong>的现象。</p>
+<p>要理解这个问题，我们需要把 GRPO 的 Loss 公式拆开，看看在“第一步”这个特殊时间节点，公式里的每一项到底变成了什么。</p>
+<hr />
+<h4 id="1-r_t-1-policy-loss-0">1. 核心原因一：概率比 <span class="arithmatex">\(r_t = 1\)</span>，导致 Policy Loss 期望为 0</h4>
+<p>GRPO 的核心 Policy Loss（基于 PPO 的 clip surrogate loss）公式如下：
+$$ \mathcal{L}_{policy} = - \mathbb{E} \left[ \min\left( r_t \hat{A}_t, \text{clip}(r_t, 1-\epsilon, 1+\epsilon)\hat{A}_t \right) \right] $$</p>
+<p>其中，概率比 <span class="arithmatex">\(r_t = \frac{\pi_\theta(a_t|s_t)}{\pi_{old}(a_t|s_t)}\)</span>。</p>
+<p><strong>在训练的最开始（第一步）：</strong></p>
+<ul>
+<li><span class="arithmatex">\(\pi_{old}\)</span> 是用于采样数据的策略。</li>
+<li><span class="arithmatex">\(\pi_\theta\)</span> 是当前正在计算梯度、准备更新的策略。</li>
+<li>因为是第一步，<strong>模型还没有进行过任何更新</strong>，所以 <span class="arithmatex">\(\pi_\theta\)</span> 和 <span class="arithmatex">\(\pi_{old}\)</span> 的<strong>权重是完全一模一样的同一份参数</strong>。</li>
+</ul>
+<p>既然权重一样，对于任何 token，它们预测的概率必然相等：<span class="arithmatex">\(\pi_\theta = \pi_{old}\)</span>。
+因此，<strong>概率比 <span class="arithmatex">\(r_t = 1\)</span></strong>。</p>
+<p>把 <span class="arithmatex">\(r_t = 1\)</span> 代入 Loss 公式：
+$$ \min(1 \cdot \hat{A}_t, \text{clip}(1, 1-\epsilon, 1+\epsilon)\hat{A}_t) = \min(\hat{A}_t, 1 \cdot \hat{A}_t) = \hat{A}_t $$</p>
+<p>所以，第一步的 Policy Loss 简化成了：
+$$ \mathcal{L}_{policy} = - \mathbb{E} [\hat{A}_t] $$</p>
+<p><strong>关键点来了：<span class="arithmatex">\(\hat{A}_t\)</span> 是什么？</strong>
+在 GRPO 中，<span class="arithmatex">\(\hat{A}_t\)</span> 是组内归一化后的优势（Advantage）。它是通过对同一个 prompt 采样的 <span class="arithmatex">\(G\)</span> 个 reward 进行 Z-score 标准化得到的：
+$$ \hat{A}_i = \frac{r_i - \text{mean}(\mathbf{r})}{\text{std}(\mathbf{r})} $$
+根据数学性质，<strong>一组数据标准化后的均值必然为 0</strong>。
+因此，<span class="arithmatex">\(\mathbb{E}[\hat{A}_t] = 0\)</span>。</p>
+<p><strong>结论：在第一步，Policy Loss 的数学期望严格等于 0。</strong></p>
+<hr />
+<h4 id="2-kl-0">2. 核心原因二：KL 散度项严格为 0</h4>
+<p>GRPO 的总 Loss 还包含一个 KL 惩罚项，用于防止模型偏离参考模型（Reference Model）太远：
+$$ \mathcal{L}<em>{KL} = \beta D</em>{KL}(\pi<em>\theta || \pi</em>{ref}) $$</p>
+<p><strong>在训练的最开始：</strong></p>
+<ul>
+<li><span class="arithmatex">\(\pi_\theta\)</span> 是刚初始化的策略。</li>
+<li><span class="arithmatex">\(\pi_{ref}\)</span> 是冻结的参考模型。</li>
+<li>通常，我们会<strong>直接把 SFT（监督微调）后的模型同时作为 <span class="arithmatex">\(\pi_\theta\)</span> 和 <span class="arithmatex">\(\pi_{ref}\)</span> 的初始权重</strong>。</li>
+</ul>
+<p>既然 <span class="arithmatex">\(\pi_\theta\)</span> 和 <span class="arithmatex">\(\pi_{ref}\)</span> 是同一个模型，它们的分布完全相同，KL 散度 <span class="arithmatex">\(D_{KL} = 0\)</span>。</p>
+<p><strong>结论：在第一步，KL Penalty 严格等于 0。</strong></p>
+<hr />
+<h4 id="3-loss-0">3. 面试高分避坑指南：Loss 为 0，那模型怎么更新？</h4>
+<p>这是面试官极大概率会追问的“陷阱题”：<strong>“既然第一步 Loss 是 0，那梯度不也是 0 吗？模型第一步是怎么更新的？”</strong></p>
+<p><strong>答案：Loss 为 0，但梯度（Gradient）绝对不为 0！</strong></p>
+<p>我们需要看梯度的计算公式。对 <span class="arithmatex">\(\mathcal{L}_{policy}\)</span> 求关于 <span class="arithmatex">\(\theta\)</span> 的梯度：
+$$ \nabla<em>\theta \mathcal{L}</em>{policy} \approx - \mathbb{E} \left[ \nabla_\theta \log \pi_\theta(a_t|s_t) \cdot \hat{A}_t \right] $$</p>
+<ul>
+<li>虽然 <span class="arithmatex">\(\hat{A}_t\)</span> 这一组数据的<strong>均值（期望）是 0</strong>，导致算出来的 <strong>Loss 标量值是 0</strong>。</li>
+<li>但是，对于<strong>每一个具体的样本 <span class="arithmatex">\(i\)</span></strong>，它的 <span class="arithmatex">\(\hat{A}_i\)</span> 是有正有负的（好的回答 <span class="arithmatex">\(\hat{A}_i &gt; 0\)</span>，差回答 <span class="arithmatex">\(\hat{A}_i &lt; 0\)</span>）。</li>
+<li><span class="arithmatex">\(\nabla_\theta \log \pi_\theta\)</span> 是模型 logits 对参数的梯度，它是一个非零向量。</li>
+<li>非零向量 <span class="arithmatex">\(\times\)</span> 非零标量（<span class="arithmatex">\(\hat{A}_i\)</span>），得到的<strong>每个样本的梯度是不为 0 的</strong>。</li>
+</ul>
+<p><strong>物理意义</strong>：
+Loss 为 0 只是一个“基准线（Baseline）”状态。梯度的计算是在告诉模型：“对于 <span class="arithmatex">\(\hat{A} &gt; 0\)</span> 的好回答，你要增加它的概率（梯度方向）；对于 <span class="arithmatex">\(\hat{A} &lt; 0\)</span> 的坏回答，你要降低它的概率（梯度反方向）”。
+<strong>正是这些非零的梯度，完成了模型的第一步更新。</strong></p>
+<hr />
+<h4 id="4">4. 工程实现中的细节补充</h4>
+<p>在实际的代码（如 OpenRLHF, verl, TRL）中，你看到的 Loss 可能不是绝对的 <code>0.0000</code>，而是 <code>1e-7</code> 或 <code>1e-8</code> 这种极小的值。原因如下：</p>
+<ol>
+<li><strong>浮点数精度误差</strong>：计算机在计算 <span class="arithmatex">\(\sum \hat{A}_i\)</span> 时，由于浮点数精度限制，结果可能不是绝对的 0，而是 <span class="arithmatex">\(1e-16\)</span> 级别，经过放大或平均后显示为 <span class="arithmatex">\(1e-8\)</span>。</li>
+<li><strong>Mask 的影响</strong>：代码中通常会用 <code>mask</code> 过滤掉 padding token。如果 batch 内不同序列长度差异大，计算均值时的分母是 <code>mask.sum()</code>，可能会引入微小的计算误差。</li>
+<li><strong>Value Loss（如果是 PPO）</strong>：如果你跑的是 PPO 而不是纯 GRPO，PPO 还有 Value Loss。如果 Value Head 初始化输出全 0，且 Target 也是 0，那 Value Loss 也是 0。但 GRPO 没有 Critic，所以没有这一项。</li>
+</ol>
+<h4 id="5-loss-0-bug">5. 什么时候 Loss 为 0 是 Bug？</h4>
+<p>虽然<strong>第一步</strong> Loss 为 0 是正常的，但如果出现以下情况，说明代码写错了：</p>
+<ul>
+<li><strong>第二步及以后 Loss 依然为 0</strong>：第一步更新后，<span class="arithmatex">\(\pi_\theta\)</span> 变了，但 <span class="arithmatex">\(\pi_{old}\)</span> 没更新（或者更新逻辑写错了），导致 <span class="arithmatex">\(r_t\)</span> 永远等于 1。</li>
+<li><strong>梯度（Gradient Norm）为 0</strong>：如果 Loss 是 0，且梯度也是 0，说明 <span class="arithmatex">\(\hat{A}_t\)</span> 全为 0（比如 Reward 计算全一样，导致标准差为 0，代码里没加 epsilon 保护），或者 Mask 全为 0。</li>
+<li><strong>Reward 全为 0 或全为 1</strong>：如果奖励模型（RM）或规则打分器坏了，给所有回答打一样的分数，<span class="arithmatex">\(\hat{A}_t\)</span> 就会全为 0，导致梯度为 0，模型彻底“躺平”。</li>
+</ul>
+<p><strong>总结</strong>：
+GRPO 训练最开始 Loss 为 0，是因为<strong>当前策略与采样策略完全一致（<span class="arithmatex">\(r_t=1\)</span>）</strong>，且<strong>组内优势均值为 0</strong>。这是一个完美的数学起点，此时 Loss 虽为 0，但<strong>梯度非零</strong>，模型正是依靠这个梯度迈出 RL 对齐的第一步。</p>
 
 
 
