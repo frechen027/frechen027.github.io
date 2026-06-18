@@ -4406,11 +4406,11 @@
 <h2 id="_3">一、基础</h2>
 <h3 id="1-kl">1. KL散度、交叉熵、两者关系</h3>
 <p><strong>交叉熵 (Cross-Entropy):</strong>
-$<span class="arithmatex">\(H(P, Q) = -\sum_{x} P(x) \log Q(x)\)</span>$</p>
+<span class="arithmatex">\(H(P, Q) = -\sum_{x} P(x) \log Q(x)\)</span></p>
 <p><strong>KL散度 (Kullback-Leibler Divergence):</strong>
-$<span class="arithmatex">\(D_{KL}(P \| Q) = \sum_{x} P(x) \log \frac{P(x)}{Q(x)}\)</span>$</p>
+<span class="arithmatex">\(D_{KL}(P \| Q) = \sum_{x} P(x) \log \frac{P(x)}{Q(x)}\)</span></p>
 <p><strong>关系:</strong>
-$<span class="arithmatex">\(H(P, Q) = H(P) + D_{KL}(P \| Q)\)</span>$</p>
+<span class="arithmatex">\(H(P, Q) = H(P) + D_{KL}(P \| Q)\)</span></p>
 <p>即交叉熵 = 信息熵 + KL散度。由于真实分布P的信息熵H(P)是常数，最小化交叉熵等价于最小化KL散度。</p>
 <p><strong>关键性质:</strong></p>
 <ul>
@@ -4617,25 +4617,25 @@ $<span class="arithmatex">\(H(P, Q) = H(P) + D_{KL}(P \| Q)\)</span>$</p>
 <p>注意：在单线程asyncio中，如果没有await，代码是原子的，不需要锁。但如果有await让出控制权，则需要锁保护共享状态。</p>
 <h3 id="7-sgdmomentumadamadamwmuon">7. SGD优化器、Momentum、Adam、AdamW、Muon</h3>
 <p><strong>SGD (Stochastic Gradient Descent):</strong>
-$<span class="arithmatex">\(\theta_{t+1} = \theta_t - \eta \cdot g_t\)</span>$</p>
+<span class="arithmatex">\(\theta_{t+1} = \theta_t - \eta \cdot g_t\)</span></p>
 <ul>
 <li>最基础的优化器</li>
 <li>收敛慢，容易陷入局部最优</li>
 <li>需要精心调学习率</li>
 </ul>
 <p><strong>SGD + Momentum:</strong>
-$<span class="arithmatex">\(v_t = \mu v_{t-1} + g_t\)</span>$
-$<span class="arithmatex">\(\theta_{t+1} = \theta_t - \eta \cdot v_t\)</span>$</p>
+<span class="arithmatex">\(v_t = \mu v_{t-1} + g_t\)</span>
+<span class="arithmatex">\(\theta_{t+1} = \theta_t - \eta \cdot v_t\)</span></p>
 <ul>
 <li>引入动量项，累积历史梯度方向</li>
 <li>加速收敛，减少震荡</li>
 <li>μ通常设为0.9</li>
 </ul>
 <p><strong>Adam (Adaptive Moment Estimation):</strong>
-$<span class="arithmatex">\(m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t \quad \text{(一阶矩估计)}\)</span>$
-$<span class="arithmatex">\(v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^2 \quad \text{(二阶矩估计)}\)</span>$
-$<span class="arithmatex">\(\hat{m}_t = \frac{m_t}{1-\beta_1^t}, \quad \hat{v}_t = \frac{v_t}{1-\beta_2^t} \quad \text{(偏差修正)}\)</span>$
-$<span class="arithmatex">\(\theta_{t+1} = \theta_t - \eta \cdot \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}\)</span>$</p>
+<span class="arithmatex">\(m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t \quad \text{(一阶矩估计)}\)</span>
+<span class="arithmatex">\(v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^2 \quad \text{(二阶矩估计)}\)</span>
+<span class="arithmatex">\(\hat{m}_t = \frac{m_t}{1-\beta_1^t}, \quad \hat{v}_t = \frac{v_t}{1-\beta_2^t} \quad \text{(偏差修正)}\)</span>
+<span class="arithmatex">\(\theta_{t+1} = \theta_t - \eta \cdot \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}\)</span></p>
 <ul>
 <li>自适应学习率，每个参数有独立的学习率</li>
 <li>β1=0.9, β2=0.999, ε=1e-8</li>
@@ -4645,7 +4645,7 @@ $<span class="arithmatex">\(\theta_{t+1} = \theta_t - \eta \cdot \frac{\hat{m}_t
 <p><strong>AdamW:</strong></p>
 <ul>
 <li>在Adam基础上加入<strong>解耦权重衰减</strong> (Decoupled Weight Decay)
-  $<span class="arithmatex">\(\theta_{t+1} = \theta_t - \eta \cdot \left(\frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} + \lambda \theta_t\right)\)</span>$</li>
+  <span class="arithmatex">\(\theta_{t+1} = \theta_t - \eta \cdot \left(\frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} + \lambda \theta_t\right)\)</span></li>
 <li>原始Adam中权重衰减被自适应学习率缩放，效果减弱</li>
 <li>AdamW将权重衰减与梯度更新解耦，正则化效果更好</li>
 <li>大模型训练的标准优化器</li>
@@ -4952,8 +4952,8 @@ $<span class="arithmatex">\(\theta_{t+1} = \theta_t - \eta \cdot \frac{\hat{m}_t
 <ul>
 <li>传统softmax需要两遍扫描：第一遍求max，第二遍求exp和sum</li>
 <li>Online softmax：一遍扫描，维护running max和running sum
-  $<span class="arithmatex">\(m_i = \max(m_{i-1}, \max(x_i))\)</span>$
-  $<span class="arithmatex">\(l_i = e^{m_{i-1}-m_i} l_{i-1} + \sum e^{x_i - m_i}\)</span>$</li>
+  <span class="arithmatex">\(m_i = \max(m_{i-1}, \max(x_i))\)</span>
+  <span class="arithmatex">\(l_i = e^{m_{i-1}-m_i} l_{i-1} + \sum e^{x_i - m_i}\)</span></li>
 </ul>
 <p><strong>优势:</strong></p>
 <ul>
@@ -5092,20 +5092,20 @@ $<span class="arithmatex">\(\theta_{t+1} = \theta_t - \eta \cdot \frac{\hat{m}_t
 </ul>
 <h4 id="pre-normpost-normdeep-norm">Pre-norm、Post-norm、Deep-norm</h4>
 <p><strong>Post-norm (原始Transformer):</strong>
-$<span class="arithmatex">\(x_{l+1} = \text{Norm}(x_l + \text{Sublayer}(x_l))\)</span>$</p>
+<span class="arithmatex">\(x_{l+1} = \text{Norm}(x_l + \text{Sublayer}(x_l))\)</span></p>
 <ul>
 <li>先做sublayer（attention/FFN），再加残差，最后归一化</li>
 <li>问题：深层网络中梯度不稳定，难以训练</li>
 </ul>
 <p><strong>Pre-norm (GPT-2, 现代大模型主流):</strong>
-$<span class="arithmatex">\(x_{l+1} = x_l + \text{Sublayer}(\text{Norm}(x_l))\)</span>$</p>
+<span class="arithmatex">\(x_{l+1} = x_l + \text{Sublayer}(\text{Norm}(x_l))\)</span></p>
 <ul>
 <li>先归一化，再做sublayer，最后加残差</li>
 <li>优势：训练更稳定，梯度流更平滑</li>
 <li>缺点：最终输出未经归一化，需要在最后加一层LayerNorm</li>
 </ul>
 <p><strong>DeepNorm (2022, 超深Transformer):</strong>
-$<span class="arithmatex">\(x_{l+1} = \text{Norm}(\alpha \cdot x_l + \text{Sublayer}(x_l))\)</span>$</p>
+<span class="arithmatex">\(x_{l+1} = \text{Norm}(\alpha \cdot x_l + \text{Sublayer}(x_l))\)</span></p>
 <ul>
 <li>对残差连接乘以系数α &gt; 1（如α = (2N)^{1/4}）</li>
 <li>配合特定的权重初始化策略</li>
@@ -5135,7 +5135,7 @@ $<span class="arithmatex">\(x_{l+1} = \text{Norm}(\alpha \cdot x_l + \text{Subla
 <li>训练和推理行为相同（没有running statistics）</li>
 </ul>
 <p><strong>RMSNorm (Root Mean Square Layer Normalization):</strong>
-$<span class="arithmatex">\(\hat{x} = \frac{x}{\text{RMS}(x)} \cdot \gamma = \frac{x}{\sqrt{\frac{1}{d}\sum x_i^2 + \epsilon}} \cdot \gamma\)</span>$</p>
+<span class="arithmatex">\(\hat{x} = \frac{x}{\text{RMS}(x)} \cdot \gamma = \frac{x}{\sqrt{\frac{1}{d}\sum x_i^2 + \epsilon}} \cdot \gamma\)</span></p>
 <ul>
 <li>去掉了mean subtraction（减均值）步骤</li>
 <li>只有scale参数γ，没有shift参数β</li>
@@ -5178,14 +5178,14 @@ $<span class="arithmatex">\(\hat{x} = \frac{x}{\text{RMS}(x)} \cdot \gamma = \fr
 <li>负区间有小梯度</li>
 </ul>
 <p><strong>GELU (Gaussian Error Linear Unit):</strong>
-$<span class="arithmatex">\(\text{GELU}(x) = x \cdot \Phi(x) = x \cdot \frac{1}{2}\left[1 + \text{erf}\left(\frac{x}{\sqrt{2}}\right)\right]\)</span>$</p>
+<span class="arithmatex">\(\text{GELU}(x) = x \cdot \Phi(x) = x \cdot \frac{1}{2}\left[1 + \text{erf}\left(\frac{x}{\sqrt{2}}\right)\right]\)</span></p>
 <ul>
 <li>BERT、GPT使用</li>
 <li>平滑的ReLU变体，概率解释</li>
 <li>近似计算：<span class="arithmatex">\(0.5x(1 + \tanh[\sqrt{2/\pi}(x + 0.044715x^3)])\)</span></li>
 </ul>
 <p><strong>GLU (Gated Linear Unit):</strong>
-$<span class="arithmatex">\(\text{GLU}(x) = \sigma(xW_1) \otimes (xW_2)\)</span>$</p>
+<span class="arithmatex">\(\text{GLU}(x) = \sigma(xW_1) \otimes (xW_2)\)</span></p>
 <ul>
 <li>门控机制，一部分做sigmoid gate，另一部分做变换后相乘</li>
 <li>信息选择性地通过</li>
@@ -5196,7 +5196,7 @@ $<span class="arithmatex">\(\text{GLU}(x) = \sigma(xW_1) \otimes (xW_2)\)</span>
 <li>平滑、非单调</li>
 </ul>
 <p><strong>SwiGLU:</strong>
-$<span class="arithmatex">\(\text{SwiGLU}(x) = \text{Swish}(xW_1) \otimes (xW_2)\)</span>$</p>
+<span class="arithmatex">\(\text{SwiGLU}(x) = \text{Swish}(xW_1) \otimes (xW_2)\)</span></p>
 <ul>
 <li>Swish + GLU的结合</li>
 <li>PaLM、Llama系列使用</li>
@@ -5213,8 +5213,8 @@ $<span class="arithmatex">\(\text{SwiGLU}(x) = \text{Swish}(xW_1) \otimes (xW_2)
 </ul>
 <h3 id="3_1">3. 位置编码</h3>
 <p><strong>正余弦位置编码 (Sinusoidal PE, 原始Transformer):</strong>
-$<span class="arithmatex">\(PE_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i/d}}\right)\)</span>$
-$<span class="arithmatex">\(PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d}}\right)\)</span>$</p>
+<span class="arithmatex">\(PE_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i/d}}\right)\)</span>
+<span class="arithmatex">\(PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d}}\right)\)</span></p>
 <ul>
 <li>固定编码，不需要学习</li>
 <li>可以表示相对位置关系（线性组合）</li>
@@ -5230,7 +5230,7 @@ $<span class="arithmatex">\(PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d}
 <ul>
 <li>核心思想：通过旋转矩阵将位置信息编码到Q和K中</li>
 <li>对Q和K的每两个相邻维度施加一个旋转角度，角度与位置成正比
-  $<span class="arithmatex">\(f(q, pos) = q \cdot e^{i \cdot pos \cdot \theta}\)</span>$</li>
+  <span class="arithmatex">\(f(q, pos) = q \cdot e^{i \cdot pos \cdot \theta}\)</span></li>
 <li>优势：<ul>
 <li>编码了相对位置信息（两个位置的内积只与相对距离有关）</li>
 <li>可以外推到更长序列（配合NTK-aware scaling、YaRN等）</li>
@@ -5263,7 +5263,7 @@ $<span class="arithmatex">\(PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d}
 </ul>
 <h3 id="4_1">4. 其他</h3>
 <h4 id="dk">为什么除以根号dk</h4>
-<div class="arithmatex">\[\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V\]</div>
+<p><span class="arithmatex">\(\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V\)</span></p>
 <ul>
 <li>Q和K的每个元素假设是均值0、方差1的独立随机变量</li>
 <li><span class="arithmatex">\(q \cdot k = \sum_{i=1}^{d_k} q_i k_i\)</span>，方差为<span class="arithmatex">\(d_k\)</span></li>
@@ -5410,7 +5410,7 @@ $<span class="arithmatex">\(PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d}
 <ul>
 <li>TRPO的简化版本，一阶优化即可</li>
 <li>核心：clip机制限制策略更新幅度
-  $<span class="arithmatex">\(L^{CLIP}(\theta) = \mathbb{E}\left[\min\left(r_t(\theta) \hat{A}_t, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) \hat{A}_t\right)\right]\)</span>$</li>
+  <span class="arithmatex">\(L^{CLIP}(\theta) = \mathbb{E}\left[\min\left(r_t(\theta) \hat{A}_t, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) \hat{A}_t\right)\right]\)</span></li>
 <li><span class="arithmatex">\(r_t(\theta) = \frac{\pi_\theta(a_t|s_t)}{\pi_{old}(a_t|s_t)}\)</span>，概率比</li>
 <li>当advantage &gt; 0时：限制r不超过1+ε（防止过度增加概率）</li>
 <li>当advantage &lt; 0时：限制r不低于1-ε（防止过度减少概率）</li>
@@ -5422,7 +5422,7 @@ $<span class="arithmatex">\(PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d}
 <li>Clip提供了简单有效的trust region近似</li>
 </ul>
 <p><strong>PPO loss组成:</strong>
-$<span class="arithmatex">\(L = L^{CLIP} - c_1 L^{VF} + c_2 S[\pi_\theta]\)</span>$</p>
+<span class="arithmatex">\(L = L^{CLIP} - c_1 L^{VF} + c_2 S[\pi_\theta]\)</span></p>
 <ul>
 <li><span class="arithmatex">\(L^{CLIP}\)</span>：策略优化目标（clip surrogate）</li>
 <li><span class="arithmatex">\(L^{VF}\)</span>：价值函数损失（MSE）</li>
@@ -5450,7 +5450,7 @@ $<span class="arithmatex">\(L = L^{CLIP} - c_1 L^{VF} + c_2 S[\pi_\theta]\)</spa
 <li>使用PPO-style clip更新策略</li>
 </ol>
 <p><strong>GRPO loss:</strong>
-$<span class="arithmatex">\(L_{GRPO} = \mathbb{E}\left[\frac{1}{G}\sum_{i=1}^{G} \frac{1}{|o_i|} \sum_{t=1}^{|o_i|} \left\{\min\left[\rho_{i,t} \hat{A}_i, \text{clip}(\rho_{i,t}, 1-\epsilon, 1+\epsilon)\hat{A}_i\right] - \beta D_{KL}(\pi_\theta \| \pi_{ref})\right\}\right]\)</span>$</p>
+<span class="arithmatex">\(L_{GRPO} = \mathbb{E}\left[\frac{1}{G}\sum_{i=1}^{G} \frac{1}{|o_i|} \sum_{t=1}^{|o_i|} \left\{\min\left[\rho_{i,t} \hat{A}_i, \text{clip}(\rho_{i,t}, 1-\epsilon, 1+\epsilon)\hat{A}_i\right] - \beta D_{KL}(\pi_\theta \| \pi_{ref})\right\}\right]\)</span></p>
 <p><strong>GRPO为什么不需要单独训练RM:</strong></p>
 <ul>
 <li>对于有明确规则的任务（如数学、代码），可以使用规则模型直接打分</li>
