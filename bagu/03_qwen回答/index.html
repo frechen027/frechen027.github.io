@@ -3975,24 +3975,6 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    3 qwen回答
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -4009,53 +3991,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        一、基础
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="一、基础">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-kl" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. KL散度、交叉熵、两者关系
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -4449,42 +4384,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        一、基础
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="一、基础">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-kl" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. KL散度、交叉熵、两者关系
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -4502,26 +4401,10 @@
 
 <h1 id="_1">大模型算法八股框架完整答案清单</h1>
 <hr />
-<h2 id="_2">一、基础</h2>
-<h3 id="1-kl">1. KL散度、交叉熵、两者关系</h3>
-<p><strong>交叉熵 (Cross-Entropy):</strong>
-$<span class="arithmatex">\(H(P, Q) = -\sum_{x} P(x) \log Q(x)\)</span>$</p>
-<p><strong>KL散度 (Kullback-Leibler Divergence):</strong>
-$<span class="arithmatex">\(D_{KL}(P \| Q) = \sum_{x} P(x) \log \frac{P(x)}{Q(x)}\)</span>$</p>
-<p><strong>关系:</strong>
-$<span class="arithmatex">\(H(P, Q) = H(P) + D_{KL}(P \| Q)\)</span>$</p>
-<p>即交叉熵 = 信息熵 + KL散度。由于真实分布P的信息熵H(P)是常数，最小化交叉熵等价于最小化KL散度。</p>
-<p><strong>关键性质:</strong></p>
-<ul>
-<li>KL散度非对称：<span class="arithmatex">\(D_{KL}(P\|Q) \neq D_{KL}(Q\|P)\)</span></li>
-<li>KL散度非负：<span class="arithmatex">\(D_{KL} \geq 0\)</span>，当且仅当P=Q时取等号</li>
-<li>正向KL（forward KL）：<span class="arithmatex">\(D_{KL}(P\|Q)\)</span>，P为真实分布，Q为模型分布，倾向于覆盖P的所有模式（mean-seeking）</li>
-<li>反向KL（</li>
-</ul>
-<h1 id="_3">大模型算法八股框架完整答案清单</h1>
+<h1 id="_2">大模型算法八股框架完整答案清单</h1>
 <hr />
-<h2 id="_4">一、基础</h2>
-<h3 id="1-kl_1">1. KL散度、交叉熵、两者关系</h3>
+<h2 id="_3">一、基础</h2>
+<h3 id="1-kl">1. KL散度、交叉熵、两者关系</h3>
 <p><strong>交叉熵 (Cross-Entropy):</strong>
 $<span class="arithmatex">\(H(P, Q) = -\sum_{x} P(x) \log Q(x)\)</span>$</p>
 <p><strong>KL散度 (Kullback-Leibler Divergence):</strong>
@@ -4861,7 +4744,7 @@ $<span class="arithmatex">\(\theta_{t+1} = \theta_t - \eta \cdot \frac{\hat{m}_t
 <li>交叉熵 + softmax：梯度 = 预测概率 - 真实标签，误差越大梯度越大</li>
 </ul>
 <hr />
-<h2 id="_5">二、训练推理加速</h2>
+<h2 id="_4">二、训练推理加速</h2>
 <h3 id="1">1. 推理优化</h3>
 <h4 id="vllmpagedattentioncontinuous-batching">vLLM：PagedAttention、Continuous Batching</h4>
 <p><strong>PagedAttention:</strong></p>
@@ -4924,7 +4807,7 @@ $<span class="arithmatex">\(\theta_{t+1} = \theta_t - \eta \cdot \frac{\hat{m}_t
 <li>Prefill：提高计算利用率，tensor parallelism</li>
 <li>Decode：减少内存访问，量化、投机解码、batching</li>
 </ul>
-<h4 id="_6">梯度检查点 &amp; 梯度累计</h4>
+<h4 id="_5">梯度检查点 &amp; 梯度累计</h4>
 <p><strong>梯度检查点 (Gradient Checkpointing):</strong></p>
 <ul>
 <li>问题：训练时保存所有中间激活值用于反向传播，显存占用O(n)</li>
@@ -5029,7 +4912,7 @@ $<span class="arithmatex">\(\theta_{t+1} = \theta_t - \eta \cdot \frac{\hat{m}_t
 <li>用单卡训练超大模型</li>
 <li>代价：CPU-GPU数据传输延迟</li>
 </ul>
-<h4 id="_7">并行节点通信方式</h4>
+<h4 id="_6">并行节点通信方式</h4>
 <p><strong>Broadcast:</strong> 一个节点发送数据到所有节点（一对多）</p>
 <p><strong>Reduce:</strong> 所有节点发送数据到一个节点，进行归约操作（如sum）（多对一）</p>
 <p><strong>AllReduce:</strong> 所有节点发送数据到所有节点，每个节点都得到归约结果</p>
@@ -5452,7 +5335,7 @@ $<span class="arithmatex">\(PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d}
 <li>正则化主要通过weight decay（AdamW）实现</li>
 </ul>
 <hr />
-<h2 id="_8">四、强化学习</h2>
+<h2 id="_7">四、强化学习</h2>
 <h3 id="value-based-methods">Value-based Methods</h3>
 <h4 id="monte-carlo">蒙特卡洛法 (Monte Carlo)</h4>
 <ul>
@@ -5643,8 +5526,8 @@ $<span class="arithmatex">\(L_{GRPO} = \mathbb{E}\left[\frac{1}{G}\sum_{i=1}^{G}
 <li>如KTO、IPO的某些变体</li>
 <li>减少了推理和训练时的计算开销</li>
 </ul>
-<h3 id="_9">其他关键概念</h3>
-<h4 id="_10">模态/熵坍塌问题</h4>
+<h3 id="_8">其他关键概念</h3>
+<h4 id="_9">模态/熵坍塌问题</h4>
 <p><strong>Entropy Collapse:</strong></p>
 <ul>
 <li>策略的熵持续下降，最终变得确定性（只输出少数几个token）</li>
@@ -5878,7 +5761,7 @@ $<span class="arithmatex">\(L_{GRPO} = \mathbb{E}\left[\frac{1}{G}\sum_{i=1}^{G}
 <li>有些方法在训练时也使用截断，减少无效token的计算</li>
 </ul>
 <hr />
-<h2 id="_11">五、面经中的具体问题补充</h2>
+<h2 id="_10">五、面经中的具体问题补充</h2>
 <h3 id="1-verlhybridengineauto-mapping">1. verl中的hybridengine、auto mapping原理</h3>
 <p><strong>verl (Volcano Engine RL):</strong></p>
 <ul>
@@ -5994,7 +5877,7 @@ $<span class="arithmatex">\(L_{GRPO} = \mathbb{E}\left[\frac{1}{G}\sum_{i=1}^{G}
 <li>INT4量化：权重per-channel（group-wise），激活per-token</li>
 </ul>
 <hr />
-<h2 id="_12">六、手撕代码题</h2>
+<h2 id="_11">六、手撕代码题</h2>
 <h3 id="1-multi-head-attention">1. Multi-Head Attention</h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
@@ -6178,8 +6061,8 @@ $<span class="arithmatex">\(L_{GRPO} = \mathbb{E}\left[\frac{1}{G}\sum_{i=1}^{G}
 <li><strong>Top K Frequent Elements</strong> (347)</li>
 </ul>
 <hr />
-<h2 id="_13">七、总结与面试建议</h2>
-<h3 id="_14">知识体系梳理</h3>
+<h2 id="_12">七、总结与面试建议</h2>
+<h3 id="_13">知识体系梳理</h3>
 <ol>
 <li><strong>基础理论</strong>：概率论、信息论、优化理论</li>
 <li><strong>模型架构</strong>：Transformer及其变体、Decoder-only设计</li>
@@ -6188,7 +6071,7 @@ $<span class="arithmatex">\(L_{GRPO} = \mathbb{E}\left[\frac{1}{G}\sum_{i=1}^{G}
 <li><strong>对齐技术</strong>：RLHF、DPO、GRPO等</li>
 <li><strong>工程实践</strong>：框架使用、性能调优、问题排查</li>
 </ol>
-<h3 id="_15">面试准备建议</h3>
+<h3 id="_14">面试准备建议</h3>
 <ol>
 <li><strong>深度优先</strong>：选择2-3个方向深入准备（如RL + 推理优化 + 分布式训练）</li>
 <li><strong>项目驱动</strong>：准备2-3个有深度的项目，能够串联八股知识</li>
@@ -6196,7 +6079,7 @@ $<span class="arithmatex">\(L_{GRPO} = \mathbb{E}\left[\frac{1}{G}\sum_{i=1}^{G}
 <li><strong>最新进展</strong>：关注FlashAttention-3、MLA、GRPO/GSPO、DAPO等最新技术</li>
 <li><strong>系统设计</strong>：准备大模型训练/推理系统的设计题</li>
 </ol>
-<h3 id="_16">常见面试流程</h3>
+<h3 id="_15">常见面试流程</h3>
 <ol>
 <li><strong>项目介绍</strong>（10-15分钟）：深入讨论项目细节、技术选型、遇到的问题</li>
 <li><strong>八股问答</strong>（20-30分钟）：从项目出发，串联基础知识</li>
