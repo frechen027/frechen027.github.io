@@ -4560,11 +4560,13 @@
 <li><strong>知识蒸馏</strong>：在训练新任务时，增加一个损失项，强迫新模型的输出尽量与旧模型（Teacher）保持一致。</li>
 <li><strong>限制重要参数（如 EWC）</strong>：找出对旧任务重要的参数，在更新时限制它们的修改幅度，只让“不重要”的参数去适应新任务。</li>
 </ol>
-<p><strong>💡 极简实操指南：</strong>
-*   <strong>大模型微调</strong>：直接用 <strong>LoRA + 混入少量通用数据</strong>。
-*   <strong>允许保存旧数据</strong>：优先使用 <strong>数据回放</strong>。
-*   <strong>严禁保存旧数据</strong>：使用 <strong>知识蒸馏</strong> 或 <strong>EWC</strong>。
-*   <strong>第一步排查</strong>：先<strong>调小学习率</strong>，很多时候遗忘只是因为学习率太大，旧参数被暴力覆盖了。</p>
+<p><strong>💡 极简实操指南：</strong></p>
+<ul>
+<li><strong>大模型微调</strong>：直接用 <strong>LoRA + 混入少量通用数据</strong>。</li>
+<li><strong>允许保存旧数据</strong>：优先使用 <strong>数据回放</strong>。</li>
+<li><strong>严禁保存旧数据</strong>：使用 <strong>知识蒸馏</strong> 或 <strong>EWC</strong>。</li>
+<li><strong>第一步排查</strong>：先<strong>调小学习率</strong>，很多时候遗忘只是因为学习率太大，旧参数被暴力覆盖了。</li>
+</ul>
 
 
 
