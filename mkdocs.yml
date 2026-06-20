@@ -1,4 +1,4 @@
-site_name: "Python 修行指南"
+site_name: "橙世闲游"
 
 nav: # 导航栏菜单结构，层级与目录结构对应
     - 前言: index.md
@@ -39,11 +39,11 @@ nav: # 导航栏菜单结构，层级与目录结构对应
           - 1 Hot100(上): leetcode/01_Hot100.md
           - 2 Hot100(中): leetcode/02_Hot100.md
           - 3 Hot100(下): leetcode/03_Hot100.md
-    - Hello-Agent:
-          - 1 基础: agent/01_智能体与语言模型基础.md
-          - 2 动手构建: agent/02_构建你的大语言模型智能体.md      
-          - 3 高级知识扩展: agent/03_高级知识扩展.md
-          - 4 综合案例进阶: agent/04_综合案例进阶.md
+          - 4 面试经典150(上): leetcode/04_面试经典150.md
+          - 7 Hot100二刷: leetcode/07_Hot100.md
+          - 8 算法手撕: leetcode/08_算法手撕.md
+    - Agent:
+          - 1 Hello-Agents: agent/01_Hello-Agents.md
     - 数据科学:
           - 1 生命周期: data_science/01_生命周期.md
           - 2 矩形数据: data_science/02_矩形数据.md
@@ -69,10 +69,64 @@ nav: # 导航栏菜单结构，层级与目录结构对应
           - Pandas: jie_course/pandas.md
           - DNN: jie_course/DNN.md
           - CNN: jie_course/CNN.md
+    - Pytorch:
+          - 小土堆Pytorch: pytorch/小土堆Pytorch.md
+          - AI问答: pytorch/AI问答.md
     - 吴恩达机器学习:
+          - 0 AI问答: wu_course/00_AI问答.md
           - 1 机器学习基础: wu_course/01_机器学习基础.md
+    - 李沐动手学深度学习(书):
+          - 1 动手学深度学习: limu_course/01_动手学深度学习.md
     - 自然语言处理:
           - 1 软微自然语言处理: nlp/01_自然语言处理.md
+    - 后训练:
+          - 1 后训练概述: post_training/01_后训练概述.md
+          - 2 软微后训练: post_training/02_软微后训练.md
+          - 3 AI问答: post_training/03_AI问答.md
+          - 4 踩坑日记: post_training/04_踩坑日记.md
+          - 5 Huggingface trl: post_training/05_trl.md
+          - 6 rlhfbook: post_training/06_rlhfbook.md
+    - 强化学习:
+          - 1 动手学强化学习: rl/01_动手学强化学习.md
+    - AI infra:
+          - 1 入门路线: ai_infra/01_入门路线.md
+    - 面经:
+          - 1 面经流水账: interview/面经流水账.md
+          - 2 可投递公司汇总: interview/可投递公司汇总.md
+          - 3 TeleAI 大模型算法实习面经: interview/01.md
+          - 4 粽子的面经: interview/02.md
+          - 5 正在思考的超人强整理的手撕算法: interview/03.md
+          - 6 京东大模型算法实习面经: interview/04.md
+          - 7 淘天大模型算法面经: interview/05.md
+          - 8 字节大模型算法面经: interview/06.md
+          - 9 美团大模型算法面经: interview/07.md
+          - 10 腾讯大模型算法面经: interview/08.md
+          - 11 阿里高德大模型算法面经: interview/09.md
+          - 12 百度大模型算法面经: interview/10.md
+          - 13 小红书大模型算法面经: interview/11.md
+          - 14 阿里国际大模型算法面经: interview/12.md
+          - 15 其他大模型算法面经: interview/13.md
+    - 经验贴参考:
+        - 1 大模型算法岗，3个项目走上人生，癫疯😎: references/01.md
+        - 2 如何找到第一份大厂算法岗日常实习: references/02.md
+        - 3 如何找到第一段搜广推实习: references/03.md
+        - 4 非科班转大模型快速学习路线: references/04.md
+        - 5 我的大模型零基础学习路线(已实习): references/05.md
+        - 6 辰屿九秋的大模型开发和算法学习路线: references/06.md
+        - 7 小白的SFT、RL完整学习路线: references/07.md
+        - 8 粽子的如何找到第一份大模型实习: references/08.md
+        - 9 考研电子宠物的转码经验贴: references/09.md
+        - 10 叶云的转大模型算法最快路线: references/10.md
+        - 11 CherieCame的八股框架: references/11.md
+        - 12 两万人看过的“混进”算法岗后续: references/12.md
+        - 13 AI问答: references/13.md
+    - 八股:
+        - 1 minimind: bagu/01_github.md
+        - 2 技术报告: bagu/02_技术报告.md
+        - 3 qwen回答: bagu/03_qwen回答.md
+        - 4 ds回答: bagu/04_ds回答.md
+    - 项目:
+        - 1 电商客服: project/电商客服.md
     - 实用工具:
           - 1 Git与版本控制: tools/01_Git与版本控制.md
           - 2 Markdown: tools/02_Markdown.md

@@ -1,0 +1,7076 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../bagu/04_ds%E5%9B%9E%E7%AD%94/">
+      
+      
+        <link rel="next" href="../../tools/01_Git%E4%B8%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>1 电商客服 - 橙世闲游</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="橙世闲游" class="md-header__button md-logo" aria-label="橙世闲游" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            橙世闲游
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1 电商客服
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="橙世闲游" class="md-nav__button md-logo" aria-label="橙世闲游" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    橙世闲游
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    前言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 预备知识
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 预备知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/01_Python%E7%A8%8B%E5%BA%8F%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Python程序基本结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/02_%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 基础语法与变量
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/03_%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 核心数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/04_%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 运算符与表达式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/05_%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 程序控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/06_%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 函数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/07_%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 文件操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/08_%E9%94%99%E8%AF%AF%E4%B8%8E%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 错误与异常处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/09_%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 面向对象编程基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 进阶修炼
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 进阶修炼
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/01_%E6%8E%A8%E5%AF%BC%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/02_%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 迭代器与生成器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/03_%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/04_%E8%A3%85%E9%A5%B0%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 装饰器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/05_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/06_%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%8C%85/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 模块与包
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/07_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 进阶输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/08_%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 命名空间与作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/09_%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 类型注解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/10_%E6%A0%87%E5%87%86%E5%BA%93%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 标准库概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/11_%E5%BC%82%E6%AD%A5IO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 异步IO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/01_%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 算法概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/02_%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%9E%9A%E4%B8%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 模拟与枚举
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/03_%E9%80%92%E5%BD%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 递归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/04_%E5%88%86%E6%B2%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 分治
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/05_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 二分查找
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/06_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 动态规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/07_%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 背包问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/08_%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 贪心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/09_%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 搜索算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/10_%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 图论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法实战
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法实战
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/01_Hot100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Hot100(上)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/02_Hot100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Hot100(中)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/03_Hot100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Hot100(下)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/04_%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%85%B8150/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 面试经典150(上)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/07_Hot100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 Hot100二刷
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/08_%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 算法手撕
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent/01_Hello-Agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Hello-Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据科学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据科学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/01_%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 生命周期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/02_%E7%9F%A9%E5%BD%A2%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 矩形数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/03_SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 SQL与关系数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/04_%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 文件处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/05_%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据清洗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/06_%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 数据分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/07_%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 数据可视化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/08_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/09_%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 文本数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/10_%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 数据交换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/11_%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 线性模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/12_%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 模型选择
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/13_%E6%8E%A8%E7%90%86%E4%B8%8E%E9%A2%84%E6%B5%8B%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 推理与预测理论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/14_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/15_%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/16_%E6%95%B0%E5%80%BC%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 数值优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/17_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    爆肝杰哥深度学习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    爆肝杰哥深度学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/Python%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python深度学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/numpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/matplotlib/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matplotlib
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/pandas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pandas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/DNN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/CNN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CNN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pytorch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pytorch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pytorch/%E5%B0%8F%E5%9C%9F%E5%A0%86Pytorch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    小土堆Pytorch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pytorch/AI%E9%97%AE%E7%AD%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI问答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    吴恩达机器学习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    吴恩达机器学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wu_course/00_AI%E9%97%AE%E7%AD%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0 AI问答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wu_course/01_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 机器学习基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    李沐动手学深度学习(书)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    李沐动手学深度学习(书)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../limu_course/01_%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 动手学深度学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自然语言处理
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    自然语言处理
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nlp/01_%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 软微自然语言处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    后训练
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    后训练
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_training/01_%E5%90%8E%E8%AE%AD%E7%BB%83%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 后训练概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_training/02_%E8%BD%AF%E5%BE%AE%E5%90%8E%E8%AE%AD%E7%BB%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 软微后训练
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_training/03_AI%E9%97%AE%E7%AD%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 AI问答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_training/04_%E8%B8%A9%E5%9D%91%E6%97%A5%E8%AE%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 踩坑日记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_training/05_trl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 Huggingface trl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_training/06_rlhfbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 rlhfbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    强化学习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    强化学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rl/01_%E5%8A%A8%E6%89%8B%E5%AD%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 动手学强化学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI infra
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI infra
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_infra/01_%E5%85%A5%E9%97%A8%E8%B7%AF%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 入门路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    面经
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    面经
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/%E9%9D%A2%E7%BB%8F%E6%B5%81%E6%B0%B4%E8%B4%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 面经流水账
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/%E5%8F%AF%E6%8A%95%E9%80%92%E5%85%AC%E5%8F%B8%E6%B1%87%E6%80%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 可投递公司汇总
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 TeleAI 大模型算法实习面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 粽子的面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 正在思考的超人强整理的手撕算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 京东大模型算法实习面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 淘天大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 字节大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 美团大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 腾讯大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 阿里高德大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 百度大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 小红书大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 阿里国际大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 其他大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    经验贴参考
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    经验贴参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 大模型算法岗，3个项目走上人生，癫疯😎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 如何找到第一份大厂算法岗日常实习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 如何找到第一段搜广推实习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 非科班转大模型快速学习路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 我的大模型零基础学习路线(已实习)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 辰屿九秋的大模型开发和算法学习路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 小白的SFT、RL完整学习路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 粽子的如何找到第一份大模型实习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 考研电子宠物的转码经验贴
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 叶云的转大模型算法最快路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 CherieCame的八股框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 两万人看过的“混进”算法岗后续
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 AI问答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    八股
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    八股
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bagu/01_github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 minimind
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bagu/02_%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 技术报告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bagu/03_qwen%E5%9B%9E%E7%AD%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 qwen回答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bagu/04_ds%E5%9B%9E%E7%AD%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 ds回答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_19">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    项目
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 电商客服
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 电商客服
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        流水线统计
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="流水线统计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        质量过滤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        低质量清洗
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景分布
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模板套话过滤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最终
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模型打分统计
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        去 RAG 噪声 + 分层切分
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="去 RAG 噪声 + 分层切分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5103636642" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景分布（5,103/636/642）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SFT 训练结果
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SFT 训练结果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lora-target_modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        消融实验：LoRA target_modules 对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v1-rank16-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V1 训练分析（rank=16，仅 Attention）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v2-rank16attention-mlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V2 训练分析（rank=16，Attention + MLP）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v3-rank8-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V3 训练分析（rank=8，仅 Attention）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v4-lora-rank16-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V4 训练分析（LoRA 全精度，rank=16，仅 Attention）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四维对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键发现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pair-wise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pair-wise 盲测结果
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pair-wise 盲测结果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v1-attention1231" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V1 全量评测（仅 Attention，1,231 条对比）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v2-attention-mlp1256" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V2 全量评测（Attention + MLP，1,256 条对比）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v3-rank8-attention1231" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V3 全量评测（rank=8，仅 Attention，1,231 条对比）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v4-lora-attention1256" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V4 全量评测（LoRA 全精度，仅 Attention，1,256 条对比）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四维对比分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        发现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DPO 偏好数据构造
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DPO 偏好数据构造">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总览
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五层详情
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dpo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DPO 训练结果
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DPO 训练结果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三组实验配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三组结果对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键发现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dpo_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DPO 最终盲测
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DPO 最终盲测">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三阶段增量分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sft-vs-dpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SFT vs DPO 内部对决
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SFT vs DPO 内部对决">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dpo_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DPO 赢在哪里
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sft_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SFT 赢在哪里
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        踩坑记录
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="踩坑记录">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1lora-basesft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑 1：LoRA 权重原地覆盖 → Base/SFT 实际是同一模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2llm-as-judge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑 2：LLM-as-Judge 全量评分无效
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑 3：RAG 知识注入 → 去留两难
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑 4：随机变量替换 → 数据分布偏移
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-judge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑 5：同一模型自比 → 暴露 judge 的位置偏差
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑 6：评测结果反过来验证了之前的所有结论
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vllm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vLLM 推理加速对比
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        材料汇总
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="材料汇总">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        简历项目介绍
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        面试叙事要点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        面试追问预答
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" >
+        
+          
+          <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_20">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实用工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/01_Git%E4%B8%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Git与版本控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/02_Markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/03_Vibe_Coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Vibe Coding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/04_LeetCode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 LeetCode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/05_coze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 coze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/06_n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/07_PPT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 PPT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        流水线统计
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="流水线统计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        质量过滤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        低质量清洗
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景分布
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模板套话过滤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最终
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模型打分统计
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        去 RAG 噪声 + 分层切分
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="去 RAG 噪声 + 分层切分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5103636642" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景分布（5,103/636/642）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SFT 训练结果
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SFT 训练结果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lora-target_modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        消融实验：LoRA target_modules 对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v1-rank16-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V1 训练分析（rank=16，仅 Attention）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v2-rank16attention-mlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V2 训练分析（rank=16，Attention + MLP）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v3-rank8-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V3 训练分析（rank=8，仅 Attention）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v4-lora-rank16-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V4 训练分析（LoRA 全精度，rank=16，仅 Attention）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四维对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键发现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pair-wise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pair-wise 盲测结果
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pair-wise 盲测结果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v1-attention1231" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V1 全量评测（仅 Attention，1,231 条对比）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v2-attention-mlp1256" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V2 全量评测（Attention + MLP，1,256 条对比）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v3-rank8-attention1231" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V3 全量评测（rank=8，仅 Attention，1,231 条对比）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v4-lora-attention1256" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V4 全量评测（LoRA 全精度，仅 Attention，1,256 条对比）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四维对比分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        发现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DPO 偏好数据构造
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DPO 偏好数据构造">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总览
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五层详情
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dpo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DPO 训练结果
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DPO 训练结果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三组实验配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三组结果对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键发现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dpo_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DPO 最终盲测
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DPO 最终盲测">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三阶段增量分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sft-vs-dpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SFT vs DPO 内部对决
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SFT vs DPO 内部对决">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dpo_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DPO 赢在哪里
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sft_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SFT 赢在哪里
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        踩坑记录
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="踩坑记录">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1lora-basesft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑 1：LoRA 权重原地覆盖 → Base/SFT 实际是同一模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2llm-as-judge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑 2：LLM-as-Judge 全量评分无效
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑 3：RAG 知识注入 → 去留两难
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑 4：随机变量替换 → 数据分布偏移
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-judge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑 5：同一模型自比 → 暴露 judge 的位置偏差
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑 6：评测结果反过来验证了之前的所有结论
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vllm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vLLM 推理加速对比
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        材料汇总
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="材料汇总">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        简历项目介绍
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        面试叙事要点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        面试追问预答
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">电商客服</h1>
+<blockquote>
+<p>记录该项目的全过程和实验数据。</p>
+</blockquote>
+<h2 id="_2">流水线统计</h2>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>数量</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原始数据行数</td>
+<td>212,807</td>
+<td>chat.txt 原始行</td>
+</tr>
+<tr>
+<td>过滤空内容/<code>?</code> 符号</td>
+<td>1,531 行</td>
+<td>无意义行</td>
+</tr>
+<tr>
+<td>原始会话数</td>
+<td>10,945</td>
+<td>按 session_id 聚合</td>
+</tr>
+<tr>
+<td>原始级去重</td>
+<td>1,138 行跳过</td>
+<td>同 session 同角色连续相同→跳过</td>
+</tr>
+<tr>
+<td>消息级去重</td>
+<td>4,088 条合并</td>
+<td>连���同内容消息合并</td>
+</tr>
+<tr>
+<td>变量替换后</td>
+<td>10,941 个会话</td>
+<td><code>[姓名x]</code> <code>[金额x]</code> 随机替换</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">质量过滤</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>删除低质量 asst 回复</td>
+<td>2,951 条（空回复/纯数字/单字敷衍）</td>
+</tr>
+<tr>
+<td>因质量不合格丢弃 session</td>
+<td>16 个</td>
+</tr>
+<tr>
+<td>质量过滤后保留</td>
+<td>10,928 个会话</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4">低质量清洗</h3>
+<table>
+<thead>
+<tr>
+<th>规则</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>非客服对话</td>
+<td>527 个</td>
+</tr>
+<tr>
+<td>过短（&lt;55 tokens）</td>
+<td>453 个</td>
+</tr>
+<tr>
+<td>user 含系统订单摘要</td>
+<td>1,459 个</td>
+</tr>
+<tr>
+<td>乱码严重</td>
+<td>302 个</td>
+</tr>
+<tr>
+<td>asst 平均短回复</td>
+<td>16 个</td>
+</tr>
+<tr>
+<td><strong>低质量合计剔除</strong></td>
+<td><strong>2,757 个会话</strong></td>
+</tr>
+<tr>
+<td><strong>清洗后保留</strong></td>
+<td><strong>8,168 个会话</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">场景分布</h3>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>退换货/售后</td>
+<td>2,617</td>
+<td>24.0%</td>
+</tr>
+<tr>
+<td>物流查询</td>
+<td>3,435</td>
+<td>31.4%</td>
+</tr>
+<tr>
+<td>商品咨询</td>
+<td>1,206</td>
+<td>11.0%</td>
+</tr>
+<tr>
+<td>投诉/抱怨</td>
+<td>21</td>
+<td>0.2%</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>889</td>
+<td>8.1%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">模板套话过滤</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>删除纯模板 asst 回复</td>
+<td>2,015 条</td>
+</tr>
+<tr>
+<td>受影响的 session 数</td>
+<td>1,998</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">最终</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>跨会话去重</td>
+<td>0 个移除</td>
+</tr>
+<tr>
+<td><strong>总过滤率</strong></td>
+<td><strong>25.4%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>输出文件：
+- <code>jddc_trl_sft_rag.jsonl</code>（含模板完整版）：8,168 条
+- <code>jddc_trl_sft_rag_no_template.jsonl</code>（去模板纯净版）：8,168 条</p>
+<hr />
+<h2 id="_8">模型打分统计</h2>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>总数据</td>
+<td>8,168 条</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>解析失败（score=-1）</td>
+<td>202 条</td>
+<td>2.5%</td>
+</tr>
+<tr>
+<td>超范围</td>
+<td>1 条</td>
+<td>0.0%</td>
+</tr>
+<tr>
+<td>高质量（≥6 分）</td>
+<td>7,298 条</td>
+<td>89.3%</td>
+</tr>
+<tr>
+<td>低质量（&lt;6 分）</td>
+<td>667 条</td>
+<td>8.2%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>有效评分均分：<strong>7.3</strong>，最高 9，最低 2</li>
+</ul>
+<hr />
+<h2 id="rag">去 RAG 噪声 + 分层切分</h2>
+<p>剔除含 RAG 注入 session：SFT 918 条 + DPO 150 条 = <strong>1,068 条</strong><br />
+SFT 6,381 条 → 按场景分层 80/10/10 切分</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>条数</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>jddc_sft_train.jsonl</code></td>
+<td>5,103</td>
+<td>SFT 训练</td>
+</tr>
+<tr>
+<td><code>jddc_sft_eval.jsonl</code></td>
+<td>636</td>
+<td>验证（防过拟合）</td>
+</tr>
+<tr>
+<td><code>jddc_sft_test.jsonl</code></td>
+<td>642</td>
+<td>测试（最终评测）</td>
+</tr>
+<tr>
+<td><code>jddc_dpo_pool.jsonl</code></td>
+<td>517</td>
+<td>DPO 候选</td>
+</tr>
+<tr>
+<td><code>jddc_parse_fail.jsonl</code></td>
+<td>202</td>
+<td>解析失败</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5103636642">场景分布（5,103/636/642）</h3>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>训练</th>
+<th>验证</th>
+<th>测试</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>物流查询</td>
+<td>2,092</td>
+<td>261</td>
+<td>263</td>
+</tr>
+<tr>
+<td>退换货/售后</td>
+<td>1,655</td>
+<td>206</td>
+<td>208</td>
+</tr>
+<tr>
+<td>商品咨询</td>
+<td>752</td>
+<td>94</td>
+<td>94</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>592</td>
+<td>74</td>
+<td>74</td>
+</tr>
+<tr>
+<td>投诉/抱怨</td>
+<td>12</td>
+<td>1</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="sft">SFT 训练结果</h2>
+<h3 id="lora-target_modules">消融实验：LoRA target_modules 对比</h3>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>方法</th>
+<th>rank</th>
+<th>target_modules</th>
+<th>可训参数</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V1</td>
+<td>QLoRA</td>
+<td>16</td>
+<td><code>q_proj, k_proj, v_proj, o_proj</code></td>
+<td>11.8M</td>
+<td>0.29%</td>
+</tr>
+<tr>
+<td>V2</td>
+<td>QLoRA</td>
+<td>16</td>
+<td>上述 + <code>gate_proj, up_proj, down_proj</code></td>
+<td>33.0M</td>
+<td>0.81%</td>
+</tr>
+<tr>
+<td>V3</td>
+<td>QLoRA</td>
+<td>8</td>
+<td><code>q_proj, k_proj, v_proj, o_proj</code>（同 V1）</td>
+<td>5.9M</td>
+<td>0.15%</td>
+</tr>
+<tr>
+<td>V4</td>
+<td>LoRA（全精度）</td>
+<td>16</td>
+<td><code>q_proj, k_proj, v_proj, o_proj</code>（同 V1）</td>
+<td>11.8M</td>
+<td>0.29%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="v1-rank16-attention">V1 训练分析（rank=16，仅 Attention）</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>起始</th>
+<th>最终</th>
+<th>评估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Training Loss</td>
+<td>1.76</td>
+<td>1.21</td>
+<td>持续下降，正常拟合</td>
+</tr>
+<tr>
+<td>Validation Loss</td>
+<td>1.64</td>
+<td>1.24</td>
+<td>同步下降，无过拟合 ✓</td>
+</tr>
+<tr>
+<td>Token Accuracy</td>
+<td>65%</td>
+<td>73%</td>
+<td>+8pp</td>
+</tr>
+<tr>
+<td>Avg Loss</td>
+<td>-</td>
+<td>1.58</td>
+<td>全程均值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="v2-rank16attention-mlp">V2 训练分析（rank=16，Attention + MLP）</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>Step 100</th>
+<th>Step 200</th>
+<th>Step 300</th>
+<th>最终</th>
+<th>评估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Training Loss</td>
+<td>1.39</td>
+<td>1.11</td>
+<td>1.05</td>
+<td>1.06</td>
+<td>收敛更快</td>
+</tr>
+<tr>
+<td>Validation Loss</td>
+<td>1.34</td>
+<td>1.17</td>
+<td>1.13</td>
+<td>1.13</td>
+<td>更低 ✓</td>
+</tr>
+<tr>
+<td>Token Accuracy</td>
+<td>71%</td>
+<td>74%</td>
+<td>75%</td>
+<td>75%</td>
+<td>更高 ✓</td>
+</tr>
+<tr>
+<td>Avg Loss</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><strong>1.49</strong></td>
+<td>最优</td>
+</tr>
+</tbody>
+</table>
+<h3 id="v3-rank8-attention">V3 训练分析（rank=8，仅 Attention）</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>Step 100</th>
+<th>Step 200</th>
+<th>Step 300</th>
+<th>Step 400</th>
+<th>Step 500</th>
+<th>Step 600</th>
+<th>最终</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Training Loss</td>
+<td>1.86</td>
+<td>1.53</td>
+<td>1.44</td>
+<td>1.34</td>
+<td>1.34</td>
+<td>1.30</td>
+<td>1.31</td>
+</tr>
+<tr>
+<td>Validation Loss</td>
+<td>1.72</td>
+<td>1.50</td>
+<td>1.41</td>
+<td>1.35</td>
+<td>1.33</td>
+<td>1.32</td>
+<td>1.32</td>
+</tr>
+<tr>
+<td>Token Accuracy</td>
+<td>64%</td>
+<td>68%</td>
+<td>70%</td>
+<td>71%</td>
+<td>72%</td>
+<td>72%</td>
+<td>72%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="v4-lora-rank16-attention">V4 训练分析（LoRA 全精度，rank=16，仅 Attention）</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>Step 100</th>
+<th>Step 200</th>
+<th>Step 300</th>
+<th>最终</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Training Loss</td>
+<td>1.61</td>
+<td>1.36</td>
+<td>1.29</td>
+<td>1.31</td>
+</tr>
+<tr>
+<td>Validation Loss</td>
+<td>1.56</td>
+<td>1.38</td>
+<td>1.33</td>
+<td>1.33</td>
+</tr>
+<tr>
+<td>Token Accuracy</td>
+<td>67%</td>
+<td>70%</td>
+<td>71%</td>
+<td>71%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">四维对比</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>V1（QLoRA）</th>
+<th>V2（+MLP）</th>
+<th>V3（r8）</th>
+<th>V4（LoRA）</th>
+<th>结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>量化</td>
+<td>4-bit</td>
+<td>4-bit</td>
+<td>4-bit</td>
+<td><strong>全精度</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>最终 Train Loss</td>
+<td>1.21</td>
+<td><strong>1.06</strong></td>
+<td>1.31</td>
+<td>1.31</td>
+<td>V2 最优</td>
+</tr>
+<tr>
+<td>最终 Eval Loss</td>
+<td>1.24</td>
+<td><strong>1.13</strong></td>
+<td>1.32</td>
+<td>1.33</td>
+<td>V2 最优</td>
+</tr>
+<tr>
+<td>Token Accuracy</td>
+<td>73%</td>
+<td><strong>75%</strong></td>
+<td>72%</td>
+<td>71%</td>
+<td>V2&gt;V1&gt;V4≈V3</td>
+</tr>
+<tr>
+<td>Avg Loss</td>
+<td>1.58</td>
+<td><strong>1.49</strong></td>
+<td>~1.50</td>
+<td>~1.39</td>
+<td>V2 最优</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">关键发现</h3>
+<ul>
+<li><strong>QLoRA &gt; 全精度 LoRA</strong>：V1 和 V4 仅量化方式不同，其余完全一致。V1（4-bit）eval loss=1.24，V4（全精度）=1.33。量化噪声在小数据集上起到正则化作用，反而优于全精度</li>
+<li><strong>rank=16→8 代价明显</strong>：V3 eval loss 从 1.24 退至 1.32，收敛慢约 300 步——rank 本身构成容量瓶颈</li>
+<li><strong>V2 整体最优</strong>：MLP 层 + QLoRA + rank=16</li>
+<li>消融结论：<strong>QLoRA 对本任务既省显存又提效果</strong>，rank=16 是容量下限</li>
+</ul>
+<hr />
+<h2 id="pair-wise">Pair-wise 盲测结果</h2>
+<h3 id="v1-attention1231">V1 全量评测（仅 Attention，1,231 条对比）</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>Base</th>
+<th>SFT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>胜率</td>
+<td>25.3% (311)</td>
+<td><strong>68.4%</strong> (842)</td>
+</tr>
+<tr>
+<td>平局</td>
+<td>-</td>
+<td>78</td>
+</tr>
+<tr>
+<td>平均回复长度</td>
+<td>198.9 字</td>
+<td>30.4 字</td>
+</tr>
+<tr>
+<td>长度缩减</td>
+<td>-</td>
+<td>84.7%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="v2-attention-mlp1256">V2 全量评测（Attention + MLP，1,256 条对比）</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>Base</th>
+<th>SFT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>胜率</td>
+<td>25.6% (322)</td>
+<td><strong>67.0%</strong> (841)</td>
+</tr>
+<tr>
+<td>平局</td>
+<td>-</td>
+<td>93</td>
+</tr>
+<tr>
+<td>平均回复长度</td>
+<td>180.2 字</td>
+<td>25.8 字</td>
+</tr>
+<tr>
+<td>长度缩减</td>
+<td>-</td>
+<td>85.7%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="v3-rank8-attention1231">V3 全量评测（rank=8，仅 Attention，1,231 条对比）</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>Base</th>
+<th>SFT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>胜率</td>
+<td>25.9% (319)</td>
+<td><strong>67.0%</strong> (825)</td>
+</tr>
+<tr>
+<td>平局</td>
+<td>-</td>
+<td>87</td>
+</tr>
+<tr>
+<td>平均回复长度</td>
+<td>198.9 字</td>
+<td>29.7 字</td>
+</tr>
+<tr>
+<td>长度缩减</td>
+<td>-</td>
+<td>85.1%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="v4-lora-attention1256">V4 全量评测（LoRA 全精度，仅 Attention，1,256 条对比）</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>Base</th>
+<th>SFT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>胜率</td>
+<td>27.5% (346)</td>
+<td><strong>64.8%</strong> (814)</td>
+</tr>
+<tr>
+<td>平局</td>
+<td>-</td>
+<td>96</td>
+</tr>
+<tr>
+<td>平均回复长度</td>
+<td>180.9 字</td>
+<td>24.8 字</td>
+</tr>
+<tr>
+<td>长度缩减</td>
+<td>-</td>
+<td>86.3%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_11">四维对比分析</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>V1（r16 QLoRA）</th>
+<th>V2（+MLP）</th>
+<th>V3（r8）</th>
+<th>V4（LoRA）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>可训参数</td>
+<td>11.8M</td>
+<td>33.0M</td>
+<td>5.9M</td>
+<td>11.8M</td>
+</tr>
+<tr>
+<td>SFT 胜率</td>
+<td><strong>68.4%</strong></td>
+<td>67.0%</td>
+<td>67.0%</td>
+<td>64.8%</td>
+</tr>
+<tr>
+<td>Base 胜率</td>
+<td>25.3%</td>
+<td>25.6%</td>
+<td>25.9%</td>
+<td>27.5%</td>
+</tr>
+<tr>
+<td>SFT 长度</td>
+<td>30.4 字</td>
+<td>25.8 字</td>
+<td>29.7 字</td>
+<td>24.8 字</td>
+</tr>
+<tr>
+<td>训练数据中位</td>
+<td>19 字</td>
+<td>19 字</td>
+<td>19 字</td>
+<td>19 字</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_12">发现</h3>
+<ul>
+<li><strong>V3 rank=8 胜率 67.0%，仅比 V1 rank=16 低 1.4pp</strong>——参数减半但效果接近，rank 边际收益递减</li>
+<li>V3 与 V2（+MLP, 33M 参数）胜率平齐（67.0%）——<strong>rank 不是 bottleneck 时，Attention 层已足够</strong></li>
+<li>V4（全精度）胜率垫底（64.8%），证实 QLoRA 正则化在本任务的优势</li>
+<li>训练指标排序 V2&gt;V1&gt;V3&gt;V4 与盲测胜率不完全对齐：V3 训练 loss 最差但胜率与 V2 持平，说明 <strong>eval loss 不完全代表用户感知质量</strong></li>
+<li>
+<p>V1/V3（transformers）产出 1231 对；V2/V4（vLLM）产出 1256 对。差 25 对来自：260 条对话中有 25 条消息数为奇数，transformers 用 <code>max_t = len(msgs)//2</code> 截断了尾轮（用户发送后无 assistant 回复），vLLM 未做截断而多生成了这 25 轮。胜率按比例计算，不影响横向对比</p>
+</li>
+<li>
+<p>V1（QLoRA）胜率最高（68.4%），V4（全精度 LoRA）最低（64.8%），差了 3.6pp——<strong>与 training loss 一致</strong>，QLoRA 在小数据上的正则化效应在胜率中得到验证</p>
+</li>
+<li>V2（+MLP）与 V1 持平，MLP 贡献边际</li>
+<li>结论：<strong>QLoRA 是本任务最佳选择</strong>——既省显存又提效果，全精度反而退步</li>
+</ul>
+<hr />
+<h2 id="dpo">DPO 偏好数据构造</h2>
+<h3 id="_13">总览</h3>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>文件</th>
+<th>条数</th>
+<th>占比</th>
+<th>来源</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一层</td>
+<td><code>jddc_dpo_pairwise.jsonl</code></td>
+<td>311</td>
+<td>20%</td>
+<td>测试集 0-259</td>
+<td>SFT vs Base 中 SFT 输的 + DS V4 改写 chosen</td>
+</tr>
+<tr>
+<td>二层</td>
+<td><code>jddc_dpo_layer2_clean.jsonl</code></td>
+<td>150</td>
+<td>10%</td>
+<td>合成</td>
+<td>DS V4 按失败模式 few-shot 生成</td>
+</tr>
+<tr>
+<td>三层</td>
+<td><code>jddc_dpo_layer3.jsonl</code></td>
+<td>127</td>
+<td>8%</td>
+<td>测试集 260-359</td>
+<td>SFT 自对弈（修复 AB 映射 + 去重后重跑）</td>
+</tr>
+<tr>
+<td>四层</td>
+<td><code>jddc_dpo_layer4.jsonl</code></td>
+<td>354</td>
+<td>23%</td>
+<td>eval 集 0-299</td>
+<td>SFT 自对弈（修复 AB 映射 + 去重）</td>
+</tr>
+<tr>
+<td>五层</td>
+<td><code>jddc_dpo_layer5.jsonl</code></td>
+<td><strong>579</strong></td>
+<td>38%</td>
+<td>eval 集 300-635</td>
+<td>SFT vs Base 中 SFT 输的 + DS V4 改写 chosen</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td>-</td>
+<td><strong>1,521</strong></td>
+<td>100%</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_14">五层详情</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>一层</th>
+<th>二层</th>
+<th>三层</th>
+<th>四层</th>
+<th>五层</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据来源</td>
+<td>SFT vs Base 负样本</td>
+<td>LLM 合成</td>
+<td>SFT 自对弈</td>
+<td>SFT 自对弈</td>
+<td>SFT vs Base 负样本</td>
+</tr>
+<tr>
+<td>占用数据</td>
+<td>测试集 0-259</td>
+<td>无</td>
+<td>测试集 260-359</td>
+<td>eval 0-299</td>
+<td>eval 300-635</td>
+</tr>
+<tr>
+<td>chosen 来源</td>
+<td>DS V4 改写</td>
+<td>DS V4 生成</td>
+<td>SFT 生成（DS 挑优）</td>
+<td>SFT 生成（DS 挑优）</td>
+<td>DS V4 改写</td>
+</tr>
+<tr>
+<td>rejected 来源</td>
+<td>SFT 生成</td>
+<td>DS V4 生成</td>
+<td>SFT 生成（DS 挑劣）</td>
+<td>SFT 生成（DS 挑劣）</td>
+<td>SFT 生成</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠ 四层修复了 AB 映射 bug（gen1/gen2 未真正随机化），从 718 降至 354；五层已按修复后的流程生成
+⚠ eval 集（636 条）在 SFT 阶段仅做 validation 监控，未参与梯度更新，用作 DPO 数据无 SFT 泄露风险</p>
+</blockquote>
+<ul>
+<li>最终 DPO 评测使用 360-641（282 条干净数据），所有 DPO 训练数据均不与其重叠</li>
+</ul>
+<hr />
+<h2 id="dpo_1">DPO 训练结果</h2>
+<p>基于五层全量 1,521 对数据。</p>
+<h3 id="_15">三组实验配置</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>实验一</th>
+<th>实验二</th>
+<th>实验三</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基座模型</td>
+<td>SFT checkpoint</td>
+<td>SFT on chosen 数据</td>
+<td>SFT on chosen 数据</td>
+</tr>
+<tr>
+<td>chosen 数据源</td>
+<td>-</td>
+<td>层1+2+5（DS 生成，944 对）</td>
+<td>同实验二</td>
+</tr>
+<tr>
+<td>lr</td>
+<td>1e-5</td>
+<td>1e-5</td>
+<td><strong>1.5e-5</strong></td>
+</tr>
+<tr>
+<td>beta</td>
+<td>0.05</td>
+<td>0.05</td>
+<td><strong>0.1</strong></td>
+</tr>
+<tr>
+<td>Epochs</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Steps</td>
+<td>342</td>
+<td>342</td>
+<td>342</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_16">三组结果对比</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>实验一（纯 DPO）</th>
+<th>实验二（SFT→DPO）</th>
+<th>实验三（SFT→DPO+）</th>
+<th>结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Final Eval Loss</td>
+<td>0.509</td>
+<td>0.572</td>
+<td><strong>0.424</strong></td>
+<td>实验三最优</td>
+</tr>
+<tr>
+<td>Reward Margin</td>
+<td>0.486</td>
+<td>0.301</td>
+<td><strong>1.032</strong></td>
+<td>实验三 2.1x</td>
+</tr>
+<tr>
+<td>Reward Accuracy</td>
+<td>76.3%</td>
+<td><strong>82.1%</strong></td>
+<td><strong>82.1%</strong></td>
+<td>实验二/三平齐</td>
+</tr>
+<tr>
+<td>Entropy</td>
+<td>1.77</td>
+<td>1.28</td>
+<td><strong>1.17</strong></td>
+<td>实验三最"自信"</td>
+</tr>
+<tr>
+<td>Logps/chosen</td>
+<td>-40.75</td>
+<td><strong>-33.99</strong></td>
+<td>-35.99</td>
+<td>实验二最短</td>
+</tr>
+<tr>
+<td>Logps/rejected</td>
+<td>-30.50</td>
+<td>-34.41</td>
+<td><strong>-40.70</strong></td>
+<td>实验三推最远</td>
+</tr>
+<tr>
+<td>偏好方向</td>
+<td>❌ 偏好 rejected</td>
+<td>✅ 偏好 chosen</td>
+<td>✅✅ 强偏好 chosen</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_17">关键发现</h3>
+<ul>
+<li><strong>实验一仍是方向性错误</strong>：Logps/rejected（-30.50）&gt; Logps/chosen（-40.75），模型觉得 rejected 回复更"顺口"。DPO 拉出了 0.486 margin，但推错了方向——是在错误的起点上硬拉</li>
+<li><strong>实验二"先 SFT 后 DPO"修复了方向</strong>：SFT on chosen 数据让模型学到"什么是好回复"，DPO 时 chosen 天然 logp 更高。rejected 被打到 -34.41（down 4 个点），chosen 稳在 -33.99</li>
+<li><strong>实验三 lr↑ + beta↑ 释放了 DPO 的潜力</strong>：beta 从 0.05→0.1 告诉模型"更重视偏好"，lr 从 1e-5→1.5e-5 加速收敛。rejected 被推到 -40.70（down 6 个点），chosen 仅从 -33.99 降到 -35.99，margin 从 0.30 跳到 1.03</li>
+<li><strong>三组实验构成完整的消融链</strong>：纯 DPO 不行 → 两阶段范式修复方向 → 调参放大效果。reward margin 从 0.49→0.30→1.03 的走势说明：范式比调参重要，但正确范式 + 合理调参 = 效果最大化</li>
+</ul>
+<hr />
+<h2 id="dpo_2">DPO 最终盲测</h2>
+<p>使用干净测试集 360-641（282 条，从未被任何 DPO 层使用）。</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>纯 SFT（V1）</th>
+<th>二轮 SFT（DS chosen）</th>
+<th>DPO 最终</th>
+<th>变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SFT/DPO 胜率</td>
+<td>64.0%</td>
+<td>77.9%</td>
+<td><strong>88.3%</strong></td>
+<td><strong>+24.3pp</strong></td>
+</tr>
+<tr>
+<td>Base 胜率</td>
+<td>32.9%</td>
+<td>19.1%</td>
+<td>10.7%</td>
+<td>-22.2pp</td>
+</tr>
+<tr>
+<td>平局</td>
+<td>41</td>
+<td>39</td>
+<td>14</td>
+<td>更果断</td>
+</tr>
+<tr>
+<td>SFT/DPO 长度</td>
+<td>25.0 字</td>
+<td>23.0 字</td>
+<td>38.8 字</td>
+<td>+55%</td>
+</tr>
+<tr>
+<td>Base 长度</td>
+<td>175.5 字</td>
+<td>175.5 字</td>
+<td>175.5 字</td>
+<td>不变</td>
+</tr>
+<tr>
+<td>长度缩减</td>
+<td>85.7%</td>
+<td>86.9%</td>
+<td>77.9%</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_18">三阶段增量分析</h3>
+<ul>
+<li><strong>SFT → 二轮 SFT：+13.9pp</strong>（64.0%→77.9%）。仅用 DS 生成的 944 条 chosen 回复（层1+2+5）做第二轮 SFT，模型学到了"准确完整地回答"而非"极度简短"，长度不变但质量显著提升</li>
+<li><strong>二轮 SFT → DPO：+10.4pp</strong>（77.9%→88.3%）。DPO 在校准偏好，长度从 23→39 字是因为模型学会了 DS chosen 的"简洁但不敷衍"风格，同时 rejected 被打压</li>
+<li><strong>三阶段消融验证了"先 SFT 后 DPO"范式</strong>：SFT 决定回答的<strong>内容质量</strong>（+13.9pp），DPO 决定<strong>偏好方向</strong>（+10.4pp），两者互补而非替代</li>
+<li>回复长度从 25.0→38.8 字是<strong>有意为之</strong>：DS 生成的 chosen 回复（约 30-40 字）比纯 SFT（19 字中位）更完整，DPO 学到的是"简洁但不敷衍"。相比 Base 的 175 字，77.9% 的长度缩减仍保留了显著的简洁性</li>
+<li>平局从 41→14：模型偏好处判更清晰，回答质量更稳定</li>
+</ul>
+<hr />
+<h2 id="sft-vs-dpo">SFT vs DPO 内部对决</h2>
+<p>将二轮 SFT 模型（77.9% vs Base）与最终 DPO 模型（88.3% vs Base）直接对比，看 DPO 相较 SFT 的净增量。</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>二轮 SFT</th>
+<th>DPO 最终</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>胜率</td>
+<td>39.9% (524)</td>
+<td><strong>56.0%</strong> (735)</td>
+</tr>
+<tr>
+<td>平局</td>
+<td>-</td>
+<td>54</td>
+</tr>
+<tr>
+<td>平均长度</td>
+<td>22.5 字</td>
+<td>39.8 字</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dpo_3">DPO 赢在哪里</h3>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>SFT 表现</th>
+<th>DPO 表现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用户问题模糊</td>
+<td>"建议申请售后"（17 字，直接跳结论）</td>
+<td>"请提供具体问题，我帮您核实"（29 字，先了解再处理）</td>
+</tr>
+<tr>
+<td>问题未解决时结束</td>
+<td>"不客气哈 有需要随时找我"（过于随意）</td>
+<td>"我会继续跟进，有结果第一时间告知"（给出承诺和预期）</td>
+</tr>
+<tr>
+<td>退款到哪</td>
+<td>绕弯核查询流程（77 字，没回答问题）</td>
+<td>"退到原支付账户"（37 字，直接给答案）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sft_1">SFT 赢在哪里</h3>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>SFT 表现</th>
+<th>DPO 表现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>简单确认</td>
+<td>"亲，可以退货哦"（准确直接）</td>
+<td>加了无关的"无法使用"前提，显得机械</td>
+</tr>
+<tr>
+<td>确认用户意图</td>
+<td>"退2个，对吗？"（先确认再执行）</td>
+<td>"是可以的，只退两个"（跳过确认，风险更高）</td>
+</tr>
+<tr>
+<td>简单操作</td>
+<td>直接记录订单号和上门信息</td>
+<td>额外加了收费说明，多余信息稀释核心操作</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_19">总结</h3>
+<ul>
+<li><strong>DPO 净 +16.1pp</strong>，优势在需要主动性、核实、跟进的中等复杂度场景</li>
+<li>SFT 在简单确认场景仍有优势——极简回复比 DPO 的模板化表达更自然</li>
+<li>DPO 回复更长（39.8 vs 22.5），但长度增加来自<strong>信息增量</strong>而非废话：核实用户问题、给出具体承诺、提供准确信息</li>
+<li>这说明 DPO 不是简单偏长回复，而是在"短但敷衍"和"长且完整"之间做了有信息增量的选择——SFT 的长度是"刚好够"（22.5 字），DPO 的长度是"刚好对"（39.8 字）</li>
+</ul>
+<h2 id="_20">踩坑记录</h2>
+<h3 id="1lora-basesft">坑 1：LoRA 权重原地覆盖 → Base/SFT 实际是同一模型</h3>
+<p><code>PeftModel.from_pretrained(base_model, checkpoint)</code> 会原地修改 base_model。评测时以为加载了两个模型，实则两者都带 LoRA。</p>
+<ul>
+<li><strong>现象</strong>：Base 胜率异常高达 69%</li>
+<li><strong>修复</strong>：通过 <code>model.disable_adapter_layers()</code> / <code>enable_adapter_layers()</code> 动态开关 LoRA</li>
+<li><strong>修复后</strong>：SFT 胜率 68.4%，回复长度从 188 字降至 30 字</li>
+</ul>
+<h3 id="2llm-as-judge">坑 2：LLM-as-Judge 全量评分无效</h3>
+<p>初始评测用逐维度打分模式，让 judge 同时看到参考回复和两个模型的输出。结果 SFT 在各维度均略低于 Base——<strong>但实际仍是同一模型的输出在比。</strong> 改为 pair-wise 盲测 + 明确「简洁直接」标准后结果回归合理，也证明了绝对评分不如相对对比可靠。</p>
+<h3 id="3rag">坑 3：RAG 知识注入 → 去留两难</h3>
+<p>注入的假知识与对话无关（68% 为无用物流站点），但一键删除会连带削掉退货场景（因 <code>[金额x]</code> 变量集中在该场景）。最终保留 RAG 数据，在 SFT 中接受 13.3% 的轻度噪声。</p>
+<h3 id="4">坑 4：随机变量替换 → 数据分布偏移</h3>
+<p><code>[姓名x]</code> <code>[金额x]</code> <code>[地址x]</code> 在不同运行中产生不同随机值。验证发现 8168 vs 8158 的 10 条差异来自去 RAG 后 token 变短被过滤，需精确对齐后按行匹配置信分数。同一次 pipeline 产出的数据天然行对齐，不同运行则无法保证。</p>
+<h3 id="5-judge">坑 5：同一模型自比 → 暴露 judge 的位置偏差</h3>
+<p>两个回复完全相同（都是同一 SFT 模型输出），但 judge 打出 69%:31%。理论上 50:50，实际严重偏向前一个。<strong>LLM-as-judge 的 A/B 对比存在位置偏见——模型倾向选靠前的回答。</strong> 评测时必须随机打乱 AB 顺序，且不能仅凭胜率绝对值做结论。</p>
+<h3 id="6">坑 6：评测结果反过来验证了之前的所有结论</h3>
+<p>修完 LoRA 覆盖 bug 后重新跑测，SFT 68.4% vs Base 31.6%。之前基于 bug 数据得出的所有结论（"基座太强""SFT 无意义""数据拖后腿"）全部作废。教训：<strong>评测框架本身的正确性必须先验证，否则后续分析全是在给 bug 编理由。</strong></p>
+<hr />
+<h2 id="vllm">vLLM 推理加速对比</h2>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>s/it</th>
+<th>260 轮预估</th>
+<th>技术差异</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>逐条 <code>model.generate()</code></td>
+<td>60.02s</td>
+<td>4h15min</td>
+<td>Transformers 原生，无 KV cache 复用</td>
+</tr>
+<tr>
+<td>vLLM 单条推理</td>
+<td>12.30s</td>
+<td>52min</td>
+<td>PagedAttention + KV cache 优化</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>加速比：4.9x</strong>，评测时间从 4 小时压缩到 1 小时以内</li>
+<li>加速来自 vLLM 的 PagedAttention 显存管理和跨轮 KV cache 预取（<code>enable_prefix_caching=True</code>），而非连续批处理</li>
+<li>对话评测天然串行——为模拟真实部署（模型自己的回复成为下一轮上下文），无法用测试集固定上下文并行推理。这是真实性 vs 速度的权衡，vLLM 将此权衡下串行的代价降到 4.9x</li>
+</ul>
+<hr />
+<h2 id="_21">材料汇总</h2>
+<h3 id="_22">简历项目介绍</h3>
+<blockquote>
+<p><strong>电商客服多轮对话模型微调与偏好对齐</strong>
+针对京东客服退换货、物流查询等高频场景，基于 Qwen3-4B-Instruct 完成 SFT+DPO 全流程。清洗并构建 5,103 条多轮客服指令数据，使用 QLoRA（rank=16）完成 SFT，对 rank、target_modules、量化方案展开四组消融实验。创新性地构建五层、1,521 组多维度偏好数据（真实负样本 + LLM 合成 + 自对弈），经两阶段"先 SFT 后 DPO"范式训练。最终在 pair-wise 盲测中 DPO 模型以 88.3% 胜率显著优于基座（barely 10.7%），较大幅提升 SFT baseline（64.0%）。沉淀 LoRA 权重覆盖、LLM-as-Judge 位置偏见、自对弈信号强度等多项工程踩坑经验。</p>
+</blockquote>
+<h3 id="_23">面试叙事要点</h3>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>讲什么</th>
+<th>关键数字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>开头</td>
+<td>京东客服场景，退换货/物流/商品咨询</td>
+<td>5,103 训练 / 636 验证 / 642 测试</td>
+</tr>
+<tr>
+<td>SFT</td>
+<td>QLoRA rank=16，四组消融</td>
+<td>QLoRA &gt; 全精度 LoRA，rank=16 是容量底线</td>
+</tr>
+<tr>
+<td>DPO 数据</td>
+<td>五层 1,521 对，三层互补</td>
+<td>真实负样本 54% + 合成 10% + 自对弈 36%</td>
+</tr>
+<tr>
+<td>DPO 训练</td>
+<td>三组消融：纯 DPO → SFT+DPO → 调参</td>
+<td>reward margin 0.49→0.30→1.03</td>
+</tr>
+<tr>
+<td>最终结果</td>
+<td>pair-wise 盲测 DPO 88.3% vs Base</td>
+<td>SFT 64.0% → DPO 88.3%（+24.3pp）</td>
+</tr>
+<tr>
+<td>收尾</td>
+<td>踩坑经验</td>
+<td>LoRA 覆盖、AB 映射、judge 位置偏见</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_24">面试追问预答</h3>
+<p><strong>Q: LoRA rank 怎么选的？</strong>
+跑过四组消融：V3 rank=8 eval loss 1.32 vs V1 rank=16 eval loss 1.24，rank 本身构成容量瓶颈。rank=16 在此任务上是最优的性价比平衡点。</p>
+<p><strong>Q: QLoRA 为什么比全精度 LoRA 效果好？</strong>
+四组实验中 V1（QLoRA 4-bit）胜率 68.4%，V4（全精度 LoRA）仅 64.8%。4-bit 量化噪声在小规模客服数据上起到隐性正则化，省 60% 显存还提 3.6pp 效果。</p>
+<p><strong>Q: DPO 数据怎么构建的？</strong>
+1,521 对来自五个独立层：一层/五层利用 SFT vs Base 评测的负样本（DS 改写 chosen），二层用 DS V4 按失败模式 few-shot 合成，三/四层利用 SFT 自对弈（DS 思考模式盲测评优）。三层自对弈发现 55% 的初始偏好来自语气词差异，引入"实质性差异"标准后重新筛选，只用质量对。</p>
+<p><strong>Q: 为什么选 DPO 不选 PPO？</strong>
+资源角度：DPO 不需要额外构建 reward model，1,521 对偏好数据在 QLoRA 上直接收敛。PPO 需要在线采样 + 训练价值函数，4B 模型单卡部署成本过高。</p>
+<p><strong>Q: beta 参数如何调？</strong>
+三组 DPO 消融实验：SFT→DPO（beta=0.05）reward margin 0.30；beta 提高到 0.1 + lr 提高到 1.5e-5 后 reward margin 跳至 1.03。chosen/rejected 区分度增强明显，最终盲测选择 beta=0.1 + lr=1.5e-5 为最佳。</p>
+<p><strong>Q: 项目中最大的坑？</strong>
+评测 LoRA 覆盖 bug——PeftModel.from_pretrained 原地修改 base_model，导致 Base 和 SFT 实际是同一模型。排查后通过 disable/enable_adapter_layers 修复。教训：评测框架的正确性须先自行验证，否则后续分析全在给 bug 编理由。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

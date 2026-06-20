@@ -1,0 +1,8315 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../02_%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A/">
+      
+      
+        <link rel="next" href="../04_ds%E5%9B%9E%E7%AD%94/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>3 qwen回答 - 橙世闲游</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="橙世闲游" class="md-header__button md-logo" aria-label="橙世闲游" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            橙世闲游
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3 qwen回答
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="橙世闲游" class="md-nav__button md-logo" aria-label="橙世闲游" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    橙世闲游
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    前言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 预备知识
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 预备知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/01_Python%E7%A8%8B%E5%BA%8F%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Python程序基本结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/02_%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 基础语法与变量
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/03_%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 核心数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/04_%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 运算符与表达式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/05_%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 程序控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/06_%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 函数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/07_%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 文件操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/08_%E9%94%99%E8%AF%AF%E4%B8%8E%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 错误与异常处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/09_%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 面向对象编程基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 进阶修炼
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 进阶修炼
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/01_%E6%8E%A8%E5%AF%BC%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/02_%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 迭代器与生成器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/03_%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 上下文管理器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/04_%E8%A3%85%E9%A5%B0%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 装饰器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/05_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/06_%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%8C%85/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 模块与包
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/07_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 进阶输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/08_%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 命名空间与作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/09_%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 类型注解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/10_%E6%A0%87%E5%87%86%E5%BA%93%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 标准库概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/11_%E5%BC%82%E6%AD%A5IO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 异步IO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/01_%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 算法概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/02_%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%9E%9A%E4%B8%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 模拟与枚举
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/03_%E9%80%92%E5%BD%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 递归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/04_%E5%88%86%E6%B2%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 分治
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/05_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 二分查找
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/06_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 动态规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/07_%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 背包问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/08_%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 贪心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/09_%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 搜索算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/10_%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 图论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法实战
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法实战
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/01_Hot100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Hot100(上)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/02_Hot100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Hot100(中)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/03_Hot100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Hot100(下)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/04_%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%85%B8150/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 面试经典150(上)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/07_Hot100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 Hot100二刷
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/08_%E7%AE%97%E6%B3%95%E6%89%8B%E6%92%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 算法手撕
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent/01_Hello-Agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Hello-Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据科学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据科学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/01_%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 生命周期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/02_%E7%9F%A9%E5%BD%A2%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 矩形数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/03_SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 SQL与关系数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/04_%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 文件处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/05_%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 数据清洗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/06_%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 数据分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/07_%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 数据可视化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/08_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/09_%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 文本数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/10_%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 数据交换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/11_%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 线性模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/12_%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 模型选择
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/13_%E6%8E%A8%E7%90%86%E4%B8%8E%E9%A2%84%E6%B5%8B%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 推理与预测理论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/14_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/15_%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/16_%E6%95%B0%E5%80%BC%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 数值优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_science/17_%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 案例研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    爆肝杰哥深度学习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    爆肝杰哥深度学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/Python%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python深度学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/numpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/matplotlib/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matplotlib
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/pandas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pandas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/DNN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jie_course/CNN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CNN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pytorch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pytorch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pytorch/%E5%B0%8F%E5%9C%9F%E5%A0%86Pytorch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    小土堆Pytorch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pytorch/AI%E9%97%AE%E7%AD%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI问答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    吴恩达机器学习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    吴恩达机器学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wu_course/00_AI%E9%97%AE%E7%AD%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0 AI问答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wu_course/01_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 机器学习基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    李沐动手学深度学习(书)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    李沐动手学深度学习(书)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../limu_course/01_%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 动手学深度学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自然语言处理
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    自然语言处理
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nlp/01_%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 软微自然语言处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    后训练
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    后训练
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_training/01_%E5%90%8E%E8%AE%AD%E7%BB%83%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 后训练概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_training/02_%E8%BD%AF%E5%BE%AE%E5%90%8E%E8%AE%AD%E7%BB%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 软微后训练
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_training/03_AI%E9%97%AE%E7%AD%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 AI问答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_training/04_%E8%B8%A9%E5%9D%91%E6%97%A5%E8%AE%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 踩坑日记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_training/05_trl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 Huggingface trl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_training/06_rlhfbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 rlhfbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    强化学习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    强化学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rl/01_%E5%8A%A8%E6%89%8B%E5%AD%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 动手学强化学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI infra
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI infra
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_infra/01_%E5%85%A5%E9%97%A8%E8%B7%AF%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 入门路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    面经
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    面经
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/%E9%9D%A2%E7%BB%8F%E6%B5%81%E6%B0%B4%E8%B4%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 面经流水账
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/%E5%8F%AF%E6%8A%95%E9%80%92%E5%85%AC%E5%8F%B8%E6%B1%87%E6%80%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 可投递公司汇总
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 TeleAI 大模型算法实习面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 粽子的面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 正在思考的超人强整理的手撕算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 京东大模型算法实习面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 淘天大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 字节大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 美团大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 腾讯大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 阿里高德大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 百度大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 小红书大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 阿里国际大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 其他大模型算法面经
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    经验贴参考
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    经验贴参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 大模型算法岗，3个项目走上人生，癫疯😎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 如何找到第一份大厂算法岗日常实习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 如何找到第一段搜广推实习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 非科班转大模型快速学习路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 我的大模型零基础学习路线(已实习)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 辰屿九秋的大模型开发和算法学习路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 小白的SFT、RL完整学习路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8 粽子的如何找到第一份大模型实习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9 考研电子宠物的转码经验贴
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 叶云的转大模型算法最快路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 CherieCame的八股框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 两万人看过的“混进”算法岗后续
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 AI问答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    八股
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    八股
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 minimind
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 技术报告
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 qwen回答
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 qwen回答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-kl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. KL散度、交叉熵、两者关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 大模型中的幻觉、复读机等现象的成因与解决方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-decoder-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 为什么使用Decoder-only架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 梯度爆炸、梯度消失、梯度饱和
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-gptbertclipllama" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. GPT、BERT、CLIP、Llama
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-pythongilasync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Python进程/线程/协程、GIL锁、异步计数器、async
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-sgdmomentumadamadamwmuon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. SGD优化器、Momentum、Adam、AdamW、Muon
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 深拷贝浅拷贝
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 智能指针
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 为什么大模型选用交叉熵损失
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-mse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 为什么回归用MSE，分类用交叉熵
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、训练推理加速
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、训练推理加速">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 推理优化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 推理优化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vllmpagedattentioncontinuous-batching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vLLM：PagedAttention、Continuous Batching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kv-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KV Cache
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefill-decode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prefill &amp; Decode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        梯度检查点 &amp; 梯度累计
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 训练/模型优化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 训练/模型优化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#megatron-lm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Megatron-LM并行策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deepspeed-zero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DeepSpeed ZeRO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        并行节点通信方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flashattention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FlashAttention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mqagqamla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MQA、GQA、MLA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 模型训练和推理显存需求分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、Transformer内部
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、Transformer内部">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-norm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Norm归一化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Norm归一化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internal-covariate-shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        内部协变量偏移 (Internal Covariate Shift)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-normpost-normdeep-norm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-norm、Post-norm、Deep-norm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batchnormlayernormrmsnorm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BatchNorm、LayerNorm、RMSNorm
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 激活函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 位置编码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 其他
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 其他">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么除以根号dk
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoder-decoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encoder-Decoder注意力结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qkv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么要分为Q、K、V三个矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dropout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dropout训练和推理时的行为区别
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、强化学习
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、强化学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#value-based-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Value-based Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Value-based Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monte-carlo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        蒙特卡洛法 (Monte Carlo)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sarsa-state-action-reward-state-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SARSA (State-Action-Reward-State-Action)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-difference-td" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        时序差分法 (Temporal Difference, TD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q-learning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dqn-deep-q-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DQN (Deep Q-Network)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#policy-based-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Policy-based Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Policy-based Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reinforce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REINFORCE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actor-critic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actor-Critic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trpo-trust-region-policy-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TRPO (Trust Region Policy Optimization)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ppo-proximal-policy-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PPO (Proximal Policy Optimization)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grpo-group-relative-policy-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRPO (Group Relative Policy Optimization)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gspo-group-level-sequence-policy-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GSPO (Group-level Sequence Policy Optimization)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dapo-decoupled-alignment-policy-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DAPO (Decoupled Alignment Policy Optimization)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        其他Policy方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        其他关键概念
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="其他关键概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模态/熵坍塌问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reward-hacking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reward Hacking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DPO为什么会出现损失下降但性能没有提升
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#online-vs-offline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Online vs Offline强化学习
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-policy-vs-off-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On-policy vs Off-policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rlseq_len" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RL训练为什么会让seq_len变长
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-policy-distillation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么是on-policy distillation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-sizeminibatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        训练中batch size和minibatch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RL训练你一般看哪些指标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#irrlir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么是IR，为什么RL要引入IR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gui-agentquery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GUI Agent，Query对应的不同镜像不同拉取
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grpodensemoe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRPO在dense和MoE上表现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clip-higher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么Clip-Higher有效
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#policytop_p-top_k" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Policy里的top_p, top_k
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、面经中的具体问题补充
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、面经中的具体问题补充">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-verlhybridengineauto-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. verl中的hybridengine、auto mapping原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-qwen25-vlqwen35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Qwen2.5-VL到Qwen3.5架构变化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 线性注意力为什么能把复杂度降成O(n)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 推理时出现重复生成、断句、卡顿的排查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-per-channelper-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. per-channel和per-token量化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、手撕代码题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、手撕代码题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-multi-head-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Multi-Head Attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-grouped-query-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Grouped Query Attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-softmax-safe-softmax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Softmax (safe softmax)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 交叉熵损失
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-grpo-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. GRPO Loss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-hot-100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Hot 100 原题（高频算法题）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、总结与面试建议
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、总结与面试建议">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        知识体系梳理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        面试准备建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见面试流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_ds%E5%9B%9E%E7%AD%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 ds回答
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19" >
+        
+          
+          <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_19">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    项目
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../project/%E7%94%B5%E5%95%86%E5%AE%A2%E6%9C%8D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 电商客服
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" >
+        
+          
+          <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_20">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实用工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/01_Git%E4%B8%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Git与版本控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/02_Markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/03_Vibe_Coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Vibe Coding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/04_LeetCode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 LeetCode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/05_coze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 coze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/06_n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/07_PPT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7 PPT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-kl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. KL散度、交叉熵、两者关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 大模型中的幻觉、复读机等现象的成因与解决方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-decoder-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 为什么使用Decoder-only架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 梯度爆炸、梯度消失、梯度饱和
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-gptbertclipllama" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. GPT、BERT、CLIP、Llama
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-pythongilasync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Python进程/线程/协程、GIL锁、异步计数器、async
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-sgdmomentumadamadamwmuon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. SGD优化器、Momentum、Adam、AdamW、Muon
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 深拷贝浅拷贝
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 智能指针
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 为什么大模型选用交叉熵损失
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-mse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 为什么回归用MSE，分类用交叉熵
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、训练推理加速
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、训练推理加速">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 推理优化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 推理优化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vllmpagedattentioncontinuous-batching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vLLM：PagedAttention、Continuous Batching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kv-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KV Cache
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefill-decode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prefill &amp; Decode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        梯度检查点 &amp; 梯度累计
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 训练/模型优化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 训练/模型优化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#megatron-lm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Megatron-LM并行策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deepspeed-zero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DeepSpeed ZeRO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        并行节点通信方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flashattention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FlashAttention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mqagqamla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MQA、GQA、MLA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 模型训练和推理显存需求分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、Transformer内部
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、Transformer内部">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-norm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Norm归一化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Norm归一化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internal-covariate-shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        内部协变量偏移 (Internal Covariate Shift)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-normpost-normdeep-norm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-norm、Post-norm、Deep-norm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batchnormlayernormrmsnorm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BatchNorm、LayerNorm、RMSNorm
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 激活函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 位置编码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 其他
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 其他">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么除以根号dk
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoder-decoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encoder-Decoder注意力结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qkv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么要分为Q、K、V三个矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dropout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dropout训练和推理时的行为区别
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、强化学习
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、强化学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#value-based-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Value-based Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Value-based Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monte-carlo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        蒙特卡洛法 (Monte Carlo)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sarsa-state-action-reward-state-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SARSA (State-Action-Reward-State-Action)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-difference-td" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        时序差分法 (Temporal Difference, TD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q-learning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dqn-deep-q-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DQN (Deep Q-Network)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#policy-based-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Policy-based Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Policy-based Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reinforce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REINFORCE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actor-critic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actor-Critic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trpo-trust-region-policy-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TRPO (Trust Region Policy Optimization)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ppo-proximal-policy-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PPO (Proximal Policy Optimization)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grpo-group-relative-policy-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRPO (Group Relative Policy Optimization)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gspo-group-level-sequence-policy-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GSPO (Group-level Sequence Policy Optimization)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dapo-decoupled-alignment-policy-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DAPO (Decoupled Alignment Policy Optimization)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        其他Policy方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        其他关键概念
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="其他关键概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模态/熵坍塌问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reward-hacking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reward Hacking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DPO为什么会出现损失下降但性能没有提升
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#online-vs-offline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Online vs Offline强化学习
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-policy-vs-off-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On-policy vs Off-policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rlseq_len" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RL训练为什么会让seq_len变长
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-policy-distillation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么是on-policy distillation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-sizeminibatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        训练中batch size和minibatch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RL训练你一般看哪些指标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#irrlir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么是IR，为什么RL要引入IR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gui-agentquery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GUI Agent，Query对应的不同镜像不同拉取
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grpodensemoe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRPO在dense和MoE上表现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clip-higher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么Clip-Higher有效
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#policytop_p-top_k" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Policy里的top_p, top_k
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、面经中的具体问题补充
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、面经中的具体问题补充">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-verlhybridengineauto-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. verl中的hybridengine、auto mapping原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-qwen25-vlqwen35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Qwen2.5-VL到Qwen3.5架构变化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 线性注意力为什么能把复杂度降成O(n)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 推理时出现重复生成、断句、卡顿的排查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-per-channelper-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. per-channel和per-token量化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、手撕代码题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、手撕代码题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-multi-head-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Multi-Head Attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-grouped-query-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Grouped Query Attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-softmax-safe-softmax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Softmax (safe softmax)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 交叉熵损失
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-grpo-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. GRPO Loss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-hot-100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Hot 100 原题（高频算法题）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、总结与面试建议
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、总结与面试建议">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        知识体系梳理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        面试准备建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见面试流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">大模型算法八股框架完整答案清单</h1>
+<hr />
+<h2 id="_2">一、基础</h2>
+<h3 id="1-kl">1. KL散度、交叉熵、两者关系</h3>
+<p><strong>交叉熵 (Cross-Entropy):</strong>
+<span class="arithmatex">\(H(P, Q) = -\sum_{x} P(x) \log Q(x)\)</span></p>
+<p><strong>KL散度 (Kullback-Leibler Divergence):</strong>
+<span class="arithmatex">\(D_{KL}(P \| Q) = \sum_{x} P(x) \log \frac{P(x)}{Q(x)}\)</span></p>
+<p><strong>关系:</strong>
+<span class="arithmatex">\(H(P, Q) = H(P) + D_{KL}(P \| Q)\)</span></p>
+<p>即交叉熵 = 信息熵 + KL散度。由于真实分布P的信息熵H(P)是常数，最小化交叉熵等价于最小化KL散度。</p>
+<p><strong>关键性质:</strong></p>
+<ul>
+<li>KL散度非对称：<span class="arithmatex">\(D_{KL}(P\|Q) \neq D_{KL}(Q\|P)\)</span></li>
+<li>KL散度非负：<span class="arithmatex">\(D_{KL} \geq 0\)</span>，当且仅当P=Q时取等号</li>
+<li>正向KL（forward KL）：<span class="arithmatex">\(D_{KL}(P\|Q)\)</span>，P为真实分布，Q为模型分布，倾向于覆盖P的所有模式（mean-seeking）</li>
+<li>反向KL（reverse KL）：<span class="arithmatex">\(D_{KL}(Q\|P)\)</span>，倾向于让Q集中在P的某个模式上（mode-seeking）</li>
+</ul>
+<h3 id="2">2. 大模型中的幻觉、复读机等现象的成因与解决方法</h3>
+<p><strong>幻觉 (Hallucination):</strong></p>
+<p>成因：</p>
+<ul>
+<li><strong>训练数据偏差</strong>：训练数据中存在错误信息或噪声</li>
+<li><strong>自回归生成的累积误差</strong>：每一步预测的微小偏差在长序列中累积</li>
+<li><strong>知识边界</strong>：模型对训练数据中未覆盖的知识进行"编造"</li>
+<li><strong>过度自信</strong>：softmax输出概率分布过于尖锐，模型对不确定的内容也给出高置信度</li>
+<li><strong>对齐税 (Alignment Tax)</strong>：RLHF过程中模型可能学到"讨好"人类标注者的模式而非事实准确性</li>
+</ul>
+<p>解决方法：</p>
+<ul>
+<li><strong>RAG (Retrieval-Augmented Generation)</strong>：检索增强生成，引入外部知识</li>
+<li><strong>事实性RLHF</strong>：在奖励模型中加入事实一致性奖励</li>
+<li><strong>Self-Consistency</strong>：多次采样取一致性最高的答案</li>
+<li><strong>Contrastive Decoding</strong>：对比解码，抑制幻觉token</li>
+<li><strong>知识编辑 (Knowledge Editing)</strong>：直接修改模型内部知识</li>
+<li><strong>DoLa (Decoding by Contrasting Layers)</strong>：利用不同层的logits差异来减少幻觉</li>
+<li><strong>引用生成</strong>：要求模型生成答案时附带来源引用</li>
+</ul>
+<p><strong>复读机 (Repetition):</strong></p>
+<p>成因：</p>
+<ul>
+<li><strong>注意力退化 (Attention Fade)</strong>：随着序列增长，attention权重分散，模型失去对上下文的追踪</li>
+<li><strong>KV Cache中的近邻相似性</strong>：新生成的token与前面token的KV向量过于相似，导致不断重复</li>
+<li><strong>解码策略问题</strong>：greedy decoding容易陷入循环</li>
+<li><strong>训练数据中的重复模式</strong>：模型在训练中见过大量重复文本</li>
+</ul>
+<p>解决方法：</p>
+<ul>
+<li><strong>Repetition Penalty</strong>：对已出现的token施加惩罚</li>
+<li><strong>Frequency/Presence Penalty</strong>：OpenAI使用的频率惩罚和存在惩罚</li>
+<li><strong>对比解码 (Contrastive Decoding)</strong>：SimCTG等方法</li>
+<li><strong>增加温度</strong>：提高采样随机性</li>
+<li><strong>Top-p/Top-k采样</strong>：限制候选token集合</li>
+<li><strong>Min-p采样</strong>：过滤掉概率过低的token</li>
+<li><strong>N-gram约束</strong>：禁止生成已出现的n-gram</li>
+</ul>
+<h3 id="3-decoder-only">3. 为什么使用Decoder-only架构</h3>
+<ul>
+<li><strong>通用性</strong>：Decoder-only可以建模任意方向的依赖关系（通过因果掩码实现从左到右），通过适当的prompt设计可以完成各种任务（in-context learning）</li>
+<li><strong>缩放效率</strong>：相比Encoder-Decoder，相同参数量下Decoder-only的FLOPs利用率更高，因为所有参数都参与自回归生成</li>
+<li><strong>统一范式</strong>：一个模型可以同时处理理解（如分类、抽取）和生成任务，通过指令微调实现</li>
+<li><strong>预训练效率</strong>：自回归语言建模目标（next token prediction）简单高效，可以利用海量无标注文本</li>
+<li><strong>规模化表现</strong>：GPT系列证明了Decoder-only在规模增大后涌现出强大的能力（涌现能力）</li>
+<li><strong>工程简洁</strong>：只需实现一种attention mask，推理时KV Cache机制天然适配</li>
+<li><strong>对比Encoder-only (BERT)</strong>：只能做双向理解，无法直接生成；对比Encoder-Decoder (T5)：Encoder部分在推理时不参与生成，参数利用率低</li>
+</ul>
+<h3 id="4">4. 梯度爆炸、梯度消失、梯度饱和</h3>
+<p><strong>梯度消失 (Vanishing Gradient):</strong></p>
+<p>成因：</p>
+<ul>
+<li>反向传播时梯度连乘，如果每层的梯度值小于1，经过多层后会趋近于0</li>
+<li>常见于Sigmoid、Tanh激活函数（导数最大值为0.25和1）</li>
+<li>深层网络中尤为严重</li>
+</ul>
+<p>解决办法：</p>
+<ul>
+<li>ReLU及其变体（LeakyReLU、GELU等），正区间梯度为1</li>
+<li>ResNet残差连接：梯度可以通过skip connection直接传播</li>
+<li>LayerNorm/RMSNorm：稳定前向传播的数值范围</li>
+<li>LSTM/GRU的门控机制</li>
+<li>合理的权重初始化（Xavier、He初始化）</li>
+</ul>
+<p><strong>梯度爆炸 (Exploding Gradient):</strong></p>
+<p>成因：</p>
+<ul>
+<li>反向传播时梯度连乘，如果每层的梯度值大于1，经过多层后会指数级增长</li>
+<li>权重初始化过大</li>
+<li>学习率过大</li>
+</ul>
+<p>解决办法：</p>
+<ul>
+<li><strong>梯度裁剪 (Gradient Clipping)</strong>：当梯度范数超过阈值时按比例缩放</li>
+<li>合理的权重初始化</li>
+<li>BatchNorm/LayerNorm稳定中间层输出</li>
+<li>降低学习率、使用warmup</li>
+<li>使用门控机制（LSTM）</li>
+</ul>
+<p><strong>梯度饱和 (Gradient Saturation):</strong></p>
+<p>成因：</p>
+<ul>
+<li>激活函数在输入值很大或很小时导数趋近于0（如Sigmoid两端）</li>
+<li>模型输出过于自信（logits值很大），softmax后梯度很小</li>
+</ul>
+<p>解决办法：</p>
+<ul>
+<li>使用非饱和激活函数（ReLU、GELU）</li>
+<li>Label Smoothing：避免one-hot标签导致的过度自信</li>
+<li>合理的损失函数设计</li>
+<li>梯度裁剪</li>
+</ul>
+<h3 id="5-gptbertclipllama">5. GPT、BERT、CLIP、Llama</h3>
+<p><strong>GPT (Generative Pre-trained Transformer):</strong></p>
+<ul>
+<li>Decoder-only架构</li>
+<li>自回归语言建模（next token prediction）</li>
+<li>因果掩码（causal mask），只能看到前文</li>
+<li>GPT-1→GPT-2→GPT-3→GPT-4：规模从1.17亿→15亿→1750亿→更大</li>
+<li>关键创新：In-context learning、Chain-of-thought</li>
+</ul>
+<p><strong>BERT (Bidirectional Encoder Representations from Transformers):</strong></p>
+<ul>
+<li>Encoder-only架构</li>
+<li>Masked Language Modeling (MLM)：随机mask 15%的token进行预测</li>
+<li>Next Sentence Prediction (NSP)：判断两个句子是否连续</li>
+<li>双向注意力，可以看到完整上下文</li>
+<li>适合理解类任务（分类、NER、问答抽取）</li>
+</ul>
+<p><strong>CLIP (Contrastive Language-Image Pre-training):</strong></p>
+<ul>
+<li>双塔架构：Image Encoder (ViT) + Text Encoder (Transformer)</li>
+<li>对比学习：将图像和文本映射到同一嵌入空间</li>
+<li>训练目标：最大化匹配图文对的相似度，最小化不匹配对的相似度</li>
+<li>零样本分类能力：通过文本prompt实现图像分类</li>
+<li>后续发展：OpenCLIP、Chinese-CLIP、SigLIP</li>
+</ul>
+<p><strong>Llama (Large Language Model Meta AI):</strong></p>
+<ul>
+<li>Decoder-only架构</li>
+<li>关键改进：<ul>
+<li>Pre-Norm：使用RMSNorm（而非LayerNorm）</li>
+<li>SwiGLU激活函数（而非ReLU/GELU）</li>
+<li>RoPE旋转位置编码</li>
+<li>GQA（Grouped Query Attention），Llama-2 70B开始使用</li>
+</ul>
+</li>
+<li>Llama-1：7B/13B/33B/65B，1T token训练</li>
+<li>Llama-2：7B/13B/70B，2T token，更长上下文4096</li>
+<li>Llama-3：8B/70B，15T token，128K上下文，GQA全系列使用</li>
+<li>开源许可，推动了开源大模型生态</li>
+</ul>
+<h3 id="6-pythongilasync">6. Python进程/线程/协程、GIL锁、异步计数器、async</h3>
+<p><strong>进程 (Process):</strong></p>
+<ul>
+<li>操作系统资源分配的最小单位</li>
+<li>每个进程有独立的内存空间</li>
+<li>进程间通信(IPC)开销大：管道、消息队列、共享内存、socket</li>
+<li>可以跨多核CPU并行执行</li>
+<li><code>multiprocessing</code>模块</li>
+</ul>
+<p><strong>线程 (Thread):</strong></p>
+<ul>
+<li>CPU调度的最小单位</li>
+<li>同一进程内的线程共享内存空间</li>
+<li>线程间通信方便（直接读写共享变量），但需要同步机制（锁、信号量）</li>
+<li>创建和切换开销小于进程</li>
+</ul>
+<p><strong>GIL (Global Interpreter Lock):</strong></p>
+<ul>
+<li>CPython解释器中的全局锁</li>
+<li>同一时刻只有一个线程执行Python字节码</li>
+<li>原因：CPython的内存管理（引用计数）不是线程安全的</li>
+<li>影响：CPU密集型任务无法利用多线程并行</li>
+<li>规避方法：<ul>
+<li>使用<code>multiprocessing</code>多进程</li>
+<li>使用C扩展释放GIL（如NumPy）</li>
+<li>Python 3.13+实验性支持free-threaded模式（no-GIL）</li>
+</ul>
+</li>
+</ul>
+<p><strong>协程 (Coroutine):</strong></p>
+<ul>
+<li>用户态的轻量级线程</li>
+<li>在单线程内通过协作式调度实现并发</li>
+<li>切换开销极小（不需要内核态切换）</li>
+<li>适合I/O密集型任务</li>
+<li><code>asyncio</code>库实现</li>
+</ul>
+<p><strong>async/await:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_data</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 非阻塞等待</span>
+    <span class="k">return</span> <span class="s2">&quot;data&quot;</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># 并发执行多个协程</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span>
+        <span class="n">fetch_data</span><span class="p">(),</span>
+        <span class="n">fetch_data</span><span class="p">(),</span>
+        <span class="n">fetch_data</span><span class="p">()</span>
+    <span class="p">)</span>
+</code></pre></div>
+<p><strong>异步计数器:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AsyncCounter</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">increment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_count</span>
+</code></pre></div>
+<p>注意：在单线程asyncio中，如果没有await，代码是原子的，不需要锁。但如果有await让出控制权，则需要锁保护共享状态。</p>
+<h3 id="7-sgdmomentumadamadamwmuon">7. SGD优化器、Momentum、Adam、AdamW、Muon</h3>
+<p><strong>SGD (Stochastic Gradient Descent):</strong>
+<span class="arithmatex">\(\theta_{t+1} = \theta_t - \eta \cdot g_t\)</span></p>
+<ul>
+<li>最基础的优化器</li>
+<li>收敛慢，容易陷入局部最优</li>
+<li>需要精心调学习率</li>
+</ul>
+<p><strong>SGD + Momentum:</strong>
+<span class="arithmatex">\(v_t = \mu v_{t-1} + g_t\)</span>
+<span class="arithmatex">\(\theta_{t+1} = \theta_t - \eta \cdot v_t\)</span></p>
+<ul>
+<li>引入动量项，累积历史梯度方向</li>
+<li>加速收敛，减少震荡</li>
+<li>μ通常设为0.9</li>
+</ul>
+<p><strong>Adam (Adaptive Moment Estimation):</strong>
+<span class="arithmatex">\(m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t \quad \text{(一阶矩估计)}\)</span>
+<span class="arithmatex">\(v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^2 \quad \text{(二阶矩估计)}\)</span>
+<span class="arithmatex">\(\hat{m}_t = \frac{m_t}{1-\beta_1^t}, \quad \hat{v}_t = \frac{v_t}{1-\beta_2^t} \quad \text{(偏差修正)}\)</span>
+<span class="arithmatex">\(\theta_{t+1} = \theta_t - \eta \cdot \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}\)</span></p>
+<ul>
+<li>自适应学习率，每个参数有独立的学习率</li>
+<li>β1=0.9, β2=0.999, ε=1e-8</li>
+<li>收敛快，对超参数不敏感</li>
+<li>广泛用于大模型预训练</li>
+</ul>
+<p><strong>AdamW:</strong></p>
+<ul>
+<li>在Adam基础上加入<strong>解耦权重衰减</strong> (Decoupled Weight Decay)
+  <span class="arithmatex">\(\theta_{t+1} = \theta_t - \eta \cdot \left(\frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} + \lambda \theta_t\right)\)</span></li>
+<li>原始Adam中权重衰减被自适应学习率缩放，效果减弱</li>
+<li>AdamW将权重衰减与梯度更新解耦，正则化效果更好</li>
+<li>大模型训练的标准优化器</li>
+</ul>
+<p><strong>Muon (Momentum-based optimization with orthogonalization):</strong></p>
+<ul>
+<li>2024-2025年提出的新优化器</li>
+<li>核心思想：对动量矩阵进行正交化处理（通过Newton-Schulz迭代近似矩阵极分解）</li>
+<li>使得更新方向在参数空间中更加均匀</li>
+<li>在矩阵参数（如Linear层的权重矩阵）上使用Muon，向量参数（如bias、LayerNorm）上使用AdamW</li>
+<li>优势：收敛更快，在大模型训练中展现出优于AdamW的性能</li>
+<li>由 Keller Jordan 等人提出，在开源社区引起关注</li>
+</ul>
+<h3 id="8">8. 深拷贝浅拷贝</h3>
+<p><strong>浅拷贝 (Shallow Copy):</strong></p>
+<ul>
+<li>创建新对象，但内部子对象仍然是引用（不拷贝子对象）</li>
+<li>修改新对象的子对象会影响原对象</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">copy</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># 或 a.copy()</span>
+<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 99，被修改了</span>
+</code></pre></div>
+<p><strong>深拷贝 (Deep Copy):</strong></p>
+<ul>
+<li>递归拷贝所有层级的对象</li>
+<li>新对象与原对象完全独立</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">c</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 99，不受影响</span>
+</code></pre></div>
+<p><strong>在深度学习中的意义:</strong></p>
+<ul>
+<li>模型参数拷贝：<code>model.load_state_dict()</code>是深拷贝</li>
+<li>数据增强：需要深拷贝避免修改原始数据</li>
+<li>内存效率：大模型中尽量避免不必要的深拷贝</li>
+</ul>
+<h3 id="9">9. 智能指针</h3>
+<p>C++中的智能指针，用于自动管理内存：</p>
+<p><strong>unique_ptr:</strong></p>
+<ul>
+<li>独占所有权，不可复制，可以移动</li>
+<li>零开销抽象，性能等同裸指针</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Tensor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ptr</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Tensor</span><span class="p">());</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">ptr2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">Tensor</span><span class="o">&gt;</span><span class="p">();</span>
+</code></pre></div>
+<p><strong>shared_ptr:</strong></p>
+<ul>
+<li>共享所有权，引用计数</li>
+<li>多个shared_ptr指向同一对象，最后一个销毁时释放内存</li>
+<li>循环引用问题：需要<code>weak_ptr</code>打破循环</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Tensor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ptr1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">Tensor</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Tensor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ptr2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ptr1</span><span class="p">;</span><span class="w"> </span><span class="c1">// 引用计数+1</span>
+</code></pre></div>
+<p><strong>weak_ptr:</strong></p>
+<ul>
+<li>不增加引用计数</li>
+<li>观察shared_ptr管理的对象</li>
+<li>使用前需要<code>lock()</code>转为shared_ptr</li>
+<li>解决循环引用</li>
+</ul>
+<p><strong>在深度学习框架中的应用:</strong></p>
+<ul>
+<li>PyTorch的C++后端(LibTorch)大量使用shared_ptr管理Tensor</li>
+<li>自动微分引擎中用shared_ptr管理计算图节点</li>
+<li>分布式训练中共享模型参数</li>
+</ul>
+<h3 id="10">10. 为什么大模型选用交叉熵损失</h3>
+<ul>
+<li><strong>概率解释</strong>：语言建模本质是估计下一个token的条件概率分布，交叉熵直接衡量预测分布与真实分布的差异</li>
+<li><strong>最大似然估计</strong>：最小化交叉熵等价于最大化训练数据的对数似然</li>
+<li><strong>梯度特性</strong>：交叉熵 + softmax的组合梯度形式简洁：<span class="arithmatex">\(\frac{\partial L}{\partial z_i} = p_i - y_i\)</span>，预测越偏离真实，梯度越大</li>
+<li><strong>信息论基础</strong>：交叉熵衡量编码效率，语言建模本质是信息压缩</li>
+<li><strong>与困惑度 (Perplexity) 的关系</strong>：<span class="arithmatex">\(PPL = e^{CE}\)</span>，交叉熵越低，困惑度越低，模型越好</li>
+<li><strong>对比MSE</strong>：MSE假设高斯分布，不适合离散分类问题；MSE在概率接近0或1时梯度很小（饱和问题）</li>
+</ul>
+<h3 id="11-mse">11. 为什么回归用MSE，分类用交叉熵</h3>
+<p><strong>回归用MSE:</strong></p>
+<ul>
+<li>回归目标是连续值，MSE直接衡量预测值与真实值的距离</li>
+<li>假设误差服从高斯分布时，MSE等价于最大似然估计</li>
+<li>梯度线性：<span class="arithmatex">\(\frac{\partial MSE}{\partial \hat{y}} = 2(\hat{y} - y)\)</span>，误差越大梯度越大</li>
+<li>替代方案：MAE (L1 loss) 对异常值更鲁棒，Huber Loss兼顾两者</li>
+</ul>
+<p><strong>分类用交叉熵:</strong></p>
+<ul>
+<li>分类目标是离散类别，需要输出概率分布</li>
+<li>交叉熵衡量两个概率分布的差异，天然适合分类</li>
+<li>配合softmax使用，梯度形式简洁且不会出现梯度饱和</li>
+<li>MSE用于分类时：输出经过softmax后，MSE的梯度会因softmax的饱和而变得很小，导致学习缓慢</li>
+<li>交叉熵 + softmax：梯度 = 预测概率 - 真实标签，误差越大梯度越大</li>
+</ul>
+<hr />
+<h2 id="_3">二、训练推理加速</h2>
+<h3 id="1">1. 推理优化</h3>
+<h4 id="vllmpagedattentioncontinuous-batching">vLLM：PagedAttention、Continuous Batching</h4>
+<p><strong>PagedAttention:</strong></p>
+<ul>
+<li>核心思想：借鉴操作系统的虚拟内存分页机制管理KV Cache</li>
+<li>问题：传统KV Cache需要预分配连续内存，导致严重的内存碎片和浪费（内部碎片+外部碎片）</li>
+<li>解决：将KV Cache分成固定大小的block（如16个token一块），通过block table映射逻辑块到物理块</li>
+<li>优势：<ul>
+<li>内存利用率接近100%（几乎无碎片）</li>
+<li>支持动态分配和释放</li>
+<li>支持copy-on-write实现beam search和parallel sampling的block共享</li>
+<li>可以处理更长的序列和更大的batch size</li>
+</ul>
+</li>
+</ul>
+<p><strong>Continuous Batching (连续批处理):</strong></p>
+<ul>
+<li>问题：传统static batching中，一个batch必须等所有序列都生成完毕才能处理下一个batch。短序列生成完后GPU空闲等待长序列</li>
+<li>解决：<ul>
+<li>迭代级别调度（iteration-level scheduling）：每次forward后都可以加入新请求、移除已完成的请求</li>
+<li>不同长度的请求可以在同一个batch中混合处理</li>
+<li>显著提高GPU利用率和吞吐量</li>
+</ul>
+</li>
+<li>vLLM实现：通过Scheduler管理请求队列，每次iteration动态组batch</li>
+</ul>
+<h4 id="kv-cache">KV Cache</h4>
+<ul>
+<li>自回归生成时，每生成一个新token需要用到之前所有token的Key和Value</li>
+<li>不缓存：每步都要重新计算所有token的K、V，复杂度O(n²)</li>
+<li>缓存：只计算新token的Q、K、V，与缓存的K、V做attention，复杂度O(n)</li>
+<li>内存占用：<span class="arithmatex">\(2 \times n_{layers} \times n_{heads} \times d_{head} \times seq\_len \times batch\_size \times dtype\_size\)</span></li>
+<li>优化方向：<ul>
+<li>MQA/GQA：减少KV head数量</li>
+<li>量化KV Cache：FP16→INT8/INT4</li>
+<li>PagedAttention：高效内存管理</li>
+<li>Prefix Caching：共享相同前缀的KV Cache</li>
+<li>Sliding Window Attention：只缓存最近W个token的KV</li>
+</ul>
+</li>
+</ul>
+<h4 id="prefill-decode">Prefill &amp; Decode</h4>
+<p><strong>Prefill阶段 (Prompt Processing):</strong></p>
+<ul>
+<li>处理用户输入的prompt（所有token并行计算）</li>
+<li>计算量大（矩阵乘法密集），计算密集型（compute-bound）</li>
+<li>生成第一个token</li>
+<li>填充KV Cache</li>
+<li>关键指标：TTFT (Time To First Token)</li>
+</ul>
+<p><strong>Decode阶段 (Token Generation):</strong></p>
+<ul>
+<li>逐个生成后续token（自回归）</li>
+<li>每步只处理1个token，矩阵运算退化为向量运算</li>
+<li>内存带宽受限（memory-bound）：需要从显存读取整个KV Cache和模型权重，但计算量很小</li>
+<li>关键指标：TPOT (Time Per Output Token) / 吞吐量(tokens/s)</li>
+</ul>
+<p><strong>优化策略不同:</strong></p>
+<ul>
+<li>Prefill：提高计算利用率，tensor parallelism</li>
+<li>Decode：减少内存访问，量化、投机解码、batching</li>
+</ul>
+<h4 id="_4">梯度检查点 &amp; 梯度累计</h4>
+<p><strong>梯度检查点 (Gradient Checkpointing):</strong></p>
+<ul>
+<li>问题：训练时保存所有中间激活值用于反向传播，显存占用O(n)</li>
+<li>解决：只保存部分关键层的激活值（checkpoint），反向传播时重新计算未保存的中间值</li>
+<li>时间换空间：增加约20-30%计算量，显存从O(n)降到O(√n)</li>
+<li>使用：<code>torch.utils.checkpoint.checkpoint</code></li>
+</ul>
+<p><strong>梯度累计 (Gradient Accumulation):</strong></p>
+<ul>
+<li>问题：大batch size需要大量显存</li>
+<li>解决：将大batch分成多个micro-batch，每个micro-batch计算梯度后累加，最后再更新参数</li>
+<li>等效batch size = micro_batch_size × accumulation_steps</li>
+<li>不改变模型行为（线性累加梯度），只减少显存峰值</li>
+<li>分布式训练中常与DP结合使用</li>
+</ul>
+<h3 id="2_1">2. 训练/模型优化</h3>
+<h4 id="megatron-lm">Megatron-LM并行策略</h4>
+<p><strong>数据并行 (DP / DDP):</strong></p>
+<ul>
+<li>DP (Data Parallelism)：PyTorch原生，单进程多线程，GIL限制，效率低</li>
+<li>DDP (Distributed Data Parallel)：多进程，每个进程有完整模型副本，梯度AllReduce同步</li>
+<li>适用场景：模型能放入单卡显存</li>
+<li>通信：每次backward后AllReduce梯度</li>
+</ul>
+<p><strong>张量并行 (Tensor Parallelism, TP):</strong></p>
+<ul>
+<li>将单层内部的矩阵运算拆分到多个GPU</li>
+<li>对Attention层：按head维度切分（每个GPU负责部分head）</li>
+<li>对MLP层：按hidden维度切分（Column Parallel + Row Parallel）</li>
+<li>适用场景：单层太大无法放入单卡（通常用于模型内部的大矩阵运算）</li>
+<li>通信：每层forward/backward需要AllReduce或AllGather</li>
+<li>通常在单机内使用（NVLink高带宽）</li>
+</ul>
+<p><strong>流水线并行 (Pipeline Parallelism, PP):</strong></p>
+<ul>
+<li>将模型按层切分到不同GPU（如GPU0: Layer 0-7, GPU1: Layer 8-15）</li>
+<li>问题：气泡 (bubble) ——前面的GPU计算时后面的GPU空闲</li>
+<li>微批次调度策略：<ul>
+<li>GPipe：所有micro-batch forward完再backward，气泡大</li>
+<li>1F1B (One Forward One Backward)：交替执行forward和backward，减少气泡</li>
+<li>Interleaved 1F1B：每个GPU负责多个不连续的层块，进一步减少气泡</li>
+</ul>
+</li>
+<li>适用场景：模型层数很多，跨机部署</li>
+<li>通信：相邻stage之间传递激活值</li>
+</ul>
+<p><strong>混合精度训练 (Mixed Precision):</strong></p>
+<ul>
+<li>FP32 master weights + FP16/BF16 计算</li>
+<li>FP16：范围小（±65504），容易溢出，需要loss scaling</li>
+<li>BF16：范围大（同FP32），不需要loss scaling，精度略低</li>
+<li>三种精度：<ul>
+<li>FP32：master weights、optimizer states</li>
+<li>FP16/BF16：前向计算、反向计算</li>
+<li>FP32：梯度累加（避免精度损失）</li>
+</ul>
+</li>
+<li>应用场景：几乎所有现代大模型训练都使用</li>
+</ul>
+<p><strong>三种并行的嵌套逻辑:</strong></p>
+<div class="highlight"><pre><span></span><code>典型部署：8节点 × 8卡 = 64 GPU
+- TP = 8（单机内，NVLink）
+- PP = 8（跨机，节点间）
+- DP = 1（64 / 8 / 8 = 1）
+
+或：
+- TP = 4
+- PP = 4
+- DP = 4（64 / 4 / 4 = 4）
+</code></pre></div>
+<ul>
+<li>原则：TP通信量最大，放在带宽最高的NVLink域内；PP通信量小但延迟敏感，放在同机或高速网络；DP通信量中等（AllReduce梯度），可以跨机</li>
+</ul>
+<h4 id="deepspeed-zero">DeepSpeed ZeRO</h4>
+<p><strong>ZeRO (Zero Redundancy Optimizer):</strong></p>
+<ul>
+<li>问题：DDP中每张卡都保存完整的模型参数、梯度、优化器状态，浪费显存</li>
+<li>核心思想：将优化器状态、梯度、参数分片（partition）到不同GPU，消除冗余</li>
+</ul>
+<p><strong>ZeRO-1 (Optimizer State Partitioning):</strong></p>
+<ul>
+<li>将优化器状态（如Adam的m、v）分片到各GPU</li>
+<li>显存节省4倍（Adam有2个状态 + FP32参数副本）</li>
+<li>通信量与DDP相同（梯度Reduce-Scatter + 参数AllGather）</li>
+</ul>
+<p><strong>ZeRO-2 (Optimizer State + Gradient Partitioning):</strong></p>
+<ul>
+<li>额外将梯度也分片</li>
+<li>显存节省8倍</li>
+<li>通信：Reduce-Scatter梯度</li>
+</ul>
+<p><strong>ZeRO-3 (Optimizer State + Gradient + Parameter Partitioning):</strong></p>
+<ul>
+<li>参数也分片，每张卡只保存1/N的参数</li>
+<li>显存节省与GPU数量成线性关系</li>
+<li>代价：forward和backward时需要AllGather参数，通信量增大</li>
+<li>支持offload：将参数/优化器状态卸载到CPU内存或NVMe</li>
+</ul>
+<p><strong>ZeRO-Offload / ZeRO-Infinity:</strong></p>
+<ul>
+<li>将优化器状态、参数offload到CPU内存甚至NVMe SSD</li>
+<li>用单卡训练超大模型</li>
+<li>代价：CPU-GPU数据传输延迟</li>
+</ul>
+<h4 id="_5">并行节点通信方式</h4>
+<p><strong>Broadcast:</strong> 一个节点发送数据到所有节点（一对多）</p>
+<p><strong>Reduce:</strong> 所有节点发送数据到一个节点，进行归约操作（如sum）（多对一）</p>
+<p><strong>AllReduce:</strong> 所有节点发送数据到所有节点，每个节点都得到归约结果</p>
+<ul>
+<li>实现：Ring AllReduce、Tree AllReduce</li>
+<li>用于DDP中同步梯度</li>
+</ul>
+<p><strong>AllGather:</strong> 所有节点发送数据到所有节点，每个节点得到完整数据</p>
+<ul>
+<li>用于ZeRO-3中收集完整参数</li>
+</ul>
+<p><strong>Reduce-Scatter:</strong> 先归约，再将结果分片到各节点</p>
+<ul>
+<li>用于ZeRO中梯度同步</li>
+</ul>
+<p><strong>通信原语组合:</strong></p>
+<ul>
+<li>AllReduce = ReduceScatter + AllGather</li>
+<li>ZeRO使用Reduce-Scatter（梯度分片）+ AllGather（参数收集）</li>
+</ul>
+<h4 id="flashattention">FlashAttention</h4>
+<p><strong>核心思想:</strong></p>
+<ul>
+<li>标准Attention：计算完整的N×N attention矩阵，写入HBM（高带宽内存），再读回计算，IO成本高</li>
+<li>FlashAttention：使用tiling技术，将Q、K、V分成小块，在SRAM（片上高速缓存）中完成attention计算，避免将N×N矩阵写入HBM</li>
+<li>IO-aware：优化HBM↔SRAM的数据传输</li>
+</ul>
+<p><strong>具体实现:</strong></p>
+<ol>
+<li>将Q、K、V分成block（如Br×d, Bc×d）</li>
+<li>在SRAM中加载Q block、K block、V block</li>
+<li>计算局部attention score和softmax统计量（online softmax）</li>
+<li>累加输出，更新softmax归一化因子</li>
+<li>写回输出到HBM</li>
+</ol>
+<p><strong>Online Softmax:</strong></p>
+<ul>
+<li>传统softmax需要两遍扫描：第一遍求max，第二遍求exp和sum</li>
+<li>Online softmax：一遍扫描，维护running max和running sum
+  <span class="arithmatex">\(m_i = \max(m_{i-1}, \max(x_i))\)</span>
+  <span class="arithmatex">\(l_i = e^{m_{i-1}-m_i} l_{i-1} + \sum e^{x_i - m_i}\)</span></li>
+</ul>
+<p><strong>优势:</strong></p>
+<ul>
+<li>显存：O(N) → 不需要存储N×N attention矩阵</li>
+<li>速度：2-4x加速（减少HBM读写）</li>
+<li>精确：数学上等价于标准attention（不是近似）</li>
+</ul>
+<p><strong>FlashAttention-2:</strong></p>
+<ul>
+<li>改进并行策略：减少非矩阵乘法运算</li>
+<li>改进warp间的工作分配</li>
+<li>A100上达到50-73%的理论FLOPs峰值</li>
+</ul>
+<p><strong>FlashAttention-3 (2024-2025):</strong></p>
+<ul>
+<li>利用H100的FP8精度</li>
+<li>异步执行：warp-level的异步数据加载和计算重叠</li>
+<li>进一步优化H100架构特性</li>
+<li>支持稀疏attention模式</li>
+</ul>
+<h4 id="mqagqamla">MQA、GQA、MLA</h4>
+<p><strong>MHA (Multi-Head Attention):</strong></p>
+<ul>
+<li>每个head有独立的Q、K、V投影</li>
+<li>n_heads个Q head，n_heads个K head，n_heads个V head</li>
+<li>KV Cache大小：<span class="arithmatex">\(2 \times n_{layers} \times n_{heads} \times d_{head} \times seq\_len\)</span></li>
+</ul>
+<p><strong>MQA (Multi-Query Attention):</strong></p>
+<ul>
+<li>所有Q head共享同一组K、V head</li>
+<li>n_heads个Q head，1个K head，1个V head</li>
+<li>KV Cache缩小n_heads倍</li>
+<li>缺点：模型质量略有下降</li>
+</ul>
+<p><strong>GQA (Grouped Query Attention):</strong></p>
+<ul>
+<li>折中方案：将Q head分成若干组，每组共享一组K、V</li>
+<li>n_heads个Q head，n_kv_heads个K/V head（如8组）</li>
+<li>KV Cache缩小n_heads/n_kv_heads倍</li>
+<li>质量接近MHA，速度接近MQA</li>
+<li>Llama-2 70B、Llama-3全系列使用</li>
+</ul>
+<p><strong>MLA (Multi-head Latent Attention) — DeepSeek-V2/V3:</strong></p>
+<ul>
+<li>核心思想：将K、V通过低秩投影压缩到低维latent space，推理时只缓存压缩后的latent</li>
+<li>具体实现：<ul>
+<li><span class="arithmatex">\(c_t = W_{DKV} h_t\)</span>（压缩到低维 <span class="arithmatex">\(d_c \ll d_{model}\)</span>）</li>
+<li>从<span class="arithmatex">\(c_t\)</span>解压缩出K、V：<span class="arithmatex">\(K_t = W_{UK} c_t\)</span>, <span class="arithmatex">\(V_t = W_{UV} c_t\)</span></li>
+<li>Q使用独立的投影保持表达力</li>
+</ul>
+</li>
+<li>KV Cache压缩比极大（DeepSeek-V2报告压缩93.3%）</li>
+<li>代价：forward时需要额外的解压缩计算，但推理时内存带宽大幅节省</li>
+</ul>
+<h3 id="3">3. 模型训练和推理显存需求分析</h3>
+<p><strong>训练显存组成:</strong></p>
+<ol>
+<li>
+<p><strong>模型参数 (Model Parameters):</strong></p>
+<ul>
+<li>FP16/BF16参数：<span class="arithmatex">\(2 \times P\)</span> bytes（P为参数量）</li>
+</ul>
+</li>
+<li>
+<p><strong>优化器状态 (Optimizer States):</strong></p>
+<ul>
+<li>Adam：FP32参数副本(4P) + 一阶矩m(4P) + 二阶矩v(4P) = 12P bytes</li>
+<li>加上FP16梯度(2P) = 共20 bytes/parameter</li>
+</ul>
+</li>
+<li>
+<p><strong>激活值 (Activations):</strong></p>
+<ul>
+<li>与batch size、序列长度、模型结构相关</li>
+<li>粗略估计：<span class="arithmatex">\(O(L \times d \times s \times b)\)</span></li>
+<li>使用gradient checkpointing可大幅减少</li>
+</ul>
+</li>
+<li>
+<p><strong>临时缓冲区 (Fragments/Temp buffers):</strong></p>
+<ul>
+<li>通信buffer、对齐填充等</li>
+</ul>
+</li>
+</ol>
+<p><strong>以Llama-7B为例 (AdamW, BF16):</strong></p>
+<ul>
+<li>参数(BF16): 7B × 2 = 14 GB</li>
+<li>优化器状态: 7B × 12 = 84 GB</li>
+<li>梯度(BF16): 7B × 2 = 14 GB</li>
+<li>总计: ~112 GB（不含激活值）</li>
+<li>至少需要8×A100-80G或2×A100-80G + ZeRO-3</li>
+</ul>
+<p><strong>推理显存组成:</strong></p>
+<ol>
+<li>
+<p><strong>模型参数:</strong></p>
+<ul>
+<li>FP16: 2 bytes/parameter</li>
+<li>INT8: 1 byte/parameter</li>
+<li>INT4: 0.5 byte/parameter</li>
+</ul>
+</li>
+<li>
+<p><strong>KV Cache:</strong></p>
+<ul>
+<li><span class="arithmatex">\(2 \times n_{layers} \times n_{kv\_heads} \times d_{head} \times seq\_len \times batch\_size \times \text{dtype\_size}\)</span></li>
+<li>Llama-70B (GQA, 8 KV heads, d_head=128, 80 layers):<ul>
+<li>Per token per sample: 2 × 80 × 8 × 128 × 2 = 327,680 bytes ≈ 0.31 MB</li>
+<li>128K context: ~40 GB per sample (FP16)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>中间激活值:</strong></p>
+<ul>
+<li>推理时只需当前步的激活，通常较小</li>
+</ul>
+</li>
+</ol>
+<p><strong>经验法则:</strong></p>
+<ul>
+<li>训练：~20 bytes/parameter（AdamW, BF16, 不含激活）</li>
+<li>推理FP16：~2 bytes/parameter + KV Cache</li>
+<li>推理INT4：~0.5 bytes/parameter + KV Cache</li>
+</ul>
+<hr />
+<h2 id="transformer">三、Transformer内部</h2>
+<h3 id="1-norm">1. Norm归一化</h3>
+<h4 id="internal-covariate-shift">内部协变量偏移 (Internal Covariate Shift)</h4>
+<ul>
+<li>定义：训练过程中，每一层输入的分布随着前面层的参数更新而不断变化</li>
+<li>影响：导致训练不稳定，需要较小的学习率，收敛慢</li>
+<li>BatchNorm的提出动机就是通过归一化稳定每层输入的分布</li>
+</ul>
+<h4 id="pre-normpost-normdeep-norm">Pre-norm、Post-norm、Deep-norm</h4>
+<p><strong>Post-norm (原始Transformer):</strong>
+<span class="arithmatex">\(x_{l+1} = \text{Norm}(x_l + \text{Sublayer}(x_l))\)</span></p>
+<ul>
+<li>先做sublayer（attention/FFN），再加残差，最后归一化</li>
+<li>问题：深层网络中梯度不稳定，难以训练</li>
+</ul>
+<p><strong>Pre-norm (GPT-2, 现代大模型主流):</strong>
+<span class="arithmatex">\(x_{l+1} = x_l + \text{Sublayer}(\text{Norm}(x_l))\)</span></p>
+<ul>
+<li>先归一化，再做sublayer，最后加残差</li>
+<li>优势：训练更稳定，梯度流更平滑</li>
+<li>缺点：最终输出未经归一化，需要在最后加一层LayerNorm</li>
+</ul>
+<p><strong>DeepNorm (2022, 超深Transformer):</strong>
+<span class="arithmatex">\(x_{l+1} = \text{Norm}(\alpha \cdot x_l + \text{Sublayer}(x_l))\)</span></p>
+<ul>
+<li>对残差连接乘以系数α &gt; 1（如α = (2N)^{1/4}）</li>
+<li>配合特定的权重初始化策略</li>
+<li>可以稳定训练非常深的Transformer（如1000层）</li>
+</ul>
+<h4 id="batchnormlayernormrmsnorm">BatchNorm、LayerNorm、RMSNorm</h4>
+<p><strong>BatchNorm:</strong></p>
+<ul>
+<li>在batch维度做归一化</li>
+<li><span class="arithmatex">\(\hat{x} = \frac{x - \mu_B}{\sqrt{\sigma_B^2 + \epsilon}}\)</span>，其中μ_B和σ_B在batch维度计算</li>
+<li>训练时：使用当前batch的统计量，同时维护running mean/var</li>
+<li>推理时：使用训练期间累积的running mean/var</li>
+<li>问题：<ul>
+<li>依赖batch size，小batch效果差</li>
+<li>对变长序列（如NLP）不适用（不同样本长度不同）</li>
+<li>在Transformer中几乎不使用</li>
+</ul>
+</li>
+</ul>
+<p><strong>LayerNorm:</strong></p>
+<ul>
+<li>在feature维度做归一化</li>
+<li><span class="arithmatex">\(\hat{x} = \frac{x - \mu_L}{\sqrt{\sigma_L^2 + \epsilon}} \cdot \gamma + \beta\)</span></li>
+<li>μ_L和σ_L在每个样本的feature维度上计算</li>
+<li>可学习参数γ(scale)和β(shift)</li>
+<li>不依赖batch，适合NLP和变长序列</li>
+<li>训练和推理行为相同（没有running statistics）</li>
+</ul>
+<p><strong>RMSNorm (Root Mean Square Layer Normalization):</strong>
+<span class="arithmatex">\(\hat{x} = \frac{x}{\text{RMS}(x)} \cdot \gamma = \frac{x}{\sqrt{\frac{1}{d}\sum x_i^2 + \epsilon}} \cdot \gamma\)</span></p>
+<ul>
+<li>去掉了mean subtraction（减均值）步骤</li>
+<li>只有scale参数γ，没有shift参数β</li>
+<li>假设：mean subtraction不是必须的，re-scaling才是关键</li>
+<li>计算量更小（不需要计算均值和方差）</li>
+<li>实验证明效果与LayerNorm相当甚至更好</li>
+</ul>
+<p><strong>为什么现在大模型都使用RMSNorm:</strong></p>
+<ol>
+<li><strong>降低计算量</strong>：不需要计算均值，减少了约50%的归一化计算</li>
+<li><strong>偏移自带隐含信息</strong>：mean subtraction移除的信息可能不是关键的，re-scaling已经足够</li>
+<li><strong>经过softmax近似归一化</strong>：attention中的softmax本身就有归一化效果</li>
+<li><strong>更简洁</strong>：少一个可学习参数β，减少过拟合风险</li>
+<li><strong>实验验证</strong>：Llama、PaLM、Gemini等主流大模型都使用RMSNorm</li>
+</ol>
+<p><strong>LayerNorm vs RMSNorm的归一化维度:</strong></p>
+<ul>
+<li>都在最后一个维度（hidden dimension）做归一化</li>
+<li>对shape为(batch, seq_len, hidden_dim)的张量，在hidden_dim维度计算统计量</li>
+</ul>
+<h3 id="2_2">2. 激活函数</h3>
+<p><strong>Sigmoid:</strong> <span class="arithmatex">\(\sigma(x) = \frac{1}{1+e^{-x}}\)</span></p>
+<ul>
+<li>输出(0,1)，适合二分类输出</li>
+<li>问题：梯度消失（两端饱和）、输出非零均值</li>
+</ul>
+<p><strong>Tanh:</strong> <span class="arithmatex">\(\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}\)</span></p>
+<ul>
+<li>输出(-1,1)，零均值</li>
+<li>问题：仍然有梯度消失</li>
+</ul>
+<p><strong>ReLU:</strong> <span class="arithmatex">\(\text{ReLU}(x) = \max(0, x)\)</span></p>
+<ul>
+<li>正区间梯度为1，解决梯度消失</li>
+<li>问题：Dead ReLU（负区间永久死亡）、输出非零均值</li>
+</ul>
+<p><strong>LeakyReLU:</strong> <span class="arithmatex">\(\text{LeakyReLU}(x) = \max(\alpha x, x)\)</span>，α通常为0.01</p>
+<ul>
+<li>解决Dead ReLU问题</li>
+<li>负区间有小梯度</li>
+</ul>
+<p><strong>GELU (Gaussian Error Linear Unit):</strong>
+<span class="arithmatex">\(\text{GELU}(x) = x \cdot \Phi(x) = x \cdot \frac{1}{2}\left[1 + \text{erf}\left(\frac{x}{\sqrt{2}}\right)\right]\)</span></p>
+<ul>
+<li>BERT、GPT使用</li>
+<li>平滑的ReLU变体，概率解释</li>
+<li>近似计算：<span class="arithmatex">\(0.5x(1 + \tanh[\sqrt{2/\pi}(x + 0.044715x^3)])\)</span></li>
+</ul>
+<p><strong>GLU (Gated Linear Unit):</strong>
+<span class="arithmatex">\(\text{GLU}(x) = \sigma(xW_1) \otimes (xW_2)\)</span></p>
+<ul>
+<li>门控机制，一部分做sigmoid gate，另一部分做变换后相乘</li>
+<li>信息选择性地通过</li>
+</ul>
+<p><strong>Swish / SiLU:</strong> <span class="arithmatex">\(\text{Swish}(x) = x \cdot \sigma(x)\)</span></p>
+<ul>
+<li>Google发现，效果优于ReLU</li>
+<li>平滑、非单调</li>
+</ul>
+<p><strong>SwiGLU:</strong>
+<span class="arithmatex">\(\text{SwiGLU}(x) = \text{Swish}(xW_1) \otimes (xW_2)\)</span></p>
+<ul>
+<li>Swish + GLU的结合</li>
+<li>PaLM、Llama系列使用</li>
+<li>FFN层变为：<span class="arithmatex">\(\text{SwiGLU}(x) = \text{Swish}(xW_1) \otimes (xW_3) \cdot W_2\)</span></li>
+<li>引入额外的参数矩阵W3，增加模型容量</li>
+<li>实验证明比GELU效果更好，成为大模型FFN的标准选择</li>
+</ul>
+<p><strong>为什么SwiGLU能取代GELU:</strong></p>
+<ul>
+<li>门控机制提供了更好的信息过滤能力</li>
+<li>非单调性允许更复杂的特征学习</li>
+<li>实验上在相同FLOPs下表现更好</li>
+<li>代价：FFN层多一个权重矩阵，但通常通过缩小hidden_dim来保持总FLOPs不变</li>
+</ul>
+<h3 id="3_1">3. 位置编码</h3>
+<p><strong>正余弦位置编码 (Sinusoidal PE, 原始Transformer):</strong>
+<span class="arithmatex">\(PE_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i/d}}\right)\)</span>
+<span class="arithmatex">\(PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d}}\right)\)</span></p>
+<ul>
+<li>固定编码，不需要学习</li>
+<li>可以表示相对位置关系（线性组合）</li>
+<li>外推性有限</li>
+</ul>
+<p><strong>可学习的位置编码 (Learned PE):</strong></p>
+<ul>
+<li>直接学习每个位置的embedding向量</li>
+<li>GPT-2、BERT使用</li>
+<li>限制：最大长度固定，无法外推到更长的序列</li>
+</ul>
+<p><strong>RoPE (Rotary Position Embedding):</strong></p>
+<ul>
+<li>核心思想：通过旋转矩阵将位置信息编码到Q和K中</li>
+<li>对Q和K的每两个相邻维度施加一个旋转角度，角度与位置成正比
+  <span class="arithmatex">\(f(q, pos) = q \cdot e^{i \cdot pos \cdot \theta}\)</span></li>
+<li>优势：<ul>
+<li>编码了相对位置信息（两个位置的内积只与相对距离有关）</li>
+<li>可以外推到更长序列（配合NTK-aware scaling、YaRN等）</li>
+<li>不需要额外参数</li>
+</ul>
+</li>
+<li>Llama、Qwen、PaLM等主流模型使用</li>
+<li>长文本外推方法：<ul>
+<li>Position Interpolation (PI)：压缩位置索引</li>
+<li>NTK-aware Scaling：调整频率基底</li>
+<li>YaRN：结合多种方法的综合方案</li>
+<li>Dynamic NTK：动态调整</li>
+</ul>
+</li>
+</ul>
+<p><strong>RoPE长文本外推失效的根本原因:</strong></p>
+<ul>
+<li>训练时模型只见过一定范围内的位置编码频率</li>
+<li>超出训练长度时，高频分量的旋转角度超出训练分布</li>
+<li>Attention score计算中出现未见过的模式，导致注意力分布异常</li>
+<li>本质是频率外推问题：高频分量在训练时未被充分学习</li>
+</ul>
+<p><strong>ALiBi (Attention with Linear Biases):</strong></p>
+<ul>
+<li>不使用位置embedding，直接在attention score上加线性偏置</li>
+<li><span class="arithmatex">\(\text{score}_{ij} = q_i \cdot k_j - m \cdot |i - j|\)</span></li>
+<li>m是每个head不同的斜率（预先设定，越远的head斜率越小）</li>
+<li>优势：无需额外计算，天然支持任意长度外推</li>
+<li>缺点：偏置是固定的线性函数，表达力有限</li>
+</ul>
+<h3 id="4_1">4. 其他</h3>
+<h4 id="dk">为什么除以根号dk</h4>
+<p><span class="arithmatex">\(\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V\)</span></p>
+<ul>
+<li>Q和K的每个元素假设是均值0、方差1的独立随机变量</li>
+<li><span class="arithmatex">\(q \cdot k = \sum_{i=1}^{d_k} q_i k_i\)</span>，方差为<span class="arithmatex">\(d_k\)</span></li>
+<li>当<span class="arithmatex">\(d_k\)</span>较大时，点积的绝对值会很大，导致softmax进入梯度极小的饱和区</li>
+<li>除以<span class="arithmatex">\(\sqrt{d_k}\)</span>将方差归一化为1，使softmax保持在梯度合理的区域</li>
+<li>实验验证：不缩放时大<span class="arithmatex">\(d_k\)</span>下训练不稳定</li>
+</ul>
+<h4 id="encoder-decoder">Encoder-Decoder注意力结构</h4>
+<p><strong>Encoder中的多头注意力:</strong></p>
+<ul>
+<li>Self-Attention：每个token可以attend到所有其他token</li>
+<li>双向注意力，无mask</li>
+</ul>
+<p><strong>Decoder中的注意力:</strong></p>
+<ul>
+<li>
+<p><strong>Causal Masked Self-Attention (因果掩码自注意力):</strong></p>
+<ul>
+<li>每个token只能attend到它自己和之前的token</li>
+<li>使用下三角mask矩阵，上三角部分设为-∞</li>
+<li>保证自回归特性（生成时不泄露未来信息）</li>
+</ul>
+</li>
+<li>
+<p><strong>Cross-Attention (交叉注意力):</strong></p>
+<ul>
+<li>Decoder提供Q，Encoder提供K和V</li>
+<li>Decoder的每个位置可以attend到Encoder的所有位置</li>
+<li>用于Encoder-Decoder架构（如T5、原始Transformer）</li>
+<li>Decoder-only架构（GPT、Llama）不使用Cross-Attention</li>
+</ul>
+</li>
+</ul>
+<h4 id="qkv">为什么要分为Q、K、V三个矩阵</h4>
+<ul>
+<li><strong>Q (Query)</strong>：当前token想要查询什么信息</li>
+<li><strong>K (Key)</strong>：每个token提供的"索引"，用于被查询</li>
+<li><strong>V (Value)</strong>：每个token的实际内容，被提取的信息</li>
+</ul>
+<p><strong>为什么不能只用两个矩阵（如Q和V）:</strong></p>
+<ul>
+<li>如果K=Q：自己与自己的点积总是最大的，attention会退化为恒等映射</li>
+<li>如果K=V：attention score和提取的内容耦合，表达力受限</li>
+<li>三个独立的投影矩阵提供了最大的灵活性：<ul>
+<li>Q和K的投影决定"匹配函数"（哪些token相关）</li>
+<li>V的投影决定"提取什么信息"</li>
+<li>解耦了"查询什么"和"返回什么"</li>
+</ul>
+</li>
+</ul>
+<h4 id="dropout">Dropout训练和推理时的行为区别</h4>
+<p><strong>训练时:</strong></p>
+<ul>
+<li>以概率p随机将某些神经元的输出置为0</li>
+<li>剩余神经元的输出除以(1-p)进行缩放（inverted dropout）</li>
+<li>目的：防止过拟合，增强泛化能力</li>
+<li>每次forward使用不同的dropout mask</li>
+</ul>
+<p><strong>推理时:</strong></p>
+<ul>
+<li>不使用dropout，所有神经元都参与计算</li>
+<li>不需要缩放（因为训练时已经通过inverted dropout处理了）</li>
+<li>确定性输出</li>
+</ul>
+<p><strong>大模型中的Dropout:</strong></p>
+<ul>
+<li>大多数现代大模型（GPT-3、Llama等）不使用dropout</li>
+<li>原因：模型规模巨大，数据量巨大，过拟合不是主要问题</li>
+<li>正则化主要通过weight decay（AdamW）实现</li>
+</ul>
+<hr />
+<h2 id="_6">四、强化学习</h2>
+<h3 id="value-based-methods">Value-based Methods</h3>
+<h4 id="monte-carlo">蒙特卡洛法 (Monte Carlo)</h4>
+<ul>
+<li>通过完整的episode回报来估计状态价值</li>
+<li><span class="arithmatex">\(V(s) = \mathbb{E}[G_t | S_t = s]\)</span>，其中<span class="arithmatex">\(G_t = \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}\)</span></li>
+<li>优点：无偏估计</li>
+<li>缺点：需要等到episode结束，方差大</li>
+<li>不适合 continuing task（无终止的任务）</li>
+</ul>
+<h4 id="sarsa-state-action-reward-state-action">SARSA (State-Action-Reward-State-Action)</h4>
+<ul>
+<li>On-policy TD控制方法</li>
+<li>更新规则：<span class="arithmatex">\(Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha[R_{t+1} + \gamma Q(S_{t+1}, A_{t+1}) - Q(S_t, A_t)]\)</span></li>
+<li>使用实际执行的下一个action A_{t+1}</li>
+<li>相对保守，考虑了exploration的风险</li>
+</ul>
+<h4 id="temporal-difference-td">时序差分法 (Temporal Difference, TD)</h4>
+<ul>
+<li>结合蒙特卡洛和动态规划的思想</li>
+<li>用估计的值来更新估计的值（bootstrapping）</li>
+<li>TD(0)：单步更新</li>
+<li>TD(λ)：多步更新，结合n-step returns</li>
+<li>优点：可以在线学习，不需要等到episode结束</li>
+<li>缺点：引入偏差（bootstrapping）</li>
+</ul>
+<h4 id="q-learning">Q-learning</h4>
+<ul>
+<li>Off-policy TD控制方法</li>
+<li>更新规则：<span class="arithmatex">\(Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha[R_{t+1} + \gamma \max_a Q(S_{t+1}, a) - Q(S_t, A_t)]\)</span></li>
+<li>使用贪心策略选择下一个action（max操作）</li>
+<li>直接学习最优action-value函数</li>
+<li>与行为策略无关（off-policy）</li>
+</ul>
+<h4 id="dqn-deep-q-network">DQN (Deep Q-Network)</h4>
+<ul>
+<li>用神经网络近似Q函数</li>
+<li>关键技术：<ul>
+<li><strong>Experience Replay</strong>：存储经验样本，随机采样打破相关性</li>
+<li><strong>Target Network</strong>：使用单独的目标网络计算TD target，稳定训练</li>
+<li><strong>Reward Clipping</strong>：将奖励裁剪到[-1, 1]</li>
+</ul>
+</li>
+<li>更新：<span class="arithmatex">\(L = \mathbb{E}[(R + \gamma \max_{a'} Q_{target}(S', a') - Q(S, A))^2]\)</span></li>
+</ul>
+<h3 id="policy-based-methods">Policy-based Methods</h3>
+<h4 id="reinforce">REINFORCE</h4>
+<ul>
+<li>最基础的策略梯度方法</li>
+<li>目标：<span class="arithmatex">\(\nabla J(\theta) = \mathbb{E}[\nabla \log \pi_\theta(a|s) \cdot G_t]\)</span></li>
+<li>使用完整的episode回报G_t作为信号</li>
+<li>优点：简单，直接优化策略</li>
+<li>缺点：方差大，需要baseline（如V函数）来减少方差</li>
+</ul>
+<h4 id="actor-critic">Actor-Critic</h4>
+<ul>
+<li>结合Policy-based和Value-based</li>
+<li>Actor：策略网络<span class="arithmatex">\(\pi_\theta(a|s)\)</span>，负责选择action</li>
+<li>Critic：价值网络<span class="arithmatex">\(V_\phi(s)\)</span>，负责评估状态价值</li>
+<li>Actor更新：<span class="arithmatex">\(\nabla J(\theta) = \mathbb{E}[\nabla \log \pi_\theta(a|s) \cdot A(s,a)]\)</span></li>
+<li>Critic更新：最小化<span class="arithmatex">\(V_\phi(s)\)</span>与target的MSE</li>
+<li>Advantage <span class="arithmatex">\(A(s,a) = R + \gamma V(s') - V(s)\)</span>，减少方差</li>
+</ul>
+<h4 id="trpo-trust-region-policy-optimization">TRPO (Trust Region Policy Optimization)</h4>
+<ul>
+<li>限制策略更新幅度，保证单调改进</li>
+<li>约束：<span class="arithmatex">\(\mathbb{E}[D_{KL}(\pi_{old} \| \pi_{new})] \leq \delta\)</span></li>
+<li>使用共轭梯度法求解约束优化</li>
+<li>理论保证：每次更新策略性能不会下降太多</li>
+<li>缺点：计算复杂，需要二阶优化</li>
+</ul>
+<h4 id="ppo-proximal-policy-optimization">PPO (Proximal Policy Optimization)</h4>
+<ul>
+<li>TRPO的简化版本，一阶优化即可</li>
+<li>核心：clip机制限制策略更新幅度
+  <span class="arithmatex">\(L^{CLIP}(\theta) = \mathbb{E}\left[\min\left(r_t(\theta) \hat{A}_t, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) \hat{A}_t\right)\right]\)</span></li>
+<li><span class="arithmatex">\(r_t(\theta) = \frac{\pi_\theta(a_t|s_t)}{\pi_{old}(a_t|s_t)}\)</span>，概率比</li>
+<li>当advantage &gt; 0时：限制r不超过1+ε（防止过度增加概率）</li>
+<li>当advantage &lt; 0时：限制r不低于1-ε（防止过度减少概率）</li>
+</ul>
+<p><strong>PPO的clip解决什么问题:</strong></p>
+<ul>
+<li>防止策略更新过大，导致性能崩溃</li>
+<li>不clip的话：如果某个action获得高reward，概率比可能变得非常大，策略过度偏向这个action，导致exploration不足和训练不稳定</li>
+<li>Clip提供了简单有效的trust region近似</li>
+</ul>
+<p><strong>PPO loss组成:</strong>
+<span class="arithmatex">\(L = L^{CLIP} - c_1 L^{VF} + c_2 S[\pi_\theta]\)</span></p>
+<ul>
+<li><span class="arithmatex">\(L^{CLIP}\)</span>：策略优化目标（clip surrogate）</li>
+<li><span class="arithmatex">\(L^{VF}\)</span>：价值函数损失（MSE）</li>
+<li><span class="arithmatex">\(S[\pi_\theta]\)</span>：熵奖励（鼓励exploration）</li>
+<li><span class="arithmatex">\(c_1, c_2\)</span>：权重系数</li>
+</ul>
+<p><strong>PPO的clip ratio ε:</strong></p>
+<ul>
+<li>通常设为0.1-0.2</li>
+<li>太小：更新过于保守，学习慢</li>
+<li>太大：失去clip的保护作用</li>
+</ul>
+<h4 id="grpo-group-relative-policy-optimization">GRPO (Group Relative Policy Optimization)</h4>
+<p><strong>核心思想:</strong></p>
+<ul>
+<li>不需要单独的Critic/Value网络</li>
+<li>对同一个prompt采样一组（group）回答，用组内的相对排名作为advantage</li>
+<li>奖励来源：规则模型（rule-based reward）或奖励模型（RM）</li>
+</ul>
+<p><strong>具体流程:</strong></p>
+<ol>
+<li>对每个prompt，采样G个回答 <span class="arithmatex">\(\{o_1, o_2, ..., o_G\}\)</span></li>
+<li>对每个回答计算奖励 <span class="arithmatex">\(\{r_1, r_2, ..., r_G\}\)</span></li>
+<li>计算组内归一化的advantage：<span class="arithmatex">\(\hat{A}_i = \frac{r_i - \text{mean}(r)}{\text{std}(r)}\)</span></li>
+<li>使用PPO-style clip更新策略</li>
+</ol>
+<p><strong>GRPO loss:</strong>
+<span class="arithmatex">\(L_{GRPO} = \mathbb{E}\left[\frac{1}{G}\sum_{i=1}^{G} \frac{1}{|o_i|} \sum_{t=1}^{|o_i|} \left\{\min\left[\rho_{i,t} \hat{A}_i, \text{clip}(\rho_{i,t}, 1-\epsilon, 1+\epsilon)\hat{A}_i\right] - \beta D_{KL}(\pi_\theta \| \pi_{ref})\right\}\right]\)</span></p>
+<p><strong>GRPO为什么不需要单独训练RM:</strong></p>
+<ul>
+<li>对于有明确规则的任务（如数学、代码），可以使用规则模型直接打分</li>
+<li>对于需要RM的任务，GRPO仍然可以使用RM，但不需要训练Critic网络</li>
+<li>关键创新：用组内相对排名替代绝对价值估计，省去了Critic的训练</li>
+</ul>
+<p><strong>GRPO的超参调整:</strong></p>
+<ul>
+<li>Group size G：越大advantage估计越稳定，但计算成本增加（通常8-64）</li>
+<li>KL系数β：控制与reference model的偏离程度</li>
+<li>Clip ratio ε：通常0.1-0.2</li>
+<li>温度：影响采样多样性</li>
+</ul>
+<p><strong>GRPO在dense和MoE上的表现:</strong></p>
+<ul>
+<li>Dense模型：GRPO效果良好</li>
+<li>MoE模型：由于MoE的稀疏激活特性，GRPO可能需要调整（如更大的group size）</li>
+<li>GSPO是对GRPO在MoE上的改进</li>
+</ul>
+<h4 id="gspo-group-level-sequence-policy-optimization">GSPO (Group-level Sequence Policy Optimization)</h4>
+<p><strong>GSPO vs GRPO的区别:</strong></p>
+<ul>
+<li>GRPO在token level计算advantage（每个token共享同一个sequence-level的advantage）</li>
+<li>GSPO在sequence level计算advantage，并考虑整个序列的联合优化</li>
+<li>GSPO的gap理解：GRPO假设组内每个样本的advantage是独立的，但实际序列之间存在相关性</li>
+</ul>
+<p><strong>GSPO为什么效果更优:</strong></p>
+<ul>
+<li>更好地处理序列级别的全局优化</li>
+<li>在MoE模型上表现更好，因为MoE的路由机制使得token-level的优化不够稳定</li>
+<li>减少了GRPO中的方差</li>
+</ul>
+<p><strong>GSPO和GRPO的显存占用:</strong></p>
+<ul>
+<li>两者都需要存储group内所有样本的logits和梯度</li>
+<li>GSPO可能需要额外的显存用于sequence-level的计算</li>
+<li>实际差异取决于实现细节</li>
+</ul>
+<h4 id="dapo-decoupled-alignment-policy-optimization">DAPO (Decoupled Alignment Policy Optimization)</h4>
+<p><strong>DAPO的六个改进点:</strong></p>
+<ol>
+<li><strong>Dynamic Sampling</strong>：动态调整采样策略，避免重复采样相似的prompt</li>
+<li><strong>Adaptive KL</strong>：自适应调整KL系数，根据训练阶段动态变化</li>
+<li><strong>Decoupled Reward</strong>：将不同来源的奖励解耦，分别处理</li>
+<li><strong>Overlong Reward Penalty</strong>：对超长回答施加惩罚，避免模型通过生成冗长文本来获取奖励</li>
+<li><strong>Token-level Loss</strong>：在token level而非sequence level计算loss，更精细</li>
+<li><strong>Dual-Clip</strong>：使用双重clip机制，更好地控制策略更新</li>
+</ol>
+<h4 id="policy">其他Policy方法</h4>
+<p><strong>DPO (Direct Preference Optimization):</strong></p>
+<ul>
+<li>不需要训练RM和RL过程</li>
+<li>直接从偏好数据优化策略</li>
+<li>目标：<span class="arithmatex">\(\max_\theta \mathbb{E}[\log \sigma(\beta \log \frac{\pi_\theta(y_w|x)}{\pi_{ref}(y_w|x)} - \beta \log \frac{\pi_\theta(y_l|x)}{\pi_{ref}(y_l|x)})]\)</span></li>
+<li>优点：简单，不需要RM</li>
+<li>缺点：offline方法，受限于偏好数据质量</li>
+</ul>
+<p><strong>KTO (Kahneman-Tversky Optimization):</strong></p>
+<ul>
+<li>不需要成对偏好数据，只需要good/bad标注</li>
+<li>基于前景理论（Prospect Theory）</li>
+<li>损失函数考虑了人类对损失和收益的非对称敏感性</li>
+</ul>
+<p><strong>IPO (Identity Preference Optimization):</strong></p>
+<ul>
+<li>DPO的改进版本</li>
+<li>解决了DPO在确定性偏好下的过拟合问题</li>
+<li>使用更平滑的优化目标</li>
+</ul>
+<p><strong>Reference Free Alignment:</strong></p>
+<ul>
+<li>不需要reference model的对齐方法</li>
+<li>如KTO、IPO的某些变体</li>
+<li>减少了推理和训练时的计算开销</li>
+</ul>
+<h3 id="_7">其他关键概念</h3>
+<h4 id="_8">模态/熵坍塌问题</h4>
+<p><strong>Entropy Collapse:</strong></p>
+<ul>
+<li>策略的熵持续下降，最终变得确定性（只输出少数几个token）</li>
+<li>导致exploration不足，模型陷入局部最优</li>
+<li>表现：生成多样性急剧下降，模式崩溃</li>
+</ul>
+<p><strong>如何避免:</strong></p>
+<ul>
+<li>熵奖励：在loss中加入熵项，鼓励高熵策略</li>
+<li>Clamped entropy：设置熵的下界，当熵低于阈值时增加熵奖励权重</li>
+<li>温度调节：动态调整采样温度</li>
+<li>KL散度约束：限制与reference model的偏离</li>
+</ul>
+<p><strong>Clamped Entropy:</strong></p>
+<ul>
+<li>设置熵的目标范围<span class="arithmatex">\([H_{min}, H_{max}]\)</span></li>
+<li>当<span class="arithmatex">\(H &lt; H_{min}\)</span>时，增加熵奖励系数</li>
+<li>当<span class="arithmatex">\(H &gt; H_{max}\)</span>时，减少熵奖励系数</li>
+<li>通常<span class="arithmatex">\(H_{min}\)</span>设为初始熵的某个比例</li>
+</ul>
+<p><strong>Policy entropy的重要性:</strong></p>
+<ul>
+<li>衡量策略的随机性/exploration程度</li>
+<li>高熵：充分exploration，但可能效率低</li>
+<li>低熵：exploitation为主，可能陷入局部最优</li>
+<li>理想的训练过程：熵逐渐下降但不过快，保持足够的exploration</li>
+</ul>
+<p><strong>KL散度在RL中的作用:</strong></p>
+<ul>
+<li>约束策略更新幅度，防止偏离reference model太远</li>
+<li>防止reward hacking（模型找到RM的漏洞而非真正改进）</li>
+<li>保持生成多样性</li>
+</ul>
+<p><strong>KL估计器K1, K2, K3:</strong></p>
+<ul>
+<li>K1（非偏估计）：<span class="arithmatex">\(D_{KL} = \mathbb{E}_{\pi_\theta}[\log \pi_\theta - \log \pi_{ref}]\)</span></li>
+<li>K2（Schulman估计）：<span class="arithmatex">\(D_{KL} \approx \mathbb{E}[\frac{\pi_\theta}{\pi_{ref}} - 1 - \log \frac{\pi_\theta}{\pi_{ref}}]\)</span>，更稳定</li>
+<li>K3（另一种近似）：<span class="arithmatex">\(D_{KL} \approx \mathbb{E}[\frac{1}{2}(\log \frac{\pi_\theta}{\pi_{ref}})^2]\)</span></li>
+</ul>
+<p><strong>正向KL vs 反向KL在大模型RL中:</strong></p>
+<ul>
+<li>正向KL：<span class="arithmatex">\(D_{KL}(\pi_{ref} \| \pi_\theta)\)</span>，reference→policy<ul>
+<li>Mean-seeking：policy倾向于覆盖reference的所有模式</li>
+<li>保持多样性，但可能生成低质量样本</li>
+</ul>
+</li>
+<li>反向KL：<span class="arithmatex">\(D_{KL}(\pi_\theta \| \pi_{ref})\)</span>，policy→reference<ul>
+<li>Mode-seeking：policy倾向于集中在reference的某个高质量模式</li>
+<li>生成质量高，但多样性下降</li>
+</ul>
+</li>
+<li>对齐几乎都用反向KL：因为目标是提高生成质量，而非保持多样性</li>
+</ul>
+<p><strong>Clip-Cov, KL-Cov:</strong></p>
+<ul>
+<li>针对协方差高、优势高的token做特殊处理</li>
+<li>Clip-Cov：对高协方差的token进行更激进的clip</li>
+<li>KL-Cov：用KL散度约束高方差的token更新</li>
+<li>目的：减少训练中的方差，提高稳定性</li>
+</ul>
+<p><strong>Clip-Higher:</strong></p>
+<ul>
+<li>提升概率小但分数高的回答的概率</li>
+<li>解决GRPO/PPO中低概率高质量样本被忽略的问题</li>
+<li>实现：对advantage &gt; 0且概率 &lt; 阈值的token，使用更宽松的clip上界</li>
+</ul>
+<h4 id="reward-hacking">Reward Hacking</h4>
+<p><strong>定义:</strong></p>
+<ul>
+<li>模型找到了奖励函数的漏洞，获得了高奖励但实际质量并未提升</li>
+<li>例：模型学会生成冗长但空洞的文本来获得长度奖励</li>
+</ul>
+<p><strong>检测方法:</strong></p>
+<ul>
+<li>监控reward和实际质量指标（如人工评估、其他metric）的关系</li>
+<li>如果reward持续上升但质量指标停滞或下降，可能存在reward hacking</li>
+<li>观察生成样本的多样性变化</li>
+</ul>
+<p><strong>解决方法:</strong></p>
+<ul>
+<li>KL散度约束：限制策略偏离reference model</li>
+<li>多奖励融合：使用多个不同的奖励模型</li>
+<li>奖励归一化：减少极端奖励值的影响</li>
+<li>定期更新RM：避免模型适应固定的RM</li>
+<li>Overlong penalty：惩罚过长的回答</li>
+</ul>
+<h4 id="dpo">DPO为什么会出现损失下降但性能没有提升</h4>
+<ul>
+<li><strong>过拟合到偏好数据</strong>：DPO可能过拟合到训练偏好数据的特定模式，而非真正学习人类偏好</li>
+<li><strong>分布偏移</strong>：DPO是offline方法，训练分布和推理分布可能不一致</li>
+<li><strong>隐式RM的局限</strong>：DPO等价于优化一个隐式RM，但这个隐式RM可能不准确</li>
+<li><strong>长度偏差</strong>：DPO倾向于选择更长的回答（如果偏好数据中存在长度偏差）</li>
+<li><strong>缺乏exploration</strong>：DPO不生成新样本，只在已有数据上优化</li>
+</ul>
+<h4 id="online-vs-offline">Online vs Offline强化学习</h4>
+<p><strong>Online RL:</strong></p>
+<ul>
+<li>在训练过程中不断生成新数据</li>
+<li>PPO、GRPO属于online RL</li>
+<li>优点：数据分布与当前策略匹配</li>
+<li>缺点：需要不断采样，计算成本高</li>
+</ul>
+<p><strong>Offline RL:</strong></p>
+<ul>
+<li>使用预先收集好的固定数据集</li>
+<li>DPO属于offline RL</li>
+<li>优点：不需要在线采样</li>
+<li>缺点：分布偏移问题，受限于数据集质量</li>
+</ul>
+<h4 id="on-policy-vs-off-policy">On-policy vs Off-policy</h4>
+<p><strong>On-policy:</strong></p>
+<ul>
+<li>用于更新策略的数据由当前策略生成</li>
+<li>PPO是on-policy（虽然实践中会用多个epoch，变成近似on-policy）</li>
+<li>GRPO是on-policy</li>
+</ul>
+<p><strong>Off-policy:</strong></p>
+<ul>
+<li>用于更新策略的数据可以由其他策略生成</li>
+<li>Q-learning是off-policy</li>
+<li>DPO可以视为off-policy（使用固定的偏好数据）</li>
+</ul>
+<h4 id="rlseq_len">RL训练为什么会让seq_len变长</h4>
+<ul>
+<li>RL优化目标是最大化奖励，模型可能发现"生成更长回答"能获得更高奖励</li>
+<li>特别是当RM对长度有偏好时（如详细回答得分更高）</li>
+<li>解决方法：<ul>
+<li>长度惩罚：在reward中减去长度相关项</li>
+<li>Overlong penalty：对超过一定长度的回答施加惩罚</li>
+<li>截断：限制最大生成长度</li>
+<li>使用长度无关的RM</li>
+</ul>
+</li>
+</ul>
+<h4 id="on-policy-distillation">什么是on-policy distillation</h4>
+<ul>
+<li>使用当前策略生成的数据来进行知识蒸馏</li>
+<li>与offline distillation（使用固定数据集）相对</li>
+<li>优点：蒸馏数据与当前策略分布匹配</li>
+<li>应用：在大模型RL训练中，用更强的模型指导当前模型</li>
+</ul>
+<h4 id="batch-sizeminibatch">训练中batch size和minibatch</h4>
+<p><strong>Batch size:</strong></p>
+<ul>
+<li>一次迭代中使用的总样本数</li>
+<li>在RL中：一次收集的经验数量</li>
+</ul>
+<p><strong>Minibatch:</strong></p>
+<ul>
+<li>将batch分成多个minibatch进行多次梯度更新</li>
+<li>目的：在有限的计算资源下增加更新次数</li>
+<li>搭配seq_len：总token数 = batch_size × seq_len</li>
+<li>PPO中：一个batch的数据会被使用多个epoch，每个epoch分成多个minibatch</li>
+</ul>
+<p><strong>计算示例:</strong></p>
+<ul>
+<li>batch_size = 512, seq_len = 2048</li>
+<li>总token = 512 × 2048 = 1,048,576</li>
+<li>minibatch_size = 64</li>
+<li>每个minibatch = 64 × 2048 = 131,072 tokens</li>
+<li>一个batch有 512/64 = 8 个minibatch</li>
+<li>如果n_epochs = 4，总共更新 8 × 4 = 32 次</li>
+</ul>
+<h4 id="rl">RL训练你一般看哪些指标</h4>
+<ul>
+<li><strong>Reward</strong>：平均奖励，应该上升</li>
+<li><strong>KL散度</strong>：与reference model的KL，应该保持在合理范围</li>
+<li><strong>Policy Entropy</strong>：策略熵，应该缓慢下降但不坍塌</li>
+<li><strong>Clip Ratio</strong>：被clip的比例，过高说明更新幅度过大</li>
+<li><strong>Approx KL</strong>：实际策略更新的KL散度</li>
+<li><strong>Response Length</strong>：平均生成长度，异常增长可能表示reward hacking</li>
+<li><strong>Accuracy/Quality Metrics</strong>：实际任务性能指标</li>
+<li><strong>Loss components</strong>：policy loss, value loss, entropy的各自变化</li>
+</ul>
+<h4 id="irrlir">什么是IR，为什么RL要引入IR</h4>
+<p><strong>IR (Importance Resampling / Importance Ratio):</strong></p>
+<ul>
+<li>重要性采样/重要性比率</li>
+<li>在RL中用于off-policy学习或多次epoch更新时校正分布偏移</li>
+<li><span class="arithmatex">\(r_t = \frac{\pi_\theta(a_t|s_t)}{\pi_{old}(a_t|s_t)}\)</span></li>
+<li>目的：用旧策略的数据估计新策略的梯度</li>
+</ul>
+<h4 id="gui-agentquery">GUI Agent，Query对应的不同镜像不同拉取</h4>
+<ul>
+<li>在GUI agent训练中，不同的query可能需要不同的环境镜像</li>
+<li>问题：如何高效管理多个镜像</li>
+<li>解决方案：<ul>
+<li>容器化：使用Docker/Kubernetes管理不同环境</li>
+<li>镜像缓存：共享基础层，只拉取差异部分</li>
+<li>按需加载：根据query类型动态选择镜像</li>
+<li>并行环境：使用多个虚拟机/容器并行运行不同环境</li>
+</ul>
+</li>
+</ul>
+<h4 id="grpodensemoe">GRPO在dense和MoE上表现</h4>
+<p><strong>Dense模型:</strong></p>
+<ul>
+<li>GRPO效果良好，组内相对排名提供了稳定的advantage估计</li>
+<li>不需要Critic网络，节省显存</li>
+</ul>
+<p><strong>MoE模型:</strong></p>
+<ul>
+<li>MoE的稀疏激活导致不同token经过不同的expert</li>
+<li>组内样本可能激活不同的expert路径，导致advantage估计不稳定</li>
+<li>GSPO通过sequence-level的优化缓解了这个问题</li>
+</ul>
+<h4 id="clip-higher">为什么Clip-Higher有效</h4>
+<ul>
+<li>标准PPO/GRPO的clip是对称的：<span class="arithmatex">\([1-\epsilon, 1+\epsilon]\)</span></li>
+<li>问题：对于概率很低但质量很高的回答，clip上界限制了其概率的增长</li>
+<li>Clip-Higher：对advantage &gt; 0的token，使用更大的上界（如<span class="arithmatex">\(1+2\epsilon\)</span>）</li>
+<li>效果：允许低概率高质量样本的概率更快增长</li>
+<li>类似于exploration bonus，鼓励模型发现新的优质模式</li>
+</ul>
+<h4 id="policytop_p-top_k">Policy里的top_p, top_k</h4>
+<p><strong>Top-k采样:</strong></p>
+<ul>
+<li>只从概率最高的k个token中采样</li>
+<li>固定候选集大小</li>
+</ul>
+<p><strong>Top-p (Nucleus) 采样:</strong></p>
+<ul>
+<li>从累积概率达到p的最小token集合中采样</li>
+<li>动态候选集大小</li>
+<li>更灵活：高置信度时候选少，低置信度时候选多</li>
+</ul>
+<p><strong>在RL Policy中的使用:</strong></p>
+<ul>
+<li>训练时：通常使用全vocab采样（不截断），保证exploration</li>
+<li>推理时：使用top-p/top-k控制生成质量</li>
+<li>有些方法在训练时也使用截断，减少无效token的计算</li>
+</ul>
+<hr />
+<h2 id="_9">五、面经中的具体问题补充</h2>
+<h3 id="1-verlhybridengineauto-mapping">1. verl中的hybridengine、auto mapping原理</h3>
+<p><strong>verl (Volcano Engine RL):</strong></p>
+<ul>
+<li>字节跳动开源的大模型RL训练框架</li>
+</ul>
+<p><strong>HybridEngine:</strong></p>
+<ul>
+<li>核心创新：将RL训练和推理引擎融合</li>
+<li>传统方法：训练和推理使用不同的引擎，需要频繁同步模型参数</li>
+<li>HybridEngine：在同一个引擎中同时支持训练和推理</li>
+<li>实现：<ul>
+<li>共享模型权重，避免参数拷贝</li>
+<li>动态切换训练模式和推理模式</li>
+<li>推理时使用vLLM等高效引擎</li>
+<li>训练时使用Megatron/DeepSpeed等分布式训练框架</li>
+</ul>
+</li>
+<li>优势：减少参数同步开销，提高整体训练效率</li>
+</ul>
+<p><strong>Auto Mapping:</strong></p>
+<ul>
+<li>自动将模型层映射到不同的并行策略</li>
+<li>根据模型结构和硬件拓扑，自动决定TP/PP/DP的配置</li>
+<li>减少人工调优成本</li>
+</ul>
+<h3 id="2-qwen25-vlqwen35">2. Qwen2.5-VL到Qwen3.5架构变化</h3>
+<p><strong>Qwen2.5-VL:</strong></p>
+<ul>
+<li>视觉-语言模型</li>
+<li>Vision Encoder (ViT) + Language Model (Transformer)</li>
+<li>Cross-attention或projection layer连接视觉和语言</li>
+</ul>
+<p><strong>Qwen3.5 (假设的原生多模态):</strong></p>
+<ul>
+<li>"原生多模态"意味着从预训练开始就同时处理多种模态</li>
+<li>不是先训练语言模型再微调视觉，而是联合训练</li>
+<li>架构可能变化：<ul>
+<li>统一的tokenizer处理文本和视觉token</li>
+<li>更紧密的模态融合（不是简单的concatenation）</li>
+<li>可能使用early fusion而非late fusion</li>
+</ul>
+</li>
+<li>为什么称为原生多模态：<ul>
+<li>模型从一开始就学习跨模态的表示</li>
+<li>不是"语言模型 + 视觉适配器"的拼凑</li>
+<li>更好的跨模态理解和推理能力</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-on">3. 线性注意力为什么能把复杂度降成O(n)</h3>
+<p><strong>标准Attention:</strong></p>
+<ul>
+<li>计算<span class="arithmatex">\(QK^T\)</span>：<span class="arithmatex">\(O(n^2 d)\)</span></li>
+<li>Softmax后再乘V：<span class="arithmatex">\(O(n^2 d)\)</span></li>
+<li>总复杂度：<span class="arithmatex">\(O(n^2 d)\)</span></li>
+</ul>
+<p><strong>线性Attention:</strong></p>
+<ul>
+<li>核心思想：避免显式计算<span class="arithmatex">\(n \times n\)</span>的attention矩阵</li>
+<li>利用矩阵乘法结合律：<span class="arithmatex">\(\text{softmax}(QK^T)V \approx \phi(Q)(\phi(K)^T V)\)</span></li>
+<li>其中<span class="arithmatex">\(\phi\)</span>是核函数映射</li>
+<li>计算顺序改变：<ul>
+<li>先计算<span class="arithmatex">\(K^T V\)</span>：<span class="arithmatex">\(O(n d^2)\)</span>（与n线性相关）</li>
+<li>再计算<span class="arithmatex">\(\phi(Q) \cdot (K^T V)\)</span>：<span class="arithmatex">\(O(n d^2)\)</span></li>
+</ul>
+</li>
+<li>总复杂度：<span class="arithmatex">\(O(n d^2)\)</span>，对n是线性的</li>
+<li>代价：失去了精确的softmax attention，是近似方法</li>
+<li>代表：Linear Transformer、Performer、RetNet等</li>
+</ul>
+<h3 id="4_2">4. 推理时出现重复生成、断句、卡顿的排查</h3>
+<p><strong>重复生成:</strong></p>
+<ul>
+<li>KV Cache问题：检查KV Cache是否正确更新</li>
+<li>Attention问题：检查attention mask是否正确（因果mask）</li>
+<li>Norm问题：检查LayerNorm/RMSNorm的参数是否正确</li>
+<li>解码策略：检查repetition penalty、temperature等参数</li>
+</ul>
+<p><strong>断句:</strong></p>
+<ul>
+<li>可能是EOS token预测过早</li>
+<li>检查tokenizer的EOS设置</li>
+<li>可能是模型训练数据中短句子过多</li>
+</ul>
+<p><strong>卡顿:</strong></p>
+<ul>
+<li>KV Cache内存不足，触发swap或重新分配</li>
+<li>PagedAttention的block分配问题</li>
+<li>Batch size过大导致OOM</li>
+<li>检查GPU利用率，是否memory-bound</li>
+</ul>
+<h3 id="5-per-channelper-token">5. per-channel和per-token量化</h3>
+<p><strong>Per-channel量化:</strong></p>
+<ul>
+<li>对每个output channel（或input channel）使用独立的量化参数（scale, zero-point）</li>
+<li>权重量化常用：每个filter有自己的scale</li>
+<li>精度较高，但参数量增加</li>
+</ul>
+<p><strong>Per-token量化:</strong></p>
+<ul>
+<li>对每个token使用独立的量化参数</li>
+<li>激活值量化常用：每个token的激活分布不同</li>
+<li>更好地捕捉token间的差异</li>
+</ul>
+<p><strong>Per-tensor量化:</strong></p>
+<ul>
+<li>整个tensor使用一组量化参数</li>
+<li>最简单，但精度最低</li>
+</ul>
+<p><strong>应用:</strong></p>
+<ul>
+<li>W8A8量化：权重per-channel，激活per-token</li>
+<li>INT4量化：权重per-channel（group-wise），激活per-token</li>
+</ul>
+<hr />
+<h2 id="_10">六、手撕代码题</h2>
+<h3 id="1-multi-head-attention">1. Multi-Head Attention</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">class</span> <span class="nc">MultiHeadAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">d_model</span> <span class="o">=</span> <span class="n">d_model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_heads</span> <span class="o">=</span> <span class="n">n_heads</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span> <span class="o">=</span> <span class="n">d_model</span> <span class="o">//</span> <span class="n">n_heads</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_q</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_k</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_v</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_o</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">scaled_dot_product_attention</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># Q, K, V: (batch, n_heads, seq_len, d_k)</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">scores</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">masked_fill</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;-inf&#39;</span><span class="p">))</span>
+
+        <span class="n">attn_weights</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">attn_weights</span><span class="p">,</span> <span class="n">V</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span><span class="p">,</span> <span class="n">attn_weights</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Linear projections</span>
+        <span class="n">Q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_q</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_heads</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">K</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_k</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_heads</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">V</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_v</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_heads</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># Attention</span>
+        <span class="n">attn_output</span><span class="p">,</span> <span class="n">attn_weights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaled_dot_product_attention</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+
+        <span class="c1"># Concatenate heads</span>
+        <span class="n">attn_output</span> <span class="o">=</span> <span class="n">attn_output</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_model</span><span class="p">)</span>
+
+        <span class="c1"># Final linear</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_o</span><span class="p">(</span><span class="n">attn_output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span>
+
+<span class="c1"># Causal mask for decoder</span>
+<span class="k">def</span> <span class="nf">create_causal_mask</span><span class="p">(</span><span class="n">seq_len</span><span class="p">):</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tril</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">seq_len</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">mask</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># (1, 1, seq_len, seq_len)</span>
+</code></pre></div>
+<h3 id="2-grouped-query-attention">2. Grouped Query Attention</h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">GroupedQueryAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">,</span> <span class="n">n_kv_heads</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">d_model</span> <span class="o">=</span> <span class="n">d_model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_heads</span> <span class="o">=</span> <span class="n">n_heads</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_kv_heads</span> <span class="o">=</span> <span class="n">n_kv_heads</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span> <span class="o">=</span> <span class="n">d_model</span> <span class="o">//</span> <span class="n">n_heads</span>
+
+        <span class="k">assert</span> <span class="n">n_heads</span> <span class="o">%</span> <span class="n">n_kv_heads</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_groups</span> <span class="o">=</span> <span class="n">n_heads</span> <span class="o">//</span> <span class="n">n_kv_heads</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_q</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_k</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">n_kv_heads</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_v</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">n_kv_heads</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_o</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">seq_len</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">Q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_q</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_heads</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">K</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_k</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_kv_heads</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">V</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_v</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_kv_heads</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># Expand K, V to match n_heads</span>
+        <span class="n">K</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">repeat_interleave</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_groups</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">V</span> <span class="o">=</span> <span class="n">V</span><span class="o">.</span><span class="n">repeat_interleave</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_groups</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Attention</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">scores</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">masked_fill</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;-inf&#39;</span><span class="p">))</span>
+        <span class="n">attn_weights</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">attn_weights</span><span class="p">,</span> <span class="n">V</span><span class="p">)</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_model</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_o</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="3-softmax-safe-softmax">3. Softmax (safe softmax)</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">safe_softmax</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># 防止上溢：减去最大值</span>
+    <span class="n">x_max</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">x_shifted</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">x_max</span>
+    <span class="n">exp_x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x_shifted</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">exp_x</span> <span class="o">/</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">exp_x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 带温度的softmax</span>
+<span class="k">def</span> <span class="nf">softmax_with_temperature</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">safe_softmax</span><span class="p">(</span><span class="n">logits</span> <span class="o">/</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="4_3">4. 交叉熵损失</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">cross_entropy_loss</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=-</span><span class="mi">100</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    logits: (batch_size, seq_len, vocab_size)</span>
+<span class="sd">    targets: (batch_size, seq_len)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Shift so that tokens &lt; n predict n</span>
+    <span class="n">shift_logits</span> <span class="o">=</span> <span class="n">logits</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span>
+    <span class="n">shift_targets</span> <span class="o">=</span> <span class="n">targets</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span>
+
+    <span class="c1"># Flatten</span>
+    <span class="n">shift_logits</span> <span class="o">=</span> <span class="n">shift_logits</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">logits</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">shift_targets</span> <span class="o">=</span> <span class="n">shift_targets</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Safe softmax + log + NLL</span>
+    <span class="n">log_probs</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">log_softmax</span><span class="p">(</span><span class="n">shift_logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Ignore padding</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">shift_targets</span> <span class="o">!=</span> <span class="n">ignore_index</span>
+    <span class="n">log_probs</span> <span class="o">=</span> <span class="n">log_probs</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">shift_targets</span> <span class="o">=</span> <span class="n">shift_targets</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">nll_loss</span><span class="p">(</span><span class="n">log_probs</span><span class="p">,</span> <span class="n">shift_targets</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">loss</span>
+</code></pre></div>
+<h3 id="5-grpo-loss">5. GRPO Loss</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">grpo_loss</span><span class="p">(</span>
+    <span class="n">logprobs</span><span class="p">,</span>        <span class="c1"># (batch, group_size, seq_len)</span>
+    <span class="n">ref_logprobs</span><span class="p">,</span>    <span class="c1"># (batch, group_size, seq_len)</span>
+    <span class="n">rewards</span><span class="p">,</span>         <span class="c1"># (batch, group_size)</span>
+    <span class="n">mask</span><span class="p">,</span>            <span class="c1"># (batch, group_size, seq_len)</span>
+    <span class="n">epsilon</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">beta</span><span class="o">=</span><span class="mf">0.01</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    GRPO loss implementation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Compute advantages (group-relative)</span>
+    <span class="n">rewards_mean</span> <span class="o">=</span> <span class="n">rewards</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">rewards_std</span> <span class="o">=</span> <span class="n">rewards</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">advantages</span> <span class="o">=</span> <span class="p">(</span><span class="n">rewards</span> <span class="o">-</span> <span class="n">rewards_mean</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">rewards_std</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">)</span>
+
+    <span class="c1"># Expand advantages to token level</span>
+    <span class="n">advantages</span> <span class="o">=</span> <span class="n">advantages</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">expand_as</span><span class="p">(</span><span class="n">logprobs</span><span class="p">)</span>
+
+    <span class="c1"># Compute ratio</span>
+    <span class="n">ratio</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">logprobs</span> <span class="o">-</span> <span class="n">ref_logprobs</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span>
+
+    <span class="c1"># Clipped surrogate loss</span>
+    <span class="n">surr1</span> <span class="o">=</span> <span class="n">ratio</span> <span class="o">*</span> <span class="n">advantages</span>
+    <span class="n">surr2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="n">ratio</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">epsilon</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">epsilon</span><span class="p">)</span> <span class="o">*</span> <span class="n">advantages</span>
+    <span class="n">policy_loss</span> <span class="o">=</span> <span class="o">-</span><span class="n">torch</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">surr1</span><span class="p">,</span> <span class="n">surr2</span><span class="p">)</span>
+
+    <span class="c1"># KL penalty</span>
+    <span class="n">kl_penalty</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">*</span> <span class="p">(</span><span class="n">logprobs</span> <span class="o">-</span> <span class="n">ref_logprobs</span><span class="p">)</span>
+
+    <span class="c1"># Total loss</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">policy_loss</span> <span class="o">+</span> <span class="n">kl_penalty</span><span class="p">)</span> <span class="o">*</span> <span class="n">mask</span>
+
+    <span class="c1"># Average over valid tokens</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">loss</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">loss</span>
+</code></pre></div>
+<h3 id="6-hot-100">6. Hot 100 原题（高频算法题）</h3>
+<p>面试中常考的LeetCode Hot 100题目（与大模型相关的高频题）:</p>
+<ul>
+<li><strong>Two Sum</strong> (1)</li>
+<li><strong>Valid Parentheses</strong> (20)</li>
+<li><strong>Merge Two Sorted Lists</strong> (21)</li>
+<li><strong>Maximum Subarray</strong> (53)</li>
+<li><strong>Binary Tree Level Order Traversal</strong> (102)</li>
+<li><strong>Clone Graph</strong> (133)</li>
+<li><strong>Course Schedule</strong> (207)</li>
+<li><strong>LRU Cache</strong> (146) — 非常高频</li>
+<li><strong>Min Stack</strong> (155)</li>
+<li><strong>Word Search</strong> (79)</li>
+<li><strong>Top K Frequent Elements</strong> (347)</li>
+</ul>
+<hr />
+<h2 id="_11">七、总结与面试建议</h2>
+<h3 id="_12">知识体系梳理</h3>
+<ol>
+<li><strong>基础理论</strong>：概率论、信息论、优化理论</li>
+<li><strong>模型架构</strong>：Transformer及其变体、Decoder-only设计</li>
+<li><strong>训练技术</strong>：分布式训练、混合精度、高效微调</li>
+<li><strong>推理优化</strong>：KV Cache、量化、投机解码</li>
+<li><strong>对齐技术</strong>：RLHF、DPO、GRPO等</li>
+<li><strong>工程实践</strong>：框架使用、性能调优、问题排查</li>
+</ol>
+<h3 id="_13">面试准备建议</h3>
+<ol>
+<li><strong>深度优先</strong>：选择2-3个方向深入准备（如RL + 推理优化 + 分布式训练）</li>
+<li><strong>项目驱动</strong>：准备2-3个有深度的项目，能够串联八股知识</li>
+<li><strong>手撕代码</strong>：熟练掌握MHA、GQA、softmax、cross-entropy的实现</li>
+<li><strong>最新进展</strong>：关注FlashAttention-3、MLA、GRPO/GSPO、DAPO等最新技术</li>
+<li><strong>系统设计</strong>：准备大模型训练/推理系统的设计题</li>
+</ol>
+<h3 id="_14">常见面试流程</h3>
+<ol>
+<li><strong>项目介绍</strong>（10-15分钟）：深入讨论项目细节、技术选型、遇到的问题</li>
+<li><strong>八股问答</strong>（20-30分钟）：从项目出发，串联基础知识</li>
+<li><strong>手撕代码</strong>（20-30分钟）：1-2道算法题 + 1道模型相关实现</li>
+<li><strong>系统设计</strong>（可选，15-20分钟）：设计大模型训练/推理系统</li>
+<li><strong>反问环节</strong>（5-10分钟）</li>
+</ol>
+<hr />
+<p>这份八股清单覆盖了大模型算法面试的核心知识点，从基础理论到工程实践，从模型架构到训练推理优化。每个知识点都提供了详细的解释和关键细节，适合系统性复习和查漏补缺。建议结合自己的项目经验，将知识点串联起来，形成完整的知识体系。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
