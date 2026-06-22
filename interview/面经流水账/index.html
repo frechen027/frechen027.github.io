@@ -4874,10 +4874,30 @@
 <li>手撕代码，峰值数字，理解错题目意思了，不过题目本身就是错的，后来推导一下思路，没让写</li>
 <li>八股，问点transformer相关，注意力，位置编码，梯度裁剪</li>
 <li>反问，模型训练规模，大概9B左右，多模态、ASR识别为主，做直播内容识别，底线违规，推流鼓励</li>
+<li>结束后约二面</li>
 </ul>
 <p>京东HR面</p>
 <ul>
-<li>关键问题，三个词介绍自己</li>
+<li>
+<p>关键问题，三个词介绍自己</p>
+</li>
+<li>
+<p><strong>问题一：DPO与GRPO适用场景及何时只做SFT</strong></p>
+<ul>
+<li><strong>DPO适用场景</strong>：主要用于<strong>对齐人类主观偏好</strong>（如文风、安全性、价值观），适用于<strong>拥有成对偏好数据</strong>且<strong>评判标准难以用代码量化</strong>的任务。</li>
+<li><strong>GRPO适用场景</strong>：主要用于<strong>提升客观逻辑推理</strong>（如数学、代码、事实核查），适用于<strong>答案有绝对对错</strong>、可通过<strong>规则验证</strong>且能设计<strong>客观奖励函数</strong>的场景。</li>
+<li><strong>只做SFT的情况</strong>：当任务<strong>仅需注入知识或控制格式</strong>、基座<strong>已是强对齐Chat版本</strong>、<strong>缺乏偏好数据或验证规则</strong>、处于<strong>MVP早期或算力受限</strong>，或需<strong>保留模型发散性</strong>防止过度对齐时，仅做SFT即可。</li>
+</ul>
+</li>
+<li>
+<p><strong>问题二：如何训练直播违规校验模型</strong></p>
+<ul>
+<li><strong>数据获取与准备</strong>：收集封禁/举报记录作<strong>违规黑样本</strong>，正常切片作<strong>防误杀白样本</strong>，利用大模型生成<strong>长尾变种话术</strong>；将直播流按<strong>时间窗口切片</strong>保留上下文，严格区分<strong>主播与弹幕角色</strong>。</li>
+<li><strong>人工介入时机</strong>：<strong>冷启动与新规期</strong>由人工标注带推理的种子数据，日常将<strong>低置信度或规则冲突</strong>的难例推给人工，<strong>涉政/涉黄等绝对红线</strong>场景必须由人工<strong>最终兜底确认</strong>。</li>
+<li><strong>提示词设计</strong>：设定<strong>专家角色</strong>并注入最新规则，提供包含ASR/弹幕/画面的<strong>结构化上下文</strong>，强制使用<strong>思维链（CoT）</strong> 按步骤推理，严格限制输出为包含证据的<strong>JSON格式</strong>。</li>
+<li><strong>纯0/1标签获取数据</strong>：利用强模型<strong>反向蒸馏</strong>自动生成推理过程作SFT数据，结合传统规则ID扩写<strong>审核报告</strong>，构造<strong>DPO偏好数据</strong>（结论正确且逻辑严密为Chosen），或直接将0/1标签作为<strong>GRPO客观奖励函数</strong>让模型通过强化学习自我摸索推理过程。</li>
+</ul>
+</li>
 </ul>
 
 
