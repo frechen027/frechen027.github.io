@@ -6766,7 +6766,7 @@
 </li>
 <li>熵理论与温度缩放（Temperature Scaling）：<ul>
 <li><strong>最深刻的理论贡献</strong>？</li>
-<li>通过插值扩展上下文后，Attention的<strong>分布熵发生变化</strong>。即序列边长，K数量增加，<span class="arithmatex">\(QK^T\)</span>分布扩大或者因为距离衰减而变得平坦，由此<strong>Softmax后概率分布也比训练时更加平坦</strong>，<strong>破化了模型原本的注意力机制</strong>，模型不知道该更加关心哪一个词——称为<strong>分布漂移</strong>（Distribution Shift）</li>
+<li>通过插值扩展上下文后，Attention的<strong>分布熵发生变化</strong>。即序列变长，K数量增加，<span class="arithmatex">\(QK^T\)</span>分布扩大或者因为距离衰减而变得平坦，由此<strong>Softmax后概率分布也比训练时更加平坦</strong>，<strong>破化了模型原本的注意力机制</strong>，模型不知道该更加关心哪一个词——称为<strong>分布漂移</strong>（Distribution Shift）</li>
 <li>解决？让分布重新变得尖锐，引入温度系数，<code>softmax</code>多除以一个数字而已，当扩展倍数 s 很大时，分母变小，相当于升高了Attention Logits的数值，<strong>使得softmax更加尖锐</strong>，从而<strong>保持模型对关键信息的聚焦能力</strong>。</li>
 </ul>
 </li>
@@ -6816,7 +6816,7 @@
 <li>是Transformer的标准配置，也是后续所有变体的基础。</li>
 <li>对于特征维度为d的输入向量，LN计算包含两个步骤：标准化(Normalization)和仿射变换(Affine Transformation)<ul>
 <li>计算输入向量均值和方差</li>
-<li>用这两个统计量对输入进行<strong>标准化</strong>，坟墓上添加一个微小的常数，防止分母为0带来的数值不稳定</li>
+<li>用这两个统计量对输入进行<strong>标准化</strong>，分母上添加一个微小的常数，防止分母为0带来的数值不稳定</li>
 <li>最后，为了保证模型的表达能力，引入可学习的缩放参数和偏置参数，理论上可以还原出原本输入<ul>
 <li>初始阶段，通常缩放参数设置为1，偏置参数设置为0，使得初始状态LN近似只做标准化。</li>
 </ul>
