@@ -2664,6 +2664,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        机器学习与深度学习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        训练神经网络常用技巧
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4729,6 +4751,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        机器学习与深度学习
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        训练神经网络常用技巧
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5162,6 +5206,343 @@
 </ul>
 </li>
 </ul>
+<h2 id="_5">机器学习与深度学习</h2>
+<ul>
+<li>原理<ul>
+<li>如何根据资料找出函数<span class="arithmatex">\(f\)</span>？</li>
+<li>可以找各种各样的函数</li>
+<li>输出数字的任务为regression</li>
+<li>可能有莫名其妙的的任务，比如我们来回答一个讲一堂课需要多久这个函数</li>
+</ul>
+</li>
+<li>找函数步骤3+1<ul>
+<li>learning、training<ul>
+<li>我要找什么</li>
+<li>我有哪些选择</li>
+<li>选一个最好的</li>
+</ul>
+</li>
+<li>我要找什么？<ul>
+<li>上节课的评估模型方法？</li>
+<li>计算预测时长和实际结果的差距</li>
+<li>越小越好，Loss</li>
+<li>越大越好，Objective</li>
+<li>这个过程几乎和Evaluation过程是一样的</li>
+<li>但其实两者有时候会不一样</li>
+<li>拿来定义Loss的数据资料就是训练集</li>
+</ul>
+</li>
+<li>我们有哪些选择？<ul>
+<li>可以把投影片表示成多个数字？比如页数、标题长度等等<span class="arithmatex">\(x_i\)</span>，其实就是feature</li>
+<li>可以看到目标输出可以表示成<span class="arithmatex">\(x_i\)</span>的函数</li>
+<li>数值不知道的东西就是参数</li>
+<li>代表的其实是函数的集合，因为参数未知</li>
+<li>这些选择都是出自人类对于任务的理解，其实也就是模型，真实世界很复杂我们想办法去简单表示，这就是模型</li>
+</ul>
+</li>
+<li>先把Loss完整式子写出来，选择不同参数则有不同的Loss<ul>
+<li>我们需要选一个最好的函数，使得Loss最小</li>
+<li>我们真正要做的事情，要解决的问题就是一个Optimization问题</li>
+<li>假设对于optimization一无所知，最简单的方式就是暴力检索</li>
+<li>找到一组参数带入到Loss函数中，使得loss计算值最小</li>
+<li>loss的等高线图？</li>
+<li>通用的做法进行最优化求解？梯度下降法。<ul>
+<li>只考虑改变一个参数</li>
+<li>饿狼下坡？随便找一个起始点开始，看往左边和往右边踏一小步进行试探，往哪个方向可以使得loss下降</li>
+<li>往该方向踏一大步</li>
+<li>往左和右都不会使得L变小，停下，局部极值点</li>
+<li>实际并不会真的往左还是往右进行试探，会直接<strong>计算切线斜率，决定往哪里走</strong></li>
+<li>如何计算斜率？偏微分</li>
+<li>深度学习套件可以自动计算</li>
+<li>一步要走多大？学习率和偏微分共同决定</li>
+<li>山坡越陡，跨的越大</li>
+<li>直到切线斜率接近于0</li>
+</ul>
+</li>
+<li>实际过程<ul>
+<li>随机给参数赋值开始</li>
+<li>分别求偏微分，也就是梯度</li>
+<li>更新参数</li>
+<li>反复上述操作</li>
+</ul>
+</li>
+<li>更加通用的情况<ul>
+<li>非常庞大数量的参数集合，看作参数集合向量</li>
+<li>分别计算在该集合参数时的梯度，也就是一个梯度向量</li>
+<li>更新参数集合向量，一次iteration或者update</li>
+<li>简化写法使用倒三角表示梯度计算</li>
+<li>反复上次过程</li>
+</ul>
+</li>
+<li>概念很简单，做起来不容易<ul>
+<li>首先很难调出一个非常理想的learning rate，过大过小都不好</li>
+<li>参数很多时，显然不能进行暴力搜索，我们发现loss几乎没有下降时，到底是停下来还是继续向前？</li>
+</ul>
+</li>
+<li>参数更新太慢？<ul>
+<li>计算Loss需要计算所有的平均</li>
+<li>如果训练资料很多，要等很久才能更新一次参数</li>
+<li>迫不及待地更新参数</li>
+<li>切分为多个batch，只在每个batch中计算Loss并更新参数</li>
+<li>1个epoch就是把所有的batch看一遍</li>
+<li>好处和坏处：update更多次数的参数，但是走得比较不稳定</li>
+<li><strong>设置一个合适的batch size，不大不小的值，也是一个超参数</strong></li>
+</ul>
+</li>
+<li>shuffle技术？每个epoch中的batch中组合不同，希望能够看到不一样的数据组合进行更新。</li>
+</ul>
+</li>
+<li>+1步骤？验证validation，模拟考<ul>
+<li>验证集</li>
+<li>结果好可以进行测试</li>
+<li>结果不好就需要解释前三个步骤了</li>
+<li>验证第一步。错误的目标上进行optimization根本就是<strong>缘木求鱼</strong>？不可能得到好的结果，例如应该用导论数据来训练一个预测导论课程时长的模型</li>
+<li>验证第二步。是不是函数的选择太少了？不应该用线性模型？是否可以画一个有机会包含所有函数的范围，去拟合这些点？锯齿状的线去拟合曲线，<strong>都可以表示成一个常数加上一堆山坡状函数相加。</strong>参数太多了没法画loss的等高线图，只能画随着epoch增多的loss值的变化。结果这个更大范围的最小loss居然比线性函数还要大？什么情况？</li>
+<li>验证第三步。Optimization Fail？陷入局部最小值或者是卡平台，又或者就是loss下降梯度过小了认为已经足够了。每次要解决一个问题，可以从一个简单模型入手，因为我们知道不可能loss比一个线性模型低，如果低了就考虑是不是optimization出现了问题，而不是盲目去扩大神经元数量。怎么改？<strong>爆调超参数，学习率、epoch数量、batch size等等</strong>。</li>
+<li>验证集和训练集上结果差距巨大时，就需要考虑<strong>是不是overfitting了</strong>，也就是过拟合了。函数表示范围越大越容易变得过拟合。</li>
+<li>overfitting：选择越多，训练和经验的差距越大，学车和自己上路开车，<strong>训练场地的一些参考标记，换一个场地你也许就不会开了</strong>。这也就是为什么<strong>步骤二需要画一个范围，不能太大也不能太小</strong>。</li>
+<li>一般需要在三个步骤和验证上<strong>反反复复</strong>，直到找到一个在训练集和测试集上都合适的函式。每一个Epoch结束都去量Validation Loss，进行early stopping。来来回回其实也是有代价的，<strong>可能在验证集上overfitting</strong>！可能得到一个在训练集和测试集上都loss低，但在测试集上一塌糊涂的函式。</li>
+</ul>
+</li>
+<li>测试Testing，正式考试<ul>
+<li>如果在测试集上表现不佳，还是需要重复上述循环，直到得到一个三个数据集上表现都好的函式。</li>
+<li>但是想象我们能够进行无限制的测试，会发生什么？overfit在测试资料上！也就是为什么benchmark上模型能够大幅打败人类。</li>
+<li>鬼灭之刃？人一次就会被杀死，鬼不会被杀死。</li>
+<li>所以一般都是将测试集划分为两个部分，public和private。private部分上只能测试一次，可能能够更加接近你模型的实际表现。</li>
+</ul>
+</li>
+<li>两个特征相差比较大使用同一个学习率的时候比较难训练，很容易就训练飞了。</li>
+</ul>
+</li>
+<li>https://www.youtube.com/watch?v=Taj1eHmZyWw&amp;list=PLJV_el3uVTsMMGi5kbnKP5DrDHZpTX0jT&amp;index=6<ul>
+<li>这堂课后面手动计算上述过程的实操可以多看两遍，其实就是一些矩阵，计算梯度，更新参数，相当于手写神经网络了。</li>
+</ul>
+</li>
+</ul>
+<p><img alt="理解参数集合更新过程" src="../../assets/images/lihongyi/02.png" /></p>
+<ul>
+<li>理解参数集合更新过程</li>
+</ul>
+<p><img alt="更新参数过程" src="../../assets/images/lihongyi/01.png" /></p>
+<ul>
+<li>多次进行更新</li>
+</ul>
+<p><img alt="多个batch进行参数更新" src="../../assets/images/lihongyi/03.png" /></p>
+<ul>
+<li>比较full batch和多个batch更新参数的过程</li>
+</ul>
+<p><img alt="如何表示山坡状函数" src="../../assets/images/lihongyi/05.png" /></p>
+<ul>
+<li>蓝色函数可以用两个绿色函数表示</li>
+</ul>
+<p><img alt="所有函数的拟合" src="../../assets/images/lihongyi/04.png" /></p>
+<ul>
+<li>都可以表示为常数加上一堆绿色函数的相加集合，绿色函数其实就是<strong>ReLu函数</strong></li>
+</ul>
+<p><img alt="图形化表示上述过程" src="../../assets/images/lihongyi/06.png" /></p>
+<ul>
+<li>将上述式子进行图像化</li>
+</ul>
+<p><img alt="扩展到有多个特征" src="../../assets/images/lihongyi/07.png" /></p>
+<ul>
+<li>扩展到多个feature，一切都是矩阵的相加相乘而已，有点惊人，居然就是一般深度学习的表示形式</li>
+</ul>
+<p><img alt="扩展到多层" src="../../assets/images/lihongyi/08.png" /></p>
+<ul>
+<li>我们可以将上一步操作的输出作为输入继续上述过程，也就形成了更多的layer，也就是deep learning。如果一层有非常多的ReLU就可以表示非常多的转折点，就可以表示出更加复杂的函数。</li>
+</ul>
+<p><img alt="Optimization Fail" src="../../assets/images/lihongyi/09.png" /></p>
+<ul>
+<li>更大的函数表示空间为什么没有得到更小的Loss？</li>
+</ul>
+<p><img alt="极端情况可以学习出的函式" src="../../assets/images/lihongyi/10.png" /></p>
+<ul>
+<li>上述这个函式没有违反我们选择的任何原则，但是显然不是一个好的函式，会导致验证集上loss的爆炸。</li>
+</ul>
+<p><img alt="在验证集上overfitting" src="../../assets/images/lihongyi/11.png" /></p>
+<ul>
+<li>在验证集上overfitting，仍然是一个没有用的函式。</li>
+</ul>
+<h2 id="_6">训练神经网络常用技巧</h2>
+<p>听到一个跟训练神经网络有关的方法时，你要这样问自己：
+- 方法名
+- 改了哪一个步骤？三个中的哪一个
+    - 新的Loss function？
+    - 改了网络架构？也就是改变了函数表示空间？
+    - 是一个更好的，更有效的，搜寻loss最低的方式
+- 带来什么好处？
+    - better optimization：更低的Training loss
+    - better generalization：更低的Validation loss，避免over fitting的发生</p>
+<p>流水账开始介绍</p>
+<p>改进步骤三：
+- 改进optimization
+    - 选择optimizer
+        - Vanilla Gradient Descent：最简单最基本的梯度下降，根据当下梯度算出来的，如果当下gradient为0，就不知道该怎么走
+        - Gradient Descent + Optimizer：根据一堆历史梯度一起来决定方向
+    - 为什么需要optimizer：LR实在是难调……
+        - 太大很容易训飞，太小容易走很多步也没更新多少
+        - 不同参数应该要有不同的learning rate：<strong>因材施教</strong>
+        - 我们没有上帝视角，但是可以使用<strong>过去的Gradient来决定LR</strong>，梯度大我们就给他较小的learning rate
+            - Adagrad：引入一个控制量，不停计算平方和并开根号，手搓也很简单，代码需要更新的地方就是使用Adagrad更新参数。<strong>可以将lr调的很大</strong>，因为很快也能够调控回来，也应该这么做。
+            - RMSProp：上述改良版，给予最近的梯度<strong>更大</strong>或者更小的权重，通常需要更小的lr，否则容易训飞
+    - Optimization会在Gradient很小时停止
+        - 不一定停在local minimum，而是在gradient为0的平地Saddle Point或者极小的点Small Gradient，坑太多了，如何处理？
+        - 想象动量Momentum？移动中的物体不会轻易停下来。<strong>具有足够的动量也许就能继续向前</strong>。
+        - Momentum：不再按照gradient方向来更新参数，而是按照momentum方向来更新参数。
+    - Adam：RMSProp + Momentum
+        - 十分常见，使用较为广泛。
+    - 还可以进行哪些方面的改进？
+        - 改进learning rate：learning rate scheduling
+            - 每次更新时都有不同的learning rate
+            - 如何设定？训练大模型时常用的是先增加后减小。
+            - 先增大：warm up，探索地图，大概知道地图是什么样子的。</p>
+<p><img alt="Adagrad" src="../../assets/images/lihongyi/12.png" /></p>
+<p>每一个dimension分开操作，每一个参数维度做的都是一摸一样的事情。学习率除以我们算的数值，数值越大，计算出的实际lr越小。不停的计算平方和并开根号。是否需要取平均？不取平均保证学习过程中lr越来越小，符合我们的预期。</p>
+<p><img alt="RMSProp" src="../../assets/images/lihongyi/13.png" /></p>
+<p>就是上面的加上一个权重系数罢了。但是有点区别是不是把之前步骤的gradient拿过来平方求和，而是把上一步算出来的<span class="arithmatex">\(\sigma\)</span>平方进行加权，反正看式子也能够理解。<strong>lr过大的话会很不稳定</strong>。alpha设置为0.9，新梯度权重为0.1也是比较合理的？</p>
+<p><img alt="momentum" src="../../assets/images/lihongyi/14.png" /></p>
+<p>上面的最简单的动量也就是把梯度进行一个累加而已。</p>
+<p><img alt="结合权重思想的动量" src="../../assets/images/lihongyi/15.png" /></p>
+<p>将RMSProp思想移植过来，给予最近的动量更多的权重，可能与经典论文的不太一样。beta为0.995，给予新梯度权重0.005已经是非常多了，因为过去那么多动量也只是分到0.995而已？依照动量可以翻过一个又一个山丘。</p>
+<p><img alt="Adam" src="../../assets/images/lihongyi/16.png" /></p>
+<p>同时使用Momentum（用动量取代梯度决定更新方向和主体）和RMSProp（给予最新梯度更大权重控制lr更新幅度），也就得到了Adam的主要部分。</p>
+<p><img alt="总结Optimizer" src="../../assets/images/lihongyi/17.png" /></p>
+<p>总结optimization这一步，改进的是第三部，我们要找到一个更好的<strong>训练函式</strong>，使得training loss可以被压得更低。但并不意味着这就会带来在验证集或真实情景下更好的表现（not for Generalization）。所以这时候换optimization可能就没有帮助了。</p>
+<p>有可能对generation带来好处的改进第三步的方法？
+- Dropout：
+    - 训练时随机丢掉一些神经元
+    - 验证和测试时火力全开
+    - 练习轻功？训练时增加难度
+    - <strong>Better Generation，但是worse optimization</strong>。
+    - <strong>注意使用的时机</strong>？所有方法都不是随便使用的。在Optimization上已经很好了但是generation还是表现不佳，我们才可能考虑使用dropout。</p>
+<p>Initialization：
+- 不同的<strong>起始位置</strong>，可能会导致非常不同的训练结果。
+- Optimizer可以克服初始位置带来的差异吗？
+- 好上加好？
+- 当有多个Training Loss最低点的时候，起始位置决定我们走到哪一个最低点。如何带领我们走到最好的一个？</p>
+<p><img alt="initialization" src="../../assets/images/lihongyi/18.png" /></p>
+<p>可以看到有些地方还是会有严重的overfitting问题。因此，依赖一个好的initialization，可能能够帮我们找到一个好的global minimum。</p>
+<ul>
+<li>目前可能还有待研究？</li>
+<li>比较好的大绝招？Pre-train<ul>
+<li>想让模型做一些Pretext Task（借口任务？）作为想要关心的Downstream Task的Initialization</li>
+<li>Pretext Task？怎么是好的？<strong>可以轻易收集大量资料进行训练</strong>。</li>
+</ul>
+</li>
+<li>pre-train对于Optimization和Generalization<strong>都有帮助</strong>。</li>
+</ul>
+<p>优化第二个步骤：我有哪些选择
+- Better Network Architecture
+- 划定一个刚刚好的函式范围
+    - 函式集合太小，可能会没有包含好的函式，那怎么找也找不到。
+    - 函式集合大一点，比较可能包到好的函式，但是也容易overfitting
+    - <strong>选一个小范围但刚好包含好的范式</strong>，需要你根据domain knowledge进行划定。
+- Convolutional Layer举例
+    - 图片处理
+    - 1000*1000图片，其实是<code>3*1000*1000</code>，也就是这么多维度的feature。
+    - 全连接？只考虑w，每个neurons就有3000000个参数，很恐怖。
+    - 真的需要这么多的参数吗？这时候就需要人进行决策了。
+    - 判断一只鸟也许只需要几个特征而不是整张图片就够了，所以可以帮助某些神经元只观察一部分。</p>
+<p><img alt="简化神经元" src="../../assets/images/lihongyi/19.png" /></p>
+<p><strong>人去决定</strong>神经元看到的范围Receptive field，是否需要重叠，是否多个neurons负责盯着同一片区域？不同的neurons是不是可以有不同的大小呢？neurons是不是看的可以不是正方形呢？都可以。</p>
+<p>目前图像处理其实已经有一套比较标准的处理方法：
+- Typical Setting：Observation 1
+    - 不一定需要每个神经元盯着整张图片看。
+    - kernel size：3<em>3 e.g.，stride：2，一般会有一些重叠，这表示移动2，一般是把所有channel整合到一起。padding：不足一个<code>3*3</code>的图片，补0。
+    - 这种Receptive Field是比Fully Connected Layer</em><em>更小</em><em>的函式表示范围，前者被后者涵盖。
+    - CNN的第一个发明，Receptive field。
+- Observation 2
+    - 同一个特征出现在</em><em>不同的地方</em><em>，不同的neurons负责的地方，实则是可以用</em><em>同一组参数去处理</em><em>的。
+    - 不同的receptive field被</em><em>设置为共享同一组参数</em><em>。
+    - 强制设定为一样，选择范围变得更小。
+    - CNN其实是一个更简单的东西，是Fully Connected Layer的简化。
+    - 是一个Convolution Layer
+- CNN？Convolution？
+    - 改了函式搜索范围
+    - </em><em>好处是Better Generalization</em>*，更加不容易overfitting。
+    - 根据人类的domain划定一个小的范围，又包括一个好的函式。</p>
+<p><img alt="进一步简化范围" src="../../assets/images/lihongyi/20.png" /></p>
+<p><img alt="总结CNN" src="../../assets/images/lihongyi/21.png" /></p>
+<p>上述是对于第二层优化神经网络针对Better Generalization的情景，下面还有些针对Optimization的情况。</p>
+<p><img alt="Skip Connection场景" src="../../assets/images/lihongyi/22.png" /></p>
+<p><img alt="似乎也就是残差连接" src="../../assets/images/lihongyi/23.png" /></p>
+<p>Skip Connection</p>
+<p><img alt="loss surface" src="../../assets/images/lihongyi/24.png" /></p>
+<p>针对Optimization的类神经网络设计：
+- 并不是只有第三步才能影响Optimization
+- L和较为浅层的w的变化
+    - 往往影响很小gradient vanishing
+    - 有时候又会突然变很大gradient exploding，蝴蝶效应
+- 加上Skip Connection就是加上高速公路
+    - a的变化可以直接传导到深层
+- 带来了Better Optimization，更好的进行训练
+- 各种Normalization操作也能优化
+    - <strong>Norm进行输入输出的限制范围落在某些范围内</strong>
+    - 正则化等操作
+    - Batch Normalization
+    - Layer Normalization
+    - 改变了函式搜寻范围，Better Optimization，Sometimes Better Generalization</p>
+<p><img alt="分类问题输出什么" src="../../assets/images/lihongyi/25.png" /></p>
+<p><img alt="如何定义Loss" src="../../assets/images/lihongyi/26.png" /></p>
+<p><img alt="交叉熵效果" src="../../assets/images/lihongyi/27.png" /></p>
+<p>针对第一步的优化：我要找什么？有关Loss的定义
+- Classification
+    - 大模型生成问题也是分类问题
+    - 分类的Loss长什么样子？
+    - 想要类神经网络输出什么东西？其实有几个类别就输出几个数值就好。大小更大就是分类越可能的。
+    - Loss = Evalution Metrics？
+        - 正确率accuracy，正确得1分，否则0分，计算平均
+        - 能不能像regression问题一样直接把evaluation metrics当作loss来看呢？
+        - 可以看到，改变一点b2，如果实际结果没有影响，在正确率下计算的Loss也就没有变化，<strong>梯度自然为0</strong>……除非是在临界点一瞬间的变化，<strong>无法进行下坡</strong>。没办法好好地算微分！
+        - 最常用的是和accuracy有点像但是能很好做微分的东西，<strong>Cross-entropy是最为常用的</strong>。
+    - Cross-entropy
+        - 预测结果进行softmax
+        - ground truth也变成机率分布，其实是个one-hot的分布
+        - 计算两者的交叉熵
+        - 两个分布越接近，loss越小
+        - 更加容易计算微分
+        - 由于计算softmax，其实一个参数小小变化会影响所有其他类别的结果，也就会影响Loss，也就可以进行优化。
+        - 验证、测试时还是会用accuracy！因为大家只在意这个。<strong>造成了一个误差和Gap</strong>。
+    - 改变了我要找什么这一个步骤，带来的好处是Better Optimization，Not for Generalization
+- Need More Training Data……
+    - <strong>克服overfitting</strong>的一个方式就是收集更多的能够反映真实世界的资料。
+    - 改变了我要找什么，带来的好处是Better Generalization，Not for Optimization。加了更多东西，其实是让Optimization更加困难了。
+    - 要记得<strong>每一个技巧的适用时机</strong>，overfitting时使用。
+- Data Augmentation
+    - 确实没法收集更多的资料，可以对现有数据进行一些变换，由此扩大了数据量。
+    - 必须augment必须是合理的，比如任务是分辨鸟的朝向，做flip其实答案就错误了。
+    - 还是Overfitting时候使用
+    - 还是改变了要找什么，带来的好处是Better Optimization，Not for Generalization。
+    - Mixup
+        - 改变label，例如直接将图片融合，label变为50%的猫和50%的狗</p>
+<p><img alt="Mixup" src="../../assets/images/lihongyi/28.png" /></p>
+<p>Semi-supervised Learning
+- Loss由两部分组成，<strong>确定的标准数据以及海量未进行标注数据</strong>。用了<strong>两部分资料</strong>！
+- 如何定unlabel的loss function？
+- 非黑即白的世界
+    - 基于这个假设，l'为一个entropy
+    - 神经网络输出的几率分布越平均，larger entropy，否则越small
+    - 也就是倾向于能够比较好能够分开数据的函式
+- 物以类聚的世界
+    - 建立详尽的点的graph
+    - 两部分，是否连接以及距离，距离可能得自己进行定义，如何进行连接也需要自己进行定义
+- 改了哪一个步骤？我要找什么
+    - Better Generalization，Not for Optimization</p>
+<p><img alt="非黑即白的世界" src="../../assets/images/lihongyi/29.png" /></p>
+<p><img alt="物以类聚的世界" src="../../assets/images/lihongyi/30.png" /></p>
+<p>Parameter Regularization
+- 也可以定义一些Loss是和训练资料没有关系，而只跟我们人类对于Parameter偏好有关的Loss
+- 简单的参数？希望参数越接近0越好，例如就可以使用<strong>参数的平方和</strong>。
+- 将原来参数弄得小一点点再进行更新的操作，叫做weight decay。所以和parameter regularization不同定义，但做的事情差不多。</p>
+<p><img alt="选择一个函式" src="../../assets/images/lihongyi/31.png" /></p>
+<p>我们可能更加倾向于左边的更加简单，更加平缓的。</p>
+<p><img alt="如何更新参数" src="../../assets/images/lihongyi/32.png" /></p>
+<p>其实还是差不多，只是多了一部分而已。整理以后可以想象成<span class="arithmatex">\(\theta\)</span>成了个系数例如0.99罢了。</p>
+<p><img alt="parameter regularization" src="../../assets/images/lihongyi/33.png" /></p>
+<p><img alt="AdanW" src="../../assets/images/lihongyi/34.png" /></p>
+<p>将weight decay思想用到Adam中，<strong>AdamW</strong>。相较于Adam，考虑了Generalization这件事。</p>
+<p>下次听到一个方法时，想想改了三个步骤中的哪一个步骤以及带来了什么好处，是为了Optimization还是为了Generalization设计。</p>
+<p><img alt="总结" src="../../assets/images/lihongyi/35.png" /></p>
 
 
 
